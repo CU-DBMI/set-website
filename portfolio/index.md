@@ -2,23 +2,18 @@
 title: Portfolio
 nav:
   order: 1
-  tooltip: Our current and past projects
+  tooltip: Our past, present, and future projects
 ---
 
 # Portfolio
 
-We support the labs and individuals within the Center by developing a variety of content and software.
-Some of the things we create are:
+Our past, present, and future projects with our various clients.
+{:.center}
 
-- Modern, responsive web applications
-- Powerful and flexible backend systems and APIs
-- Interactive data visualizations
-- Beautiful and polished websites
-- Robust and reproducible data pipelines
-- Logos and cohesive brand identities
-
-But the best way to understand what we do is to see it for yourself!
-Click on an item below to learn more about it.
+{% include link.html link="https://greenelab.com/" text="Greene Lab" icon="fas fa-flask" %}
+{% include link.html link="https://tislab.org/" text="TIS Lab" icon="fas fa-flask" %}
+{% include link.html link="https://medschool.cuanschutz.edu/ai" text="The Center itself" icon="fas fa-flask" %}
+{:.center}
 
 **Filter by type:**
 {:.center}
@@ -36,15 +31,7 @@ Click on an item below to learn more about it.
   include list.html
   data="portfolio"
   component="card"
-  filter="highlight: true, past:"
-%}
-
-{%
-  include list.html
-  data="portfolio"
-  component="card"
-  filter="highlight:, past:"
-  style="small"
+  filters="group: "
 %}
 
 {% include section.html %}
@@ -55,13 +42,5 @@ Click on an item below to learn more about it.
   include list.html
   data="portfolio"
   component="card"
-  filter="highlight: true, past: true"
-%}
-
-{%
-  include list.html
-  data="portfolio"
-  component="card"
-  filter="highlight: , past: true"
-  style="small"
+  filters="group: past"
 %}
