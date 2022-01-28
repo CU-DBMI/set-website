@@ -1,47 +1,41 @@
-- name: Center for Health AI, Software Engineering
-  group: featured
-  image: images/hsb.png
+- title: This Website
+  subtitle: for the Center
+  highlight: true
+  image: images/hsb.jpg
   link: https://cuhealthai.github.io/set-website/
-  description: The software engineering team for the Center for Health AI works with labs, departments, and other teams to help bring amazing software to the world.
-  repo: CUHealthAI/set-website
-  tags: jekyll, website
+  description: We of course built the website you are on right now!
+  tags: website, frontend, graphic design, jekyll
 
-- name: Greene Lab Website Template
-  group: featured
+- title: Lab Website Template
+  subtitle: for the Greene Lab
+  highlight: true
   image: images/photo.jpg
   link: https://github.com/greenelab/lab-website-template
   description: An easy-to-use, flexible website template for labs, including automatic citations, GitHub tag imports, pre-built components, and more. Spend less time reinventing the wheel and more time running your lab.
-  repo: greenelab/lab-website-template
-  tags: website, template, jekyll
+  tags: website, frontend, graphic design, jekyll
 
-- name: Biomedical Literature "Word Lapse" Single Page App
-  group: more
+- title: Word Lapse
+  subtitle: for the Greene Lab
   image: images/photo.jpg
   link: https://github.com/greenelab/word-lapse
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/word-lapse
-  tags: website
+  description: TODO
+  tags: web app, frontend, react, data visualization
 
-- name: Monarch Initiative User Interface "3.0"
-  group: more
+- title: Monarch Initiative
+  subtitle: for the TIS Lab
   image: images/photo.jpg
   link: https://github.com/monarch-initiative/monarch-ui-new
-  description: Updating the Monarch UI to a new standard, the "3.0" release promises a modern front-end with accessibility and utility.
-  repo: monarch-initiative/monarch-ui-new
-  tags: website, vue
+  description: A "from-the-ground-up" redesign and rewrite of the [Monarch Initiative](https://monarchinitiative.org/) application. 
+  tags: web app, vue
 
-- name: Monarch Initiative Cloud Migration
-  group: more
+- title: Monarch Initiative Cloud Migration
   image: images/projects/monarch_cluster.png
   link: https://github.com/monarchinitiative/monarch-stack
   description: Migration of the Monarch backend and associated services from OSU to Google Cloud, including automated provisioning and deployment via Terraform, Ansible, and Docker Swarm.
-  repo: monarch-initiative/monarch-stack
   tags: api, iac, terraform, ansible, docker swarm
 
-- name: GraphDB Deployer
-  group: more
+- title: GraphDB Deployer
   image: images/projects/graphdb_deployer.png
   link: https://github.com/monarch-initiative/graphdb-deployer
   description: Automates the parsing and transformation of a KGX archive into graphdb-ready formats. After the archive is converted, automates provisioning and deployment of Neo4j and Blazegraph instances from a KGX archive.
-  repo: monarch-initiative/graphdb-deployer
   tags: iac, graph databases, neo4j, blazegraph, terraform, ansible

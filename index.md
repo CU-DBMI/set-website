@@ -3,13 +3,15 @@ title: Home
 ---
 
 {% capture text %}
-We are the Software Engineering Team (SET) of the [Center for Health AI](https://medschool.cuanschutz.edu/ai) at the [University of Colorado Anschutz](https://www.cuanschutz.edu/).
+We are a small group of dedicated software developers with the [Center for Health AI](https://medschool.cuanschutz.edu/ai) at the [University of Colorado Anschutz](https://www.cuanschutz.edu/).
 
 {%
   include link.html
   link="about"
+  title="Who we are"
   text="Learn more about us"
   icon="fas fa-arrow-right"
+  flip=true
   style="button"
 %}
 {:.center}
@@ -17,8 +19,8 @@ We are the Software Engineering Team (SET) of the [Center for Health AI](https:/
 
 {% 
   include feature.html
-  image="images/hsb.png"
-  headline="Who we are"
+  image="images/hsb.jpg"
+  title="Who we are"
   text=text
   link="about"
 %}
@@ -26,13 +28,14 @@ We are the Software Engineering Team (SET) of the [Center for Health AI](https:/
 {% include section.html %}
 
 {% capture text %}
-We are the Software Engineering Team (SET) of the [Center for Health AI](https://medschool.cuanschutz.edu/ai) at the [University of Colorado Anschutz](https://www.cuanschutz.edu/).
+We support the labs and individuals within the Center by developing high quality web applications, web servers, data visualizations, data pipelines, and much more.
 
 {%
   include link.html
   link="portfolio"
   text="Our portfolio"
   icon="fas fa-arrow-right"
+  flip=true
   style="button"
 %}
 {:.center}
@@ -40,8 +43,9 @@ We are the Software Engineering Team (SET) of the [Center for Health AI](https:/
 
 {% 
   include feature.html
-  image="images/hsb.png"
-  headline="Our work"
+  image="images/code.jpg"
+  title="What we do"
   text=text
-  link="about"
+  link="portfolio"
+  flip=true
 %}
