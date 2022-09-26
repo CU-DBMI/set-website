@@ -14,7 +14,7 @@
 
 - title: Monarch Initiative Cloud Migration
   subtitle: for the TIS Lab
-  image: images/monarch-cluster.png
+  image: images/monarch-cluster.jpg
   link: https://github.com/monarchinitiative/monarch-stack
   description: Migration of the all Monarch Initiative backend and associated services from physical hardware to Google Cloud, including automated provisioning and deployment via Terraform, Ansible, and Docker Swarm.
   tags: devops, api, iac, terraform, ansible, docker swarm
@@ -27,7 +27,7 @@
   tags: website, frontend, graphic design, jekyll
 
 - title: GraphDB Deployer
-  image: images/graphdb-deployer.png
+  image: images/graphdb-deployer.jpg
   link: https://github.com/monarch-initiative/graphdb-deployer
   description: Automates the parsing and transformation of a KGX archive into graphdb-ready formats. After the archive is converted, automates provisioning and deployment of Neo4j and Blazegraph instances from a KGX archive.
   tags: devops, iac, graph databases, neo4j, blazegraph, terraform, ansible

@@ -17,13 +17,13 @@ Some of the individual groups we work with:
 {% 
   include gallery.html
   link1="https://greenelab.com/"
-  image1="images/greene-lab.png"
+  image1="images/greene-lab.jpg"
   tooltip1="Greene Lab"
   link2="https://tislab.org/"
-  image2="images/tis-lab.png"
+  image2="images/tis-lab.jpg"
   tooltip2="TIS Lab"
   link3="https://www.waysciencelab.com/"
-  image3="images/way-lab.png"
+  image3="images/way-lab.jpg"
   tooltip3="Way Lab"
 %}
 
