@@ -5,7 +5,7 @@ description: Backend and Devops Developer
 role: programmer
 links:
   orcid: 0000-0003-4297-8747
-  email: faisal.alquaddooomi@cuanschutz.edu
+  email: faisal.alquaddoomi@cuanschutz.edu
   github: falquaddoomi
 ---
 
