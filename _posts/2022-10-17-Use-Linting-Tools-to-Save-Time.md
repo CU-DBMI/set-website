@@ -27,8 +27,6 @@ __Before isort__
 
 The following Python code shows a series of import statements. There are duplicate imports and the imports are a mixture of custom (possibly local), external, and built-in packages. Isort can check this code using the command: `isort <file or path> --check`.
 
-{:.left}
-
 ```python
 from custompkg import b, a
 import numpy as np
@@ -42,8 +40,6 @@ import os
 __After isort__
 
 Isort can fix the code automatically using the command: `isort <file or path>`. After applying the fixes, notice that all packages are alphabetized and grouped by built-in, external, and custom packages.
-
-{:.left}
 
 ```python
 import os
@@ -62,8 +58,6 @@ __Example .pre-commit-config.yaml Configuration__
 
 The following yaml content can be used to reference isort by pre-commit. This configuration content can be expanded to many different pre-commit hooks.
 
-{:.left}
-
 ```yaml
 # example .pre-commit-config.yaml file leveraging isort
 # See https://pre-commit.com/hooks.html for more hooks
@@ -80,8 +74,6 @@ __Example Using pre-commit Manually__
 Imagine we have a file, example.py, which includes the content from _Before isort_. Running pre-commit manually on the directory files will first automatically apply isort formatting. The second time pre-commit is run there will be no issue (pre-commit resolved it automatically).
 
 First detecting and fixing the file:
-
-{:.left}
 
 ```console
 % pre-commit run --all-files
