@@ -29,7 +29,7 @@ But...
 ## Alternative approach
 
 With just a little bit of setup, we can accomplish all of this in a much better way.
-Well, at least much better-suited to the target audience of this article: _People/organizations who use GitHub and Git_.
+Well, at least much better-suited to the target audience of this article: **People/organizations who use GitHub and Git**.
 Hopefully you enjoy working with these tools, or at least have a working knowledge of them.
 But if not, don't worry, you can still benefit from this approach!
 
@@ -40,15 +40,14 @@ But if not, don't worry, you can still benefit from this approach!
 - Not subject to the pricing whims of large companies.
   Features and cost won't change.
 - Uses tools and workflows you're already accustomed to (and hopefully prefer).
-  You don't need to create a new account like you do for Bitly.
+  You don't need to create a new account just for this purpose, like you do with Bitly.
 - You get a git history of all of your links; who changed what and when.
 - You're in complete control. 
   With a bit of coding knowledge, you can customize it any way you'd like.
   
 **The equal**:
 
-- You can set up a custom domain for your links.
-- You can use custom text for your links.
+- You can customize the text of your links fully, both the domain and "back-halves".
 - You can track analytics for your links using whatever service you want, like Google Analytics.
 - You can restrict who can see and edit the links using GitHub's private repos and permission settings.
 - You can organize your links and add metadata however you like to make maintenance easier.
