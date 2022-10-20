@@ -6,8 +6,6 @@ tags:
   - github
 ---
 
-# <i class="fa-solid fa-diamond-turn-right"></i>URL redirects with GitHub
-
 ## Background and motivation
 
 You've likely heard of a service called [Bitly](https://bitly.com/).
