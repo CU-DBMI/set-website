@@ -15,8 +15,7 @@ code * {
 // inline code
 code.highlighter-rouge {
   padding: 2px 6px;
-  background: $gray-800;
-  color: $white;
+  background: $gray-300;
   border-radius: $rounded;
   line-height: $spacing;
 }
@@ -35,6 +34,12 @@ div.highlighter-rouge {
   pre.highlight {
     margin: 0;
     padding: 20px;
+  }
+}
+
+a {
+  code.highlighter-rouge {
+    text-decoration: underline;
   }
 }
 
