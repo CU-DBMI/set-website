@@ -15,7 +15,7 @@ tags:
 Diagrams can be a useful way to illuminate and communicate ideas. Free-form drawing or drag and drop tools are one common way to create diagrams. With this tip of the week we introduce another option: diagrams as code (DaC), or creating diagrams by using code.
 
 __TLDR (too long, didn't read);__
-Diagrams as code (DaC) tools provide an advantage for illustrating concepts by enabling __quick visual positioning__, __source controllable input__, __portability (both for input and output formats)__, and __open collaboration through reproducibility__. Consider trying or using the following diagrams as code tools: [Mermaid](https://mermaid-js.github.io/mermaid/), [PlantUML](https://plantuml.com/), or [Vega](https://vega.github.io/vega/). Mermaid in particular can be used directly within markdown files, Github comments, and elsewhere.
+Diagrams as code (DaC) tools provide an advantage for illustrating concepts by enabling __quick visual positioning__, __source controllable input__, __portability (both for input and output formats)__, and __open collaboration through reproducibility__. Consider using [Mermaid](https://mermaid-js.github.io/mermaid/) (as well as many other DaC tools) to assist your diagramming efforts which can be used directly, within in your markdown files, or [Github commentary](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) using code blocks (for example, ` ```mermaid `).
 
 ## Example Mermaid Diagram as Code
 
@@ -52,7 +52,38 @@ flowchart LR
 </tr>
 </table>
 
-## Workflow
+The above table shows an example [mermaid flowchart](https://mermaid-js.github.io/mermaid/#/flowchart) code and it's rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, gantt, and other diagram types. Mermaid provides a [live editor](https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg) which can be used to quickly draft and share content.
+
+## Mermaid Github Integration
+
+{% include figure.html image="image.png" %}
+
+<table>
+<tr>
+<td>
+
+![](../images/github_mermaid_code.png)
+
+</td>
+<td>
+
+![](../images/github_mermaid_preview.png)
+
+</td>
+</tr>
+<tr>
+<td>Mermaid Code</td>
+<td>Mermaid Rendered</td>
+</tr>
+</table>
+
+## Mermaid Jupyter Notebook Integration
+
+![](../images/jupyter_mermaid_example.png)
+
+See [this example](https://gist.github.com/d33bs/533e44196f1beac267ef7c6b277c6a1a) for more information.
+
+## Version Controlled Diagram Workflow
 
 {% include figure.html image="image.png" %}
 
@@ -69,3 +100,8 @@ graph LR
     render --> | revise | write
     render --> | code and exports | save
 ```
+
+## Additional Similar Tools
+
+- [PlantUML](https://plantuml.com/)
+- [Vega](https://vega.github.io/vega/).
