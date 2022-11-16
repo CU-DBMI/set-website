@@ -77,13 +77,15 @@ The above table shows an example [mermaid flowchart](https://mermaid-js.github.i
 </tr>
 </table>
 
+Mermaid diagrams may be rendered directly from markdown (`.md`) and text communication content (like pull request or issue comments) within Github. See [Github's blog post on mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) for more details covering this topic.
+
 ## Mermaid Jupyter Notebook Integration
 
 ![](../images/jupyter_mermaid_example.png)
 
-See [this example](https://gist.github.com/d33bs/533e44196f1beac267ef7c6b277c6a1a) for more information.
+Mermaid diagrams can be rendered directly within [Jupyter notebooks](https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook_Documents) with a small amount of additional code and a rendering service. One way to render mermaid and other diagrams within notebooks is to use [Kroki.io](https://kroki.io/). See [this example](https://gist.github.com/d33bs/533e44196f1beac267ef7c6b277c6a1a) for more information.
 
-## Version Controlled Diagram Workflow
+## Version Controlling Your Diagrams
 
 {% include figure.html image="image.png" %}
 
@@ -101,7 +103,12 @@ graph LR
     render --> | code and exports | save
 ```
 
-## Additional Similar Tools
+Creating your diagrams with code means you can enable reproducible and collaborative work on version control systems (like git). Using git in this way allows you to reference and remix your diagrams as part of development. It also allows others to collaborate on diagrams together making modifications as needed.
+
+## Additional Resources
+
+Please see the following the additional resources which are related to diagrams as code.
 
 - [PlantUML](https://plantuml.com/)
-- [Vega](https://vega.github.io/vega/).
+- [Vega](https://vega.github.io/vega/)
+- [Kroki.io](https://kroki.io/)
