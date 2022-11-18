@@ -83,7 +83,7 @@ Mermaid diagrams may be rendered directly from markdown (`.md`) and text communi
 
 ![](../images/jupyter_mermaid_example.png)
 
-Mermaid diagrams can be rendered directly within [Jupyter notebooks](https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook_Documents) with a small amount of additional code and a rendering service. One way to render mermaid and other diagrams within notebooks is to use [Kroki.io](https://kroki.io/). See [this example](https://gist.github.com/d33bs/533e44196f1beac267ef7c6b277c6a1a) for more information.
+Mermaid diagrams can be rendered directly within [Jupyter notebooks](https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook_Documents) with a small amount of additional code and a rendering service. One way to render mermaid and other diagrams within notebooks is to use [Kroki.io](https://kroki.io/). See [this example](https://cu-dbmi.github.io/notebooks/lab?path=mermaid_example.ipynb) for an interactive demonstration.
 
 ## Version Controlling Your Diagrams
 
