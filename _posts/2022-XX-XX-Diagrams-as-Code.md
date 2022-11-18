@@ -19,89 +19,39 @@ Diagrams as code (DaC) tools provide an advantage for illustrating concepts by e
 
 ## Example Mermaid Diagram as Code
 
-{% include figure.html image="image.png" %}
+{% capture col1content %}
+{% include figure.html image="../images/mermaid_code.png" caption="Mermaid code" %}
+{% endcapture %}
+{% capture col2content %}
+{% include figure.html image="../images/mermaid_rendered.png" caption="Mermaid rendered"  %}
+{% endcapture %}
 
-<table>
-<tr>
-<td>
+{% include two-col.html col1=col1content col2=col2content %}
 
-````shell
-flowchart LR
-    a --> b
-    b --> c
-    c --> d1
-    c --> d2
-````
-
-</td>
-<td>
-
-```mermaid
-flowchart LR
-  a --> b
-  b --> c
-  c --> d1
-  c --> d2
-```
-
-</td>
-</tr>
-<tr>
-<td>Mermaid Code</td>
-<td>Mermaid Rendered</td>
-</tr>
-</table>
-
-The above table shows an example [mermaid flowchart](https://mermaid-js.github.io/mermaid/#/flowchart) code and it's rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, gantt, and other diagram types. Mermaid provides a [live editor](https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg) which can be used to quickly draft and share content.
+The above shows an example [mermaid flowchart](https://mermaid-js.github.io/mermaid/#/flowchart) code and it's rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, gantt, and other diagram types. Mermaid provides a [live editor](https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg) which can be used to quickly draft and share content.
 
 ## Mermaid Github Integration
 
-{% include figure.html image="image.png" %}
+{% capture col1content %}
+{% include figure.html image="../images/github_mermaid_code.png" caption="Github comment"  %}
+{% endcapture %}
+{% capture col2content %}
+{% include figure.html image="../images/github_mermaid_preview.png" caption="Github comment preview"  %}
+{% endcapture %}
 
-<table>
-<tr>
-<td>
-
-![](../images/github_mermaid_code.png)
-
-</td>
-<td>
-
-![](../images/github_mermaid_preview.png)
-
-</td>
-</tr>
-<tr>
-<td>Mermaid Code</td>
-<td>Mermaid Rendered</td>
-</tr>
-</table>
+{% include two-col.html col1=col1content col2=col2content %}
 
 Mermaid diagrams may be rendered directly from markdown (`.md`) and text communication content (like pull request or issue comments) within Github. See [Github's blog post on mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) for more details covering this topic.
 
 ## Mermaid Jupyter Notebook Integration
 
-![](../images/jupyter_mermaid_example.png)
+{% include figure.html image="../images/jupyter_mermaid_example.png" caption="Mermaid content rendered in a Jupyter notebook"  %}
 
 Mermaid diagrams can be rendered directly within [Jupyter notebooks](https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook_Documents) with a small amount of additional code and a rendering service. One way to render mermaid and other diagrams within notebooks is to use [Kroki.io](https://kroki.io/). See [this example](https://cu-dbmi.github.io/notebooks/lab?path=mermaid_example.ipynb) for an interactive demonstration.
 
 ## Version Controlling Your Diagrams
 
-{% include figure.html image="image.png" %}
-
-```mermaid
-graph LR
-    subgraph Compose
-      write[Write Diagram Code]
-      render[Render Diagram]
-    end
-    subgraph Store[Save and Share]
-      save[Upload Diagram]
-    end
-    write --> | create | render
-    render --> | revise | write
-    render --> | code and exports | save
-```
+{% include figure.html image="../images/mermaid_version_control.png" caption="Mermaid version control workflow example" %}
 
 Creating your diagrams with code means you can enable reproducible and collaborative work on version control systems (like git). Using git in this way allows you to reference and remix your diagrams as part of development. It also allows others to collaborate on diagrams together making modifications as needed.
 
