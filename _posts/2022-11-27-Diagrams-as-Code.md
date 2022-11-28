@@ -6,6 +6,8 @@ tags:
   - tip-of-the-week
   - software
   - diagrams
+  - mermaid
+  - markdown
 ---
 
 # Tip of the Week: Diagrams as Code
