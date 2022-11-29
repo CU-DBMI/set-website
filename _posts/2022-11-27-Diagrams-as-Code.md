@@ -31,6 +31,7 @@ flowchart LR
     c --> d2
 ```
 
+_Mermaid code_
 {% endcapture %}
 {% capture col2content %}
 
@@ -41,6 +42,7 @@ flowchart LR
     c --> d1
     c --> d2
 </pre>
+_Mermaid rendered_
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
@@ -72,7 +74,20 @@ Mermaid diagrams can be rendered directly within [Jupyter notebooks](https://en.
 
 ## Version Controlling Your Diagrams
 
-{% include figure.html image="../images/mermaid_version_control.png" caption="Mermaid version control workflow example" %}
+<pre class="mermaid">
+graph LR
+    subgraph Compose
+      write[Write Diagram Code]
+      render[Render Diagram]
+    end
+    subgraph Store[Save and Share]
+      save[Upload Diagram]
+    end
+    write --> | create | render
+    render --> | revise | write
+    render --> | code and exports | save
+</pre>
+_Mermaid version control workflow example_
 
 Creating your diagrams with code means you can enable reproducible and collaborative work on version control systems (like git). Using git in this way allows you to reference and remix your diagrams as part of development. It also allows others to collaborate on diagrams together making modifications as needed.
 
