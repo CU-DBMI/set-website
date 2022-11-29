@@ -22,12 +22,31 @@ Diagrams as code (DaC) tools provide an advantage for illustrating concepts by e
 ## Example Mermaid Diagram as Code
 
 {% capture col1content %}
-{% include figure.html image="../images/mermaid_code.png" caption="Mermaid code" %}
+
+```
+flowchart LR
+    a --> b
+    b --> c
+    c --> d1
+    c --> d2
+```
+
 {% endcapture %}
 {% capture col2content %}
-{% include figure.html image="../images/mermaid_rendered.png" caption="Mermaid rendered"  %}
-{% endcapture %}
 
+<pre class="mermaid">
+flowchart LR
+    a --> b
+    b --> c
+    c --> d1
+    c --> d2
+</pre>
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+{% endcapture %}
 {% include two-col.html col1=col1content col2=col2content %}
 
 The above shows an example [mermaid flowchart](https://mermaid-js.github.io/mermaid/#/flowchart) code and it's rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, gantt, and other diagram types. Mermaid provides a [live editor](https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg) which can be used to quickly draft and share content.
