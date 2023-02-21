@@ -25,6 +25,8 @@ flowchart LR
   action --> en((end))
 ```
 
+[Workflows](https://en.wikipedia.org/wiki/Workflow) consist of sequenced activities used by various systems. Software development uses workflows to help accomplish work the same way each time. Generally, workflow engines consist of triggers (what starts a workflow), actions (work being performed in sequence), and an ending (where the work stops).
+
 ## Github Actions
 
 ```mermaid
@@ -37,7 +39,7 @@ flowchart LR
   trigger -.-> start
 ```
 
-## Testing
+## Testing with Act
 
 ```mermaid
 flowchart LR
@@ -45,6 +47,25 @@ flowchart LR
     direction LR
     subgraph workflow
       direction LR
+      start((start)) --> action
+      action --> en((end))
+    end
+    
+  end
+  trigger -.-> |run act| start
+```
+
+## Moving Beyond Act
+
+```mermaid
+flowchart LR
+  subgraph container [local simulation container]
+    direction LR
+    subgraph workflow
+      direction LR
+      subgraph action [nested container]
+        actions
+      end
       start((start)) --> action
       action --> en((end))
     end
