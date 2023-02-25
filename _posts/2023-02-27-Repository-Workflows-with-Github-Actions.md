@@ -35,7 +35,6 @@ flowchart LR
 flowchart LR
   subgraph workflow [Github Actions Workflow Run]
     direction LR
-    
     action["action(s)"] --> en((end))
   end
   start((trigger)) --> action
@@ -49,39 +48,44 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  subgraph container [local simulation container]
+  subgraph container ["local simulation container(s)"]
     direction LR
     subgraph workflow [Github Actions Workflow Run]
       direction LR
-      
       action --> en((end))
     end
-    start((trigger)) --> action
   end
-  trigger -.-> |run act| start
+  start((trigger)) --> action
+  simulated[Simulated\ntrigger] -.-> |run act| start
   style start fill:#6EE7B7
   style en fill:#FCA5A5
 ```
 
-## Moving Beyond Act
+One challenge with Github Actions is a lack of standardized local testing tools. For example, how will you know that a new Github Actions workflow will function as expected (or at all) without pushing to the Github repository? One third-party tool which can help with this is [Act](https://github.com/nektos/act). Act uses [public Docker images](https://github.com/nektos/act#runners) which require [Docker Desktop](https://docs.docker.com/desktop/) to simulate what running a Github Action workflow in Github will look like.
+
+## Nested Workflows with Github Actions
 
 ```mermaid
 flowchart LR
-  subgraph container [local simulation container]
-    direction LR
-    subgraph workflow
+
+    subgraph workflow [Github Actions Workflow Run]
       direction LR
-      subgraph action [nested container]
+      subgraph action [Nested Workflow System]
+        direction LR
         actions
+        start2((start)) --> actions
+        actions --> en2((end))
       end
-      start((start)) --> action
-      action --> en((end))
-    end
+      
+      en2 -.-> en((end))
+
     
   end
-  trigger -.-> |run act| start
+  start((trigger)) -.-> start2
   style start fill:#6EE7B7
+  style start2 fill:#D1FAE5
   style en fill:#FCA5A5
+  style en2 fill:#FFE4E6
 ```
 
 ## Additional Resources
