@@ -15,7 +15,10 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+There are many routine tasks which can be automated to help save time and increase reproducibility in software development. Github Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform checks or tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).
+
 __TLDR (too long, didn't read);__
+Use [Github Actions](https://docs.github.com/en/actions) to perform [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) work automatically by leveraging [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). You can test these workflows with [Act](https://github.com/nektos/act), which can enhance development with this feature of Github. Consider making use of ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) and [Dagger](https://docs.dagger.io/) in conjunction with Github Actions to enable reproducible workflows for your software projects.
 
 ## Workflows
 
@@ -42,7 +45,7 @@ flowchart LR
   subgraph workflow [Github Actions Workflow Run]
     direction LR
     action["action(s)"] --> en((end))
-    start((trigger))
+    start((event\ntrigger))
   end
   start --> action
   style start fill:#6EE7B7
@@ -51,7 +54,7 @@ flowchart LR
 
 {:.center}
 
-[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) tool (including automated testing, builds, and deployments). For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). In addition to running tests, Github Actions
+[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) tool (including automated testing, builds, and deployments). For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
 
 ## Testing with Act
 
@@ -61,7 +64,7 @@ flowchart LR
     direction LR
     subgraph workflow [Github Actions Workflow Run]
       direction LR
-      start((trigger))
+      start((event\ntrigger))
       action --> en((end))
     end
   end
@@ -73,7 +76,7 @@ flowchart LR
 
 {:.center}
 
-One challenge with Github Actions is a lack of standardized local testing tools. For example, how will you know that a new Github Actions workflow will function as expected (or at all) without pushing to the Github repository? One third-party tool which can help with this is [Act](https://github.com/nektos/act). Act uses [public Docker images](https://github.com/nektos/act#runners) which require [Docker Desktop](https://docs.docker.com/desktop/) to simulate what running a Github Action workflow within your local environment.
+One challenge with Github Actions is a lack of standardized local testing tools. For example, how will you know that a new Github Actions workflow will function as expected (or at all) without pushing to the Github repository? One third-party tool which can help with this is [Act](https://github.com/nektos/act). Act uses [Docker images](https://github.com/nektos/act#runners) which require [Docker Desktop](https://docs.docker.com/desktop/) to simulate what running a Github Action workflow within your local environment.
 
 ## Nested Workflows with Github Actions
 
@@ -91,11 +94,11 @@ flowchart LR
     direction LR
     run2[run workflow]
     en3((end))
-    start3((trigger))
+    start3((event\ntrigger))
   end
   subgraph workflow [Github Actions Workflow Run]
     direction LR
-    start((trigger))
+    start((event\ntrigger))
     run[run workflow]
     en((end))
   end
