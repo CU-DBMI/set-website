@@ -15,7 +15,7 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
-There are many routine tasks which can be automated to help save time and increase reproducibility in software development. Github Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform checks or tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).
+There are many routine tasks which can be automated to help save time and increase reproducibility in software development. Github Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).
 
 __TLDR (too long, didn't read);__
 Use [Github Actions](https://docs.github.com/en/actions) to perform [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) work automatically by leveraging [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). You can test these workflows with [Act](https://github.com/nektos/act), which can enhance development with this feature of Github. Consider making use of ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) and [Dagger](https://docs.dagger.io/) in conjunction with Github Actions to enable reproducible workflows for your software projects.
@@ -36,7 +36,7 @@ flowchart LR
 
 {:.center}
 
-[Workflows](https://en.wikipedia.org/wiki/Workflow) consist of sequenced activities used by various systems. Software development uses workflows to help accomplish work the same way each time. Generally, workflow engines consist of start (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the work stops). There are [many workflow engines](https://s.apache.org/existing-workflow-systems), including some which help accomplish work alongside version control.
+[Workflows](https://en.wikipedia.org/wiki/Workflow) consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time using code by implementing what are commonly called "workflow engines". Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are [many workflow engines](https://s.apache.org/existing-workflow-systems), including some which help accomplish work alongside version control.
 
 ## Github Actions
 
@@ -54,7 +54,7 @@ flowchart LR
 
 {:.center}
 
-[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) tool (including automated testing, builds, and deployments). For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
+[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) tool (including automated testing, builds, and deployments). For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Each YAML file under the `.github/workflows` directory can specify workflows to accomplish tasks related to your software work.
 
 ## Testing with Act
 
@@ -76,7 +76,7 @@ flowchart LR
 
 {:.center}
 
-One challenge with Github Actions is a lack of standardized local testing tools. For example, how will you know that a new Github Actions workflow will function as expected (or at all) without pushing to the Github repository? One third-party tool which can help with this is [Act](https://github.com/nektos/act). Act uses [Docker images](https://github.com/nektos/act#runners) which require [Docker Desktop](https://docs.docker.com/desktop/) to simulate what running a Github Action workflow within your local environment.
+One challenge with Github Actions is a lack of standardized local testing tools. For example, how will you know that a new Github Actions workflow will function as expected (or at all) without pushing to the Github repository? One third-party tool which can help with this is [Act](https://github.com/nektos/act). Act uses [Docker images](https://github.com/nektos/act#runners) which require [Docker Desktop](https://docs.docker.com/desktop/) to simulate what running a Github Action workflow within your local environment. Using Act can sometimes avoid guessing what will occur when a Github Action worklow is added to your repository. See [Act's installation documentation](https://github.com/nektos/act#installation) for more information on getting started with this tool.
 
 ## Nested Workflows with Github Actions
 
@@ -121,4 +121,7 @@ flowchart LR
 
 There are times when Github Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and Github Actions environments. [Dagger](https://docs.dagger.io/) is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or Github Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for [an explanation of how Dagger works](https://docs.dagger.io/cli#how-does-it-work)).
 
-## Additional Resources
+There are also other alternatives you may want to consider based on your usecase, preference, or interest:
+
+- [Earthly](https://github.com/earthly/earthly): similar to Dagger and uses "earthfiles" as a specification.
+- [Docker (Dockerfiles)](https://docs.docker.com/engine/reference/builder/): it's worth noting that Dockerfiles and other Docker technologies may enable decoupled workflow development in a similar way to Dagger and Earthly. One disadvantage of this approach is how coupled your stack may become to Docker (including potential licensing expenses).
