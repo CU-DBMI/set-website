@@ -69,7 +69,7 @@ Github provides an ["Actions" tab](https://docs.github.com/en/actions/learn-gith
 > - [1.example-action.yml](https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/1.example-action.yml): demonstrates how to run a snippet of Python code in a basic Github Actions workflow.
 > - [2.run-python-file.yml](https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/2.run-python-file.yml): demonstrates how to reliably reproduce the environment by installing dependencies using [Poetry](https://python-poetry.org/docs/), and then run a Python file in that environment.
 > - [3.run-matrixed-pytest-ghactions.yml](https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/3.run-matrixed-pytest-ghactions.yml): demonstrates how to run pytest tests against multiple versions of Python (i.e., "matrixed" Python versions) using Github Actions with a [matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs).
->
+
 ## Testing with Act
 
 <pre class="mermaid">
