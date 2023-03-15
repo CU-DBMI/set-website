@@ -5,10 +5,10 @@ member: dave-bunten
 tags:
   - tip-of-the-week
   - software
-  - git
-  - branching
-  - pull-requests
-  - merging
+  - github
+  - workflow
+  - github-actions
+  - continuous-integration
 ---
 
 # Tip of the Week: Automate Software Workflows with Github Actions
