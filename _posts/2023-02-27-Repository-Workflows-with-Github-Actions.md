@@ -1,5 +1,5 @@
 ---
-title: "Tip of the Week: Repository Workflows with Github Actions"
+title: "Tip of the Week: Automate Software Workflows with Github Actions"
 author: Dave Bunten
 member: dave-bunten
 tags:
@@ -11,7 +11,7 @@ tags:
   - merging
 ---
 
-# Tip of the Week: Repository Workflows with Github Actions
+# Tip of the Week: Automate Software Workflows with Github Actions
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
@@ -20,7 +20,7 @@ There are many routine tasks which can be automated to help save time and increa
 __TLDR (too long, didn't read);__
 Use [Github Actions](https://docs.github.com/en/actions) to perform [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) work automatically by leveraging [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). You can test these workflows with [Act](https://github.com/nektos/act), which can enhance development with this feature of Github. Consider making use of ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) and [Dagger](https://docs.dagger.io/) in conjunction with Github Actions to enable reproducible workflows for your software projects.
 
-## Workflows
+## Workflows in Software
 
 <pre class="mermaid">
 flowchart LR
@@ -56,7 +56,7 @@ flowchart LR
 _A diagram showing Github Actions as a workflow._
 {:.center}
 
-[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) tool (including automated testing, builds, and deployments). For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Each YAML file under the `.github/workflows` directory can specify workflows to accomplish tasks related to your software work.
+[Github Actions](https://docs.github.com/en/actions) is a feature of Github which allows you to run workflows in relation to your code as a [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) (including automated testing, builds, and deployments) and general automation tool. For example, one can use Github actions to make sure code related to a [Github Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) passes all tests for the repository. Github Actions may be specified using [YAML files](https://en.wikipedia.org/wiki/YAML) within your repository's `.github/workflows` directory by using syntax specific to [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions). Each YAML file under the `.github/workflows` directory can specify workflows to accomplish tasks related to your software work.
 
 {% include figure.html image="images/github_actions_tab.png" caption="Image showing Github Actions tab on Github website." %}
 {:.center}
