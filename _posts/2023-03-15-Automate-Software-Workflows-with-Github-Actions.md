@@ -37,7 +37,7 @@ flowchart LR
 _An example workflow._
 {:.center}
 
-[Workflows](https://en.wikipedia.org/wiki/Workflow) consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time using code by implementing what are commonly called "workflow engines". Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are [many workflow engines](https://s.apache.org/existing-workflow-systems), including some which help accomplish work alongside version control.
+[Workflows](https://en.wikipedia.org/wiki/Workflow) consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time by using what are commonly called "workflow engines". Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are [many workflow engines](https://s.apache.org/existing-workflow-systems), including some which help accomplish work alongside version control.
 
 ## Github Actions
 
