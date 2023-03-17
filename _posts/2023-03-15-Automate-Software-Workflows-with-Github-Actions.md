@@ -137,12 +137,9 @@ _A diagram showing how Github Actions may leverage nested workflows with tools l
 
 There are times when Github Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and Github Actions environments. [Dagger](https://docs.dagger.io/) is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or Github Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for [an explanation of how Dagger works](https://docs.dagger.io/cli#how-does-it-work)).
 
+There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest. [Earthly](https://github.com/earthly/earthly) is similar to Dagger and uses "earthfiles" as a specification. Both Dagger and Earthly (in addition to Github Actions) use container-based approaches, which in-and-of themselves present additional alternatives outside the scope of this article.
+
 > __Github Actions with Nested Workflow Example__
 > Reference this example for a brief demonstration of how Github Actions and Dagger may be used together.
 >
 > - [4.run-matrixed-pytest-dagger.yml](https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/4.run-matrixed-pytest-dagger.yml): demonstrates how to run matrixed Python versions for confirming passing pytest tests using Github Actions and Dagger together. A [Github Actions matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs) is used to span concurrent work while retaining the reproducibility from Dagger task specification.
-
-There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest:
-
-- [Earthly](https://github.com/earthly/earthly): similar to Dagger and uses "earthfiles" as a specification.
-- [Docker (Dockerfiles)](https://docs.docker.com/engine/reference/builder/): it's worth noting that Dockerfiles and other Docker technologies may enable decoupled workflow development in a similar way to Dagger and Earthly. One disadvantage of this approach is how coupled your stack may become to Docker (including potential licensing expenses).
