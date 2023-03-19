@@ -60,7 +60,7 @@ _A diagram showing GitHub Actions as a workflow._
 
 {% include figure.html image="images/github_actions_tab.png" caption="Image showing GitHub Actions tab on GitHub website." %}
 
-GitHub provides an ["Actions" tab](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run) for each repository which helps visualize and control GitHub Actions workflow runs. This tab helps with GitHub Actions observability by showing whether runs were successful or not, displaying logs for the run, and allowing the cancellation or retry of workflow runs.
+GitHub provides an ["Actions" tab](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run) for each repository which helps visualize and control Github Actions workflow runs. This tab shows a history of all workflow runs in the repository. For each run, it shows whether it was run successful or not, the associated logs, and controls to cancel or re-run it.
 
 > __GitHub Actions Examples__
 > GitHub Actions is sometimes better understood with examples. See the following references for a few basic examples of using GitHub Actions in a simulated project repository.
