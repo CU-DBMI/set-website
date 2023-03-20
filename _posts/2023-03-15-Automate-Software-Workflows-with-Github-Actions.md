@@ -142,3 +142,7 @@ There are also other alternatives to Dagger you may want to consider based on yo
 > Reference this example for a brief demonstration of how GitHub Actions and Dagger may be used together.
 >
 > - [4.run-matrixed-pytest-dagger.yml](https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/4.run-matrixed-pytest-dagger.yml): demonstrates how to run matrixed Python versions for confirming passing pytest tests using GitHub Actions and Dagger together. A [GitHub Actions matrix strategy](https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs) is used to span concurrent work while retaining the reproducibility from Dagger task specification.
+
+## Closing Remarks
+
+Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps [using timeboxing techniques](https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html)). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.
