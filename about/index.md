@@ -29,4 +29,11 @@ But the best way to understand what we do is to [see it for yourself](../portfol
 
 {% include section.html %}
 
-{% include gallery.html image1="images/anschutz.jpg" image2="images/ahsb.jpg" style="square" %}
+{% capture col1 %}
+{% include figure.html image="images/ahsb.jpg" %}
+{% endcapture %}
+{% capture col2 %}
+{% include figure.html image="images/anschutz.jpg" %}
+{% endcapture %}
+
+{% include cols.html col1=col1 col2=col2 %}

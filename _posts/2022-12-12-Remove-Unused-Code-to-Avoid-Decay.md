@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Remove Unused Code to Avoid Software Decay"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -17,7 +16,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 The act of creating software often involves many iterations of writing, personal collaborations, and testing. During this process it's common to lose awareness of code which is no longer used, and thus may not be tested or otherwise linted. Unused code may contribute to ["software decay"](https://en.wikipedia.org/wiki/Software_rot), the gradual diminishment of code quality or functionality. This post will cover software decay and strategies for addressing unused code to help keep your code quality high.
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 Unused code is easy to amass and may cause your code quality or code functionality to diminish ("decay") over time. Effort must be taken to maintain any code or artifacts you add to your repositories, including those which are unused. Consider using [Vulture](https://github.com/jendrikseipp/vulture), [Pylint](https://pylint.pycqa.org/), or [Coverage](https://coverage.readthedocs.io/) to help illuminate sections of your code which may need to be removed.

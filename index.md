@@ -1,12 +1,11 @@
 ---
-title: Home
 ---
 
 {% capture text %}
 We are a small group of dedicated software developers with the [Department of Biomedical Informatics](https://medschool.cuanschutz.edu/dbmi) at the [University of Colorado Anschutz](https://www.cuanschutz.edu/).
 
 {%
-  include link.html
+  include button.html
   link="about"
   title="Who we are"
   text="Learn more about us"
@@ -31,7 +30,7 @@ We are a small group of dedicated software developers with the [Department of Bi
 We support the labs and individuals within the Department by developing high quality web applications, web servers, data visualizations, data pipelines, and much more.
 
 {%
-  include link.html
+  include button.html
   link="portfolio"
   text="Our portfolio"
   icon="fas fa-arrow-right"

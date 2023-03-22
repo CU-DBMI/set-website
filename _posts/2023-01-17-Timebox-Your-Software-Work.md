@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Timebox Your Software Work"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -16,7 +15,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 Programming often involves long periods of problem solving which can sometimes lead to unproductive or exhausting outcomes. This article covers one way to avoid less productive time expense or protect yourself from overexhaustion through a technique called "timeboxing" (also sometimes referenced as "timeblocking").
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 Use timeboxing techniques such as [Pomodoro®](https://en.wikipedia.org/wiki/Pomodoro_Technique) or [52/17](https://en.wikipedia.org/wiki/52/17_rule) to help [modularize](https://en.wikipedia.org/wiki/Modularity) your software work to ensure you don't fall victim to [Parkinson's Law](https://en.wikipedia.org/wiki/Parkinson%27s_law). Timeboxing may also map well to [Github Issues](https://github.com/features/issues), which allows your software tasks to be further aligned, documented, and chunked in collaboration with others.
@@ -66,7 +69,7 @@ _Vague and possibly large task_
 _Modular and more understandable tasks_
 {% endcapture %}
 
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 Breaking down large amounts of work as smaller chunks within our code helps to ensure long-term maintainability and understandability. Similarly, keeping our tasks small can help ensure our goals are achievable and understandable (to ourselves or others). Without this modularity, tasks can be impossible to achieve (subjective in nature) or very difficult to understand. Stated differently, taking many small steps can lead to a big change in an organized, oftentimes less exhausting way ([related graphic](https://www.fosslien.com/liz-fosslien-the-power-of-small-steps)).
 

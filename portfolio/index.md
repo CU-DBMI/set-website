@@ -14,22 +14,17 @@ nav:
 Some of the individual groups we work with:
 {:.center}
 
-{% 
-  include gallery.html
-  link1="https://greenelab.com/"
-  image1="images/greene-lab.jpg"
-  tooltip1="Greene Lab"
-  link2="https://tislab.org/"
-  image2="images/tis-lab.jpg"
-  tooltip2="TIS Lab"
-  link3="https://www.waysciencelab.com/"
-  image3="images/way-lab.jpg"
-  tooltip3="Way Lab"
-%}
+{% capture content %}
+{% include figure.html width="100%" link="https://greenelab.com/" image="images/greene-lab.jpg" tooltip="Greene Lab" %}
+{% include figure.html width="100%" link="https://tislab.org/" image="images/tis-lab.jpg" tooltip="TIS Lab" %}
+{% include figure.html width="100%" link="https://www.waysciencelab.com/" image="images/way-lab.jpg" tooltip="Way Lab" %}
+{% endcapture %}
+
+{% include grid.html content=content style="square" %}
 
 {% include section.html %}
 
-Filter:
+**Filter**:
 {:.center}
 {%
   include tags.html

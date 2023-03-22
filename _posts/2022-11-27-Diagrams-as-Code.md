@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Diagrams as Code"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -14,7 +13,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 Diagrams can be a useful way to illuminate and communicate ideas. Free-form drawing or drag and drop tools are one common way to create diagrams. With this tip of the week we introduce another option: diagrams as code (DaC), or creating diagrams by using code.
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 Diagrams as code (DaC) tools provide an advantage for illustrating concepts by enabling __quick visual positioning__, __source controllable input__, __portability (both for input and output formats)__, and __open collaboration through reproducibility__. Consider using [Mermaid](https://mermaid-js.github.io/mermaid/) (as well as many other DaC tools) to assist your diagramming efforts which can be used directly, within in your markdown files, or [Github commentary](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams) using code blocks (for example, ` ```mermaid `).
@@ -49,7 +52,7 @@ _Mermaid rendered_
 </script>
 
 {% endcapture %}
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 The above shows an example [mermaid flowchart](https://mermaid-js.github.io/mermaid/#/flowchart) code and its rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, Gantt, and other diagram types. Mermaid provides a [live editor](https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg) which can be used to quickly draft and share content.
 
@@ -62,7 +65,7 @@ The above shows an example [mermaid flowchart](https://mermaid-js.github.io/merm
 {% include figure.html image="images/github_mermaid_preview.png" caption="Github comment preview"  %}
 {% endcapture %}
 
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 Mermaid diagrams may be rendered directly from markdown (`.md`) and text communication content (like pull request or issue comments) within Github. See [Github's blog post on mermaid](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/) for more details covering this topic.
 

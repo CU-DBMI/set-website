@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Branch, Review, and Learn"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -15,7 +14,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 Git provides a feature called [branching](https://git-scm.com/docs/git-branch) which facilitates parallel and segmented programming work through [commits](https://git-scm.com/docs/git-commit) with version control. Using branching enables both work concurrency (multiple people working on the same repository at the same time) as well as a chance to isolate and review specific programming tasks. This article covers some conceptual best practices with branching, reviewing, and merging code using Github.
+
+<!-- excerpt end -->
 
 __Please note:__ the content below represents one opinion in a larger space of Git workflow concepts (it's not perfect!). Developer cultures may vary on these topics; be sure to acknowledge people and culture over exclusive or absolute dedication to what is found below.
 

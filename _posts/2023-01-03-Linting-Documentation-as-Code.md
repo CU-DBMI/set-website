@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Linting Documentation as Code"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -15,7 +14,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 [Software documentation](https://en.wikipedia.org/wiki/Software_documentation) is sometimes treated as a less important or secondary aspect of software development. Treating documentation as code allows developers to version control the shared understanding and knowledge surrounding a project. Leveraging this paradigm also enables the use of tools and patterns which have been used to strengthen code maintenance. This article covers one such pattern: [linting](https://en.wikipedia.org/wiki/Lint_(software)), or static analysis, for documentation treated like code.
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 There are many linting tools available which enable quick revision of your documentation. Try using [codespell](https://github.com/codespell-project/codespell) for spelling corrections, [mdformat](https://github.com/executablebooks/mdformat) for markdown file formatting corrections, and [vale](https://vale.sh/) for more complex editorial style or natural language assessment within your documentation.
@@ -50,7 +53,7 @@ readme.md:4: progess ==> progress
 
 _Example showing codespell detection of mispelled words_
 {% endcapture %}
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 [Spelling checks](https://en.wikipedia.org/wiki/Spell_checker) may be used to automatically detect incorrect spellings of words within your documentation (and code!). [Codespell](https://github.com/codespell-project/codespell) is one library which can lint your word spelling. Codespell may be used through the command-line and also through a [pre-commit](https://pre-commit.com/index.html) hook.
 
@@ -84,7 +87,7 @@ syntax [(link)[https://www.cuanschutz.edu/]]
 
 _Example showing markdownlint detection of issues_
 {% endcapture %}
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 The format of your documentation files may also be linted for common issues. This may catch things which are otherwise hard to see when editing content. It may also improve the overall [web accessibility](https://en.wikipedia.org/wiki/Web_accessibility) of your content, for example, through proper HTML header order and image alternate text. [Markdownlint](https://github.com/markdownlint/markdownlint) is one library which can be used to find issues within markdown files.
 
@@ -123,7 +126,7 @@ readme-example.md
 
 _Example showing vale warnings and errors_
 {% endcapture %}
-{% include two-col.html col1=col1content col2=col2content %}
+{% include cols.html col1=col1content col2=col2content %}
 
 Maintaining consistent editorial style and grammar may also be a focus within your documentation. These issues are sometimes more difficult to detect and more opinionated in nature. In some cases, organizations publish guides on this topic (see [Microsoft Writing Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/), or [Google Developer Documenation Style Guide](https://developers.google.com/style)). Some of the complexity of writing style may be linted through tools like [Vale](https://vale.sh/). Using common configurations through Vale can unify how language is used within your documentation by linting for common style and grammar.
 

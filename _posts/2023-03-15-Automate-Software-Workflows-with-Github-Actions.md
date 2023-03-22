@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Automate Software Workflows with GitHub Actions"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -15,7 +14,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 There are many routine tasks which can be automated to help save time and increase reproducibility in software development. GitHub Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 Use [GitHub Actions](https://docs.github.com/en/actions) to perform [continuous integration](https://en.wikipedia.org/wiki/Continuous_integration) work automatically by leveraging [Github's workflow specification](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions) and the [existing marketplace of already-created Actions](https://github.com/marketplace?type=actions). You can test these workflows with [Act](https://github.com/nektos/act), which can enhance development with this feature of Github. Consider making use of ["write once, run anywhere" (WORA)](https://en.wikipedia.org/wiki/Write_once,_run_anywhere) and [Dagger](https://docs.dagger.io/) in conjunction with GitHub Actions to enable reproducible workflows for your software projects.

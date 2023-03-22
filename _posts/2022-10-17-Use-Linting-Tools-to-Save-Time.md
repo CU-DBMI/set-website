@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Use Linting Tools to Save Time"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - linting
@@ -13,7 +12,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 Have you ever found yourself spending hours formatting your code so it looks just right? Have you ever caught a duplicative import statement in your code? We recommend using open source __linting__ tools to help avoid common issues like these and save time.
+
+<!-- excerpt end -->
 
 [__Software Linting__](https://en.wikipedia.org/wiki/Lint_(software)) is the practice of detecting and sometimes automatically fixing stylistic, syntactical, or other programmatic issues. Linting usually involves installing standardized or opinionated libraries which allow you to quickly make code corrections. Using linting tools also can help you learn nuanced or unwritten intricacies of programming languages while you solve problems in your work.
 

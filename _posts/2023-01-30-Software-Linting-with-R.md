@@ -1,7 +1,6 @@
 ---
 title: "Tip of the Week: Software Linting with R"
-author: Dave Bunten
-member: dave-bunten
+author: dave-bunten
 tags:
   - tip-of-the-week
   - software
@@ -15,7 +14,11 @@ tags:
 
 > Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
 
+<!-- excerpt start -->
+
 This article covers using the software technique of linting on R code in order to improve code quality, development velocity, and collaboration.
+
+<!-- excerpt end -->
 
 __TLDR (too long, didn't read);__
 Use software linting ([static analysis](https://en.wikipedia.org/wiki/Static_program_analysis)) practices on your R code with existing packages [`lintr`](https://github.com/r-lib/lintr) and [`styler`](https://github.com/r-lib/styler) (among others). These linters may be applied using [pre-commit](https://pre-commit.com) in your local development environment or as [continuous tests](https://en.wikipedia.org/wiki/Continuous_testing) using for example [Github Actions](https://docs.github.com/en/actions).
