@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -50 120 100">
+  <defs>
+    <linearGradient id="gradient">
+      <stop stop-color="#7e57c2" offset="0%" />
+      <stop stop-color="#2196f3" offset="100%" />
+    </linearGradient>
+  </defs>
+  <path
+    fill="none"
+    stroke="url(#gradient)"
+    stroke-width="8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="
+      M -30 -20
+      L -50 0
+      L -30 20
+      M 30 -20
+      L 50 0
+      L 30 20
+      M 10 -30
+      L -10 30
+    "
+  />
+</svg>

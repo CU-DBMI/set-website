@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Linting Documentation as Code | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-20/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Linting Documentation as Code">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Linting Documentation as Code">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/preview/pr-20/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Linting Documentation as Code">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-20/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2023-06-08T22:23:01+00:00">
+  <meta property="article:published_time" content="2023-01-03T00:00:00+00:00">
+  <meta property="article:modified_time" content="2023-06-08T22:23:01+00:00">
+  <meta name="revised" content="2023-06-08T22:23:01+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Linting Documentation as Code" },
+      "datePublished": "2023-01-03T00:00:00+00:00",
+      "dateModified": "2023-06-08T22:23:01+00:00",
+    
+    "name": "Tip of the Week: Linting Documentation as Code",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Linting Documentation as Code",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-20/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-20/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-20/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-20/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-20/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-20/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-20/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-20/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-20/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-20/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-20/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-20/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <path fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" d="
+      M -30 -20
+      L -50 0
+      L -30 20
+      M 30 -20
+      L 50 0
+      L 30 20
+      M 10 -30
+      L -10 30
+    "></path>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Department of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-20/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-20/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-20/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Tip of the Week: Linting Documentation as Code</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-20/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten">
+    <img src="/set-website/preview/pr-20/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-20/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Pipeline and Backend Developer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>January 03, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>June 08, 2023</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-20/blog">
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20documentation%22" class="tag" data-tooltip='Show items with the tag "documentation"'>
+        documentation
+      </a>
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20docsascode%22" class="tag" data-tooltip='Show items with the tag "docsascode"'>
+        docsascode
+      </a>
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20linting%22" class="tag" data-tooltip='Show items with the tag "linting"'>
+        linting
+      </a>
+    
+      <a href="/set-website/preview/pr-20/blog?search=%22tag:%20staticanalysis%22" class="tag" data-tooltip='Show items with the tag "staticanalysis"'>
+        staticanalysis
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+
+<blockquote>
+  <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+</blockquote>
+
+<!-- excerpt start -->
+
+<p><a href="https://en.wikipedia.org/wiki/Software_documentation">Software documentation</a> is sometimes treated as a less important or secondary aspect of software development. Treating documentation as code allows developers to version control the shared understanding and knowledge surrounding a project. Leveraging this paradigm also enables the use of tools and patterns which have been used to strengthen code maintenance. This article covers one such pattern: <a href="https://en.wikipedia.org/wiki/Lint_(software)">linting</a>, or static analysis, for documentation treated like code.</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn’t read);</strong>
+There are many linting tools available which enable quick revision of your documentation. Try using <a href="https://github.com/codespell-project/codespell">codespell</a> for spelling corrections, <a href="https://github.com/executablebooks/mdformat">mdformat</a> for markdown file formatting corrections, and <a href="https://vale.sh/">vale</a> for more complex editorial style or natural language assessment within your documentation.</p>
+
+<h2 id="spelling-checks">Spelling Checks</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
+<span class="gu">## Example Readme</span>
+
+Thsi project is a wokr in progess.
+Code will be updated by the team very often.
+
+(CU Anschutz)[https://www.cuanschutz.edu/]
+</code></pre></div></div>
+
+<p><em>Example readme.md with incorrectly spelled words</em></p>
+</div>
+  
+    
+    <div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% codespell readme.md
+</span><span class="gp">readme.md:4: Thsi ==&gt;</span><span class="w"> </span>This
+<span class="gp">readme.md:4: wokr ==&gt;</span><span class="w"> </span>work
+<span class="gp">readme.md:4: progess ==&gt;</span><span class="w"> </span>progress
+<span class="go">
+
+
+</span></code></pre></div></div>
+
+<p><em>Example showing codespell detection of mispelled words</em></p>
+</div>
+  
+</div>
+
+<p><a href="https://en.wikipedia.org/wiki/Spell_checker">Spelling checks</a> may be used to automatically detect incorrect spellings of words within your documentation (and code!). <a href="https://github.com/codespell-project/codespell">Codespell</a> is one library which can lint your word spelling. Codespell may be used through the command-line and also through a <a href="https://pre-commit.com/index.html">pre-commit</a> hook.</p>
+
+<h2 id="markdown-format-linting">Markdown Format Linting</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
+<span class="gu">## Example Readme</span>
+
+This project is a work in progress.
+Code will be updated by the team very often.
+
+(CU Anschutz)[https://www.cuanschutz.edu/]
+</code></pre></div></div>
+
+<p><em>Example readme.md with markdown issues</em></p>
+</div>
+  
+    
+    <div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% markdownlint readme.md
+readme.md:2 MD041/first-line-heading/first-line-h1
+First line in a file should be a top-level heading
+</span><span class="gp">[Context: "#</span><span class="c"># Example Readme"]</span>
+<span class="go">readme.md:6:5 MD011/no-reversed-links Reversed link
+syntax [(link)[https://www.cuanschutz.edu/]]
+
+</span></code></pre></div></div>
+
+<p><em>Example showing markdownlint detection of issues</em></p>
+</div>
+  
+</div>
+
+<p>The format of your documentation files may also be linted for common issues. This may catch things which are otherwise hard to see when editing content. It may also improve the overall <a href="https://en.wikipedia.org/wiki/Web_accessibility">web accessibility</a> of your content, for example, through proper HTML header order and image alternate text. <a href="https://github.com/markdownlint/markdownlint">Markdownlint</a> is one library which can be used to find issues within markdown files.</p>
+
+<p>Additional and similar resources to explore in this area:</p>
+
+<ul>
+  <li>
+<a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - for linting RST files</li>
+  <li>
+<a href="https://github.com/executablebooks/mdformat">mdformat</a> - an additional markdown linter</li>
+</ul>
+
+<h2 id="editorial-style-and-grammar">Editorial Style and Grammar</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
+<span class="gh"># Example Readme</span>
+
+This project is a work in progress.
+Code will be updated by the team very often.
+
+<span class="p">[</span><span class="nv">CU Anschutz</span><span class="p">](</span><span class="sx">https://www.cuanschutz.edu/</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Example readme.md with questionable editorial style</em></p>
+</div>
+  
+    
+    <div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% vale readme-example.md
+readme-example.md
+2:12  error    Did you really mean 'Readme'?   Vale.Spelling
+5:11  warning  'be updated' may be passive     write-good.Passive
+               voice. Use active voice if you
+               can.
+5:34  warning  'very' is a weasel word!        write-good.Weasel
+</span></code></pre></div></div>
+
+<p><em>Example showing vale warnings and errors</em></p>
+</div>
+  
+</div>
+
+<p>Maintaining consistent editorial style and grammar may also be a focus within your documentation. These issues are sometimes more difficult to detect and more opinionated in nature. In some cases, organizations publish guides on this topic (see <a href="https://learn.microsoft.com/en-us/style-guide/welcome/">Microsoft Writing Style Guide</a>, or <a href="https://developers.google.com/style">Google Developer Documenation Style Guide</a>). Some of the complexity of writing style may be linted through tools like <a href="https://vale.sh/">Vale</a>. Using common configurations through Vale can unify how language is used within your documentation by linting for common style and grammar.</p>
+
+<p>Additional and similar resources to explore in this area:</p>
+
+<ul>
+  <li>
+<a href="https://textlint.github.io/">textlint</a> - similar to Vale with a modular approach</li>
+</ul>
+
+<h2 id="resources">Resources</h2>
+
+<p>Please see the following the resources on this topic.</p>
+
+<ul>
+  <li>
+<a href="https://github.com/codespell-project/codespell">codespell</a> - a code and documentation spell checker.</li>
+  <li>
+<a href="https://github.com/markdownlint/markdownlint">markdownlint</a> - markdown linter.</li>
+  <li>
+<a href="https://github.com/executablebooks/mdformat">mdformat</a> - another markdown linter.</li>
+  <li>
+<a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
+  <li>
+<a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
+  <li>
+<a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-20/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html">
+        Tip of the Week: Remove Unused Code to Avoid Software Decay
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-20/2023/01/17/Timebox-Your-Software-Work.html">
+        Tip of the Week: Timebox Your Software Work
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-20/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2023
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
