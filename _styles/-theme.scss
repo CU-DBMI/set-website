@@ -3,8 +3,8 @@
 
 // colors
 [data-dark="false"] {
-  --primary: #4F46E5;
-  --secondary: #C7D2FE;
+  --primary: #1e88e5;
+  --secondary: #90caf9;
   --text: #000000;
   --background: #ffffff;
   --background-alt: #fafafa;
@@ -13,8 +13,8 @@
   --overlay: #00000020;
 }
 [data-dark="true"] {
-  --primary: #818CF8;
-  --secondary: #3730A3;
+  --primary: #64b5f6;
+  --secondary: #1e88e5;
   --text: #ffffff;
   --background: #181818;
   --background-alt: #1c1c1c;
@@ -46,6 +46,6 @@
   --spacing: 2;
 
   // effects
-  --rounded: 3px;
+  --rounded: 5px;
   --shadow: 0 0 10px 0 var(--overlay);
 }

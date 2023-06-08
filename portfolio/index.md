@@ -1,38 +1,26 @@
 ---
 title: Portfolio
 nav:
-  order: 1
-  tooltip: Our past, present, and future projects
+  order: 2
 ---
 
 # Portfolio
 
-{% include section.html %}
+We work with many groups both within and external to the University of Colorado:
 
-## Collaborators
-
-Some of the individual groups we work with:
-{:.center}
-
-{% capture content %}
-{% include figure.html width="100%" link="https://greenelab.com/" image="images/greene-lab.jpg" tooltip="Greene Lab" %}
-{% include figure.html width="100%" link="https://tislab.org/" image="images/tis-lab.jpg" tooltip="TIS Lab" %}
-{% include figure.html width="100%" link="https://www.waysciencelab.com/" image="images/way-lab.jpg" tooltip="Way Lab" %}
-{% endcapture %}
-
-{% include grid.html content=content style="square" %}
-
-{% include section.html %}
-
-**Filter**:
-{:.center}
-{%
-  include tags.html
-  tags="website,frontend,backend,devops,UI,API"
-%}
-{% include search-info.html %}
+- [Greene Lab](https://greenelab.com)
+- [TIS Lab](https://tislab.org)
+- [Way Lab](https://waysciencelab.com)
+- [J Ravi Lab](https://jravilab.github.io)
+- [Krishnan Lab](https://www.thekrishnanlab.org)
+- [BioThings.io](https://biothings.io/)
+- ...and more!
 
 ## Projects
+
+{% include search-info.html %}
+
+<br />
 
 {%
   include list.html

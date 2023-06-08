@@ -1,3 +1,31 @@
+- title: Molevolvr
+  subtitle: for the J Ravi Lab
+  image: images/molevolvr.png
+  link: https://github.com/JRaviLab/molevolvr_app
+  description: ???
+  tags: server
+
+- title: Pycytominer
+  subtitle: for the Way Lab
+  image: https://raw.githubusercontent.com/WayScience/pycytominer/master/logo/just-icon.png?raw=true
+  link: https://github.com/WayScience/pycytominer
+  description: ???
+  tags: data pipeline
+
+- title: Simplex
+  subtitle: for the Krishnan Lab
+  image: https://raw.githubusercontent.com/krishnanlab/simplex/main/app/public/share.jpg?raw=true
+  link: https://github.com/krishnanlab/simplex
+  description: A web app and supporting backend for simplifying scientific and medical writing.
+  tags: web app, frontend, backend, react
+
+- title: MyGeneset.info
+  subtitle: for BioThings.io
+  image: https://mygeneset.info/share-thumbnail.jpg
+  link: https://github.com/biothings/mygeneset.info-website
+  description: A web app built from scratch to allow users to collect, save, and share sets of genes. A geneSET companion to MyGene.info.
+  tags: web app, frontend, vue
+
 - title: Word Lapse
   subtitle: for the Greene Lab
   image: https://raw.githubusercontent.com/greenelab/word-lapse/main/app/public/share-thumbnail.jpg
@@ -19,15 +47,15 @@
   description: Migration of the all Monarch Initiative backend and associated services from physical hardware to Google Cloud, including automated provisioning and deployment via Terraform, Ansible, and Docker Swarm.
   tags: devops, api, iac, terraform, ansible, docker swarm
 
-- title: Lab Website Template
-  subtitle: for the Greene Lab
-  image: https://raw.githubusercontent.com/greenelab/lab-website-template/main/favicons/share-thumbnail.jpg?raw=true
-  link: https://github.com/greenelab/lab-website-template
-  description: An easy-to-use, flexible website template for labs, including automatic citations, GitHub tag imports, pre-built components, and more. Spend less time reinventing the wheel and more time running your lab.
-  tags: website, frontend, graphic design, jekyll
-
 - title: GraphDB Deployer
   image: images/graphdb-deployer.jpg
   link: https://github.com/monarch-initiative/graphdb-deployer
   description: Automates the parsing and transformation of a KGX archive into graphdb-ready formats. After the archive is converted, automates provisioning and deployment of Neo4j and Blazegraph instances from a KGX archive.
   tags: devops, iac, graph databases, neo4j, blazegraph, terraform, ansible
+
+- title: Lab Website Template
+  subtitle: for the Greene Lab
+  image: https://raw.githubusercontent.com/greenelab/lab-website-template/main/images/share.jpg?raw=true
+  link: https://github.com/greenelab/lab-website-template
+  description: An easy-to-use, flexible website template for labs. What this very site is built on!
+  tags: website, frontend, jekyll, blog
