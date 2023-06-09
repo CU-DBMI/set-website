@@ -49,7 +49,7 @@ On this website, we have a [blog](../blog) where we occasionally post tips, tric
 We have given workshops and personalized lessons related to Docker, cloud services, and more.
 We're always happy to set up a session to discuss technical trade whenever someone has the need.
 
-Here are some notable links to check out of you want to learn more from us:
+Here are some notable links to check out if you want to learn more from us:
 
 - ???
 
