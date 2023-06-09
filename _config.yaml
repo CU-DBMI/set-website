@@ -65,3 +65,7 @@ exclude:
   - README.md
   - LICENSE.md
   - CITATION.cff
+
+# markdown options
+kramdown:
+  entity_output: :as_input
