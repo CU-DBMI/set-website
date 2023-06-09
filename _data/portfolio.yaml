@@ -9,8 +9,15 @@
   subtitle: for the Way Lab
   image: https://raw.githubusercontent.com/WayScience/pycytominer/master/logo/just-icon.png?raw=true
   link: https://github.com/WayScience/pycytominer
-  description: ???
-  tags: data pipeline
+  description: Pycytominer is a suite of common functions used to process high dimensional readouts from high-throughput cell experiments.
+  tags: python, pandas, data pipeline
+
+- title: CytoTable
+  subtitle: for the Way Lab
+  image: https://raw.githubusercontent.com/cytomining/CytoTable/main/docs/source/_static/dataflow.svg?raw=true
+  link: https://github.com/WayScience/CytoTable
+  description: CytoTable is a Python package which enables large data processing to enhance single-cell morphology data analysis.
+  tags: python, arrow, duckdb, data engineering
 
 - title: Simplex
   subtitle: for the Krishnan Lab
