@@ -1,8 +1,10 @@
-- title: Molevolvr
-  subtitle: for the J Ravi Lab
+- title: MolEvolvR
+  subtitle: for JRaviLab
   image: images/molevolvr.png
   link: https://github.com/JRaviLab/molevolvr_app
-  description: ???
+  description: |
+    MolEvolvR is a web app that enables researchers to run a general-purpose computational workflow for
+    characterizing the molecular evolution and phylogeny of their proteins of interest.
   tags: server
 
 - title: Pycytominer
@@ -41,14 +43,14 @@
   tags: web app, frontend, backend, react, data visualization, natural language processing, machine learning
 
 - title: Monarch Initiative UI
-  subtitle: for the TIS Lab
+  subtitle: for TISLab
   image: images/monarch-ui.jpg
   link: https://github.com/monarch-initiative/monarch-ui-new
   description: A redesign and rewrite of the [Monarch Initiative](https://monarchinitiative.org/) application from the ground up, designed to be more modern, maintainable, robust, and accessible.
   tags: web app, frontend, vue, UI
 
 - title: Monarch Initiative Cloud Migration
-  subtitle: for the TIS Lab
+  subtitle: for TISLab
   image: images/monarch-cluster.jpg
   link: https://github.com/monarchinitiative/monarch-stack
   description: Migration of the all Monarch Initiative backend and associated services from physical hardware to Google Cloud, including automated provisioning and deployment via Terraform, Ansible, and Docker Swarm.
