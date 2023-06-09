@@ -68,7 +68,10 @@ For general questions or technical help, we also have weekly open-office hours, 
 Feel free to stop by!
 
 <script>
-document.write(`<a href="&#104;&#116;&#116;&#112;&#115;&#58;&#47;&#47;&#117;&#99;&#100;&#101;&#110;&#118;&#101;&#114;&#46;&#122;&#111;&#111;&#109;&#46;&#117;&#115;&#47;&#106;&#47;&#57;&#52;&#49;&#56;&#55;&#53;&#48;&#52;&#49;&#48;&#48;" target="_blank">SET open office hours Zoom room</a>`);
+document.currentScript.insertAdjacentHTML(
+  "beforebegin",
+  `<a href="&#104;&#116;&#116;&#112;&#115;&#58;&#47;&#47;&#117;&#99;&#100;&#101;&#110;&#118;&#101;&#114;&#46;&#122;&#111;&#111;&#109;&#46;&#117;&#115;&#47;&#106;&#47;&#57;&#52;&#49;&#56;&#55;&#53;&#48;&#52;&#49;&#48;&#48;" target="_blank">Open office hours Zoom room</a>`
+)
 </script>
 
 <!--
