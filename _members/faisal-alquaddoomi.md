@@ -1,5 +1,5 @@
 ---
-name: Faisal Alquaddoomi
+name: Faisal Alquaddoomi (@falquaddoomi)
 image: images/faisal-alquaddoomi.jpg
 description: Backend and Devops Developer
 role: programmer

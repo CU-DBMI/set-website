@@ -1,5 +1,5 @@
 ---
-name: Vincent Rubinetti
+name: Vincent Rubinetti (@vincerubinetti)
 image: images/vincent-rubinetti.jpg
 description: Frontend and UX/UI Developer
 role: programmer

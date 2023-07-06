@@ -1,5 +1,5 @@
 ---
-name: Dave Bunten
+name: Dave Bunten (@d33bs)
 image: images/dave-bunten.jpg
 description: Research Data Engineer
 role: programmer

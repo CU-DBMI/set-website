@@ -16,15 +16,20 @@ We have a diverse team with a wide range of experience and expertise in software
 
 We can take a lab's ideas and scientific work, and turn them into a fully-realized, complete package of software, for both experts and lay-persons alike, that enables exploration of data, dissemination of knowledge, collaboration, advanced analyses, new insights, or lots more you could imagine.
 
-Some of the specific things we work on are:
+Some of the things we do are:
 
 - Modern, responsive web applications for data scientists, biologists, and more
 - Powerful and flexible backend systems and APIs for programmers
-- Interactive data visualizations for insights and engagement
+- Interactive data visualizations for insight and engagement
+- Research and mockups for rapid iteration and to ensure value before developing
 - Efficient and reproducible pipelines for analyzing large data
 - Scalable and robust cloud infrastructure
-- Beautiful websites with cohesive brand identities
+- Beautiful websites with cohesive branding and graphics
 - Automations for processing, deployment, testing, monitoring, etc. that can save time, money, and hassle
+- Code reviews for ensuring reliability, maintainability, and best practices
+- Advising on software-related grant writing
+- Software-focused technical support
+- Workshops, training, teaching, etc.
 
 But the best way to understand the things we do is by looking at the code and using the software yourself:
 
@@ -41,17 +46,13 @@ But the best way to understand the things we do is by looking at the code and us
 
 ## Teaching and communication
 
-Whenever we can, we like to communicate our knowledge and skills to others.
+Whenever we can, we like to share our knowledge and skills to others.
 We believe this benefits the community we operate in and allows us to create better software together.
 
 On this website, we have a [blog](../blog) where we occasionally post tips, tricks, and other insights related to Git, workflows, code quality, and more.
 
 We have given workshops and personalized lessons related to Docker, cloud services, and more.
 We're always happy to set up a session to discuss technical trade whenever someone has the need.
-
-Here are some notable links to check out if you want to learn more from us:
-
-- ???
 
 ## Scope of our work
 
