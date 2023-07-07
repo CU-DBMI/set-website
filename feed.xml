@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2023-03-25T08:04:09+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2023-07-07T22:27:03+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -10,8 +10,8 @@
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
-Use <a href="https://docs.github.com/en/actions">GitHub Actions</a> to perform <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> work automatically by leveraging <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github’s workflow specification</a> and the <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>. You can test these workflows with <a href="https://github.com/nektos/act">Act</a>, which can enhance development with this feature of Github. Consider making use of <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">“write once, run anywhere” (WORA)</a> and <a href="https://docs.dagger.io/">Dagger</a> in conjunction with GitHub Actions to enable reproducible workflows for your software projects.</p>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
+Use <a href="https://docs.github.com/en/actions">GitHub Actions</a> to perform <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> work automatically by leveraging <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github&#8217;s workflow specification</a> and the <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>. You can test these workflows with <a href="https://github.com/nektos/act">Act</a>, which can enhance development with this feature of Github. Consider making use of <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">&#8220;write once, run anywhere&#8221; (WORA)</a> and <a href="https://docs.dagger.io/">Dagger</a> in conjunction with GitHub Actions to enable reproducible workflows for your software projects.</p>
 
 <h2 id="workflows-in-software">Workflows in Software</h2>
 
@@ -29,7 +29,7 @@ flowchart LR
 
 <p class="center"><em>An example workflow.</em></p>
 
-<p><a href="https://en.wikipedia.org/wiki/Workflow">Workflows</a> consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time by using what are commonly called “workflow engines”. Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are <a href="https://s.apache.org/existing-workflow-systems">many workflow engines</a>, including some which help accomplish work alongside version control.</p>
+<p><a href="https://en.wikipedia.org/wiki/Workflow">Workflows</a> consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time by using what are commonly called &#8220;workflow engines&#8221;. Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are <a href="https://s.apache.org/existing-workflow-systems">many workflow engines</a>, including some which help accomplish work alongside version control.</p>
 
 <h2 id="github-actions">GitHub Actions</h2>
 
@@ -47,7 +47,7 @@ flowchart LR
 
 <p class="center"><em>A diagram showing GitHub Actions as a workflow.</em></p>
 
-<p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a feature of GitHub which allows you to run workflows in relation to your code as a <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> (including automated testing, builds, and deployments) and general automation tool. For example, one can use GitHub Actions to make sure code related to a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub Pull Request</a> passes certain tests before it is allowed to be merged. GitHub Actions may be specified using <a href="https://en.wikipedia.org/wiki/YAML">YAML files</a> within your repository’s <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory by using syntax specific to <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github’s workflow specification</a>. Each YAML file under the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory can specify workflows to accomplish tasks related to your software work. GitHub Actions workflows may be customized to your own needs, or use an <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>.</p>
+<p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a feature of GitHub which allows you to run workflows in relation to your code as a <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> (including automated testing, builds, and deployments) and general automation tool. For example, one can use GitHub Actions to make sure code related to a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub Pull Request</a> passes certain tests before it is allowed to be merged. GitHub Actions may be specified using <a href="https://en.wikipedia.org/wiki/YAML">YAML files</a> within your repository&#8217;s <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory by using syntax specific to <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github&#8217;s workflow specification</a>. Each YAML file under the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory can specify workflows to accomplish tasks related to your software work. GitHub Actions workflows may be customized to your own needs, or use an <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>.</p>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Image showing GitHub Actions tab on GitHub website.">
@@ -64,7 +64,7 @@ flowchart LR
   
 </figure>
 
-<p>GitHub provides an <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run">“Actions” tab</a> for each repository which helps visualize and control Github Actions workflow runs. This tab shows a history of all workflow runs in the repository. For each run, it shows whether it was run successful or not, the associated logs, and controls to cancel or re-run it.</p>
+<p>GitHub provides an <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run">&#8220;Actions&#8221; tab</a> for each repository which helps visualize and control Github Actions workflow runs. This tab shows a history of all workflow runs in the repository. For each run, it shows whether it was run successful or not, the associated logs, and controls to cancel or re-run it.</p>
 
 <blockquote>
   <p><strong>GitHub Actions Examples</strong>
@@ -73,7 +73,7 @@ GitHub Actions is sometimes better understood with examples. See the following r
   <ul>
     <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/1.example-action.yml">1.example-action.yml</a>: demonstrates how to run a snippet of Python code in a basic GitHub Actions workflow.</li>
     <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/2.run-python-file.yml">2.run-python-file.yml</a>: demonstrates how to reliably reproduce the environment by installing dependencies using <a href="https://python-poetry.org/docs/">Poetry</a>, and then run a Python file in that environment.</li>
-    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/3.run-matrixed-pytest-ghactions.yml">3.run-matrixed-pytest-ghactions.yml</a>: demonstrates how to run pytest tests against multiple versions of Python (i.e., “matrixed” Python versions) using GitHub Actions with a <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">matrix strategy</a>.</li>
+    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/3.run-matrixed-pytest-ghactions.yml">3.run-matrixed-pytest-ghactions.yml</a>: demonstrates how to run pytest tests against multiple versions of Python (i.e., &#8220;matrixed&#8221; Python versions) using GitHub Actions with a <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">matrix strategy</a>.</li>
   </ul>
 </blockquote>
 
@@ -97,7 +97,7 @@ flowchart LR
 
 <p class="center"><em>A diagram showing how GitHub Actions workflows may be triggered from Act</em></p>
 
-<p>One challenge with GitHub Actions is a lack of standardized local testing tools. For example, how will you know that a new GitHub Actions workflow will function as expected (or at all) without pushing to the GitHub repository? One third-party tool which can help with this is <a href="https://github.com/nektos/act">Act</a>. Act uses <a href="https://github.com/nektos/act#runners">Docker images</a> which require <a href="https://docs.docker.com/desktop/">Docker Desktop</a> to simulate what running a GitHub Action workflow within your local environment. Using Act can sometimes avoid guessing what will occur when a GitHub Action worklow is added to your repository. See <a href="https://github.com/nektos/act#installation">Act’s installation documentation</a> for more information on getting started with this tool.</p>
+<p>One challenge with GitHub Actions is a lack of standardized local testing tools. For example, how will you know that a new GitHub Actions workflow will function as expected (or at all) without pushing to the GitHub repository? One third-party tool which can help with this is <a href="https://github.com/nektos/act">Act</a>. Act uses <a href="https://github.com/nektos/act#runners">Docker images</a> which require <a href="https://docs.docker.com/desktop/">Docker Desktop</a> to simulate what running a GitHub Action workflow within your local environment. Using Act can sometimes avoid guessing what will occur when a GitHub Action worklow is added to your repository. See <a href="https://github.com/nektos/act#installation">Act&#8217;s installation documentation</a> for more information on getting started with this tool.</p>
 
 <h2 id="nested-workflows-with-github-actions">Nested Workflows with GitHub Actions</h2>
 
@@ -140,9 +140,9 @@ flowchart LR
 
 <p class="center"><em>A diagram showing how GitHub Actions may leverage nested workflows with tools like Dagger.</em></p>
 
-<p>There are times when GitHub Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">“write once, run anywhere” (WORA)</a> to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and GitHub Actions environments. <a href="https://docs.dagger.io/">Dagger</a> is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or GitHub Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for <a href="https://docs.dagger.io/cli#how-does-it-work">an explanation of how Dagger works</a>).</p>
+<p>There are times when GitHub Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">&#8220;write once, run anywhere&#8221; (WORA)</a> to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and GitHub Actions environments. <a href="https://docs.dagger.io/">Dagger</a> is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or GitHub Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for <a href="https://docs.dagger.io/cli#how-does-it-work">an explanation of how Dagger works</a>).</p>
 
-<p>There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest. <a href="https://github.com/earthly/earthly">Earthly</a> is similar to Dagger and uses “earthfiles” as a specification. Both Dagger and Earthly (in addition to GitHub Actions) use container-based approaches, which in-and-of themselves present additional alternatives outside the scope of this article.</p>
+<p>There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest. <a href="https://github.com/earthly/earthly">Earthly</a> is similar to Dagger and uses &#8220;earthfiles&#8221; as a specification. Both Dagger and Earthly (in addition to GitHub Actions) use container-based approaches, which in-and-of themselves present additional alternatives outside the scope of this article.</p>
 
 <blockquote>
   <p><strong>GitHub Actions with Nested Workflow Example</strong>
@@ -155,7 +155,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -167,10 +167,10 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <!-- excerpt end -->
 
-<p><strong>Please note:</strong> the content below represents one opinion in a larger space of Git workflow concepts (it’s not perfect!). Developer cultures may vary on these topics; be sure to acknowledge people and culture over exclusive or absolute dedication to what is found below.</p>
+<p><strong>Please note:</strong> the content below represents one opinion in a larger space of Git workflow concepts (it&#8217;s not perfect!). Developer cultures may vary on these topics; be sure to acknowledge people and culture over exclusive or absolute dedication to what is found below.</p>
 
-<p><strong>TLDR (too long, didn’t read);</strong>
-Use <a href="https://www.atlassian.com/git/tutorials/using-branches">git branching techniques</a> to segment the completion of programming tasks, gradually and consistently committing small changes (practicing <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em> or “make haste, slowly”</a>). When a group of small changes are ready from branches, request <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request reviews</a> and take advantage of <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">comments</a> to <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> the work. Prepare for a branch <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge</a> after review by deciding <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">which merge strategy</a> is appropriate and automating merge requirements with <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>.</p>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
+Use <a href="https://www.atlassian.com/git/tutorials/using-branches">git branching techniques</a> to segment the completion of programming tasks, gradually and consistently committing small changes (practicing <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em> or &#8220;make haste, slowly&#8221;</a>). When a group of small changes are ready from branches, request <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request reviews</a> and take advantage of <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">comments</a> to <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> the work. Prepare for a branch <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge</a> after review by deciding <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">which merge strategy</a> is appropriate and automating merge requirements with <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>.</p>
 
 <h2 id="concept-coursework-branching">Concept: Coursework Branching</h2>
 
@@ -196,7 +196,7 @@ flowchart LR
 
 <p class="center"><em>An example course and student assignment workflow.</em></p>
 
-<p><a href="https://www.atlassian.com/git/tutorials/using-branches">Git branching</a> practices may be understood in context with similar workflows from real life. Consider a student taking a course, where an assignment is given to them to complete. In addition to the steps shown in the diagram above, it’s important to think about <em>why</em> this pattern is beneficial:</p>
+<p><a href="https://www.atlassian.com/git/tutorials/using-branches">Git branching</a> practices may be understood in context with similar workflows from real life. Consider a student taking a course, where an assignment is given to them to complete. In addition to the steps shown in the diagram above, it&#8217;s important to think about <em>why</em> this pattern is beneficial:</p>
 
 <ul>
   <li>Completing an assignment allows us as social, inter-dependent beings to present new findings which enable learning and amalgamation of additional ideas from others.</li>
@@ -204,7 +204,7 @@ flowchart LR
   <li>Segmenting applied learning in distinct, goal-orientated chunks helps make larger topics easier to understand.</li>
 </ul>
 
-<h2 id="branching-to-complete-an-assignment">Branching to Complete an “Assignment”</h2>
+<h2 id="branching-to-complete-an-assignment">Branching to Complete an &#8220;Assignment&#8221;</h2>
 
 <pre class="mermaid">
 %%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
@@ -223,7 +223,7 @@ flowchart LR
 
 <p class="center"><em>An example git diagram showing assignment branch based off main.</em></p>
 
-<p>Following the course assignment workflow, the diagram above shows an in-progress <code class="language-plaintext highlighter-rouge">assignment</code> branch based off of the <code class="language-plaintext highlighter-rouge">main</code> branch. When the <code class="language-plaintext highlighter-rouge">assignment</code> branch is created, we bring into it everything we know from <code class="language-plaintext highlighter-rouge">main</code> (the course) so far in the form of <a href="https://github.com/git-guides/git-commit">commits</a>, or groups of changes to various files. <a href="https://github.com/git-guides#create-a-branch">Branching</a> allows us to make consistent and well described changes based on what’s already happened without impacting others work in the meantime.</p>
+<p>Following the course assignment workflow, the diagram above shows an in-progress <code class="language-plaintext highlighter-rouge">assignment</code> branch based off of the <code class="language-plaintext highlighter-rouge">main</code> branch. When the <code class="language-plaintext highlighter-rouge">assignment</code> branch is created, we bring into it everything we know from <code class="language-plaintext highlighter-rouge">main</code> (the course) so far in the form of <a href="https://github.com/git-guides/git-commit">commits</a>, or groups of changes to various files. <a href="https://github.com/git-guides#create-a-branch">Branching</a> allows us to make consistent and well described changes based on what&#8217;s already happened without impacting others work in the meantime.</p>
 
 <blockquote>
   <p>Branching best practices:</p>
@@ -231,7 +231,7 @@ flowchart LR
   <ul>
     <li><strong>Keep the name and work with branches dedicated to a specific and focused purpose.</strong> For example: a branch named <code class="language-plaintext highlighter-rouge">fix-links-in-docs</code> might entail work related to fixing HTTP links within documentation.</li>
     <li><strong>Consider the use of <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Github Forks</a></strong> (along with branches within the fork) to help further isolate and enrich work potential. Forks also allow remixing existing work into new possibilities.</li>
-    <li><strong><a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em></a> or “make haste, slowly”:</strong> Commits on any branch represent small chunks of a cohesive idea which will eventually be brought to <code class="language-plaintext highlighter-rouge">main</code>. It is often beneficial to be consistent with small, gradual commits to avoid a rushed or incomplete submission. The same applies more generally for software; taking time upfront to do things well can mean time saved later.</li>
+    <li><strong><a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em></a> or &#8220;make haste, slowly&#8221;:</strong> Commits on any branch represent small chunks of a cohesive idea which will eventually be brought to <code class="language-plaintext highlighter-rouge">main</code>. It is often beneficial to be consistent with small, gradual commits to avoid a rushed or incomplete submission. The same applies more generally for software; taking time upfront to do things well can mean time saved later.</li>
   </ul>
 </blockquote>
 
@@ -255,7 +255,7 @@ flowchart LR
 
 <p class="center"><em>An example git diagram showing assignment branch being merged with main after a review.</em></p>
 
-<p>The diagram above depicts a merge from the <code class="language-plaintext highlighter-rouge">assignment</code> branch to pull the changes into the <code class="language-plaintext highlighter-rouge">main</code> branch, simulating an assignment being returned for review within a course. While merges may be forced without review, it’s a best practice create a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Pull Request (PR) Review</a> (also known as a <a href="https://docs.gitlab.com/ee/user/project/merge_requests/">Merge Request (MR)</a> on some systems) and then ask other members of your team to review it. Doing this provides a chance to make revisions before code changes are “finalized” within the <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
+<p>The diagram above depicts a merge from the <code class="language-plaintext highlighter-rouge">assignment</code> branch to pull the changes into the <code class="language-plaintext highlighter-rouge">main</code> branch, simulating an assignment being returned for review within a course. While merges may be forced without review, it&#8217;s a best practice create a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Pull Request (PR) Review</a> (also known as a <a href="https://docs.gitlab.com/ee/user/project/merge_requests/">Merge Request (MR)</a> on some systems) and then ask other members of your team to review it. Doing this provides a chance to make revisions before code changes are &#8220;finalized&#8221; within the <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
 
 <blockquote>
   <p>Github provides special tools for reviews which can assist both the author and reviewer:</p>
@@ -282,15 +282,15 @@ flowchart LR
 
 <p class="center"><em>An example git diagram showing the main branch after the assignment branch has been merged (and removed).</em></p>
 
-<p>Changes may be made within the <code class="language-plaintext highlighter-rouge">assignment</code> branch until the work is in a state where the authors and reviewers are satisfied. At this point, the branch changes may be <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merged</a> into <code class="language-plaintext highlighter-rouge">main</code>. Approvals are sometimes provided informally (for ex., with a comment: “LGTM (looks good to me)!”) or explicitly (for ex., <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews">approvals within Github</a>) to indicate or enable branch merge readiness . After the merge, changes may continue to be made in a similar way (perhaps accounting for concurrently branched work elsewhere). Generally, a merged branch may be removed afterwards to help maintain an organized working environment (see <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/deleting-and-restoring-branches-in-a-pull-request">Github PR branch removal</a>).</p>
+<p>Changes may be made within the <code class="language-plaintext highlighter-rouge">assignment</code> branch until the work is in a state where the authors and reviewers are satisfied. At this point, the branch changes may be <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merged</a> into <code class="language-plaintext highlighter-rouge">main</code>. Approvals are sometimes provided informally (for ex., with a comment: &#8220;LGTM (looks good to me)!&#8221;) or explicitly (for ex., <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews">approvals within Github</a>) to indicate or enable branch merge readiness . After the merge, changes may continue to be made in a similar way (perhaps accounting for concurrently branched work elsewhere). Generally, a merged branch may be removed afterwards to help maintain an organized working environment (see <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/deleting-and-restoring-branches-in-a-pull-request">Github PR branch removal</a>).</p>
 
 <blockquote>
   <p>Github provides special tools for merging:</p>
 
   <ul>
     <li><strong>Decide which merge strategy is appropriate (there are many!):</strong> There are many <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">merge strategies within Github</a> (merge commits, squash merges, and rebase merging). Take time to understand them and choose which one works best.</li>
-    <li><strong>Consider using branch protection to automate merge requirements:</strong> The <code class="language-plaintext highlighter-rouge">main</code> or other branches may be “protected” against merges using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>. These rules can require reviewer approvals or automatic status checks to pass before changes may be merged.</li>
-    <li><strong>Use merge queuing to manage multiple PR’s:</strong> When there are many unmerged PR’s, it can sometimes be difficult to document and ensure each are merged in a desired sequence. Consider using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue">merge queues</a> to help with this process.</li>
+    <li><strong>Consider using branch protection to automate merge requirements:</strong> The <code class="language-plaintext highlighter-rouge">main</code> or other branches may be &#8220;protected&#8221; against merges using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>. These rules can require reviewer approvals or automatic status checks to pass before changes may be merged.</li>
+    <li><strong>Use merge queuing to manage multiple PR&#8217;s:</strong> When there are many unmerged PR&#8217;s, it can sometimes be difficult to document and ensure each are merged in a desired sequence. Consider using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue">merge queues</a> to help with this process.</li>
   </ul>
 </blockquote>
 
@@ -303,7 +303,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -315,13 +315,13 @@ flowchart LR
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
 Use software linting (<a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a>) practices on your R code with existing packages <a href="https://github.com/r-lib/lintr"><code class="language-plaintext highlighter-rouge">lintr</code></a> and <a href="https://github.com/r-lib/styler"><code class="language-plaintext highlighter-rouge">styler</code></a> (among others). These linters may be applied using <a href="https://pre-commit.com">pre-commit</a> in your local development environment or as <a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous tests</a> using for example <a href="https://docs.github.com/en/actions">Github Actions</a>.</p>
 
 <h2 id="treating-r-as-software">Treating R as Software</h2>
 
 <blockquote>
-  <p>“Many users think of R as a statistics system. We prefer to think of it as an environment within which statistical techniques are implemented.”</p>
+  <p>&#8220;Many users think of R as a statistics system. We prefer to think of it as an environment within which statistical techniques are implemented.&#8221;</p>
 </blockquote>
 
 <p><em>(<a href="https://www.r-project.org/about.html">R-Project: What is R?</a>)</em></p>
@@ -411,7 +411,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -419,12 +419,12 @@ flowchart LR
 
 <!-- excerpt start -->
 
-<p>Programming often involves long periods of problem solving which can sometimes lead to unproductive or exhausting outcomes. This article covers one way to avoid less productive time expense or protect yourself from overexhaustion through a technique called “timeboxing” (also sometimes referenced as “timeblocking”).</p>
+<p>Programming often involves long periods of problem solving which can sometimes lead to unproductive or exhausting outcomes. This article covers one way to avoid less productive time expense or protect yourself from overexhaustion through a technique called &#8220;timeboxing&#8221; (also sometimes referenced as &#8220;timeblocking&#8221;).</p>
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
-Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro®</a> or <a href="https://en.wikipedia.org/wiki/52/17_rule">52/17</a> to help <a href="https://en.wikipedia.org/wiki/Modularity">modularize</a> your software work to ensure you don’t fall victim to <a href="https://en.wikipedia.org/wiki/Parkinson%27s_law">Parkinson’s Law</a>. Timeboxing may also map well to <a href="https://github.com/features/issues">Github Issues</a>, which allows your software tasks to be further aligned, documented, and chunked in collaboration with others.</p>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
+Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro®</a> or <a href="https://en.wikipedia.org/wiki/52/17_rule">52/17</a> to help <a href="https://en.wikipedia.org/wiki/Modularity">modularize</a> your software work to ensure you don&#8217;t fall victim to <a href="https://en.wikipedia.org/wiki/Parkinson%27s_law">Parkinson&#8217;s Law</a>. Timeboxing may also map well to <a href="https://github.com/features/issues">Github Issues</a>, which allows your software tasks to be further aligned, documented, and chunked in collaboration with others.</p>
 
 <h2 id="controlling-work-time-expansion">Controlling Work Time Expansion</h2>
 
@@ -443,19 +443,19 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   
 </figure>
 
-<p class="center">Have you ever spent more time than you thought you would on a task? An adage which helps explain this phenomenon is <a href="https://www.economist.com/news/1955/11/19/parkinsons-law">Parkinson’s Law</a>:</p>
+<p class="center">Have you ever spent more time than you thought you would on a task? An adage which helps explain this phenomenon is <a href="https://www.economist.com/news/1955/11/19/parkinsons-law">Parkinson&#8217;s Law</a>:</p>
 
 <blockquote>
-  <p>“… work expands so as to fill the time available for its completion.”</p>
+  <p>&#8220;&#8230; work expands so as to fill the time available for its completion.&#8221;</p>
 </blockquote>
 
-<p>The practice of writing software is not protected from this “law”. It may be affected by it in sometimes worse ways during long periods of uninterrupted programming where we may have an inclination to forget productive goals.</p>
+<p>The practice of writing software is not protected from this &#8220;law&#8221;. It may be affected by it in sometimes worse ways during long periods of uninterrupted programming where we may have an inclination to forget productive goals.</p>
 
-<p>One way to address this is through the use of <a href="https://en.wikipedia.org/wiki/Timeboxing">timeboxing</a> techiques. Timeboxing sets a fixed limit to the amount of time one may spend on a specific activity. One can use timeboxing to systematically address many tasks, for example, as with the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro® Technique</a> (developed by Francesco Cirillo) or <a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 rule</a>. While there are many ways to apply timeboxing, make sure to balance activity with short breaks and focus switches to help ensure we don’t become overwhelmed.</p>
+<p>One way to address this is through the use of <a href="https://en.wikipedia.org/wiki/Timeboxing">timeboxing</a> techiques. Timeboxing sets a fixed limit to the amount of time one may spend on a specific activity. One can use timeboxing to systematically address many tasks, for example, as with the <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro® Technique</a> (developed by Francesco Cirillo) or <a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 rule</a>. While there are many ways to apply timeboxing, make sure to balance activity with short breaks and focus switches to help ensure we don&#8217;t become overwhelmed.</p>
 
 <h2 id="timeboxing-means-modularization">Timeboxing Means Modularization</h2>
 
-<p>Timeboxing has an auxiliary benefit of framing your work as objective and oftentimes smaller chunks (we have to know what we’re timeboxing in order to use this technique). Creating distinct chunks of work applies for both our daily time schedule as well as code itself. This concept is more broadly called “<a href="https://en.wikipedia.org/wiki/Modularity">modularization</a>” and helps to distinguish large portions of work (whether in real life or in code) as smaller and more maintainable chunks.</p>
+<p>Timeboxing has an auxiliary benefit of framing your work as objective and oftentimes smaller chunks (we have to know what we&#8217;re timeboxing in order to use this technique). Creating distinct chunks of work applies for both our daily time schedule as well as code itself. This concept is more broadly called &#8220;<a href="https://en.wikipedia.org/wiki/Modularity">modularization</a>&#8221; and helps to distinguish large portions of work (whether in real life or in code) as smaller and more maintainable chunks.</p>
 
 <div class="cols" style="--cols: 2">
   
@@ -507,7 +507,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
 
 <h2 id="be-kind-to-yourself-take-breaks">Be Kind to Yourself: Take Breaks</h2>
 
-<p>While timeboxing is often a conversation about how to be more productive, it’s also worth remembering: <strong>take breaks to be kind to yourself and more effective</strong>. Some studies and thought leadership have shown that taking breaks may be necessary to avoid performance decreases and impacts to your health. There’s also some indication that taking breaks may lead to better work. See below for just a few examples:</p>
+<p>While timeboxing is often a conversation about how to be more productive, it&#8217;s also worth remembering: <strong>take breaks to be kind to yourself and more effective</strong>. Some studies and thought leadership have shown that taking breaks may be necessary to avoid performance decreases and impacts to your health. There&#8217;s also some indication that taking breaks may lead to better work. See below for just a few examples:</p>
 
 <ul>
   <li><a href="https://thewellbeingthesis.org.uk/foundations-for-success/importance-of-taking-breaks-and-having-other-interests/">The Importance of Taking Breaks</a></li>
@@ -518,14 +518,14 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
 <h2 id="additional-resources">Additional Resources</h2>
 
 <ul>
-  <li><a href="https://en.wikipedia.org/wiki/Parkinson%27s_law">Parkinson’s Law</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Parkinson%27s_law">Parkinson&#8217;s Law</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Timeboxing">Timeboxing</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Timeblocking">Timeblocking</a> Additional similar notes on time management.</li>
   <li><a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">Pomodoro® Technique</a></li>
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -537,7 +537,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
 There are many linting tools available which enable quick revision of your documentation. Try using <a href="https://github.com/codespell-project/codespell">codespell</a> for spelling corrections, <a href="https://github.com/executablebooks/mdformat">mdformat</a> for markdown file formatting corrections, and <a href="https://vale.sh/">vale</a> for more complex editorial style or natural language assessment within your documentation.</p>
 
 <h2 id="spelling-checks">Spelling Checks</h2>
@@ -672,7 +672,7 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -680,12 +680,12 @@ readme-example.md
 
 <!-- excerpt start -->
 
-<p>The act of creating software often involves many iterations of writing, personal collaborations, and testing. During this process it’s common to lose awareness of code which is no longer used, and thus may not be tested or otherwise linted. Unused code may contribute to <a href="https://en.wikipedia.org/wiki/Software_rot">“software decay”</a>, the gradual diminishment of code quality or functionality. This post will cover software decay and strategies for addressing unused code to help keep your code quality high.</p>
+<p>The act of creating software often involves many iterations of writing, personal collaborations, and testing. During this process it&#8217;s common to lose awareness of code which is no longer used, and thus may not be tested or otherwise linted. Unused code may contribute to <a href="https://en.wikipedia.org/wiki/Software_rot">&#8220;software decay&#8221;</a>, the gradual diminishment of code quality or functionality. This post will cover software decay and strategies for addressing unused code to help keep your code quality high.</p>
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
-Unused code is easy to amass and may cause your code quality or code functionality to diminish (“decay”) over time. Effort must be taken to maintain any code or artifacts you add to your repositories, including those which are unused. Consider using <a href="https://github.com/jendrikseipp/vulture">Vulture</a>, <a href="https://pylint.pycqa.org/">Pylint</a>, or <a href="https://coverage.readthedocs.io/">Coverage</a> to help illuminate sections of your code which may need to be removed.</p>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
+Unused code is easy to amass and may cause your code quality or code functionality to diminish (&#8220;decay&#8221;) over time. Effort must be taken to maintain any code or artifacts you add to your repositories, including those which are unused. Consider using <a href="https://github.com/jendrikseipp/vulture">Vulture</a>, <a href="https://pylint.pycqa.org/">Pylint</a>, or <a href="https://coverage.readthedocs.io/">Coverage</a> to help illuminate sections of your code which may need to be removed.</p>
 
 <h2 id="code-lifecycle-and-maintenance">Code Lifecycle and Maintenance</h2>
 
@@ -753,15 +753,15 @@ const el = document.getElementById('vis');
 const view = vegaEmbed("#vis", spec, embed_opt);
 </script>
 
-<p>When considering multiple parts of code in many files, this maintenance can become untenable, leading to the gradual decay of your code quality or functionality. For example, let’s assume one line of code costs 30 seconds to maintain (feel free to substitute time with monetary or personnel aspects as an example measure here too). 1000 lines of code would cost 500 minutes (or about 8 hours) to maintain. This becomes more complex when considering multiple files, collaborators, or languages.</p>
+<p>When considering multiple parts of code in many files, this maintenance can become untenable, leading to the gradual decay of your code quality or functionality. For example, let&#8217;s assume one line of code costs 30 seconds to maintain (feel free to substitute time with monetary or personnel aspects as an example measure here too). 1000 lines of code would cost 500 minutes (or about 8 hours) to maintain. This becomes more complex when considering multiple files, collaborators, or languages.</p>
 
 <p class="center"><i class="fas fa-hiking" style="font-size:4em;"></i></p>
 
-<p>Think about your project as if it were on a hiking trail: <strong>“Carry as little as possible, but choose that little with care.”</strong> (Earl Shaffer). Be careful what code you choose to carry; it may impact your ability to address needs over time and lead to otherwise unintended software decay.</p>
+<p>Think about your project as if it were on a hiking trail: <strong>&#8220;Carry as little as possible, but choose that little with care.&#8221;</strong> (Earl Shaffer). Be careful what code you choose to carry; it may impact your ability to address needs over time and lead to otherwise unintended software decay.</p>
 
 <h2 id="detecting-unused-code-with-vulture">Detecting Unused Code with Vulture</h2>
 
-<p>Understanding the cost of added content, it’s important to routinely examine which parts of your code are still necessary. You can prepare your code for a long journey by detecting (and removing) unused code with various automated tools. These tools are generally designed for static analysis and linting, meaning they may also be incorporated into automated and routine testing.</p>
+<p>Understanding the cost of added content, it&#8217;s important to routinely examine which parts of your code are still necessary. You can prepare your code for a long journey by detecting (and removing) unused code with various automated tools. These tools are generally designed for static analysis and linting, meaning they may also be incorporated into automated and routine testing.</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vulture unused_code_example.py
 unused_code_example.py:3: unused import <span class="s1">'os'</span> <span class="o">(</span>90% confidence<span class="o">)</span>
@@ -780,9 +780,9 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
 
 <p>In addition to Vulture, <a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a> and <a href="https://coverage.readthedocs.io/">Coverage.py</a> can be used in a similar way to help show where code may not have been used within your project.</p>
 
-<p><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a> focuses on code style and other static analysis in addition to unused variables. See <a href="https://pylint.pycqa.org/en/latest/user_guide/checkers/features.html">Pylint’s Checkers</a> page for more details here, using “unused-*” as a reference to checks it performs which focus on unused code.</p>
+<p><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a> focuses on code style and other static analysis in addition to unused variables. See <a href="https://pylint.pycqa.org/en/latest/user_guide/checkers/features.html">Pylint&#8217;s Checkers</a> page for more details here, using &#8220;unused-*&#8221; as a reference to checks it performs which focus on unused code.</p>
 
-<p><a href="https://coverage.readthedocs.io/">Coverage.py</a> helps show you which parts of your code have been executed or not. A common usecase for Coverage involves measuring “test coverage”, or which parts of your code are executed in relationship to tests written for that code. This provides another perspective on code utility: if there’s not a test for the code, is it worth keeping?</p>
+<p><a href="https://coverage.readthedocs.io/">Coverage.py</a> helps show you which parts of your code have been executed or not. A common usecase for Coverage involves measuring &#8220;test coverage&#8221;, or which parts of your code are executed in relationship to tests written for that code. This provides another perspective on code utility: if there&#8217;s not a test for the code, is it worth keeping?</p>
 
 <h2 id="additional-resources">Additional Resources</h2>
 
@@ -791,7 +791,7 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
   <li><a href="https://github.com/jendrikseipp/vulture">Vulture</a></li>
   <li><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a></li>
   <li><a href="https://coverage.readthedocs.io/">Coverage</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -803,7 +803,7 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
 DuckDB may be used to access and transform Arrow-based data from multiple data formats through SQL. Using Arrow and DuckDB provides a cross-language way to access and manage data. Data development with these tools may also enable improvements in performance, understandability, or long term maintainability of your code.</p>
 
 <h2 id="reduce-wasted-conversion-effort-with-arrow">Reduce Wasted Conversion Effort with Arrow</h2>
@@ -861,7 +861,7 @@ flowchart LR
     Arrow --&gt; Other[Other work...]
 </pre>
 
-<p>DuckDB provides a management client and relational database format (similar to SQLite databases) which may be handled with Arrow. SQL may be used with the DuckDB client to filter, join, or change various data types. Due to Arrow’s cross-language properties, there is no additional cost to using SQL through DuckDB to return data for implementation within other purpose-built data formats. <a href="https://duckdb.org/docs/api/overview">DuckDB provides client API’s in many languages</a> (for example, Python, R, and C++), making it possible to write DuckDB client code with SQL to manage data without having to use manually written sub-procedures.</p>
+<p>DuckDB provides a management client and relational database format (similar to SQLite databases) which may be handled with Arrow. SQL may be used with the DuckDB client to filter, join, or change various data types. Due to Arrow&#8217;s cross-language properties, there is no additional cost to using SQL through DuckDB to return data for implementation within other purpose-built data formats. <a href="https://duckdb.org/docs/api/overview">DuckDB provides client API&#8217;s in many languages</a> (for example, Python, R, and C++), making it possible to write DuckDB client code with SQL to manage data without having to use manually written sub-procedures.</p>
 
 <pre class="mermaid">
 flowchart TB
@@ -909,7 +909,7 @@ flowchart TB
 <ul>
   <li><a href="https://arrow.apache.org/docs/index.html">Apache Arrow Documentation</a></li>
   <li><a href="https://duckdb.org/docs/">DuckDB Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -921,7 +921,7 @@ flowchart TB
 
 <!-- excerpt end -->
 
-<p><strong>TLDR (too long, didn’t read);</strong>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong>
 Diagrams as code (DaC) tools provide an advantage for illustrating concepts by enabling <strong>quick visual positioning</strong>, <strong>source controllable input</strong>, <strong>portability (both for input and output formats)</strong>, and <strong>open collaboration through reproducibility</strong>. Consider using <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a> (as well as many other DaC tools) to assist your diagramming efforts which can be used directly, within in your markdown files, or <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams">Github commentary</a> using code blocks (for example, ` ```mermaid `).</p>
 
 <h2 id="example-mermaid-diagram-as-code">Example Mermaid Diagram as Code</h2>
@@ -1005,7 +1005,7 @@ flowchart LR
   
 </div>
 
-<p>Mermaid diagrams may be rendered directly from markdown (<code class="language-plaintext highlighter-rouge">.md</code>) and text communication content (like pull request or issue comments) within Github. See <a href="https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/">Github’s blog post on mermaid</a> for more details covering this topic.</p>
+<p>Mermaid diagrams may be rendered directly from markdown (<code class="language-plaintext highlighter-rouge">.md</code>) and text communication content (like pull request or issue comments) within Github. See <a href="https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/">Github&#8217;s blog post on mermaid</a> for more details covering this topic.</p>
 
 <h2 id="mermaid-jupyter-notebook-integration">Mermaid Jupyter Notebook Integration</h2>
 
@@ -1053,7 +1053,7 @@ graph LR
   <li><a href="https://plantuml.com/">PlantUML</a></li>
   <li><a href="https://vega.github.io/vega/">Vega</a></li>
   <li><a href="https://kroki.io/">Kroki.io</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-03-25T08:03:28+00:00</updated><id>/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-07-07T22:26:11+00:00</updated><id>/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1067,7 +1067,7 @@ graph LR
 
 <p><a href="https://en.wikipedia.org/wiki/Lint_(software)"><strong>Software Linting</strong></a> is the practice of detecting and sometimes automatically fixing stylistic, syntactical, or other programmatic issues. Linting usually involves installing standardized or opinionated libraries which allow you to quickly make code corrections. Using linting tools also can help you learn nuanced or unwritten intricacies of programming languages while you solve problems in your work.</p>
 
-<p><strong>TLDR (too long, didn’t read);</strong> Linting is a type of static analysis which can be used to instantly address many common code issues. <a href="https://pycqa.github.io/isort/index.html"><code class="language-plaintext highlighter-rouge">isort</code></a> provides automatic Python import statement linting. <a href="https://pre-commit.com/"><code class="language-plaintext highlighter-rouge">pre-commit</code></a> provides an easy way to test and apply isort (in addition to other linting tools) through source control workflows.</p>
+<p><strong>TLDR (too long, didn&#8217;t read);</strong> Linting is a type of static analysis which can be used to instantly address many common code issues. <a href="https://pycqa.github.io/isort/index.html"><code class="language-plaintext highlighter-rouge">isort</code></a> provides automatic Python import statement linting. <a href="https://pre-commit.com/"><code class="language-plaintext highlighter-rouge">pre-commit</code></a> provides an easy way to test and apply isort (in addition to other linting tools) through source control workflows.</p>
 
 <h2 id="example-python-code-style-linting-with-isort">Example: Python Code Style Linting with isort</h2>
 
