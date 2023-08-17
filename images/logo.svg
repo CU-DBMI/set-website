@@ -1,25 +1,50 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-60 -50 120 100">
   <defs>
-    <linearGradient id="gradient">
+    <linearGradient
+      id="gradient"
+      gradientUnits="userSpaceOnUse"
+      x1="-10"
+      y1="0"
+      x2="10"
+      y2="0"
+    >
       <stop stop-color="#7e57c2" offset="0%" />
       <stop stop-color="#2196f3" offset="100%" />
     </linearGradient>
   </defs>
-  <path
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g
     fill="none"
     stroke="url(#gradient)"
     stroke-width="8"
     stroke-linecap="round"
     stroke-linejoin="round"
-    d="
-      M -30 -20
-      L -50 0
-      L -30 20
-      M 30 -20
-      L 50 0
-      L 30 20
-      M 10 -30
-      L -10 30
-    "
-  />
+  >
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20" />
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20" />
+    <path class="slash" d="M 10 -30 L -10 30" />
+  </g>
 </svg>
