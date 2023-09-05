@@ -627,11 +627,141 @@
         continuous-integration
       </a>
     
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20Python%22" class="tag" data-tooltip='Show items with the tag "Python"'>
+        Python
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20packaging%22" class="tag" data-tooltip='Show items with the tag "packaging"'>
+        packaging
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20publishing%22" class="tag" data-tooltip='Show items with the tag "publishing"'>
+        publishing
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20software-design%22" class="tag" data-tooltip='Show items with the tag "software-design"'>
+        software-design
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20understandability%22" class="tag" data-tooltip='Show items with the tag "understandability"'>
+        understandability
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog/?search=%22tag:%20environment-management%22" class="tag" data-tooltip='Show items with the tag "environment-management"'>
+        environment-management
+      </a>
+    
   </div>
 
 <div class="search-info"></div>
 
 <h3 id="2023">2023</h3>
+
+<div class="post-excerpt">
+  
+  
+  <a href="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html">Tip of the Week: Python Packaging as Publishing</a>
+
+  <div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-22/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-22/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>September 05, 2023</span>
+    </span>
+  
+
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-22/blog">
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20Python%22" class="tag" data-tooltip='Show items with the tag "Python"'>
+        Python
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20packaging%22" class="tag" data-tooltip='Show items with the tag "packaging"'>
+        packaging
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20publishing%22" class="tag" data-tooltip='Show items with the tag "publishing"'>
+        publishing
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20software-design%22" class="tag" data-tooltip='Show items with the tag "software-design"'>
+        software-design
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20understandability%22" class="tag" data-tooltip='Show items with the tag "understandability"'>
+        understandability
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20environment-management%22" class="tag" data-tooltip='Show items with the tag "environment-management"'>
+        environment-management
+      </a>
+    
+  </div>
+
+
+
+
+
+  
+  
+  <p data-search="Tip of the Week  Python Packaging as Publishing  Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals  Views expressed in the content belong to the content creators and not the organization  its affiliates  or employees  If you have any software questions or suggestions for an upcoming tip of the week  please don t hesitate to reach out to  software engineering on Slack or email DBMISoftwareEngineering at olucdenver onmicrosoft comPython packaging is the craft of preparing for and reaching distribution of your Python work to wider audiences  Following conventions for packaging help your software work become more understandable  trustworthy  and connected  to others and their work   Taking advantage of common packaging practices also strengthens our collective superpowers  collaboration  This post will cover preparation aspects of packaging  readying software work for wider distribution TLDR  too long  didn  8217 t read  Use Pythonic packaging tools and techniques to help avoid code decay and unwanted code smells and increase your development velocity  Increase understanding with unsurprising directory structures like those exhibited in pypa sampleproject or scientific python cookie  Enhance trust by being authentic on source control systems like GitHub  by customizing your profile   staying up to date with the latest supported versions of Python  and using security linting tools like PyCQA bandit through visible   automated GitHub Actions   checks  Connect your projects to others using CITATION cff files  CONTRIBUTING md files  and using environment   packaging tools like poetry to help others reproduce the same results from your code Why practice packaging                     Image comparing how a page with some text and a book look and feel different       The practice of Python packaging efforts is similar to that of publishing a book  Consider how a bag of text is different from a book  How and why are these things different   A book has commonly understood sequencing of content  i e  copyright page  then title page  then body content pages  8230     A book often cites references and acknowledges other work explicitly   A book undergoes a manufacturing process which allows the text to be received in many places the same way                     Image showing code undergoing packaging to achieve understanding  trust  and connection for an audience       These can be thought of metaphors when it comes to packaging in Python  Just like books  software can sometimes have a code smells we want to avoid  Following good packaging practices helps to avoid unwanted code smells while increasing development velocity  maintainability of software through understandability  trustworthiness of the content  and connection to other projects Note  these techniques can also work just as well for inner source collaboration  private or proprietary development within organizations   Don  8217 t hesitate to use these on projects which may not be public facing in order to make development and maintenance easier  if only for you    ℹ    8220 Wait  what are Python packages   8221   my package       init   py    module a py    module b py    A Python package is a collection of modules   py files  that usually include an   8220 initialization file  8221    init   py  This post will cover the craft of packaging which can include one or many packages Understanding  common directory structuresproject directory    README md    LICENSE txt    pyproject toml    docs        source            index md    src        package name              init   py            module a py    tests          init   py        test module a pyPython Packaging today generally assumes a specific directory design Following this convention generally improves the understanding of your code  We  8217 ll cover each of these below Project root filesproject directory    README md    LICENSE txt    pyproject toml       The README md file is a markdown file with documentation including project goals and other short notes about installation  development  or usage  The README md file is akin to a book jacket blurb which quickly tells the audience what the book will be about   The LICENSE txt file is a text file which indicates licensing details for the project  It often includes information about how it may be used and protects the authors in disputes  The LICENSE txt file can be thought of like a book  8217 s copyright page  See https   choosealicense com  for more details on selecting an open source license   The pyproject toml file is a Python specific TOML file which helps organize how the project is used and built for wider distribution  The pyproject toml file is similar to a book  8217 s table of contents  index  and printing or production specification Project sub directoriesproject directory         docs        source            index md    src        package name              init   py            module a py    tests          init   py        test module a py  The docs directory is used for in depth documentation and related documentation build code  for example  when building documentation websites  aka   8220 docsites  8221    The docs directory includes information similar to a book  8217 s   8220 study guide  8221   providing content surrounding how to best make use of and understand the content found within   The src directory  includes primary source code for use in the project  Python projects generally use a nested package directory with modules and sub packages  The src directory is like a book  8217 s body or general content  perhaps thinking of modules as chapters or sections of related ideas    The tests directory includes testing code for validating functionality of code found in the src directory  The above follows pytest conventions  The tests directory is for code which acts like a book  8217 s early reviewers or editors  making sure that if you change things in src the impacts remain as expected Common directory structure examplesThe Python directory structure described above can be witnessed in the wild from the following resources  These can serve as a great resource for starting or adjusting your own work   pypa sampleproject  scientific python cookie  microsoft python package templateTrust  building audience confidence                    Image showing an audience member asking whether they trust a package       Building an understandable body of content helps tremendously with audience trust  What else can we do to enhance project trust  The following elements can help improve an audience  8217 s trust in packaged Python work Source control authenticity                    Image comparing the difference between a generic or anonymous user and one with greater authenticity       Be authentic  Fill out your profile to help your audience know the author and why you do what you do  See here for GitHub  8217 s documentation on filling out your profile  Doing this may seem irrelevant but can go a long way to making technical work more relatable   Add a profile picture of yourself or something fun   Set your profile description to information which is both professionally accurate and unique to you   Show or link to work which you feel may be relevant or exciting to those in your audience Staying up to date with supported Python releases                    Image showing major Python releases and their support status       Use Python versions which are supported  this changes over time  Python versions which are end of life may be difficult to support and are a sign of code decay for projects  Specify the version of Python which is compatiable with your project by using environment specifications such as pyproject toml files and related packaging tools  more on this below    See here for updated information on Python version status   Staying up to date with supported releases oftentimes can result in performance or other similar benefits  later versions usually include improvements   Security linting and visible checks with GitHub Actions                    Image showing a package being inspected by a magnifying glass       Use security vulnerability linters to help prevent undesirable or risky processing for your audience  Doing this both practical to avoid issues and conveys that you care about those using your package   PyCQA bandit   checks Python code  pyupio safety   checks Python dependencies  gitleaks  checks for sensitive passwords  keys  or tokens                    Image showing a package being inspected by a magnifying glass       Combining GitHub actions with security linters and tests from your software validation suite can add an observable   for your project This provides the audience with a sense that you  8217 re transparently testing and sharing results of those tests   See GitHub  8217 s documentation on this topic for more information   See also the DBMI Software Engineering Team  8217 s blog post    8220 Automate Software Workflows with Github Actions  8221 Connection  personal and inter package relationships                    Image showing a package being inspected by a magnifying glass       Understandability and trust set the stage for your project  8217 s connection to other people and projects  What can we do to facilitate connection with our project  Use the following techniques to help enhance your project  8217 s connection to others and their work Acknowledging authors and referenced work with CITATION cff                    CITATION cff file format icon       Add a CITATION cff file to your project root in order to describe project relationships and acknowledgements in a standardized way  The CFF format is also GitHub compatible  making it easier to cite your project   This is similar to a book  8217 s credits  acknowledgements  dedication  and author information sections   See here for a CITATION cff file generator  and updater  Reaching collaborators using CONTRIBUTING md                    A file labeled as CONTRIBUTING md with a handshake icon       Provide a CONTRIBUTING md file to your project root so as to make clear support details  development guidance  code of conduct  and overall documentation surrounding how the project is governed  lt    See GitHub  8217 s documentation on   8220 Setting guidelines for repository contributors  8221   See opensource guide  8217 s section on   8220 Writing your contributing guidelines  8221 Environment management reproducibility as connected project reality                    Image showing code being sent through environment and packaging managers in order to produce a package       Code without an environment specification is difficult to run in a consistent way  This can lead to   8220 works on my machine  8221  scenarios where different things happen for different people  reducing the chance that people can connect with a shared reality for how your code should be used     8220 But why do we have to switch the way we do things   8221 We  8217 ve always been switching approaches  software approaches evolve over time   A brief history of Python environment and packaging tooling       distutils  easy install   setup py  primarily used during 1990  8217 s   early 2000  8217 s     pip  setup py   requirements txt  primarily used during late 2000  8217 s   early 2010  8217 s     poetry   pyproject toml  began use around late 2010  8217 s   ongoing   Using Python poetry for environment and packaging management                    Python Poetry environment and packaging manager tool icon       Poetry is one Pythonic environment and packaging manager which can help increase reproducibility using pyproject toml files  It  8217 s one of many other alternatives such as hatch and pipenv poetry directory structure template useuser machine   poetry new   name package name   src  Created package package name in  user machine   tree       README md    pyproject toml    src        package name              init   py    tests          init   pyAfter installation  Poetry gives us the ability to initialize a directory structure similar to what we presented earlier by using the poetry new     command  If you  8217 d like a more interactive version of the same  use the poetry init command to fill out various sections of your project with detailed information poetry format for project pyproject toml  pyproject toml tool poetry name    package name version    0 1 0 description     authors     username  lt email address gt   readme    README md packages     include    package name   from    src    tool poetry dependencies python     3 9  build system requires     poetry core  build backend    poetry core masonry api Using the poetry new     command also initializes the content of our pyproject toml file with opinionated details  following the recommendation from earlier in the article regarding declared Python version specification  poetry dependency managementuser machine   poetry add pandasCreating virtualenv package name 1STl06GY py3 9 in  pypoetry virtualenvsUsing version  2 1 0 for pandas   Writing lock fileWe can add dependencies directly using the poetry add     command  This command also provides the possibility of using a group flag  for example poetry add pytest   group testing  to help organize and distinguish multiple sets of dependencies   A local virtual environment is managed for us automatically   A poetry lock file is written when the dependencies are installed to help ensure the version you installed today will be what  8217 s used on other machines   The poetry lock file helps ensure reproducibility when dealing with dependency version ranges  where otherwise we may end up using different versions which match the dependency ranges but observe different results  Running Python from the context of poetry environments  poetry run python  c  import pandas  print pandas   version    2 1 0We can invoke the virtual environment directly using the poetry run     command   This allows us to quickly run code through the context of the project  8217 s environment   Poetry can automatically switch between multiple environments based on the local directory structure   We can also the environment as a   8220 shell  8221   similar to virtualenv  8217 s activate  with the poetry shell command which enables us to leverage a dynamic session in the context of the poetry environment Building source code with poetry  pip install git https   github com project package nameEven if we don  8217 t reach wider distribution on PyPI or elsewhere  source code managed by pyproject toml and poetry can be used for   8220 manual  8221  distribution  with reproducible results  from GitHub repositories  When we  8217 re ready to distribute pre built packages on other networks we can also use the following   poetry buildBuilding package name  0 1 0     Building sdist    Built package name 0 1 0 tar gz    Building wheel    Built package name 0 1 0 py3 none any whlPoetry readies source code and pre compiled versions of our code for distribution platforms like PyPI by using the poetry build     command  We  8217 ll cover more on these files and distribution steps with a later post ">
+    
+
+Python packaging is the craft of preparing for and reaching distribution of your Python work to wider audiences. Following conventions for packaging help your software work become more understandable, trustworthy, and connected (to others and their work). Taking advantage of common packaging practices also strengthens our collective superpowers: collaboration. This post will cover preparation aspects of packaging, readying software work for wider distribution.
+
+
+  </p>
+</div>
 
 <div class="post-excerpt">
   

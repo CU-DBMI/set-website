@@ -1,4 +1,467 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-22/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-22/" rel="alternate" type="text/html" /><updated>2023-09-05T21:55:30+00:00</updated><id>/set-website/preview/pr-22/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-22/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-22/" rel="alternate" type="text/html" /><updated>2023-09-05T22:00:09+00:00</updated><id>/set-website/preview/pr-22/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+
+<blockquote>
+  <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+</blockquote>
+
+<!-- excerpt start -->
+
+<p>Python packaging is the craft of preparing for and reaching distribution of your Python work to wider audiences. Following conventions for packaging help your software work become more understandable, trustworthy, and connected (to others and their work). Taking advantage of common packaging practices also strengthens our collective superpowers: collaboration. This post will cover preparation aspects of packaging, readying software work for wider distribution.</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn&#8217;t read);</strong></p>
+
+<p>Use Pythonic packaging tools and techniques to help avoid <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> and unwanted <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> and increase your development velocity. Increase understanding with unsurprising directory structures like those exhibited in <a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a> or <a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a>. Enhance trust by being authentic on source control systems like GitHub (<a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">by customizing your profile</a>), staying up to date with the <a href="https://devguide.python.org/versions/">latest supported versions of Python</a>, and using security linting tools like <a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code></a> through <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">visible + automated GitHub Actions ✅ checks</a>. Connect your projects to others using <a href="https://citation-file-format.github.io/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> files</a>, <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> files</a>, and using environment + packaging tools like <a href="https://python-poetry.org/docs/"><code class="language-plaintext highlighter-rouge">poetry</code></a> to help others reproduce the same results from your code.</p>
+
+<h2 id="why-practice-packaging">Why practice packaging?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image comparing how a page with some text and a book look and feel different.">
+    <img src="/set-website/preview/pr-22/images/text-vs-book.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image comparing how a page with some text and a book look and feel different." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image comparing how a page with some text and a book look and feel different.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and <em>why</em> are these things different?</p>
+
+<ul>
+  <li>A book has commonly understood sequencing of content (i.e. copyright page, then title page, then body content pages&#8230;).</li>
+  <li>A book often cites references and acknowledges other work explicitly.</li>
+  <li>A book undergoes a manufacturing process which allows the text to be received in many places the same way.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience.">
+    <img src="/set-website/preview/pr-22/images/python-packaging-to-audience.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">These can be thought of metaphors when it comes to packaging in Python. Just like books, software can sometimes have a <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> we want to avoid. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.</p>
+
+<p>Note: these techniques can also work just as well for <a href="https://en.wikipedia.org/wiki/Inner_source">inner source</a> collaboration (private or proprietary development within organizations)! Don&#8217;t hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).</p>
+
+<blockquote>
+  <p>ℹ️ <strong>&#8220;Wait, what are Python packages?&#8221;</strong></p>
+
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_package/
+│   __init__.py
+│   module_a.py
+│   module_b.py
+</code></pre></div>  </div>
+
+  <p>A Python <strong>package</strong> is a collection of modules (<code class="language-plaintext highlighter-rouge">.py</code> files) that usually include an &#8220;initialization file&#8221; <code class="language-plaintext highlighter-rouge">__init__.py</code>. This post will cover the craft of <strong>packaging</strong> which can include one or many <em>packages</em>.</p>
+</blockquote>
+
+<h2 id="understanding-common-directory-structures">Understanding: common directory structures</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+├── README.md
+├── LICENSE.txt
+├── pyproject.toml
+├── docs
+│   └── <span class="nb">source</span>
+│       └── index.md
+├── src
+│   └── package_name
+│       └── __init__.py
+│       └── module_a.py
+└── tests
+    └── __init__.py
+    └── test_module_a.py
+</code></pre></div></div>
+
+<p>Python Packaging today generally assumes a specific directory design.
+Following this convention generally improves the <strong>understanding</strong> of your code. We&#8217;ll cover each of these below.</p>
+
+<h3 id="project-root-files">Project root files</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+├── README.md
+├── LICENSE.txt
+├── pyproject.toml
+│ ...
+</code></pre></div></div>
+
+<ul>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">README.md</code> file</strong> is a <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> file with documentation including project goals and other short notes about installation, development, or usage. The <code class="language-plaintext highlighter-rouge">README.md</code> file is akin to a book jacket blurb which quickly tells the audience what the book will be about.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file</strong> is a text file which indicates licensing details for the project. It often includes information about how it may be used and protects the authors in disputes. The <code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file can be thought of like a book&#8217;s copyright page. See <a href="https://choosealicense.com/">https://choosealicense.com/</a> for more details on selecting an open source license.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file</strong> is a Python-specific <a href="https://en.wikipedia.org/wiki/TOML">TOML</a> file which helps organize how the project is used and built for wider distribution. The <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file is similar to a book&#8217;s table of contents, index, and printing or production specification.</li>
+</ul>
+
+<h3 id="project-sub-directories">Project sub-directories</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+│ ...
+├── docs
+│   └── <span class="nb">source</span>
+│       └── index.md
+├── src
+│   └── package_name
+│       └── __init__.py
+│       └── module_a.py
+└── tests
+    └── __init__.py
+    └── test_module_a.py
+</code></pre></div></div>
+
+<ul>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">docs</code> directory</strong> is used for in-depth documentation and related documentation build code (for example, when building documentation websites, aka &#8220;docsites&#8221;). The <code class="language-plaintext highlighter-rouge">docs</code> directory includes information similar to a book&#8217;s &#8220;study guide&#8221;, providing content surrounding how to best make use of and understand the content found within.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">src</code> directory</strong>  includes primary source code for use in the project. Python projects generally use a nested package directory with modules and sub-packages. The <code class="language-plaintext highlighter-rouge">src</code> directory is like a book&#8217;s body or general content (perhaps thinking of modules as chapters or sections of related ideas).</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">tests</code> directory</strong> includes testing code for validating functionality of code found in the <code class="language-plaintext highlighter-rouge">src</code> directory. The above follows <a href="https://docs.pytest.org/">pytest</a> conventions. The <code class="language-plaintext highlighter-rouge">tests</code> directory is for code which acts like a book&#8217;s early reviewers or editors, making sure that if you change things in <code class="language-plaintext highlighter-rouge">src</code> the impacts remain as expected.</li>
+</ul>
+
+<h3 id="common-directory-structure-examples">Common directory structure examples</h3>
+
+<p>The Python directory structure described above can be witnessed in the wild from the following resources. These can serve as a great resource for starting or adjusting your own work.</p>
+
+<ul>
+  <li><a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a></li>
+  <li><a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a></li>
+  <li><a href="https://github.com/microsoft/python-package-template"><code class="language-plaintext highlighter-rouge">microsoft/python-package-template</code></a></li>
+</ul>
+
+<h2 id="trust-building-audience-confidence">Trust: building audience confidence</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing an audience member asking whether they trust a package.">
+    <img src="/set-website/preview/pr-22/images/package-audience-trust.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing an audience member asking whether they trust a package." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing an audience member asking whether they trust a package.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience&#8217;s trust in packaged Python work.</p>
+
+<h3 id="source-control-authenticity">Source control authenticity</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image comparing the difference between a generic or anonymous user and one with greater authenticity.">
+    <img src="/set-website/preview/pr-22/images/source-control-authenticity.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image comparing the difference between a generic or anonymous user and one with greater authenticity.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub&#8217;s documentation on filling out your profile</a>. Doing this may seem irrelevant but can go a long way to making technical work more relatable.</p>
+
+<ul>
+  <li>Add a profile picture of yourself or something fun.</li>
+  <li>Set your profile description to information which is both professionally accurate and unique to you.</li>
+  <li>Show or link to work which you feel may be relevant or exciting to those in your audience.</li>
+</ul>
+
+<h3 id="staying-up-to-date-with-supported-python-releases">Staying up to date with supported Python releases</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing major Python releases and their support status.">
+    <img src="/set-website/preview/pr-22/images/python-version-status.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing major Python releases and their support status.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Use Python versions which are supported (this changes over time).
+Python versions which are end-of-life may be difficult to support and are a sign of <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> for projects. Specify the version of Python which is compatiable with your project by using environment specifications such as <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files and related packaging tools (more on this below).</p>
+
+<ul>
+  <li>See here for <a href="https://devguide.python.org/versions/">updated information on Python version status</a>.</li>
+  <li>Staying up to date with supported releases oftentimes can result in performance or other similar benefits (later versions usually include improvements!).</li>
+</ul>
+
+<h3 id="security-linting-and-visible-checks-with-github-actions">Security linting and visible checks with GitHub Actions</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+    <img src="/set-website/preview/pr-22/images/package-magnifying-glass.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing a package being inspected by a magnifying glass.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!</p>
+
+<ul>
+  <li><a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code>`</a>: checks Python code</li>
+  <li><a href="https://github.com/pyupio/safety"><code class="language-plaintext highlighter-rouge">pyupio/safety</code>`</a>: checks Python dependencies</li>
+  <li><a href="https://github.com/gitleaks/gitleaks"><code class="language-plaintext highlighter-rouge">gitleaks</code></a>: checks for sensitive passwords, keys, or tokens</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+    <img src="/set-website/preview/pr-22/images/gh-actions-checkmark.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing a package being inspected by a magnifying glass.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
+This provides the audience with a sense that you&#8217;re transparently testing and sharing results of those tests.</p>
+
+<ul>
+  <li>See <a href="https://docs.github.com/en/actions">GitHub&#8217;s documentation on this topic for more information</a>.</li>
+  <li>See also <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">the DBMI Software Engineering Team&#8217;s blog post: &#8220;Automate Software Workflows with Github Actions&#8221;</a></li>
+</ul>
+
+<h2 id="connection-personal-and-inter-package-relationships">Connection: personal and inter-package relationships</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+    <img src="/set-website/preview/pr-22/images/package-connections.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing a package being inspected by a magnifying glass.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Understandability and trust set the stage for your project&#8217;s <strong>connection</strong> to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project&#8217;s connection to others and their work.</p>
+
+<h3 id="acknowledging-authors-and-referenced-work-with-citationcff">Acknowledging authors and referenced work with CITATION.cff</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="CITATION.cff file format icon.">
+    <img src="/set-website/preview/pr-22/images/citation-cff-icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="CITATION.cff file format icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      CITATION.cff file format icon.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Add a <strong><code class="language-plaintext highlighter-rouge">CITATION.cff</code></strong> file to your project root in order to describe project relationships and acknowledgements in a standardized way. The <a href="https://citation-file-format.github.io/">CFF format</a> is also <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub compatible</a>, making it easier to cite your project.</p>
+
+<ul>
+  <li>This is similar to a book&#8217;s credits, acknowledgements, dedication, and author information sections.</li>
+  <li>See here for a <a href="https://citation-file-format.github.io/cff-initializer-javascript/#/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> file generator (and updater)</a>.</li>
+</ul>
+
+<h3 id="reaching-collaborators-using-contributingmd">Reaching collaborators using CONTRIBUTING.md</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="A file labeled as CONTRIBUTING.md with a handshake icon.">
+    <img src="/set-website/preview/pr-22/images/contributing-file-with-handshake.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="A file labeled as CONTRIBUTING.md with a handshake icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      A file labeled as CONTRIBUTING.md with a handshake icon.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Provide a <strong><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code></strong> file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.&lt;/</p>
+
+<ul>
+  <li>See GitHub&#8217;s documentation on <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors">&#8220;Setting guidelines for repository contributors&#8221;</a></li>
+  <li>See opensource.guide&#8217;s section on <a href="https://opensource.guide/starting-a-project/#writing-your-contributing-guidelines">&#8220;Writing your contributing guidelines&#8221;</a></li>
+</ul>
+
+<h3 id="environment-management-reproducibility-as-connected-project-reality">Environment management reproducibility as connected project reality</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing code being sent through environment and packaging managers in order to produce a package.">
+    <img src="/set-website/preview/pr-22/images/environment-management-tooling.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing code being sent through environment and packaging managers in order to produce a package." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing code being sent through environment and packaging managers in order to produce a package.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center">Code without an environment specification is difficult to run in a consistent way. This can lead to &#8220;works on my machine&#8221; scenarios where different things happen for different people, reducing the chance that people can connect with a shared reality for how your code should be used.</p>
+
+<blockquote>
+  <p><strong>&#8220;But why do we have to switch the way we do things?&#8221;</strong>
+<em>We&#8217;ve always been switching approaches (software approaches evolve over time)!</em> A brief history of Python environment and packaging tooling:</p>
+
+  <ol>
+    <li><strong><code class="language-plaintext highlighter-rouge">distutils</code>, <code class="language-plaintext highlighter-rouge">easy_install</code> + <code class="language-plaintext highlighter-rouge">setup.py</code></strong> <br />(primarily used during 1990&#8217;s - early 2000&#8217;s)</li>
+    <li><strong><code class="language-plaintext highlighter-rouge">pip</code>, <code class="language-plaintext highlighter-rouge">setup.py</code> + <code class="language-plaintext highlighter-rouge">requirements.txt</code></strong> <br />(primarily used during late 2000&#8217;s - early 2010&#8217;s)</li>
+    <li><strong><code class="language-plaintext highlighter-rouge">poetry</code> + <code class="language-plaintext highlighter-rouge">pyproject.toml</code></strong> <br />(began use around late 2010&#8217;s - ongoing)</li>
+  </ol>
+</blockquote>
+
+<h4 id="using-python-poetry-for-environment-and-packaging-management">Using Python <code class="language-plaintext highlighter-rouge">poetry</code> for environment and packaging management</h4>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Python Poetry environment and packaging manager tool icon.">
+    <img src="/set-website/preview/pr-22/images/poetry-icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Python Poetry environment and packaging manager tool icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Python Poetry environment and packaging manager tool icon.
+
+    </figcaption>
+  
+</figure>
+
+<p class="center"><a href="https://github.com/python-poetry/poetry">Poetry</a> is one Pythonic environment and packaging manager which can help increase reproducibility using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files. It&#8217;s one of many other alternatives such as <a href="https://hatch.pypa.io/latest/"><code class="language-plaintext highlighter-rouge">hatch</code></a> and <a href="https://pipenv.pypa.io/en/latest/"><code class="language-plaintext highlighter-rouge">pipenv</code></a>.</p>
+
+<h5 id="poetry-directory-structure-template-use"><code class="language-plaintext highlighter-rouge">poetry</code> directory structure template use</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry new <span class="nt">--name</span><span class="o">=</span>package_name <span class="nt">--src</span> <span class="nb">.</span>
+Created package package_name <span class="k">in</span> <span class="nb">.</span>
+
+user@machine % tree <span class="nb">.</span>
+<span class="nb">.</span>
+├── README.md
+├── pyproject.toml
+├── src
+│   └── package_name
+│       └── __init__.py
+└── tests
+    └── __init__.py
+</code></pre></div></div>
+
+<p>After installation, Poetry gives us the ability to initialize a directory structure similar to what we presented earlier by using the <a href="https://python-poetry.org/docs/cli/#new"><code class="language-plaintext highlighter-rouge">poetry new ...</code> command</a>. If you&#8217;d like a more interactive version of the same, use the <a href="https://python-poetry.org/docs/cli/#init"><code class="language-plaintext highlighter-rouge">poetry init</code> command</a> to fill out various sections of your project with detailed information.</p>
+
+<h5 id="poetry-format-for-project-pyprojecttoml"><code class="language-plaintext highlighter-rouge">poetry</code> format for project <code class="language-plaintext highlighter-rouge">pyproject.toml</code></h5>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pyproject.toml</span>
+<span class="nn">[tool.poetry]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"package-name"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"0.1.0"</span>
+<span class="py">description</span> <span class="p">=</span> <span class="s">""</span>
+<span class="py">authors</span> <span class="p">=</span> <span class="p">[</span><span class="s">"username &lt;email@address&gt;"</span><span class="p">]</span>
+<span class="py">readme</span> <span class="p">=</span> <span class="s">"README.md"</span>
+<span class="py">packages</span> <span class="p">=</span> <span class="py">[{include</span> <span class="p">=</span> <span class="s">"package_name"</span><span class="p">,</span> <span class="py">from</span> <span class="p">=</span> <span class="s">"src"</span><span class="err">}]</span>
+
+<span class="nn">[tool.poetry.dependencies]</span>
+<span class="py">python</span> <span class="p">=</span> <span class="s">"^3.9"</span>
+
+<span class="nn">[build-system]</span>
+<span class="py">requires</span> <span class="p">=</span> <span class="nn">["poetry-core"]</span>
+<span class="py">build-backend</span> <span class="p">=</span> <span class="s">"poetry.core.masonry.api"</span>
+</code></pre></div></div>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">poetry new ...</code> command also initializes the content of our <a href="https://python-poetry.org/docs/pyproject#the-pyprojecttoml-file"><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file with opinionated details</a> (following the recommendation from earlier in the article regarding declared Python version specification).</p>
+
+<h5 id="poetry-dependency-management"><code class="language-plaintext highlighter-rouge">poetry</code> dependency management</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry add pandas
+
+Creating virtualenv package-name-1STl06GY-py3.9 <span class="k">in</span> /pypoetry/virtualenvs
+Using version ^2.1.0 <span class="k">for </span>pandas
+
+...
+
+Writing lock file
+</code></pre></div></div>
+
+<p>We can add dependencies directly using the <a href="https://python-poetry.org/docs/cli/#add"><code class="language-plaintext highlighter-rouge">poetry add ...</code> command</a>. This command also provides the possibility of using a <code class="language-plaintext highlighter-rouge">group</code> flag (for example <code class="language-plaintext highlighter-rouge">poetry add pytest --group testing</code>) to help organize and distinguish multiple sets of dependencies.</p>
+
+<ul>
+  <li>A local virtual environment is managed for us automatically.</li>
+  <li><a href="https://python-poetry.org/docs/libraries/#lock-file">A <code class="language-plaintext highlighter-rouge">poetry.lock</code> file</a> is written when the dependencies are installed to help ensure the version you installed today will be what&#8217;s used on other machines.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">poetry.lock</code> file helps ensure reproducibility when dealing with dependency version ranges (where otherwise we may end up using different versions which match the dependency ranges but observe different results).</li>
+</ul>
+
+<h5 id="running-python-from-the-context-of-poetry-environments">Running Python from the context of <code class="language-plaintext highlighter-rouge">poetry</code> environments</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry run python <span class="nt">-c</span> <span class="s2">"import pandas; print(pandas.__version__)"</span>
+
+2.1.0
+</code></pre></div></div>
+
+<p>We can invoke the virtual environment directly using the <a href="https://python-poetry.org/docs/cli/#run"><code class="language-plaintext highlighter-rouge">poetry run ...</code> command</a>.</p>
+
+<ul>
+  <li>This allows us to quickly run code through the context of the project&#8217;s environment.</li>
+  <li>Poetry can automatically switch between multiple environments based on the local directory structure.</li>
+  <li>We can also the environment as a &#8220;shell&#8221; (similar to virtualenv&#8217;s <code class="language-plaintext highlighter-rouge">activate</code>) with the <a href="https://python-poetry.org/docs/cli/#shell"><code class="language-plaintext highlighter-rouge">poetry shell</code> command</a> which enables us to leverage a dynamic session in the context of the <code class="language-plaintext highlighter-rouge">poetry</code> environment.</li>
+</ul>
+
+<h5 id="building-source-code-with-poetry">Building source code with <code class="language-plaintext highlighter-rouge">poetry</code></h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% pip <span class="nb">install </span>git+https://github.com/project/package_name
+</code></pre></div></div>
+
+<p>Even if we don&#8217;t reach wider distribution on PyPI or elsewhere, source code managed by <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">poetry</code> can be used for &#8220;manual&#8221; distribution (with reproducible results) from GitHub repositories. When we&#8217;re ready to distribute pre-built packages on other networks we can also use the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry build
+
+Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
+  - Building sdist
+  - Built package_name-0.1.0.tar.gz
+  - Building wheel
+  - Built package_name-0.1.0-py3-none-any.whl
+</code></pre></div></div>
+
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -155,7 +618,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -303,7 +766,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -411,7 +874,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -525,7 +988,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -672,7 +1135,7 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -791,7 +1254,7 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
   <li><a href="https://github.com/jendrikseipp/vulture">Vulture</a></li>
   <li><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a></li>
   <li><a href="https://coverage.readthedocs.io/">Coverage</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -909,7 +1372,7 @@ flowchart TB
 <ul>
   <li><a href="https://arrow.apache.org/docs/index.html">Apache Arrow Documentation</a></li>
   <li><a href="https://duckdb.org/docs/">DuckDB Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1053,7 +1516,7 @@ graph LR
   <li><a href="https://plantuml.com/">PlantUML</a></li>
   <li><a href="https://vega.github.io/vega/">Vega</a></li>
   <li><a href="https://kroki.io/">Kroki.io</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-09-05T21:46:22+00:00</updated><id>/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-09-05T21:59:13+00:00</updated><id>/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
