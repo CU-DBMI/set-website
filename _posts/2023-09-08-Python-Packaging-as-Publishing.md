@@ -38,9 +38,9 @@ The practice of Python packaging efforts is similar to that of publishing a book
 {% include figure.html image="images/python-packaging-to-audience.png" caption="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience."  %}
 {:.center}
 
-These can be thought of metaphors when it comes to packaging in Python. Following good packaging practices increases development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.
+These can be thought of metaphors when it comes to packaging in Python. Just like books, software can sometimes have a [code smells](https://en.wikipedia.org/wiki/Code_smell) we want to avoid. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.
 
-It can also work just as well for [inner source](https://en.wikipedia.org/wiki/Inner_source) collaboration (private or proprietary development within organizations).
+Note: these techniques can also work just as well for [inner source](https://en.wikipedia.org/wiki/Inner_source) collaboration (private or proprietary development within organizations)! Don't hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).
 
 > ℹ️ __"Wait, what are Python packages?"__
 >
@@ -193,8 +193,8 @@ Add a __`CITATION.cff`__ file to your project root in order to describe project 
 
 ### Reaching collaborators using CONTRIBUTING.md
 
-![](../images/conributing-file-with-handshake.png)
-{% include figure.html image="images/conributing-file-with-handshake.png" caption="A file labeled as CONTRIBUTING.md with a handshake icon."  %}
+![](../images/contributing-file-with-handshake.png)
+{% include figure.html image="images/contributing-file-with-handshake.png" caption="A file labeled as CONTRIBUTING.md with a handshake icon."  %}
 {:.center}
 
 Provide a __`CONTRIBUTING.md`__ file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.</
