@@ -8,6 +8,8 @@ tags:
   - packaging
   - publishing
   - software-design
+  - understandability
+  - environment-management
 ---
 
 # Tip of the Week: Python Packaging as Publishing
