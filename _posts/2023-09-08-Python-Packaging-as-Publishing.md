@@ -22,6 +22,8 @@ Python packaging is the craft of preparing for and reaching distribution of your
 
 __TLDR (too long, didn't read);__
 
+Use Pythonic packaging tools and techniques to help avoid [code decay](https://en.wikipedia.org/wiki/Software_rot) and unwanted [code smells](https://en.wikipedia.org/wiki/Code_smell) and increase your development velocity. Increase understanding with unsurprising directory structures like those exhibited in [`pypa/sampleproject`](https://github.com/pypa/sampleproject) or [`scientific-python/cookie`](https://github.com/scientific-python/cookie). Enhance trust by being authentic on source control systems like GitHub ([by customizing your profile](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile)), staying up to date with the [latest supported versions of Python](https://devguide.python.org/versions/), and using security linting tools like [`PyCQA/bandit`](https://github.com/PyCQA/bandit) through [visible + automated GitHub Actions ✅ checks](https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html). Connect your projects to others using [`CITATION.cff` files](https://citation-file-format.github.io/), [`CONTRIBUTING.md` files](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors), and using environment + packaging tools like [`poetry`](https://python-poetry.org/docs/) to help others reproduce the same results from your code.
+
 ## Why practice packaging?
 
 ![](../images/text-vs-book.png)
@@ -115,8 +117,8 @@ project_directory
 The Python directory structure described above can be witnessed in the wild from the following resources. These can serve as a great resource for starting or adjusting your own work.
 
 - [`pypa/sampleproject`](https://github.com/pypa/sampleproject)
-- [`microsoft/python-package-template`](https://github.com/microsoft/python-package-template)
 - [`scientific-python/cookie`](https://github.com/scientific-python/cookie)
+- [`microsoft/python-package-template`](https://github.com/microsoft/python-package-template)
 
 ## Trust: building audience confidence
 
@@ -158,9 +160,9 @@ Python versions which are end-of-life may be difficult to support and are a sign
 
 Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!
 
-- [PyCQA/bandit](https://github.com/PyCQA/bandit): checks Python code
-- [pyupio/safety](https://github.com/pyupio/safety): checks Python dependencies
-- [gitleaks](https://github.com/gitleaks/gitleaks): checks for sensitive passwords, keys, or tokens
+- [`PyCQA/bandit``](https://github.com/PyCQA/bandit): checks Python code
+- [`pyupio/safety``](https://github.com/pyupio/safety): checks Python dependencies
+- [`gitleaks`](https://github.com/gitleaks/gitleaks): checks for sensitive passwords, keys, or tokens
 
 ![](../images/gh-actions-checkmark.png)
 {% include figure.html image="images/gh-actions-checkmark.png" caption="Image showing a package being inspected by a magnifying glass."  %}
@@ -217,7 +219,7 @@ Code without an environment specification is difficult to run in a consistent wa
 > 1. __`pip`, `setup.py` + `requirements.txt`__ <br>(primarily used during late 2000's - early 2010's)
 > 1. __`poetry` + `pyproject.toml`__ <br>(began use around late 2010's - ongoing)
 
-#### Using Python `Poetry` for environment and packaging management
+#### Using Python `poetry` for environment and packaging management
 
 ![](../images/poetry-icon.png)
 {% include figure.html image="images/poetry-icon.png" caption="Python Poetry environment and packaging manager tool icon."  %}
@@ -225,7 +227,7 @@ Code without an environment specification is difficult to run in a consistent wa
 
 [Poetry](https://github.com/python-poetry/poetry) is one Pythonic environment and packaging manager which can help increase reproducibility using `pyproject.toml` files. It's one of many other alternatives such as [`hatch`](https://hatch.pypa.io/latest/) and [`pipenv`](https://pipenv.pypa.io/en/latest/).
 
-##### `Poetry` directory structure template use
+##### `poetry` directory structure template use
 
 ```bash
 user@machine % poetry new --name=package_name --src .
@@ -244,7 +246,7 @@ user@machine % tree .
 
 After installation, Poetry gives us the ability to initialize a directory structure similar to what we presented earlier by using the [`poetry new ...` command](https://python-poetry.org/docs/cli/#new). If you'd like a more interactive version of the same, use the [`poetry init` command](https://python-poetry.org/docs/cli/#init) to fill out various sections of your project with detailed information.
 
-##### `Poetry` format for project `pyproject.toml`
+##### `poetry` format for project `pyproject.toml`
 
 ```toml
 # pyproject.toml
@@ -266,7 +268,7 @@ build-backend = "poetry.core.masonry.api"
 
 Using the `poetry new ...` command also initializes the content of our [`pyproject.toml` file with opinionated details](https://python-poetry.org/docs/pyproject#the-pyprojecttoml-file) (following the recommendation from earlier in the article regarding declared Python version specification).
 
-##### `Poetry` dependency management
+##### `poetry` dependency management
 
 ```bash
 user@machine % poetry add pandas
@@ -285,7 +287,7 @@ We can add dependencies directly using the [`poetry add ...` command](https://py
 - [A `poetry.lock` file](https://python-poetry.org/docs/libraries/#lock-file) is written when the dependencies are installed to help ensure the version you installed today will be what's used on other machines.
 - The `poetry.lock` file helps ensure reproducibility when dealing with dependency version ranges (where otherwise we may end up using different versions which match the dependency ranges but observe different results).
 
-##### Running Python from the context of `Poetry` environments
+##### Running Python from the context of `poetry` environments
 
 ```bash
 % poetry run python -c "import pandas; print(pandas.__version__)"
@@ -299,7 +301,7 @@ We can invoke the virtual environment directly using the [`poetry run ...` comma
 - Poetry can automatically switch between multiple environments based on the local directory structure.
 - We can also the environment as a "shell" (similar to virtualenv's `activate`) with the [`poetry shell` command](https://python-poetry.org/docs/cli/#shell) which enables us to leverage a dynamic session in the context of the `poetry` environment.
 
-##### Building source code with `Poetry`
+##### Building source code with `poetry`
 
 ```bash
 % pip install git+https://github.com/project/package_name
