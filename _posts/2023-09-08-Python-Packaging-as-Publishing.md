@@ -26,7 +26,6 @@ Use Pythonic packaging tools and techniques to help avoid [code decay](https://e
 
 ## Why practice packaging?
 
-![](../images/text-vs-book.png)
 {% include figure.html image="images/text-vs-book.png" caption="Image comparing how a page with some text and a book look and feel different."  %}
 {:.center}
 
@@ -36,7 +35,6 @@ The practice of Python packaging efforts is similar to that of publishing a book
 - A book often cites references and acknowledges other work explicitly.
 - A book undergoes a manufacturing process which allows the text to be received in many places the same way.
 
-![](../images/python-packaging-to-audience.png)
 {% include figure.html image="images/python-packaging-to-audience.png" caption="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience."  %}
 {:.center}
 
@@ -122,7 +120,6 @@ The Python directory structure described above can be witnessed in the wild from
 
 ## Trust: building audience confidence
 
-![](../images/package-audience-trust.png)
 {% include figure.html image="images/package-audience-trust.png" caption="Image showing an audience member asking whether they trust a package."  %}
 {:.center}
 
@@ -130,7 +127,6 @@ Building an understandable body of content helps tremendously with audience trus
 
 ### Source control authenticity
 
-![](../images/source-control-authenticity.png)
 {% include figure.html image="images/source-control-authenticity.png" caption="Image comparing the difference between a generic or anonymous user and one with greater authenticity."  %}
 {:.center}
 
@@ -142,7 +138,6 @@ Be authentic! Fill out your profile to help your audience know the author and wh
 
 ### Staying up to date with supported Python releases
 
-![](../images/python-version-status.png)
 {% include figure.html image="images/python-version-status.png" caption="Image showing major Python releases and their support status."  %}
 {:.center}
 
@@ -154,7 +149,6 @@ Python versions which are end-of-life may be difficult to support and are a sign
 
 ### Security linting and visible checks with GitHub Actions
 
-![](../images/package-magnifying-glass.png)
 {% include figure.html image="images/package-magnifying-glass.png" caption="Image showing a package being inspected by a magnifying glass."  %}
 {:.center}
 
@@ -164,7 +158,6 @@ Use security vulnerability linters to help prevent undesirable or risky processi
 - [`pyupio/safety``](https://github.com/pyupio/safety): checks Python dependencies
 - [`gitleaks`](https://github.com/gitleaks/gitleaks): checks for sensitive passwords, keys, or tokens
 
-![](../images/gh-actions-checkmark.png)
 {% include figure.html image="images/gh-actions-checkmark.png" caption="Image showing a package being inspected by a magnifying glass."  %}
 {:.center}
 
@@ -176,7 +169,6 @@ This provides the audience with a sense that you're transparently testing and sh
 
 ## Connection: personal and inter-package relationships
 
-![](../images/package-connections.png)
 {% include figure.html image="images/package-connections.png" caption="Image showing a package being inspected by a magnifying glass."  %}
 {:.center}
 
@@ -184,7 +176,6 @@ Understandability and trust set the stage for your project's __connection__ to o
 
 ### Acknowledging authors and referenced work with CITATION.cff
 
-![](../images/citation-cff-icon.png)
 {% include figure.html image="images/citation-cff-icon.png" caption="CITATION.cff file format icon."  %}
 {:.center}
 
@@ -195,7 +186,6 @@ Add a __`CITATION.cff`__ file to your project root in order to describe project 
 
 ### Reaching collaborators using CONTRIBUTING.md
 
-![](../images/contributing-file-with-handshake.png)
 {% include figure.html image="images/contributing-file-with-handshake.png" caption="A file labeled as CONTRIBUTING.md with a handshake icon."  %}
 {:.center}
 
@@ -206,7 +196,6 @@ Provide a __`CONTRIBUTING.md`__ file to your project root so as to make clear su
 
 ### Environment management reproducibility as connected project reality
 
-![](../images/environment-management-tooling.png)
 {% include figure.html image="images/environment-management-tooling.png" caption="Image showing code being sent through environment and packaging managers in order to produce a package."  %}
 {:.center}
 
@@ -221,7 +210,6 @@ Code without an environment specification is difficult to run in a consistent wa
 
 #### Using Python `poetry` for environment and packaging management
 
-![](../images/poetry-icon.png)
 {% include figure.html image="images/poetry-icon.png" caption="Python Poetry environment and packaging manager tool icon."  %}
 {:.center}
 
