@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Diagrams as Code | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-22/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Diagrams as Code">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Diagrams as Code">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/preview/pr-22/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Diagrams as Code">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-22/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2023-09-05T21:46:22+00:00">
+  <meta property="article:published_time" content="2022-11-27T00:00:00+00:00">
+  <meta property="article:modified_time" content="2023-09-05T21:46:22+00:00">
+  <meta name="revised" content="2023-09-05T21:46:22+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Diagrams as Code" },
+      "datePublished": "2022-11-27T00:00:00+00:00",
+      "dateModified": "2023-09-05T21:46:22+00:00",
+    
+    "name": "Tip of the Week: Diagrams as Code",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Diagrams as Code",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-22/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-22/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-22/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-22/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-22/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-22/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-22/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-22/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-22/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-22/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-22/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-22/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-22/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-22/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-22/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Tip of the Week: Diagrams as Code</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-22/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-22/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>November 27, 2022</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 05, 2023</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-22/blog">
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20diagrams%22" class="tag" data-tooltip='Show items with the tag "diagrams"'>
+        diagrams
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20mermaid%22" class="tag" data-tooltip='Show items with the tag "mermaid"'>
+        mermaid
+      </a>
+    
+      <a href="/set-website/preview/pr-22/blog?search=%22tag:%20markdown%22" class="tag" data-tooltip='Show items with the tag "markdown"'>
+        markdown
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
+
+<blockquote>
+  <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+</blockquote>
+
+<!-- excerpt start -->
+
+<p>Diagrams can be a useful way to illuminate and communicate ideas. Free-form drawing or drag and drop tools are one common way to create diagrams. With this tip of the week we introduce another option: diagrams as code (DaC), or creating diagrams by using code.</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn’t read);</strong>
+Diagrams as code (DaC) tools provide an advantage for illustrating concepts by enabling <strong>quick visual positioning</strong>, <strong>source controllable input</strong>, <strong>portability (both for input and output formats)</strong>, and <strong>open collaboration through reproducibility</strong>. Consider using <a href="https://mermaid-js.github.io/mermaid/">Mermaid</a> (as well as many other DaC tools) to assist your diagramming efforts which can be used directly, within in your markdown files, or <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams">Github commentary</a> using code blocks (for example, ` ```mermaid `).</p>
+
+<h2 id="example-mermaid-diagram-as-code">Example Mermaid Diagram as Code</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flowchart LR
+    a --&gt; b
+    b --&gt; c
+    c --&gt; d1
+    c --&gt; d2
+</code></pre></div></div>
+
+<p><em>Mermaid code</em></p>
+</div>
+  
+    
+    <div>
+<pre class="mermaid">
+flowchart LR
+    a --&gt; b
+    b --&gt; c
+    c --&gt; d1
+    c --&gt; d2
+</pre>
+<p><em>Mermaid rendered</em>
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script></p>
+
+</div>
+  
+</div>
+
+<p>The above shows an example <a href="https://mermaid-js.github.io/mermaid/#/flowchart">mermaid flowchart</a> code and its rendered output. The syntax is specific to mermaid and acts as a simple coding language to help you depict ideas. Mermaid also includes options for sequence, class, Gantt, and other diagram types. Mermaid provides a <a href="https://mermaid.live/edit#pako:eNpVzD1PwzAQBuC_Et2cRv6KL_HABBtT2SovV9vQCBxXlqPSRvnvhFRI9KZ73vuYwSUfwMD7V7q4E-VSve7tWK1F1W73VB3vOG5wd7gNnj9IQA0x5EiDX9_NvzML5RRisGDW1lP-tGDHZd2jqaS36-jAlDyFGqazpxKeB_rIFB_DFz-UlP-yM42HlOI_gpnhGww2vMMee62kapliqoYrmJ41SjONrOVSSN21Sw237Z43DLVgXCNKIWSHuPwAvLtMeg">live editor</a> which can be used to quickly draft and share content.</p>
+
+<h2 id="mermaid-github-integration">Mermaid Github Integration</h2>
+
+<div class="cols" style="--cols: 2">
+  
+    
+    <div>
+<figure class="figure">
+  <a class="figure-image" aria-label="Github comment">
+    <img src="/set-website/preview/pr-22/images/github_mermaid_code.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Github comment" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Github comment
+
+    </figcaption>
+  
+</figure>
+
+</div>
+  
+    
+    <div>
+<figure class="figure">
+  <a class="figure-image" aria-label="Github comment preview">
+    <img src="/set-website/preview/pr-22/images/github_mermaid_preview.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Github comment preview" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Github comment preview
+
+    </figcaption>
+  
+</figure>
+
+</div>
+  
+</div>
+
+<p>Mermaid diagrams may be rendered directly from markdown (<code class="language-plaintext highlighter-rouge">.md</code>) and text communication content (like pull request or issue comments) within Github. See <a href="https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/">Github’s blog post on mermaid</a> for more details covering this topic.</p>
+
+<h2 id="mermaid-jupyter-notebook-integration">Mermaid Jupyter Notebook Integration</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Mermaid content rendered in a Jupyter notebook">
+    <img src="/set-website/preview/pr-22/images/jupyter_mermaid_example.png" style="
+        width: 500px;
+        max-height: unset;
+      " alt="Mermaid content rendered in a Jupyter notebook" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Mermaid content rendered in a Jupyter notebook
+
+    </figcaption>
+  
+</figure>
+
+<p>Mermaid diagrams can be rendered directly within <a href="https://en.wikipedia.org/wiki/Project_Jupyter#Jupyter_Notebook_Documents">Jupyter notebooks</a> with a small amount of additional code and a rendering service. One way to render mermaid and other diagrams within notebooks is to use <a href="https://kroki.io/">Kroki.io</a>. See <a href="https://cu-dbmi.github.io/notebooks/lab?path=mermaid_example.ipynb">this example</a> for an interactive demonstration.</p>
+
+<h2 id="version-controlling-your-diagrams">Version Controlling Your Diagrams</h2>
+
+<pre class="mermaid">
+graph LR
+    subgraph Compose
+      write[Write Diagram Code]
+      render[Render Diagram]
+    end
+    subgraph Store[Save and Share]
+      save[Upload Diagram]
+    end
+    write --&gt; | create | render
+    render --&gt; | revise | write
+    render --&gt; | code and exports | save
+</pre>
+<p><em>Mermaid version control workflow example</em></p>
+
+<p>Creating your diagrams with code means you can enable reproducible and collaborative work on version control systems (like git). Using git in this way allows you to reference and remix your diagrams as part of development. It also allows others to collaborate on diagrams together making modifications as needed.</p>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<p>Please see the following the additional resources which are related to diagrams as code.</p>
+
+<ul>
+  <li><a href="https://plantuml.com/">PlantUML</a></li>
+  <li><a href="https://vega.github.io/vega/">Vega</a></li>
+  <li><a href="https://kroki.io/">Kroki.io</a></li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html">
+        Tip of the Week: Use Linting Tools to Save Time
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html">
+        Tip of the Week: Data Engineering with SQL, Arrow and DuckDB
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-22/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2023
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
