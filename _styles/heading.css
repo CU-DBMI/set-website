@@ -1,7 +1,9 @@
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5,
+h6 {
   font-family: var(--heading);
   line-height: calc(var(--spacing) - 0.2);
 }
@@ -32,14 +34,16 @@ h3 {
   text-align: left;
 }
 
-h4 {
+h4,
+h5,
+h6 {
   margin: 40px 0 20px 0;
   font-size: var(--medium);
   font-weight: var(--semi-bold);
   text-align: left;
 }
 
-:where(h1, h2, h3, h4) > .icon {
+:where(h1, h2, h3, h4, h5, h6) > .icon {
   margin-right: 1em;
   color: var(--light-gray);
 }
