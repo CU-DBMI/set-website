@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-09-05T21:59:13+00:00">
+  <meta property="og:updated_time" content="2023-09-06T01:57:45+00:00">
   <meta property="article:published_time" content="2023-09-05T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-09-05T21:59:13+00:00">
-  <meta name="revised" content="2023-09-05T21:59:13+00:00">
+  <meta property="article:modified_time" content="2023-09-06T01:57:45+00:00">
+  <meta name="revised" content="2023-09-06T01:57:45+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Python Packaging as Publishing" },
       "datePublished": "2023-09-05T00:00:00+00:00",
-      "dateModified": "2023-09-05T21:59:13+00:00",
+      "dateModified": "2023-09-06T01:57:45+00:00",
     
     "name": "Tip of the Week: Python Packaging as Publishing",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -473,6 +473,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2023</span>
+    </span>
+  
 </div>
 
 
@@ -561,7 +566,7 @@
   
 </figure>
 
-<p class="center">The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and <em>why</em> are these things different?</p>
+<p class="center left">The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and <em>why</em> are these things different?</p>
 
 <ul>
   <li>A book has commonly understood sequencing of content (i.e. copyright page, then title page, then body content pages…).</li>
@@ -584,7 +589,7 @@
   
 </figure>
 
-<p class="center">These can be thought of metaphors when it comes to packaging in Python. Just like books, software can sometimes have a <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> we want to avoid. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.</p>
+<p class="center left">These can be thought of metaphors when it comes to packaging in Python. Just like books, software can sometimes have a <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> we want to avoid. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.</p>
 
 <p>Note: these techniques can also work just as well for <a href="https://en.wikipedia.org/wiki/Inner_source">inner source</a> collaboration (private or proprietary development within organizations)! Don’t hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).</p>
 
@@ -686,7 +691,7 @@ Following this convention generally improves the <strong>understanding</strong> 
   
 </figure>
 
-<p class="center">Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience’s trust in packaged Python work.</p>
+<p class="center left">Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience’s trust in packaged Python work.</p>
 
 <h3 id="source-control-authenticity">Source control authenticity</h3>
 
@@ -705,7 +710,7 @@ Following this convention generally improves the <strong>understanding</strong> 
   
 </figure>
 
-<p class="center">Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub’s documentation on filling out your profile</a>. Doing this may seem irrelevant but can go a long way to making technical work more relatable.</p>
+<p class="center left">Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub’s documentation on filling out your profile</a>. Doing this may seem irrelevant but can go a long way to making technical work more relatable.</p>
 
 <ul>
   <li>Add a profile picture of yourself or something fun.</li>
@@ -730,7 +735,7 @@ Following this convention generally improves the <strong>understanding</strong> 
   
 </figure>
 
-<p class="center">Use Python versions which are supported (this changes over time).
+<p class="center left">Use Python versions which are supported (this changes over time).
 Python versions which are end-of-life may be difficult to support and are a sign of <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> for projects. Specify the version of Python which is compatiable with your project by using environment specifications such as <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files and related packaging tools (more on this below).</p>
 
 <ul>
@@ -755,7 +760,7 @@ Python versions which are end-of-life may be difficult to support and are a sign
   
 </figure>
 
-<p class="center">Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!</p>
+<p class="center left">Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!</p>
 
 <ul>
   <li>
@@ -781,7 +786,7 @@ Python versions which are end-of-life may be difficult to support and are a sign
   
 </figure>
 
-<p class="center">Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
+<p class="center left">Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
 This provides the audience with a sense that you’re transparently testing and sharing results of those tests.</p>
 
 <ul>
@@ -807,7 +812,7 @@ This provides the audience with a sense that you’re transparently testing and 
   
 </figure>
 
-<p class="center">Understandability and trust set the stage for your project’s <strong>connection</strong> to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project’s connection to others and their work.</p>
+<p class="center left">Understandability and trust set the stage for your project’s <strong>connection</strong> to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project’s connection to others and their work.</p>
 
 <h3 id="acknowledging-authors-and-referenced-work-with-citationcff">Acknowledging authors and referenced work with CITATION.cff</h3>
 
@@ -826,7 +831,7 @@ This provides the audience with a sense that you’re transparently testing and 
   
 </figure>
 
-<p class="center">Add a <strong><code class="language-plaintext highlighter-rouge">CITATION.cff</code></strong> file to your project root in order to describe project relationships and acknowledgements in a standardized way. The <a href="https://citation-file-format.github.io/">CFF format</a> is also <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub compatible</a>, making it easier to cite your project.</p>
+<p class="center left">Add a <strong><code class="language-plaintext highlighter-rouge">CITATION.cff</code></strong> file to your project root in order to describe project relationships and acknowledgements in a standardized way. The <a href="https://citation-file-format.github.io/">CFF format</a> is also <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub compatible</a>, making it easier to cite your project.</p>
 
 <ul>
   <li>This is similar to a book’s credits, acknowledgements, dedication, and author information sections.</li>
@@ -850,7 +855,7 @@ This provides the audience with a sense that you’re transparently testing and 
   
 </figure>
 
-<p class="center">Provide a <strong><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code></strong> file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.&lt;/</p>
+<p class="center left">Provide a <strong><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code></strong> file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.</p>
 
 <ul>
   <li>See GitHub’s documentation on <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors">“Setting guidelines for repository contributors”</a>
@@ -909,7 +914,7 @@ This provides the audience with a sense that you’re transparently testing and 
   
 </figure>
 
-<p class="center"><a href="https://github.com/python-poetry/poetry">Poetry</a> is one Pythonic environment and packaging manager which can help increase reproducibility using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files. It’s one of many other alternatives such as <a href="https://hatch.pypa.io/latest/"><code class="language-plaintext highlighter-rouge">hatch</code></a> and <a href="https://pipenv.pypa.io/en/latest/"><code class="language-plaintext highlighter-rouge">pipenv</code></a>.</p>
+<p class="center left"><a href="https://github.com/python-poetry/poetry">Poetry</a> is one Pythonic environment and packaging manager which can help increase reproducibility using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files. It’s one of many other alternatives such as <a href="https://hatch.pypa.io/latest/"><code class="language-plaintext highlighter-rouge">hatch</code></a> and <a href="https://pipenv.pypa.io/en/latest/"><code class="language-plaintext highlighter-rouge">pipenv</code></a>.</p>
 
 <h5 id="poetry-directory-structure-template-use">
 <code class="language-plaintext highlighter-rouge">poetry</code> directory structure template use</h5>
