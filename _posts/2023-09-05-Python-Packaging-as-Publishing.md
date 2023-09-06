@@ -40,7 +40,15 @@ The practice of Python packaging efforts is similar to that of publishing a book
 
 These can be thought of metaphors when it comes to packaging in Python. Books have a smell which sometimes comes from how it was stored, treated, or maintained. Just like books, software can sometimes have a [code smells](https://en.wikipedia.org/wiki/Code_smell) indicating a lack of care or less sustainable condition. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.
 
+{% capture inner_source_alert %}
 Note: these techniques can also work just as well for [inner source](https://en.wikipedia.org/wiki/Inner_source) collaboration (private or proprietary development within organizations)! Don't hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).
+{% endcapture %}
+
+{%
+  include alert.html
+  type="tip"
+  content=inner_source_alert
+%}
 
 > ℹ️ __"Wait, what are Python packages?"__
 >
