@@ -14,7 +14,15 @@ tags:
 
 # Tip of the Week: Python Packaging as Publishing
 
-> Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
+{% capture tip-of-the-week-intro %}
+  {% include ip-of-the-week-intro.html %}
+{% end capture %}
+
+{%
+  include alert.html
+  type="info"
+  content=tip-of-the-week-intro
+%}
 
 <!-- excerpt start -->
 
@@ -50,16 +58,25 @@ Note: these techniques can also work just as well for [inner source](https://en.
   content=inner_source_alert
 %}
 
-> ℹ️ __"Wait, what are Python packages?"__
->
-> ```text
-> my_package/
-> │   __init__.py
-> │   module_a.py
-> │   module_b.py
-> ```
->
-> A Python __package__ is a collection of modules (`.py` files) that usually include an "initialization file" `__init__.py`. This post will cover the craft of __packaging__ which can include one or many _packages_.
+{% capture python_packages_info %}
+
+__"Wait, what are Python packages?"__
+
+```text
+my_package/
+│   __init__.py
+│   module_a.py
+│   module_b.py
+```
+
+A Python __package__ is a collection of modules (`.py` files) that usually include an "initialization file" `__init__.py`. This post will cover the craft of __packaging__ which can include one or many _packages_.
+{% endcapture %}
+
+{%
+  include alert.html
+  type="help"
+  content=python_packages_info
+%}
 
 ## Understanding: common directory structures
 
