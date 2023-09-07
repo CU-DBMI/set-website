@@ -16,7 +16,7 @@ tags:
 
 {% capture tip-of-the-week-intro %}
   {% include tip-of-the-week-intro.html %}
-{% end capture %}
+{% endcapture %}
 
 {%
   include alert.html
