@@ -15,7 +15,7 @@ tags:
 # Tip of the Week: Python Packaging as Publishing
 
 {% capture tip-of-the-week-intro %}
-  {% include ip-of-the-week-intro.html %}
+  {% include tip-of-the-week-intro.html %}
 {% end capture %}
 
 {%
