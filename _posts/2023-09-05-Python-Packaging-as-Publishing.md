@@ -28,7 +28,7 @@ Use Pythonic packaging tools and techniques to help avoid [code decay](https://e
 
 ## Why practice packaging?
 
-{% include figure.html image="images/text-vs-book.png" caption="Image comparing how a page with some text and a book look and feel different."  %}
+{% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
 
 The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and _why_ are these things different?
 
@@ -36,7 +36,7 @@ The practice of Python packaging efforts is similar to that of publishing a book
 - A book often cites references and acknowledges other work explicitly.
 - A book undergoes a manufacturing process which allows the text to be received in many places the same way.
 
-{% include figure.html image="images/python-packaging-to-audience.png" caption="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience."  %}
+{% include figure.html image="images/python-packaging-to-audience.png" caption="Code undergoing packaging to achieve understanding, trust, and connection for an audience."  %}
 
 These can be thought of metaphors when it comes to packaging in Python. Books have a smell which sometimes comes from how it was stored, treated, or maintained. Just like books, software can sometimes have a [code smells](https://en.wikipedia.org/wiki/Code_smell) indicating a lack of care or less sustainable condition. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.
 
@@ -137,13 +137,13 @@ The Python directory structure described above can be witnessed in the wild from
 
 ## Trust: building audience confidence
 
-{% include figure.html image="images/package-audience-trust.png" caption="Image showing an audience member asking whether they trust a package."  %}
+{% include figure.html image="images/package-audience-trust.png" caption="How much does your audience trust your work?."  %}
 
 Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience's trust in packaged Python work.
 
 ### Source control authenticity
 
-{% include figure.html image="images/source-control-authenticity.png" caption="Image comparing the difference between a generic or anonymous user and one with greater authenticity."  %}
+{% include figure.html image="images/source-control-authenticity.png" caption="Comparing the difference between a generic or anonymous user and one with greater authenticity."  %}
 
 Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for [GitHub's documentation on filling out your profile](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile). Doing this may seem irrelevant but can go a long way to making technical work more relatable.
 
@@ -153,7 +153,7 @@ Be authentic! Fill out your profile to help your audience know the author and wh
 
 ### Staying up to date with supported Python releases
 
-{% include figure.html image="images/python-version-status.png" caption="Image showing major Python releases and their support status."  %}
+{% include figure.html image="images/python-version-status.png" caption="Major Python releases and their support status."  %}
 
 Use Python versions which are supported (this changes over time).
 Python versions which are end-of-life may be difficult to support and are a sign of [code decay](https://en.wikipedia.org/wiki/Software_rot) for projects. Specify the version of Python which is compatiable with your project by using environment specifications such as `pyproject.toml` files and related packaging tools (more on this below).
@@ -163,7 +163,7 @@ Python versions which are end-of-life may be difficult to support and are a sign
 
 ### Security linting and visible checks with GitHub Actions
 
-{% include figure.html image="images/package-magnifying-glass.png" caption="Image showing a package being inspected by a magnifying glass."  %}
+{% include figure.html image="images/package-magnifying-glass.png" caption="Make an effort to inspect your package for known security issues."  %}
 
 Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!
 
@@ -171,7 +171,7 @@ Use security vulnerability linters to help prevent undesirable or risky processi
 - [`pyupio/safety``](https://github.com/pyupio/safety): checks Python dependencies
 - [`gitleaks`](https://github.com/gitleaks/gitleaks): checks for sensitive passwords, keys, or tokens
 
-{% include figure.html image="images/gh-actions-checkmark.png" caption="Image showing a package being inspected by a magnifying glass."  %}
+{% include figure.html image="images/gh-actions-checkmark.png" caption="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience."  %}
 
 Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
 This provides the audience with a sense that you're transparently testing and sharing results of those tests.
@@ -181,13 +181,13 @@ This provides the audience with a sense that you're transparently testing and sh
 
 ## Connection: personal and inter-package relationships
 
-{% include figure.html image="images/package-connections.png" caption="Image showing a package being inspected by a magnifying glass."  %}
+{% include figure.html image="images/package-connections.png" caption="How does your package connect with other work and people?"  %}
 
 Understandability and trust set the stage for your project's __connection__ to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project's connection to others and their work.
 
 ### Acknowledging authors and referenced work with CITATION.cff
 
-{% include figure.html image="images/citation-cff-icon.png" caption="CITATION.cff file format icon."  %}
+{% include figure.html image="images/citation-cff-icon.png" %}
 
 Add a __`CITATION.cff`__ file to your project root in order to describe project relationships and acknowledgements in a standardized way. The [CFF format](https://citation-file-format.github.io/) is also [GitHub compatible](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files), making it easier to cite your project.
 
@@ -196,7 +196,7 @@ Add a __`CITATION.cff`__ file to your project root in order to describe project 
 
 ### Reaching collaborators using CONTRIBUTING.md
 
-{% include figure.html image="images/contributing-file-with-handshake.png" caption="A file labeled as CONTRIBUTING.md with a handshake icon."  %}
+{% include figure.html image="images/contributing-file-with-handshake.png" caption="CONTRIBUTING.md documents can help you collaborate with others."  %}
 
 Provide a __`CONTRIBUTING.md`__ file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.
 
@@ -205,7 +205,7 @@ Provide a __`CONTRIBUTING.md`__ file to your project root so as to make clear su
 
 ### Environment management reproducibility as connected project reality
 
-{% include figure.html image="images/environment-management-tooling.png" caption="Image showing code being sent through environment and packaging managers in order to produce a package."  %}
+{% include figure.html image="images/environment-management-tooling.png" caption="Environment and packaging managers can help you connect with your audience."  %}
 
 Code without an environment specification is difficult to run in a consistent way. This can lead to "works on my machine" scenarios where different things happen for different people, reducing the chance that people can connect with a shared reality for how your code should be used.
 
@@ -218,7 +218,7 @@ Code without an environment specification is difficult to run in a consistent wa
 
 #### Using Python `poetry` for environment and packaging management
 
-{% include figure.html image="images/poetry-icon.png" caption="Python Poetry environment and packaging manager tool icon."  %}
+{% include figure.html image="images/poetry-icon.png" %}
 
 [Poetry](https://github.com/python-poetry/poetry) is one Pythonic environment and packaging manager which can help increase reproducibility using `pyproject.toml` files. It's one of many other alternatives such as [`hatch`](https://hatch.pypa.io/latest/) and [`pipenv`](https://pipenv.pypa.io/en/latest/).
 
