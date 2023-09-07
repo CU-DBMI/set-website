@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-22/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-22/" rel="alternate" type="text/html" /><updated>2023-09-07T14:53:27+00:00</updated><id>/set-website/preview/pr-22/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-22/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-22/" rel="alternate" type="text/html" /><updated>2023-09-07T16:12:08+00:00</updated><id>/set-website/preview/pr-22/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-22/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -26,15 +26,15 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 <h2 id="why-practice-packaging">Why practice packaging?</h2>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image comparing how a page with some text and a book look and feel different.">
+  <a class="figure-image" aria-label="How are a page with some text and a book different?">
     <img src="/set-website/preview/pr-22/images/text-vs-book.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image comparing how a page with some text and a book look and feel different." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="How are a page with some text and a book different?" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image comparing how a page with some text and a book look and feel different.
+      How are a page with some text and a book different?
 
     </figcaption>
   
@@ -49,15 +49,15 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 </ul>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience.">
+  <a class="figure-image" aria-label="Code undergoing packaging to achieve understanding, trust, and connection for an audience.">
     <img src="/set-website/preview/pr-22/images/python-packaging-to-audience.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="Code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing code undergoing packaging to achieve understanding, trust, and connection for an audience.
+      Code undergoing packaging to achieve understanding, trust, and connection for an audience.
 
     </figcaption>
   
@@ -164,15 +164,15 @@ Following this convention generally improves the <strong>understanding</strong> 
 <h2 id="trust-building-audience-confidence">Trust: building audience confidence</h2>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing an audience member asking whether they trust a package.">
+  <a class="figure-image" aria-label="How much does your audience trust your work?.">
     <img src="/set-website/preview/pr-22/images/package-audience-trust.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing an audience member asking whether they trust a package." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="How much does your audience trust your work?." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing an audience member asking whether they trust a package.
+      How much does your audience trust your work?.
 
     </figcaption>
   
@@ -183,15 +183,15 @@ Following this convention generally improves the <strong>understanding</strong> 
 <h3 id="source-control-authenticity">Source control authenticity</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image comparing the difference between a generic or anonymous user and one with greater authenticity.">
+  <a class="figure-image" aria-label="Comparing the difference between a generic or anonymous user and one with greater authenticity.">
     <img src="/set-website/preview/pr-22/images/source-control-authenticity.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="Comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image comparing the difference between a generic or anonymous user and one with greater authenticity.
+      Comparing the difference between a generic or anonymous user and one with greater authenticity.
 
     </figcaption>
   
@@ -208,15 +208,15 @@ Following this convention generally improves the <strong>understanding</strong> 
 <h3 id="staying-up-to-date-with-supported-python-releases">Staying up to date with supported Python releases</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing major Python releases and their support status.">
+  <a class="figure-image" aria-label="Major Python releases and their support status.">
     <img src="/set-website/preview/pr-22/images/python-version-status.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="Major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing major Python releases and their support status.
+      Major Python releases and their support status.
 
     </figcaption>
   
@@ -233,15 +233,15 @@ Python versions which are end-of-life may be difficult to support and are a sign
 <h3 id="security-linting-and-visible-checks-with-github-actions">Security linting and visible checks with GitHub Actions</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+  <a class="figure-image" aria-label="Make an effort to inspect your package for known security issues.">
     <img src="/set-website/preview/pr-22/images/package-magnifying-glass.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="Make an effort to inspect your package for known security issues." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing a package being inspected by a magnifying glass.
+      Make an effort to inspect your package for known security issues.
 
     </figcaption>
   
@@ -256,15 +256,15 @@ Python versions which are end-of-life may be difficult to support and are a sign
 </ul>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+  <a class="figure-image" aria-label="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.">
     <img src="/set-website/preview/pr-22/images/gh-actions-checkmark.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing a package being inspected by a magnifying glass.
+      The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.
 
     </figcaption>
   
@@ -281,15 +281,15 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 <h2 id="connection-personal-and-inter-package-relationships">Connection: personal and inter-package relationships</h2>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing a package being inspected by a magnifying glass.">
+  <a class="figure-image" aria-label="How does your package connect with other work and people?">
     <img src="/set-website/preview/pr-22/images/package-connections.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing a package being inspected by a magnifying glass." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="How does your package connect with other work and people?" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing a package being inspected by a magnifying glass.
+      How does your package connect with other work and people?
 
     </figcaption>
   
@@ -300,17 +300,12 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 <h3 id="acknowledging-authors-and-referenced-work-with-citationcff">Acknowledging authors and referenced work with CITATION.cff</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="CITATION.cff file format icon.">
+  <a class="figure-image" aria-label="figure link">
     <img src="/set-website/preview/pr-22/images/citation-cff-icon.png" style="
         width: auto;
         max-height: unset;
-      " alt="CITATION.cff file format icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
-  
-    <figcaption class="figure-caption">
-      CITATION.cff file format icon.
-
-    </figcaption>
   
 </figure>
 
@@ -324,15 +319,15 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 <h3 id="reaching-collaborators-using-contributingmd">Reaching collaborators using CONTRIBUTING.md</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="A file labeled as CONTRIBUTING.md with a handshake icon.">
+  <a class="figure-image" aria-label="CONTRIBUTING.md documents can help you collaborate with others.">
     <img src="/set-website/preview/pr-22/images/contributing-file-with-handshake.png" style="
         width: auto;
         max-height: unset;
-      " alt="A file labeled as CONTRIBUTING.md with a handshake icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="CONTRIBUTING.md documents can help you collaborate with others." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      A file labeled as CONTRIBUTING.md with a handshake icon.
+      CONTRIBUTING.md documents can help you collaborate with others.
 
     </figcaption>
   
@@ -348,15 +343,15 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 <h3 id="environment-management-reproducibility-as-connected-project-reality">Environment management reproducibility as connected project reality</h3>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Image showing code being sent through environment and packaging managers in order to produce a package.">
+  <a class="figure-image" aria-label="Environment and packaging managers can help you connect with your audience.">
     <img src="/set-website/preview/pr-22/images/environment-management-tooling.png" style="
         width: auto;
         max-height: unset;
-      " alt="Image showing code being sent through environment and packaging managers in order to produce a package." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="Environment and packaging managers can help you connect with your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
-      Image showing code being sent through environment and packaging managers in order to produce a package.
+      Environment and packaging managers can help you connect with your audience.
 
     </figcaption>
   
@@ -378,17 +373,12 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 <h4 id="using-python-poetry-for-environment-and-packaging-management">Using Python <code class="language-plaintext highlighter-rouge">poetry</code> for environment and packaging management</h4>
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Python Poetry environment and packaging manager tool icon.">
+  <a class="figure-image" aria-label="figure link">
     <img src="/set-website/preview/pr-22/images/poetry-icon.png" style="
         width: auto;
         max-height: unset;
-      " alt="Python Poetry environment and packaging manager tool icon." loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-22/images/fallback.svg'; this.onerror = null;" />
   </a>
-  
-    <figcaption class="figure-caption">
-      Python Poetry environment and packaging manager tool icon.
-
-    </figcaption>
   
 </figure>
 
@@ -484,7 +474,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-22/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -641,7 +631,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-22/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -789,7 +779,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -897,7 +887,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1011,7 +1001,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1158,7 +1148,7 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1277,7 +1267,7 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
   <li><a href="https://github.com/jendrikseipp/vulture">Vulture</a></li>
   <li><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a></li>
   <li><a href="https://coverage.readthedocs.io/">Coverage</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/preview/pr-22/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1395,7 +1385,7 @@ flowchart TB
 <ul>
   <li><a href="https://arrow.apache.org/docs/index.html">Apache Arrow Documentation</a></li>
   <li><a href="https://duckdb.org/docs/">DuckDB Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry><entry><title type="html">Tip of the Week: Diagrams as Code</title><link href="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Diagrams as Code" /><published>2022-11-27T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code</id><content type="html" xml:base="/set-website/preview/pr-22/2022/11/27/Diagrams-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-diagrams-as-code">Tip of the Week: Diagrams as Code</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
@@ -1539,7 +1529,7 @@ graph LR
   <li><a href="https://plantuml.com/">PlantUML</a></li>
   <li><a href="https://vega.github.io/vega/">Vega</a></li>
   <li><a href="https://kroki.io/">Kroki.io</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-09-07T14:52:18+00:00</updated><id>/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="diagrams" /><category term="mermaid" /><category term="markdown" /><summary type="html"><![CDATA[Tip of the Week: Diagrams as Code]]></summary></entry><entry><title type="html">Tip of the Week: Use Linting Tools to Save Time</title><link href="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html" rel="alternate" type="text/html" title="Tip of the Week: Use Linting Tools to Save Time" /><published>2022-10-17T00:00:00+00:00</published><updated>2023-09-07T16:11:13+00:00</updated><id>/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time</id><content type="html" xml:base="/set-website/preview/pr-22/2022/10/17/Use-Linting-Tools-to-Save-Time.html"><![CDATA[<h1 id="tip-of-the-week-use-linting-tools-to-save-time">Tip of the Week: Use Linting Tools to Save Time</h1>
 
 <blockquote>
   <p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
