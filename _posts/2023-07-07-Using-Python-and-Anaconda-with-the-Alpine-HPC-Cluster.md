@@ -208,10 +208,10 @@ flowchart LR
     end
     remote_storage["📁 External Storage\n(user specified / configured)"]
 
-    users --> | "run their\nwork with" | slurm
-    slurm --> | "runs code" | process_jobs
-    process_jobs --> | "may deliver\nresults to" | local_storage
-    process_jobs --> | "or deliver\nresults to" | remote_storage
+    users --> |run their\nwork with| slurm
+    slurm --> |runs code| process_jobs
+    process_jobs --> |may deliver\nresults to| local_storage
+    process_jobs --> |or deliver\nresults to| remote_storage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
