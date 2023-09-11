@@ -50,7 +50,7 @@ style spacer2 fill:#ffffff,stroke:#ffffff;
 </pre>
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
+  mermaid.initialize({ startOnLoad: true, debug: true });
 </script>
 
 _Diagram showing a repository's work as being processed on Alpine._
@@ -121,7 +121,8 @@ flowchart LR
     users --> |"preconfigured\nSlurm access"| acompile --> slurm
     users --> |"direct access"| slurmcmd --> slurm
     slurm --> |"schedules\n(shared) use of"| hardware
-    slurm --> |"provides\naccess to"| modules --> |"which may\n leverage"| hardware
+    slurm --> |"provides\naccess to"| modules
+    modules --> |"which may\n leverage"| hardware
     hardware --> |"may deliver\nresults to"| localstorage
     hardware --> |"or deliver\nresults to"| remotestorage
 
