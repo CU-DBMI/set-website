@@ -49,7 +49,7 @@ style spacer1 fill:#ffffff,stroke:#ffffff;
 style spacer2 fill:#ffffff,stroke:#ffffff;
 </pre>
 <script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs';
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
   mermaid.initialize({ startOnLoad: true });
 </script>
 
