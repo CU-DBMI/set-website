@@ -201,17 +201,17 @@ flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
         slurm["🗓️ Slurm"]
-        process_jobs["Processed jobs"]
+        processjobs["Processed jobs"]
         subgraph storage["📂 Storage"]
-            local_storage["📁 Local Storage\n(sometimes temporary)"]
+            localstorage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)"]
 
     users --> |run their\nwork with| slurm
-    slurm --> |runs code| process_jobs
-    process_jobs --> |may deliver\nresults to| local_storage
-    process_jobs --> |or deliver\nresults to| remote_storage
+    slurm --> |runs code| processjobs
+    processjobs --> |may deliver\nresults to| localstorage
+    processjobs --> |or deliver\nresults to| remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
