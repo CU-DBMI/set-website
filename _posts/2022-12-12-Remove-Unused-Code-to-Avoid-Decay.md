@@ -14,7 +14,7 @@ tags:
 
 # Tip of the Week: Remove Unused Code to Avoid Software Decay
 
-> Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. If you have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to #software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com
+{% include tip-of-the-week-intro.html %}
 
 <!-- excerpt start -->
 
