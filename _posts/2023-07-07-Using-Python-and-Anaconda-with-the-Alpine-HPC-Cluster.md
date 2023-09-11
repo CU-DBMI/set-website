@@ -118,12 +118,12 @@ flowchart LR
     end
     remotestorage["📁 External Storage\n(user specified / configured)"]
 
-    users --> | preconfigured\nSlurm access| acompile --> slurm
-    users --> | direct access | slurmcmd --> slurm
+    users --> | "preconfigured\nSlurm access" | acompile --> slurm
+    users --> | "direct access" | slurmcmd --> slurm
     slurm --> |"schedules\n(shared) use of"| hardware
-    slurm --> | provides\naccess to| modules --> | which may\n leverage| hardware
-    hardware --> | may deliver\nresults to| localstorage
-    hardware --> | or deliver\nresults to| remotestorage
+    slurm --> | "provides\naccess to" | modules --> | "which may\n leverage" | hardware
+    hardware --> | "may deliver\nresults to" | localstorage
+    hardware --> | "or deliver\nresults to" | remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
