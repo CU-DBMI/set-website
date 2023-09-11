@@ -27,9 +27,9 @@ This readme will cover a background on the technologies and how to use the conte
 flowchart LR
     subgraph repo["📦 Software repository"]
         direction LR
-        run_script["📄 Run script"]
-        subgraph conda_env["&nbsp;🌐 Anaconda environment &nbsp;"]
-            python_code["📄 Python code"]
+        runscript["📄 Run script"]
+        subgraph condaenv["&nbsp;🌐 Anaconda environment &nbsp;"]
+            pythoncode["📄 Python code"]
         end
 
     end
@@ -42,7 +42,7 @@ flowchart LR
 
     repo --> | process on | alpine
 
-style conda_env fill:#FEF3C7,stroke:#D97706;
+style condaenv fill:#FEF3C7,stroke:#D97706;
 style repo fill:#ffffff,stroke:#444444;
 style alpine fill:#ffffff,stroke:#444444;
 style spacer1 fill:#ffffff,stroke:#ffffff;
@@ -69,20 +69,20 @@ flowchart LR
     subgraph alpine["🖥️ Alpine"]
         direction TB
         subgraph resources[" &nbsp; 💪 Compute Resources &nbsp;"]
-            check_1["✅"]
+            check1["✅"]
         end
         subgraph time[" &nbsp; 🕑 Long-running Jobs &nbsp;"]
-            check_2["✅"]
+            check2["✅"]
         end
         subgraph collaborations[" &nbsp; 👥 Collaborations &nbsp;"]
-            check_3["✅"]
+            check3["✅"]
         end
     end
 
 style alpine fill:#ffffff,stroke:#444444;
-style check_1 fill:#D1FAE5,stroke:#D1FAE5;
-style check_2 fill:#D1FAE5,stroke:#D1FAE5;
-style check_3 fill:#D1FAE5,stroke:#D1FAE5;
+style check1 fill:#D1FAE5,stroke:#D1FAE5;
+style check2 fill:#D1FAE5,stroke:#D1FAE5;
+style check3 fill:#D1FAE5,stroke:#D1FAE5;
 style alpine fill:#ffffff,stroke:#444444;
 </pre>
 
@@ -103,27 +103,27 @@ flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
         slurm["🗓️ Slurm"]
-        subgraph login_nodes["🔑 Login node(s)"]
+        subgraph loginnodes["🔑 Login node(s)"]
             acompile["📄 acompile"]
-            slurm_cmd["⌨️ Slurm cmd's"]
+            slurmcmd["⌨️ Slurm cmd's"]
         end
-        subgraph compute_nodes["⚙️ Compute node(s)"]
+        subgraph computenodes["⚙️ Compute node(s)"]
             hardware["⚙️ Compute\nResources"]
             modules["💿 Software via\nmodules pkg"]
         end
 
         subgraph storage["📂 Storage"]
-            local_storage["📁 Local Storage\n(sometimes temporary)"]
+            localstorage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)"]
 
     users --> | preconfigured\nSlurm access| acompile --> slurm
-    users --> | direct access | slurm_cmd --> slurm
+    users --> | direct access | slurmcmd --> slurm
     slurm --> |"schedules\n(shared) use of"| hardware
     slurm --> | provides\naccess to| modules --> | which may\n leverage| hardware
-    hardware --> | may deliver\nresults to| local_storage
-    hardware --> | or deliver\nresults to| remote_storage
+    hardware --> | may deliver\nresults to| localstorage
+    hardware --> | or deliver\nresults to| remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
@@ -240,15 +240,15 @@ These may be distinguished in two ways:
 
 <pre class="mermaid">
 flowchart LR
-    external_storage["📁 External Storage\n(user specified / configured)"]
+    externalstorage["📁 External Storage\n(user specified / configured)"]
     subgraph alpine["🖥️ Alpine"]
         subgraph storage["📂 Storage"]
-            local_storage["📁 Local Storage\n(sometimes temporary)"]
+            localstorage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
 
-    external_storage --> | send data\nto Alpine | local_storage
-    local_storage --> | receive data\nfrom Alpine | external_storage
+    externalstorage --> | send data\nto Alpine | localstorage
+    localstorage --> | receive data\nfrom Alpine | externalstorage
 
 style alpine fill:#ffffff,stroke:#444444;
 </pre>
@@ -268,38 +268,38 @@ flowchart LR
     users["(0. Gain access)\n👥 CU Anschutz\nUsers"]
     subgraph alpine["🖥️ Alpine"]
         direction LR
-        alpine_terminal1["(1. Prepare code)\n⌨️ git clone"]
-        alpine_terminal2["(2. Implement code)\n⌨️ Process run script"]
+        alpineterminal1["(1. Prepare code)\n⌨️ git clone"]
+        alpineterminal2["(2. Implement code)\n⌨️ Process run script"]
         subgraph repo["📦 This repo"]
             direction TB
-            run_script["📄 Run script"]
-            subgraph conda_env["&nbsp;🌐 Anaconda environment &nbsp;"]
-                python_code["📄 Python code"]
+            runscript["📄 Run script"]
+            subgraph condaenv["&nbsp;🌐 Anaconda environment &nbsp;"]
+                pythoncode["📄 Python code"]
             end
         end
-        subgraph slurm_job["🗓️ Slurm processing"]
+        subgraph slurmjob["🗓️ Slurm processing"]
             direction LR
             processing["⚙️ Processing"]
         end
         subgraph storage["📂 Storage"]
-            local_storage["(3. Gather data)\n📁 Local Storage\n(sometimes temporary)"]
+            localstorage["(3. Gather data)\n📁 Local Storage\n(sometimes temporary)"]
         end
     end
 
-    users --> | gain access\nvia RMACC acct.| alpine_terminal1
-    alpine_terminal1 --> | bring repo\n contents to Alpine | repo
-    run_script --> |run\nscript file| alpine_terminal2
-    alpine_terminal2 --> |submit\nSlurm job| processing
-    processing --> | completed job\n sends data to| local_storage
-    python_code -.-> | run python code\nwithin conda env |processing
+    users --> | gain access\nvia RMACC acct.| alpineterminal1
+    alpineterminal1 --> | bring repo\n contents to Alpine | repo
+    runscript --> |run\nscript file| alpineterminal2
+    alpineterminal2 --> |submit\nSlurm job| processing
+    processing --> | completed job\n sends data to| localstorage
+    pythoncode -.-> | run python code\nwithin conda env |processing
 
-style conda_env fill:#FEF3C7,stroke:#D97706;
+style condaenv fill:#FEF3C7,stroke:#D97706;
 style repo fill:#ffffff,stroke:#444444;
 style alpine fill:#ffffff,stroke:#444444;
 style users fill:#D1FAE5,stroke:#444444;
-style alpine_terminal1 fill:#D1FAE5,stroke:#444444;
-style alpine_terminal2 fill:#D1FAE5,stroke:#444444;
-style local_storage fill:#D1FAE5,stroke:#444444;
+style alpineterminal1 fill:#D1FAE5,stroke:#444444;
+style alpineterminal2 fill:#D1FAE5,stroke:#444444;
+style localstorage fill:#D1FAE5,stroke:#444444;
 </pre>
 
 _Diagram showing how [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) may be used within Alpine through primary steps and processing workflow._
@@ -385,23 +385,23 @@ We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), whi
 ```mermaid
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
-        local_storage["📄 /projects/$USER/example_data.csv"]
+        localstorage["📄 /projects/$USER/example_data.csv"]
     end
     subgraph globus["☁️ Globus"]
-        globus_web["🔁 Globus web interface"]
+        globusweb["🔁 Globus web interface"]
     end
-    subgraph local_machine["🖥️ Local device"]
-        personal_connect["🔁 Globus Connect Personal"]
-        local_dir["📄 /a_local_dir/example_data.csv"]
+    subgraph localmachine["🖥️ Local device"]
+        personalconnect["🔁 Globus Connect Personal"]
+        localdir["📄 /a_local_dir/example_data.csv"]
     end
 
-    local_storage --> | moves data\nfrom Alpine | globus_web
-    globus_web --> | interface \n from Globus | personal_connect
-    personal_connect --> | downloads \n local file | local_dir
+    localstorage --> | moves data\nfrom Alpine | globusweb
+    globusweb --> | interface \n from Globus | personalconnect
+    personalconnect --> | downloads \n local file | localdir
 
 style alpine fill:#ffffff,stroke:#444444;
 style globus fill:#ffffff,stroke:#444444;
-style local_machine fill:#ffffff,stroke:#444444;
+style localmachine fill:#ffffff,stroke:#444444;
 ```
 
 _Diagram showing how example_data.csv may be transferred from Alpine to a local machine using Globus solutions._
