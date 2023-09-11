@@ -302,7 +302,7 @@ style alpine_terminal2 fill:#D1FAE5,stroke:#444444;
 style local_storage fill:#D1FAE5,stroke:#444444;
 </pre>
 
-_Diagram showing how[an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) may be used within Alpine through primary steps and processing workflow._
+_Diagram showing how [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) may be used within Alpine through primary steps and processing workflow._
 
 Use the following steps to understand how Alpine may be used with [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) to run example Python code.
 
@@ -336,7 +336,7 @@ Below you'll find the general steps associated with this process.
 1. Login to the Alpine command line ([reference this guide](https://curc.readthedocs.io/en/latest/access/rmacc.html#logging-in-to-open-ondemand)).
 1. Change directory into the __Projects filesystem__ (generally we'll assume processed data produced by this code are large enough to warrant the need for additional space):<br> `cd /projects/$USER`
 1. Use `git` (built into Alpine by default) commands to clone this repo:<br> `git clone https://github.com/CU-DBMI/example-hpc-alpine-python`
-1. Verify the contents were received as desired (this should show the contents of[an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python)):<br> `ls -l example-hpc-alpine-python`
+1. Verify the contents were received as desired (this should show the contents of [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python)):<br> `ls -l example-hpc-alpine-python`
 
 <!--- anchor for referencing github authentication guidance directly --->
 
