@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-09-11T21:25:52+00:00">
+  <meta property="og:updated_time" content="2023-09-11T21:28:29+00:00">
   <meta property="article:published_time" content="2023-07-07T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-09-11T21:25:52+00:00">
-  <meta name="revised" content="2023-09-11T21:25:52+00:00">
+  <meta property="article:modified_time" content="2023-09-11T21:28:29+00:00">
+  <meta name="revised" content="2023-09-11T21:28:29+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" },
       "datePublished": "2023-07-07T00:00:00+00:00",
-      "dateModified": "2023-09-11T21:25:52+00:00",
+      "dateModified": "2023-09-11T21:28:29+00:00",
     
     "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -746,17 +746,17 @@ flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
         slurm["🗓️ Slurm"]
-        process_jobs["Processed jobs"]
+        processjobs["Processed jobs"]
         subgraph storage["📂 Storage"]
-            local_storage["📁 Local Storage\n(sometimes temporary)"]
+            localstorage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)"]
 
     users --&gt; |run their\nwork with| slurm
-    slurm --&gt; |runs code| process\_jobs
-    process\_jobs --&gt; |may deliver\nresults to| local\_storage
-    process\_jobs --&gt; |or deliver\nresults to| remote\_storage
+    slurm --&gt; |runs code| processjobs
+    processjobs --&gt; |may deliver\nresults to| localstorage
+    processjobs --&gt; |or deliver\nresults to| remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
