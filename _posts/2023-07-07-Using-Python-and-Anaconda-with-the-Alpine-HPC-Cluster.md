@@ -382,7 +382,7 @@ We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), whi
 
 ### 3. 📂 Transfer data results
 
-```mermaid
+<pre class="mermaid">
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
         localstorage["📄 /projects/$USER/example_data.csv"]
@@ -402,7 +402,7 @@ flowchart LR
 style alpine fill:#ffffff,stroke:#444444;
 style globus fill:#ffffff,stroke:#444444;
 style localmachine fill:#ffffff,stroke:#444444;
-```
+</pre>
 
 _Diagram showing how example_data.csv may be transferred from Alpine to a local machine using Globus solutions._
 
