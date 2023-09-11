@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-09-11T21:39:30+00:00">
+  <meta property="og:updated_time" content="2023-09-11T21:44:32+00:00">
   <meta property="article:published_time" content="2023-07-07T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-09-11T21:39:30+00:00">
-  <meta name="revised" content="2023-09-11T21:39:30+00:00">
+  <meta property="article:modified_time" content="2023-09-11T21:44:32+00:00">
+  <meta name="revised" content="2023-09-11T21:44:32+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" },
       "datePublished": "2023-07-07T00:00:00+00:00",
-      "dateModified": "2023-09-11T21:39:30+00:00",
+      "dateModified": "2023-09-11T21:44:32+00:00",
     
     "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -656,12 +656,12 @@ flowchart LR
     end
     remotestorage["📁 External Storage\n(user specified / configured)"]
 
-    users --&gt; | preconfigured\nSlurm access| acompile --&gt; slurm
-    users --&gt; | direct access | slurmcmd --&gt; slurm
+    users --&gt; | \"preconfigured\nSlurm access\" | acompile --&gt; slurm
+    users --&gt; | \"direct access\" | slurmcmd --&gt; slurm
     slurm --&gt; |\"schedules\n\(shared) use of\"| hardware
-    slurm --&gt; | provides\naccess to| modules --&gt; | which may\n leverage| hardware
-    hardware --&gt; | may deliver\nresults to| localstorage
-    hardware --&gt; | or deliver\nresults to| remotestorage
+    slurm --&gt; | \"provides\naccess to\" | modules --&gt; | \"which may\n leverage\" | hardware
+    hardware --&gt; | \"may deliver\nresults to\" | localstorage
+    hardware --&gt; | \"or deliver\nresults to\" | remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
