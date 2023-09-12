@@ -50,7 +50,7 @@ style spacer2 fill:#ffffff,stroke:#ffffff;
 </pre>
 <script type="module">
   import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: false, debug: true });
+  mermaid.initialize({ startOnLoad: true, debug: true });
 </script>
 
 _Diagram showing a repository's work as being processed on Alpine._
@@ -103,26 +103,26 @@ flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
         slurm["🗓️ Slurm"]
-        subgraph login_nodes["🔑 Login node(s)"]
+        subgraph loginnodes["🔑 Login node(s)"]
             acompile["📄 acompile"]
-            slurm_cmd["⌨️ Slurm cmd's"]
+            slurmcmd["⌨️ Slurm cmd's"]
         end
-        subgraph compute_nodes["⚙️ Compute node(s)"]
+        subgraph computenodes["⚙️ Compute node(s)"]
             hardware["⚙️ Compute\nResources"]
             modules["💿 Software via\nmodules pkg"]
         end
         subgraph storage["📂 Storage"]
-            local_storage["📁 Local Storage\n(sometimes temporary)"]
+            localstorage["📁 Local Storage\n(sometimes temporary)"]
         end
     end
-    remote_storage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)"]
 
     users --> |preconfigured\nSlurm access| acompile --> slurm
-    users --> |direct access | slurm_cmd --> slurm
-    slurm --> |"schedules\n(shared) use of"| hardware
+    users --> |direct access | slurmcmd --> slurm
+    slurm --> |schedules\nshared  use of| hardware
     slurm --> |provides\naccess to| modules --> |which may\n leverage| hardware
-    hardware --> |may deliver\nresults to| local_storage
-    hardware --> |or deliver\nresults to| remote_storage
+    hardware --> |may deliver\nresults to| localstorage
+    hardware --> |or deliver\nresults to| remotestorage
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
