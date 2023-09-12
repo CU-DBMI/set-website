@@ -23,7 +23,7 @@ This readme will cover a background on the technologies and how to use the conte
 
 <!-- excerpt end -->
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     subgraph repo["📦 Software repository"]
         direction LR
@@ -48,10 +48,7 @@ style alpine fill:#ffffff,stroke:#444444;
 style spacer1 fill:#ffffff,stroke:#ffffff;
 style spacer2 fill:#ffffff,stroke:#ffffff;
 </pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, debug: true });
-</script>
+```
 
 _Diagram showing a repository's work as being processed on Alpine._
 
@@ -64,7 +61,7 @@ _Diagram showing a repository's work as being processed on Alpine._
 
 ### Why would I use Alpine?
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
         direction TB
@@ -84,7 +81,7 @@ style check1 fill:#D1FAE5,stroke:#D1FAE5;
 style check2 fill:#D1FAE5,stroke:#D1FAE5;
 style check3 fill:#D1FAE5,stroke:#D1FAE5;
 style alpine fill:#ffffff,stroke:#444444;
-</pre>
+```
 
 _Diagram showing common benefits of Alpine and HPC clusters._
 
@@ -98,7 +95,7 @@ Reasons for using Alpine might include:
 
 ### How does Alpine work?
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
@@ -126,7 +123,7 @@ flowchart LR
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
-</pre>
+```
 
 _Diagram showing high-level user workflow and Alpine components._
 
@@ -160,7 +157,7 @@ Many common software packages are available through the [Modules package](https:
 
 ### How does Slurm work?
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
         direction LR
@@ -179,7 +176,7 @@ flowchart LR
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
-</pre>
+```
 
 _Diagram showing how Slurm generally works._
 
@@ -195,7 +192,7 @@ Please note that some steps and additional complexity are omitted for the purpos
 
 ### How do I store data on Alpine?
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     users["👥 Users"]
     subgraph alpine["🖥️ Alpine"]
@@ -214,7 +211,7 @@ flowchart LR
 
 style alpine fill:#ffffff,stroke:#444444;
 style slurm fill:#F0F9FF,stroke:#075985;
-</pre>
+```
 
 Data used or produced by your processed jobs on Alpine may use a number of different data storage locations.
 Be sure to follow [the Acceptable data storage and use policies of Alpine](https://curc.readthedocs.io/en/latest/additional-resources/policies.html#acceptable-data-storage-and-use), avoiding the use of certain sensitive information and other items.
@@ -237,7 +234,7 @@ These may be distinguished in two ways:
 
 ### How do I send or receive data on Alpine?
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     externalstorage["📁 External Storage\n(user specified / configured)"]
     subgraph alpine["🖥️ Alpine"]
@@ -250,7 +247,7 @@ flowchart LR
     localstorage --> | receive data\nfrom Alpine | externalstorage
 
 style alpine fill:#ffffff,stroke:#444444;
-</pre>
+```
 
 _Diagram showing external data storage being used to send or receive data on Alpine local storage._
 
@@ -262,7 +259,7 @@ As a result, [Globus](https://www.globus.org/) represents one of the best option
 
 ## Implementation
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     users["(0. Gain access)\n👥 CU Anschutz\nUsers"]
     subgraph alpine["🖥️ Alpine"]
@@ -299,7 +296,7 @@ style users fill:#D1FAE5,stroke:#444444;
 style alpineterminal1 fill:#D1FAE5,stroke:#444444;
 style alpineterminal2 fill:#D1FAE5,stroke:#444444;
 style localstorage fill:#D1FAE5,stroke:#444444;
-</pre>
+```
 
 _Diagram showing how [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) may be used within Alpine through primary steps and processing workflow._
 
@@ -381,7 +378,7 @@ We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), whi
 
 ### 3. 📂 Transfer data results
 
-<pre class="mermaid">
+```mermaid!
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
         localstorage["📄 /projects/$USER/example_data.csv"]
@@ -401,7 +398,7 @@ flowchart LR
 style alpine fill:#ffffff,stroke:#444444;
 style globus fill:#ffffff,stroke:#444444;
 style localmachine fill:#ffffff,stroke:#444444;
-</pre>
+```
 
 _Diagram showing how example_data.csv may be transferred from Alpine to a local machine using Globus solutions._
 
