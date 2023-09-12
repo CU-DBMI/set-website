@@ -47,7 +47,6 @@ style repo fill:#ffffff,stroke:#444444;
 style alpine fill:#ffffff,stroke:#444444;
 style spacer1 fill:#ffffff,stroke:#ffffff;
 style spacer2 fill:#ffffff,stroke:#ffffff;
-</pre>
 ```
 
 _Diagram showing a repository's work as being processed on Alpine._
