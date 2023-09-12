@@ -28,7 +28,7 @@ flowchart LR
     subgraph repo["📦 Software repository"]
         direction LR
         runscript["📄 Run script"]
-        subgraph condaenv["&nbsp;🌐 Anaconda environment &nbsp;"]
+        subgraph condaenv["🌐 Anaconda environment"]
             pythoncode["📄 Python code"]
         end
 
@@ -64,13 +64,13 @@ _Diagram showing a repository's work as being processed on Alpine._
 flowchart LR
     subgraph alpine["🖥️ Alpine"]
         direction TB
-        subgraph resources[" &nbsp; 💪 Compute Resources &nbsp;"]
+        subgraph resources["💪 Compute Resources"]
             check1["✅"]
         end
-        subgraph time[" &nbsp; 🕑 Long-running Jobs &nbsp;"]
+        subgraph time["🕑 Long-running Jobs"]
             check2["✅"]
         end
-        subgraph collaborations[" &nbsp; 👥 Collaborations &nbsp;"]
+        subgraph collaborations["👥 Collaborations"]
             check3["✅"]
         end
     end
@@ -268,7 +268,7 @@ flowchart LR
         subgraph repo["📦 This repo"]
             direction TB
             runscript["📄 Run script"]
-            subgraph condaenv["&nbsp;🌐 Anaconda environment &nbsp;"]
+            subgraph condaenv["🌐 Anaconda environment"]
                 pythoncode["📄 Python code"]
             end
         end
