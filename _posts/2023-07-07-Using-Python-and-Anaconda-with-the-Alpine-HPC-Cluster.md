@@ -53,7 +53,7 @@ _Diagram showing a repository's work as being processed on Alpine._
 
 ## Table of Contents
 
-1. [__Backround:__](#background) here we cover the background of Alpine and related technologies.
+1. [__Background:__](#background) here we cover the background of Alpine and related technologies.
 1. [__Implementation:__](#implementation) in this section we use the contents of [an example project repository](https://github.com/CU-DBMI/example-hpc-alpine-python) on Alpine.
 
 ## Background
@@ -149,7 +149,7 @@ Login nodes have limited resource access and are not recommended for running pro
 %}
 
 One can interact with Slurm on Alpine by use of [Slurm interfaces and directives](https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html).
-A quick way of accessing Alpine resources is through the use of the `acompile` command, which starts an interactive job on a compute node with some typical default parameters for the job. Since `acompile` requests very modest resources (1 hour and 1 CPU core at the time of writing), you'll typically quickly be connected to a compute node. For more intensive or long-lived interactive jobs, consider using `sinteractive`, which allows for more customization [Interactive Jobs](https://curc.readthedocs.io/en/latest/running-jobs/interactive-jobs.html).
+A quick way of accessing Alpine resources is through the use of the `acompile` command, which starts an interactive job on a compute node with some typical default parameters for the job. Since `acompile` requests very modest resources (1 hour and 1 CPU core at the time of writing), you'll typically quickly be connected to a compute node. For more intensive or long-lived interactive jobs, consider using `sinteractive`, which allows for more customization: [Interactive Jobs](https://curc.readthedocs.io/en/latest/running-jobs/interactive-jobs.html).
 One can also access Slurm directly through [various commands](https://slurm.schedmd.com/quickstart.html#commands) on Alpine.
 
 Many common software packages are available through the [Modules package](https://github.com/cea-hpc/modules) on Alpine ([UCB RC documentation: The Modules System](https://curc.readthedocs.io/en/latest/compute/modules.html)).
