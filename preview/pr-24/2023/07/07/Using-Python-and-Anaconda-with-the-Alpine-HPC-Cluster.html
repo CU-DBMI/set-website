@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-09-12T21:41:07+00:00">
+  <meta property="og:updated_time" content="2023-09-13T15:13:40+00:00">
   <meta property="article:published_time" content="2023-07-07T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-09-12T21:41:07+00:00">
-  <meta name="revised" content="2023-09-12T21:41:07+00:00">
+  <meta property="article:modified_time" content="2023-09-13T15:13:40+00:00">
+  <meta name="revised" content="2023-09-13T15:13:40+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" },
       "datePublished": "2023-07-07T00:00:00+00:00",
-      "dateModified": "2023-09-12T21:41:07+00:00",
+      "dateModified": "2023-09-13T15:13:40+00:00",
     
     "name": "Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -475,7 +475,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>September 12, 2023</span>
+      <span>September 13, 2023</span>
     </span>
   
 </div>
@@ -560,7 +560,7 @@ This readme will cover a background on the technologies and how to use the conte
 
 <ol>
   <li>
-<a href="#background"><strong>Backround:</strong></a> here we cover the background of Alpine and related technologies.</li>
+<a href="#background"><strong>Background:</strong></a> here we cover the background of Alpine and related technologies.</li>
   <li>
 <a href="#implementation"><strong>Implementation:</strong></a> in this section we use the contents of <a href="https://github.com/CU-DBMI/example-hpc-alpine-python">an example project repository</a> on Alpine.</li>
 </ol>
@@ -615,7 +615,7 @@ Login nodes have limited resource access and are not recommended for running pro
 </div>
 
 <p>One can interact with Slurm on Alpine by use of <a href="https://curc.readthedocs.io/en/latest/clusters/alpine/examples.html">Slurm interfaces and directives</a>.
-A quick way of accessing Alpine resources is through the use of the <code class="language-plaintext highlighter-rouge">acompile</code> command, which starts an interactive job on a compute node with some typical default parameters for the job. Since <code class="language-plaintext highlighter-rouge">acompile</code> requests very modest resources (1 hour and 1 CPU core at the time of writing), you’ll typically quickly be connected to a compute node. For more intensive or long-lived interactive jobs, consider using <code class="language-plaintext highlighter-rouge">sinteractive</code>, which allows for more customization <a href="https://curc.readthedocs.io/en/latest/running-jobs/interactive-jobs.html">Interactive Jobs</a>.
+A quick way of accessing Alpine resources is through the use of the <code class="language-plaintext highlighter-rouge">acompile</code> command, which starts an interactive job on a compute node with some typical default parameters for the job. Since <code class="language-plaintext highlighter-rouge">acompile</code> requests very modest resources (1 hour and 1 CPU core at the time of writing), you’ll typically quickly be connected to a compute node. For more intensive or long-lived interactive jobs, consider using <code class="language-plaintext highlighter-rouge">sinteractive</code>, which allows for more customization: <a href="https://curc.readthedocs.io/en/latest/running-jobs/interactive-jobs.html">Interactive Jobs</a>.
 One can also access Slurm directly through <a href="https://slurm.schedmd.com/quickstart.html#commands">various commands</a> on Alpine.</p>
 
 <p>Many common software packages are available through the <a href="https://github.com/cea-hpc/modules">Modules package</a> on Alpine (<a href="https://curc.readthedocs.io/en/latest/compute/modules.html">UCB RC documentation: The Modules System</a>).</p>
