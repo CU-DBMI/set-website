@@ -65,13 +65,13 @@ flowchart LR
     subgraph alpine["🖥️ Alpine<br/><br/>"]
         direction TB
         subgraph resources["💪 Compute Resources<br/><br/>"]
-            check1["✅"]
+            check1["✅<br/><br/>"]
         end
         subgraph time["🕑 Long-running Jobs<br/><br/>"]
-            check2["✅"]
+            check2["✅<br/><br/>"]
         end
         subgraph collaborations["👥 Collaborations<br/><br/>"]
-            check3["✅"]
+            check3["✅<br/><br/>"]
         end
     end
 
