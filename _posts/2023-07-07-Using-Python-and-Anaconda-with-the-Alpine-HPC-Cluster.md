@@ -25,17 +25,17 @@ This readme will cover a background on the technologies and how to use the conte
 
 ```mermaid!
 flowchart LR
-    subgraph repo["📦 Software repository"]
+    subgraph repo["📦 Software repository<br/><br/>"]
         direction LR
-        runscript["📄 Run script"]
-        subgraph condaenv["🌐 Anaconda environment"]
-            pythoncode["📄 Python code"]
+        runscript["📄 Run script<br/><br/>"]
+        subgraph condaenv["🌐 Anaconda environment<br/><br/>"]
+            pythoncode["📄 Python code<br/><br/>"]
         end
 
     end
-    subgraph alpine["🖥️ Alpine"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
         subgraph spacer1[" "]
-            subgraph spacer2["⚙️⚙️⚙️"]
+            subgraph spacer2["⚙️⚙️⚙️<br/><br/>"]
             end
         end
     end
@@ -62,15 +62,15 @@ _Diagram showing a repository's work as being processed on Alpine._
 
 ```mermaid!
 flowchart LR
-    subgraph alpine["🖥️ Alpine"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
         direction TB
-        subgraph resources["💪 Compute Resources"]
+        subgraph resources["💪 Compute Resources<br/><br/>"]
             check1["✅"]
         end
-        subgraph time["🕑 Long-running Jobs"]
+        subgraph time["🕑 Long-running Jobs<br/><br/>"]
             check2["✅"]
         end
-        subgraph collaborations["👥 Collaborations"]
+        subgraph collaborations["👥 Collaborations<br/><br/>"]
             check3["✅"]
         end
     end
@@ -96,22 +96,22 @@ Reasons for using Alpine might include:
 
 ```mermaid!
 flowchart LR
-    users["👥 Users"]
-    subgraph alpine["🖥️ Alpine"]
+    users["👥 Users<br/><br/>"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
         slurm["🗓️ Slurm"]
-        subgraph loginnodes["🔑 Login node(s)"]
-            acompile["📄 acompile"]
-            slurmcmd["⌨️ Slurm cmd's"]
+        subgraph loginnodes["🔑 Login node(s)<br/><br/>"]
+            acompile["📄 acompile<br/><br/>"]
+            slurmcmd["⌨️ Slurm cmd's<br/><br/>"]
         end
-        subgraph computenodes["⚙️ Compute node(s)"]
-            hardware["⚙️ Compute\nResources"]
-            modules["💿 Software via\nmodules pkg"]
+        subgraph computenodes["⚙️ Compute node(s)<br/><br/>"]
+            hardware["⚙️ Compute\nResources<br/><br/>"]
+            modules["💿 Software via\nmodules pkg<br/><br/>"]
         end
-        subgraph storage["📂 Storage"]
-            localstorage["📁 Local Storage\n(sometimes temporary)"]
+        subgraph storage["📂 Storage<br/><br/>"]
+            localstorage["📁 Local Storage\n(sometimes temporary)<br/><br/>"]
         end
     end
-    remotestorage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)<br/><br/>"]
 
     users --> |preconfigured\nSlurm access| acompile --> slurm
     users --> |direct access | slurmcmd --> slurm
@@ -158,13 +158,13 @@ Many common software packages are available through the [Modules package](https:
 
 ```mermaid!
 flowchart LR
-    subgraph alpine["🖥️ Alpine"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
         direction LR
-        script["📄 Job script"]
-        subgraph slurm["🗓️ Slurm"]
-            queue["🕑 Queue"]
-            processing["⚙️ Processing"]
-            completion["✅ Completion\n(or cancellation)"]
+        script["📄 Job script<br/><br/>"]
+        subgraph slurm["🗓️ Slurm<br/><br/>"]
+            queue["🕑 Queue<br/><br/>"]
+            processing["⚙️ Processing<br/><br/>"]
+            completion["✅ Completion\n(or cancellation)<br/><br/>"]
         end
     end
 
@@ -193,15 +193,15 @@ Please note that some steps and additional complexity are omitted for the purpos
 
 ```mermaid!
 flowchart LR
-    users["👥 Users"]
-    subgraph alpine["🖥️ Alpine"]
-        slurm["🗓️ Slurm"]
-        processjobs["Processed jobs"]
-        subgraph storage["📂 Storage"]
-            localstorage["📁 Local Storage\n(sometimes temporary)"]
+    users["👥 Users<br/><br/>"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
+        slurm["🗓️ Slurm<br/><br/>"]
+        processjobs["Processed jobs<br/><br/>"]
+        subgraph storage["📂 Storage<br/><br/>"]
+            localstorage["📁 Local Storage\n(sometimes temporary)<br/><br/>"]
         end
     end
-    remotestorage["📁 External Storage\n(user specified / configured)"]
+    remotestorage["📁 External Storage\n(user specified / configured)<br/><br/>"]
 
     users --> |run their\nwork with| slurm
     slurm --> |runs code| processjobs
@@ -235,10 +235,10 @@ These may be distinguished in two ways:
 
 ```mermaid!
 flowchart LR
-    externalstorage["📁 External Storage\n(user specified / configured)"]
-    subgraph alpine["🖥️ Alpine"]
-        subgraph storage["📂 Storage"]
-            localstorage["📁 Local Storage\n(sometimes temporary)"]
+    externalstorage["📁 External Storage\n(user specified / configured)<br/><br/>"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
+        subgraph storage["📂 Storage<br/><br/>"]
+            localstorage["📁 Local Storage\n(sometimes temporary)<br/><br/>"]
         end
     end
 
@@ -260,24 +260,24 @@ As a result, [Globus](https://www.globus.org/) represents one of the best option
 
 ```mermaid!
 flowchart LR
-    users["(0. Gain access)\n👥 CU Anschutz\nUsers"]
-    subgraph alpine["🖥️ Alpine"]
+    users["(0. Gain access)\n👥 CU Anschutz\nUsers<br/><br/>"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
         direction LR
-        alpineterminal1["(1. Prepare code)\n⌨️ git clone"]
-        alpineterminal2["(2. Implement code)\n⌨️ Process run script"]
-        subgraph repo["📦 This repo"]
+        alpineterminal1["(1. Prepare code)\n⌨️ git clone<br/><br/>"]
+        alpineterminal2["(2. Implement code)\n⌨️ Process run script<br/><br/>"]
+        subgraph repo["📦 This repo<br/><br/>"]
             direction TB
-            runscript["📄 Run script"]
-            subgraph condaenv["🌐 Anaconda environment"]
-                pythoncode["📄 Python code"]
+            runscript["📄 Run script<br/><br/>"]
+            subgraph condaenv["🌐 Anaconda environment<br/><br/>"]
+                pythoncode["📄 Python code<br/><br/>"]
             end
         end
-        subgraph slurmjob["🗓️ Slurm processing"]
+        subgraph slurmjob["🗓️ Slurm processing<br/><br/>"]
             direction LR
-            processing["⚙️ Processing"]
+            processing["⚙️ Processing<br/><br/>"]
         end
-        subgraph storage["📂 Storage"]
-            localstorage["(3. Gather data)\n📁 Local Storage\n(sometimes temporary)"]
+        subgraph storage["📂 Storage<br/><br/>"]
+            localstorage["(3. Gather data)\n📁 Local Storage\n(sometimes temporary)<br/><br/>"]
         end
     end
 
@@ -379,15 +379,15 @@ We'll use [Slurm's `sbatch` command](https://slurm.schedmd.com/sbatch.html), whi
 
 ```mermaid!
 flowchart LR
-    subgraph alpine["🖥️ Alpine"]
-        localstorage["📄 /projects/$USER/example_data.csv"]
+    subgraph alpine["🖥️ Alpine<br/><br/>"]
+        localstorage["📄 /projects/$USER/example_data.csv<br/><br/>"]
     end
-    subgraph globus["☁️ Globus"]
-        globusweb["🔁 Globus web interface"]
+    subgraph globus["☁️ Globus<br/><br/>"]
+        globusweb["🔁 Globus web interface<br/><br/>"]
     end
-    subgraph localmachine["🖥️ Local device"]
-        personalconnect["🔁 Globus Connect Personal"]
-        localdir["📄 /a_local_dir/example_data.csv"]
+    subgraph localmachine["🖥️ Local device<br/><br/>"]
+        personalconnect["🔁 Globus Connect Personal<br/><br/>"]
+        localdir["📄 /a_local_dir/example_data.csv<br/><br/>"]
     end
 
     localstorage --> | moves data\nfrom Alpine | globusweb
