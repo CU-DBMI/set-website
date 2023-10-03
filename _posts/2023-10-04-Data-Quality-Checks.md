@@ -24,13 +24,15 @@ Outline:
 
 - Covering data quality tools and techniques to help decrease errors and increase development velocity.
 
-- Probablistic data quality checks
+- Data fitness testing
   - [Great Expectations](https://github.com/great-expectations/great_expectations)
   - [Assertr](https://github.com/ropensci/assertr/)
+  - [Mutmut (mutation testing)](https://github.com/boxed/mutmut)
 
-- Schema-based testing
+- Data unit testing
   - [Pandera](https://github.com/unionai-oss/pandera)
   - [JSONschema](https://github.com/python-jsonschema/jsonschema)
+  - [Hypothesis (property-based testing)](https://github.com/HypothesisWorks/hypothesis)
 
 - Shift-left testing at the source ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
   - [DVC](https://github.com/iterative/dvc)
@@ -42,9 +44,23 @@ __TLDR (too long, didn't read);__
 
 ## Overview
 
-{% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
-
 ```mermaid!
 flowchart LR
-  item
+    subgraph local ["Data Development Testing"]
+        direction LR
+        input_data[(Input Data)]
+        process_data[(In-process Data)]
+        output_data[(Output Data)]
+    end
+
+    input_data --> process_data --> output_data
 ```
+
+_Diagram showing input, in-process data, and output data as a workflow._
+
+Data orientated software development can benefit from a specialized focus on varying aspects of data quality.
+Data quality and capabilities to reach certain standards may be assessed similarly to other software-based tests.
+These come in a number of forms and generally follow existing [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches.
+This article will cover just a few tools and techniques for addressing data development testing.
+
+{% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
