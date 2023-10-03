@@ -39,7 +39,7 @@ Outline:
 
 __TLDR (too long, didn't read);__
 
-## Overview
+## Data Quality Validation via Software Tests
 
 ```mermaid!
 flowchart LR
@@ -59,5 +59,7 @@ Data orientated software development can benefit from a specialized focus on var
 Data quality and capabilities to reach certain standards may be assessed similarly to other software-based tests.
 These come in a number of forms and generally follow existing [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches.
 This article will cover just a few tools and techniques for addressing data development testing.
+
+## Data fitness testing
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
