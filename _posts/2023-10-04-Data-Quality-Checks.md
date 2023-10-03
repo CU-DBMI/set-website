@@ -1,5 +1,5 @@
 ---
-title: "Tip of the Week: Data Quality Checks"
+title: "Tip of the Week: Data Quality Checks and Validation Testing"
 author: dave-bunten
 tags:
   - tip-of-the-week
@@ -12,7 +12,7 @@ tags:
   - analytics-engineering
 ---
 
-# Tip of the Week: Data Quality Checks
+# Tip of the Week: Data Quality Checks and Validation Testing
 
 {% include tip-of-the-week-intro.html %}
 
@@ -43,7 +43,7 @@ __TLDR (too long, didn't read);__
 
 ```mermaid!
 flowchart LR
-    subgraph local ["Data Development Testing"]
+    subgraph local ["Data Validation Testing"]
         direction LR
         input_data[(Input Data)]
         process_data[(In-process Data)]
@@ -58,8 +58,14 @@ _Diagram showing input, in-process data, and output data as a workflow._
 Data orientated software development can benefit from a specialized focus on varying aspects of data quality.
 Data quality and capabilities to reach certain standards may be assessed similarly to other software-based tests.
 These come in a number of forms and generally follow existing [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches.
-This article will cover just a few tools and techniques for addressing data development testing.
+This article will cover just a few tools and techniques for addressing data quality validation testing.
 
-## Data fitness testing
+One concept we'll use to present these ideas is ["data at rest" vs "data in use"](https://en.wikipedia.org/wiki/Data_at_rest).
+Data at rest is data which changes infrequently, such as a CSV or [Parquet](https://github.com/apache/parquet-format) file.
+Data in use can be considered data which changes frequently, like a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) or database which receives many updates per minute.
+
+## Data fitness functions
+
+[Fitness functions](https://en.wikipedia.org/wiki/Fitness_function) are designed to iteratively test how well certain input meet an expected outcome.
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
