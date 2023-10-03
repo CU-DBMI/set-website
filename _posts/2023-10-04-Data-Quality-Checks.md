@@ -27,16 +27,13 @@ Outline:
 - Data fitness testing
   - [Great Expectations](https://github.com/great-expectations/great_expectations)
   - [Assertr](https://github.com/ropensci/assertr/)
-  - [Mutmut (mutation testing)](https://github.com/boxed/mutmut)
 
 - Data unit testing
   - [Pandera](https://github.com/unionai-oss/pandera)
   - [JSONschema](https://github.com/python-jsonschema/jsonschema)
-  - [Hypothesis (property-based testing)](https://github.com/HypothesisWorks/hypothesis)
 
-- Shift-left testing at the source ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
+- Data source testing ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
   - [DVC](https://github.com/iterative/dvc)
-  - [SQLFluff](https://github.com/sqlfluff/sqlfluff)
   - [Liquibase](https://github.com/liquibase/liquibase)
     - [Database-as-code](https://speakerdeck.com/tastapod/arent-we-forgetting-someone)
 
