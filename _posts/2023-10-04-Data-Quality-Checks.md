@@ -180,8 +180,12 @@ checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
 ```
 
-[Great Expectations](https://github.com/great-expectations/great_expectations) provides data condtion contract verification features through the use of ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
+[Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data condtion contract verification features through the use of ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
 These expectations act as a standardized way to define and validate the condition of the data in the same way across different datasets or projects.
 See the above example for a quick code reference of how these work.
+
+### Data Condition Verification - Assertr
+
+[Assertr](https://github.com/ropensci/assertr/) os an R project which provides similar data condition assertions in the form of programmatic conditions.
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
