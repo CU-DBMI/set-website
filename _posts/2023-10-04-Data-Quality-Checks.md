@@ -43,14 +43,20 @@ __TLDR (too long, didn't read);__
 
 ```mermaid!
 flowchart LR
-    subgraph local ["Data Quality Validation Testing"]
+    subgraph local ["Data Quality Validation"]
         direction LR
-        input_data[(Input Data)]
-        process_data[(In-process Data)]
-        output_data[(Output Data)]
+
+            input_data[("Input Data")]
+            met_specification1{"Met\nspecs?"}
+            process_data["Data processing"]
+            met_specification2{"Met \nspecs?"}
+            output_data[("Output Data")]
     end
 
-    input_data --> process_data --> output_data
+    input_data --> met_specification1
+    met_specification1 --> process_data
+    process_data --> met_specification2
+    met_specification2 --> output_data
 ```
 
 _Diagram showing input, in-process data, and output data as a workflow._
@@ -60,31 +66,81 @@ We can use software-based testing techniques to validate certain qualities of th
 These come in a number of forms and generally follow existing [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches.
 This article will cover just a few tools and techniques for addressing data quality validation testing.
 
-One concept we'll use to present these ideas is ["data at rest" vs "data in use"](https://en.wikipedia.org/wiki/Data_at_rest).
-Data at rest is data which changes infrequently, such as a CSV or [Parquet](https://github.com/apache/parquet-format) file.
-Data in use can be considered data which changes frequently, like a [Pandas DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) or database which receives many updates per minute.
+## Data Quality Testing Concepts
 
-## Data Essence Testing
+### Hoare Triple
+
+```mermaid!
+flowchart LR
+    subgraph local ["Data Workflow as Hoare Triple"]
+        direction LR
+            input_data[("Input Data\n(P - precondition)")]
+            process_data["Data processing\n(C - command)"]
+            output_data[("Output Data\n(Q - postcondition)")]
+    end
+
+    input_data --> process_data --> output_data
+```
+
+One concept we'll use to present these ideas is [_Hoare logic_](https://en.wikipedia.org/wiki/Hoare_logic), which is a system for reasoning on [software correctness](https://en.wikipedia.org/wiki/Correctness_(computer_science)).
+Hoare logic includes the idea of a [Hoare triple](https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple) ($ {\displaystyle \{P\}C\{Q\}} $) where $ {\displaystyle \{P\}} $ is an assertion of precondition, $ {\displaystyle \ C} $ is a command, and $ {\displaystyle \{Q\}} $ is a postcondition assertion.
+Software development using data often entails (sometimes assumed) assertions of precondition from data sources, a transformation or command which changes the data, and a (sometimes assumed) assertion of postcondition in a data output or result.
+
+### Design by Contract
+
+```mermaid!
+flowchart LR
+    subgraph local ["Data Testing through Design by Contract over Hoare Triple"]
+        direction LR
+        subgraph hoare_triple ["Hoare Triple"]
+            direction LR
+            input_data[("Input Data\n(P - precondition)")]
+            
+            process_data["Data processing\n(C - command)"]
+            
+            output_data[("Output Data\n(Q - postcondition)")]
+        end
+        subgraph dbc ["Design by Contract"]
+            direction LR
+            met_specification1{"Met\nspecs?"}
+            contract1(["Contract(s)"])
+            met_specification2{"Met \nspecs?"}
+            contract2(["Contract(s)"])
+        end
+    end
+
+    input_data --> met_specification1
+    met_specification1 --> process_data
+    process_data --> met_specification2
+    met_specification2 --> output_data
+    contract1 --> met_specification1
+    contract2 --> met_specification2
+
+```
+
+Hoare logic and Software correctness help describe [Design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract), a software approach involving the formal specification of "contracts" which help ensure we meet our intended goals.
+DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
+These concepts provide a framework for thinking about the tools mentioned below.
+
+## Data Condition Verification
 
 ```mermaid!
 flowchart LR
 
 ```
 
-We often need to verify a certain essence surrounding data in order to ensure it meets minimum standards.
-The word "essence" is used here to group together loose or very specific qualities of the data.
-These verifications often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
-Outside of software usage, we also sometimes need to meet minimum standards in order to be sure it indicates what we think it does.
+We often need to verify a certain conditions surrounding data in order to ensure it meets minimum standards.
+The word "condition" is used here to group together loose or very specific qualities of the data.
+These conditions often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
+___We can avoid these challenges by creating contracts for our data to verify the conditions of the result before it reaches later stages.___
 
-___We can avoid these challenges by performing tests on our data to verify the essence of the result before it reaches later stages.___
-
-Examples of these verifications might include:
+Examples of these conditions might include:
 
 - The dataset has no null values.
 - The dataset has no more than 3 columns.
 - The dataset has a column called `numbers` which includes numbers in the range of 0-10.
 
-### Data Essence Testing - Great Expectations
+### Data Condition Verification - Great Expectations
 
 ```python
 """
@@ -124,8 +180,8 @@ checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
 ```
 
-[Great Expectations](https://github.com/great-expectations/great_expectations) provides data essence testing features through the use of declarative ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
-Great Expectations expectations act as a way to define and validate the essence of the data.
-See the above example for a quick reference of how these work.
+[Great Expectations](https://github.com/great-expectations/great_expectations) provides data condtion contract verification features through the use of ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
+These expectations act as a standardized way to define and validate the condition of the data in the same way across different datasets or projects.
+See the above example for a quick code reference of how these work.
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
