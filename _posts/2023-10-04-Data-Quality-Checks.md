@@ -105,7 +105,7 @@ Hoare logic and Software correctness help describe [Design by contract (DbC)](ht
 DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
 These concepts provide a framework for thinking about the tools mentioned below.
 
-## Data Component Verification
+## Data Component Testing
 
 ```mermaid!
 flowchart LR
@@ -127,7 +127,7 @@ flowchart LR
     style components fill:#fff
 ```
 
-_Diagram showing data contracts as __generalized and reusable "component" verifications__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
+_Diagram showing data contracts as __generalized and reusable "component" testing__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
 We often need to verify a certain components surrounding data in order to ensure it meets minimum standards.
 The word "component" is used here from the context of [component-based software design](https://en.wikipedia.org/wiki/Component-based_software_engineering) to group together reusable, modular qualities of the data where sometimes we don't know (or want) to specify granular aspects (such as schema, type, column name, etc).
@@ -141,7 +141,7 @@ Examples of these data components might include:
 - The dataset has no more than 3 columns.
 - The dataset has a column called `numbers` which includes numbers in the range of 0-10.
 
-### Data Component Verification - Great Expectations
+### Data Component Testing - Great Expectations
 
 ```python
 """
@@ -183,12 +183,12 @@ context.view_validation_result(checkpoint_result)
 
 _Example code leveraging Python package Great Expectations to perform various data component contract validation._
 
-[Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data  contract verification features through the use of component called ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
+[Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data  contract testing features through the use of component called ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
 These expectations act as a standardized way to define and validate the component of the data in the same way across different datasets or projects.
 In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to [view validation results](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores), [share expectations](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores), and also [build data documentation](https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs).
 See the above example for a quick code reference of how these work.
 
-### Data component Verification - Assertr
+### Data component Testing - Assertr
 
 ```R
 # Example using the Assertr package
@@ -218,7 +218,7 @@ _Example code leveraging R package Assertr to perform various data component con
 Using Assertr enables a similar but more lightweight functionality to that of Great Expectations.
 See the above for an example of how to use it in your projects.
 
-## Data Schema Verification
+## Data Schema Testing
 
 ```mermaid!
 flowchart LR
@@ -241,15 +241,15 @@ flowchart LR
     style schema fill:#fff
 ```
 
-_Diagram showing data contracts as __more granular specifications via "schema" verification__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
+_Diagram showing data contracts as __more granular specifications via "schema" testing__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
 Sometimes we need greater specificity than what a data component can offer.
-We can use data schema verification contracts in these cases.
+We can use data schema testing contracts in these cases.
 The word "schema" here is used from the context of [database schema](https://en.wikipedia.org/wiki/Database_schema), but oftentimes these specifications are suitable well beyond solely databases (including database-like formats like dataframes).
 While reuse and modularity are more limited with these cases, they can be helpful for efforts where precision is valued or necessary to accomplish your goals.
-It's worth mentioning that data schema and component verification tools often have many overlaps (meaning you can interchangeably use them to accomplish both tasks).
+It's worth mentioning that data schema and component testing tools often have many overlaps (meaning you can interchangeably use them to accomplish both tasks).
 
-### Data Schema Verification - Pandera
+### Data Schema Testing - Pandera
 
 ```python
 """
@@ -283,13 +283,13 @@ def precondition_transform_data(data: DataFrame[Schema]):
     return data
 
 
-# precondition schema verification
+# precondition schema testing
 try:
     transform_data(invalid_data)
 except pa.errors.SchemaErrors as schema_excs:
     print(schema_excs)
 
-# inline or implied postcondition schema verification
+# inline or implied postcondition schema testing
 try:
     Schema.validate(invalid_data)
 except pa.errors.SchemaError as schema_exc:
@@ -303,7 +303,7 @@ Pandera helps define specific columns, column types, and also has some component
 It leverages a Pythonic class specification, similar to [data classes](https://docs.python.org/3/library/dataclasses.html) and [pydantic models](https://docs.pydantic.dev/latest/concepts/models/), making it potentially easier to use if you already understand Python and DataFrame-like libraries.
 See the above example for a look into how Pandera may be used.
 
-### Data Schema Verification - JSON Schema
+### Data Schema Testing - JSON Schema
 
 ```R
 # Example of using the jsonvalidate R package.
@@ -339,9 +339,9 @@ validate("{'hello':'world'}")
 [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) provides a vocabulary way to validate schema contracts for JSON documents.
 There are several implementations of the vocabulary, including [Python package jsonschema](https://github.com/python-jsonschema/jsonschema), and R package [jsonvalidate](https://github.com/ropensci/jsonvalidate).
 Using these libraries allows you to define pre- or postcondition data schema contracts for your software work.
-See above for an R based example of using this vocabulary to perform data schema verification.
+See above for an R based example of using this vocabulary to perform data schema testing.
 
-## Shift-left Data Verification
+## Shift-left Data Testing
 
 ```mermaid!
 flowchart LR
@@ -366,14 +366,14 @@ Earlier portions of this article have covered primarily data validation of comma
 This is commonplace in development where data sources usually are provided without the ability to validate their precondition or definition.
 [Shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) is a movement which focuses on validating earlier in the lifecycle if and when possible to avoid downstream issues which might occur.
 
-### Shift-left Data Verification - Data Version Control (DVC)
+### Shift-left Data Testing - Data Version Control (DVC)
 
 Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what vesion it might be.
 This information is sometimes added in the form of filename additions or an update datetime column in a table.
 [Data Version Control (DVC)](https://dvc.org/doc) is one tool which is specially purposed to address this challenge through [source control](https://en.wikipedia.org/wiki/Version_control) techniques.
 Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.
 
-### Shift-left Data Verification - Flyway
+### Shift-left Data Testing - Flyway
 
 Database sources can leverage an idea nicknamed ["database as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) (which builds on a similar idea about [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code)) to help declare the schema and other elements of a database in the same way one would code.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
