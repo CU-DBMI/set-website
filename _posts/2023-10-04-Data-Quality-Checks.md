@@ -122,25 +122,43 @@ Hoare logic and Software correctness help describe [Design by contract (DbC)](ht
 DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
 These concepts provide a framework for thinking about the tools mentioned below.
 
-## Data Condition Verification
+## Data Component Verification
 
 ```mermaid!
 flowchart LR
+    input_data[("Data to check")]
+    met_specs{"Has\ncomponents?"}
+    contract(["Contract(s)"])
+    components["- Has no null values\n- Columns are all numeric\n- etc..."]
+    continue["Continue\noperations"]
+    error["Raise\nexception"]
 
+    components --> contract
+    input_data --> met_specs
+    contract -.-> met_specs
+    met_specs --> | Yes | continue
+    met_specs --> | No | error
+
+    style error fill:#FED7AA
+    style continue fill:#DCFCE7
+    style components fill:#fff
 ```
 
-We often need to verify a certain conditions surrounding data in order to ensure it meets minimum standards.
-The word "condition" is used here to group together loose or very specific qualities of the data.
-These conditions often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
-___We can avoid these challenges by creating contracts for our data to verify the conditions of the result before it reaches later stages.___
+_Diagram showing data components being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
-Examples of these conditions might include:
+We often need to verify a certain components surrounding data in order to ensure it meets minimum standards.
+The word "component" is used here from the context of [component-based software design](https://en.wikipedia.org/wiki/Component-based_software_engineering) to group together reusable, modular qualities of the data where sometimes we don't know (or want) to specify granular aspects (such as schema, type, column name, etc).
+These components often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
+Oftentimes these components are contracts checking postconditions of earlier commands or procedures, ensuring the data we receive is accurate to our intention.
+___We can avoid these challenges by creating contracts for our data to verify the components of the result before it reaches later stages.___
+
+Examples of these data components might include:
 
 - The dataset has no null values.
 - The dataset has no more than 3 columns.
 - The dataset has a column called `numbers` which includes numbers in the range of 0-10.
 
-### Data Condition Verification - Great Expectations
+### Data Component Verification - Great Expectations
 
 ```python
 """
@@ -180,12 +198,68 @@ checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
 ```
 
-[Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data condtion contract verification features through the use of ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
-These expectations act as a standardized way to define and validate the condition of the data in the same way across different datasets or projects.
+_Example code leveraging Python package Great Expectations to perform various data contract validation._
+
+[Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data  contract verification features through the use of component called ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
+These expectations act as a standardized way to define and validate the component of the data in the same way across different datasets or projects.
+In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to [view validation results](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores), [share expectations](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores), and also [build data documentation](https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs).
 See the above example for a quick code reference of how these work.
 
-### Data Condition Verification - Assertr
+### Data component Verification - Assertr
 
-[Assertr](https://github.com/ropensci/assertr/) os an R project which provides similar data condition assertions in the form of programmatic conditions.
+```R
+# assertr example code
+# referenced with modifications from:
+# https://docs.ropensci.org/assertr/articles/assertr.html
+library(dplyr)
+library(assertr)
+
+# set our.data to reference the mtcars dataset
+our.data <- mtcars
+
+# simulate an issue in the data for contract specification
+our.data$mpg[5] <- our.data$mpg[5] * -1
+
+# use verify to validate that column mpg >= 0
+our.data %>%
+  verify(mpg >= 0)
+
+# use assert to that column mpg is within the bounds of 0 to infinity
+our.data %>%
+  assert(within_bounds(0,Inf), mpg)
+```
+
+_Example code leveraging R package Assertr to perform various data contract validation._
+
+[Assertr](https://github.com/ropensci/assertr/) is an R project which provides similar data component assertions in the form of verify, assert, and insist methods ([see here for more documentation](https://docs.ropensci.org/assertr/articles/assertr.html)).
+Using Assertr enables a similar but more lightweight functionality to that of Great Expectations.
+See the above for an example of how to use it in your projects.
+
+## Data Schema Verification
+
+```mermaid!
+flowchart LR
+
+    input_data[("Data to check")]
+    met_specs{"Met\nschema?"}
+    contract(["Contract(s)"])
+    schema["- Has column x of type float \n- Has non-null column y of type int\n - etc..."]
+    continue["Continue\noperations"]
+    error["Raise\nexception"]
+
+    schema --> contract
+    input_data --> met_specs
+    contract -.-> met_specs
+    met_specs --> | Yes | continue
+    met_specs --> | No | error
+
+    style error fill:#FED7AA
+    style continue fill:#DCFCE7
+    style schema fill:#fff
+```
+
+_Diagram showing data __more granular contracts as "schema"__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
+
+Sometimes we need greater
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
