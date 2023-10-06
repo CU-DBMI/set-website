@@ -20,23 +20,6 @@ tags:
 
 <!-- excerpt end -->
 
-Outline:
-
-- Covering data quality tools and techniques to help decrease errors and increase development velocity.
-
-- Data verification testing
-  - [Great Expectations](https://github.com/great-expectations/great_expectations)
-  - [Assertr](https://github.com/ropensci/assertr/)
-
-- Data schema testing
-  - [Pandera](https://github.com/unionai-oss/pandera)
-  - [JSONschema](https://github.com/python-jsonschema/jsonschema)
-
-- Data source testing ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
-  - [DVC](https://github.com/iterative/dvc)
-  - [Liquibase](https://github.com/liquibase/liquibase)
-    - [Database-as-code](https://speakerdeck.com/tastapod/arent-we-forgetting-someone)
-
 __TLDR (too long, didn't read);__
 
 ## Data Quality Validation via Software Tests
@@ -127,24 +110,24 @@ These concepts provide a framework for thinking about the tools mentioned below.
 ```mermaid!
 flowchart LR
     input_data[("Data to check")]
-    met_specs{"Has\ncomponents?"}
+    has_components{"Exhibits\ncomponents?"}
     contract(["Contract(s)"])
     components["- Has no null values\n- Columns are all numeric\n- etc..."]
     continue["Continue\noperations"]
     error["Raise\nexception"]
 
     components --> contract
-    input_data --> met_specs
-    contract -.-> met_specs
-    met_specs --> | Yes | continue
-    met_specs --> | No | error
+    input_data --> has_components
+    contract -.-> has_components
+    has_components --> | Yes | continue
+    has_components --> | No | error
 
     style error fill:#FED7AA
     style continue fill:#DCFCE7
     style components fill:#fff
 ```
 
-_Diagram showing data components being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
+_Diagram showing data contracts as __generalized and reusable "component" verifications__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
 We often need to verify a certain components surrounding data in order to ensure it meets minimum standards.
 The word "component" is used here from the context of [component-based software design](https://en.wikipedia.org/wiki/Component-based_software_engineering) to group together reusable, modular qualities of the data where sometimes we don't know (or want) to specify granular aspects (such as schema, type, column name, etc).
@@ -198,7 +181,7 @@ checkpoint_result = checkpoint.run()
 context.view_validation_result(checkpoint_result)
 ```
 
-_Example code leveraging Python package Great Expectations to perform various data contract validation._
+_Example code leveraging Python package Great Expectations to perform various data component contract validation._
 
 [Great Expectations](https://github.com/great-expectations/great_expectations) is a Python project which provides data  contract verification features through the use of component called ["expectations"](https://greatexpectations.io/expectations/) about the data involved.
 These expectations act as a standardized way to define and validate the component of the data in the same way across different datasets or projects.
@@ -208,7 +191,7 @@ See the above example for a quick code reference of how these work.
 ### Data component Verification - Assertr
 
 ```R
-# assertr example code
+# Example using the Assertr package
 # referenced with modifications from:
 # https://docs.ropensci.org/assertr/articles/assertr.html
 library(dplyr)
@@ -229,7 +212,7 @@ our.data %>%
   assert(within_bounds(0,Inf), mpg)
 ```
 
-_Example code leveraging R package Assertr to perform various data contract validation._
+_Example code leveraging R package Assertr to perform various data component contract validation._
 
 [Assertr](https://github.com/ropensci/assertr/) is an R project which provides similar data component assertions in the form of verify, assert, and insist methods ([see here for more documentation](https://docs.ropensci.org/assertr/articles/assertr.html)).
 Using Assertr enables a similar but more lightweight functionality to that of Great Expectations.
@@ -241,25 +224,126 @@ See the above for an example of how to use it in your projects.
 flowchart LR
 
     input_data[("Data to check")]
-    met_specs{"Met\nschema?"}
+    has_schema{"Has\nschema?"}
     contract(["Contract(s)"])
     schema["- Has column x of type float \n- Has non-null column y of type int\n - etc..."]
     continue["Continue\noperations"]
     error["Raise\nexception"]
 
     schema --> contract
-    input_data --> met_specs
-    contract -.-> met_specs
-    met_specs --> | Yes | continue
-    met_specs --> | No | error
+    input_data --> has_schema
+    contract -.-> has_schema
+    has_schema --> | Yes | continue
+    has_schema --> | No | error
 
     style error fill:#FED7AA
     style continue fill:#DCFCE7
     style schema fill:#fff
 ```
 
-_Diagram showing data __more granular contracts as "schema"__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
+_Diagram showing data contracts as __more granular specifications via "schema" verification__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
-Sometimes we need greater
+Sometimes we need greater specificity than what a data component can offer.
+We can use data schema verification contracts in these cases.
+The word "schema" here is used from the context of [database schema](https://en.wikipedia.org/wiki/Database_schema), but oftentimes these specifications are suitable well beyond solely databases (including database-like formats like dataframes).
+While reuse and modularity are more limited with these cases, they can be helpful for efforts where precision is valued or necessary to accomplish your goals.
+It's worth mentioning that data schema and component verification tools often have many overlaps (meaning you can interchangeably use them to accomplish both tasks).
+
+### Data Schema Verification - Pandera
+
+```python
+"""
+Example of using the Pandera package
+referenced with modifications from:
+https://pandera.readthedocs.io/en/stable/try_pandera.html
+"""
+import pandas as pd
+import pandera as pa
+from pandera.typing import DataFrame, Series
+
+
+# define a schema
+class Schema(pa.DataFrameModel):
+    item: Series[str] = pa.Field(isin=["apple", "orange"], coerce=True)
+    price: Series[float] = pa.Field(gt=0, coerce=True)
+
+
+# simulate invalid dataframe
+invalid_data = pd.DataFrame.from_records(
+    [{"item": "applee", "price": 0.5}, 
+     {"item": "orange", "price": -1000}]
+)
+
+
+# set a decorator on a function which will
+# check the schema as a precondition
+@pa.check_types(lazy=True)
+def precondition_transform_data(data: DataFrame[Schema]):
+    print("here")
+    return data
+
+
+# precondition schema verification
+try:
+    transform_data(invalid_data)
+except pa.errors.SchemaErrors as schema_excs:
+    print(schema_excs)
+
+# inline or implied postcondition schema verification
+try:
+    Schema.validate(invalid_data)
+except pa.errors.SchemaError as schema_exc:
+    print(schema_exc)
+```
+
+_Example code leveraging Python package Pandera to perform various data schema contract validation._
+
+DataFrame-like libraries like [Pandas](https://pandas.pydata.org/) can verified using schema specification contracts through [Pandera](https://pandera.readthedocs.io/en/stable/index.html) (see here for [full DataFrame library support](https://pandera.readthedocs.io/en/stable/supported_libraries.html#supported-dataframe-libraries)).
+Pandera helps define specific columns, column types, and also has some component-like features.
+It leverages a Pythonic class specification, similar to [data classes](https://docs.python.org/3/library/dataclasses.html) and [pydantic models](https://docs.pydantic.dev/latest/concepts/models/), making it potentially easier to use if you already understand Python and DataFrame-like libraries.
+See the above example for a look into how Pandera may be used.
+
+### Data Schema Verification - JSON Schema
+
+```R
+# Example of using the jsonvalidate R package.
+# Referenced with modifications from:
+# https://docs.ropensci.org/jsonvalidate/articles/jsonvalidate.html
+
+schema <- '{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hello World JSON Schema",
+  "description": "An example",
+  "type": "object",
+  "properties": {
+    "hello": {
+      "description": "Provide a description of the property here",
+      "type": "string"
+    }
+  },
+  "required": [
+    "hello"
+  ]
+}'
+
+# create a schema contract for data
+validate <- jsonvalidate::json_validator(schema, engine = "ajv")
+
+# validate JSON using schema specification contract and invalid data
+validate("{}")
+
+# validate JSON using schema specification contract and valid data
+validate("{'hello':'world'}")
+```
+
+[JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) provides a vocabulary way to validate schema contracts for JSON documents.
+There are several implementations of the vocabulary, including [Python package jsonschema](https://github.com/python-jsonschema/jsonschema), and R package [jsonvalidate](https://github.com/ropensci/jsonvalidate).
+Using these libraries allows you to define pre- or postcondition data schema contracts for your software work.
+See above for an R based example of using this vocabulary to perform data schema verification.
+
+- Data source testing ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
+  - [DVC](https://github.com/iterative/dvc)
+  - [Liquibase](https://github.com/liquibase/liquibase)
+    - [Database-as-code](https://speakerdeck.com/tastapod/arent-we-forgetting-someone)
 
 {% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
