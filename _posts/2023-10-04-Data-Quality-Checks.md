@@ -1,18 +1,18 @@
 ---
-title: "Tip of the Week: Data Quality Checks and Validation Testing"
+title: "Tip of the Week: Data Quality Validation through Software Testing"
 author: dave-bunten
 tags:
   - tip-of-the-week
   - software
-  - Python
   - data-quality
-  - data-development
   - data-testing
   - testing
-  - analytics-engineering
+  - design-by-contract
+  - component-based-design
+  - hoare-logic
 ---
 
-# Tip of the Week: Data Quality Checks and Validation Testing
+# Tip of the Week: Data Quality Validation through Software Testing
 
 {% include tip-of-the-week-intro.html %}
 
@@ -22,7 +22,7 @@ tags:
 
 __TLDR (too long, didn't read);__
 
-## Data Quality Validation via Software Tests
+## Introduction
 
 ```mermaid!
 flowchart LR
@@ -341,9 +341,41 @@ There are several implementations of the vocabulary, including [Python package j
 Using these libraries allows you to define pre- or postcondition data schema contracts for your software work.
 See above for an R based example of using this vocabulary to perform data schema verification.
 
-- Data source testing ([link](https://en.wikipedia.org/wiki/Shift-left_testing))
-  - [DVC](https://github.com/iterative/dvc)
-  - [Liquibase](https://github.com/liquibase/liquibase)
-    - [Database-as-code](https://speakerdeck.com/tastapod/arent-we-forgetting-someone)
+## Shift-left Data Verification
 
-{% include figure.html image="images/text-vs-book.png" caption="How are a page with some text and a book different?"  %}
+```mermaid!
+flowchart LR
+    subgraph local ["Data Workflow as Hoare Triple"]
+        direction LR
+            subgraph spacer [" "]
+                subgraph question ["Data source condition?"]
+                    input_data[("Input Data\n(P - precondition)")]
+                end
+            end
+            process_data["Data processing\n(C - command)"]
+            output_data[("Output Data\n(Q - postcondition)")]
+    end
+
+    input_data --> process_data --> output_data
+
+    style question fill:#ffffff,stroke:#ffffff;
+    style spacer fill:#ffffff
+```
+
+Earlier portions of this article have covered primarily data validation of command side-effects and postconditions.
+This is commonplace in development where data sources usually are provided without the ability to validate their precondition or definition.
+[Shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) is a movement which focuses on validating earlier in the lifecycle if and when possible to avoid downstream issues which might occur.
+
+### Shift-left Data Verification - Data Version Control (DVC)
+
+Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what vesion it might be.
+This information is sometimes added in the form of filename additions or an update datetime column in a table.
+[Data Version Control (DVC)](https://dvc.org/doc) is one tool which is specially purposed to address this challenge through [source control](https://en.wikipedia.org/wiki/Version_control) techniques.
+Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.
+
+### Shift-left Data Verification - Flyway
+
+Database sources can leverage an idea nicknamed ["database as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) (which builds on a similar idea about [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code)) to help declare the schema and other elements of a database in the same way one would code.
+Implementing this idea has several advantages from source versioning, visibility, and replicability.
+One tool which implements these ideas is [Flyway](https://github.com/flyway/flyway) which can manage and implement SQL-based files as part of software data precondition validation.
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.
