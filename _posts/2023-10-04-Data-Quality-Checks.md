@@ -380,7 +380,7 @@ flowchart LR
     dvc_cli --> | to maintain | input_data
 ```
 
-Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what vesion it might be.
+Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what version it might be.
 This information is sometimes added in the form of filename additions or an update datetime column in a table.
 [Data Version Control (DVC)](https://dvc.org/doc) is one tool which is specially purposed to address this challenge through [source control](https://en.wikipedia.org/wiki/Version_control) techniques.
 Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.
