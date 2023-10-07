@@ -18,6 +18,8 @@ tags:
 
 __TLDR (too long, didn't read);__
 
+Implement data quality validation through [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches which leverage ideas surrounding [Hoare triple](https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple) and [Design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract). Balancing reusability through [component-based design](https://en.wikipedia.org/wiki/Component-based_software_engineering) data testing with [Great Expectations](https://github.com/great-expectations/great_expectations) or [Assertr](https://github.com/ropensci/assertr/). For greater specificity in your data testing use [database schema-like](https://en.wikipedia.org/wiki/Database_schema) verification through [Pandera](https://pandera.readthedocs.io/en/stable/index.html) or a [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) validator. When possible, practice [shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) on data sources by through the concept of ["database(s) as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) via tools like [Data Version Control (DVC)](https://dvc.org/doc) and [Flyway](https://github.com/flyway/flyway).
+
 ## Introduction
 
 ```mermaid!
@@ -399,6 +401,7 @@ flowchart LR
 ```
 
 Database sources can leverage an idea nicknamed ["database as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) (which builds on a similar idea about [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code)) to help declare the schema and other elements of a database in the same way one would code.
+These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept ["data as code"](https://en.wikipedia.org/wiki/Code_as_data).
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is [Flyway](https://github.com/flyway/flyway) which can manage and implement SQL-based files as part of software data precondition validation.
 A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.
