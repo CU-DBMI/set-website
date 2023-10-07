@@ -10,6 +10,7 @@ tags:
   - design-by-contract
   - component-based-design
   - hoare-logic
+  - data-as-code
 ---
 
 # Tip of the Week: Data Quality Validation through Software Testing Techniques
