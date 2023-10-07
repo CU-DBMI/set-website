@@ -1,5 +1,5 @@
 ---
-title: "Tip of the Week: Data Quality Validation through Software Testing"
+title: "Tip of the Week: Data Quality Validation through Software Testing Techniques"
 author: dave-bunten
 tags:
   - tip-of-the-week
@@ -12,7 +12,7 @@ tags:
   - hoare-logic
 ---
 
-# Tip of the Week: Data Quality Validation through Software Testing
+# Tip of the Week: Data Quality Validation through Software Testing Techniques
 
 {% include tip-of-the-week-intro.html %}
 
