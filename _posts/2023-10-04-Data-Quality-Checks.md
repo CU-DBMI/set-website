@@ -368,12 +368,38 @@ This is commonplace in development where data sources usually are provided witho
 
 ### Shift-left Data Testing - Data Version Control (DVC)
 
+```mermaid!
+flowchart LR
+
+    dvc[("Data Version\nControl (DVC)")]
+    versioned_data[("Versioned\nDatasets")]
+    dvc_cli["DVC Client"]
+    input_data[("Input Data\n(P - precondition)")]
+
+    dvc --> | version data | dvc_cli
+    versioned_data --> | actual data | dvc_cli
+    dvc_cli --> | to maintain | input_data
+```
+
 Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what vesion it might be.
 This information is sometimes added in the form of filename additions or an update datetime column in a table.
 [Data Version Control (DVC)](https://dvc.org/doc) is one tool which is specially purposed to address this challenge through [source control](https://en.wikipedia.org/wiki/Version_control) techniques.
 Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.
 
 ### Shift-left Data Testing - Flyway
+
+```mermaid!
+flowchart LR
+
+    sql["Database as Code\n(in SQL)"]
+    flyway["Flyway"]
+    input_data[("Input Data\n(P - precondition)")]
+
+    sql --> | instructions for | flyway
+    flyway --> | to build | input_data
+
+    style sql fill:#ffffff
+```
 
 Database sources can leverage an idea nicknamed ["database as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) (which builds on a similar idea about [infrastructure as code](https://en.wikipedia.org/wiki/Infrastructure_as_code)) to help declare the schema and other elements of a database in the same way one would code.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
