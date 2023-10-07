@@ -43,10 +43,10 @@ flowchart LR
 _Diagram showing input, in-process data, and output data as a workflow._
 
 <!-- excerpt start -->
-Data orientated software development can benefit from a specialized focus on varying aspects of data quality.
-We can use software-based testing techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn't need to guess or rediscover known issues).
-These come in a number of forms and generally follow existing [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches.
-This article will cover just a few tools and techniques for addressing data quality validation testing.
+Data orientated software development can benefit from a specialized focus on varying aspects of data quality validation.
+We can use [software testing]((https://en.wikipedia.org/wiki/Software_testing)) techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn't need to guess or rediscover known issues).
+These come in a number of forms and generally follow existing software testing concepts which we'll expand upon below.
+This article will cover a few tools which leverage these techniques for addressing data quality validation testing.
 <!-- excerpt end -->
 ## Data Quality Testing Concepts
 
