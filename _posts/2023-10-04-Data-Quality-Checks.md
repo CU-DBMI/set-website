@@ -19,7 +19,7 @@ tags:
 
 __TLDR (too long, didn't read);__
 
-Implement data quality validation through [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches which leverage ideas surrounding [Hoare triple](https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple) and [Design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract). Balancing reusability through [component-based design](https://en.wikipedia.org/wiki/Component-based_software_engineering) data testing with [Great Expectations](https://github.com/great-expectations/great_expectations) or [Assertr](https://github.com/ropensci/assertr/). For greater specificity in your data testing use [database schema-like](https://en.wikipedia.org/wiki/Database_schema) verification through [Pandera](https://pandera.readthedocs.io/en/stable/index.html) or a [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) validator. When possible, practice [shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) on data sources by through the concept of ["database(s) as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) via tools like [Data Version Control (DVC)](https://dvc.org/doc) and [Flyway](https://github.com/flyway/flyway).
+Implement data quality validation through [software testing](https://en.wikipedia.org/wiki/Software_testing) approaches which leverage ideas surrounding [Hoare triples](https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple) and [Design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract). Balancing reusability through [component-based design](https://en.wikipedia.org/wiki/Component-based_software_engineering) data testing with [Great Expectations](https://github.com/great-expectations/great_expectations) or [Assertr](https://github.com/ropensci/assertr/). For greater specificity in your data testing, use [database schema-like](https://en.wikipedia.org/wiki/Database_schema) verification through [Pandera](https://pandera.readthedocs.io/en/stable/index.html) or a [JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) validator. When possible, practice [shift-left testing](https://en.wikipedia.org/wiki/Shift-left_testing) on data sources by through the concept of ["database(s) as code"](https://speakerdeck.com/tastapod/arent-we-forgetting-someone) via tools like [Data Version Control (DVC)](https://dvc.org/doc) and [Flyway](https://github.com/flyway/flyway).
 
 ## Introduction
 
@@ -129,7 +129,7 @@ flowchart LR
 
 _Diagram showing data contracts as __generalized and reusable "component" testing__ being checked through contracts and raising an error if they aren't met or continuing operations if they are met._
 
-We often need to verify a certain components surrounding data in order to ensure it meets minimum standards.
+We often need to verify a certain component's surrounding data in order to ensure it meets minimum standards.
 The word "component" is used here from the context of [component-based software design](https://en.wikipedia.org/wiki/Component-based_software_engineering) to group together reusable, modular qualities of the data where sometimes we don't know (or want) to specify granular aspects (such as schema, type, column name, etc).
 These components often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
 Oftentimes these components are contracts checking postconditions of earlier commands or procedures, ensuring the data we receive is accurate to our intention.
@@ -381,7 +381,7 @@ flowchart LR
     dvc_cli --> | to maintain | input_data
 ```
 
-Data sources undergoing frequent changes becomes difficult to use because we oftentimes don't know _when_ the data is from or what version it might be.
+Data sources undergoing frequent changes become difficult to use because we oftentimes don't know _when_ the data is from or what version it might be.
 This information is sometimes added in the form of filename additions or an update datetime column in a table.
 [Data Version Control (DVC)](https://dvc.org/doc) is one tool which is specially purposed to address this challenge through [source control](https://en.wikipedia.org/wiki/Version_control) techniques.
 Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.
