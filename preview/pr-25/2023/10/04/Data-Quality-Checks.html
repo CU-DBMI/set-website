@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-10-26T16:57:27+00:00">
+  <meta property="og:updated_time" content="2023-10-30T11:48:53+00:00">
   <meta property="article:published_time" content="2023-10-04T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-10-26T16:57:27+00:00">
-  <meta name="revised" content="2023-10-26T16:57:27+00:00">
+  <meta property="article:modified_time" content="2023-10-30T11:48:53+00:00">
+  <meta name="revised" content="2023-10-30T11:48:53+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques" },
       "datePublished": "2023-10-04T00:00:00+00:00",
-      "dateModified": "2023-10-26T16:57:27+00:00",
+      "dateModified": "2023-10-30T11:48:53+00:00",
     
     "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -476,7 +476,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>October 26, 2023</span>
+      <span>October 30, 2023</span>
     </span>
   
 </div>
@@ -555,7 +555,7 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <p><strong>TLDR (too long, didn’t read);</strong></p>
 
-<p>Implement data quality validation through <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> approaches which leverage ideas surrounding <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triple</a> and <a href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract (DbC)</a>. Balancing reusability through <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based design</a> data testing with <a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> or <a href="https://github.com/ropensci/assertr/">Assertr</a>. For greater specificity in your data testing use <a href="https://en.wikipedia.org/wiki/Database_schema">database schema-like</a> verification through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> or a <a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> validator. When possible, practice <a href="https://en.wikipedia.org/wiki/Shift-left_testing">shift-left testing</a> on data sources by through the concept of <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">“database(s) as code”</a> via tools like <a href="https://dvc.org/doc">Data Version Control (DVC)</a> and <a href="https://github.com/flyway/flyway">Flyway</a>.</p>
+<p>Implement data quality validation through <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> approaches which leverage ideas surrounding <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triples</a> and <a href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract (DbC)</a>. Balancing reusability through <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based design</a> data testing with <a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> or <a href="https://github.com/ropensci/assertr/">Assertr</a>. For greater specificity in your data testing, use <a href="https://en.wikipedia.org/wiki/Database_schema">database schema-like</a> verification through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> or a <a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> validator. When possible, practice <a href="https://en.wikipedia.org/wiki/Shift-left_testing">shift-left testing</a> on data sources by through the concept of <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">“database(s) as code”</a> via tools like <a href="https://dvc.org/doc">Data Version Control (DVC)</a> and <a href="https://github.com/flyway/flyway">Flyway</a>.</p>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -593,7 +593,7 @@ These concepts provide a framework for thinking about the tools mentioned below.
 
 <p><em>Diagram showing data contracts as <strong>generalized and reusable “component” testing</strong> being checked through contracts and raising an error if they aren’t met or continuing operations if they are met.</em></p>
 
-<p>We often need to verify a certain components surrounding data in order to ensure it meets minimum standards.
+<p>We often need to verify a certain component’s surrounding data in order to ensure it meets minimum standards.
 The word “component” is used here from the context of <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based software design</a> to group together reusable, modular qualities of the data where sometimes we don’t know (or want) to specify granular aspects (such as schema, type, column name, etc).
 These components often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
 Oftentimes these components are contracts checking postconditions of earlier commands or procedures, ensuring the data we receive is accurate to our intention.
@@ -796,7 +796,7 @@ This is commonplace in development where data sources usually are provided witho
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmR2Y1soXCJEYXRhIFZlcnNpb25cXG5Db250cm9sIChEVkMpXCIpXVxudmVyc2lvbmVkX2RhdGFbKFwiVmVyc2lvbmVkXFxuRGF0YXNldHNcIildXG5kdmNfY2xpW1wiRFZDIENsaWVudFwiXVxuaW5wdXRfZGF0YVsoXCJJbnB1dCBEYXRhXFxuKFAgLSBwcmVjb25kaXRpb24pXCIpXVxuJSUtXG5kdmMgLS0-IHwgdmVyc2lvbiBkYXRhIHwgZHZjX2NsaVxudmVyc2lvbmVkX2RhdGEgLS0-IHwgYWN0dWFsIGRhdGEgfCBkdmNfY2xpXG5kdmNfY2xpIC0tPiB8IHRvIG1haW50YWluIHwgaW5wdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p>Data sources undergoing frequent changes becomes difficult to use because we oftentimes don’t know <em>when</em> the data is from or what version it might be.
+<p>Data sources undergoing frequent changes become difficult to use because we oftentimes don’t know <em>when</em> the data is from or what version it might be.
 This information is sometimes added in the form of filename additions or an update datetime column in a table.
 <a href="https://dvc.org/doc">Data Version Control (DVC)</a> is one tool which is specially purposed to address this challenge through <a href="https://en.wikipedia.org/wiki/Version_control">source control</a> techniques.
 Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.</p>
