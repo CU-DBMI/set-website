@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Automate Software Workflows with GitHub Actions | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-26/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Automate Software Workflows with GitHub Actions">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Automate Software Workflows with GitHub Actions">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/preview/pr-26/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Automate Software Workflows with GitHub Actions">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-26/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2023-10-31T12:02:45+00:00">
+  <meta property="article:published_time" content="2023-03-15T00:00:00+00:00">
+  <meta property="article:modified_time" content="2023-10-31T12:02:45+00:00">
+  <meta name="revised" content="2023-10-31T12:02:45+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Automate Software Workflows with GitHub Actions" },
+      "datePublished": "2023-03-15T00:00:00+00:00",
+      "dateModified": "2023-10-31T12:02:45+00:00",
+    
+    "name": "Tip of the Week: Automate Software Workflows with GitHub Actions",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Automate Software Workflows with GitHub Actions",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-26/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-26/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-26/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-26/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-26/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-26/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-26/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-26/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-26/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-26/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-26/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-26/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-26/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-26/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-26/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-26/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-26/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-26/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>March 15, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>October 31, 2023</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-26/blog">
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20github%22" class="tag" data-tooltip='Show items with the tag "github"'>
+        github
+      </a>
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20workflow%22" class="tag" data-tooltip='Show items with the tag "workflow"'>
+        workflow
+      </a>
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20github-actions%22" class="tag" data-tooltip='Show items with the tag "github-actions"'>
+        github-actions
+      </a>
+    
+      <a href="/set-website/preview/pr-26/blog?search=%22tag:%20continuous-integration%22" class="tag" data-tooltip='Show items with the tag "continuous-integration"'>
+        continuous-integration
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<!-- excerpt start -->
+
+<p>There are many routine tasks which can be automated to help save time and increase reproducibility in software development. GitHub Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn’t read);</strong>
+Use <a href="https://docs.github.com/en/actions">GitHub Actions</a> to perform <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> work automatically by leveraging <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github’s workflow specification</a> and the <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>. You can test these workflows with <a href="https://github.com/nektos/act">Act</a>, which can enhance development with this feature of Github. Consider making use of <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">“write once, run anywhere” (WORA)</a> and <a href="https://docs.dagger.io/">Dagger</a> in conjunction with GitHub Actions to enable reproducible workflows for your software projects.</p>
+
+<h2 id="workflows-in-software">Workflows in Software</h2>
+
+<pre class="mermaid">
+flowchart LR
+  start((start)) --&gt; action
+  action["action(s)"] --&gt; en((end))
+  style start fill:#6EE7B7
+  style en fill:#FCA5A5
+</pre>
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<p class="center"><em>An example workflow.</em></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Workflow">Workflows</a> consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time by using what are commonly called “workflow engines”. Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are <a href="https://s.apache.org/existing-workflow-systems">many workflow engines</a>, including some which help accomplish work alongside version control.</p>
+
+<h2 id="github-actions">GitHub Actions</h2>
+
+<pre class="mermaid">
+flowchart LR
+  subgraph workflow [GitHub Actions Workflow Run]
+    direction LR
+    action["action(s)"] --&gt; en((end))
+    start((event\ntrigger))
+  end
+  start --&gt; action
+  style start fill:#6EE7B7
+  style en fill:#FCA5A5
+</pre>
+
+<p class="center"><em>A diagram showing GitHub Actions as a workflow.</em></p>
+
+<p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a feature of GitHub which allows you to run workflows in relation to your code as a <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> (including automated testing, builds, and deployments) and general automation tool. For example, one can use GitHub Actions to make sure code related to a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub Pull Request</a> passes certain tests before it is allowed to be merged. GitHub Actions may be specified using <a href="https://en.wikipedia.org/wiki/YAML">YAML files</a> within your repository’s <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory by using syntax specific to <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github’s workflow specification</a>. Each YAML file under the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory can specify workflows to accomplish tasks related to your software work. GitHub Actions workflows may be customized to your own needs, or use an <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Image showing GitHub Actions tab on GitHub website.">
+    <img src="/set-website/preview/pr-26/images/github_actions_tab.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Image showing GitHub Actions tab on GitHub website." loading="lazy" onerror="this.src = '/set-website/preview/pr-26/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Image showing GitHub Actions tab on GitHub website.
+
+    </figcaption>
+  
+</figure>
+
+<p>GitHub provides an <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run">“Actions” tab</a> for each repository which helps visualize and control Github Actions workflow runs. This tab shows a history of all workflow runs in the repository. For each run, it shows whether it was run successful or not, the associated logs, and controls to cancel or re-run it.</p>
+
+<blockquote>
+  <p><strong>GitHub Actions Examples</strong>
+GitHub Actions is sometimes better understood with examples. See the following references for a few basic examples of using GitHub Actions in a simulated project repository.</p>
+
+  <ul>
+    <li>
+<a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/1.example-action.yml">1.example-action.yml</a>: demonstrates how to run a snippet of Python code in a basic GitHub Actions workflow.</li>
+    <li>
+<a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/2.run-python-file.yml">2.run-python-file.yml</a>: demonstrates how to reliably reproduce the environment by installing dependencies using <a href="https://python-poetry.org/docs/">Poetry</a>, and then run a Python file in that environment.</li>
+    <li>
+<a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/3.run-matrixed-pytest-ghactions.yml">3.run-matrixed-pytest-ghactions.yml</a>: demonstrates how to run pytest tests against multiple versions of Python (i.e., “matrixed” Python versions) using GitHub Actions with a <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">matrix strategy</a>.</li>
+  </ul>
+</blockquote>
+
+<h2 id="testing-with-act">Testing with Act</h2>
+
+<pre class="mermaid">
+flowchart LR
+  subgraph container ["local simulation container(s)"]
+    direction LR
+    subgraph workflow [GitHub Actions Workflow Run]
+      direction LR
+      start((event\ntrigger))
+      action --&gt; en((end))
+    end
+  end
+  start --&gt; action
+  act\[Run Act] -.-&gt; |Simulate\ntrigger| start
+  style start fill:#6EE7B7
+  style en fill:#FCA5A5
+</pre>
+
+<p class="center"><em>A diagram showing how GitHub Actions workflows may be triggered from Act</em></p>
+
+<p>One challenge with GitHub Actions is a lack of standardized local testing tools. For example, how will you know that a new GitHub Actions workflow will function as expected (or at all) without pushing to the GitHub repository? One third-party tool which can help with this is <a href="https://github.com/nektos/act">Act</a>. Act uses <a href="https://github.com/nektos/act#runners">Docker images</a> which require <a href="https://docs.docker.com/desktop/">Docker Desktop</a> to simulate what running a GitHub Action workflow within your local environment. Using Act can sometimes avoid guessing what will occur when a GitHub Action worklow is added to your repository. See <a href="https://github.com/nektos/act#installation">Act’s installation documentation</a> for more information on getting started with this tool.</p>
+
+<h2 id="nested-workflows-with-github-actions">Nested Workflows with GitHub Actions</h2>
+
+<pre class="mermaid">
+flowchart LR
+
+  subgraph action ["Nested Workflow (Dagger, etc)"]
+    direction LR
+    actions
+    start2((start)) --&gt; actions
+    actions --&gt; en2((end))
+    en2((end))
+  end
+  subgraph workflow2 [Local Environment Run]
+    direction LR
+    run2[run workflow]
+    en3((end))
+    start3((event\ntrigger))
+  end
+  subgraph workflow [GitHub Actions Workflow Run]
+    direction LR
+    start((event\ntrigger))
+    run[run workflow]
+    en((end))
+  end
+  
+  start --&gt; run
+  start3 --&gt; run2
+  action -.-&gt; run
+  run --&gt; en
+  run2 --&gt; en3
+  action -.-&gt; run2
+  style start fill:#6EE7B7
+  style start2 fill:#D1FAE5
+  style start3 fill:#6EE7B7
+  style en fill:#FCA5A5
+  style en2 fill:#FFE4E6
+  style en3 fill:#FCA5A5
+</pre>
+
+<p class="center"><em>A diagram showing how GitHub Actions may leverage nested workflows with tools like Dagger.</em></p>
+
+<p>There are times when GitHub Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">“write once, run anywhere” (WORA)</a> to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and GitHub Actions environments. <a href="https://docs.dagger.io/">Dagger</a> is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or GitHub Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for <a href="https://docs.dagger.io/cli#how-does-it-work">an explanation of how Dagger works</a>).</p>
+
+<p>There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest. <a href="https://github.com/earthly/earthly">Earthly</a> is similar to Dagger and uses “earthfiles” as a specification. Both Dagger and Earthly (in addition to GitHub Actions) use container-based approaches, which in-and-of themselves present additional alternatives outside the scope of this article.</p>
+
+<blockquote>
+  <p><strong>GitHub Actions with Nested Workflow Example</strong>
+Reference this example for a brief demonstration of how GitHub Actions and Dagger may be used together.</p>
+
+  <ul>
+    <li>
+<a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/4.run-matrixed-pytest-dagger.yml">4.run-matrixed-pytest-dagger.yml</a>: demonstrates how to run matrixed Python versions for confirming passing pytest tests using GitHub Actions and Dagger together. A <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">GitHub Actions matrix strategy</a> is used to span concurrent work while retaining the reproducibility from Dagger task specification.</li>
+  </ul>
+</blockquote>
+
+<h2 id="closing-remarks">Closing Remarks</h2>
+
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-26/2023/02/13/Branch-Review-and-Learn.html">
+        Tip of the Week: Branch, Review, and Learn
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-26/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html">
+        Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-26/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2023
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
