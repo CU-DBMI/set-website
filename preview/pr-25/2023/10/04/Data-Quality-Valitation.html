@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-10-30T11:48:53+00:00">
+  <meta property="og:updated_time" content="2023-10-31T11:14:19+00:00">
   <meta property="article:published_time" content="2023-10-04T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-10-30T11:48:53+00:00">
-  <meta name="revised" content="2023-10-30T11:48:53+00:00">
+  <meta property="article:modified_time" content="2023-10-31T11:14:19+00:00">
+  <meta name="revised" content="2023-10-31T11:14:19+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques" },
       "datePublished": "2023-10-04T00:00:00+00:00",
-      "dateModified": "2023-10-30T11:48:53+00:00",
+      "dateModified": "2023-10-31T11:14:19+00:00",
     
     "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -476,7 +476,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>October 30, 2023</span>
+      <span>October 31, 2023</span>
     </span>
   
 </div>
@@ -565,7 +565,7 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <!-- excerpt start -->
 <p>Data orientated software development can benefit from a specialized focus on varying aspects of data quality validation.
-We can use <a href="(https://en.wikipedia.org/wiki/Software_testing)">software testing</a> techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn’t need to guess or rediscover known issues).
+We can use <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn’t need to guess or rediscover known issues).
 These come in a number of forms and generally follow existing software testing concepts which we’ll expand upon below.
 This article will cover a few tools which leverage these techniques for addressing data quality validation testing.
 <!-- excerpt end --></p>
@@ -583,7 +583,9 @@ Software development using data often entails (sometimes assumed) assertions of 
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFRlc3RpbmcgdGhyb3VnaCBEZXNpZ24gYnkgQ29udHJhY3Qgb3ZlciBIb2FyZSBUcmlwbGVcIl1cbmRpcmVjdGlvbiBMUlxuc3ViZ3JhcGggaG9hcmVfdHJpcGxlIFtcIkhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG4lJS1cbnByb2Nlc3NfZGF0YVtcIkRhdGEgcHJvY2Vzc2luZ1xcbihDIC0gY29tbWFuZClcIl1cbiUlLVxub3V0cHV0X2RhdGFbKFwiT3V0cHV0IERhdGFcXG4oUSAtIHBvc3Rjb25kaXRpb24pXCIpXVxuZW5kXG5zdWJncmFwaCBkYmMgW1wiRGVzaWduIGJ5IENvbnRyYWN0XCJdXG5kaXJlY3Rpb24gTFJcbm1ldF9zcGVjaWZpY2F0aW9uMXtcIk1ldFxcbnNwZWNzP1wifVxuY29udHJhY3QxKFtcIkNvbnRyYWN0KHMpXCJdKVxubWV0X3NwZWNpZmljYXRpb24ye1wiTWV0IFxcbnNwZWNzP1wifVxuY29udHJhY3QyKFtcIkNvbnRyYWN0KHMpXCJdKVxuZW5kXG5lbmRcbiUlLVxuaW5wdXRfZGF0YSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5tZXRfc3BlY2lmaWNhdGlvbjEgLS0-IHByb2Nlc3NfZGF0YVxucHJvY2Vzc19kYXRhIC0tPiBtZXRfc3BlY2lmaWNhdGlvbjJcbm1ldF9zcGVjaWZpY2F0aW9uMiAtLT4gb3V0cHV0X2RhdGFcbmNvbnRyYWN0MSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5jb250cmFjdDIgLS0-IG1ldF9zcGVjaWZpY2F0aW9uMlxuJSUtIiwibWVybWFpZCI6bnVsbH0"></p>
 
-<p>Hoare logic and Software correctness help describe <a href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract (DbC)</a>, a software approach involving the formal specification of “contracts” which help ensure we meet our intended goals.
+<p><em>Data testing through design by contract over Hoare triple.</em></p>
+
+<p>Hoare logic and Software correctness help describe <a href="https://en.wikipedia.org/wiki/Design_by_contract">design by contract (DbC)</a>, a software approach involving the formal specification of “contracts” which help ensure we meet our intended goals.
 DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
 These concepts provide a framework for thinking about the tools mentioned below.</p>
 
@@ -653,7 +655,7 @@ These expectations act as a standardized way to define and validate the componen
 In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores">view validation results</a>, <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores">share expectations</a>, and also <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs">build data documentation</a>.
 See the above example for a quick code reference of how these work.</p>
 
-<h3 id="data-component-testing---assertr">Data component Testing - Assertr</h3>
+<h3 id="data-component-testing---assertr">Data Component Testing - Assertr</h3>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example using the Assertr package</span><span class="w">
 </span><span class="c1"># referenced with modifications from:</span><span class="w">
@@ -671,7 +673,7 @@ See the above example for a quick code reference of how these work.</p>
 </span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
   </span><span class="n">verify</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
 
-</span><span class="c1"># use assert to that column mpg is within the bounds of 0 to infinity</span><span class="w">
+</span><span class="c1"># use assert to validate that column mpg is within the bounds of 0 to infinity</span><span class="w">
 </span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
   </span><span class="n">assert</span><span class="p">(</span><span class="n">within_bounds</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="kc">Inf</span><span class="p">),</span><span class="w"> </span><span class="n">mpg</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
@@ -729,7 +731,7 @@ https://pandera.readthedocs.io/en/stable/try_pandera.html
 
 <span class="c1"># precondition schema testing
 </span><span class="k">try</span><span class="p">:</span>
-    <span class="n">transform_data</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
+    <span class="n">precondition_transform_data</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">pa</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">SchemaErrors</span> <span class="k">as</span> <span class="n">schema_excs</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">schema_excs</span><span class="p">)</span>
 
