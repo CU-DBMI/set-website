@@ -45,7 +45,7 @@ _Diagram showing input, in-process data, and output data as a workflow._
 
 <!-- excerpt start -->
 Data orientated software development can benefit from a specialized focus on varying aspects of data quality validation.
-We can use [software testing]((https://en.wikipedia.org/wiki/Software_testing)) techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn't need to guess or rediscover known issues).
+We can use [software testing](https://en.wikipedia.org/wiki/Software_testing) techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn't need to guess or rediscover known issues).
 These come in a number of forms and generally follow existing software testing concepts which we'll expand upon below.
 This article will cover a few tools which leverage these techniques for addressing data quality validation testing.
 <!-- excerpt end -->
@@ -101,7 +101,9 @@ flowchart LR
 
 ```
 
-Hoare logic and Software correctness help describe [Design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract), a software approach involving the formal specification of "contracts" which help ensure we meet our intended goals.
+_Data testing through design by contract over Hoare triple._
+
+Hoare logic and Software correctness help describe [design by contract (DbC)](https://en.wikipedia.org/wiki/Design_by_contract), a software approach involving the formal specification of "contracts" which help ensure we meet our intended goals.
 DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
 These concepts provide a framework for thinking about the tools mentioned below.
 
@@ -188,7 +190,7 @@ These expectations act as a standardized way to define and validate the componen
 In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to [view validation results](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores), [share expectations](https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores), and also [build data documentation](https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs).
 See the above example for a quick code reference of how these work.
 
-### Data component Testing - Assertr
+### Data Component Testing - Assertr
 
 ```R
 # Example using the Assertr package
@@ -207,7 +209,7 @@ our.data$mpg[5] <- our.data$mpg[5] * -1
 our.data %>%
   verify(mpg >= 0)
 
-# use assert to that column mpg is within the bounds of 0 to infinity
+# use assert to validate that column mpg is within the bounds of 0 to infinity
 our.data %>%
   assert(within_bounds(0,Inf), mpg)
 ```
@@ -285,7 +287,7 @@ def precondition_transform_data(data: DataFrame[Schema]):
 
 # precondition schema testing
 try:
-    transform_data(invalid_data)
+    precondition_transform_data(invalid_data)
 except pa.errors.SchemaErrors as schema_excs:
     print(schema_excs)
 
