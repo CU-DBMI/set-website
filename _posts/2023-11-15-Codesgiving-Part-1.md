@@ -43,6 +43,10 @@ These open-source projects have internal costs which are sometimes invisible to 
 Every software project has an implied level of [software gardening](https://bssw.io/blog_posts/long-term-software-gardening-strategies-for-cultivating-scientific-development-ecosystems) time costs involved to impede decay,  practice continuous improvements and evolve the work.
 One way to actively share our thanks for the projects we depend on is through applying our time towards code contributions on them.
 
+Many projects are in need of additional people's thinking and development time.
+Have you ever noticed something that needs to be fixed or desirable functionality in a project you use?
+___Consider adding your contributions to open-source!___
+
 ## All Contributions Matter
 
 Contributing to open-source can come in many forms and contributions don't need to be gigantic to make an impact.
@@ -59,23 +63,15 @@ For example, a short walk outside, a conversation with someone, or a nap can som
 By the same token, open-source benefits greatly from communications on discussion boards, bug or feature descriptions, or other work that might not be strictly considered "engineering".
 
 
-## Codesgiving for CellProfiler
-
-Members of the [Way Lab](https://www.waysciencelab.com/) sometimes depend upon single-cell feature data generated from software called [CellProfiler](https://cellprofiler.org/).
-CellProfiler is an open-source application for biological image analysis and data generation.
-While there are many ways CellProfiler can be used, the Way Lab most often uses [Conda](https://en.wikipedia.org/wiki/Conda_(package_manager)) to help manage their research data science environments (including CellProfiler as a dependency).
-Lately, we've noticed that MacOS systems sometimes have trouble completing their install of CellProfiler through Conda environments (where Linux-based systems appear to not have any issue).
-I decided this might be a good area to explore for Codesgiving.
-
-### Troubleshooting Approach
+## Open-source Contribution Approaches
 
 ```mermaid
 flowchart LR
-    reported["Report\nissue"]
-    verification["Verify or replicate\n the issue"]
+    reported["Report\nneed(s)"]
+    verification["Verify or replicate\n the need"]
     verify_check1{"Able to\nverify?"}
     solution["Hypothesize\n and apply fix"]
-    verify_check2{"Issue\nresolved?"}
+    verify_check2{"Is it\nresolved?"}
     resolved["Resolution\nand post-actions"]
 
     reported --> verification
@@ -92,12 +88,97 @@ flowchart LR
 
 _Diagram._
 
-### Issue Reporting
+It can feel overwhelming to find a way to contribute to open-source.
+Similar to other software methodology, modularizing your approach can help you progress without being overwhelmed.
+Using a troubleshooting approach like the above can help you break down big challenges into bite-sized chunks.
+Consider each step as a "module" or "section" which needs to be addressed sequentially.
 
-Issues are often best reported through written stories captured within a bug or feature tracking system (such as GitHub Issues) which if possible also include example code or logs.
+### Embrace a Learning Mindset
+
+Open-source contributions almost always entail learning of some kind.
+Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
+__Assume positive intent__ and accept input from others while upholding your own ideas to share successful contributions together.
+Prepare yourself by intentionally opening your mind to input from others, even if you're sure you're absolutely "right".
+
+### Is the Need a Bug or Feature?
+
+```mermaid
+flowchart LR
+
+subgraph software_needs ["Software Needs"]
+subgraph bug_over ["Bug"]
+    bug["Something's\nbroken!"]
+end
+
+subgraph feature_over ["Feature"]
+    feature["We need new\nfunctionality!"]
+end
+end
+
+style software_needs fill:#fff,stroke:#fff;
+```
+
+One way to help solidify your thinking and the approach is to consider whether what you're proposing is a bug or a feature.
+A [software bug](https://en.wikipedia.org/wiki/Software_bug) is considered something which is broken or malfunctioning.
+A [software feature](https://en.wikipedia.org/wiki/Software_feature) is generally considered new functionality or a different way of doing things than what exists today.
+There's often overlap between these, and sometimes they can inspire branching needs, but individually they usually are more of one than the other.
+If you can't decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
+Following this strategy will help you communicate the potential for contribution and also clarify the development process.
+
+### Has the Need Already Been Reported?
+
+Be sure to check whether the bug or feature has already been reported somewhere!
+For example, you can look on GitHub Issues with a search query matching the rough idea of what you're thinking about.
+If it has been reported already, take a look to see if someone has made a code contribution related to the work already.
+If there aren't yet any code contributions and it doesn't look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge the existing discussions.
+If you're unsure, it's always kind to mention your interest in the report and ask for more information.
+
+### Reporting the Need for Change
+
+```markdown
+# Using `function_x` with `library_y` causes `exception_z`
+
+## Summary
+
+As a `library_y` research software developer I want to use `function_x` for my data so that I can share data for research outcomes.
+
+## Reproducing the error
+
+This error may be seen using Python v3.x on all major OS's using the following code snippet:
+...
+
+```
+
+_An example of a user story issue report with imagined code example._
+
+Open-source needs are often best reported through written stories captured within a bug or feature tracking system (such as [GitHub Issues](https://github.com/features/issues)) which if possible also include example code or logs.
 One template for reporting issues is through a "user story".
 A user story typically comes in the form: `As a < type of user >, I want < some goal > so that < some reason >.` ([Mountain Goat Software: User Stories](https://www.mountaingoatsoftware.com/agile/user-stories)).
+Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
+As a general principle, be as __be as specific as you can without going overboard__.
+Include things like programming language version, operating system, and other system dependencies that might be related.
+Once you have a good written description of the need be sure to submit it where it can be seen by the relevant development community.
+For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
 
-### Issue Verification
+### What Happens After You Submit a Bug or Feature Report?
 
+When making open-source contributions, sometimes it can also help to mention that you're interested in resolving the issue through a related pull request and review.
+Oftentimes open-source projects welcome new contributors but may have specific requirements.
+These requirements are usually spelled out within a [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) found somewhere in the repository or the organization level documentation.
+It's also completely okay to let other contributors build solutions for the issue (like we mentioned before, all contributions matter, including the reporting of bugs or features themselves)!
+
+### Bug or Feature Verification
+
+If you decide to develop a solution for what you reported, one software strategy which can help you remain focused and objective is [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development).
+Test-driven development entails the following pattern:
+
+1. Add or modify a test which checks for a bug fix or feature addition
+1. Run all tests (expecting the newly added test content to fail)
+1. Write a simple version of code which allows the tests to succeed
+1. Verify that all tests now pass
+1. Return to step 3, refactoring the code as needed
+
+Using this pattern sets a "cognitive milestone" for you as you develop a solution to what was reported.
+Open-source projects can have many interesting components which could take time and be challenging to understand.
+The addition of the test and related development will help keep you goal-orientated without getting lost in the "software forest" of a project.
 
