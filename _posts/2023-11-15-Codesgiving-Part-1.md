@@ -93,14 +93,27 @@ Similar to other software methodology, modularizing your approach can help you p
 Using a troubleshooting approach like the above can help you break down big challenges into bite-sized chunks.
 Consider each step as a "module" or "section" which needs to be addressed sequentially.
 
-### Embrace a Learning Mindset
+#### Software Scheduling Rule of Thumb
+
+The following rule of thumb from _The Mythical Man Month_ can assist with how you structure your time for an open-source contribution.
+Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time is usually small).
+A good motto to keep in mind throughout this process is _Festina Lente_, or "Make haste, slowly."
+
+- 1/3 planning ~(33%)
+- 1/6 coding (~16%)
+- 1/4 component testing (25%)
+- 1/4 system testing (25%)
+
+### Planning an Open-source Contribution
+
+#### Embrace a Learning Mindset
 
 Open-source contributions almost always entail learning of some kind.
 Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
 __Assume positive intent__ and accept input from others while upholding your own ideas to share successful contributions together.
 Prepare yourself by intentionally opening your mind to input from others, even if you're sure you're absolutely "right".
 
-### Is the Need a Bug or Feature?
+#### Is the Need a Bug or Feature?
 
 ```mermaid
 flowchart LR
@@ -125,7 +138,7 @@ There's often overlap between these, and sometimes they can inspire branching ne
 If you can't decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
 Following this strategy will help you communicate the potential for contribution and also clarify the development process.
 
-### Has the Need Already Been Reported?
+#### Has the Need Already Been Reported?
 
 Be sure to check whether the bug or feature has already been reported somewhere!
 For example, you can look on GitHub Issues with a search query matching the rough idea of what you're thinking about.
@@ -133,7 +146,7 @@ If it has been reported already, take a look to see if someone has made a code c
 If there aren't yet any code contributions and it doesn't look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge the existing discussions.
 If you're unsure, it's always kind to mention your interest in the report and ask for more information.
 
-### Reporting the Need for Change
+#### Reporting the Need for Change
 
 ```markdown
 # Using `function_x` with `library_y` causes `exception_z`
@@ -160,14 +173,16 @@ Include things like programming language version, operating system, and other sy
 Once you have a good written description of the need be sure to submit it where it can be seen by the relevant development community.
 For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
 
-### What Happens After You Submit a Bug or Feature Report?
+#### What Happens After You Submit a Bug or Feature Report?
 
 When making open-source contributions, sometimes it can also help to mention that you're interested in resolving the issue through a related pull request and review.
 Oftentimes open-source projects welcome new contributors but may have specific requirements.
 These requirements are usually spelled out within a [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) found somewhere in the repository or the organization level documentation.
 It's also completely okay to let other contributors build solutions for the issue (like we mentioned before, all contributions matter, including the reporting of bugs or features themselves)!
 
-### Bug or Feature Verification
+### Developing and Testing an Open-source Contribution
+
+#### Bug or Feature Verification with Test-driven Development
 
 If you decide to develop a solution for what you reported, one software strategy which can help you remain focused and objective is [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development).
 Test-driven development entails the following pattern:
@@ -181,4 +196,15 @@ Test-driven development entails the following pattern:
 Using this pattern sets a "cognitive milestone" for you as you develop a solution to what was reported.
 Open-source projects can have many interesting components which could take time and be challenging to understand.
 The addition of the test and related development will help keep you goal-orientated without getting lost in the "software forest" of a project.
+
+#### Developing a Solution
+
+Once you have a test in place for the bug fix or feature addition it's time to work towards developing a solution.
+If you've taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
+If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
+
+Use [timeboxing techniques]() to  help make sure the time you spend in development is no more than necessary.
+Also recall that a "simplest version" of the code can often be more quickly refactored and completed than devising a "perfect" solution the first time.
+Remember, you'll also very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).
+
 
