@@ -1,33 +1,21 @@
 ---
-title: "Tip of the Week: Codesgiving Open-source Contributions"
+title: "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough"
 author: dave-bunten
 tags:
   - tip-of-the-week
   - codesgiving
 ---
 
-# Tip of the Week: Codesgiving Open-source Contributions
+# Tip of the Week: Codesgiving - Open-source Contribution Walkthrough
 
 {% include tip-of-the-week-intro.html %}
 
-__TLDR (too long, didn't read);__
-
-
-
 ## Introduction
 
-```mermaid!
-flowchart LR
-    input_data
-```
-
-_Diagram._
-
+<!-- excerpt start -->
 [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving) is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
 In the United States, we celebrate Thanksgiving on November 23rd each year often by eating meals we create together with others.
 This post channels the spirit of Thanksgiving by _giving_ our thanks through _code_ as a ___"Codesgiving"___,  acknowledging and creating better software together.
-
-<!-- excerpt start -->
 <!-- excerpt end -->
 
 ## Giving Thanks to Open-source Harvests
@@ -55,7 +43,7 @@ Simplification requires many actions beyond solely writing code.
 For example, a short walk outside, a conversation with someone, or a nap can sometimes help us with breakthroughs when it comes to development.
 By the same token, open-source benefits greatly from communications on discussion boards, bug or feature descriptions, or other work that might not be strictly considered "engineering".
 
-## Open-source Contribution Approaches
+## An Open-source Contribution Approach
 
 ```mermaid
 flowchart LR
@@ -78,44 +66,79 @@ flowchart LR
     style resolved fill:#BBF7D0,stroke:#16A34A;
 ```
 
-_Diagram._
+_The troubleshooting process as a workflow involving looped checks for verifying an issue and validating the solution fixes an issue._
 
 It can feel overwhelming to find a way to contribute to open-source.
 Similar to other software methodology, modularizing your approach can help you progress without being overwhelmed.
 Using a troubleshooting approach like the above can help you break down big challenges into bite-sized chunks.
 Consider each step as a "module" or "section" which needs to be addressed sequentially.
 
-#### Embrace a Learning Mindset
+### Embrace a Learning Mindset
 
 Open-source contributions almost always entail learning of some kind.
 Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
 __Assume positive intent__ and accept input from others while upholding your own ideas to share successful contributions together.
 Prepare yourself by intentionally opening your mind to input from others, even if you're sure you're absolutely "right".
 
-#### Software Scheduling Rule of Thumb
+### Setting Software Scheduling Expectations
 
-The following modified rule of thumb from _The Mythical Man Month_ can assist with how you structure your time for an open-source contribution.
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+<div id="vis"></div>
+
+<script>
+  var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Suggested Open-source Time Allocations",
+    "width": 300,
+    "height": 300,
+    "data": {
+      "values": [
+        {"task": "Planning", "percentage": 33},
+        {"task": "Coding", "percentage": 16},
+        {"task": "Component and System Testing", "percentage": 25},
+        {"task": "Code Review, Revisions, and Post-Actions", "percentage": 25}
+      ]
+    },
+    "mark": {"type": "arc", "tooltip": true},
+    "encoding": {
+      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"},
+      "color": {"field": "task", "type": "nominal", "title": "Task"}
+    }
+  };
+
+  const embed_opt = {"mode": "vega-lite"};
+  const el = document.getElementById('vis');
+  const view = vegaEmbed("#vis", spec, embed_opt);
+</script>
+_Suggested ratio of time spent by type of work for an open-source contribution._
+{:.center}
+
+The following modified rule of thumb from [_The Mythical Man Month_](https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/) can assist with how you structure your time for an open-source contribution.
 Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
 Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
 Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a "tack-on" or "optional / supplementary").
-A good motto to keep in mind throughout this process is _Festina Lente_, or __"Make haste, slowly."__ (take care to move thoughtfully and as slow as necessary to do thing correctly the first time).
+A good motto to keep in mind throughout this process is [_Festina lente_](https://en.wikipedia.org/wiki/Festina_lente), or __"Make haste, slowly."__ (take care to move thoughtfully and as slow as necessary to do thing correctly the first time).
 
 1. 1/3 planning (~33%)
 2. 1/6 coding (~16%)
 3. 1/4 component and system testing (25%)
 4. 1/4 code review, revisions, and post-actions (25%)
 
-### Planning an Open-source Contribution
+## Planning an Open-source Contribution
 
-#### Has the Need Already Been Reported?
+### Has the Need Already Been Reported?
 
 Be sure to check whether the bug or feature has already been reported somewhere!
+In a way, this is a practice of ["Don't repeat yourself" (DRY)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) where we attempt to avoid repeating the same block of code (in this case, the "code" can be understood as natural language).
 For example, you can look on GitHub Issues with a search query matching the rough idea of what you're thinking about.
 If it has been reported already, take a look to see if someone has made a code contribution related to the work already.
 If there aren't yet any code contributions and it doesn't look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge the existing discussions.
 If you're unsure, it's always kind to mention your interest in the report and ask for more information.
 
-#### Is the Need a Bug or Feature?
+### Is the Need a Bug or Feature?
 
 ```mermaid
 flowchart LR
@@ -140,7 +163,7 @@ There's often overlap between these, and sometimes they can inspire branching ne
 If you can't decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
 Following this strategy will help you communicate the potential for contribution and also clarify the development process.
 
-#### Reporting the Need for Change
+### Reporting the Need for Change
 
 ```markdown
 # Using `function_x` with `library_y` causes `exception_z`
@@ -167,20 +190,20 @@ Include things like programming language version, operating system, and other sy
 Once you have a good written description of the need be sure to submit it where it can be seen by the relevant development community.
 For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
 
-#### What Happens After You Submit a Bug or Feature Report?
+### What Happens After You Submit a Bug or Feature Report?
 
 When making open-source contributions, sometimes it can also help to mention that you're interested in resolving the issue through a related pull request and review.
 Oftentimes open-source projects welcome new contributors but may have specific requirements.
 These requirements are usually spelled out within a [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) found somewhere in the repository or the organization level documentation.
 It's also completely okay to let other contributors build solutions for the issue (like we mentioned before, all contributions matter, including the reporting of bugs or features themselves)!
 
-### Developing and Testing an Open-source Contribution
+## Developing and Testing an Open-source Contribution
 
-#### Creating a Development Workspace
+### Creating a Development Workspace
 
 Once ready to develop a solution for the reported need in the open-source project you'll need a place to version your updates.
 This work generally takes place through version control on focused branches which are named in a way that relates to the focus.
-When working on GitHub, this work also commonly takes place on [forked repository copies]().
+When working on GitHub, this work also commonly takes place on [forked repository copies](https://docs.github.com/en/get-started/quickstart/fork-a-repo).
 Using these methods helps isolate your changes from other work that takes place within the project.
 It also can help you track your progress alongside related changes that might take place before you're able to seek review or code merges.
 
@@ -201,7 +224,7 @@ Using this pattern sets a "cognitive milestone" for you as you develop a solutio
 Open-source projects can have many interesting components which could take time and be challenging to understand.
 The addition of the test and related development will help keep you goal-orientated without getting lost in the "software forest" of a project.
 
-#### Prefer Simple Over Complex Changes
+### Prefer Simple Over Complex Changes
 
 > ...
 > Simple is better than complex.
@@ -212,28 +235,28 @@ The addition of the test and related development will help keep you goal-orienta
 Further channeling step 3. from test-driven development above, prefer simple changes over more complex ones (recognizing that the _absolute_ simplest can take iteration and thought).
 Some of the best solutions are often the most easily understood ones (where the code addition or changes seem obvious afterwards).
 It might be tempting to address more than one bug or feature at the same time.
-___Don't do it - stay focused on the task at hand!___
+___Avoid [feature creep](https://en.wikipedia.org/wiki/Feature_creep) as you build solutions - stay focused on the task at hand!___
 Take note of things you notice on your journey to address the reported needs.
 These can be become additional reported bugs or features which could be addressed later.
 Staying focused with your development will save you time, keep your tests constrained, and (theoretically) help reduce the time and complexity of code review.
 
-#### Developing a Solution
+### Developing a Solution
 
 Once you have a test in place for the bug fix or feature addition it's time to work towards developing a solution.
 If you've taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
 If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
 
-Use [timeboxing techniques]() to  help make sure the time you spend in development is no more than necessary.
+Use [timeboxing techniques](https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html) to  help make sure the time you spend in development is no more than necessary.
 Also recall that a "simplest version" of the code can often be more quickly refactored and completed than devising a "perfect" solution the first time.
 Remember, you'll also very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).
 
-### Code Review, Revisions, and Post-actions
+## Code Review, Revisions, and Post-actions
 
-#### Pull Requests and Code Review
+### Pull Requests and Code Review
 
 When your code and new test(s) are in a good spot it's time to ask for a code review.
 Be sure to follow the open-source [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) documentation related to the project; each one can vary.
-When working on GitHub-based projects, you'll need to open a [pull request]() on the correct branch (usually upstream `main`).
+When working on GitHub-based projects, you'll need to open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) on the correct branch (usually upstream `main`).
 If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the `#<issue number` reference to help link the work to the reported need (this will cause the pull request to show up within the issue).
 
 Note: It might feel tempting to perfect the code.
@@ -241,14 +264,17 @@ Instead, consider whether the code is "good enough" and would benefit from someo
 Code review takes advantage of a strength of our species: collaborative & multi-perspectival thinking.
 Leverage this in your open-source experience by seeking feedback when things feel "good enough".
 
-#### Code Revisions
+### Code Revisions
+
+> "Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."
+> \- Antoine de Saint-Exupery
 
 You may be asked to update your code based on automated code quality checks or reviewer request.
 Treat these with care; embrace learning and remember that this step can take 25% of the total time for the contribution.
 When working on GitHub forks or branches, you can make additional commits directly on the development branch which was used for the pull request.
 If your reviewers requested changes, re-request their review once changes have been made to help let them know the code is ready for another look.
 
-#### Post-actions
+### Post-actions and Tidying Up Afterwards
 
 Once the code has been accepted by the reviewers and through potential automated testing suite(s) the content is ready to be merged.
 Oftentimes this work is completed by core maintainers of the project.
@@ -256,11 +282,8 @@ After the code is merged, be sure to take time to clean up your workspace by del
 While it's up to core maintainers to decide on report closure, typically the reported need content can be closed and might benefit from a comment describing the fix.
 Many of these steps are considered common courtesy but also, importantly, assist in setting you up for your next contributions!
 
-### Concluding Thoughts
-
-> It's the journey not the destination ...
-> The total is greater than the sum of the parts ...
+## Concluding Thoughts
 
 Hopefully the above helps you understand the open-source contribution process better.
 As stated earlier, every little part helps!
-Best wishes on your open-source journey and happy codesgiving!
+Best wishes on your open-source journey and happy Codesgiving!
