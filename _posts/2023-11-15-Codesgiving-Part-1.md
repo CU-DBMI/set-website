@@ -45,7 +45,7 @@ By the same token, open-source benefits greatly from communications on discussio
 
 ## An Open-source Contribution Approach
 
-```mermaid
+```mermaid!
 flowchart LR
     reported["Report\nneed(s)"]
     verification["Verify or replicate\n the need"]
@@ -140,7 +140,7 @@ If you're unsure, it's always kind to mention your interest in the report and as
 
 ### Is the Need a Bug or Feature?
 
-```mermaid
+```mermaid!
 flowchart LR
 
 subgraph software_needs ["Software Needs"]
