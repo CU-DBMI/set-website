@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Data Quality Validation through Software Testing Techniques | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-27/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Data Quality Validation through Software Testing Techniques">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Data Quality Validation through Software Testing Techniques">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/preview/pr-27/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Data Quality Validation through Software Testing Techniques">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-27/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2023-11-21T20:05:05+00:00">
+  <meta property="article:published_time" content="2023-10-04T00:00:00+00:00">
+  <meta property="article:modified_time" content="2023-11-21T20:05:05+00:00">
+  <meta name="revised" content="2023-11-21T20:05:05+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques" },
+      "datePublished": "2023-10-04T00:00:00+00:00",
+      "dateModified": "2023-11-21T20:05:05+00:00",
+    
+    "name": "Tip of the Week: Data Quality Validation through Software Testing Techniques",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Data Quality Validation through Software Testing Techniques",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-27/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-27/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-27/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-27/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-27/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-27/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-27/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-27/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-27/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-27/_scripts/tooltip.js"></script>
+
+
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-27/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-27/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-27/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-27/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-27/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-27/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-27/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-27/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>October 04, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>November 21, 2023</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-27/blog">
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20data-quality%22" class="tag" data-tooltip='Show items with the tag "data-quality"'>
+        data-quality
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20data-testing%22" class="tag" data-tooltip='Show items with the tag "data-testing"'>
+        data-testing
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20testing%22" class="tag" data-tooltip='Show items with the tag "testing"'>
+        testing
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20design-by-contract%22" class="tag" data-tooltip='Show items with the tag "design-by-contract"'>
+        design-by-contract
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20component-based-design%22" class="tag" data-tooltip='Show items with the tag "component-based-design"'>
+        component-based-design
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20hoare-logic%22" class="tag" data-tooltip='Show items with the tag "hoare-logic"'>
+        hoare-logic
+      </a>
+    
+      <a href="/set-website/preview/pr-27/blog?search=%22tag:%20data-as-code%22" class="tag" data-tooltip='Show items with the tag "data-as-code"'>
+        data-as-code
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<p><strong>TLDR (too long, didn’t read);</strong></p>
+
+<p>Implement data quality validation through <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> approaches which leverage ideas surrounding <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triples</a> and <a href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract (DbC)</a>. Balancing reusability through <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based design</a> data testing with <a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> or <a href="https://github.com/ropensci/assertr/">Assertr</a>. For greater specificity in your data testing, use <a href="https://en.wikipedia.org/wiki/Database_schema">database schema-like</a> verification through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> or a <a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> validator. When possible, practice <a href="https://en.wikipedia.org/wiki/Shift-left_testing">shift-left testing</a> on data sources by through the concept of <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">“database(s) as code”</a> via tools like <a href="https://dvc.org/doc">Data Version Control (DVC)</a> and <a href="https://github.com/flyway/flyway">Flyway</a>.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFF1YWxpdHkgVmFsaWRhdGlvblwiXVxuZGlyZWN0aW9uIExSXG4lJS1cbmlucHV0X2RhdGFbKFwiSW5wdXQgRGF0YVwiKV1cbm1ldF9zcGVjaWZpY2F0aW9uMXtcIk1ldFxcbnNwZWNzP1wifVxucHJvY2Vzc19kYXRhW1wiRGF0YSBwcm9jZXNzaW5nXCJdXG5tZXRfc3BlY2lmaWNhdGlvbjJ7XCJNZXQgXFxuc3BlY3M_XCJ9XG5vdXRwdXRfZGF0YVsoXCJPdXRwdXQgRGF0YVwiKV1cbmVuZFxuJSUtXG5pbnB1dF9kYXRhIC0tPiBtZXRfc3BlY2lmaWNhdGlvbjFcbm1ldF9zcGVjaWZpY2F0aW9uMSAtLT4gcHJvY2Vzc19kYXRhXG5wcm9jZXNzX2RhdGEgLS0-IG1ldF9zcGVjaWZpY2F0aW9uMlxubWV0X3NwZWNpZmljYXRpb24yIC0tPiBvdXRwdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p><em>Diagram showing input, in-process data, and output data as a workflow.</em></p>
+
+<!-- excerpt start -->
+<p>Data orientated software development can benefit from a specialized focus on varying aspects of data quality validation.
+We can use <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn’t need to guess or rediscover known issues).
+These come in a number of forms and generally follow existing software testing concepts which we’ll expand upon below.
+This article will cover a few tools which leverage these techniques for addressing data quality validation testing.
+<!-- excerpt end --></p>
+<h2 id="data-quality-testing-concepts">Data Quality Testing Concepts</h2>
+
+<h3 id="hoare-triple">Hoare Triple</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFdvcmtmbG93IGFzIEhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG5wcm9jZXNzX2RhdGFbXCJEYXRhIHByb2Nlc3NpbmdcXG4oQyAtIGNvbW1hbmQpXCJdXG5vdXRwdXRfZGF0YVsoXCJPdXRwdXQgRGF0YVxcbihRIC0gcG9zdGNvbmRpdGlvbilcIildXG5lbmRcbiUlLVxuaW5wdXRfZGF0YSAtLT4gcHJvY2Vzc19kYXRhIC0tPiBvdXRwdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p>One concept we’ll use to present these ideas is <a href="https://en.wikipedia.org/wiki/Hoare_logic"><em>Hoare logic</em></a>, which is a system for reasoning on <a href="https://en.wikipedia.org/wiki/Correctness_(computer_science)">software correctness</a>.
+Hoare logic includes the idea of a <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triple</a> ($ {\displaystyle {P}C{Q}} $) where $ {\displaystyle {P}} $ is an assertion of precondition, $ {\displaystyle \ C} $ is a command, and $ {\displaystyle {Q}} $ is a postcondition assertion.
+Software development using data often entails (sometimes assumed) assertions of precondition from data sources, a transformation or command which changes the data, and a (sometimes assumed) assertion of postcondition in a data output or result.</p>
+
+<h3 id="design-by-contract">Design by Contract</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFRlc3RpbmcgdGhyb3VnaCBEZXNpZ24gYnkgQ29udHJhY3Qgb3ZlciBIb2FyZSBUcmlwbGVcIl1cbmRpcmVjdGlvbiBMUlxuc3ViZ3JhcGggaG9hcmVfdHJpcGxlIFtcIkhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG4lJS1cbnByb2Nlc3NfZGF0YVtcIkRhdGEgcHJvY2Vzc2luZ1xcbihDIC0gY29tbWFuZClcIl1cbiUlLVxub3V0cHV0X2RhdGFbKFwiT3V0cHV0IERhdGFcXG4oUSAtIHBvc3Rjb25kaXRpb24pXCIpXVxuZW5kXG5zdWJncmFwaCBkYmMgW1wiRGVzaWduIGJ5IENvbnRyYWN0XCJdXG5kaXJlY3Rpb24gTFJcbm1ldF9zcGVjaWZpY2F0aW9uMXtcIk1ldFxcbnNwZWNzP1wifVxuY29udHJhY3QxKFtcIkNvbnRyYWN0KHMpXCJdKVxubWV0X3NwZWNpZmljYXRpb24ye1wiTWV0IFxcbnNwZWNzP1wifVxuY29udHJhY3QyKFtcIkNvbnRyYWN0KHMpXCJdKVxuZW5kXG5lbmRcbiUlLVxuaW5wdXRfZGF0YSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5tZXRfc3BlY2lmaWNhdGlvbjEgLS0-IHByb2Nlc3NfZGF0YVxucHJvY2Vzc19kYXRhIC0tPiBtZXRfc3BlY2lmaWNhdGlvbjJcbm1ldF9zcGVjaWZpY2F0aW9uMiAtLT4gb3V0cHV0X2RhdGFcbmNvbnRyYWN0MSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5jb250cmFjdDIgLS0-IG1ldF9zcGVjaWZpY2F0aW9uMlxuJSUtIiwibWVybWFpZCI6bnVsbH0"></p>
+
+<p><em>Data testing through design by contract over Hoare triple.</em></p>
+
+<p>Hoare logic and Software correctness help describe <a href="https://en.wikipedia.org/wiki/Design_by_contract">design by contract (DbC)</a>, a software approach involving the formal specification of “contracts” which help ensure we meet our intended goals.
+DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
+These concepts provide a framework for thinking about the tools mentioned below.</p>
+
+<h2 id="data-component-testing">Data Component Testing</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5pbnB1dF9kYXRhWyhcIkRhdGEgdG8gY2hlY2tcIildXG5oYXNfY29tcG9uZW50c3tcIkV4aGliaXRzXFxuY29tcG9uZW50cz9cIn1cbmNvbnRyYWN0KFtcIkNvbnRyYWN0KHMpXCJdKVxuY29tcG9uZW50c1tcIi0gSGFzIG5vIG51bGwgdmFsdWVzXFxuLSBDb2x1bW5zIGFyZSBhbGwgbnVtZXJpY1xcbi0gZXRjLi4uXCJdXG5jb250aW51ZVtcIkNvbnRpbnVlXFxub3BlcmF0aW9uc1wiXVxuZXJyb3JbXCJSYWlzZVxcbmV4Y2VwdGlvblwiXVxuJSUtXG5jb21wb25lbnRzIC0tPiBjb250cmFjdFxuaW5wdXRfZGF0YSAtLT4gaGFzX2NvbXBvbmVudHNcbmNvbnRyYWN0IC0uLT4gaGFzX2NvbXBvbmVudHNcbmhhc19jb21wb25lbnRzIC0tPiB8IFllcyB8IGNvbnRpbnVlXG5oYXNfY29tcG9uZW50cyAtLT4gfCBObyB8IGVycm9yXG4lJS1cbnN0eWxlIGVycm9yIGZpbGw6I0ZFRDdBQVxuc3R5bGUgY29udGludWUgZmlsbDojRENGQ0U3XG5zdHlsZSBjb21wb25lbnRzIGZpbGw6I2ZmZiIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p><em>Diagram showing data contracts as <strong>generalized and reusable “component” testing</strong> being checked through contracts and raising an error if they aren’t met or continuing operations if they are met.</em></p>
+
+<p>We often need to verify a certain component’s surrounding data in order to ensure it meets minimum standards.
+The word “component” is used here from the context of <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based software design</a> to group together reusable, modular qualities of the data where sometimes we don’t know (or want) to specify granular aspects (such as schema, type, column name, etc).
+These components often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
+Oftentimes these components are contracts checking postconditions of earlier commands or procedures, ensuring the data we receive is accurate to our intention.
+<strong><em>We can avoid these challenges by creating contracts for our data to verify the components of the result before it reaches later stages.</em></strong></p>
+
+<p>Examples of these data components might include:</p>
+
+<ul>
+  <li>The dataset has no null values.</li>
+  <li>The dataset has no more than 3 columns.</li>
+  <li>The dataset has a column called <code class="language-plaintext highlighter-rouge">numbers</code> which includes numbers in the range of 0-10.</li>
+</ul>
+
+<h3 id="data-component-testing---great-expectations">Data Component Testing - Great Expectations</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
+Example of using Great Expectations
+Referenced with modifications from: 
+https://docs.greatexpectations.io/docs/tutorials/quickstart/
+"""</span>
+<span class="kn">import</span> <span class="nn">great_expectations</span> <span class="k">as</span> <span class="n">gx</span>
+
+<span class="c1"># get gx DataContext
+# see: https://docs.greatexpectations.io/docs/terms/data_context
+</span><span class="n">context</span> <span class="o">=</span> <span class="n">gx</span><span class="p">.</span><span class="n">get_context</span><span class="p">()</span>
+
+<span class="c1"># set a context data source 
+# see: https://docs.greatexpectations.io/docs/terms/datasource
+</span><span class="n">validator</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">sources</span><span class="p">.</span><span class="n">pandas_default</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s">"https://raw.githubusercontent.com/great-expectations/gx_tutorials/main/data/yellow_tripdata_sample_2019-01.csv"</span>
+<span class="p">)</span>
+
+<span class="c1"># add and save expectations 
+# see: https://docs.greatexpectations.io/docs/terms/expectation
+</span><span class="n">validator</span><span class="p">.</span><span class="n">expect_column_values_to_not_be_null</span><span class="p">(</span><span class="s">"pickup_datetime"</span><span class="p">)</span>
+<span class="n">validator</span><span class="p">.</span><span class="n">expect_column_values_to_be_between</span><span class="p">(</span><span class="s">"passenger_count"</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">validator</span><span class="p">.</span><span class="n">save_expectation_suite</span><span class="p">()</span>
+
+<span class="c1"># checkpoint the context with the validator
+# see: https://docs.greatexpectations.io/docs/terms/checkpoint
+</span><span class="n">checkpoint</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">add_or_update_checkpoint</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s">"my_quickstart_checkpoint"</span><span class="p">,</span>
+    <span class="n">validator</span><span class="o">=</span><span class="n">validator</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># gather checkpoint expectation results
+</span><span class="n">checkpoint_result</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="c1"># show the checkpoint expectation results
+</span><span class="n">context</span><span class="p">.</span><span class="n">view_validation_result</span><span class="p">(</span><span class="n">checkpoint_result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Example code leveraging Python package Great Expectations to perform various data component contract validation.</em></p>
+
+<p><a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> is a Python project which provides data  contract testing features through the use of component called <a href="https://greatexpectations.io/expectations/">“expectations”</a> about the data involved.
+These expectations act as a standardized way to define and validate the component of the data in the same way across different datasets or projects.
+In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores">view validation results</a>, <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores">share expectations</a>, and also <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs">build data documentation</a>.
+See the above example for a quick code reference of how these work.</p>
+
+<h3 id="data-component-testing---assertr">Data Component Testing - Assertr</h3>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example using the Assertr package</span><span class="w">
+</span><span class="c1"># referenced with modifications from:</span><span class="w">
+</span><span class="c1"># https://docs.ropensci.org/assertr/articles/assertr.html</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">assertr</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># set our.data to reference the mtcars dataset</span><span class="w">
+</span><span class="n">our.data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mtcars</span><span class="w">
+
+</span><span class="c1"># simulate an issue in the data for contract specification</span><span class="w">
+</span><span class="n">our.data</span><span class="o">$</span><span class="n">mpg</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">our.data</span><span class="o">$</span><span class="n">mpg</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">-1</span><span class="w">
+
+</span><span class="c1"># use verify to validate that column mpg &gt;= 0</span><span class="w">
+</span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">verify</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># use assert to validate that column mpg is within the bounds of 0 to infinity</span><span class="w">
+</span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">assert</span><span class="p">(</span><span class="n">within_bounds</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="kc">Inf</span><span class="p">),</span><span class="w"> </span><span class="n">mpg</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><em>Example code leveraging R package Assertr to perform various data component contract validation.</em></p>
+
+<p><a href="https://github.com/ropensci/assertr/">Assertr</a> is an R project which provides similar data component assertions in the form of verify, assert, and insist methods (<a href="https://docs.ropensci.org/assertr/articles/assertr.html">see here for more documentation</a>).
+Using Assertr enables a similar but more lightweight functionality to that of Great Expectations.
+See the above for an example of how to use it in your projects.</p>
+
+<h2 id="data-schema-testing">Data Schema Testing</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmlucHV0X2RhdGFbKFwiRGF0YSB0byBjaGVja1wiKV1cbmhhc19zY2hlbWF7XCJIYXNcXG5zY2hlbWE_XCJ9XG5jb250cmFjdChbXCJDb250cmFjdChzKVwiXSlcbnNjaGVtYVtcIi0gSGFzIGNvbHVtbiB4IG9mIHR5cGUgZmxvYXQgXFxuLSBIYXMgbm9uLW51bGwgY29sdW1uIHkgb2YgdHlwZSBpbnRcXG4gLSBldGMuLi5cIl1cbmNvbnRpbnVlW1wiQ29udGludWVcXG5vcGVyYXRpb25zXCJdXG5lcnJvcltcIlJhaXNlXFxuZXhjZXB0aW9uXCJdXG4lJS1cbnNjaGVtYSAtLT4gY29udHJhY3RcbmlucHV0X2RhdGEgLS0-IGhhc19zY2hlbWFcbmNvbnRyYWN0IC0uLT4gaGFzX3NjaGVtYVxuaGFzX3NjaGVtYSAtLT4gfCBZZXMgfCBjb250aW51ZVxuaGFzX3NjaGVtYSAtLT4gfCBObyB8IGVycm9yXG4lJS1cbnN0eWxlIGVycm9yIGZpbGw6I0ZFRDdBQVxuc3R5bGUgY29udGludWUgZmlsbDojRENGQ0U3XG5zdHlsZSBzY2hlbWEgZmlsbDojZmZmIiwibWVybWFpZCI6bnVsbH0"></p>
+
+<p><em>Diagram showing data contracts as <strong>more granular specifications via “schema” testing</strong> being checked through contracts and raising an error if they aren’t met or continuing operations if they are met.</em></p>
+
+<p>Sometimes we need greater specificity than what a data component can offer.
+We can use data schema testing contracts in these cases.
+The word “schema” here is used from the context of <a href="https://en.wikipedia.org/wiki/Database_schema">database schema</a>, but oftentimes these specifications are suitable well beyond solely databases (including database-like formats like dataframes).
+While reuse and modularity are more limited with these cases, they can be helpful for efforts where precision is valued or necessary to accomplish your goals.
+It’s worth mentioning that data schema and component testing tools often have many overlaps (meaning you can interchangeably use them to accomplish both tasks).</p>
+
+<h3 id="data-schema-testing---pandera">Data Schema Testing - Pandera</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
+Example of using the Pandera package
+referenced with modifications from:
+https://pandera.readthedocs.io/en/stable/try_pandera.html
+"""</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">pandera</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pandera.typing</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Series</span>
+
+
+<span class="c1"># define a schema
+</span><span class="k">class</span> <span class="nc">Schema</span><span class="p">(</span><span class="n">pa</span><span class="p">.</span><span class="n">DataFrameModel</span><span class="p">):</span>
+    <span class="n">item</span><span class="p">:</span> <span class="n">Series</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Field</span><span class="p">(</span><span class="n">isin</span><span class="o">=</span><span class="p">[</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">],</span> <span class="nb">coerce</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">price</span><span class="p">:</span> <span class="n">Series</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Field</span><span class="p">(</span><span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">coerce</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+<span class="c1"># simulate invalid dataframe
+</span><span class="n">invalid_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span>
+    <span class="p">[{</span><span class="s">"item"</span><span class="p">:</span> <span class="s">"applee"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span> 
+     <span class="p">{</span><span class="s">"item"</span><span class="p">:</span> <span class="s">"orange"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">}]</span>
+<span class="p">)</span>
+
+
+<span class="c1"># set a decorator on a function which will
+# check the schema as a precondition
+</span><span class="o">@</span><span class="n">pa</span><span class="p">.</span><span class="n">check_types</span><span class="p">(</span><span class="n">lazy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">precondition_transform_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">[</span><span class="n">Schema</span><span class="p">]):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"here"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+
+<span class="c1"># precondition schema testing
+</span><span class="k">try</span><span class="p">:</span>
+    <span class="n">precondition_transform_data</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">pa</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">SchemaErrors</span> <span class="k">as</span> <span class="n">schema_excs</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">schema_excs</span><span class="p">)</span>
+
+<span class="c1"># inline or implied postcondition schema testing
+</span><span class="k">try</span><span class="p">:</span>
+    <span class="n">Schema</span><span class="p">.</span><span class="n">validate</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">pa</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">SchemaError</span> <span class="k">as</span> <span class="n">schema_exc</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">schema_exc</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em>Example code leveraging Python package Pandera to perform various data schema contract validation.</em></p>
+
+<p>DataFrame-like libraries like <a href="https://pandas.pydata.org/">Pandas</a> can verified using schema specification contracts through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> (see here for <a href="https://pandera.readthedocs.io/en/stable/supported_libraries.html#supported-dataframe-libraries">full DataFrame library support</a>).
+Pandera helps define specific columns, column types, and also has some component-like features.
+It leverages a Pythonic class specification, similar to <a href="https://docs.python.org/3/library/dataclasses.html">data classes</a> and <a href="https://docs.pydantic.dev/latest/concepts/models/">pydantic models</a>, making it potentially easier to use if you already understand Python and DataFrame-like libraries.
+See the above example for a look into how Pandera may be used.</p>
+
+<h3 id="data-schema-testing---json-schema">Data Schema Testing - JSON Schema</h3>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example of using the jsonvalidate R package.</span><span class="w">
+</span><span class="c1"># Referenced with modifications from:</span><span class="w">
+</span><span class="c1"># https://docs.ropensci.org/jsonvalidate/articles/jsonvalidate.html</span><span class="w">
+
+</span><span class="n">schema</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hello World JSON Schema",
+  "description": "An example",
+  "type": "object",
+  "properties": {
+    "hello": {
+      "description": "Provide a description of the property here",
+      "type": "string"
+    }
+  },
+  "required": [
+    "hello"
+  ]
+}'</span><span class="w">
+
+</span><span class="c1"># create a schema contract for data</span><span class="w">
+</span><span class="n">validate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">jsonvalidate</span><span class="o">::</span><span class="n">json_validator</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ajv"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># validate JSON using schema specification contract and invalid data</span><span class="w">
+</span><span class="n">validate</span><span class="p">(</span><span class="s2">"{}"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># validate JSON using schema specification contract and valid data</span><span class="w">
+</span><span class="n">validate</span><span class="p">(</span><span class="s2">"{'hello':'world'}"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> provides a vocabulary way to validate schema contracts for JSON documents.
+There are several implementations of the vocabulary, including <a href="https://github.com/python-jsonschema/jsonschema">Python package jsonschema</a>, and R package <a href="https://github.com/ropensci/jsonvalidate">jsonvalidate</a>.
+Using these libraries allows you to define pre- or postcondition data schema contracts for your software work.
+See above for an R based example of using this vocabulary to perform data schema testing.</p>
+
+<h2 id="shift-left-data-testing">Shift-left Data Testing</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFdvcmtmbG93IGFzIEhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5zdWJncmFwaCBzcGFjZXIgW1wiIFwiXVxuc3ViZ3JhcGggcXVlc3Rpb24gW1wiRGF0YSBzb3VyY2UgY29uZGl0aW9uP1wiXVxuaW5wdXRfZGF0YVsoXCJJbnB1dCBEYXRhXFxuKFAgLSBwcmVjb25kaXRpb24pXCIpXVxuZW5kXG5lbmRcbnByb2Nlc3NfZGF0YVtcIkRhdGEgcHJvY2Vzc2luZ1xcbihDIC0gY29tbWFuZClcIl1cbm91dHB1dF9kYXRhWyhcIk91dHB1dCBEYXRhXFxuKFEgLSBwb3N0Y29uZGl0aW9uKVwiKV1cbmVuZFxuJSUtXG5pbnB1dF9kYXRhIC0tPiBwcm9jZXNzX2RhdGEgLS0-IG91dHB1dF9kYXRhXG4lJS1cbnN0eWxlIHF1ZXN0aW9uIGZpbGw6I2ZmZmZmZixzdHJva2U6I2ZmZmZmZjtcbnN0eWxlIHNwYWNlciBmaWxsOiNmZmZmZmYiLCJtZXJtYWlkIjpudWxsfQ"></p>
+
+<p>Earlier portions of this article have covered primarily data validation of command side-effects and postconditions.
+This is commonplace in development where data sources usually are provided without the ability to validate their precondition or definition.
+<a href="https://en.wikipedia.org/wiki/Shift-left_testing">Shift-left testing</a> is a movement which focuses on validating earlier in the lifecycle if and when possible to avoid downstream issues which might occur.</p>
+
+<h3 id="shift-left-data-testing---data-version-control-dvc">Shift-left Data Testing - Data Version Control (DVC)</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmR2Y1soXCJEYXRhIFZlcnNpb25cXG5Db250cm9sIChEVkMpXCIpXVxudmVyc2lvbmVkX2RhdGFbKFwiVmVyc2lvbmVkXFxuRGF0YXNldHNcIildXG5kdmNfY2xpW1wiRFZDIENsaWVudFwiXVxuaW5wdXRfZGF0YVsoXCJJbnB1dCBEYXRhXFxuKFAgLSBwcmVjb25kaXRpb24pXCIpXVxuJSUtXG5kdmMgLS0-IHwgdmVyc2lvbiBkYXRhIHwgZHZjX2NsaVxudmVyc2lvbmVkX2RhdGEgLS0-IHwgYWN0dWFsIGRhdGEgfCBkdmNfY2xpXG5kdmNfY2xpIC0tPiB8IHRvIG1haW50YWluIHwgaW5wdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p>Data sources undergoing frequent changes become difficult to use because we oftentimes don’t know <em>when</em> the data is from or what version it might be.
+This information is sometimes added in the form of filename additions or an update datetime column in a table.
+<a href="https://dvc.org/doc">Data Version Control (DVC)</a> is one tool which is specially purposed to address this challenge through <a href="https://en.wikipedia.org/wiki/Version_control">source control</a> techniques.
+Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.</p>
+
+<h3 id="shift-left-data-testing---flyway">Shift-left Data Testing - Flyway</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnNxbFtcIkRhdGFiYXNlIGFzIENvZGVcXG4oaW4gU1FMKVwiXVxuZmx5d2F5W1wiRmx5d2F5XCJdXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG4lJS1cbnNxbCAtLT4gfCBpbnN0cnVjdGlvbnMgZm9yIHwgZmx5d2F5XG5mbHl3YXkgLS0-IHwgdG8gYnVpbGQgfCBpbnB1dF9kYXRhXG4lJS1cbnN0eWxlIHNxbCBmaWxsOiNmZmZmZmYiLCJtZXJtYWlkIjpudWxsfQ"></p>
+
+<p>Database sources can leverage an idea nicknamed <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">“database as code”</a> (which builds on a similar idea about <a href="https://en.wikipedia.org/wiki/Infrastructure_as_code">infrastructure as code</a>) to help declare the schema and other elements of a database in the same way one would code.
+These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">“data as code”</a>.
+Implementing this idea has several advantages from source versioning, visibility, and replicability.
+One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing.html">
+        Tip of the Week: Python Packaging as Publishing
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1.html">
+        Tip of the Week: Codesgiving - Open-source Contribution Walkthrough
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-27/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2023
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
