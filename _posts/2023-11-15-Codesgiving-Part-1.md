@@ -12,7 +12,7 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" caption="Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny." %}
+{% include figure.html image="images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" caption="What good harvests from open-source have you experienced this year?" %}
 
 <!-- excerpt start -->
 [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving) is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
@@ -41,6 +41,9 @@ Have you ever noticed something that needs to be fixed or desirable functionalit
 ___Consider adding your contributions to open-source!___
 
 ## All Contributions Matter
+
+<i class="fas fa-hands-holding-circle" style="font-size:4em;"></i>
+{:.center}
 
 Contributing to open-source can come in many forms and contributions don't need to be gigantic to make an impact.
 Software often involves simplifying complexity.
@@ -184,7 +187,7 @@ If you're unsure, it's always kind to mention your interest in the report and as
 
 <!-- set a max width for mermaid diagram below so it doesn't render so large -->
 <style>
-div#feature-or-bug svg[id^="mermaid-"] { max-width: 500px; }
+#feature-or-bug img { max-width: 500px; }
 </style>
 
 <div id="feature-or-bug">
@@ -204,7 +207,6 @@ end
 
 style software_needs fill:#fff,stroke:#fff;
 ```
-{:.center}
 
 </div>
 
@@ -425,3 +427,7 @@ Many of these steps are considered common courtesy but also, importantly, assist
 Hopefully the above helps you understand the open-source contribution process better.
 As stated earlier, every little part helps!
 Best wishes on your open-source journey and happy Codesgiving!
+
+## References
+
+- Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png))
