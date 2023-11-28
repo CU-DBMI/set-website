@@ -4,6 +4,10 @@ author: dave-bunten
 tags:
   - tip-of-the-week
   - codesgiving
+  - open-source
+  - contributions
+  - development-strategy
+  - process
 ---
 
 # Tip of the Week: Codesgiving - Open-source Contribution Walkthrough
