@@ -245,17 +245,25 @@ It also can help you track your progress alongside related changes that might ta
 
 #### Bug or Feature Verification with Test-driven Development
 
+{% capture test_driven_development %}
+
+One can use a test-driven development approach as numbered steps ([Wikipedia](https://en.wikipedia.org/wiki/Test-driven_development)).
+
 > 1. Add or modify a test which checks for a bug fix or feature addition
 > 2. Run all tests (expecting the newly added test content to fail)
 > 3. Write a simple version of code which allows the tests to succeed
 > 4. Verify that all tests now pass
 > 5. Return to step 3, refactoring the code as needed
 
-_Test-driven development approach as numbered steps  ([Wikipedia](https://en.wikipedia.org/wiki/Test-driven_development))._
+{% endcapture %}
+
+{%
+  include alert.html
+  type="tip"
+  content=test_driven_development
+%}
 
 If you decide to develop a solution for what you reported, one software strategy which can help you remain focused and objective is [test-driven development](https://en.wikipedia.org/wiki/Test-driven_development).
-Test-driven development entails the following pattern:
-
 Using this pattern sets a "cognitive milestone" for you as you develop a solution to what was reported.
 Open-source projects can have many interesting components which could take time and be challenging to understand.
 The addition of the test and related development will help keep you goal-orientated without getting lost in the "software forest" of a project.
