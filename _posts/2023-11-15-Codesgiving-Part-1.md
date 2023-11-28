@@ -12,6 +12,8 @@ tags:
 
 ## Introduction
 
+{% include figure.html image="images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" caption="Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny." %}
+
 <!-- excerpt start -->
 [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving) is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
 In the United States, we celebrate Thanksgiving on the fourth Thursday of November each year often by eating meals we create together with others.
@@ -19,6 +21,9 @@ This post channels the spirit of Thanksgiving by _giving_ our thanks through _co
 <!-- excerpt end -->
 
 ## Giving Thanks to Open-source Harvests
+
+<i class="fas fa-handshake-angle" style="font-size:4em;"></i>
+{:.center}
 
 Part of building software involves the use of code which others have built, maintained, and distributed for a wider audience.
 Using other people's work often comes in the form of [open-source](https://en.wikipedia.org/wiki/Open_source) "harvesting" as we find solutions to software challenges we face.
@@ -162,6 +167,9 @@ A good motto to keep in mind throughout this process is [_Festina lente_](https:
 
 ### Has the Need Already Been Reported?
 
+<i class="fas fa-comments" style="font-size:4em;"></i>
+{:.center}
+
 Be sure to check whether the bug or feature has already been reported somewhere!
 In a way, this is a practice of ["Don't repeat yourself" (DRY)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) where we attempt to avoid repeating the same block of code (in this case, the "code" can be understood as natural language).
 For example, you can look on GitHub Issues or GitHub Discussions with a search query matching the rough idea of what you're thinking about.
@@ -173,6 +181,13 @@ If there aren't yet any code contributions and it doesn't look like anyone is wo
 If you're unsure, it's always kind to mention your interest in the report and ask for more information.
 
 ### Is the Need a Bug or Feature?
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+div#feature-or-bug svg[id^="mermaid-"] { max-width: 500px; }
+</style>
+
+<div id="feature-or-bug">
 
 ```mermaid!
 flowchart LR
@@ -189,13 +204,16 @@ end
 
 style software_needs fill:#fff,stroke:#fff;
 ```
+{:.center}
+
+</div>
 
 One way to help solidify your thinking and the approach is to consider whether what you're proposing is a bug or a feature.
 A [software bug](https://en.wikipedia.org/wiki/Software_bug) is considered something which is broken or malfunctioning.
 A [software feature](https://en.wikipedia.org/wiki/Software_feature) is generally considered new functionality or a different way of doing things than what exists today.
 There's often overlap between these, and sometimes they can inspire branching needs, but individually they usually are more of one than the other.
 If you can't decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
-Following this strategy will help you communicate the potential for contribution and also clarify the development process.
+Following this strategy will help you communicate the potential for contribution and also clarify the development process (for example, a critical bug might be prioritized differently than a nice-to-have new feature).
 
 ### Reporting the Need for Change
 
@@ -204,11 +222,13 @@ Following this strategy will help you communicate the potential for contribution
 
 ## Summary
 
-As a `library_y` research software developer I want to use `function_x` for my data so that I can share data for research outcomes.
+As a `library_y` research software developer I want to use `function_x` 
+for my data so that I can share data for research outcomes.
 
 ## Reproducing the error
 
-This error may be seen using Python v3.x on all major OS's using the following code snippet:
+This error may be seen using Python v3.x on all major OS's using
+the following code snippet:
 ...
 
 ```
@@ -228,6 +248,10 @@ In addition to the specifics outlined above, also recall the [learning mindset a
 
 ### What Happens After You Submit a Bug or Feature Report?
 
+
+<i class="fas fa-check-to-slot" style="font-size:4em;"></i>
+{:.center}
+
 When making open-source contributions, sometimes it can also help to mention that you're interested in resolving the issue through a related pull request and review.
 Oftentimes open-source projects welcome new contributors but may have specific requirements.
 These requirements are usually spelled out within a [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) found somewhere in the repository or the organization level documentation.
@@ -236,6 +260,9 @@ It's also completely okay to let other contributors build solutions for the issu
 ## Developing and Testing an Open-source Contribution
 
 ### Creating a Development Workspace
+
+<i class="fas fa-code-branch" style="font-size:4em;"></i>
+{:.center}
 
 Once ready to develop a solution for the reported need in the open-source project you'll need a place to version your updates.
 This work generally takes place through version control on focused branches which are named in a way that relates to the focus.
@@ -288,6 +315,9 @@ These can be become additional reported bugs or features which could be addresse
 Staying focused with your development will save you time, keep your tests constrained, and (theoretically) help reduce the time and complexity of code review.
 
 ### Developing a Solution
+
+<i class="fas fa-screwdriver-wrench" style="font-size:4em;"></i>
+{:.center}
 
 Once you have a test in place for the bug fix or feature addition it's time to work towards developing a solution.
 If you've taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
@@ -380,6 +410,9 @@ When working on GitHub forks or branches, you can make additional commits direct
 If your reviewers requested changes, re-request their review once changes have been made to help let them know the code is ready for another look.
 
 ### Post-actions and Tidying Up Afterwards
+
+<i class="fas fa-broom" style="font-size:4em;"></i>
+{:.center}
 
 Once the code has been accepted by the reviewers and through potential automated testing suite(s) the content is ready to be merged.
 Oftentimes this work is completed by core maintainers of the project.
