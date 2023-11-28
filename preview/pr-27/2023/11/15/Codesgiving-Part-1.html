@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2023-11-28T15:40:16+00:00">
+  <meta property="og:updated_time" content="2023-11-28T16:46:58+00:00">
   <meta property="article:published_time" content="2023-11-15T00:00:00+00:00">
-  <meta property="article:modified_time" content="2023-11-28T15:40:16+00:00">
-  <meta name="revised" content="2023-11-28T15:40:16+00:00">
+  <meta property="article:modified_time" content="2023-11-28T16:46:58+00:00">
+  <meta name="revised" content="2023-11-28T16:46:58+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" },
       "datePublished": "2023-11-15T00:00:00+00:00",
-      "dateModified": "2023-11-28T15:40:16+00:00",
+      "dateModified": "2023-11-28T16:46:58+00:00",
     
     "name": "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -528,7 +528,7 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <!-- excerpt start -->
 <p><a href="https://en.wikipedia.org/wiki/Thanksgiving">Thanksgiving</a> is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
-In the United States, we celebrate Thanksgiving on November 23rd each year often by eating meals we create together with others.
+In the United States, we celebrate Thanksgiving on the fourth Thursday of November each year often by eating meals we create together with others.
 This post channels the spirit of Thanksgiving by <em>giving</em> our thanks through <em>code</em> as a <strong><em>“Codesgiving”</em></strong>,  acknowledging and creating better software together.
 <!-- excerpt end --></p>
 
@@ -572,10 +572,48 @@ Consider each step as a “module” or “section” which needs to be addresse
 
 <h3 id="embrace-a-learning-mindset">Embrace a Learning Mindset</h3>
 
+<blockquote>
+  <p>“Before you speak ask yourself if what you are going to say <strong>is true, is kind, is necessary, is helpful</strong>. If the answer is no, maybe what you are about to say should be left unsaid.”
+- Bernard Meltzer</p>
+</blockquote>
+
 <p>Open-source contributions almost always entail learning of some kind.
 Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
 <strong>Assume positive intent</strong> and accept input from others while upholding your own ideas to share successful contributions together.
 Prepare yourself by intentionally opening your mind to input from others, even if you’re sure you’re absolutely “right”.</p>
+
+<div class="alert" style="--color: #6366f1">
+  
+  <i class="icon fa-solid fa-circle-question"></i>
+  <div class="alert-content">
+    
+<p>Before communicating, be sure to use Bernard Meltzer’s self-checks mentioned above.</p>
+
+<ol>
+  <li>Is what I’m about to say <strong>true</strong>?
+    <ul>
+      <li>Have I taken time to verify the claims in a way others can replicate or understand?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>kind</strong>?
+    <ul>
+      <li>Does my intention and communication channel kindness (and not cruelty)?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>necessary</strong>?
+    <ul>
+      <li>Do my words and actions here enable or enhance progress towards a goal (would the outcome be achieved without them)?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>helpful</strong>?
+    <ul>
+      <li>How does my communication increase the quality or sustainability of the project (or group)?</li>
+    </ul>
+  </li>
+</ol>
+
+  </div>
+</div>
 
 <h3 id="setting-software-scheduling-expectations">Setting Software Scheduling Expectations</h3>
 
@@ -591,20 +629,27 @@ Prepare yourself by intentionally opening your mind to input from others, even i
   var spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "Suggested Open-source Time Allocations",
-    "width": 300,
+    "width": 500,
     "height": 300,
+    "title":"Suggested Open-source Time Allocations",
     "data": {
       "values": [
-        {"task": "Planning", "percentage": 33},
-        {"task": "Coding", "percentage": 16},
-        {"task": "Component and System Testing", "percentage": 25},
-        {"task": "Code Review, Revisions, and Post-Actions", "percentage": 25}
+        {"task": "1. Planning", "percentage": 33},
+        {"task": "2. Coding", "percentage": 16},
+        {"task": "3. Component and System Testing", "percentage": 25},
+        {"task": "4. Code Review, Revisions, and Post-Actions", "percentage": 25}
       ]
     },
     "mark": {"type": "arc", "tooltip": true},
     "encoding": {
-      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"},
-      "color": {"field": "task", "type": "nominal", "title": "Task"}
+      "color": {"field": "task", "type": "nominal", "title": "Task", "sort":"ascending"},
+      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"}
+    },
+    "config": {
+      "legend": {
+        "orient": "right",
+        "labelLimit": 500
+      }
     }
   };
 
@@ -615,12 +660,6 @@ Prepare yourself by intentionally opening your mind to input from others, even i
 
 <p class="center"><em>Suggested ratio of time spent by type of work for an open-source contribution.</em></p>
 
-<p>The following modified rule of thumb from <a href="https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/"><em>The Mythical Man Month</em></a> can assist with how you structure your time for an open-source contribution.
-Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
-Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
-Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a “tack-on” or “optional / supplementary”).
-A good motto to keep in mind throughout this process is <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>Festina lente</em></a>, or <strong>“Make haste, slowly.”</strong> (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).</p>
-
 <ol>
   <li>1/3 planning (~33%)</li>
   <li>1/6 coding (~16%)</li>
@@ -628,15 +667,24 @@ A good motto to keep in mind throughout this process is <a href="https://en.wiki
   <li>1/4 code review, revisions, and post-actions (25%)</li>
 </ol>
 
+<p>This modified rule of thumb from <a href="https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/"><em>The Mythical Man Month</em></a> can assist with how you structure your time for an open-source contribution.
+Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
+Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
+Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a “tack-on” or “optional / supplementary”).
+A good motto to keep in mind throughout this process is <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>Festina lente</em></a>, or <strong>“Make haste, slowly.”</strong> (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).</p>
+
 <h2 id="planning-an-open-source-contribution">Planning an Open-source Contribution</h2>
 
 <h3 id="has-the-need-already-been-reported">Has the Need Already Been Reported?</h3>
 
 <p>Be sure to check whether the bug or feature has already been reported somewhere!
 In a way, this is a practice of <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">“Don’t repeat yourself” (DRY)</a> where we attempt to avoid repeating the same block of code (in this case, the “code” can be understood as natural language).
-For example, you can look on GitHub Issues with a search query matching the rough idea of what you’re thinking about.
-If it has been reported already, take a look to see if someone has made a code contribution related to the work already.
-If there aren’t yet any code contributions and it doesn’t look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge the existing discussions.
+For example, you can look on GitHub Issues or GitHub Discussions with a search query matching the rough idea of what you’re thinking about.
+You can also use the GitHub search bar to automatically search multiple areas (including Issues, Discussions, Pull Requests, etc.) when you enter a query from the repository homepage.
+If it has been reported already, take a look to see if someone has made a code contribution related to the work already.</p>
+
+<p>An open discussion or report of the need doesn’t guarantee someone’s already working on a solution.
+If there aren’t yet any code contributions and it doesn’t look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge any existing discussions.
 If you’re unsure, it’s always kind to mention your interest in the report and ask for more information.</p>
 
 <h3 id="is-the-need-a-bug-or-feature">Is the Need a Bug or Feature?</h3>
@@ -672,9 +720,11 @@ One template for reporting issues is through a “user story”.
 A user story typically comes in the form: <code class="language-plaintext highlighter-rouge">As a &lt; type of user &gt;, I want &lt; some goal &gt; so that &lt; some reason &gt;.</code> (<a href="https://www.mountaingoatsoftware.com/agile/user-stories">Mountain Goat Software: User Stories</a>).
 Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
 As a general principle, <strong>be as specific as you can without going overboard</strong>.
-Include things like programming language version, operating system, and other system dependencies that might be related.
-Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
-For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.</p>
+Include things like programming language version, operating system, and other system dependencies that might be related.</p>
+
+<p>Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
+For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
+In addition to the specifics outlined above, also recall the <a href="#embrace-a-learning-mindset">learning mindset and Bernard Meltzer’s self-checks</a>, taking time to acknowledge especially the potential challenges and already attempted solutions associated with the description (conveying kindness throughout).</p>
 
 <h3 id="what-happens-after-you-submit-a-bug-or-feature-report">What Happens After You Submit a Bug or Feature Report?</h3>
 
