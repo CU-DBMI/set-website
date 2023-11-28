@@ -278,6 +278,9 @@ The addition of the test and related development will help keep you goal-orienta
 
 Further channeling step 3. from test-driven development above, prefer simple changes over more complex ones (recognizing that the _absolute_ simplest can take iteration and thought).
 Some of the best solutions are often the most easily understood ones (where the code addition or changes seem obvious afterwards).
+A "simplest version" of the code can often be more quickly refactored and completed than devising a "perfect" solution the first time.
+Remember, you'll very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).
+
 It might be tempting to address more than one bug or feature at the same time.
 ___Avoid [feature creep](https://en.wikipedia.org/wiki/Feature_creep) as you build solutions - stay focused on the task at hand!___
 Take note of things you notice on your journey to address the reported needs.
@@ -289,25 +292,82 @@ Staying focused with your development will save you time, keep your tests constr
 Once you have a test in place for the bug fix or feature addition it's time to work towards developing a solution.
 If you've taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
 If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
-
 Use [timeboxing techniques](https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html) to  help make sure the time you spend in development is no more than necessary.
-Also recall that a "simplest version" of the code can often be more quickly refactored and completed than devising a "perfect" solution the first time.
-Remember, you'll also very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).
 
 ## Code Review, Revisions, and Post-actions
 
 ### Pull Requests and Code Review
 
 When your code and new test(s) are in a good spot it's time to ask for a code review.
-Be sure to follow the open-source [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) documentation related to the project; each one can vary.
-When working on GitHub-based projects, you'll need to open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) on the correct branch (usually upstream `main`).
-If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the `#issue number` (for example `#123` where the issue link would look like: `https://github.com/orgname/reponame/issues/123`) reference to help link the work to the reported need.
-This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.
-
-Note: It might feel tempting to perfect the code.
+It might feel tempting to perfect the code.
 Instead, consider whether the code is "good enough" and would benefit from someone else providing feedback.
 Code review takes advantage of a strength of our species: collaborative & multi-perspectival thinking.
 Leverage this in your open-source experience by seeking feedback when things feel "good enough".
+
+<div id="pareto_viz"></div>
+
+<script>
+  var spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}, "fontSize": 14},
+  "width": 800,
+  "height": 200,
+  "data": {
+    "values": [
+            {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "{ 'changes': '🟢', 'value': '🙂'}[datum.pareto_measure]",
+      "as": "emoji"
+    },
+    {"window": [{"op": "rank", "as": "rank"}], "groupby": ["pareto_category", "pareto_measure"]}
+  ],
+  "mark": {"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "ordinal", "axis": null},
+    "y": {"field": "pareto_measure", "type": "nominal", "title":"", "axis":{"labelFontSize":15}},
+    "row": {"field": "pareto_category", "header": {"title": "", "labelFontSize":15}},
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 55}
+  }
+};
+
+  vegaEmbed("#pareto_viz", spec, embed_opt);
+</script>
+_Demonstrating Pareto Principle "vital few" through a small number of changes to achieve 80% of the value associated with the needs._
+{:.center}
+
+One way to understand "good enough" is to assess whether you have reached what the [Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle) terms as the "vital few" causes.
+The Pareto Principle states that roughly 80% of consequences come from 20% of causes (the "vital few").
+What are the 20% changes (for example, as commits) which are required to achieve 80% of the desired intent for development with your open-source contribution?
+When you reach those 20% of the changes, consider opening a pull request to gather more insight about whether those changes will suffice and how the remaining effort might be spent.
+
+As you go through the process of opening a pull request, be sure to follow the open-source [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) documentation related to the project; each one can vary.
+When working on GitHub-based projects, you'll need to open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) on the correct branch (usually upstream `main`).
+If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the `#issue number` (for example `#123` where the issue link would look like: `https://github.com/orgname/reponame/issues/123`) reference to help link the work to the reported need.
+This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.
 
 ### Code Revisions
 
