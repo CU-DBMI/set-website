@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-27/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-27/" rel="alternate" type="text/html" /><updated>2023-11-28T17:53:37+00:00</updated><id>/set-website/preview/pr-27/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1</id><content type="html" xml:base="/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-27/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-27/" rel="alternate" type="text/html" /><updated>2023-11-28T19:25:33+00:00</updated><id>/set-website/preview/pr-27/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1</id><content type="html" xml:base="/set-website/preview/pr-27/2023/11/15/Codesgiving-Part-1.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -272,7 +272,10 @@ Complex is better than complicated.
 
 <p>Further channeling step 3. from test-driven development above, prefer simple changes over more complex ones (recognizing that the <em>absolute</em> simplest can take iteration and thought).
 Some of the best solutions are often the most easily understood ones (where the code addition or changes seem obvious afterwards).
-It might be tempting to address more than one bug or feature at the same time.
+A &#8220;simplest version&#8221; of the code can often be more quickly refactored and completed than devising a &#8220;perfect&#8221; solution the first time.
+Remember, you&#8217;ll very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).</p>
+
+<p>It might be tempting to address more than one bug or feature at the same time.
 <strong><em>Avoid <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> as you build solutions - stay focused on the task at hand!</em></strong>
 Take note of things you notice on your journey to address the reported needs.
 These can be become additional reported bugs or features which could be addressed later.
@@ -282,26 +285,83 @@ Staying focused with your development will save you time, keep your tests constr
 
 <p>Once you have a test in place for the bug fix or feature addition it&#8217;s time to work towards developing a solution.
 If you&#8217;ve taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
-If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.</p>
-
-<p>Use <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing techniques</a> to  help make sure the time you spend in development is no more than necessary.
-Also recall that a &#8220;simplest version&#8221; of the code can often be more quickly refactored and completed than devising a &#8220;perfect&#8221; solution the first time.
-Remember, you&#8217;ll also very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).</p>
+If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
+Use <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing techniques</a> to  help make sure the time you spend in development is no more than necessary.</p>
 
 <h2 id="code-review-revisions-and-post-actions">Code Review, Revisions, and Post-actions</h2>
 
 <h3 id="pull-requests-and-code-review">Pull Requests and Code Review</h3>
 
 <p>When your code and new test(s) are in a good spot it&#8217;s time to ask for a code review.
-Be sure to follow the open-source <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> documentation related to the project; each one can vary.
-When working on GitHub-based projects, you&#8217;ll need to open a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a> on the correct branch (usually upstream <code class="language-plaintext highlighter-rouge">main</code>).
-If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the <code class="language-plaintext highlighter-rouge">#issue number</code> (for example <code class="language-plaintext highlighter-rouge">#123</code> where the issue link would look like: <code class="language-plaintext highlighter-rouge">https://github.com/orgname/reponame/issues/123</code>) reference to help link the work to the reported need.
-This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.</p>
-
-<p>Note: It might feel tempting to perfect the code.
+It might feel tempting to perfect the code.
 Instead, consider whether the code is &#8220;good enough&#8221; and would benefit from someone else providing feedback.
 Code review takes advantage of a strength of our species: collaborative &amp; multi-perspectival thinking.
 Leverage this in your open-source experience by seeking feedback when things feel &#8220;good enough&#8221;.</p>
+
+<div id="pareto_viz"></div>
+
+<script>
+  var spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}, "fontSize": 14},
+  "width": 800,
+  "height": 200,
+  "data": {
+    "values": [
+            {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "{ 'changes': '🟢', 'value': '🙂'}[datum.pareto_measure]",
+      "as": "emoji"
+    },
+    {"window": [{"op": "rank", "as": "rank"}], "groupby": ["pareto_category", "pareto_measure"]}
+  ],
+  "mark": {"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "ordinal", "axis": null},
+    "y": {"field": "pareto_measure", "type": "nominal", "title":"", "axis":{"labelFontSize":15}},
+    "row": {"field": "pareto_category", "header": {"title": "", "labelFontSize":15}},
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 55}
+  }
+};
+
+  vegaEmbed("#pareto_viz", spec, embed_opt);
+</script>
+
+<p class="center"><em>Demonstrating Pareto Principle &#8220;vital few&#8221; through a small number of changes to achieve 80% of the value associated with the needs.</em></p>
+
+<p>One way to understand &#8220;good enough&#8221; is to assess whether you have reached what the <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto Principle</a> terms as the &#8220;vital few&#8221; causes.
+The Pareto Principle states that roughly 80% of consequences come from 20% of causes (the &#8220;vital few&#8221;).
+What are the 20% changes (for example, as commits) which are required to achieve 80% of the desired intent for development with your open-source contribution?
+When you reach those 20% of the changes, consider opening a pull request to gather more insight about whether those changes will suffice and how the remaining effort might be spent.</p>
+
+<p>As you go through the process of opening a pull request, be sure to follow the open-source <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> documentation related to the project; each one can vary.
+When working on GitHub-based projects, you&#8217;ll need to open a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a> on the correct branch (usually upstream <code class="language-plaintext highlighter-rouge">main</code>).
+If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the <code class="language-plaintext highlighter-rouge">#issue number</code> (for example <code class="language-plaintext highlighter-rouge">#123</code> where the issue link would look like: <code class="language-plaintext highlighter-rouge">https://github.com/orgname/reponame/issues/123</code>) reference to help link the work to the reported need.
+This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.</p>
 
 <h3 id="code-revisions">Code Revisions</h3>
 
@@ -327,7 +387,7 @@ Many of these steps are considered common courtesy but also, importantly, assist
 
 <p>Hopefully the above helps you understand the open-source contribution process better.
 As stated earlier, every little part helps!
-Best wishes on your open-source journey and happy Codesgiving!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+Best wishes on your open-source journey and happy Codesgiving!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-27/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -600,7 +660,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-27/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1076,7 +1136,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/preview/pr-27/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1366,7 +1426,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-27/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1532,7 +1592,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-27/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1689,7 +1749,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1806,7 +1866,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1929,7 +1989,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-27/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2085,7 +2145,7 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-11-28T17:52:55+00:00</updated><id>/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-11-28T19:24:20+00:00</updated><id>/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/preview/pr-27/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
