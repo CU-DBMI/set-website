@@ -301,7 +301,8 @@ Remember, you'll also very likely have the help of a code review before the code
 When your code and new test(s) are in a good spot it's time to ask for a code review.
 Be sure to follow the open-source [`CONTRIBUTING.md` document](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors) documentation related to the project; each one can vary.
 When working on GitHub-based projects, you'll need to open a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) on the correct branch (usually upstream `main`).
-If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the `#<issue number` reference to help link the work to the reported need (this will cause the pull request to show up within the issue).
+If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the `#issue number` (for example `#123` where the issue link would look like: `https://github.com/orgname/reponame/issues/123`) reference to help link the work to the reported need.
+This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.
 
 Note: It might feel tempting to perfect the code.
 Instead, consider whether the code is "good enough" and would benefit from someone else providing feedback.
