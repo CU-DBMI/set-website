@@ -75,10 +75,33 @@ Consider each step as a "module" or "section" which needs to be addressed sequen
 
 ### Embrace a Learning Mindset
 
+> "Before you speak ask yourself if what you are going to say __is true, is kind, is necessary, is helpful__. If the answer is no, maybe what you are about to say should be left unsaid."
+> \- Bernard Meltzer
+
 Open-source contributions almost always entail learning of some kind.
 Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
 __Assume positive intent__ and accept input from others while upholding your own ideas to share successful contributions together.
 Prepare yourself by intentionally opening your mind to input from others, even if you're sure you're absolutely "right".
+
+{% capture b_meltzer_checks %}
+
+Before communicating, be sure to use Bernard Meltzer's self-checks mentioned above.
+
+1. Is what I'm about to say __true__?
+    - Have I taken time to verify the claims in a way others can replicate or understand?
+2. Is what I'm about to say __kind__?
+    - Does my intention and communication channel kindness (and not cruelty)?
+3. Is what I'm about to say __necessary__?
+    - Do my words and actions here enable or enhance progress towards a goal (would the outcome be achieved without them)?
+4. Is what I'm about to say __helpful__?
+    - How does my communication increase the quality or sustainability of the project (or group)?
+{% endcapture %}
+
+{%
+  include alert.html
+  type="help"
+  content=b_meltzer_checks
+%}
 
 ### Setting Software Scheduling Expectations
 
@@ -141,9 +164,12 @@ A good motto to keep in mind throughout this process is [_Festina lente_](https:
 
 Be sure to check whether the bug or feature has already been reported somewhere!
 In a way, this is a practice of ["Don't repeat yourself" (DRY)](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) where we attempt to avoid repeating the same block of code (in this case, the "code" can be understood as natural language).
-For example, you can look on GitHub Issues with a search query matching the rough idea of what you're thinking about.
+For example, you can look on GitHub Issues or GitHub Discussions with a search query matching the rough idea of what you're thinking about.
+You can also use the GitHub search bar to automatically search multiple areas (including Issues, Discussions, Pull Requests, etc.) when you enter a query from the repository homepage.
 If it has been reported already, take a look to see if someone has made a code contribution related to the work already.
-If there aren't yet any code contributions and it doesn't look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge the existing discussions.
+
+An open discussion or report of the need doesn't guarantee someone's already working on a solution.
+If there aren't yet any code contributions and it doesn't look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge any existing discussions.
 If you're unsure, it's always kind to mention your interest in the report and ask for more information.
 
 ### Is the Need a Bug or Feature?
@@ -195,8 +221,10 @@ A user story typically comes in the form: `As a < type of user >, I want < some 
 Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
 As a general principle, __be as specific as you can without going overboard__.
 Include things like programming language version, operating system, and other system dependencies that might be related.
+
 Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
 For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
+In addition to the specifics outlined above, also recall the [learning mindset and Bernard Meltzer's self-checks](#embrace-a-learning-mindset), taking time to acknowledge especially the potential challenges and already attempted solutions associated with the description (conveying kindness throughout).
 
 ### What Happens After You Submit a Bug or Feature Report?
 
