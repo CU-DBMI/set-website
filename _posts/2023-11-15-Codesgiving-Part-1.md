@@ -383,7 +383,7 @@ If your reviewers requested changes, re-request their review once changes have b
 
 Once the code has been accepted by the reviewers and through potential automated testing suite(s) the content is ready to be merged.
 Oftentimes this work is completed by core maintainers of the project.
-After the code is merged, be sure to take time to clean up your workspace by deleting your development branch and syncing with the upstream repository (optional).
+After the code is merged, it's usually a good idea to clean up your workspace by deleting your development branch and syncing with the upstream repository.
 While it's up to core maintainers to decide on report closure, typically the reported need content can be closed and might benefit from a comment describing the fix.
 Many of these steps are considered common courtesy but also, importantly, assist in setting you up for your next contributions!
 
