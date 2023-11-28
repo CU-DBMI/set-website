@@ -14,7 +14,7 @@ tags:
 
 <!-- excerpt start -->
 [Thanksgiving](https://en.wikipedia.org/wiki/Thanksgiving) is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
-In the United States, we celebrate Thanksgiving on November 23rd each year often by eating meals we create together with others.
+In the United States, we celebrate Thanksgiving on the fourth Thursday of November each year often by eating meals we create together with others.
 This post channels the spirit of Thanksgiving by _giving_ our thanks through _code_ as a ___"Codesgiving"___,  acknowledging and creating better software together.
 <!-- excerpt end -->
 
@@ -91,20 +91,27 @@ Prepare yourself by intentionally opening your mind to input from others, even i
   var spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "Suggested Open-source Time Allocations",
-    "width": 300,
+    "width": 500,
     "height": 300,
+    "title":"Suggested Open-source Time Allocations",
     "data": {
       "values": [
-        {"task": "Planning", "percentage": 33},
-        {"task": "Coding", "percentage": 16},
-        {"task": "Component and System Testing", "percentage": 25},
-        {"task": "Code Review, Revisions, and Post-Actions", "percentage": 25}
+        {"task": "1. Planning", "percentage": 33},
+        {"task": "2. Coding", "percentage": 16},
+        {"task": "3. Component and System Testing", "percentage": 25},
+        {"task": "4. Code Review, Revisions, and Post-Actions", "percentage": 25}
       ]
     },
     "mark": {"type": "arc", "tooltip": true},
     "encoding": {
-      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"},
-      "color": {"field": "task", "type": "nominal", "title": "Task"}
+      "color": {"field": "task", "type": "nominal", "title": "Task", "sort":"ascending"},
+      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"}
+    },
+    "config": {
+      "legend": {
+        "orient": "right",
+        "labelLimit": 500
+      }
     }
   };
 
@@ -115,16 +122,18 @@ Prepare yourself by intentionally opening your mind to input from others, even i
 _Suggested ratio of time spent by type of work for an open-source contribution._
 {:.center}
 
-The following modified rule of thumb from [_The Mythical Man Month_](https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/) can assist with how you structure your time for an open-source contribution.
+1. 1/3 planning (~33%)
+2. 1/6 coding (~16%)
+3. 1/4 component and system testing (25%)
+4. 1/4 code review, revisions, and post-actions (25%)
+
+This modified rule of thumb from [_The Mythical Man Month_](https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/) can assist with how you structure your time for an open-source contribution.
 Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
 Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
 Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a "tack-on" or "optional / supplementary").
 A good motto to keep in mind throughout this process is [_Festina lente_](https://en.wikipedia.org/wiki/Festina_lente), or __"Make haste, slowly."__ (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).
 
-1. 1/3 planning (~33%)
-2. 1/6 coding (~16%)
-3. 1/4 component and system testing (25%)
-4. 1/4 code review, revisions, and post-actions (25%)
+
 
 ## Planning an Open-source Contribution
 
