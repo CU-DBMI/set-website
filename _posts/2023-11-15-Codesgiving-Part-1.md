@@ -28,7 +28,7 @@ Examples might include installing and depending upon Python packages from [PyPI]
 > \- Albert Camus
 
 These open-source projects have internal costs which are sometimes invisible to those who consume them.
-Every software project has an implied level of [software gardening](https://bssw.io/blog_posts/long-term-software-gardening-strategies-for-cultivating-scientific-development-ecosystems) time costs involved to impede decay,  practice continuous improvements and evolve the work.
+Every software project has an implied level of [software gardening](https://bssw.io/blog_posts/long-term-software-gardening-strategies-for-cultivating-scientific-development-ecosystems) time costs involved to impede decay, practice continuous improvements, and evolve the work.
 One way to actively share our thanks for the projects we depend on is through applying our time towards code contributions on them.
 
 Many projects are in need of additional people's thinking and development time.
@@ -82,7 +82,6 @@ Prepare yourself by intentionally opening your mind to input from others, even i
 
 ### Setting Software Scheduling Expectations
 
-
 <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
@@ -120,7 +119,7 @@ The following modified rule of thumb from [_The Mythical Man Month_](https://www
 Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
 Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
 Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a "tack-on" or "optional / supplementary").
-A good motto to keep in mind throughout this process is [_Festina lente_](https://en.wikipedia.org/wiki/Festina_lente), or __"Make haste, slowly."__ (take care to move thoughtfully and as slow as necessary to do thing correctly the first time).
+A good motto to keep in mind throughout this process is [_Festina lente_](https://en.wikipedia.org/wiki/Festina_lente), or __"Make haste, slowly."__ (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).
 
 1. 1/3 planning (~33%)
 2. 1/6 coding (~16%)
@@ -185,9 +184,9 @@ Open-source needs are often best reported through written stories captured withi
 One template for reporting issues is through a "user story".
 A user story typically comes in the form: `As a < type of user >, I want < some goal > so that < some reason >.` ([Mountain Goat Software: User Stories](https://www.mountaingoatsoftware.com/agile/user-stories)).
 Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
-As a general principle, be as __be as specific as you can without going overboard__.
+As a general principle, __be as specific as you can without going overboard__.
 Include things like programming language version, operating system, and other system dependencies that might be related.
-Once you have a good written description of the need be sure to submit it where it can be seen by the relevant development community.
+Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
 For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
 
 ### What Happens After You Submit a Bug or Feature Report?
