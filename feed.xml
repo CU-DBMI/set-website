@@ -1,4 +1,439 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2023-10-31T12:06:04+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2023-11-28T23:14:47+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="What good harvests from open-source have you experienced this year?">
+    <img src="/set-website/images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="What good harvests from open-source have you experienced this year?" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      What good harvests from open-source have you experienced this year?
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+<p><a href="https://en.wikipedia.org/wiki/Thanksgiving">Thanksgiving</a> is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
+In the United States, we celebrate Thanksgiving on the fourth Thursday of November each year often by eating meals we create together with others.
+This post channels the spirit of Thanksgiving by <em>giving</em> our thanks through <em>code</em> as a <strong><em>&#8220;Codesgiving&#8221;</em></strong>,  acknowledging and creating better software together.
+<!-- excerpt end --></p>
+
+<h2 id="giving-thanks-to-open-source-harvests">Giving Thanks to Open-source Harvests</h2>
+
+<p class="center"><i class="fas fa-handshake-angle" style="font-size:4em;"></i></p>
+
+<p>Part of building software involves the use of code which others have built, maintained, and distributed for a wider audience.
+Using other people&#8217;s work often comes in the form of <a href="https://en.wikipedia.org/wiki/Open_source">open-source</a> &#8220;harvesting&#8221; as we find solutions to software challenges we face.
+Examples might include installing and depending upon Python packages from <a href="https://en.wikipedia.org/wiki/Python_Package_Index">PyPI</a> or R packages from <a href="https://en.wikipedia.org/wiki/R_package#Comprehensive_R_Archive_Network_(CRAN)">CRAN</a> within your software projects.</p>
+
+<blockquote>
+  <p>&#8220;Real generosity toward the future lies in giving all to the present.&#8221;
+- Albert Camus</p>
+</blockquote>
+
+<p>These open-source projects have internal costs which are sometimes invisible to those who consume them.
+Every software project has an implied level of <a href="https://bssw.io/blog_posts/long-term-software-gardening-strategies-for-cultivating-scientific-development-ecosystems">software gardening</a> time costs involved to impede decay, practice continuous improvements, and evolve the work.
+One way to actively share our thanks for the projects we depend on is through applying our time towards code contributions on them.</p>
+
+<p>Many projects are in need of additional people&#8217;s thinking and development time.
+Have you ever noticed something that needs to be fixed or desirable functionality in a project you use?
+<strong><em>Consider adding your contributions to open-source!</em></strong></p>
+
+<h2 id="all-contributions-matter">All Contributions Matter</h2>
+
+<p class="center"><i class="fas fa-hands-holding-circle" style="font-size:4em;"></i></p>
+
+<p>Contributing to open-source can come in many forms and contributions don&#8217;t need to be gigantic to make an impact.
+Software often involves simplifying complexity.
+Simplification requires many actions beyond solely writing code.
+For example, a short walk outside, a conversation with someone, or a nap can sometimes help us with breakthroughs when it comes to development.
+By the same token, open-source benefits greatly from communications on discussion boards, bug or feature descriptions, or other work that might not be strictly considered &#8220;engineering&#8221;.</p>
+
+<h2 id="an-open-source-contribution-approach">An Open-source Contribution Approach</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5yZXBvcnRlZFtcIlJlcG9ydFxcbm5lZWQocylcIl1cbnZlcmlmaWNhdGlvbltcIlZlcmlmeSBvciByZXBsaWNhdGVcXG4gdGhlIG5lZWRcIl1cbnZlcmlmeV9jaGVjazF7XCJBYmxlIHRvXFxudmVyaWZ5P1wifVxuc29sdXRpb25bXCJIeXBvdGhlc2l6ZVxcbiBhbmQgYXBwbHkgZml4XCJdXG52ZXJpZnlfY2hlY2sye1wiSXMgaXRcXG5yZXNvbHZlZD9cIn1cbnJlc29sdmVkW1wiUmVzb2x1dGlvblxcbmFuZCBwb3N0LWFjdGlvbnNcIl1cbiUlLVxucmVwb3J0ZWQgLS0-IHZlcmlmaWNhdGlvblxudmVyaWZpY2F0aW9uIC0tPiB2ZXJpZnlfY2hlY2sxXG52ZXJpZnlfY2hlY2sxIC0tPiB8Tm86IGdhdGhlclxcbm1vcmUgZGV0YWlsc3wgdmVyaWZpY2F0aW9uXG52ZXJpZnlfY2hlY2sxIC0tPiB8WWVzOiBhYmxlXFxudG8gdmVyaWZ5fCBzb2x1dGlvblxuc29sdXRpb24gLS0-IHZlcmlmeV9jaGVjazJcbnZlcmlmeV9jaGVjazIgLS0-IHxObzogdHJ5XFxuc29tZXRoaW5nIGVsc2V8IHNvbHV0aW9uXG52ZXJpZnlfY2hlY2syIC0tPiB8WWVzOiBpc3N1ZVxcbnJlc29sdmVkfHJlc29sdmVkXG4lJS1cbnN0eWxlIHJlcG9ydGVkIGZpbGw6I0ZFRjNDNyxzdHJva2U6I0Q5NzcwNjtcbnN0eWxlIHJlc29sdmVkIGZpbGw6I0JCRjdEMCxzdHJva2U6IzE2QTM0QTsiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p><em>The troubleshooting process as a workflow involving looped checks for verifying an issue and validating the solution fixes an issue.</em></p>
+
+<p>It can feel overwhelming to find a way to contribute to open-source.
+Similar to other software methodology, modularizing your approach can help you progress without being overwhelmed.
+Using a troubleshooting approach like the above can help you break down big challenges into bite-sized chunks.
+Consider each step as a &#8220;module&#8221; or &#8220;section&#8221; which needs to be addressed sequentially.</p>
+
+<h3 id="embrace-a-learning-mindset">Embrace a Learning Mindset</h3>
+
+<blockquote>
+  <p>&#8220;Before you speak ask yourself if what you are going to say <strong>is true, is kind, is necessary, is helpful</strong>. If the answer is no, maybe what you are about to say should be left unsaid.&#8221;
+- Bernard Meltzer</p>
+</blockquote>
+
+<p>Open-source contributions almost always entail learning of some kind.
+Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
+<strong>Assume positive intent</strong> and accept input from others while upholding your own ideas to share successful contributions together.
+Prepare yourself by intentionally opening your mind to input from others, even if you&#8217;re sure you&#8217;re absolutely &#8220;right&#8221;.</p>
+
+<div class="alert" style="--color: #6366f1">
+  
+  <i class="icon fa-solid fa-circle-question"></i>
+  <div class="alert-content">
+    
+<p>Before communicating, be sure to use Bernard Meltzer&#8217;s self-checks mentioned above.</p>
+
+<ol>
+  <li>Is what I&#8217;m about to say <strong>true</strong>?
+    <ul>
+      <li>Have I taken time to verify the claims in a way others can replicate or understand?</li>
+    </ul>
+  </li>
+  <li>Is what I&#8217;m about to say <strong>kind</strong>?
+    <ul>
+      <li>Does my intention and communication channel kindness (and not cruelty)?</li>
+    </ul>
+  </li>
+  <li>Is what I&#8217;m about to say <strong>necessary</strong>?
+    <ul>
+      <li>Do my words and actions here enable or enhance progress towards a goal (would the outcome be achieved without them)?</li>
+    </ul>
+  </li>
+  <li>Is what I&#8217;m about to say <strong>helpful</strong>?
+    <ul>
+      <li>How does my communication increase the quality or sustainability of the project (or group)?</li>
+    </ul>
+  </li>
+</ol>
+
+  </div>
+</div>
+
+<h3 id="setting-software-scheduling-expectations">Setting Software Scheduling Expectations</h3>
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+<div id="vis"></div>
+
+<script>
+  var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Suggested Open-source Time Allocations",
+    "width": 500,
+    "height": 300,
+    "title":"Suggested Open-source Time Allocations",
+    "data": {
+      "values": [
+        {"task": "1. Planning", "percentage": 33},
+        {"task": "2. Coding", "percentage": 16},
+        {"task": "3. Component and System Testing", "percentage": 25},
+        {"task": "4. Code Review, Revisions, and Post-Actions", "percentage": 25}
+      ]
+    },
+    "mark": {"type": "arc", "tooltip": true},
+    "encoding": {
+      "color": {"field": "task", "type": "nominal", "title": "Task", "sort":"ascending"},
+      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"}
+    },
+    "config": {
+      "legend": {
+        "orient": "right",
+        "labelLimit": 500
+      }
+    }
+  };
+
+  const embed_opt = {"mode": "vega-lite"};
+  const el = document.getElementById('vis');
+  const view = vegaEmbed("#vis", spec, embed_opt);
+</script>
+
+<p class="center"><em>Suggested ratio of time spent by type of work for an open-source contribution.</em></p>
+
+<ol>
+  <li>1/3 planning (~33%)</li>
+  <li>1/6 coding (~16%)</li>
+  <li>1/4 component and system testing (25%)</li>
+  <li>1/4 code review, revisions, and post-actions (25%)</li>
+</ol>
+
+<p>This modified rule of thumb from <a href="https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/"><em>The Mythical Man Month</em></a> can assist with how you structure your time for an open-source contribution.
+Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
+Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
+Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a &#8220;tack-on&#8221; or &#8220;optional / supplementary&#8221;).
+A good motto to keep in mind throughout this process is <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>Festina lente</em></a>, or <strong>&#8220;Make haste, slowly.&#8221;</strong> (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).</p>
+
+<h2 id="planning-an-open-source-contribution">Planning an Open-source Contribution</h2>
+
+<h3 id="has-the-need-already-been-reported">Has the Need Already Been Reported?</h3>
+
+<p class="center"><i class="fas fa-comments" style="font-size:4em;"></i></p>
+
+<p>Be sure to check whether the bug or feature has already been reported somewhere!
+In a way, this is a practice of <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">&#8220;Don&#8217;t repeat yourself&#8221; (DRY)</a> where we attempt to avoid repeating the same block of code (in this case, the &#8220;code&#8221; can be understood as natural language).
+For example, you can look on GitHub Issues or GitHub Discussions with a search query matching the rough idea of what you&#8217;re thinking about.
+You can also use the GitHub search bar to automatically search multiple areas (including Issues, Discussions, Pull Requests, etc.) when you enter a query from the repository homepage.
+If it has been reported already, take a look to see if someone has made a code contribution related to the work already.</p>
+
+<p>An open discussion or report of the need doesn&#8217;t guarantee someone&#8217;s already working on a solution.
+If there aren&#8217;t yet any code contributions and it doesn&#8217;t look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge any existing discussions.
+If you&#8217;re unsure, it&#8217;s always kind to mention your interest in the report and ask for more information.</p>
+
+<h3 id="is-the-need-a-bug-or-feature">Is the Need a Bug or Feature?</h3>
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+#feature-or-bug img { max-width: 500px; }
+</style>
+
+<div id="feature-or-bug">
+
+<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIHNvZnR3YXJlX25lZWRzIFtcIlNvZnR3YXJlIE5lZWRzXCJdXG5zdWJncmFwaCBidWdfb3ZlciBbXCJCdWdcIl1cbmJ1Z1tcIlNvbWV0aGluZydzXFxuYnJva2VuIVwiXVxuZW5kXG4lJS1cbnN1YmdyYXBoIGZlYXR1cmVfb3ZlciBbXCJGZWF0dXJlXCJdXG5mZWF0dXJlW1wiV2UgbmVlZCBuZXdcXG5mdW5jdGlvbmFsaXR5IVwiXVxuZW5kXG5lbmRcbiUlLVxuc3R5bGUgc29mdHdhcmVfbmVlZHMgZmlsbDojZmZmLHN0cm9rZTojZmZmOyIsIm1lcm1haWQiOm51bGx9" />
+
+</div>
+
+<p>One way to help solidify your thinking and the approach is to consider whether what you&#8217;re proposing is a bug or a feature.
+A <a href="https://en.wikipedia.org/wiki/Software_bug">software bug</a> is considered something which is broken or malfunctioning.
+A <a href="https://en.wikipedia.org/wiki/Software_feature">software feature</a> is generally considered new functionality or a different way of doing things than what exists today.
+There&#8217;s often overlap between these, and sometimes they can inspire branching needs, but individually they usually are more of one than the other.
+If you can&#8217;t decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
+Following this strategy will help you communicate the potential for contribution and also clarify the development process (for example, a critical bug might be prioritized differently than a nice-to-have new feature).</p>
+
+<h3 id="reporting-the-need-for-change">Reporting the Need for Change</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Using `function_x` with `library_y` causes `exception_z`</span>
+
+<span class="gu">## Summary</span>
+
+As a <span class="sb">`library_y`</span> research software developer I want to use <span class="sb">`function_x`</span> 
+for my data so that I can share data for research outcomes.
+
+<span class="gu">## Reproducing the error</span>
+
+This error may be seen using Python v3.x on all major OS's using
+the following code snippet:
+...
+
+</code></pre></div></div>
+
+<p><em>An example of a user story issue report with imagined code example.</em></p>
+
+<p>Open-source needs are often best reported through written stories captured within a bug or feature tracking system (such as <a href="https://github.com/features/issues">GitHub Issues</a>) which if possible also include example code or logs.
+One template for reporting issues is through a &#8220;user story&#8221;.
+A user story typically comes in the form: <code class="language-plaintext highlighter-rouge">As a &lt; type of user &gt;, I want &lt; some goal &gt; so that &lt; some reason &gt;.</code> (<a href="https://www.mountaingoatsoftware.com/agile/user-stories">Mountain Goat Software: User Stories</a>).
+Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
+As a general principle, <strong>be as specific as you can without going overboard</strong>.
+Include things like programming language version, operating system, and other system dependencies that might be related.</p>
+
+<p>Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
+For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
+In addition to the specifics outlined above, also recall the <a href="#embrace-a-learning-mindset">learning mindset and Bernard Meltzer&#8217;s self-checks</a>, taking time to acknowledge especially the potential challenges and already attempted solutions associated with the description (conveying kindness throughout).</p>
+
+<h3 id="what-happens-after-you-submit-a-bug-or-feature-report">What Happens After You Submit a Bug or Feature Report?</h3>
+
+<p class="center"><i class="fas fa-check-to-slot" style="font-size:4em;"></i></p>
+
+<p>When making open-source contributions, sometimes it can also help to mention that you&#8217;re interested in resolving the issue through a related pull request and review.
+Oftentimes open-source projects welcome new contributors but may have specific requirements.
+These requirements are usually spelled out within a <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> found somewhere in the repository or the organization level documentation.
+It&#8217;s also completely okay to let other contributors build solutions for the issue (like we mentioned before, all contributions matter, including the reporting of bugs or features themselves)!</p>
+
+<h2 id="developing-and-testing-an-open-source-contribution">Developing and Testing an Open-source Contribution</h2>
+
+<h3 id="creating-a-development-workspace">Creating a Development Workspace</h3>
+
+<p class="center"><i class="fas fa-code-branch" style="font-size:4em;"></i></p>
+
+<p>Once ready to develop a solution for the reported need in the open-source project you&#8217;ll need a place to version your updates.
+This work generally takes place through version control on focused branches which are named in a way that relates to the focus.
+When working on GitHub, this work also commonly takes place on <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">forked repository copies</a>.
+Using these methods helps isolate your changes from other work that takes place within the project.
+It also can help you track your progress alongside related changes that might take place before you&#8217;re able to seek review or code merges.</p>
+
+<h4 id="bug-or-feature-verification-with-test-driven-development">Bug or Feature Verification with Test-driven Development</h4>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    
+<p>One can use a test-driven development approach as numbered steps (<a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia</a>).</p>
+
+<blockquote>
+  <ol>
+    <li>Add or modify a test which checks for a bug fix or feature addition</li>
+    <li>Run all tests (expecting the newly added test content to fail)</li>
+    <li>Write a simple version of code which allows the tests to succeed</li>
+    <li>Verify that all tests now pass</li>
+    <li>Return to step 3, refactoring the code as needed</li>
+  </ol>
+</blockquote>
+
+
+  </div>
+</div>
+
+<p>If you decide to develop a solution for what you reported, one software strategy which can help you remain focused and objective is <a href="https://en.wikipedia.org/wiki/Test-driven_development">test-driven development</a>.
+Using this pattern sets a &#8220;cognitive milestone&#8221; for you as you develop a solution to what was reported.
+Open-source projects can have many interesting components which could take time and be challenging to understand.
+The addition of the test and related development will help keep you goal-orientated without getting lost in the &#8220;software forest&#8221; of a project.</p>
+
+<h3 id="prefer-simple-over-complex-changes">Prefer Simple Over Complex Changes</h3>
+
+<blockquote>
+  <p>&#8230;
+Simple is better than complex.
+Complex is better than complicated.
+&#8230;
+- <a href="https://peps.python.org/pep-0020/">PEP 20: The Zen of Python</a></p>
+</blockquote>
+
+<p>Further channeling step 3. from test-driven development above, prefer simple changes over more complex ones (recognizing that the <em>absolute</em> simplest can take iteration and thought).
+Some of the best solutions are often the most easily understood ones (where the code addition or changes seem obvious afterwards).
+A &#8220;simplest version&#8221; of the code can often be more quickly refactored and completed than devising a &#8220;perfect&#8221; solution the first time.
+Remember, you&#8217;ll very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).</p>
+
+<p>It might be tempting to address more than one bug or feature at the same time.
+<strong><em>Avoid <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> as you build solutions - stay focused on the task at hand!</em></strong>
+Take note of things you notice on your journey to address the reported needs.
+These can be become additional reported bugs or features which could be addressed later.
+Staying focused with your development will save you time, keep your tests constrained, and (theoretically) help reduce the time and complexity of code review.</p>
+
+<h3 id="developing-a-solution">Developing a Solution</h3>
+
+<p class="center"><i class="fas fa-screwdriver-wrench" style="font-size:4em;"></i></p>
+
+<p>Once you have a test in place for the bug fix or feature addition it&#8217;s time to work towards developing a solution.
+If you&#8217;ve taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
+If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
+Use <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing techniques</a> to  help make sure the time you spend in development is no more than necessary.</p>
+
+<h2 id="code-review-revisions-and-post-actions">Code Review, Revisions, and Post-actions</h2>
+
+<h3 id="pull-requests-and-code-review">Pull Requests and Code Review</h3>
+
+<p>When your code and new test(s) are in a good spot it&#8217;s time to ask for a code review.
+It might feel tempting to perfect the code.
+Instead, consider whether the code is &#8220;good enough&#8221; and would benefit from someone else providing feedback.
+Code review takes advantage of a strength of our species: collaborative &amp; multi-perspectival thinking.
+Leverage this in your open-source experience by seeking feedback when things feel &#8220;good enough&#8221;.</p>
+
+<div id="pareto_viz"></div>
+
+<script>
+  var spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}, "fontSize": 14},
+  "width": 800,
+  "height": 200,
+  "data": {
+    "values": [
+            {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "{ 'changes': '🟢', 'value': '🙂'}[datum.pareto_measure]",
+      "as": "emoji"
+    },
+    {"window": [{"op": "rank", "as": "rank"}], "groupby": ["pareto_category", "pareto_measure"]}
+  ],
+  "mark": {"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "ordinal", "axis": null},
+    "y": {"field": "pareto_measure", "type": "nominal", "title":"", "axis":{"labelFontSize":15}},
+    "row": {"field": "pareto_category", "header": {"title": "", "labelFontSize":15}},
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 55}
+  }
+};
+
+  vegaEmbed("#pareto_viz", spec, embed_opt);
+</script>
+
+<p class="center"><em>Demonstrating Pareto Principle &#8220;vital few&#8221; through a small number of changes to achieve 80% of the value associated with the needs.</em></p>
+
+<p>One way to understand &#8220;good enough&#8221; is to assess whether you have reached what the <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto Principle</a> terms as the &#8220;vital few&#8221; causes.
+The Pareto Principle states that roughly 80% of consequences come from 20% of causes (the &#8220;vital few&#8221;).
+What are the 20% changes (for example, as commits) which are required to achieve 80% of the desired intent for development with your open-source contribution?
+When you reach those 20% of the changes, consider opening a pull request to gather more insight about whether those changes will suffice and how the remaining effort might be spent.</p>
+
+<p>As you go through the process of opening a pull request, be sure to follow the open-source <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> documentation related to the project; each one can vary.
+When working on GitHub-based projects, you&#8217;ll need to open a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a> on the correct branch (usually upstream <code class="language-plaintext highlighter-rouge">main</code>).
+If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the <code class="language-plaintext highlighter-rouge">#issue number</code> (for example <code class="language-plaintext highlighter-rouge">#123</code> where the issue link would look like: <code class="language-plaintext highlighter-rouge">https://github.com/orgname/reponame/issues/123</code>) reference to help link the work to the reported need.
+This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.</p>
+
+<h3 id="code-revisions">Code Revisions</h3>
+
+<blockquote>
+  <p>&#8220;Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.&#8221;
+- Antoine de Saint-Exupery</p>
+</blockquote>
+
+<p>You may be asked to update your code based on automated code quality checks or reviewer request.
+Treat these with care; embrace learning and remember that this step can take 25% of the total time for the contribution.
+When working on GitHub forks or branches, you can make additional commits directly on the development branch which was used for the pull request.
+If your reviewers requested changes, re-request their review once changes have been made to help let them know the code is ready for another look.</p>
+
+<h3 id="post-actions-and-tidying-up-afterwards">Post-actions and Tidying Up Afterwards</h3>
+
+<p class="center"><i class="fas fa-broom" style="font-size:4em;"></i></p>
+
+<p>Once the code has been accepted by the reviewers and through potential automated testing suite(s) the content is ready to be merged.
+Oftentimes this work is completed by core maintainers of the project.
+After the code is merged, it&#8217;s usually a good idea to clean up your workspace by deleting your development branch and syncing with the upstream repository.
+While it&#8217;s up to core maintainers to decide on report closure, typically the reported need content can be closed and might benefit from a comment describing the fix.
+Many of these steps are considered common courtesy but also, importantly, assist in setting you up for your next contributions!</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>Hopefully the above helps you understand the open-source contribution process better.
+As stated earlier, every little part helps!
+Best wishes on your open-source journey and happy Codesgiving!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -271,7 +706,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -747,7 +1182,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1037,7 +1472,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1203,7 +1638,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1360,7 +1795,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1477,7 +1912,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1600,7 +2035,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1756,7 +2191,7 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1884,131 +2319,4 @@ unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> 
   <li><a href="https://github.com/jendrikseipp/vulture">Vulture</a></li>
   <li><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a></li>
   <li><a href="https://coverage.readthedocs.io/">Coverage</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry><entry><title type="html">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</title><link href="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html" rel="alternate" type="text/html" title="Tip of the Week: Data Engineering with SQL, Arrow and DuckDB" /><published>2022-12-05T00:00:00+00:00</published><updated>2023-10-31T12:05:11+00:00</updated><id>/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB</id><content type="html" xml:base="/set-website/2022/12/05/Data-Engineering-with-SQL-Arrow-and-DuckDB.html"><![CDATA[<h1 id="tip-of-the-week-data-engineering-with-sql-arrow-and-duckdb">Tip of the Week: Data Engineering with SQL, Arrow and DuckDB</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p><a href="https://arrow.apache.org/">Apache Arrow</a> is a language-independent and high performance data format useful in many scenarios. <a href="https://duckdb.org/">DuckDB</a> is an in-process <a href="https://en.wikipedia.org/wiki/SQL">SQL</a>-based data management system which is Arrow-compatible. In addition to providing a <a href="https://sqlite.org/index.html">SQLite</a>-like database format, DuckDB also provides a standardized and high performance way to work with Arrow data where otherwise one may be forced to language-specific data structures or transforms.</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-DuckDB may be used to access and transform Arrow-based data from multiple data formats through SQL. Using Arrow and DuckDB provides a cross-language way to access and manage data. Data development with these tools may also enable improvements in performance, understandability, or long term maintainability of your code.</p>
-
-<h2 id="reduce-wasted-conversion-effort-with-arrow">Reduce Wasted Conversion Effort with Arrow</h2>
-
-<pre class="mermaid">
-flowchart TB
-    Python:::outlined &lt;--&gt; Arrow
-    R:::outlined &lt;--&gt; Arrow
-    C++:::outlined &lt;--&gt; Arrow
-    Java:::outlined &lt;--&gt; Arrow
-    others...:::outlined &lt;--&gt; Arrow
-
-    classDef outlined fill:#fff,stroke:#333
-</pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<p>Arrow provides a <a href="https://arrow.apache.org/docs/">multi-language</a> data format which prevents you from needing to convert to other formats when dealing with multiple in-memory or serialized data formats. For example, this means that a Python and an R package may use the same in-memory or file-based data without conversion (where normally a Python Pandas dataframe and R data frame may require a conversion step in between).</p>
-
-<pre class="mermaid">
-flowchart TB
-    subgraph Python
-      Pandas:::outlined
-      Polars:::outlined
-      dict[Python dict]:::outlined
-      list[Python list]:::outlined
-    end
-
-    Pandas &lt;--&gt; Arrow
-    Polars &lt;--&gt; Arrow
-    dict &lt;--&gt; Arrow
-    list &lt;--&gt; Arrow
-
-  classDef outlined fill:#fff,stroke:#333
-</pre>
-
-<p>The same stands for various libraries within one language - Arrow enables interchange between various language library formats (for example, a Python Pandas dataframe and Python dictionary are two distinct in-memory formats which may require conversions). Conversions to or from these formats can involve data type or other inferences which are costly to productivity. You can save time and effort by avoiding conversions using Arrow.</p>
-
-<h2 id="using-sql-to-join-or-transform-arrow-data-via-duckdb">Using SQL to Join or Transform Arrow Data via DuckDB</h2>
-
-<pre class="mermaid">
-flowchart LR
-    subgraph duckdb["DuckDB Processing"]
-        direction BT
-        SQL[SQL] --&gt; DuckDB[DuckDB Client]
-    end
-    parquet1[example.parquet] --&gt; duckdb
-    sqlite[example.sqlite] --&gt; duckdb
-    csv[example.csv] --&gt; duckdb
-    arrow["in-memory Arrow"] --&gt; duckdb
-    pandas["in-memory Pandas"] --&gt; duckdb
-    duckdb --&gt; Arrow
-    Arrow --&gt; Other[Other work...]
-</pre>
-
-<p>DuckDB provides a management client and relational database format (similar to SQLite databases) which may be handled with Arrow. SQL may be used with the DuckDB client to filter, join, or change various data types. Due to Arrow&#8217;s cross-language properties, there is no additional cost to using SQL through DuckDB to return data for implementation within other purpose-built data formats. <a href="https://duckdb.org/docs/api/overview">DuckDB provides client API&#8217;s in many languages</a> (for example, Python, R, and C++), making it possible to write DuckDB client code with SQL to manage data without having to use manually written sub-procedures.</p>
-
-<pre class="mermaid">
-flowchart TB
-  subgraph duckdb["DuckDB Processing"]
-        direction BT
-        SQL[SQL] --&gt; DuckDB[DuckDB Client]
-    end
-    Python:::outlined &lt;--&gt; duckdb
-    R:::outlined &lt;--&gt; duckdb
-    C++:::outlined &lt;--&gt; duckdb
-    Java:::outlined &lt;--&gt; duckdb
-    others...:::outlined &lt;--&gt; duckdb
-    duckdb &lt;--&gt; Arrow
-
-    classDef outlined fill:#fff,stroke:#333
-</pre>
-
-<p>Using SQL to perform these operations with Arrow provides an opportunity for your data code to be used (or understood) within other languages without additional rewrites. SQL also provides you access to roughly 48 years worth of data management improvements without being constrained by imperative language data models or schema (reference: <a href="https://en.wikipedia.org/wiki/SQL">SQL Wikipedia: <em>First appeared: 1974</em></a>).</p>
-
-<h2 id="example-with-sql-to-join-arrow-data-with-duckdb-in-python">Example with SQL to Join Arrow Data with DuckDB in Python</h2>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Jupyter notebook example screenshot with DuckDB and Arrow data handling">
-    <img src="/set-website/images/duckdb_arrow_query_example.png" style="
-        width: 500px;
-        max-height: unset;
-      " alt="Jupyter notebook example screenshot with DuckDB and Arrow data handling" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Jupyter notebook example screenshot with DuckDB and Arrow data handling
-
-    </figcaption>
-  
-</figure>
-
-<p>The following example notebook shows how to use SQL to join data from multiple sources using the DuckDB client API within Python. The example includes DuckDB querying a remote CSV, local Parquet file, and Arrow in-memory tables.</p>
-
-<p><a href="https://github.com/CU-DBMI/notebooks/blob/main/content/arrow_and_duckdb_example.ipynb">Linked Example</a></p>
-
-<h2 id="additional-resources">Additional Resources</h2>
-
-<p>Please see the following the additional resources.</p>
-
-<ul>
-  <li><a href="https://arrow.apache.org/docs/index.html">Apache Arrow Documentation</a></li>
-  <li><a href="https://duckdb.org/docs/">DuckDB Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data" /><category term="sql" /><category term="dataframes" /><category term="arrow" /><category term="duckdb" /><summary type="html"><![CDATA[Tip of the Week: Data Engineering with SQL, Arrow and DuckDB]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry></feed>
