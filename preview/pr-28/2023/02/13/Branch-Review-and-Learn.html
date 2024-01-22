@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Branch, Review, and Learn | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-28/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Branch, Review, and Learn">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Branch, Review, and Learn">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/preview/pr-28/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Branch, Review, and Learn">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-28/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-01-22T12:56:03+00:00">
+  <meta property="article:published_time" content="2023-02-13T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-01-22T12:56:03+00:00">
+  <meta name="revised" content="2024-01-22T12:56:03+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Branch, Review, and Learn" },
+      "datePublished": "2023-02-13T00:00:00+00:00",
+      "dateModified": "2024-01-22T12:56:03+00:00",
+    
+    "name": "Tip of the Week: Branch, Review, and Learn",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Branch, Review, and Learn",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-28/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-28/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-28/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-28/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-28/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-28/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-28/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-28/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-28/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-28/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-28/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-28/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-28/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-28/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-28/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Tip of the Week: Branch, Review, and Learn</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-28/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-28/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-28/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>February 13, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>January 22, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-28/blog">
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20git%22" class="tag" data-tooltip='Show items with the tag "git"'>
+        git
+      </a>
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20branching%22" class="tag" data-tooltip='Show items with the tag "branching"'>
+        branching
+      </a>
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20pull-requests%22" class="tag" data-tooltip='Show items with the tag "pull-requests"'>
+        pull-requests
+      </a>
+    
+      <a href="/set-website/preview/pr-28/blog?search=%22tag:%20merging%22" class="tag" data-tooltip='Show items with the tag "merging"'>
+        merging
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<!-- excerpt start -->
+
+<p>Git provides a feature called <a href="https://git-scm.com/docs/git-branch">branching</a> which facilitates parallel and segmented programming work through <a href="https://git-scm.com/docs/git-commit">commits</a> with version control. Using branching enables both work concurrency (multiple people working on the same repository at the same time) as well as a chance to isolate and review specific programming tasks. This article covers some conceptual best practices with branching, reviewing, and merging code using Github.</p>
+
+<!-- excerpt end -->
+
+<p><strong>Please note:</strong> the content below represents one opinion in a larger space of Git workflow concepts (it’s not perfect!). Developer cultures may vary on these topics; be sure to acknowledge people and culture over exclusive or absolute dedication to what is found below.</p>
+
+<p><strong>TLDR (too long, didn’t read);</strong>
+Use <a href="https://www.atlassian.com/git/tutorials/using-branches">git branching techniques</a> to segment the completion of programming tasks, gradually and consistently committing small changes (practicing <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em> or “make haste, slowly”</a>). When a group of small changes are ready from branches, request <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request reviews</a> and take advantage of <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">comments</a> to <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> the work. Prepare for a branch <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge</a> after review by deciding <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">which merge strategy</a> is appropriate and automating merge requirements with <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>.</p>
+
+<h2 id="concept-coursework-branching">Concept: Coursework Branching</h2>
+
+<pre class="mermaid">
+flowchart LR
+ subgraph Course
+    direction LR
+    open["open\nassignment"]
+    turn_in["review\nassignment"]
+  end
+  subgraph Student ["     Student"]
+    direction LR
+    work["completed\nassignment"]
+  end
+  open -.-&gt; turn_in
+  open --&gt; |works towards| work
+  work --&gt; |seeks review| turn\_in
+</pre>
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<p class="center"><em>An example course and student assignment workflow.</em></p>
+
+<p><a href="https://www.atlassian.com/git/tutorials/using-branches">Git branching</a> practices may be understood in context with similar workflows from real life. Consider a student taking a course, where an assignment is given to them to complete. In addition to the steps shown in the diagram above, it’s important to think about <em>why</em> this pattern is beneficial:</p>
+
+<ul>
+  <li>Completing an assignment allows us as social, inter-dependent beings to present new findings which enable learning and amalgamation of additional ideas from others.</li>
+  <li>The timebound nature of assignments enables us to practice some form of <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing</a> so as to minimize tasks which may take too much time.</li>
+  <li>Segmenting applied learning in distinct, goal-orientated chunks helps make larger topics easier to understand.</li>
+</ul>
+
+<h2 id="branching-to-complete-an-assignment">Branching to Complete an “Assignment”</h2>
+
+<pre class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
+      'git0': '#4F46E5',
+      'git1': '#10B981',
+      'gitBranchLabel1': '#ffffff'
+} } }%%
+    gitGraph
+       commit id: "..."
+       commit id: "opened"
+       branch assignment
+       checkout assignment
+       commit id: "completed"
+       checkout main
+</pre>
+
+<p class="center"><em>An example git diagram showing assignment branch based off main.</em></p>
+
+<p>Following the course assignment workflow, the diagram above shows an in-progress <code class="language-plaintext highlighter-rouge">assignment</code> branch based off of the <code class="language-plaintext highlighter-rouge">main</code> branch. When the <code class="language-plaintext highlighter-rouge">assignment</code> branch is created, we bring into it everything we know from <code class="language-plaintext highlighter-rouge">main</code> (the course) so far in the form of <a href="https://github.com/git-guides/git-commit">commits</a>, or groups of changes to various files. <a href="https://github.com/git-guides#create-a-branch">Branching</a> allows us to make consistent and well described changes based on what’s already happened without impacting others work in the meantime.</p>
+
+<blockquote>
+  <p>Branching best practices:</p>
+
+  <ul>
+    <li>
+<strong>Keep the name and work with branches dedicated to a specific and focused purpose.</strong> For example: a branch named <code class="language-plaintext highlighter-rouge">fix-links-in-docs</code> might entail work related to fixing HTTP links within documentation.</li>
+    <li>
+<strong>Consider the use of <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Github Forks</a></strong> (along with branches within the fork) to help further isolate and enrich work potential. Forks also allow remixing existing work into new possibilities.</li>
+    <li>
+<strong><a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em></a> or “make haste, slowly”:</strong> Commits on any branch represent small chunks of a cohesive idea which will eventually be brought to <code class="language-plaintext highlighter-rouge">main</code>. It is often beneficial to be consistent with small, gradual commits to avoid a rushed or incomplete submission. The same applies more generally for software; taking time upfront to do things well can mean time saved later.</li>
+  </ul>
+</blockquote>
+
+<h2 id="reviewing-the-branched-work">Reviewing the Branched Work</h2>
+
+<pre class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
+      'git0': '#6366F1',
+      'git1': '#10B981',
+      'gitBranchLabel1': '#ffffff'
+} } }%%
+    gitGraph
+       commit id: "..."
+       commit id: "opened"
+       branch assignment
+       checkout assignment
+       commit id: "completed"
+       checkout main
+       merge assignment id: "reviewed"
+</pre>
+
+<p class="center"><em>An example git diagram showing assignment branch being merged with main after a review.</em></p>
+
+<p>The diagram above depicts a merge from the <code class="language-plaintext highlighter-rouge">assignment</code> branch to pull the changes into the <code class="language-plaintext highlighter-rouge">main</code> branch, simulating an assignment being returned for review within a course. While merges may be forced without review, it’s a best practice create a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Pull Request (PR) Review</a> (also known as a <a href="https://docs.gitlab.com/ee/user/project/merge_requests/">Merge Request (MR)</a> on some systems) and then ask other members of your team to review it. Doing this provides a chance to make revisions before code changes are “finalized” within the <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
+
+<blockquote>
+  <p>Github provides special tools for reviews which can assist both the author and reviewer:</p>
+
+  <ul>
+    <li>
+<strong>Keep code changes intended for review small</strong>, enabling reviewers to reason through the work to more quickly provide feedback and practicing <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">incremental continuous improvement</a> (it may be difficult to address everything at once!). This also may denote the git history for a repository in a clearer way.</li>
+    <li>
+<strong>Github comments:</strong> <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#about-pull-request-comments">Overall review comments</a> (encompassing all work from the branch) and <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">Inline comments</a> (inquiring about individual lines of code) may be provided. Inline comments may also include code suggestions, which allows for code-based revision suggestions that may be committed directly to the branch using markdown codeblocks (<code class="language-plaintext highlighter-rouge"> </code>``suggestion `).</li>
+    <li>
+<strong>Github issues:</strong> <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-comment">Creating issues from comments</a> allows the creation of new repository issues to address topics outside of the current PR.</li>
+  </ul>
+</blockquote>
+
+<h2 id="merging-the-branch-after-review">Merging the Branch after Review</h2>
+
+<pre class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
+      'git0': '#6366F1'
+} } }%%
+    gitGraph
+       commit id: "..."
+       commit id: "opened"
+       commit type: HIGHLIGHT id: "reviewed"
+       commit id: "...."
+</pre>
+
+<p class="center"><em>An example git diagram showing the main branch after the assignment branch has been merged (and removed).</em></p>
+
+<p>Changes may be made within the <code class="language-plaintext highlighter-rouge">assignment</code> branch until the work is in a state where the authors and reviewers are satisfied. At this point, the branch changes may be <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merged</a> into <code class="language-plaintext highlighter-rouge">main</code>. Approvals are sometimes provided informally (for ex., with a comment: “LGTM (looks good to me)!”) or explicitly (for ex., <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews">approvals within Github</a>) to indicate or enable branch merge readiness . After the merge, changes may continue to be made in a similar way (perhaps accounting for concurrently branched work elsewhere). Generally, a merged branch may be removed afterwards to help maintain an organized working environment (see <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/deleting-and-restoring-branches-in-a-pull-request">Github PR branch removal</a>).</p>
+
+<blockquote>
+  <p>Github provides special tools for merging:</p>
+
+  <ul>
+    <li>
+<strong>Decide which merge strategy is appropriate (there are many!):</strong> There are many <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">merge strategies within Github</a> (merge commits, squash merges, and rebase merging). Take time to understand them and choose which one works best.</li>
+    <li>
+<strong>Consider using branch protection to automate merge requirements:</strong> The <code class="language-plaintext highlighter-rouge">main</code> or other branches may be “protected” against merges using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>. These rules can require reviewer approvals or automatic status checks to pass before changes may be merged.</li>
+    <li>
+<strong>Use merge queuing to manage multiple PR’s:</strong> When there are many unmerged PR’s, it can sometimes be difficult to document and ensure each are merged in a desired sequence. Consider using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue">merge queues</a> to help with this process.</li>
+  </ul>
+</blockquote>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<p>The links below may provide additional guidance on using these git features, including in-depth coverage of various features and related configuration.</p>
+
+<ul>
+  <li><a href="https://swcarpentry.github.io/git-novice/">Software Carpentry: Version Control with Git</a></li>
+  <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
+  <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
+  <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R.html">
+        Tip of the Week: Software Linting with R
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">
+        Tip of the Week: Automate Software Workflows with GitHub Actions
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-28/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
