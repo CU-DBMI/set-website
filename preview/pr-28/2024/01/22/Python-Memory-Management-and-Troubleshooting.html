@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-22T13:15:54+00:00">
+  <meta property="og:updated_time" content="2024-01-22T13:19:30+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-22T13:15:54+00:00">
-  <meta name="revised" content="2024-01-22T13:15:54+00:00">
+  <meta property="article:modified_time" content="2024-01-22T13:19:30+00:00">
+  <meta name="revised" content="2024-01-22T13:19:30+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Month: Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-22T13:15:54+00:00",
+      "dateModified": "2024-01-22T13:19:30+00:00",
     
     "name": "Tip of the Month: Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -542,7 +542,16 @@ This post will cover some computer memory definitions, how Python makes use of c
 
 <h3 id="computer-memory">Computer Memory</h3>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5tZW1vcnlbXCJNZW1vcnlcIl1cbnN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbmNwdVtcIkNQVShzKVwiXVxuZW5kXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGNwdSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzMiLCJtZXJtYWlkIjpudWxsfQ"></p>
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+.smaller-mermaid-diagram img { max-width: 500px; }
+</style>
+
+<div class="smaller-mermaid-diagram">
+
+<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5tZW1vcnlbXCJNZW1vcnlcIl1cbnN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbmNwdVtcIkNQVShzKVwiXVxuZW5kXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGNwdSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbiUlLSIsIm1lcm1haWQiOm51bGx9">
+
+</div>
 
 <p><em>Computer memory is a type of computer resource available for use by software on a computer</em></p>
 
@@ -595,7 +604,11 @@ This post will cover some computer memory definitions, how Python makes use of c
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
 Memory blocks may be in use or free at different times.</p>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcCAxXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2xhW1wicG9vbCBhXCJdXG5ibG9ja3MxW1wiYmxvY2tzXCJdXG5lbmRcbnN1YmdyYXBoIHBvb2xiW1wicG9vbCBiXCJdXG5ibG9ja3MyW1wiYmxvY2tzXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggaGVhcDIgW1wiaGVhcCAyXCJdXG5zdWJncmFwaCBwb29sY1tcInBvb2wgY1wiXVxuYmxvY2tzM1tcImJsb2Nrc1wiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5lbmRcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBwb29sYSBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYiBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYyBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0"></p>
+<div class="smaller-mermaid-diagram">
+
+<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcCAxXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2xhW1wicG9vbCBhXCJdXG5ibG9ja3MxW1wiYmxvY2tzXCJdXG5lbmRcbnN1YmdyYXBoIHBvb2xiW1wicG9vbCBiXCJdXG5ibG9ja3MyW1wiYmxvY2tzXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggaGVhcDIgW1wiaGVhcCAyXCJdXG5zdWJncmFwaCBwb29sY1tcInBvb2wgY1wiXVxuYmxvY2tzM1tcImJsb2Nrc1wiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5lbmRcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBwb29sYSBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYiBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYyBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0">
+
+</div>
 
 <p><em>Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
 
@@ -684,7 +697,11 @@ When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disab
 When <code class="language-plaintext highlighter-rouge">malloc</code> is used by the Python interpreter, it uses the system’s existing implementation of <code class="language-plaintext highlighter-rouge">malloc</code>.</li>
 </ul>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcFwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBhcmVuYSBbXCJweW1hbGxvY1xcbmFyZW5hKHMpXCJdXG5zdWJncmFwaCBzcGFjZXIgW1wiIFwiXVxuc3ViZ3JhcGggcG9vbHNbXCJwb29sKHMpXCJdXG5ibG9ja3NbXCJibG9ja3NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGFyZW5hIGZpbGw6I0Q4QjRGRSxzdHJva2U6IzMzM1xuc3R5bGUgcG9vbHMgZmlsbDojQzdEMkZFLHN0cm9rZTojMzMzXG5zdHlsZSBzcGFjZXIgZmlsbDp0cmFuc3BhcmVudCxzdHJva2U6dHJhbnNwYXJlbnQ7IiwibWVybWFpZCI6bnVsbH0"></p>
+<div class="smaller-mermaid-diagram">
+
+<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcFwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBhcmVuYSBbXCJweW1hbGxvY1xcbmFyZW5hKHMpXCJdXG5zdWJncmFwaCBzcGFjZXIgW1wiIFwiXVxuc3ViZ3JhcGggcG9vbHNbXCJwb29sKHMpXCJdXG5ibG9ja3NbXCJibG9ja3NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGFyZW5hIGZpbGw6I0Q4QjRGRSxzdHJva2U6IzMzM1xuc3R5bGUgcG9vbHMgZmlsbDojQzdEMkZFLHN0cm9rZTojMzMzXG5zdHlsZSBzcGFjZXIgZmlsbDp0cmFuc3BhcmVudCxzdHJva2U6dHJhbnNwYXJlbnQ7IiwibWVybWFpZCI6bnVsbH0">
+
+</div>
 
 <p><em><code class="language-plaintext highlighter-rouge">pymalloc</code> makes use of arenas to further organize pools within a computer memory heap.</em></p>
 
