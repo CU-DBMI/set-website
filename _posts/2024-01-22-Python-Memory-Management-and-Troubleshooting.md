@@ -55,6 +55,8 @@ _Computer memory is a type of computer resource available for use by software on
 Computer memory, also sometimes known as "RAM" or "random-access memory", or "dynamic memory" is a type of resource used by computer software on a computer.
 "Computer memory stores information, such as data and programs for immediate use in the computer. ... Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. " ([Wikipedia: Computer memory](https://en.wikipedia.org/wiki/Computer_memory)).
 
+<!-- table HTML retained for replicability 
+
 <table>
 <tr><th colspan="2">Memory Blocks</th></tr>
 <tr>
@@ -102,7 +104,9 @@ Computer memory, also sometimes known as "RAM" or "random-access memory", or "dy
 </tr>
 </table>
 
-_Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things._
+-->
+
+{% include figure.html image="images/memory_blocks_examples.png" caption="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." %}
 
 One way to organize computer memory is through the use of ["fixed-size blocks"](https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE), also called "blocks".
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
