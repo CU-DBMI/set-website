@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-22T13:19:30+00:00">
+  <meta property="og:updated_time" content="2024-01-23T14:52:13+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-22T13:19:30+00:00">
-  <meta name="revised" content="2024-01-22T13:19:30+00:00">
+  <meta property="article:modified_time" content="2024-01-23T14:52:13+00:00">
+  <meta name="revised" content="2024-01-23T14:52:13+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Month: Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-22T13:19:30+00:00",
+      "dateModified": "2024-01-23T14:52:13+00:00",
     
     "name": "Tip of the Month: Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -473,6 +473,11 @@
   
 
   
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>January 23, 2024</span>
+    </span>
+  
 </div>
 
 
@@ -558,47 +563,71 @@ This post will cover some computer memory definitions, how Python makes use of c
 <p>Computer memory, also sometimes known as “RAM” or “random-access memory”, or “dynamic memory” is a type of resource used by computer software on a computer.
 “Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</p>
 
-<div class="table-wrapper">
-<table>
+<!-- table HTML retained for replicability 
+
+<div class='table-wrapper'><table>
 <tr><th colspan="2">Memory Blocks</th></tr>
 <tr>
 <td>
-<strong>A.)</strong> All memory blocks available.&lt;table&gt;
+
+<strong>A.)</strong> All memory blocks available.
+
+<table>
+<tr><td>Block</td><td>Block</td><td>Block</td></tr>
+</table></div>
+
 </td>
-<td>Block</td>
-<td>Block</td>
-<td>Block</td>
-&lt;/table&gt;
 <td>
-<strong>B.)</strong> Some memory blocks in use.&lt;div class="table-wrapper"&gt;&lt;table&gt;
+
+<strong>B.)</strong> Some memory blocks in use.
+
+<div class='table-wrapper'><table>
+<tr><td style="background:#86EFAC;">Block</td><td style="background:#86EFAC;">Block</td><td>Block</td></tr>
+</table></div>
+
 </td>
-<td style="background:#86EFAC;">Block</td>
-<td style="background:#86EFAC;">Block</td>
-<td>Block</td>
-&lt;/table&gt;&lt;/div&gt;
 </tr>
 <tr>
 <td colspan="2" style="text-align:center;font-weight:bold;">Practical analogy</td>
 </tr>
 <tr>
 <td>
-<strong>C.)</strong> You have limited buckets to hold things.&lt;div class="table-wrapper"&gt;&lt;table&gt;
+
+<strong>C.)</strong> You have limited buckets to hold things.
+
+<div class='table-wrapper'><table>
+<tr><td>🪣</td><td>🪣</td><td>🪣</td></tr>
+</table></div>
+
 </td>
-<td>🪣</td>
-<td>🪣</td>
-<td>🪣</td>
-&lt;/table&gt;&lt;/div&gt;
 <td>
-<strong>D.)</strong> Two buckets are used, the other remains empty.&lt;div class="table-wrapper"&gt;&lt;table&gt;
+
+<strong>D.)</strong> Two buckets are used, the other remains empty.
+
+<div class='table-wrapper'><table>
+<tr><td style="background:#86EFAC;">🪣</td><td style="background:#86EFAC;">🪣</td><td>🪣</td></tr>
+</table></div>
+
 </td>
-<td style="background:#86EFAC;">🪣</td>
-<td style="background:#86EFAC;">🪣</td>
-<td>🪣</td>
-&lt;/table&gt;&lt;/div&gt;
 </tr>
 </table>
 
-<p><em>Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.</em></p>
+-->
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.">
+    <img src="/set-website/preview/pr-28/images/memory_blocks_examples.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." loading="lazy" onerror="this.src = '/set-website/preview/pr-28/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.
+
+    </figcaption>
+  
+</figure>
 
 <p>One way to organize computer memory is through the use of <a href="https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE">“fixed-size blocks”</a>, also called “blocks”.
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
@@ -692,9 +721,9 @@ The Python interpreter is packaged with a specialized memory allocator called <c
 “Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime.” (<a href="https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator">Python: Memory Management - The pymalloc allocator</a>).
 Ultimately, <code class="language-plaintext highlighter-rouge">pymalloc</code> uses <code class="language-plaintext highlighter-rouge">C malloc</code> to implement memory work.</li>
   <li>
-<strong>C dynamic memory allocator (<code class="language-plaintext highlighter-rouge">malloc</code>)</strong>
-When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>’s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="%5B%60malloc%60%5D(https://en.wikipedia.org/wiki/C_dynamic_memory_allocation)"><code class="language-plaintext highlighter-rouge">malloc</code></a>.
-When <code class="language-plaintext highlighter-rouge">malloc</code> is used by the Python interpreter, it uses the system’s existing implementation of <code class="language-plaintext highlighter-rouge">malloc</code>.</li>
+<strong>C dynamic memory allocation (<code class="language-plaintext highlighter-rouge">C malloc</code>)</strong>
+When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>’s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation"><code class="language-plaintext highlighter-rouge">C malloc</code></a>.
+When <code class="language-plaintext highlighter-rouge">C malloc</code> is used by the Python interpreter, it uses the system’s existing implementation of <code class="language-plaintext highlighter-rouge">C malloc</code>.</li>
 </ul>
 
 <div class="smaller-mermaid-diagram">
@@ -707,7 +736,7 @@ When <code class="language-plaintext highlighter-rouge">malloc</code> is used by
 
 <p>It’s important to note that <code class="language-plaintext highlighter-rouge">pymalloc</code> adds additional abstractions to how memory is organized through the use of “arenas”.
 These arenas are specific to <code class="language-plaintext highlighter-rouge">pymalloc</code> purposes.
-<code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation"><code class="language-plaintext highlighter-rouge">malloc</code></a> as seen below).
+<code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation"><code class="language-plaintext highlighter-rouge">C malloc</code></a> as seen below).
 This same environment variable may be used with <code class="language-plaintext highlighter-rouge">debug</code> settings in order to help troubleshoot in-depth questions.</p>
 
 <p><strong>Additional Python Memory Allocators</strong></p>
@@ -726,7 +755,7 @@ See below for some notable examples of additional memory allocation possibilitie
 These interfaces can be controlled directly through NumPy to help manage memory effectively when using the package.</li>
   <li>
 <strong>PyArrow Memory Allocators</strong>
-<a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use <code class="language-plaintext highlighter-rouge">malloc</code>, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
+<a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use <code class="language-plaintext highlighter-rouge">C malloc</code>, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
 A default memory allocator is selected for use when PyArrow based on the operating system and the availability of the memory allocator on the system.
 The selection of a memory allocator for use with PyArrow can be influenced by how it performs on a particular system.</li>
 </ul>
@@ -858,7 +887,7 @@ It's worth mentioning that this article covers only a small fraction of how and 
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
 </table></div>
-  
+  </section>
 
   
   
@@ -888,7 +917,7 @@ Wishing you the very best in your software journey with memory!
   </section>
 
 
-    
+    </main>
     
 
 
@@ -930,6 +959,5 @@ Wishing you the very best in your software journey with memory!
   <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
 </footer>
 
-  </div></section></main>
-</body>
+  </body>
 </html>
