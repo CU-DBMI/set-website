@@ -421,6 +421,8 @@ See below for some notable examples of additional memory allocation possibilitie
 
 ### Python Reference Counting
 
+<!-- table HTML retained for replicability 
+
 <table>
 <tr><th>Processed line of code</th><th>Reference count</th></tr>
 <tr>
@@ -464,7 +466,9 @@ a_string: 1<br>
 
 </table>
 
-_Python reference counting at a simple level works through the use of object reference increments and decrements._
+-->
+
+{% include figure.html image="images/python_reference_counting_example.png" caption="Python reference counting at a simple level works through the use of object reference increments and decrements." %}
 
 As computer memory is allocated to Python processes the Python memory manager keeps track of these through the use of a [reference counter](https://en.wikipedia.org/wiki/Reference_counting).
 In Python, we could label this as an "Object reference counter" because all data in Python is represented by objects ([Python: Data model](https://docs.python.org/3/reference/datamodel.html#objects-values-and-types)).
