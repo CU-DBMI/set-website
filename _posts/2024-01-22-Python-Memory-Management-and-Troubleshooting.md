@@ -11,7 +11,7 @@ tags:
 
 # Tip of the Week: Python Memory Management and Troubleshooting
 
-{% include tip-of-the-month-intro.html %}
+{% include blog-post-intro.html %}
 
 ## Introduction
 
