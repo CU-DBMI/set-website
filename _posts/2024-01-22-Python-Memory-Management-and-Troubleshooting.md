@@ -197,6 +197,7 @@ garbage collector  ->> memory:Free the memory for other purposes.
 _Garbage collectors help free computer memory which is no longer referenced by software._
 
 "Garbage collection (GC)" is used to describe a type of automated memory management.
+GC is typically used to help reduce human error, avoid unintentional system failures, and decrease development time (through less memory-specific code).
 "The _garbage collector_ attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called _garbage_." ([Wikipedia: Garbage collection (computer science)](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>)).
 A garbage collector often works in tandem with a memory allocator to help control computer memory resource usage in software development.
 
