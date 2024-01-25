@@ -319,10 +319,10 @@ One way to understand Python memory allocators is through the following distinct
 - __"Python Memory Allocator" (`pymalloc`)__
   The Python interpreter is packaged with a specialized memory allocator called `pymalloc`.
   "Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime." ([Python: Memory Management - The pymalloc allocator](https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator)).
-  Ultimately, `pymalloc` uses `C malloc` to implement memory work.
-- __C dynamic memory allocation (`C malloc`)__
-  When `pymalloc` is disabled or a memory requirements exceed `pymalloc`'s constraints, the Python interpreter will directly use a function from the [C standard library](https://en.wikipedia.org/wiki/C_standard_library) called [`C malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation).
-  When `C malloc` is used by the Python interpreter, it uses the system's existing implementation of `C malloc`.
+  Ultimately, `pymalloc` uses C standard library dynamic memory allocation functions to implement memory work.
+- __C dynamic memory allocation functions (`malloc`, `realloc`, etc.)__
+  When `pymalloc` is disabled or a memory requirements exceed `pymalloc`'s constraints, the Python interpreter will directly use a function from the [C standard library](https://en.wikipedia.org/wiki/C_standard_library) called [C standard library dynamic memory allocation functions](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation).
+  When C standard library dynamic memory allocation functions are used by the Python interpreter, it uses the system's existing implementation of the C standard library.
 
 ```mermaid!
 flowchart LR
@@ -356,7 +356,7 @@ _`pymalloc` makes use of arenas to further organize pools within a computer memo
 
 It's important to note that `pymalloc` adds additional abstractions to how memory is organized through the use of "arenas".
 These arenas are specific to `pymalloc` purposes.
-`pymalloc` may be disabled through the use of a special environment variable called [`PYTHONMALLOC`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC) (for example, to use only [`C malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) as seen below).
+`pymalloc` may be disabled through the use of a special environment variable called [`PYTHONMALLOC`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC) (for example, to use only [C standard library dynamic memory allocation functions](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation) as seen below).
 This same environment variable may be used with `debug` settings in order to help troubleshoot in-depth questions.
 
 __Additional Python Memory Allocators__
@@ -416,7 +416,7 @@ See below for some notable examples of additional memory allocation possibilitie
   [NumPy](https://numpy.org/) [uses custom C-API's](https://numpy.org/doc/stable/reference/c-api/data_memory.html) which are backed by C dynamic memory allocation functions (`alloc`, `free`, `realloc`) to help address memory management.
   These interfaces can be controlled directly through NumPy to help manage memory effectively when using the package.
 - __PyArrow Memory Allocators__
-  [PyArrow](https://arrow.apache.org/) provides the capability to use `C malloc`, [`jemalloc`](https://github.com/jemalloc/jemalloc), or [`mimalloc`](https://github.com/microsoft/mimalloc) through the [PyArrow Memory Pools group of functions](https://arrow.apache.org/docs/python/api/memory.html#memory-pools).
+  [PyArrow](https://arrow.apache.org/) provides the capability to use C standard library dynamic memory allocation functions, [`jemalloc`](https://github.com/jemalloc/jemalloc), or [`mimalloc`](https://github.com/microsoft/mimalloc) through the [PyArrow Memory Pools group of functions](https://arrow.apache.org/docs/python/api/memory.html#memory-pools).
   A default memory allocator is selected for use when PyArrow based on the operating system and the availability of the memory allocator on the system.
   The selection of a memory allocator for use with PyArrow can be influenced by how it performs on a particular system.
 
