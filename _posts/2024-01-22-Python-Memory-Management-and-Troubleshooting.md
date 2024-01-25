@@ -27,10 +27,12 @@ This post will cover some computer memory definitions, how Python makes use of c
 
 <!-- set a max width for mermaid diagram below so it doesn't render so large -->
 <style>
-.smaller-mermaid-diagram img { max-width: 500px; }
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+}
 </style>
-
-<div class="smaller-mermaid-diagram">
 
 ```mermaid!
 flowchart LR
@@ -47,8 +49,6 @@ style cpu fill:#fff,stroke:#333
 style memory fill:#86EFAC,stroke:#333
 
 ```
-
-</div>
 
 _Computer memory is a type of computer resource available for use by software on a computer_
 
@@ -112,8 +112,6 @@ One way to organize computer memory is through the use of ["fixed-size blocks"](
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
 Memory blocks may be in use or free at different times.
 
-<div class="smaller-mermaid-diagram">
-
 ```mermaid!
 flowchart LR
 
@@ -144,8 +142,6 @@ style poola fill:#BFDBFE,stroke:#333;
 style poolb fill:#BFDBFE,stroke:#333;
 style poolc fill:#BFDBFE,stroke:#333;
 ```
-
-</div>
 
 _Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools._
 
@@ -321,8 +317,6 @@ One way to understand Python memory allocators is through the following distinct
   When `pymalloc` is disabled or a memory requirements exceed `pymalloc`'s constraints, the Python interpreter will directly use a function from the [C standard library](https://en.wikipedia.org/wiki/C_standard_library) called [`C malloc`](https://en.wikipedia.org/wiki/C_dynamic_memory_allocation).
   When `C malloc` is used by the Python interpreter, it uses the system's existing implementation of `C malloc`.
 
-<div class="smaller-mermaid-diagram">
-
 ```mermaid!
 flowchart LR
 
@@ -349,8 +343,6 @@ style arena fill:#D8B4FE,stroke:#333
 style pools fill:#C7D2FE,stroke:#333
 style spacer fill:transparent,stroke:transparent;
 ```
-
-</div>
 
 _`pymalloc` makes use of arenas to further organize pools within a computer memory heap._
 
