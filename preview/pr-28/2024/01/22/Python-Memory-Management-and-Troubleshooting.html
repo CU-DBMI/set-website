@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-25T16:57:14+00:00">
+  <meta property="og:updated_time" content="2024-01-25T20:21:53+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-25T16:57:14+00:00">
-  <meta name="revised" content="2024-01-25T16:57:14+00:00">
+  <meta property="article:modified_time" content="2024-01-25T20:21:53+00:00">
+  <meta name="revised" content="2024-01-25T20:21:53+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Month: Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-25T16:57:14+00:00",
+      "dateModified": "2024-01-25T20:21:53+00:00",
     
     "name": "Tip of the Month: Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -558,7 +558,7 @@ This post will cover some computer memory definitions, how Python makes use of c
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5tZW1vcnlbXCJNZW1vcnlcIl1cbnN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbmNwdVtcIkNQVShzKVwiXVxuZW5kXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGNwdSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbiUlLSIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p><em>Computer memory is a type of computer resource available for use by software on a computer</em></p>
+<p class="center"><em>Computer memory is a type of computer resource available for use by software on a computer</em></p>
 
 <p>Computer memory, also sometimes known as “RAM” or “random-access memory”, or “dynamic memory” is a type of resource used by computer software on a computer.
 <em>“Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em></p>
@@ -635,7 +635,7 @@ Memory blocks may be in use or free at different times.</p>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcCAxXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2xhW1wicG9vbCBhXCJdXG5ibG9ja3MxW1wiYmxvY2tzXCJdXG5lbmRcbnN1YmdyYXBoIHBvb2xiW1wicG9vbCBiXCJdXG5ibG9ja3MyW1wiYmxvY2tzXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggaGVhcDIgW1wiaGVhcCAyXCJdXG5zdWJncmFwaCBwb29sY1tcInBvb2wgY1wiXVxuYmxvY2tzM1tcImJsb2Nrc1wiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5lbmRcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBwb29sYSBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYiBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYyBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0"></p>
 
-<p><em>Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
+<p class="center"><em>Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
 
 <p>Computer memory blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
 One top-level organization model for computer memory is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
@@ -646,7 +646,7 @@ Heaps are sometimes further segmented into <strong><em>pools</em></strong> which
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4lJS1cbnNvZnR3YXJlIC0-PiBhbGxvY2F0b3I6XCJJIG5lZWQgc29tZSBtZW1vcnksIHBsZWFzZSFcIlxuYWxsb2NhdG9yIC0-PiBtZW1vcnk6QWxsb2NhdGUgcG9ydGlvbiBvZiAgbWVtb3J5IGZvciB1c2Vcbm1lbW9yeSAtPj4gYWxsb2NhdG9yOkFsbG9jYXRlZCBtZW1vcnkgZm9yIHVzZVxuYWxsb2NhdG9yIC0-PiBzb2Z0d2FyZTpcIkhlcmUncyBzb21lIG1lbW9yeSB0byB1c2UhXCJcbiUlLVxuc29mdHdhcmUgLT4-IGFsbG9jYXRvcjpcIkknbSBmaW5pc2hlZCB3aXRoIHRoYXQgbWVtb3J5IVwiXG5hbGxvY2F0b3IgLT4-IG1lbW9yeTpGcmVlIHRoZSBtZW1vcnkgZm9yIG90aGVyIHB1cnBvc2VzLiIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p><em>Memory allocators help software reserve and free computer memory resources.</em></p>
+<p class="center"><em>Memory allocators help software reserve and free computer memory resources.</em></p>
 
 <p>Memory management is a concept which helps enable the shared use of computer memory to avoid challenges such as memory overuse (where all memory is in use and never shared to other software).
 Computer memory management often occurs through the use of a <strong><em>memory allocator</em></strong> which controls how computer memory resources are used for software.
@@ -665,9 +665,10 @@ The memory allocator usually performs the following actions with memory (in addi
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4lJS1cbnBhcnRpY2lwYW50IHNvZnR3YXJlXG5wYXJ0aWNpcGFudCBtZW1vcnkgYWxsb2NhdG9yXG5wYXJ0aWNpcGFudCBnYXJiYWdlIGNvbGxlY3RvclxucGFydGljaXBhbnQgbWVtb3J5XG4lJS1cbnNvZnR3YXJlIC0-PiBtZW1vcnkgYWxsb2NhdG9yOlwiSSBuZWVkIHNvbWUgbWVtb3J5LCBwbGVhc2UhXCJcbm1lbW9yeSBhbGxvY2F0b3IgLT4-IG1lbW9yeTpBbGxvY2F0ZSBwb3J0aW9uIG9mICBtZW1vcnkgZm9yIHVzZVxubWVtb3J5IC0-PiBtZW1vcnkgYWxsb2NhdG9yOkFsbG9jYXRlZCBtZW1vcnkgZm9yIHVzZVxubWVtb3J5IGFsbG9jYXRvciAtPj4gc29mdHdhcmU6XCJIZXJlJ3Mgc29tZSBtZW1vcnkgdG8gdXNlIVwiXG4lJS1cbnNvZnR3YXJlIC0tPj4gZ2FyYmFnZSBjb2xsZWN0b3IgOihzb2Z0d2FyZSBmaW5pc2hlcyB3aXRoIG1lbW9yeSB1c2FnZSwgc29tZXRpbWVzIGltcGxpY2l0bHkpXG5nYXJiYWdlIGNvbGxlY3RvciAgLT4-IG1lbW9yeTpGcmVlIHRoZSBtZW1vcnkgZm9yIG90aGVyIHB1cnBvc2VzLiIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p><em>Garbage collectors help free computer memory which is no longer referenced by software.</em></p>
+<p class="center"><em>Garbage collectors help free computer memory which is no longer referenced by software.</em></p>
 
 <p>“Garbage collection (GC)” is used to describe a type of automated memory management.
+GC is typically used to help reduce human error, avoid unintentional system failures, and decrease development time (through less memory-specific code).
 “The <em>garbage collector</em> attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called <em>garbage</em>.” (<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">Wikipedia: Garbage collection (computer science)</a>).
 A garbage collector often works in tandem with a memory allocator to help control computer memory resource usage in software development.</p>
 
@@ -677,7 +678,7 @@ A garbage collector often works in tandem with a memory allocator to help contro
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbm1lbW9yeVtcIk1lbW9yeVwiXVxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5pbnRlcnByZXRlcltcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuZW5kXG4lJS1cbmNvZGUgLS0-IHxpbnRlcnByZXRlZCBhbmRcXG5leGVjdXRlZCBieXwgaW50ZXJwcmV0ZXJcbmludGVycHJldGVyIDwtLT4gfGFsbG9jYXRlcyBtZW1vcnlcXG5mb3IgcHJvY2Vzc2VkIGNvZGV8IG1lbW9yeVxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgaW50ZXJwcmV0ZXIgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p><em>A Python interpreter executes Python code and manages memory for Python procedures.</em></p>
+<p class="center"><em>A Python interpreter executes Python code and manages memory for Python procedures.</em></p>
 
 <p>Python is an interpreted “high-level” programming language (<a href="https://www.python.org/doc/essays/blurb/">Python: What is Python?</a>).
 Interpreted languages are those which include an “interpreter” which helps execute code written in a particular way (<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">Wikipedia: Interpreter (computing)</a>).
@@ -692,19 +693,18 @@ There are also other interpreters such as <a href="https://www.pypy.org/features
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5zdWJncmFwaCBpbnRlcnByZXRlcltcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxubWFuYWdlcltcIlB5dGhvbiBtZW1vcnkgbWFuYWdlclwiXVxuZW5kXG5lbmRcbiUlLVxuY29kZSAtLT4gfGludGVycHJldGVkIGFuZFxcbmV4ZWN1dGVkIGJ5fCBpbnRlcnByZXRlclxubWFuYWdlciAtLT4gfGFsbG9jYXRlcyBtZW1vcnlcXG5mb3IgcHJvY2Vzc2VkIGNvZGV8IHB5aGVhcFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgbWFuYWdlciBmaWxsOiNGREJBNzQsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0"></p>
 
-<p><em>The Python memory manager helps manage memory for Python code executed by the Python interpreter.</em></p>
+<p class="center"><em>The Python memory manager helps manage memory for Python code executed by the Python interpreter.</em></p>
 
 <p>Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
 The <strong><em>Python memory manager</em></strong> is an abstraction which manages memory for Python software processes through the Python interpreter (<a href="https://docs.python.org/3/c-api/memory.html">Python: Memory Management</a>).
 From a high-level perspective, we assume variables and other operations written in Python will automatically allocate and deallocate memory through the Python interpreter when executed.
-The Python memory manager .
 Python’s memory manager performs work through various <strong>memory allocators</strong> and a <strong>garbage collector</strong> (or as configured with customizations) within a <strong>private Python memory heap</strong>.</p>
 
 <h3 id="pythons-memory-allocators">Python’s Memory Allocators</h3>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5weW1hbGxvYyAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5zbWFsbCBhbmQgdGVtcG9yYXJ5IG5lZWRzXCJ8IG1hbGxvY1xubWdyIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbmxhcmdlciBvciBsb25nLWxpdmVkIG5lZWRzXCJ8IG1hbGxvY1xubWFsbG9jIC0tPiBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1nciBmaWxsOiNGREJBNzQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBweW1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBtYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgc3BhY2VyIHN0cm9rZTpub25lOyIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p><em>The Python memory manager by default will use <code class="language-plaintext highlighter-rouge">pymalloc</code> internally or malloc from the system to allocate computer memory resources.</em></p>
+<p class="center"><em>The Python memory manager by default will use <code class="language-plaintext highlighter-rouge">pymalloc</code> internally or malloc from the system to allocate computer memory resources.</em></p>
 
 <p>The Python memory manager allocates memory for use through memory allocators.
 Python may use one or many memory allocators depending on specifications in Python code and how the Python interpreter is configured (for example, see <a href="https://docs.python.org/3/c-api/memory.html#default-memory-allocators">Python: Memory Management - Default Memory Allocators</a>).
@@ -715,27 +715,27 @@ One way to understand Python memory allocators is through the following distinct
 <strong>“Python Memory Allocator” (<code class="language-plaintext highlighter-rouge">pymalloc</code>)</strong>
 The Python interpreter is packaged with a specialized memory allocator called <code class="language-plaintext highlighter-rouge">pymalloc</code>.
 “Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime.” (<a href="https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator">Python: Memory Management - The pymalloc allocator</a>).
-Ultimately, <code class="language-plaintext highlighter-rouge">pymalloc</code> uses <code class="language-plaintext highlighter-rouge">C malloc</code> to implement memory work.</li>
+Ultimately, <code class="language-plaintext highlighter-rouge">pymalloc</code> uses C standard library dynamic memory allocation functions to implement memory work.</li>
   <li>
-<strong>C dynamic memory allocation (<code class="language-plaintext highlighter-rouge">C malloc</code>)</strong>
-When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>’s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation"><code class="language-plaintext highlighter-rouge">C malloc</code></a>.
-When <code class="language-plaintext highlighter-rouge">C malloc</code> is used by the Python interpreter, it uses the system’s existing implementation of <code class="language-plaintext highlighter-rouge">C malloc</code>.</li>
+<strong>C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">realloc</code>, etc.)</strong>
+When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>’s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a>.
+When C standard library dynamic memory allocation functions are used by the Python interpreter, it uses the system’s existing implementation of the C standard library.</li>
 </ul>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcFwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBhcmVuYSBbXCJweW1hbGxvY1xcbmFyZW5hKHMpXCJdXG5zdWJncmFwaCBzcGFjZXIgW1wiIFwiXVxuc3ViZ3JhcGggcG9vbHNbXCJwb29sKHMpXCJdXG5ibG9ja3NbXCJibG9ja3NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGFyZW5hIGZpbGw6I0Q4QjRGRSxzdHJva2U6IzMzM1xuc3R5bGUgcG9vbHMgZmlsbDojQzdEMkZFLHN0cm9rZTojMzMzXG5zdHlsZSBzcGFjZXIgZmlsbDp0cmFuc3BhcmVudCxzdHJva2U6dHJhbnNwYXJlbnQ7IiwibWVybWFpZCI6bnVsbH0"></p>
 
-<p><em><code class="language-plaintext highlighter-rouge">pymalloc</code> makes use of arenas to further organize pools within a computer memory heap.</em></p>
+<p class="center"><em><code class="language-plaintext highlighter-rouge">pymalloc</code> makes use of arenas to further organize pools within a computer memory heap.</em></p>
 
 <p>It’s important to note that <code class="language-plaintext highlighter-rouge">pymalloc</code> adds additional abstractions to how memory is organized through the use of “arenas”.
 These arenas are specific to <code class="language-plaintext highlighter-rouge">pymalloc</code> purposes.
-<code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation"><code class="language-plaintext highlighter-rouge">C malloc</code></a> as seen below).
+<code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a> as seen below).
 This same environment variable may be used with <code class="language-plaintext highlighter-rouge">debug</code> settings in order to help troubleshoot in-depth questions.</p>
 
 <p><strong>Additional Python Memory Allocators</strong></p>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5wYWNrYWdlX21hbmFnZWRbXCJQeXRob24gcGFja2FnZVxcbm1hbmFnZWQgYWxsb2NhdG9yc1xcbihleC4gTnVtUHksIFB5QXJyb3csIGV0Yy4pXCJdXG5lbmRcbm1pbWFsbG9jW1wibWltYWxsb2MgbWVtb3J5IGZ1bmN0aW9uc1wiXVxuamVtYWxsb2NbXCJqZW1hbGxvYyBtZW1vcnkgZnVuY3Rpb25zXCJdXG5lbmRcbiUlLVxuY29kZSAtLT4gfGludGVycHJldGVkIGFuZFxcbmV4ZWN1dGVkIGJ5fCBpbnRlcnByZXRlclxucHltYWxsb2MgLS0-IHxcImFsbG9jYXRlcyBtZW1vcnkgZm9yXFxuc21hbGwgYW5kIHRlbXBvcmFyeSBuZWVkc1wifCBtYWxsb2Ncbm1nciAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5sYXJnZXIgb3IgbG9uZy1saXZlZCBuZWVkc1wifCBtYWxsb2Ncbm1hbGxvYyAtLT4gcHloZWFwXG5jb2RlIC0uLT4gfG1heSBzdGlwdWxhdGVcXG50aGUgdXNlIG9mfCBwYWNrYWdlX21hbmFnZWRcbnBhY2thZ2VfbWFuYWdlZCAtLi0-IG1hbGxvY1xucGFja2FnZV9tYW5hZ2VkIC0uLT4gbWltYWxsb2NcbnBhY2thZ2VfbWFuYWdlZCAtLi0-IGplbWFsbG9jXG5taW1hbGxvYyAtLi0-IHB5aGVhcFxuamVtYWxsb2MgLS4tPiBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1nciBmaWxsOiNGREJBNzQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBweW1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBtYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgcGFja2FnZV9tYW5hZ2VkIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIG1pbWFsbG9jIGZpbGw6I0ZFRjA4QSxzdHJva2U6IzMzMztcbnN0eWxlIGplbWFsbG9jIGZpbGw6I0ZFRjA4QSxzdHJva2U6IzMzMztcbnN0eWxlIHNwYWNlciBzdHJva2U6bm9uZTsiLCJtZXJtYWlkIjpudWxsfQ"></p>
 
-<p><em>Python code and package dependencies may stipulate the use of additional memory allocators, such as <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code> outside of the Python memory manager.</em></p>
+<p class="center"><em>Python code and package dependencies may stipulate the use of additional memory allocators, such as <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code> outside of the Python memory manager.</em></p>
 
 <p>Python provides the capability of customizing memory allocation through the use of packages.
 See below for some notable examples of additional memory allocation possibilities.</p>
@@ -747,7 +747,7 @@ See below for some notable examples of additional memory allocation possibilitie
 These interfaces can be controlled directly through NumPy to help manage memory effectively when using the package.</li>
   <li>
 <strong>PyArrow Memory Allocators</strong>
-<a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use <code class="language-plaintext highlighter-rouge">C malloc</code>, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
+<a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use C standard library dynamic memory allocation functions, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
 A default memory allocator is selected for use when PyArrow based on the operating system and the availability of the memory allocator on the system.
 The selection of a memory allocator for use with PyArrow can be influenced by how it performs on a particular system.</li>
 </ul>
@@ -824,7 +824,7 @@ In Python, we could label this as an “Object reference counter” because all 
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmdjW1wiR2FyYmFnZVxcbkNvbGxlY3RvclwiXVxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmNvZGUgLS0-IHxpbnRlcnByZXRlZCBhbmRcXG5leGVjdXRlZCBieXwgaW50ZXJwcmV0ZXJcbnB5bWFsbG9jIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbnNtYWxsIGFuZCB0ZW1wb3JhcnkgbmVlZHNcInwgbWFsbG9jXG5tZ3IgLS0-IHxcImFsbG9jYXRlcyBtZW1vcnkgZm9yXFxubGFyZ2VyIG9yIGxvbmctbGl2ZWQgbmVlZHNcInwgbWFsbG9jXG5tYWxsb2MgLS0-IHB5aGVhcFxuZ2MgLS0-IHxcImZyZWVzIG1lbW9yeSB3aXRoXFxubm8gb2JqZWN0IHJlZmVyZW5jZXNcXG4oaW5jbHVkaW5nIEMsIG1pbWFsbG9jLFxcbiBqZW1hbGxvYyBhbmQgb3RoZXIgXFxuZnVuY3Rpb24gYWxsb2NhdGVkIG1lbW9yeSlcInwgcHloZWFwXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgbWVtb3J5IGZpbGw6Izg2RUZBQyxzdHJva2U6IzMzM1xuc3R5bGUgY29kZSBmaWxsOiM2N0U4Rjksc3Ryb2tlOiMzMzM7XG5zdHlsZSBtZ3IgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzO1xuc3R5bGUgcHltYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIGdjIGZpbGw6I0ZDQTVBNSxzdHJva2U6IzMzMztcbnN0eWxlIHNwYWNlciBzdHJva2U6bm9uZTsiLCJtZXJtYWlkIjpudWxsfQ"></p>
 
-<p><em>The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count).</em></p>
+<p class="center"><em>The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count).</em></p>
 
 <p>Python by default uses an optional garbage collector to automatically deallocate garbage memory through the Python interpreter in CPython.
 “When an object’s reference count becomes zero, the object is deallocated.” (<a href="https://devguide.python.org/internals/garbage-collector/">Python Developer’s Guide: Garbage collector design</a>)
