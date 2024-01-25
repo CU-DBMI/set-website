@@ -271,7 +271,6 @@ _The Python memory manager helps manage memory for Python code executed by the P
 Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
 The ___Python memory manager___ is an abstraction which manages memory for Python software processes through the Python interpreter ([Python: Memory Management](https://docs.python.org/3/c-api/memory.html)).
 From a high-level perspective, we assume variables and other operations written in Python will automatically allocate and deallocate memory through the Python interpreter when executed.
-The Python memory manager .
 Python's memory manager performs work through various __memory allocators__ and a __garbage collector__ (or as configured with customizations) within a __private Python memory heap__.
 
 ### Python's Memory Allocators
