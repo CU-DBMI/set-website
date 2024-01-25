@@ -51,6 +51,7 @@ style memory fill:#86EFAC,stroke:#333
 ```
 
 _Computer memory is a type of computer resource available for use by software on a computer_
+{:.center}
 
 Computer memory, also sometimes known as "RAM" or "random-access memory", or "dynamic memory" is a type of resource used by computer software on a computer.
 _"Computer memory stores information, such as data and programs for immediate use in the computer. ... Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. " ([Wikipedia: Computer memory](https://en.wikipedia.org/wiki/Computer_memory))._
@@ -144,6 +145,7 @@ style poolc fill:#BFDBFE,stroke:#333;
 ```
 
 _Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools._
+{:.center}
 
 Computer memory blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
 One top-level organization model for computer memory is through the use of ___heaps___ which help describe chunks of the total memory available on a computer for specific processes.
@@ -165,6 +167,7 @@ allocator ->> memory:Free the memory for other purposes.
 ```
 
 _Memory allocators help software reserve and free computer memory resources._
+{:.center}
 
 Memory management is a concept which helps enable the shared use of computer memory to avoid challenges such as memory overuse (where all memory is in use and never shared to other software).
 Computer memory management often occurs through the use of a ___memory allocator___ which controls how computer memory resources are used for software.
@@ -195,6 +198,7 @@ garbage collector  ->> memory:Free the memory for other purposes.
 ```
 
 _Garbage collectors help free computer memory which is no longer referenced by software._
+{:.center}
 
 "Garbage collection (GC)" is used to describe a type of automated memory management.
 GC is typically used to help reduce human error, avoid unintentional system failures, and decrease development time (through less memory-specific code).
@@ -225,6 +229,7 @@ style interpreter fill:#FDBA74,stroke:#333;
 ```
 
 _A Python interpreter executes Python code and manages memory for Python procedures._
+{:.center}
 
 Python is an interpreted "high-level" programming language ([Python: What is Python?](https://www.python.org/doc/essays/blurb/)).
 Interpreted languages are those which include an "interpreter" which helps execute code written in a particular way ([Wikipedia: Interpreter (computing)](<https://en.wikipedia.org/wiki/Interpreter_(computing)>)).
@@ -261,6 +266,7 @@ style manager fill:#FDBA74,stroke:#333;
 ```
 
 _The Python memory manager helps manage memory for Python code executed by the Python interpreter._
+{:.center}
 
 Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
 The ___Python memory manager___ is an abstraction which manages memory for Python software processes through the Python interpreter ([Python: Memory Management](https://docs.python.org/3/c-api/memory.html)).
@@ -305,6 +311,7 @@ style spacer stroke:none;
 ```
 
 _The Python memory manager by default will use `pymalloc` internally or malloc from the system to allocate computer memory resources._
+{:.center}
 
 The Python memory manager allocates memory for use through memory allocators.
 Python may use one or many memory allocators depending on specifications in Python code and how the Python interpreter is configured (for example, see [Python: Memory Management - Default Memory Allocators](https://docs.python.org/3/c-api/memory.html#default-memory-allocators)).
@@ -346,6 +353,7 @@ style spacer fill:transparent,stroke:transparent;
 ```
 
 _`pymalloc` makes use of arenas to further organize pools within a computer memory heap._
+{:.center}
 
 It's important to note that `pymalloc` adds additional abstractions to how memory is organized through the use of "arenas".
 These arenas are specific to `pymalloc` purposes.
@@ -400,6 +408,7 @@ style spacer stroke:none;
 ```
 
 _Python code and package dependencies may stipulate the use of additional memory allocators, such as `mimalloc` and `jemalloc` outside of the Python memory manager._
+{:.center}
 
 Python provides the capability of customizing memory allocation through the use of packages.
 See below for some notable examples of additional memory allocation possibilities.
@@ -506,6 +515,7 @@ style spacer stroke:none;
 ```
 
 _The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count)._
+{:.center}
 
 Python by default uses an optional garbage collector to automatically deallocate garbage memory through the Python interpreter in CPython.
 "When an object’s reference count becomes zero, the object is deallocated." ([Python Developer's Guide: Garbage collector design](https://devguide.python.org/internals/garbage-collector/))
