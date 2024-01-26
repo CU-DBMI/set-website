@@ -55,6 +55,8 @@ _Computer memory is a type of computer resource available for use by software on
 
 Computer memory, also sometimes known as "RAM" or "random-access memory", or "dynamic memory" is a type of resource used by computer software on a computer.
 _"Computer memory stores information, such as data and programs for immediate use in the computer. ... Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. " ([Wikipedia: Computer memory](https://en.wikipedia.org/wiki/Computer_memory))._
+The word "speed" in this context is sometimes used to describe  the delay before an operation on a computer completes (also known as _latency_).
+See the following on [Computer] [Latency Numbers Everyone Should Know](https://www.softwareyoga.com/latency-numbers-everyone-should-know/) to better understand relative computer operation speeds.
 
 <!-- table HTML retained for replicability 
 
