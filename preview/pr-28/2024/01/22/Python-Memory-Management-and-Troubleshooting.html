@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-25T20:40:19+00:00">
+  <meta property="og:updated_time" content="2024-01-26T23:53:00+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-25T20:40:19+00:00">
-  <meta name="revised" content="2024-01-25T20:40:19+00:00">
+  <meta property="article:modified_time" content="2024-01-26T23:53:00+00:00">
+  <meta name="revised" content="2024-01-26T23:53:00+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Tip of the Month: Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-25T20:40:19+00:00",
+      "dateModified": "2024-01-26T23:53:00+00:00",
     
     "name": "Tip of the Month: Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -475,7 +475,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>January 25, 2024</span>
+      <span>January 26, 2024</span>
     </span>
   
 </div>
@@ -561,7 +561,9 @@ This post will cover some computer memory definitions, how Python makes use of c
 <p class="center"><em>Computer memory is a type of computer resource available for use by software on a computer</em></p>
 
 <p>Computer memory, also sometimes known as “RAM” or “random-access memory”, or “dynamic memory” is a type of resource used by computer software on a computer.
-<em>“Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em></p>
+<em>“Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em>
+The word “speed” in this context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
+See the following on [Computer] <a href="https://www.softwareyoga.com/latency-numbers-everyone-should-know/">Latency Numbers Everyone Should Know</a> to better understand relative computer operation speeds.</p>
 
 <!-- table HTML retained for replicability 
 
@@ -629,7 +631,8 @@ This post will cover some computer memory definitions, how Python makes use of c
   
 </figure>
 
-<p>One way to organize computer memory is through the use of <a href="https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE">“fixed-size blocks”</a>, also called “blocks”.
+<p>Computer memory is organized using various methods based on the hardware and software being used.
+A common method for organizing memory is through <a href="https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE">“fixed-size blocks”</a>, also called “blocks”.
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
 Memory blocks may be in use or free at different times.</p>
 
@@ -637,8 +640,8 @@ Memory blocks may be in use or free at different times.</p>
 
 <p class="center"><em>Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
 
-<p>Computer memory blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
-One top-level organization model for computer memory is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
+<p>Fixed-size blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
+One way to organize many fixed-size blocks is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
 These heaps may be <strong><em>private</em></strong> (only available to a specific software process) or <strong><em>shared</em></strong> (available to one or many software processes).
 Heaps are sometimes further segmented into <strong><em>pools</em></strong> which are areas of the heap which can be used for specific purposes.</p>
 
