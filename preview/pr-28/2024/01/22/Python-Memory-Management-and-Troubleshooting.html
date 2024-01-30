@@ -38,21 +38,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Tip of the Month: Python Memory Management and Troubleshooting | Software Engineering Team</title>
+<title>Python Memory Management and Troubleshooting | Software Engineering Team</title>
 
 <link rel="icon" href="/set-website/preview/pr-28/images/icon.png">
 
-<meta name="title" content="Tip of the Month: Python Memory Management and Troubleshooting">
+<meta name="title" content="Python Memory Management and Troubleshooting">
 <meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
 
-<meta property="og:title" content="Tip of the Month: Python Memory Management and Troubleshooting">
+<meta property="og:title" content="Python Memory Management and Troubleshooting">
 <meta property="og:site_title" content="Software Engineering Team">
 <meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
 <meta property="og:url" content="">
 <meta property="og:image" content="/set-website/preview/pr-28/images/share.jpg">
 <meta property="og:locale" content="en_US">
 
-<meta property="twitter:title" content="Tip of the Month: Python Memory Management and Troubleshooting">
+<meta property="twitter:title" content="Python Memory Management and Troubleshooting">
 <meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
 <meta property="twitter:url" content="">
 <meta property="twitter:card" content="summary_large_image">
@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-26T23:53:00+00:00">
+  <meta property="og:updated_time" content="2024-01-30T23:08:13+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-26T23:53:00+00:00">
-  <meta name="revised" content="2024-01-26T23:53:00+00:00">
+  <meta property="article:modified_time" content="2024-01-30T23:08:13+00:00">
+  <meta name="revised" content="2024-01-30T23:08:13+00:00">
 
 
 <script type="application/ld+json">
@@ -72,13 +72,13 @@
     "@context": "https://schema.org",
     
       "@type": "BlogPosting",
-      "author": { "@type": "Person", "name": "Tip of the Month: Python Memory Management and Troubleshooting" },
+      "author": { "@type": "Person", "name": "Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-26T23:53:00+00:00",
+      "dateModified": "2024-01-30T23:08:13+00:00",
     
-    "name": "Tip of the Month: Python Memory Management and Troubleshooting",
+    "name": "Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
-    "headline": "Tip of the Month: Python Memory Management and Troubleshooting",
+    "headline": "Python Memory Management and Troubleshooting",
     "publisher": {
       "@type": "Organization",
       "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-28/images/icon.png" }
@@ -427,7 +427,7 @@
   
 
   <section class="background" data-size="page">
-    <h1 class="center">Tip of the Month: Python Memory Management and Troubleshooting</h1>
+    <h1 class="center">Python Memory Management and Troubleshooting</h1>
 
 <div class="post-info">
   
@@ -475,7 +475,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>January 26, 2024</span>
+      <span>January 30, 2024</span>
     </span>
   
 </div>
@@ -521,7 +521,7 @@
 -->
 
 
-<h1 id="tip-of-the-week-python-memory-management-and-troubleshooting">Tip of the Week: Python Memory Management and Troubleshooting</h1>
+<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -543,9 +543,7 @@ You may have experienced memory resource or management challenges associated wit
 This post will cover some computer memory definitions, how Python makes use of computer memory, and share some tools which may help with these types of challenges.
 <!-- excerpt end --></p>
 
-<h2 id="what-is-memory">What is Memory?</h2>
-
-<h3 id="computer-memory">Computer Memory</h3>
+<h2 id="what-is-software">What is Software?</h2>
 
 <!-- set a max width for mermaid diagram below so it doesn't render so large -->
 <style>
@@ -556,14 +554,39 @@ This post will cover some computer memory definitions, how Python makes use of c
 }
 </style>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5tZW1vcnlbXCJNZW1vcnlcIl1cbnN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbmNwdVtcIkNQVShzKVwiXVxuZW5kXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGNwdSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbiUlLSIsIm1lcm1haWQiOm51bGx9"></p>
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJQcm9ncmFtKHMpXFxuKHNlcXVlbmNlcyBvZiBpbnN0cnVjdGlvbnMpXCJdXG5kb2N1bWVudGF0aW9uW1wiRG9jdW1lbnRhdGlvblwiXVxub3RoZXJfZGF0YVtcIk90aGVyIHJlbGF0ZWQgZGF0YVwiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHN0b3JhZ2UgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBzb2Z0d2FyZSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzMiLCJtZXJtYWlkIjpudWxsfQ"></p>
 
-<p class="center"><em>Computer memory is a type of computer resource available for use by software on a computer</em></p>
+<p class="center"><em>Computer software includes programs, documentation, and other data maintained on computer data storage.</em></p>
+
+<p>Computer software is the collection of programs and data which are used to accomplish a specific tasks on a computer.
+“A <strong>computer program</strong> is a sequence or set of instructions in a programming language for a computer to execute. It is one component of software, which also includes documentation and other intangible components.” (<a href="https://en.wikipedia.org/wiki/Computer_program">Wikipedia: Computer program</a>).
+Computer programs in their human-readable form are stored as <strong>source code</strong>.
+Source code is often maintained on <a href="https://en.wikipedia.org/wiki/Computer_data_storage">computer data storage</a>.</p>
+
+<h2 id="what-is-memory">What is Memory?</h2>
+
+<h3 id="computer-memory">Computer Memory</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJQcm9ncmFtKHMpXFxuKHNlcXVlbmNlcyBvZiBpbnN0cnVjdGlvbnMpXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggbWVtb3J5W1wiTWVtb3J5XCJdXG5wcm9jZXNzW1wiUHJvY2Vzc1xcbihvbmUgb3IgbWFueSlcIl1cbmVuZFxuZW5kXG4lJS1cbnByb2dyYW0gLS0-IHwgbG9hZGVkIGludG9cXG5tZW1vcnkgYXMgfCBwcm9jZXNzXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIHNvZnR3YXJlIGZpbGw6I2ZmZixzdHJva2U6IzMzMyIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p class="center"><em>Computer memory is a type of computer resource available for use by processes on a computer.</em></p>
 
 <p>Computer memory, also sometimes known as “RAM” or “random-access memory”, or “dynamic memory” is a type of resource used by computer software on a computer.
 <em>“Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em>
-The word “speed” in this context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
+When we execute a computer program it becomes a <a href="https://en.wikipedia.org/wiki/Process_(computing)">process</a> (or sometimes many processes).
+Processes are loaded into computer memory to follow the instructions and other data provided from their related computer programs.</p>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>The word “speed” in the above context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
 See the following on [Computer] <a href="https://www.softwareyoga.com/latency-numbers-everyone-should-know/">Latency Numbers Everyone Should Know</a> to better understand relative computer operation speeds.</p>
+
+
+  </div>
+</div>
 
 <!-- table HTML retained for replicability 
 
@@ -617,31 +640,31 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
 -->
 
 <figure class="figure">
-  <a class="figure-image" aria-label="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.">
+  <a class="figure-image" aria-label="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.">
     <img src="/set-website/preview/pr-28/images/memory_blocks_examples.png" style="
         width: auto;
         max-height: unset;
-      " alt="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." loading="lazy" onerror="this.src = '/set-website/preview/pr-28/images/fallback.svg'; this.onerror = null;">
+      " alt="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." loading="lazy" onerror="this.src = '/set-website/preview/pr-28/images/fallback.svg'; this.onerror = null;">
   </a>
   
     <figcaption class="figure-caption">
-      Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.
+      Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.
 
     </figcaption>
   
 </figure>
 
-<p>Computer memory is organized using various methods based on the hardware and software being used.
-A common method for organizing memory is through <a href="https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE">“fixed-size blocks”</a>, also called “blocks”.
-Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
+<p>Computer memory is organized using various methods based on the hardware, program specification, and other aspects.
+A common method for organizing memory is through <strong><em>“blocks”</em></strong>.
+Memory blocks are chunks of memory of a certain <a href="https://en.wikipedia.org/wiki/Byte">byte</a> or <a href="https://en.wikipedia.org/wiki/Bit">bit</a> size (usually all the same size) ((<a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Wikipedia: Block (data storage)</a>)).
 Memory blocks may be in use or free at different times.</p>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcCAxXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2xhW1wicG9vbCBhXCJdXG5ibG9ja3MxW1wiYmxvY2tzXCJdXG5lbmRcbnN1YmdyYXBoIHBvb2xiW1wicG9vbCBiXCJdXG5ibG9ja3MyW1wiYmxvY2tzXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggaGVhcDIgW1wiaGVhcCAyXCJdXG5zdWJncmFwaCBwb29sY1tcInBvb2wgY1wiXVxuYmxvY2tzM1tcImJsb2Nrc1wiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5lbmRcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBwb29sYSBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYiBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYyBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0"></p>
 
-<p class="center"><em>Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
+<p class="center"><em>Memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
 
-<p>Fixed-size blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
-One way to organize many fixed-size blocks is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
+<p>Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
+One way to organize many blocks is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
 These heaps may be <strong><em>private</em></strong> (only available to a specific software process) or <strong><em>shared</em></strong> (available to one or many software processes).
 Heaps are sometimes further segmented into <strong><em>pools</em></strong> which are areas of the heap which can be used for specific purposes.</p>
 
