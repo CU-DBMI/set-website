@@ -1,5 +1,5 @@
 ---
-title: "Tip of the Month: Python Memory Management and Troubleshooting"
+title: "Python Memory Management and Troubleshooting"
 author: dave-bunten
 tags:
   - tip-of-the-month
@@ -9,7 +9,7 @@ tags:
   - memory-allocators
 ---
 
-# Tip of the Week: Python Memory Management and Troubleshooting
+# Python Memory Management and Troubleshooting
 
 {% include blog-post-intro.html %}
 
@@ -21,9 +21,7 @@ You may have experienced memory resource or management challenges associated wit
 This post will cover some computer memory definitions, how Python makes use of computer memory, and share some tools which may help with these types of challenges.
 <!-- excerpt end -->
 
-## What is Memory?
-
-### Computer Memory
+## What is Software?
 
 <!-- set a max width for mermaid diagram below so it doesn't render so large -->
 <style>
@@ -38,25 +36,77 @@ This post will cover some computer memory definitions, how Python makes use of c
 flowchart LR
 
 subgraph computer ["Computer (resources)"]
-  memory["Memory"]
-  storage["Data Storage"]
-  cpu["CPU(s)"]
+  direction LR
+  subgraph storage["Data Storage"]
+    subgraph software["Computer Software"]
+        program["Program(s)\n(sequences of instructions)"]
+        documentation["Documentation"]
+        other_data["Other related data"]
+    end
+  end
 end
 
 style computer fill:#fff,stroke:#333
 style storage fill:#fff,stroke:#333
-style cpu fill:#fff,stroke:#333
-style memory fill:#86EFAC,stroke:#333
-
+style memory fill:#fff,stroke:#333
+style software fill:#86EFAC,stroke:#333
 ```
 
-_Computer memory is a type of computer resource available for use by software on a computer_
+_Computer software includes programs, documentation, and other data maintained on computer data storage._
+{:.center}
+
+Computer software is the collection of programs and data which are used to accomplish a specific tasks on a computer.
+"A __computer program__ is a sequence or set of instructions in a programming language for a computer to execute. It is one component of software, which also includes documentation and other intangible components." ([Wikipedia: Computer program](https://en.wikipedia.org/wiki/Computer_program)).
+Computer programs in their human-readable form are stored as __source code__.
+Source code is often maintained on [computer data storage](https://en.wikipedia.org/wiki/Computer_data_storage).
+
+## What is Memory?
+
+### Computer Memory
+
+```mermaid!
+flowchart LR
+
+subgraph computer ["Computer (resources)"]
+  direction LR
+  subgraph storage["Data Storage"]
+    subgraph software["Computer Software"]
+        program["Program(s)\n(sequences of instructions)"]
+    end
+  end
+  subgraph memory["Memory"]
+    process["Process\n(one or many)"]
+  end
+end
+
+program --> | loaded into\nmemory as | process
+
+style computer fill:#fff,stroke:#333
+style storage fill:#fff,stroke:#333
+style memory fill:#86EFAC,stroke:#333
+style software fill:#fff,stroke:#333
+```
+
+_Computer memory is a type of computer resource available for use by processes on a computer._
 {:.center}
 
 Computer memory, also sometimes known as "RAM" or "random-access memory", or "dynamic memory" is a type of resource used by computer software on a computer.
 _"Computer memory stores information, such as data and programs for immediate use in the computer. ... Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. " ([Wikipedia: Computer memory](https://en.wikipedia.org/wiki/Computer_memory))._
-The word "speed" in this context is sometimes used to describe  the delay before an operation on a computer completes (also known as _latency_).
+When we execute a computer program it becomes a [process](https://en.wikipedia.org/wiki/Process_(computing)) (or sometimes many processes).
+Processes are loaded into computer memory to follow the instructions and other data provided from their related computer programs.
+
+{% capture latency_note %}
+
+The word "speed" in the above context is sometimes used to describe  the delay before an operation on a computer completes (also known as _latency_).
 See the following on [Computer] [Latency Numbers Everyone Should Know](https://www.softwareyoga.com/latency-numbers-everyone-should-know/) to better understand relative computer operation speeds.
+
+{% endcapture %}
+
+{%
+  include alert.html
+  type="info"
+  content=latency_note
+%}
 
 <!-- table HTML retained for replicability 
 
@@ -111,7 +161,7 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
 
 {% include figure.html image="images/memory_blocks_examples.png" caption="Fixed-size memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." %}
 
-Computer memory is organized using various methods based on the hardware and software being used.
+Computer memory is organized using various methods based on the hardware, program specification, and other aspects.
 A common method for organizing memory is through ["fixed-size blocks"](https://en.wikipedia.org/wiki/Memory_management#FIXED-SIZE), also called "blocks".
 Fixed-size memory blocks are chunks of memory of a certain byte size (usually all the same size).
 Memory blocks may be in use or free at different times.
