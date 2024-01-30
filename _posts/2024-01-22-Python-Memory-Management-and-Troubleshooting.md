@@ -197,7 +197,7 @@ style poolb fill:#BFDBFE,stroke:#333;
 style poolc fill:#BFDBFE,stroke:#333;
 ```
 
-_Memory heaps help organize available memory on a computer for specific procedures. Heaps may have one or many memory pools._
+_Memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools._
 {:.center}
 
 Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
