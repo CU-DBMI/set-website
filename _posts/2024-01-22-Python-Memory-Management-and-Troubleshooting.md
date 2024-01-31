@@ -291,7 +291,7 @@ A garbage collector often works in tandem with a memory allocator to help contro
 
 ### Python Overview
 
-```mermaid
+```mermaid!
 flowchart LR
 
 subgraph computer ["Computer"]
