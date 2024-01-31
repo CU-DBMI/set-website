@@ -1,4 +1,445 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2023-11-28T23:14:47+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2024-01-31T19:04:09+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p>Have you ever run Python code only to find it taking <em>forever</em> to complete or sometime abruptly ending with an error like: <code class="language-plaintext highlighter-rouge">123456 Killed</code> or <code class="language-plaintext highlighter-rouge">killed (program exited with code: 137)</code>?
+You may have experienced memory resource or management challenges associated with these scenarios.
+This post will cover some computer memory definitions, how Python makes use of computer memory, and share some tools which may help with these types of challenges.
+<!-- excerpt end --></p>
+
+<h2 id="what-is-software">What is Software?</h2>
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+}
+</style>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJQcm9ncmFtKHMpXFxuKHNlcXVlbmNlcyBvZiBpbnN0cnVjdGlvbnMpXCJdXG5kb2N1bWVudGF0aW9uW1wiRG9jdW1lbnRhdGlvblwiXVxub3RoZXJfZGF0YVtcIk90aGVyIHJlbGF0ZWQgZGF0YVwiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHN0b3JhZ2UgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBzb2Z0d2FyZSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzMiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p class="center"><em>Computer software includes programs, documentation, and other data maintained on computer data storage.</em></p>
+
+<p>Computer software is the collection of programs and data which are used to accomplish a specific tasks on a computer.
+&#8220;A <strong>computer program</strong> is a sequence or set of instructions in a programming language for a computer to execute. It is one component of software, which also includes documentation and other intangible components.&#8221; (<a href="https://en.wikipedia.org/wiki/Computer_program">Wikipedia: Computer program</a>).
+Computer programs in their human-readable form are stored as <strong>source code</strong>.
+Source code is often maintained on <a href="https://en.wikipedia.org/wiki/Computer_data_storage">computer data storage</a>.</p>
+
+<h2 id="what-is-memory">What is Memory?</h2>
+
+<h3 id="computer-memory">Computer Memory</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJmYTpmYS1maWxlIFByb2dyYW0ocylcXG4oc2VxdWVuY2VzIG9mIGluc3RydWN0aW9ucylcIl1cbmVuZFxuZW5kXG5zdWJncmFwaCBtZW1vcnlbXCJNZW1vcnlcIl1cbnByb2Nlc3NbXCJmYTpmYS1yZWZyZXNoIFByb2Nlc3NcXG4ob25lIG9yIG1hbnkpXCJdXG5lbmRcbmVuZFxuJSUtXG5wcm9ncmFtIC0tPiB8IGxvYWRlZCBpbnRvXFxubWVtb3J5IGFzIHwgcHJvY2Vzc1xuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHN0b3JhZ2UgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBzb2Z0d2FyZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzMiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p class="center"><em>Computer memory is a type of computer resource available for use by processes on a computer.</em></p>
+
+<p>Computer memory, also sometimes known as &#8220;RAM&#8221; or &#8220;random-access memory&#8221;, or &#8220;dynamic memory&#8221; is a type of resource used by computer software on a computer.
+<em>&#8220;Computer memory stores information, such as data and programs for immediate use in the computer. &#8230; Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. &#8220; (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em>
+When we execute a computer program it becomes a <a href="https://en.wikipedia.org/wiki/Process_(computing)">process</a> (or sometimes many processes).
+Processes are loaded into computer memory to follow the instructions and other data provided from their related computer programs.</p>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>The word &#8220;speed&#8221; in the above context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
+See the following on [Computer] <a href="https://www.softwareyoga.com/latency-numbers-everyone-should-know/">Latency Numbers Everyone Should Know</a> to better understand relative computer operation speeds.</p>
+
+
+  </div>
+</div>
+
+<table>
+<tr>
+<th style="background-color:#E9DCFB;">Process Memory Segment</th>
+<th style="background-color:#eee;">Purpose</th>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Stack</td>
+<td>Contains information about sequences of program instructions as functions or subroutines.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Heap</td>
+<td>Area where memory for variables may be dynamically used.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Initialized data</td>
+<td>Includes global and static variables which are explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Uninitialized data</td>
+<td>Includes global and static variables which are <strong>not</strong> explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Text</td>
+<td>Comprises program instructions for the process.</td>
+</tr>
+</table>
+
+<p class="center"><em>Process memory is divided into segments which have specific purposes (<a href="https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03">The Linux Programming Interface by Michael Kerrisk</a>).</em></p>
+
+<p>Memory for a process is further divided into parts which are typically called <em>segments</em>.
+Each process memory segment has a specific purpose and way of organizing things.
+For the purposes of this content we&#8217;ll focus on two of these segments: the stack and the heap.
+The <a href="https://en.wikipedia.org/wiki/Call_stack"><strong><em>stack</em></strong> (sometimes also known as the &#8220;call stack&#8221;)</a> includes information about sequences of program instructions packaged as units called <a href="https://en.wikipedia.org/wiki/Function_(computer_programming)">&#8220;functions&#8221; or &#8220;subroutines&#8221;</a>.
+The stack also typically stores function local variables, arguments, and return value.
+The <a href="https://en.wikipedia.org/wiki/Memory_management#HEAP"><strong><em>heap</em></strong></a> is an area where variables for a program may be dynamically stored.
+The stack can be thought of as a <i class="icon fa-solid fa-map"></i> &#8220;roadmap&#8221; for what program will accomplish (including the location of things it will need to do that work).
+The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221; store (or remove) things used as part of the stack &#8220;roadmap&#8221;.
+Please see <a href="https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03">The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process</a> for more information about processes.</p>
+
+<!-- table HTML retained for replicability
+
+<table>
+<tr><th colspan="2">Memory Blocks</th></tr>
+<tr>
+<td>
+
+<strong>A.)</strong> All memory blocks available.
+
+<table>
+<tr><td>Block</td><td>Block</td><td>Block</td></tr>
+</table>
+
+</td>
+<td>
+
+<strong>B.)</strong> Some memory blocks in use.
+
+<table>
+<tr><td style="background:#86EFAC;">Block</td><td style="background:#86EFAC;">Block</td><td>Block</td></tr>
+</table>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" style="text-align:center;font-weight:bold;">Practical analogy</td>
+</tr>
+<tr>
+<td>
+
+<strong>C.)</strong> You have limited boxes to hold things.
+
+<table>
+<tr><td>📦</td><td>📦</td><td>📦</td></tr>
+</table>
+
+</td>
+<td>
+
+<strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
+
+<table>
+<tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+-->
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.">
+    <img src="/set-website/images/memory_blocks_examples.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.
+
+    </figcaption>
+  
+</figure>
+
+<p>The heap is often further organized through the use of <strong><em>&#8220;blocks&#8221;</em></strong>.
+Memory blocks are chunks of memory of a certain <a href="https://en.wikipedia.org/wiki/Byte">byte</a> or <a href="https://en.wikipedia.org/wiki/Bit">bit</a> size (usually all the same size) (<a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Wikipedia: Block (data storage)</a>).
+Memory blocks may be in use or free at different times.
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221; then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> &#8220;boxes&#8221; inside the warehouse.</p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5zdWJncmFwaCBtZW1vcnlbXCJNZW1vcnlcIl1cbnN1YmdyYXBoIHByb2Nlc3MgW1wiUHJvY2Vzc1wiXVxuc3ViZ3JhcGggaGVhcCBbXCJoZWFwXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2wgW1wicG9vbChzKVwiXVxuYmxvY2tzMVtcImJsb2NrKHMpXCJdXG5lbmRcbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHBvb2wgZmlsbDojQkZEQkZFLHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Process memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
+
+<p>Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
+Blocks may sometimes be organized into <a href="https://en.wikipedia.org/wiki/Memory_pool"><strong><em>pools</em></strong></a> within the process memory heap segment.
+Pools are areas of the heap used to efficiently manage blocks together in specific ways.
+Each heap may have one or many pools (each with sets of blocks).
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221;, and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> &#8220;boxes&#8221; inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> &#8220;shelves&#8221; for organizing and moving those boxes within the warehouse.</p>
+
+<h3 id="memory-allocator">Memory Allocator</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4lJS1cbnNvZnR3YXJlIC0-PiBhbGxvY2F0b3I6XCJJIG5lZWQgc29tZSBtZW1vcnksIHBsZWFzZSFcIlxuYWxsb2NhdG9yIC0-PiBtZW1vcnk6QWxsb2NhdGUgcG9ydGlvbiBvZiAgbWVtb3J5IGZvciB1c2Vcbm1lbW9yeSAtPj4gYWxsb2NhdG9yOkFsbG9jYXRlZCBtZW1vcnkgZm9yIHVzZVxuYWxsb2NhdG9yIC0-PiBzb2Z0d2FyZTpcIkhlcmUncyBzb21lIG1lbW9yeSB0byB1c2UhXCJcbiUlLVxuc29mdHdhcmUgLT4-IGFsbG9jYXRvcjpcIkknbSBmaW5pc2hlZCB3aXRoIHRoYXQgbWVtb3J5IVwiXG5hbGxvY2F0b3IgLT4-IG1lbW9yeTpGcmVlIHRoZSBtZW1vcnkgZm9yIG90aGVyIHB1cnBvc2VzLiIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Memory allocators help software reserve and free computer memory resources.</em></p>
+
+<p>Memory management is a concept which helps enable the shared use of computer memory to avoid challenges such as memory overuse (where all memory is in use and never shared to other software).
+Computer memory management often occurs through the use of a <strong><em>memory allocator</em></strong> which controls how computer memory resources are used for software.
+Computer software is written to interact with memory allocators to use computer memory.
+Memory allocators may be used manually (with specific directions provided on when and how to use memory resources) or automatically (with an algorithmic approach of some kind).
+The memory allocator usually performs the following actions with memory (in addition to others):</p>
+
+<ul>
+  <li><strong>&#8220;Allocation&#8221;</strong>: computer memory resource reservation (taking memory). This is sometimes also known as &#8220;<code class="language-plaintext highlighter-rouge">alloc</code>&#8221;, or &#8220;allocate memory&#8221;.</li>
+  <li><strong>&#8220;Deallocation&#8221;</strong>: computer memory resource freeing (giving back memory for other uses). This is sometimes also known as &#8220;<code class="language-plaintext highlighter-rouge">free</code>&#8221;, or &#8220;freeing memory from allocation&#8221;.</li>
+</ul>
+
+<h3 id="garbage-collection">Garbage Collection</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG4lJS1cbnBhcnRpY2lwYW50IHNvZnR3YXJlXG5wYXJ0aWNpcGFudCBtZW1vcnkgYWxsb2NhdG9yXG5wYXJ0aWNpcGFudCBnYXJiYWdlIGNvbGxlY3RvclxucGFydGljaXBhbnQgbWVtb3J5XG4lJS1cbnNvZnR3YXJlIC0-PiBtZW1vcnkgYWxsb2NhdG9yOlwiSSBuZWVkIHNvbWUgbWVtb3J5LCBwbGVhc2UhXCJcbm1lbW9yeSBhbGxvY2F0b3IgLT4-IG1lbW9yeTpBbGxvY2F0ZSBwb3J0aW9uIG9mICBtZW1vcnkgZm9yIHVzZVxubWVtb3J5IC0-PiBtZW1vcnkgYWxsb2NhdG9yOkFsbG9jYXRlZCBtZW1vcnkgZm9yIHVzZVxubWVtb3J5IGFsbG9jYXRvciAtPj4gc29mdHdhcmU6XCJIZXJlJ3Mgc29tZSBtZW1vcnkgdG8gdXNlIVwiXG4lJS1cbnNvZnR3YXJlIC0tPj4gZ2FyYmFnZSBjb2xsZWN0b3IgOihzb2Z0d2FyZSBmaW5pc2hlcyB3aXRoIG1lbW9yeSB1c2FnZSwgc29tZXRpbWVzIGltcGxpY2l0bHkpXG5nYXJiYWdlIGNvbGxlY3RvciAgLT4-IG1lbW9yeTpGcmVlIHRoZSBtZW1vcnkgZm9yIG90aGVyIHB1cnBvc2VzLiIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Garbage collectors help free computer memory which is no longer referenced by software.</em></p>
+
+<p>&#8220;Garbage collection (GC)&#8221; is used to describe a type of automated memory management.
+GC is typically used to help reduce human error, avoid unintentional system failures, and decrease development time (through less memory-specific code).
+&#8220;The <em>garbage collector</em> attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called <em>garbage</em>.&#8221; (<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">Wikipedia: Garbage collection (computer science)</a>).
+A garbage collector often works in tandem with a memory allocator to help control computer memory resource usage in software development.</p>
+
+<h2 id="how-does-python-interact-with-computer-memory">How Does Python Interact with Computer Memory?</h2>
+
+<h3 id="python-overview">Python Overview</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5lbmRcbmNvZGVbXCJQeXRob24gY29kZVwiXVxuaW50ZXJwcmV0ZXJbXCJQeXRob24gaW50ZXJwcmV0ZXJcIl1cbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5pbnRlcnByZXRlciA8LS0-IHxleGVjdXRlcyBhbmQgbWFuYWdlc1xcbiBwcm9jZXNzIG1lbW9yeXwgcHJvY2Vzc1xuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgaW50ZXJwcmV0ZXIgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>A Python interpreter executes Python code and manages memory for Python procedures.</em></p>
+
+<p>Python is an interpreted &#8220;high-level&#8221; programming language (<a href="https://www.python.org/doc/essays/blurb/">Python: What is Python?</a>).
+Interpreted languages are those which include an &#8220;interpreter&#8221; which helps execute code written in a particular way (<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">Wikipedia: Interpreter (computing)</a>).
+High-level languages such as Python often remove the requirement for software developers to manually perform memory management (<a href="https://en.wikipedia.org/wiki/High-level_programming_language">Wikipedia: High-level programming language</a>).</p>
+
+<p>Python code is executed by a commonly pre-packaged and downloaded binary call the Python <a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">interpreter</a>.
+The Python interpreter reads Python code and performs memory management as the code is executed.
+The <a href="https://github.com/python/cpython">CPython Python interpreter</a> is the most commonly used interpreter for Python, and what&#8217;s use as a reference for other content here.
+There are also other interpreters such as <a href="https://www.pypy.org/features.html">PyPy</a>, <a href="https://github.com/jython/jython">Jython</a>, and <a href="https://ironpython.net/">IronPython</a> which all handle memory differently than the CPython interpreter.</p>
+
+<h3 id="pythons-memory-manager">Python&#8217;s Memory Manager</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5zdWJncmFwaCBpbnRlcnByZXRlcltcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxubWFuYWdlcltcIlB5dGhvbiBtZW1vcnkgbWFuYWdlclwiXVxuZW5kXG5lbmRcbiUlLVxuY29kZSAtLT4gfGludGVycHJldGVkIGFuZFxcbmV4ZWN1dGVkIGJ5fCBpbnRlcnByZXRlclxubWFuYWdlciAtLT4gfGV4ZWN1dGVzIGFuZCBtYW5hZ2VzXFxuIHByb2Nlc3MgbWVtb3J5fCBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1hbmFnZXIgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>The Python memory manager helps manage memory in the heap for Python processes executed by the Python interpreter.</em></p>
+
+<p>Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
+The <strong><em>Python memory manager</em></strong> is an abstraction which manages memory for Python software processes through the Python interpreter (<a href="https://docs.python.org/3/c-api/memory.html">Python: Memory Management</a>).
+From a high-level perspective, we assume variables and other operations written in Python will automatically allocate and deallocate memory through the Python interpreter when executed.
+Python&#8217;s memory manager performs work through various <strong>memory allocators</strong> and a <strong>garbage collector</strong> (or as configured with customizations) within a <strong>private Python memory heap</strong>.</p>
+
+<h3 id="pythons-memory-allocators">Python&#8217;s Memory Allocators</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5weW1hbGxvYyAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5zbWFsbCBhbmQgdGVtcG9yYXJ5IG5lZWRzXCJ8IG1hbGxvY1xubWdyIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbmxhcmdlciBvciBsb25nLWxpdmVkIG5lZWRzXCJ8IG1hbGxvY1xubWFsbG9jIC0tPiBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1nciBmaWxsOiNGREJBNzQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBweW1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBtYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgc3BhY2VyIHN0cm9rZTpub25lOyIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>The Python memory manager by default will use <code class="language-plaintext highlighter-rouge">pymalloc</code> internally or malloc from the system to allocate computer memory resources.</em></p>
+
+<p>The Python memory manager allocates memory for use through memory allocators.
+Python may use one or many memory allocators depending on specifications in Python code and how the Python interpreter is configured (for example, see <a href="https://docs.python.org/3/c-api/memory.html#default-memory-allocators">Python: Memory Management - Default Memory Allocators</a>).
+One way to understand Python memory allocators is through the following distinctions.</p>
+
+<ul>
+  <li><strong>&#8220;Python Memory Allocator&#8221; (<code class="language-plaintext highlighter-rouge">pymalloc</code>)</strong>
+The Python interpreter is packaged with a specialized memory allocator called <code class="language-plaintext highlighter-rouge">pymalloc</code>.
+&#8220;Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime.&#8221; (<a href="https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator">Python: Memory Management - The pymalloc allocator</a>).
+Ultimately, <code class="language-plaintext highlighter-rouge">pymalloc</code> uses C standard library dynamic memory allocation functions to implement memory work.</li>
+  <li><strong>C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">realloc</code>, etc.)</strong>
+When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>&#8217;s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a>.
+When C standard library dynamic memory allocation functions are used by the Python interpreter, it uses the system&#8217;s existing implementation of the C standard library.</li>
+</ul>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2VzcyBbXCJQcm9jZXNzXCJdXG5zdWJncmFwaCBoZWFwMSBbXCJoZWFwXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIGFyZW5hIFtcInB5bWFsbG9jXFxuYXJlbmEocylcIl1cbnN1YmdyYXBoIHNwYWNlciBbXCIgXCJdXG5zdWJncmFwaCBwb29sc1tcInBvb2wocylcIl1cbmJsb2Nrc1tcImJsb2NrKHMpXCJdXG5lbmRcbmVuZFxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGFyZW5hIGZpbGw6I0Q4QjRGRSxzdHJva2U6IzMzM1xuc3R5bGUgcG9vbHMgZmlsbDojQzdEMkZFLHN0cm9rZTojMzMzXG5zdHlsZSBzcGFjZXIgZmlsbDp0cmFuc3BhcmVudCxzdHJva2U6dHJhbnNwYXJlbnQ7IiwibWVybWFpZCI6bnVsbH0" /></p>
+
+<p class="center"><em><code class="language-plaintext highlighter-rouge">pymalloc</code> makes use of arenas to further organize pools within a Python process memory heap.</em></p>
+
+<p>It&#8217;s important to note that <code class="language-plaintext highlighter-rouge">pymalloc</code> adds additional abstractions to how memory is organized through the use of &#8220;arenas&#8221;.
+These arenas are specific to <code class="language-plaintext highlighter-rouge">pymalloc</code> purposes.
+<code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a> as seen below).
+This same environment variable may be used with <code class="language-plaintext highlighter-rouge">debug</code> settings in order to help troubleshoot in-depth questions.</p>
+
+<p><strong>Additional Python Memory Allocators</strong></p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5wYWNrYWdlX21hbmFnZWRbXCJOb24tZGVmYXVsdFxcbm1lbW9yeSBhbGxvY2F0b3JzXFxuKGV4LiBOdW1QeSwgUHlBcnJvdywgZXRjLilcIl1cbmVuZFxubWltYWxsb2NbXCJtaW1hbGxvYyBtZW1vcnkgZnVuY3Rpb25zXCJdXG5qZW1hbGxvY1tcImplbWFsbG9jIG1lbW9yeSBmdW5jdGlvbnNcIl1cbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5weW1hbGxvYyAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5zbWFsbCBhbmQgdGVtcG9yYXJ5IG5lZWRzXCJ8IG1hbGxvY1xubWdyIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbmxhcmdlciBvciBsb25nLWxpdmVkIG5lZWRzXCJ8IG1hbGxvY1xubWFsbG9jIC0tPiBweWhlYXBcbmNvZGUgLS4tPiB8bWF5IHN0aXB1bGF0ZVxcbnRoZSB1c2Ugb2Z8IHBhY2thZ2VfbWFuYWdlZFxucGFja2FnZV9tYW5hZ2VkIC0uLT4gbWFsbG9jXG5wYWNrYWdlX21hbmFnZWQgLS4tPiBtaW1hbGxvY1xucGFja2FnZV9tYW5hZ2VkIC0uLT4gamVtYWxsb2Ncbm1pbWFsbG9jIC0uLT4gcHloZWFwXG5qZW1hbGxvYyAtLi0-IHB5aGVhcFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgbWdyIGZpbGw6I0ZEQkE3NCxzdHJva2U6IzMzMztcbnN0eWxlIHB5bWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIG1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwYWNrYWdlX21hbmFnZWQgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWltYWxsb2MgZmlsbDojRkVGMDhBLHN0cm9rZTojMzMzO1xuc3R5bGUgamVtYWxsb2MgZmlsbDojRkVGMDhBLHN0cm9rZTojMzMzO1xuc3R5bGUgc3BhY2VyIHN0cm9rZTpub25lOyIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Python code may stipulate the use of additional memory allocators, such as <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code> outside of the default Python memory manager&#8217;s operation.</em></p>
+
+<p>Python provides the capability of customizing memory allocation through the use of custom code or non-default packages.
+See below for some notable examples of additional memory allocation possibilities.</p>
+
+<ul>
+  <li><strong>NumPy Memory Allocation</strong>
+<a href="https://numpy.org/">NumPy</a> <a href="https://numpy.org/doc/stable/reference/c-api/data_memory.html">uses custom C-API&#8217;s</a> which are backed by C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">alloc</code>, <code class="language-plaintext highlighter-rouge">free</code>, <code class="language-plaintext highlighter-rouge">realloc</code>) to help address memory management.
+These interfaces can be controlled directly through NumPy to help manage memory effectively when using the package.</li>
+  <li><strong>PyArrow Memory Allocators</strong>
+<a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use C standard library dynamic memory allocation functions, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
+A default memory allocator is selected for use when PyArrow based on the operating system and the availability of the memory allocator on the system.
+The selection of a memory allocator for use with PyArrow can be influenced by how it performs on a particular system.</li>
+</ul>
+
+<h3 id="python-reference-counting">Python Reference Counting</h3>
+
+<!-- table HTML retained for replicability 
+
+<table>
+<tr><th>Processed line of code</th><th>Reference count</th></tr>
+<tr>
+
+<td>
+
+```python
+a_string = "cornucopia"
+```
+
+</td>
+<td>
+a_string: 1
+</td>
+<tr>
+<td>
+
+```python
+reference_a_string = a_string
+```
+
+</td>
+<td>
+a_string: 2<br>
+(Because `a_string` is now referenced twice.)
+</td>
+</tr>
+<tr>
+<td>
+
+```python
+del reference_a_string
+```
+
+</td>
+<td>
+a_string: 1<br>
+(Because the additional reference has been deleted.)
+</td>
+</tr>
+
+</table>
+
+-->
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Python reference counting at a simple level works through the use of object reference increments and decrements.">
+    <img src="/set-website/images/python_reference_counting_example.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Python reference counting at a simple level works through the use of object reference increments and decrements." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Python reference counting at a simple level works through the use of object reference increments and decrements.
+
+    </figcaption>
+  
+</figure>
+
+<p>As computer memory is allocated to Python processes the Python memory manager keeps track of these through the use of a <a href="https://en.wikipedia.org/wiki/Reference_counting">reference counter</a>.
+In Python, we could label this as an &#8220;Object reference counter&#8221; because all data in Python is represented by objects (<a href="https://docs.python.org/3/reference/datamodel.html#objects-values-and-types">Python: Data model</a>).
+&#8220;&#8230; CPython counts how many different places there are that have a reference to an object. Such a place could be another object, or a global (or static) C variable, or a local variable in some C function.&#8221; (<a href="https://devguide.python.org/internals/garbage-collector/">Python Developer&#8217;s Guide: Garbage collector design</a>).</p>
+
+<h3 id="pythons-garbage-collection">Python&#8217;s Garbage Collection</h3>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmdjW1wiR2FyYmFnZVxcbkNvbGxlY3RvclwiXVxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmNvZGUgLS0-IHxpbnRlcnByZXRlZCBhbmRcXG5leGVjdXRlZCBieXwgaW50ZXJwcmV0ZXJcbnB5bWFsbG9jIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbnNtYWxsIGFuZCB0ZW1wb3JhcnkgbmVlZHNcInwgbWFsbG9jXG5tZ3IgLS0-IHxcImFsbG9jYXRlcyBtZW1vcnkgZm9yXFxubGFyZ2VyIG9yIGxvbmctbGl2ZWQgbmVlZHNcInwgbWFsbG9jXG5tYWxsb2MgLS0-IHB5aGVhcFxuZ2MgLS0-IHxcImZyZWVzIG1lbW9yeSB3aXRoXFxubm8gb2JqZWN0IHJlZmVyZW5jZXNcXG4oaW5jbHVkaW5nIEMsIG1pbWFsbG9jLFxcbiBqZW1hbGxvYyBhbmQgb3RoZXIgXFxuZnVuY3Rpb24gYWxsb2NhdGVkIG1lbW9yeSlcInwgcHloZWFwXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgbWVtb3J5IGZpbGw6Izg2RUZBQyxzdHJva2U6IzMzM1xuc3R5bGUgY29kZSBmaWxsOiM2N0U4Rjksc3Ryb2tlOiMzMzM7XG5zdHlsZSBtZ3IgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzO1xuc3R5bGUgcHltYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIGdjIGZpbGw6I0ZDQTVBNSxzdHJva2U6IzMzMztcbnN0eWxlIHNwYWNlciBzdHJva2U6bm9uZTsiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p class="center"><em>The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count).</em></p>
+
+<p>Python by default uses an optional garbage collector to automatically deallocate garbage memory through the Python interpreter in CPython.
+&#8220;When an object’s reference count becomes zero, the object is deallocated.&#8221; (<a href="https://devguide.python.org/internals/garbage-collector/">Python Developer&#8217;s Guide: Garbage collector design</a>)
+Python&#8217;s garbage collector focuses on collecting garbage created by <code class="language-plaintext highlighter-rouge">pymalloc</code>, C memory functions, as well as other memory allocators like <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code>.</p>
+
+<h2 id="python-tools-for-observing-memory-behavior">Python Tools for Observing Memory Behavior</h2>
+
+<h3 id="python-built-in-tools">Python Built-in Tools</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># set gc in debug mode for detecting memory leaks
+</span><span class="n">gc</span><span class="p">.</span><span class="n">set_debug</span><span class="p">(</span><span class="n">gc</span><span class="p">.</span><span class="n">DEBUG_LEAK</span><span class="p">)</span>
+
+<span class="c1"># create an int object
+</span><span class="n">an_object</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># show the number of uncollectable references via COLLECTED
+</span><span class="n">COLLECTED</span> <span class="o">=</span> <span class="n">gc</span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Uncollectable garbage references: </span><span class="si">{</span><span class="n">COLLECTED</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+<span class="c1"># show the reference count for an object
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Reference count of `an_object`: </span><span class="si">{</span><span class="n">sys</span><span class="p">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The <a href="https://docs.python.org/3/library/gc.html"><code class="language-plaintext highlighter-rouge">gc</code> module</a> provides an interface to the Python garbage collector.
+In addition, the <a href="https://docs.python.org/3/library/sys.html"><code class="language-plaintext highlighter-rouge">sys</code> module</a> provides many functions which provide information about references and other details about Python objects as they are executed through the interpreter.
+These functions and other packages can help software developers observe memory behaviors within Python procedures.</p>
+
+<h3 id="python-package-scalene">Python Package: Scalene</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern.">
+    <img src="/set-website/images/scalene-web-interface.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://github.com/plasma-umass/scalene">Scalene</a> is a Python package for analyzing memory, CPU, and GPU resource consumption.
+It provides <a href="https://github.com/plasma-umass/scalene?tab=readme-ov-file#web-based-gui">a web interface</a> to help visualize and understand how resources are consumed.
+Scalene provides suggestions on which portions of your code to troubleshoot through the web interface.
+Scalene can also be configured to work with <a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> <a href="https://en.wikipedia.org/wiki/Large_language_model">LLM&#8217;s</a> by way of a an <a href="https://github.com/plasma-umass/scalene?tab=readme-ov-file#ai-powered-optimization-suggestions">OpenAI API  provided by the user</a>.</p>
+
+<h3 id="python-package-memray">Python Package: Memray</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed.">
+    <img src="/set-website/images/memray-flamegraph.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://github.com/bloomberg/memray">Memray</a> is a Python package to track memory allocation within Python and compiled extension modules.
+Memray provides a high-level way to investigate memory performance and adds visualizations such as <a href="https://www.brendangregg.com/flamegraphs.html">flamegraphs</a> (which contextualization of <a href="https://en.wikipedia.org/wiki/Stack_trace">stack traces</a> and memory allocations in one spot).
+Memray seeks to provide a way to overcome challenges with tracking and understanding Python and other memory allocators (such as C, C++, or Rust libraries used in tandem with a Python process).</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>It&#8217;s worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
+Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
+Wishing you the very best in your software journey with memory!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -433,7 +874,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -706,7 +1147,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1182,7 +1623,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1472,7 +1913,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1638,7 +2079,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1795,7 +2236,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1912,7 +2353,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2035,7 +2476,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2191,132 +2632,4 @@ readme-example.md
   <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
   <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
   <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry><entry><title type="html">Tip of the Week: Remove Unused Code to Avoid Software Decay</title><link href="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html" rel="alternate" type="text/html" title="Tip of the Week: Remove Unused Code to Avoid Software Decay" /><published>2022-12-12T00:00:00+00:00</published><updated>2023-11-28T23:14:10+00:00</updated><id>/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay</id><content type="html" xml:base="/set-website/2022/12/12/Remove-Unused-Code-to-Avoid-Decay.html"><![CDATA[<h1 id="tip-of-the-week-remove-unused-code-to-avoid-software-decay">Tip of the Week: Remove Unused Code to Avoid Software Decay</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p>The act of creating software often involves many iterations of writing, personal collaborations, and testing. During this process it&#8217;s common to lose awareness of code which is no longer used, and thus may not be tested or otherwise linted. Unused code may contribute to <a href="https://en.wikipedia.org/wiki/Software_rot">&#8220;software decay&#8221;</a>, the gradual diminishment of code quality or functionality. This post will cover software decay and strategies for addressing unused code to help keep your code quality high.</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-Unused code is easy to amass and may cause your code quality or code functionality to diminish (&#8220;decay&#8221;) over time. Effort must be taken to maintain any code or artifacts you add to your repositories, including those which are unused. Consider using <a href="https://github.com/jendrikseipp/vulture">Vulture</a>, <a href="https://pylint.pycqa.org/">Pylint</a>, or <a href="https://coverage.readthedocs.io/">Coverage</a> to help illuminate sections of your code which may need to be removed.</p>
-
-<h2 id="code-lifecycle-and-maintenance">Code Lifecycle and Maintenance</h2>
-
-<pre class="mermaid">
-stateDiagram
-    direction LR
-    removal : removed or archived
-    changes : changes needed
-    [*] --&gt; added
-    added --&gt; maintenance
-    state maintenance {
-      direction LR
-      updated --&gt; changes
-      changes --&gt; updated
-    }
-    maintenance --&gt; removal
-    removal --&gt; [*]
-</pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<p><em>Diagram showing code lifecycle activities.</em></p>
-
-<p>Adding code to a project involves a loose agreement to maintenance for however long the code is available. The maintenance of the code can involve added efforts in changes as well as passive impacts like longer test durations or decreased readability (simply from more code).</p>
-
-<div id="vis" class="center"></div>
-
-<script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-
-<script>
-var spec = {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.5.0.json",
-    "description": "A simple line chart to demonstrate lines of code and associated theoretical time cost.",
-    "title":"Time Cost per Line of Code",
-    "width": 500,
-    "height": 200,
-    "config": {
-      "title":{"fontSize":14},
-      "axisY":{"titleFontSize":14, "labelFontSize":12},
-      "axisX":{"titleFontSize":14, "labelFontSize":12}
-    },
-    "data": {
-      "values": [
-        {"x": 1, "y": 28},
-        {"x": 1000, "y": 500}
-      ]
-    },
-    "mark": {"type": "line", "point": {"filled": false,
-      "fill": "white", "size":50
-    }},
-    "encoding": {
-      "x": {"title": "Lines of Code", "field": "x", "type": "quantitative", "scale": {"domain": [1, 1000]}
-      },
-      "y": {"title": "Time (minutes)", "field": "y", "type": "quantitative", "scale": {"domain": [1, 500]}}
-    }
-  }
-const embed_opt = {"mode": "vega-lite"};
-const el = document.getElementById('vis');
-const view = vegaEmbed("#vis", spec, embed_opt);
-</script>
-
-<p>When considering multiple parts of code in many files, this maintenance can become untenable, leading to the gradual decay of your code quality or functionality. For example, let&#8217;s assume one line of code costs 30 seconds to maintain (feel free to substitute time with monetary or personnel aspects as an example measure here too). 1000 lines of code would cost 500 minutes (or about 8 hours) to maintain. This becomes more complex when considering multiple files, collaborators, or languages.</p>
-
-<p class="center"><i class="fas fa-hiking" style="font-size:4em;"></i></p>
-
-<p>Think about your project as if it were on a hiking trail: <strong>&#8220;Carry as little as possible, but choose that little with care.&#8221;</strong> (Earl Shaffer). Be careful what code you choose to carry; it may impact your ability to address needs over time and lead to otherwise unintended software decay.</p>
-
-<h2 id="detecting-unused-code-with-vulture">Detecting Unused Code with Vulture</h2>
-
-<p>Understanding the cost of added content, it&#8217;s important to routinely examine which parts of your code are still necessary. You can prepare your code for a long journey by detecting (and removing) unused code with various automated tools. These tools are generally designed for static analysis and linting, meaning they may also be incorporated into automated and routine testing.</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>vulture unused_code_example.py
-unused_code_example.py:3: unused import <span class="s1">'os'</span> <span class="o">(</span>90% confidence<span class="o">)</span>
-unused_code_example.py:4: unused import <span class="s1">'pd'</span> <span class="o">(</span>90% confidence<span class="o">)</span>
-unused_code_example.py:7: unused <span class="k">function</span> <span class="s1">'unused_function'</span> <span class="o">(</span>60% confidence<span class="o">)</span>
-unused_code_example.py:14: unused variable <span class="s1">'unused_var'</span> <span class="o">(</span>60% confidence<span class="o">)</span>
-</code></pre></div></div>
-
-<p><em>Example of Vulture command line usage to discover unused code.</em></p>
-
-<p><a href="https://github.com/jendrikseipp/vulture">Vulture</a> is one tool dedicated to finding unused python code. Vulture provides both a command line interface and Python API for discovering unused code. It also provide a rough confidence to show how certain it was about whether the block of code was unused. See the following interactive example for a demonstration of using Vulture.</p>
-
-<p><a href="https://cu-dbmi.github.io/notebooks/lab?path=unused_code_detection.ipynb">Interactive Example on Unused Code Detection</a></p>
-
-<h2 id="further-code-usefulness-detection-with-pylint-and-coveragepy">Further Code Usefulness Detection with Pylint and Coverage.py</h2>
-
-<p>In addition to Vulture, <a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a> and <a href="https://coverage.readthedocs.io/">Coverage.py</a> can be used in a similar way to help show where code may not have been used within your project.</p>
-
-<p><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a> focuses on code style and other static analysis in addition to unused variables. See <a href="https://pylint.pycqa.org/en/latest/user_guide/checkers/features.html">Pylint&#8217;s Checkers</a> page for more details here, using &#8220;unused-*&#8221; as a reference to checks it performs which focus on unused code.</p>
-
-<p><a href="https://coverage.readthedocs.io/">Coverage.py</a> helps show you which parts of your code have been executed or not. A common usecase for Coverage involves measuring &#8220;test coverage&#8221;, or which parts of your code are executed in relationship to tests written for that code. This provides another perspective on code utility: if there&#8217;s not a test for the code, is it worth keeping?</p>
-
-<h2 id="additional-resources">Additional Resources</h2>
-
-<ul>
-  <li><a href="https://en.wikipedia.org/wiki/Software_rot">Software Rot</a></li>
-  <li><a href="https://github.com/jendrikseipp/vulture">Vulture</a></li>
-  <li><a href="https://pylint.pycqa.org/en/latest/index.html">Pylint</a></li>
-  <li><a href="https://coverage.readthedocs.io/">Coverage</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="code-quality" /><category term="software-decay" /><category term="code-decay" /><category term="vulture" /><category term="pylint" /><category term="coverage.py" /><summary type="html"><![CDATA[Tip of the Week: Remove Unused Code to Avoid Software Decay]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry></feed>
