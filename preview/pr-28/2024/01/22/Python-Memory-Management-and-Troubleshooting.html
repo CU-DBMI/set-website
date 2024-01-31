@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-31T16:36:02+00:00">
+  <meta property="og:updated_time" content="2024-01-31T18:00:48+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-31T16:36:02+00:00">
-  <meta name="revised" content="2024-01-31T16:36:02+00:00">
+  <meta property="article:modified_time" content="2024-01-31T18:00:48+00:00">
+  <meta name="revised" content="2024-01-31T18:00:48+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-31T16:36:02+00:00",
+      "dateModified": "2024-01-31T18:00:48+00:00",
     
     "name": "Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -617,15 +617,13 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
 
 <p class="center"><em>Process memory is divided into segments which have specific purposes. (<a href="https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03">The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process</a>)</em></p>
 
-<p><i class="icon fa-warehouse boxes-stacked boxes-packing"></i></p>
-
 <p>Memory for a process is further divided into parts which are typically called <em>segments</em>.
 Each process memory segment has a specific purpose and way of organizing things.
 For the purposes of this content we’ll focus on two of these segments: the stack and the heap.
 The <a href="https://en.wikipedia.org/wiki/Call_stack"><strong><em>stack</em></strong> (sometimes also known as the “call stack”)</a> includes information about sequences of program instructions packaged as units called <a href="https://en.wikipedia.org/wiki/Function_(computer_programming)">“functions” or “subroutines”</a>.
 The stack also typically stores function local variables, arguments, and return value.
 The <a href="https://en.wikipedia.org/wiki/Memory_management#HEAP"><strong><em>heap</em></strong></a> is an area where variables for a program may be dynamically stored.
-The stack can be thought of as a 🗺️ “roadmap” for what program will accomplish (including the location of things it will need to do that work).
+The stack can be thought of as a <i class="icon fa-solid fa-map"></i> “roadmap” for what program will accomplish (including the location of things it will need to do that work).
 The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> “warehouse” store (or remove) things used as part of the stack “roadmap”.</p>
 
 <!-- table HTML retained for replicability
