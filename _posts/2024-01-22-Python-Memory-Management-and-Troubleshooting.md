@@ -654,7 +654,7 @@ Scalene can also be configured to work with [OpenAI](https://en.wikipedia.org/wi
 {% include figure.html image="images/memray-flamegraph.png" caption="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed." %}
 
 [Memray](https://github.com/bloomberg/memray) is a Python package to track memory allocation within Python and compiled extension modules.
-Memray provides a high-level way to investigate memory performance and adds visualizations such as [flamegraphs](https://www.brendangregg.com/flamegraphs.html)(which contextualization of [stack traces](https://en.wikipedia.org/wiki/Stack_trace) and memory allocations in one spot).
+Memray provides a high-level way to investigate memory performance and adds visualizations such as [flamegraphs](https://www.brendangregg.com/flamegraphs.html) (which contextualization of [stack traces](https://en.wikipedia.org/wiki/Stack_trace) and memory allocations in one spot).
 Memray seeks to provide a way to overcome challenges with tracking and understanding Python and other memory allocators (such as C, C++, or Rust libraries used in tandem with a Python process).
 
 ## Concluding Thoughts
