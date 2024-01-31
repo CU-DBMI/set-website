@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-31T18:25:02+00:00">
+  <meta property="og:updated_time" content="2024-01-31T18:28:19+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-31T18:25:02+00:00">
-  <meta name="revised" content="2024-01-31T18:25:02+00:00">
+  <meta property="article:modified_time" content="2024-01-31T18:28:19+00:00">
+  <meta name="revised" content="2024-01-31T18:28:19+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-31T18:25:02+00:00",
+      "dateModified": "2024-01-31T18:28:19+00:00",
     
     "name": "Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -741,25 +741,7 @@ A garbage collector often works in tandem with a memory allocator to help contro
 
 <h3 id="python-overview">Python Overview</h3>
 
-<pre><code class="language-mermaid">flowchart LR
-
-subgraph computer ["Computer"]
-  direction LR
-  subgraph memory["Memory"]
-    process["Python process"]
-  end
-  code["Python code"]
-  interpreter["Python interpreter"]
-end
-
-code --&gt; |interpreted and\nexecuted by| interpreter
-interpreter &lt;--&gt; |executes and manages\n process memory| process
-
-style computer fill:#fff,stroke:#333
-style memory fill:#86EFAC,stroke:#333
-style code fill:#67E8F9,stroke:#333;
-style interpreter fill:#FDBA74,stroke:#333;
-</code></pre>
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5lbmRcbmNvZGVbXCJQeXRob24gY29kZVwiXVxuaW50ZXJwcmV0ZXJbXCJQeXRob24gaW50ZXJwcmV0ZXJcIl1cbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5pbnRlcnByZXRlciA8LS0-IHxleGVjdXRlcyBhbmQgbWFuYWdlc1xcbiBwcm9jZXNzIG1lbW9yeXwgcHJvY2Vzc1xuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgaW50ZXJwcmV0ZXIgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9"></p>
 
 <p class="center"><em>A Python interpreter executes Python code and manages memory for Python procedures.</em></p>
 
