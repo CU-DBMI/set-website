@@ -70,11 +70,11 @@ subgraph computer ["Computer (resources)"]
   direction LR
   subgraph storage["Data Storage"]
     subgraph software["Computer Software"]
-        program["Program(s)\n(sequences of instructions)"]
+        program["fa:fa-file Program(s)\n(sequences of instructions)"]
     end
   end
   subgraph memory["Memory"]
-    process["Process\n(one or many)"]
+    process["fa:fa-refresh Process\n(one or many)"]
   end
 end
 
