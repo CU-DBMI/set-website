@@ -203,7 +203,7 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 {% include figure.html image="images/memory_blocks_examples.png" caption="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." %}
 
 The heap is often further organized through the use of ___"blocks"___.
-Memory blocks are chunks of memory of a certain [byte](https://en.wikipedia.org/wiki/Byte) or [bit](https://en.wikipedia.org/wiki/Bit) size (usually all the same size) (([Wikipedia: Block (data storage)](https://en.wikipedia.org/wiki/Block_(data_storage)))).
+Memory blocks are chunks of memory of a certain [byte](https://en.wikipedia.org/wiki/Byte) or [bit](https://en.wikipedia.org/wiki/Bit) size (usually all the same size) ([Wikipedia: Block (data storage)](https://en.wikipedia.org/wiki/Block_(data_storage))).
 Memory blocks may be in use or free at different times.
 If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> "warehouse" then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> "boxes" inside the warehouse.
 
