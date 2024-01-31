@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-28/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-28/" rel="alternate" type="text/html" /><updated>2024-01-31T12:28:05+00:00</updated><id>/set-website/preview/pr-28/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-28/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-28/" rel="alternate" type="text/html" /><updated>2024-01-31T12:29:34+00:00</updated><id>/set-website/preview/pr-28/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/preview/pr-28/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -251,6 +251,8 @@ The selection of a memory allocator for use with PyArrow can be influenced by ho
 
 <h3 id="python-reference-counting">Python Reference Counting</h3>
 
+<!-- table HTML retained for replicability 
+
 <table>
 <tr><th>Processed line of code</th><th>Reference count</th></tr>
 <tr>
@@ -274,7 +276,7 @@ reference_a_string = a_string
 
 </td>
 <td>
-a_string: 2<br />
+a_string: 2<br>
 (Because `a_string` is now referenced twice.)
 </td>
 </tr>
@@ -287,12 +289,14 @@ del reference_a_string
 
 </td>
 <td>
-a_string: 1<br />
+a_string: 1<br>
 (Because the additional reference has been deleted.)
 </td>
 </tr>
 
-&lt;/table&gt;
+</table>
+
+-->
 
 <figure class="figure">
   <a class="figure-image" aria-label="Python reference counting at a simple level works through the use of object reference increments and decrements.">
@@ -309,49 +313,46 @@ a_string: 1<br />
   
 </figure>
 
+<p>As computer memory is allocated to Python processes the Python memory manager keeps track of these through the use of a <a href="https://en.wikipedia.org/wiki/Reference_counting">reference counter</a>.
+In Python, we could label this as an &#8220;Object reference counter&#8221; because all data in Python is represented by objects (<a href="https://docs.python.org/3/reference/datamodel.html#objects-values-and-types">Python: Data model</a>).
+&#8220;&#8230; CPython counts how many different places there are that have a reference to an object. Such a place could be another object, or a global (or static) C variable, or a local variable in some C function.&#8221; (<a href="https://devguide.python.org/internals/garbage-collector/">Python Developer&#8217;s Guide: Garbage collector design</a>).</p>
 
-As computer memory is allocated to Python processes the Python memory manager keeps track of these through the use of a [reference counter](https://en.wikipedia.org/wiki/Reference_counting).
-In Python, we could label this as an "Object reference counter" because all data in Python is represented by objects ([Python: Data model](https://docs.python.org/3/reference/datamodel.html#objects-values-and-types)).
-"... CPython counts how many different places there are that have a reference to an object. Such a place could be another object, or a global (or static) C variable, or a local variable in some C function." ([Python Developer's Guide: Garbage collector design](https://devguide.python.org/internals/garbage-collector/)).
+<h3 id="pythons-garbage-collection">Python&#8217;s Garbage Collection</h3>
 
-### Python's Garbage Collection
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmdjW1wiR2FyYmFnZVxcbkNvbGxlY3RvclwiXVxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmNvZGUgLS0-IHxpbnRlcnByZXRlZCBhbmRcXG5leGVjdXRlZCBieXwgaW50ZXJwcmV0ZXJcbnB5bWFsbG9jIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbnNtYWxsIGFuZCB0ZW1wb3JhcnkgbmVlZHNcInwgbWFsbG9jXG5tZ3IgLS0-IHxcImFsbG9jYXRlcyBtZW1vcnkgZm9yXFxubGFyZ2VyIG9yIGxvbmctbGl2ZWQgbmVlZHNcInwgbWFsbG9jXG5tYWxsb2MgLS0-IHB5aGVhcFxuZ2MgLS0-IHxcImZyZWVzIG1lbW9yeSB3aXRoXFxubm8gb2JqZWN0IHJlZmVyZW5jZXNcXG4oaW5jbHVkaW5nIEMsIG1pbWFsbG9jLFxcbiBqZW1hbGxvYyBhbmQgb3RoZXIgXFxuZnVuY3Rpb24gYWxsb2NhdGVkIG1lbW9yeSlcInwgcHloZWFwXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgbWVtb3J5IGZpbGw6Izg2RUZBQyxzdHJva2U6IzMzM1xuc3R5bGUgY29kZSBmaWxsOiM2N0U4Rjksc3Ryb2tlOiMzMzM7XG5zdHlsZSBtZ3IgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzO1xuc3R5bGUgcHltYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIGdjIGZpbGw6I0ZDQTVBNSxzdHJva2U6IzMzMztcbnN0eWxlIHNwYWNlciBzdHJva2U6bm9uZTsiLCJtZXJtYWlkIjpudWxsfQ" /></p>
 
-<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxucHloZWFwW1wiUHl0aG9uIGhlYXBcIl1cbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmdjW1wiR2FyYmFnZVxcbkNvbGxlY3RvclwiXVxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmNvZGUgLS0-IHxpbnRlcnByZXRlZCBhbmRcXG5leGVjdXRlZCBieXwgaW50ZXJwcmV0ZXJcbnB5bWFsbG9jIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbnNtYWxsIGFuZCB0ZW1wb3JhcnkgbmVlZHNcInwgbWFsbG9jXG5tZ3IgLS0-IHxcImFsbG9jYXRlcyBtZW1vcnkgZm9yXFxubGFyZ2VyIG9yIGxvbmctbGl2ZWQgbmVlZHNcInwgbWFsbG9jXG5tYWxsb2MgLS0-IHB5aGVhcFxuZ2MgLS0-IHxcImZyZWVzIG1lbW9yeSB3aXRoXFxubm8gb2JqZWN0IHJlZmVyZW5jZXNcXG4oaW5jbHVkaW5nIEMsIG1pbWFsbG9jLFxcbiBqZW1hbGxvYyBhbmQgb3RoZXIgXFxuZnVuY3Rpb24gYWxsb2NhdGVkIG1lbW9yeSlcInwgcHloZWFwXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgbWVtb3J5IGZpbGw6Izg2RUZBQyxzdHJva2U6IzMzM1xuc3R5bGUgY29kZSBmaWxsOiM2N0U4Rjksc3Ryb2tlOiMzMzM7XG5zdHlsZSBtZ3IgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzO1xuc3R5bGUgcHltYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIGdjIGZpbGw6I0ZDQTVBNSxzdHJva2U6IzMzMztcbnN0eWxlIHNwYWNlciBzdHJva2U6bm9uZTsiLCJtZXJtYWlkIjpudWxsfQ" />
+<p class="center"><em>The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count).</em></p>
 
-_The Python garbage collector works as part of the Python memory manager to free memory which is no longer needed (based on reference count)._
-{:.center}
+<p>Python by default uses an optional garbage collector to automatically deallocate garbage memory through the Python interpreter in CPython.
+&#8220;When an object’s reference count becomes zero, the object is deallocated.&#8221; (<a href="https://devguide.python.org/internals/garbage-collector/">Python Developer&#8217;s Guide: Garbage collector design</a>)
+Python&#8217;s garbage collector focuses on collecting garbage created by <code class="language-plaintext highlighter-rouge">pymalloc</code>, C memory functions, as well as other memory allocators like <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code>.</p>
 
-Python by default uses an optional garbage collector to automatically deallocate garbage memory through the Python interpreter in CPython.
-"When an object’s reference count becomes zero, the object is deallocated." ([Python Developer's Guide: Garbage collector design](https://devguide.python.org/internals/garbage-collector/))
-Python's garbage collector focuses on collecting garbage created by `pymalloc`, C memory functions, as well as other memory allocators like `mimalloc` and `jemalloc`.
+<h2 id="python-tools-for-observing-memory-behavior">Python Tools for Observing Memory Behavior</h2>
 
-## Python Tools for Observing Memory Behavior
+<h3 id="python-built-in-tools">Python Built-in Tools</h3>
 
-### Python Built-in Tools
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
-```python
-import gc
-import sys
+<span class="c1"># set gc in debug mode for detecting memory leaks
+</span><span class="n">gc</span><span class="p">.</span><span class="n">set_debug</span><span class="p">(</span><span class="n">gc</span><span class="p">.</span><span class="n">DEBUG_LEAK</span><span class="p">)</span>
 
-# set gc in debug mode for detecting memory leaks
-gc.set_debug(gc.DEBUG_LEAK)
+<span class="c1"># create an int object
+</span><span class="n">an_object</span> <span class="o">=</span> <span class="mi">1</span>
 
-# create an int object
-an_object = 1
+<span class="c1"># show the number of uncollectable references via COLLECTED
+</span><span class="n">COLLECTED</span> <span class="o">=</span> <span class="n">gc</span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Uncollectable garbage references: </span><span class="si">{</span><span class="n">COLLECTED</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
-# show the number of uncollectable references via COLLECTED
-COLLECTED = gc.collect()
-print(f"Uncollectable garbage references: {COLLECTED}")
+<span class="c1"># show the reference count for an object
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Reference count of `an_object`: </span><span class="si">{</span><span class="n">sys</span><span class="p">.</span><span class="n">getrefcount</span><span class="p">(</span><span class="n">an_object</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
 
-# show the reference count for an object
-print(f"Reference count of `an_object`: {sys.getrefcount(an_object)}")
-```
+<p>The <a href="https://docs.python.org/3/library/gc.html"><code class="language-plaintext highlighter-rouge">gc</code> module</a> provides an interface to the Python garbage collector.
+In addition, the <a href="https://docs.python.org/3/library/sys.html"><code class="language-plaintext highlighter-rouge">sys</code> module</a> provides many functions which provide information about references and other details about Python objects as they are executed through the interpreter.
+These functions and other packages can help software developers observe memory behaviors within Python procedures.</p>
 
-The [`gc` module](https://docs.python.org/3/library/gc.html) provides an interface to the Python garbage collector.
-In addition, the [`sys` module](https://docs.python.org/3/library/sys.html) provides many functions which provide information about references and other details about Python objects as they are executed through the interpreter.
-These functions and other packages can help software developers observe memory behaviors within Python procedures.
-
-### Python Package: Scalene
+<h3 id="python-package-scalene">Python Package: Scalene</h3>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern.">
@@ -368,13 +369,12 @@ These functions and other packages can help software developers observe memory b
   
 </figure>
 
-
-[Scalene](https://github.com/plasma-umass/scalene) is a Python package for analyzing memory, CPU, and GPU resource consumption.
-It provides [a web interface](https://github.com/plasma-umass/scalene?tab=readme-ov-file#web-based-gui) to help visualize and understand how resources are consumed.
+<p><a href="https://github.com/plasma-umass/scalene">Scalene</a> is a Python package for analyzing memory, CPU, and GPU resource consumption.
+It provides <a href="https://github.com/plasma-umass/scalene?tab=readme-ov-file#web-based-gui">a web interface</a> to help visualize and understand how resources are consumed.
 Scalene provides suggestions on which portions of your code to troubleshoot through the web interface.
-Scalene can also be configured to work with [OpenAI](https://en.wikipedia.org/wiki/OpenAI) [LLM's](https://en.wikipedia.org/wiki/Large_language_model) by way of a an [OpenAI API  provided by the user](https://github.com/plasma-umass/scalene?tab=readme-ov-file#ai-powered-optimization-suggestions).
+Scalene can also be configured to work with <a href="https://en.wikipedia.org/wiki/OpenAI">OpenAI</a> <a href="https://en.wikipedia.org/wiki/Large_language_model">LLM&#8217;s</a> by way of a an <a href="https://github.com/plasma-umass/scalene?tab=readme-ov-file#ai-powered-optimization-suggestions">OpenAI API  provided by the user</a>.</p>
 
-### Python Package: Memray
+<h3 id="python-package-memray">Python Package: Memray</h3>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed.">
@@ -391,17 +391,15 @@ Scalene can also be configured to work with [OpenAI](https://en.wikipedia.org/wi
   
 </figure>
 
+<p><a href="https://github.com/bloomberg/memray">Memray</a> is a Python package to track memory allocation within Python and compiled extension modules.
+Memray provides a high-level way to investigate memory performance and adds visualizations such as <a href="https://www.brendangregg.com/flamegraphs.html">flamegraphs</a>(which contextualization of <a href="https://en.wikipedia.org/wiki/Stack_trace">stack traces</a> and memory allocations in one spot).
+Memray seeks to provide a way to overcome challenges with tracking and understanding Python and other memory allocators (such as C, C++, or Rust libraries used in tandem with a Python process).</p>
 
-[Memray](https://github.com/bloomberg/memray) is a Python package to track memory allocation within Python and compiled extension modules.
-Memray provides a high-level way to investigate memory performance and adds visualizations such as [flamegraphs](https://www.brendangregg.com/flamegraphs.html)(which contextualization of [stack traces](https://en.wikipedia.org/wiki/Stack_trace) and memory allocations in one spot).
-Memray seeks to provide a way to overcome challenges with tracking and understanding Python and other memory allocators (such as C, C++, or Rust libraries used in tandem with a Python process).
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
 
-## Concluding Thoughts
-
-It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
+<p>It&#8217;s worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
-Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+Wishing you the very best in your software journey with memory!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/preview/pr-28/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -836,7 +834,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-28/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1109,7 +1107,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-28/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1585,7 +1583,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/preview/pr-28/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1875,7 +1873,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/preview/pr-28/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2041,7 +2039,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/preview/pr-28/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2198,7 +2196,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2315,7 +2313,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2438,7 +2436,7 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2024-01-31T12:27:18+00:00</updated><id>/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2024-01-31T12:28:43+00:00</updated><id>/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/preview/pr-28/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
