@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-01-31T13:04:42+00:00">
+  <meta property="og:updated_time" content="2024-01-31T16:36:02+00:00">
   <meta property="article:published_time" content="2024-01-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-01-31T13:04:42+00:00">
-  <meta name="revised" content="2024-01-31T13:04:42+00:00">
+  <meta property="article:modified_time" content="2024-01-31T16:36:02+00:00">
+  <meta name="revised" content="2024-01-31T16:36:02+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Python Memory Management and Troubleshooting" },
       "datePublished": "2024-01-22T00:00:00+00:00",
-      "dateModified": "2024-01-31T13:04:42+00:00",
+      "dateModified": "2024-01-31T16:36:02+00:00",
     
     "name": "Python Memory Management and Troubleshooting",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -567,7 +567,7 @@ Source code is often maintained on <a href="https://en.wikipedia.org/wiki/Comput
 
 <h3 id="computer-memory">Computer Memory</h3>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJQcm9ncmFtKHMpXFxuKHNlcXVlbmNlcyBvZiBpbnN0cnVjdGlvbnMpXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggbWVtb3J5W1wiTWVtb3J5XCJdXG5wcm9jZXNzW1wiUHJvY2Vzc1xcbihvbmUgb3IgbWFueSlcIl1cbmVuZFxuZW5kXG4lJS1cbnByb2dyYW0gLS0-IHwgbG9hZGVkIGludG9cXG5tZW1vcnkgYXMgfCBwcm9jZXNzXG4lJS1cbnN0eWxlIGNvbXB1dGVyIGZpbGw6I2ZmZixzdHJva2U6IzMzM1xuc3R5bGUgc3RvcmFnZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIHNvZnR3YXJlIGZpbGw6I2ZmZixzdHJva2U6IzMzMyIsIm1lcm1haWQiOm51bGx9"></p>
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIHN0b3JhZ2VbXCJEYXRhIFN0b3JhZ2VcIl1cbnN1YmdyYXBoIHNvZnR3YXJlW1wiQ29tcHV0ZXIgU29mdHdhcmVcIl1cbnByb2dyYW1bXCJmYTpmYS1maWxlIFByb2dyYW0ocylcXG4oc2VxdWVuY2VzIG9mIGluc3RydWN0aW9ucylcIl1cbmVuZFxuZW5kXG5zdWJncmFwaCBtZW1vcnlbXCJNZW1vcnlcIl1cbnByb2Nlc3NbXCJmYTpmYS1yZWZyZXNoIFByb2Nlc3NcXG4ob25lIG9yIG1hbnkpXCJdXG5lbmRcbmVuZFxuJSUtXG5wcm9ncmFtIC0tPiB8IGxvYWRlZCBpbnRvXFxubWVtb3J5IGFzIHwgcHJvY2Vzc1xuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHN0b3JhZ2UgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBzb2Z0d2FyZSBmaWxsOiNmZmYsc3Ryb2tlOiMzMzMiLCJtZXJtYWlkIjpudWxsfQ"></p>
 
 <p class="center"><em>Computer memory is a type of computer resource available for use by processes on a computer.</em></p>
 
@@ -588,7 +588,47 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
   </div>
 </div>
 
-<!-- table HTML retained for replicability 
+<div class="table-wrapper"><table>
+<tr>
+<th style="background-color:#E9DCFB;">Process Memory Segment</th>
+<th>Purpose</th>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Stack</td>
+<td>Contains information about sequences of program instructions as functions or subroutines.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Heap</td>
+<td>Area where memory for variables may be dynamically used.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Initialized data</td>
+<td>Includes global and static variables which are explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Uninitialized data</td>
+<td>Includes global and static variables which are <strong>not</strong> explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Text</td>
+<td>Comprises program instructions for the process.</td>
+</tr>
+</table></div>
+
+<p class="center"><em>Process memory is divided into segments which have specific purposes. (<a href="https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03">The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process</a>)</em></p>
+
+<p><i class="icon fa-warehouse boxes-stacked boxes-packing"></i></p>
+
+<p>Memory for a process is further divided into parts which are typically called <em>segments</em>.
+Each process memory segment has a specific purpose and way of organizing things.
+For the purposes of this content we’ll focus on two of these segments: the stack and the heap.
+The <a href="https://en.wikipedia.org/wiki/Call_stack"><strong><em>stack</em></strong> (sometimes also known as the “call stack”)</a> includes information about sequences of program instructions packaged as units called <a href="https://en.wikipedia.org/wiki/Function_(computer_programming)">“functions” or “subroutines”</a>.
+The stack also typically stores function local variables, arguments, and return value.
+The <a href="https://en.wikipedia.org/wiki/Memory_management#HEAP"><strong><em>heap</em></strong></a> is an area where variables for a program may be dynamically stored.
+The stack can be thought of as a 🗺️ “roadmap” for what program will accomplish (including the location of things it will need to do that work).
+The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> “warehouse” store (or remove) things used as part of the stack “roadmap”.</p>
+
+<!-- table HTML retained for replicability
 
 <div class='table-wrapper'><table>
 <tr><th colspan="2">Memory Blocks</th></tr>
@@ -618,19 +658,19 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
 <tr>
 <td>
 
-<strong>C.)</strong> You have limited buckets to hold things.
+<strong>C.)</strong> You have limited boxes to hold things.
 
 <div class='table-wrapper'><table>
-<tr><td>🪣</td><td>🪣</td><td>🪣</td></tr>
+<tr><td>📦</td><td>📦</td><td>📦</td></tr>
 </table></div>
 
 </td>
 <td>
 
-<strong>D.)</strong> Two buckets are used, the other remains empty.
+<strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
 
 <div class='table-wrapper'><table>
-<tr><td style="background:#86EFAC;">🪣</td><td style="background:#86EFAC;">🪣</td><td>🪣</td></tr>
+<tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
 </table></div>
 
 </td>
@@ -654,18 +694,20 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
   
 </figure>
 
-<p>Computer memory is organized using various methods based on the hardware, program specification, and other aspects.
-A common method for organizing memory is through <strong><em>“blocks”</em></strong>.
+<p>The heap is often further organized through the use of <strong><em>“blocks”</em></strong>.
 Memory blocks are chunks of memory of a certain <a href="https://en.wikipedia.org/wiki/Byte">byte</a> or <a href="https://en.wikipedia.org/wiki/Bit">bit</a> size (usually all the same size) ((<a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Wikipedia: Block (data storage)</a>)).
-Memory blocks may be in use or free at different times.</p>
+Memory blocks may be in use or free at different times.
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> “warehouse” then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> “boxes” inside the warehouse.</p>
 
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggaGVhcDEgW1wiaGVhcCAxXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2xhW1wicG9vbCBhXCJdXG5ibG9ja3MxW1wiYmxvY2tzXCJdXG5lbmRcbnN1YmdyYXBoIHBvb2xiW1wicG9vbCBiXCJdXG5ibG9ja3MyW1wiYmxvY2tzXCJdXG5lbmRcbmVuZFxuc3ViZ3JhcGggaGVhcDIgW1wiaGVhcCAyXCJdXG5zdWJncmFwaCBwb29sY1tcInBvb2wgY1wiXVxuYmxvY2tzM1tcImJsb2Nrc1wiXVxuZW5kXG5lbmRcbmVuZFxuJSUtXG5lbmRcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBwb29sYSBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYiBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwb29sYyBmaWxsOiNCRkRCRkUsc3Ryb2tlOiMzMzM7IiwibWVybWFpZCI6bnVsbH0"></p>
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5zdWJncmFwaCBtZW1vcnlbXCJNZW1vcnlcIl1cbnN1YmdyYXBoIHByb2Nlc3MgW1wiUHJvY2Vzc1wiXVxuc3ViZ3JhcGggaGVhcCBbXCJoZWFwXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2wgW1wicG9vbChzKVwiXVxuYmxvY2tzMVtcImJsb2NrKHMpXCJdXG5lbmRcbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHBvb2wgZmlsbDojQkZEQkZFLHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9"></p>
 
-<p class="center"><em>Memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
+<p class="center"><em>Process memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools.</em></p>
 
 <p>Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
-One way to organize many blocks is through the use of <strong><em>heaps</em></strong> which help describe chunks of the total memory available on a computer for specific processes.
-Heaps are sometimes further segmented into <strong><em>pools</em></strong> which are areas of the heap which can be used for specific purposes.</p>
+Blocks may sometimes be organized into <a href="https://en.wikipedia.org/wiki/Memory_pool"><strong><em>pools</em></strong></a> within the process memory heap segment.
+Pools are areas of the heap used to efficiently manage blocks together in specific ways.
+Each heap may have one or many pools (each with sets of blocks).
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> “warehouse”, and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> “boxes” inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> “shelves” for organizing and moving those boxes within the warehouse.</p>
 
 <h3 id="memory-allocator">Memory Allocator</h3>
 
