@@ -201,7 +201,6 @@ _Memory heaps help organize memory blocks on a computer for specific procedures.
 
 Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
 One way to organize many blocks is through the use of ___heaps___ which help describe chunks of the total memory available on a computer for specific processes.
-These heaps may be ___private___ (only available to a specific software process) or ___shared___ (available to one or many software processes).
 Heaps are sometimes further segmented into ___pools___ which are areas of the heap which can be used for specific purposes.
 
 ### Memory Allocator
