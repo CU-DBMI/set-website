@@ -469,7 +469,7 @@ subgraph computer ["Computer"]
             pymalloc["pymalloc"]
         end
     end
-    package_managed["Python package\nmanaged allocators\n(ex. NumPy, PyArrow, etc.)"]
+    package_managed["Non-default\nmemory allocators\n(ex. NumPy, PyArrow, etc.)"]
   end
   mimalloc["mimalloc memory functions"]
   jemalloc["jemalloc memory functions"]
@@ -501,7 +501,7 @@ style spacer stroke:none;
 _Python code may stipulate the use of additional memory allocators, such as `mimalloc` and `jemalloc` outside of the default Python memory manager's operation._
 {:.center}
 
-Python provides the capability of customizing memory allocation through the use of packages.
+Python provides the capability of customizing memory allocation through the use of custom code or non-default packages.
 See below for some notable examples of additional memory allocation possibilities.
 
 - __NumPy Memory Allocation__
