@@ -291,18 +291,20 @@ A garbage collector often works in tandem with a memory allocator to help contro
 
 ### Python Overview
 
-```mermaid!
+```mermaid
 flowchart LR
 
 subgraph computer ["Computer"]
   direction LR
-  memory["Memory"]
+  subgraph memory["Memory"]
+    process["Python process"]
+  end
   code["Python code"]
   interpreter["Python interpreter"]
 end
 
 code --> |interpreted and\nexecuted by| interpreter
-interpreter <--> |allocates memory\nfor processed code| memory
+interpreter <--> |executes and manages\n process memory| process
 
 style computer fill:#fff,stroke:#333
 style memory fill:#86EFAC,stroke:#333
@@ -330,7 +332,9 @@ flowchart LR
 subgraph computer ["Computer"]
   direction LR
   subgraph memory["Memory"]
-    pyheap["Python heap"]
+    subgraph process["Python process"]
+        pyheap["heap"]
+    end
   end
   code["Python code"]
   subgraph interpreter["Python interpreter"]
@@ -339,7 +343,7 @@ subgraph computer ["Computer"]
 end
 
 code --> |interpreted and\nexecuted by| interpreter
-manager --> |allocates memory\nfor processed code| pyheap
+manager --> |executes and manages\n process memory| pyheap
 
 style computer fill:#fff,stroke:#333
 style memory fill:#86EFAC,stroke:#333
@@ -347,7 +351,7 @@ style code fill:#67E8F9,stroke:#333;
 style manager fill:#FDBA74,stroke:#333;
 ```
 
-_The Python memory manager helps manage memory for Python code executed by the Python interpreter._
+_The Python memory manager helps manage memory in the heap for Python processes executed by the Python interpreter._
 {:.center}
 
 Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
@@ -363,7 +367,9 @@ flowchart LR
 subgraph computer ["Computer"]
   direction LR
   subgraph memory["Memory"]
-    pyheap["Python heap"]
+    subgraph process["Python process"]
+        pyheap["heap"]
+    end
   end
   code["Python code"]
   malloc["C memory functions"]
@@ -412,14 +418,16 @@ flowchart LR
 subgraph computer ["Computer (resources)"]
 
 subgraph memory["Memory"]
-    subgraph heap1 ["heap"]
-        direction TB
-        subgraph arena ["pymalloc\narena(s)"]
-          subgraph spacer [" "]
-            subgraph pools["pool(s)"]
-              blocks["blocks"]
+    subgraph process ["Process"]
+        subgraph heap1 ["heap"]
+            direction TB
+            subgraph arena ["pymalloc\narena(s)"]
+                subgraph spacer [" "]
+                    subgraph pools["pool(s)"]
+                    blocks["block(s)"]
+                end
             end
-          end
+            end
         end
     end
 end
@@ -427,13 +435,12 @@ end
 end
 
 style computer fill:#fff,stroke:#333
-style memory fill:#86EFAC,stroke:#333
 style arena fill:#D8B4FE,stroke:#333
 style pools fill:#C7D2FE,stroke:#333
 style spacer fill:transparent,stroke:transparent;
 ```
 
-_`pymalloc` makes use of arenas to further organize pools within a computer memory heap._
+_`pymalloc` makes use of arenas to further organize pools within a Python process memory heap._
 {:.center}
 
 It's important to note that `pymalloc` adds additional abstractions to how memory is organized through the use of "arenas".
@@ -449,7 +456,9 @@ flowchart LR
 subgraph computer ["Computer"]
   direction LR
   subgraph memory["Memory"]
-    pyheap["Python heap"]
+    subgraph process["Python process"]
+        pyheap["heap"]
+    end
   end
   code["Python code"]
   malloc["C memory functions"]
@@ -488,7 +497,7 @@ style jemalloc fill:#FEF08A,stroke:#333;
 style spacer stroke:none;
 ```
 
-_Python code and package dependencies may stipulate the use of additional memory allocators, such as `mimalloc` and `jemalloc` outside of the Python memory manager._
+_Python code may stipulate the use of additional memory allocators, such as `mimalloc` and `jemalloc` outside of the default Python memory manager's operation._
 {:.center}
 
 Python provides the capability of customizing memory allocation through the use of packages.
@@ -565,7 +574,9 @@ flowchart LR
 subgraph computer ["Computer"]
   direction LR
   subgraph memory["Memory"]
-    pyheap["Python heap"]
+    subgraph process["Python process"]
+        pyheap["heap"]
+    end
   end
   code["Python code"]
   malloc["C memory functions"]
