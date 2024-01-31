@@ -48,7 +48,6 @@ end
 
 style computer fill:#fff,stroke:#333
 style storage fill:#fff,stroke:#333
-style memory fill:#fff,stroke:#333
 style software fill:#86EFAC,stroke:#333
 ```
 
@@ -475,7 +474,6 @@ See below for some notable examples of additional memory allocation possibilitie
 
 ### Python Reference Counting
 
-<!-- table HTML retained for replicability 
 
 <table>
 <tr><th>Processed line of code</th><th>Reference count</th></tr>
@@ -519,8 +517,6 @@ a_string: 1<br>
 </tr>
 
 </table>
-
--->
 
 {% include figure.html image="images/python_reference_counting_example.png" caption="Python reference counting at a simple level works through the use of object reference increments and decrements." %}
 
