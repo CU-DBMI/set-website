@@ -107,7 +107,52 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
   content=latency_note
 %}
 
-<!-- table HTML retained for replicability 
+<table>
+<tr>
+<th style="background-color:#E9DCFB;">Process Memory Segment</th><th>Purpose</th>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Stack</td>
+<td>Contains information about sequences of program instructions as functions or subroutines.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Heap</td>
+<td>Area where memory for variables may be dynamically used.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Initialized data</td>
+<td>Includes global and static variables which are explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Uninitialized data</td>
+<td>Includes global and static variables which are <strong>not</strong> explicitly initialized.</td>
+</tr>
+<tr>
+<td style="background-color:#E9EAFB;">Text</td>
+<td>Comprises program instructions for the process.</td>
+</tr>
+</table>
+
+_Process memory is divided into segments which have specific purposes. ([The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03))_
+{:.center}
+
+{%
+  include icon.html
+  icon="fa-warehouse boxes-stacked boxes-packing"
+%}
+
+Memory for a process is further divided into parts which are typically called _segments_.
+Each process memory segment has a specific purpose and way of organizing things.
+For the purposes of this content we'll focus on two of these segments: the stack and the heap.
+The [___stack___ (sometimes also known as the "call stack")](https://en.wikipedia.org/wiki/Call_stack) includes information about sequences of program instructions packaged as units called ["functions" or "subroutines"](https://en.wikipedia.org/wiki/Function_(computer_programming)).
+The stack also typically stores function local variables, arguments, and return value.
+The [___heap___](https://en.wikipedia.org/wiki/Memory_management#HEAP) is an area where variables for a program may be dynamically stored.
+The stack can be thought of as a 🗺️ "roadmap" for what program will accomplish (including the location of things it will need to do that work).
+The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> "warehouse" store (or remove) things used as part of the stack "roadmap".
+
+
+
+<!-- table HTML retained for replicability
 
 <table>
 <tr><th colspan="2">Memory Blocks</th></tr>
@@ -137,19 +182,19 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
 <tr>
 <td>
 
-<strong>C.)</strong> You have limited buckets to hold things.
+<strong>C.)</strong> You have limited boxes to hold things.
 
 <table>
-<tr><td>🪣</td><td>🪣</td><td>🪣</td></tr>
+<tr><td>📦</td><td>📦</td><td>📦</td></tr>
 </table>
 
 </td>
 <td>
 
-<strong>D.)</strong> Two buckets are used, the other remains empty.
+<strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
 
 <table>
-<tr><td style="background:#86EFAC;">🪣</td><td style="background:#86EFAC;">🪣</td><td>🪣</td></tr>
+<tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
 </table>
 
 </td>
@@ -160,48 +205,39 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
 
 {% include figure.html image="images/memory_blocks_examples.png" caption="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." %}
 
-Computer memory is organized using various methods based on the hardware, program specification, and other aspects.
-A common method for organizing memory is through ___"blocks"___.
+The heap is often further organized through the use of ___"blocks"___.
 Memory blocks are chunks of memory of a certain [byte](https://en.wikipedia.org/wiki/Byte) or [bit](https://en.wikipedia.org/wiki/Bit) size (usually all the same size) (([Wikipedia: Block (data storage)](https://en.wikipedia.org/wiki/Block_(data_storage)))).
 Memory blocks may be in use or free at different times.
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> "warehouse" then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> "boxes" inside the warehouse.
 
 ```mermaid!
 flowchart LR
 
 subgraph computer ["Computer (resources)"]
-
-subgraph memory["Memory"]
-    subgraph heap1 ["heap 1"]
-        direction TB
-        subgraph poola["pool a"]
-          blocks1["blocks"]
-        end
-        subgraph poolb["pool b"]
-          blocks2["blocks"]
-        end
-    end
-    subgraph heap2 ["heap 2"]
-        subgraph poolc["pool c"]
-          blocks3["blocks"]
+    subgraph memory["Memory"]
+        subgraph process ["Process"]
+            subgraph heap ["heap"]
+                direction TB
+                subgraph pool ["pool(s)"]
+                    blocks1["block(s)"]
+                end
+            end
         end
     end
-end
-
 end
 
 style computer fill:#fff,stroke:#333
-style memory fill:#86EFAC,stroke:#333
-style poola fill:#BFDBFE,stroke:#333;
-style poolb fill:#BFDBFE,stroke:#333;
-style poolc fill:#BFDBFE,stroke:#333;
+style pool fill:#BFDBFE,stroke:#333;
 ```
 
-_Memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools._
+_Process memory heaps help organize memory blocks on a computer for specific procedures. Heaps may have one or many memory pools._
 {:.center}
 
 Blocks may be organized in hierarchical layers to manage memory efficiently or towards a specific purpose.
-One way to organize many blocks is through the use of ___heaps___ which help describe chunks of the total memory available on a computer for specific processes.
-Heaps are sometimes further segmented into ___pools___ which are areas of the heap which can be used for specific purposes.
+Blocks may sometimes be organized into [___pools___](https://en.wikipedia.org/wiki/Memory_pool) within the process memory heap segment.
+Pools are areas of the heap used to efficiently manage blocks together in specific ways.
+Each heap may have one or many pools (each with sets of blocks).
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> "warehouse", and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> "boxes" inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> "shelves" for organizing and moving those boxes within the warehouse.
 
 ### Memory Allocator
 
