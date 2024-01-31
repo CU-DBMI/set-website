@@ -109,7 +109,8 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
 
 <table>
 <tr>
-<th style="background-color:#E9DCFB;">Process Memory Segment</th><th>Purpose</th>
+<th style="background-color:#E9DCFB;">Process Memory Segment</th>
+<th style="background-color:#eee;">Purpose</th>
 </tr>
 <tr>
 <td style="background-color:#E9EAFB;">Stack</td>
