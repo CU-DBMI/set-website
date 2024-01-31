@@ -134,7 +134,7 @@ See the following on [Computer] [Latency Numbers Everyone Should Know](https://w
 </tr>
 </table>
 
-_Process memory is divided into segments which have specific purposes. ([The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03))_
+_Process memory is divided into segments which have specific purposes ([The Linux Programming Interface by Michael Kerrisk](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03))._
 {:.center}
 
 Memory for a process is further divided into parts which are typically called _segments_.
@@ -145,6 +145,7 @@ The stack also typically stores function local variables, arguments, and return 
 The [___heap___](https://en.wikipedia.org/wiki/Memory_management#HEAP) is an area where variables for a program may be dynamically stored.
 The stack can be thought of as a <i class="icon fa-solid fa-map"></i> "roadmap" for what program will accomplish (including the location of things it will need to do that work).
 The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> "warehouse" store (or remove) things used as part of the stack "roadmap".
+Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03) for more information about processes.
 
 
 
