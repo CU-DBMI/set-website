@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Navigating Dependency Chaos with Lockfiles | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/images/icon.png">
+
+<meta name="title" content="Navigating Dependency Chaos with Lockfiles">
+<meta name="description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Navigating Dependency Chaos with Lockfiles">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="">
+<meta property="og:image" content="/set-website/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Navigating Dependency Chaos with Lockfiles">
+<meta property="twitter:description" content="The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-02-28T20:16:30+00:00">
+  <meta property="article:published_time" content="2024-02-20T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-02-28T20:16:30+00:00">
+  <meta name="revised" content="2024-02-28T20:16:30+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Navigating Dependency Chaos with Lockfiles" },
+      "datePublished": "2024-02-20T00:00:00+00:00",
+      "dateModified": "2024-02-28T20:16:30+00:00",
+    
+    "name": "Navigating Dependency Chaos with Lockfiles",
+    "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Navigating Dependency Chaos with Lockfiles",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/images/icon.png" }
+    },
+    "url": ""
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="preload" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/_scripts/anchors.js"></script>
+
+  <script src="/set-website/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/_scripts/search.js"></script>
+
+  <script src="/set-website/_scripts/site-search.js"></script>
+
+  <script src="/set-website/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true">
+  <a href="/set-website/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title" data-tooltip="Home">
+        
+          <span>Software Engineering Team</span>
+        
+        
+          <span>CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - wrap each table in div to allow for scrolling
+  - filter out blank sections
+-->
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 class="center">Navigating Dependency Chaos with Lockfiles</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>February 20, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>February 28, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/blog">
+    
+      <a href="/set-website/blog?search=%22tag:%20software-education%22" class="tag" data-tooltip='Show items with the tag "software-education"'>
+        software-education
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20python%22" class="tag" data-tooltip='Show items with the tag "python"'>
+        python
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20lockfiles%22" class="tag" data-tooltip='Show items with the tag "lockfiles"'>
+        lockfiles
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20dependency-management%22" class="tag" data-tooltip='Show items with the tag "dependency-management"'>
+        dependency-management
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20environment-management%22" class="tag" data-tooltip='Show items with the tag "environment-management"'>
+        environment-management
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20software-ecosystems%22" class="tag" data-tooltip='Show items with the tag "software-ecosystems"'>
+        software-ecosystems
+      </a>
+    
+      <a href="/set-website/blog?search=%22tag:%20dependency-chaos%22" class="tag" data-tooltip='Show items with the tag "dependency-chaos"'>
+        dependency-chaos
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p>Writing software often entails using code from other people to solve common challenges and take advantage of existing work.
+External software used by a specific project can be called a “dependency” (the software “depends” on that external work to accomplish tasks).
+Collections of software are oftentimes made available as “packages” through various platforms.
+<a href="https://en.wikipedia.org/wiki/Package_manager">Package management</a> for dependencies, the task of managing collections of dependencies for a specific project, is a specialized area of software development that can involve the use of unique tools and files.
+This article will cover package dependency management through special files generally referred to as “lockfiles”.
+<!-- excerpt end --></p>
+
+<h2 id="why-use-dependencies">Why use dependencies?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="'Reinvent the Wheel' comic by Randall Munroe, XKCD.">
+    <img src="https://imgs.xkcd.com/comics/reinvent_the_wheel.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="'Reinvent the Wheel' comic by Randall Munroe, XKCD." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      ‘Reinvent the Wheel’ comic by Randall Munroe, XKCD.
+
+    </figcaption>
+  
+</figure>
+
+<p>There are various advantages to using packaged dependencies in your projects.
+Using existing work this way practices a collective <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">“don’t repeat yourself [or ourselves]” (DRY)</a> among the global community of software developers to avoid <a href="https://en.wikipedia.org/wiki/Reinventing_the_wheel">reinventing the wheel</a>.
+Using dependencies allows us to make explicit decisions about the specific focus, or context, which the project will prioritize.
+While it’s oftentimes easy to include and use dependencies in a project they come with risks that are important to consider.</p>
+
+<p>See below for a rough list of reasons why one might opt to use specific dependencies in a project:</p>
+
+<ol>
+  <li>Solutions which entail a lot of <a href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a> (particularly error prone).</li>
+  <li>Solutions which need constant maintenance, i.e. a “frequently moving targets”.</li>
+  <li>Solutions which require special domain knowledge or training to correctly implement.</li>
+</ol>
+
+<p>A common dependency which demonstrates these aspects are those which assist with datetimes, timezones, and time deltas.</p>
+
+<h2 id="the-dependency-wilderness">The dependency wilderness</h2>
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+}
+</style>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ2FudHRcbnlvdXIgcHJvamVjdCA6YSwgMjAyNC0wNy0wMSwgM3dcbnBhbmRhcyA6YWN0aXZlICxiLCAyMDI0LTA3LTA3LCAxd1xubnVtcHkgOmFjdGl2ZSwgYywgMjAyNC0wNy0wOSwgMTBkXG5zY2lweSA6YWN0aXZlLCBkLCAyMDI0LTA3LTA0LCA2ZCIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p class="center"><em>Dependencies are often on their own unpredictable schedule outside of your project’s control.</em></p>
+
+<p>Using existing software package dependencies helps conserve resources but comes with unique challenges related to unpredictability (such as when those dependencies are updated).
+This unpredictability can sometimes result in what’s colloquially called <a href="https://en.wikipedia.org/wiki/Dependency_hell">“dependency hell” or “dependency chaos”</a>, where for example multiple external dependencies conflict with one another and are unable to be automatically resolved (among other issues).
+These challenges can be especially frustrating due to when they occur (often outside of our personal schedule awareness) and how long they can take to debug (finding fixes sometimes entails costly <a href="https://en.wikipedia.org/wiki/Trial_and_error">trial-and-error</a>).
+It can feel like walking through a forest at night without a flashlight, constantly tripping over roots or running into stumps and branches!</p>
+
+<h2 id="illuminating-the-dependency-thicket">Illuminating the dependency thicket</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmludmVudGlvbltcIk92ZXJ3aGVsbWluZ1xcbmludmVudGlvblwiXVxuZGVwZW5kZW5jeWNoYW9zW1wiSW5maW5pdGVcXG5kZXBlbmRlbmN5XFxuY2hhb3NcIl1cbiUlLVxuaW52ZW50aW9uIDwtLi4uLi4uLT4gfCBzb2Z0d2FyZSBkZXBlbmRlbmN5IFxcbiBjaG9pY2VzIHxkZXBlbmRlbmN5Y2hhb3NcbiUlLSIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p class="center"><em>Software dependency choices may be understood through careful consideration between the cost of internal overwhelming invention vs external dependency chaos.</em></p>
+
+<p>Dependency chaos can sometimes lead to <a href="https://en.wikipedia.org/wiki/Not_invented_here">“not invented here syndrome”</a> where there’s less trust in external-facing work outside of an individual or group of people.
+When or if this happens it can be important to understand dependencies as a <strong>scale of choices between overwhelming invention and infinite dependency chaos</strong>.
+For example, to accomplish a small project it may not be wise to create a brand new programming language (towards the extreme of overwhelming invention).
+On the other hand, if we depended upon all existing work within a certain context the solution may not be specialized, efficient, or resourceful enough to meet the goals within a reasonable amount of time.</p>
+
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<pre class="mermaid">
+mindmap
+  root((Project))
+    Data storage
+      File 1
+      Database 2
+    Data x processing
+      Package X
+      Package Y
+    Integration
+      Solution A
+      Platform B
+</pre>
+
+<p class="center"><em>Dependency awareness and opportunity can be grouped into concerns and documented as part of a literature review (seen here as a <a href="https://en.wikipedia.org/wiki/Mind_map">mind map</a>).</em></p>
+
+<p>It can be helpful to reconsider existing knowledge on a topic area through formal or informal <a href="https://en.wikipedia.org/wiki/Literature_review">literature review</a> (understanding that code within software is a type of literature) when thinking about the scale of decisions mentioned above.
+Outlining existing work through a literature review can help with <a href="https://en.wikipedia.org/wiki/Revision_(writing)#Reflection_in_the_revision_process">second-order thinking revision</a> where we might benefit from reflecting on dependency decision-making again after an initial (first-order) creative process.
+Each potential dependency discovered through this process can be organized using <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns (SoC)</a> under specific <em>concern</em> labels, or a general set of information which affects related code.
+Include dependencies within your project which will helpfully limit the code produced (or SoC <em>sections</em>) thereby reducing the overall amount of <em>concerns</em> the project must maintain.</p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbnRleHRCW1wiQ29udGV4dCBBXCJdXG5kaXJlY3Rpb24gVEJcbnByb2Nlc3NlZDFbXCJkYXRhXCJdXG53aWRnZXRcbm1ldGFkYXRhMVtcIm1ldGFkYXRhXCJdXG5lbmRcbiUlLVxuc3ViZ3JhcGggY29udGV4dEFbXCJDb250ZXh0IEJcIl1cbmRpcmVjdGlvbiBUQlxucHJvY2Vzc2VkMltcImRhdGFcIl1cbmdpem1vXG5tZXRhZGF0YTJbXCJtZXRhZGF0YVwiXVxuZW5kXG4lJS1cbnByb2Nlc3NlZDEgPC0uLT4gfCBsb29vc2VseSBjb3VwbGVkXFxuc2hhcmVkIGNvbnRleHQgfCBwcm9jZXNzZWQyXG53aWRnZXQgfn5-IHwgZGlzdGluY3Qgc29sdXRpb25zXFxud2l0aCBkaWZmZXJlbnQgbmFtZXMgfCBnaXptb1xubWV0YWRhdGExIH5-fiB8IGRpc3RpbmN0IHNvbHV0aW9uc1xcbndpdGggdGhlIHNhbWUgbmFtZXMgfCBtZXRhZGF0YTIiLCJtZXJtYWlkIjpudWxsfQ"></p>
+
+<p class="center"><em>Bounded contexts along with shared or distinct components can be used to help limit the complexity of a project in helpful ways.</em></p>
+
+<p>The concept of <a href="https://martinfowler.com/bliki/BoundedContext.html">bounded context</a> from <a href="https://en.wikipedia.org/wiki/Domain-driven_design">domain-driven design</a> can sometimes be used to help distinguish what is in or out of scope for a particular project as a way of reducing complexity.
+Bounded context can be used as a way to draw abstract lines around a certain <a href="https://en.wikipedia.org/wiki/Span_of_control">span of control</a> in order to align available resources (like time and people) with the focus of the project.
+It also can help promote <a href="https://en.wikipedia.org/wiki/Loose_coupling">loose coupling</a> of software components in order to enable flexible design over time.
+Without these considerations and the use of dependencies we might face “endless” software <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> by continually adding new bounded contexts that are outside of our span of control (or resources).</p>
+
+<h2 id="version-constraints-as-dependency-specification-control">Version constraints as dependency specification control</h2>
+
+<div class="table-wrapper"><table>
+<tr>
+<th>Version constraint</th>
+<th>Description of the version constraint</th>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">==2.1.0</code></td>
+<td>Exactly and only version 2.1.0</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">&gt;=2.0.0</code></td>
+<td>Greater than or equal to version 2.0.0</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">&gt;=2.0.0, &lt;3.0.0</code></td>
+<td>Greater than or equal to version 2.0.0 and less than 3.0.0</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">&gt;=2.0.0, &lt;3.0.0, !=2.5.1</code></td>
+<td>Greater than or equal to version 2.0.0, less than 3.0.0, and anything that’s not exactly version 2.5.1</td>
+</tr>
+</table></div>
+
+<p class="center"><em>Version constraint specifications provide code-based descriptions for dependency versions within your project (Pythonic version specification examples above).</em></p>
+
+<p>Many aspects of dependency chaos arise from the fact that dependencies are updated at various times.
+We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, security, or other benefits.
+To accomplish this we can use what are sometimes called dependency “version range constraints” or “compliant version specifications” to provide some flexibility in how packages are installed for our projects.
+Version ranges are usually preferred to help keep software projects updated and also allow for flexible dependency resolutions (for example, when a single dependency is required by multiple other dependencies).
+These are often specific to the package management system and programming language being used.
+See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority’s Version Specifiers section</a> for an example of how these version constraints work.</p>
+
+<p>Many version specification constraints build upon ideas from <a href="https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning">semantic versioning (SemVer)</a>.
+Generally, SemVer uses a dotted three number syntax which includes a major, minor, and patch version separated by periods.
+For example, a SemVer <code class="language-plaintext highlighter-rouge">1.2.3</code> represents major version 1, minor version 2, patch 3.
+Developers may use of this type of specification to help differentiate the various releases of their software and help build user confidence about expected operations.
+See the <a href="https://semver.org/">Semantic Versioning specification at https://semver.org/</a> for more information about how SemVer works.</p>
+
+<h2 id="version-constraints-can-still-be-chaotic">Version constraints can still be chaotic</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMFxuRGVwZW5kZW5jeSBBIChEZXBBKSAtPj5SZWxlYXNlIFBsYXRmb3JtOiB2MS4xLjAgUmVsZWFzZWQhXG5Qcm9qZWN0IEMgLT4-IERldmVsb3BlciBEOiBJbnN0YWxsIGZyb20gcHJvamVjdFxuRGV2ZWxvcGVyIEQgLS0-PiBSZWxlYXNlIFBsYXRmb3JtOiBMb29rIGZvciB2ZXJzaW9uIHdoaWNoIG1hdGNoZXMgY29uc3RyYWludCAoPj0gMS4wLjApXG5SZWxlYXNlIFBsYXRmb3JtIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBEZXBBIHYxLjEuMCAoPj0gMS4wLjApXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjU0LCAyMjYsIDIyNilcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGZhaWwgZHVlIHRvIERlcEEgY2hhbmdlcyFcbmVuZCIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p class="center"><em>Unintentional failures can occur due to timeline variations between internal projects and external dependencies.</em></p>
+
+<p>We sometimes require repeatable behavior to be productive with a project in addition to the flexibility of version range specifications.
+For example, we may want for each developer and continuous integration step to have reproducible environments even if a dependency gets updated while internal development takes place.
+Dependency version constraints oftentimes aren’t enough on their own to prevent reproducibility issues from occurring.
+See the above diagram for a timeline depicting how <code class="language-plaintext highlighter-rouge">Developer B</code> and <code class="language-plaintext highlighter-rouge">Developer D</code> may have different experiences despite best efforts with version constraints (<code class="language-plaintext highlighter-rouge">Dependency A</code> may make a release that fits the version constraint but breaks <code class="language-plaintext highlighter-rouge">Project C</code> when <code class="language-plaintext highlighter-rouge">Developer D</code> tries to modify unrelated code).</p>
+
+<h2 id="lockfiles-for-reproducible-version-constraint-behavior">Lockfiles for reproducible version constraint behavior</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMCAod2l0aCBsb2NrZmlsZSlcbkRlcGVuZGVuY3kgQSAoRGVwQSkgLT4-UmVsZWFzZSBQbGF0Zm9ybTogdjEuMS4wIFJlbGVhc2VkIVxuUHJvamVjdCBDIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBmcm9tIHByb2plY3RcbkRldmVsb3BlciBEIC0tPj4gUmVsZWFzZSBQbGF0Zm9ybTogTG9vayBmb3IgdmVyc2lvbiB3aGljaCBtYXRjaGVzIGNvbnN0cmFpbnQgKD49IDEuMC4wKSBhbmQgbG9ja2ZpbGUgZGF0YSBhYm91dCB2ZXJzaW9uc1xuUmVsZWFzZSBQbGF0Zm9ybSAtPj4gRGV2ZWxvcGVyIEQ6IEluc3RhbGwgRGVwQSB2MS4wLjAgKG1hdGNoaW5nID49IDEuMC4wIGFuZCBsb2NrZmlsZSByZWZlcmVuY2UgdG8gdmVyc2lvbnMgYXZhaWxhYmxlIHRvIHByZXZpb3VzIGNoYW5nZXMpXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjA5LCAyNTAsIDIyOSlcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGlzb2xhdGUgb2JzZXJ2YXRpb25zIHRvIG5ldyBmZWF0dXJlXG5lbmQiLCJtZXJtYWlkIjpudWxsfQ"></p>
+
+<p>Version constraint lockfiles provide one way to ensure reproducible behaviors within your projects.
+Lockfiles are usually recommended to be included in source control, so one always has a complete snapshot (short of the literal full source code of the dependencies) of the project’s last known working configuration.</p>
+
+<p>Lockfiles usually have the following characteristics (this varies by programming language and dependency type):</p>
+
+<ul>
+  <li>Lockfiles capture data about existing available and installable dependencies which match a provided version constraint specification as a single file which can be added to source control.</li>
+  <li>Lockfiles are referenced when available to help create reproducible installations of dependencies.</li>
+  <li>Lockfiles are often automatically created or changed by a package or environment management tool of some kind.</li>
+  <li>Lockfiles focus on reproducibility of dependency installations and don’t enable dependency resolution on their own (this is instead a part of version range specification and package management tools).</li>
+  <li>Lockfiles are used by developers, automated procedures (as with <a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> procedures), <a href="https://en.wikipedia.org/wiki/Deployment_environment#Production">production deployment environments</a>, and elsewhere to help ensure reproducibility.</li>
+</ul>
+
+<p>See the above modified timeline for <code class="language-plaintext highlighter-rouge">Developer B</code> and <code class="language-plaintext highlighter-rouge">Developer D</code> to better understand how their project will benefit from a shared lockfile and reproducible dependency installations.</p>
+
+<h2 id="pythonic-example">Pythonic Example</h2>
+
+<div class="table-wrapper"><table>
+<tr>
+<th>Python Poetry command used</th>
+<th>Description of what occurs</th>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">poetry add pandas</code></td>
+<td>
+<ul>
+  <li>Adds a <a href="https://python-poetry.org/docs/dependency-specification/#caret-requirements"><strong>caret-based version constraint specification</strong></a> based on the latest release (for example <code class="language-plaintext highlighter-rouge">^2.2.1</code>) within a <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file. This version constraint can be understood as <code class="language-plaintext highlighter-rouge">&gt;= 2.2.1, &lt; 2.3.0</code>.</li>
+  <li>Create or update the <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfile with known compatible versions of Pandas based on the version constraint mentioned above.</li>
+  <li>Installs the version of Pandas which matches the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">poetry.lock</code> specifications.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">poetry install</code></td>
+<td>Installs the version of Pandas which matches the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">poetry.lock</code> specifications (for example, within a new environment or for another developer).</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">poetry update pandas</code></td>
+<td>
+<ul>
+  <li>Poetry checks for available Pandas releases which are compatible with the version constraint (for ex. <code class="language-plaintext highlighter-rouge">^2.2.1</code>).</li>
+  <li>If there are new versions available which match the constraint, Poetry will update the <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfile and install the matching version.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code class="language-plaintext highlighter-rouge">poetry lock</code></td>
+<td>
+<ul>
+  <li>Update all dependencies referenced in the <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfile with the latest compatible versions based on the version constraints specified within the <code class="language-plaintext highlighter-rouge">pyproject.toml</code>.</li>
+  <li>Optionally, if the <code class="language-plaintext highlighter-rouge">--no-update</code> flag is also used, refresh the dependency versions referenced within the <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfile based on version constraints specified within the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> without seeking updated dependency releases.</li>
+</ul>
+</td>
+</tr>
+</table></div>
+
+<p class="center"><em>Use Poetry commands to implement dependency version constraints and lockfiles for reproducible Python project environments.</em></p>
+
+<p><a href="https://python-poetry.org/">Poetry</a> is a Python packaging and dependency management tool which implements version constraints and lockfiles to help developers maintain their software projects.
+Using commands like <code class="language-plaintext highlighter-rouge">poetry add ...</code> and <code class="language-plaintext highlighter-rouge">poetry lock</code> automatically creates <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfiles based on specifications which are added either automatically or manually to <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files.
+Similar to other tools, Poetry can operate with or without <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfiles (<a href="https://python-poetry.org/docs/basic-usage/#committing-your-poetrylock-file-to-version-control">see here for more information</a>).
+Another alternative to Poetry which makes use of lockfiles is <a href="https://pdm-project.org/latest/usage/dependency/#specify-the-lockfile-to-use">PDM (<code class="language-plaintext highlighter-rouge">pdm.lock</code> files)</a>.</p>
+
+<h2 id="avoiding-over-constrained-dependencies">Avoiding over-constrained dependencies</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnByb2plY3RbXCJQcm9qZWN0XCJdXG5kZXZlbG9wZXJbXCJEZXZlbG9wZXJcIl1cbmRlcGJvdFtcIkRlcGVuZGVuY3lcXG5DaGVja2luZyBUb29sXCJdXG5zZWN1cml0eXZ1bG5bXCJTZWN1cml0eVxcblZ1bG5lcmFiaWxpdHlcIl1cbnByW1wiUHVsbFxcblJlcXVlc3RcIl1cbiUlLVxuZGV2ZWxvcGVyIC0tPiB8IHJldmlld3NcXG5jaGFuZ2VzIHwgcHJcbnNlY3VyaXR5dnVsbiAtLT4gfCBhbm5vdW5jZWQgYW5kXFxuY29uc2lkZXJlZCBieSB8IGRlcGJvdFxuZGVwYm90IC0tPiB8IG9wZW5zIFBSIHdpdGhcXG5yZWxhdGVkIGZpeCB8IHByXG5wciAtLT4gcHJvamVjdCIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p class="center"><em>Automated dependency checking tools like Dependabot or Renovate can be used to reduce project risk through timely dependency update changes assisted by human reviewers.</em></p>
+
+<p>Using dependency version constraints and lockfiles are helpful for reproducibility but imply a risk of over-constraint.
+Two important over-constraint considerations are:</p>
+
+<ul>
+  <li>
+<strong>Bug fixes:</strong> we may perpetuate an incorrect or failing solution within our project as the result of not installing later releases of a dependency.</li>
+  <li>
+<strong>Security fixes:</strong> we may unknowingly create security risks for others through the inclusion of known <a href="https://en.wikipedia.org/wiki/Vulnerability_(computing)">security vulnerable</a> dependency versions.</li>
+</ul>
+
+<p>Make sure to address these risks by routinely considering whether your dependencies need to be updated (manually) or through the use of automated tools like <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">GitHub’s Dependabot</a> or <a href="https://github.com/renovatebot/renovate">Mend Renovate</a>.
+Tools like Dependabot or Renovate enable scheduled checks and updates to be applied to your project which can lead to a balanced way of ensuring risk reduction and productive future-focused development.</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
+Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html">
+        Python Memory Management and Troubleshooting
+      </a>
+    
+  </span>
+  <span>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>

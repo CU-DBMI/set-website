@@ -1,4 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2024-01-31T19:04:09+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/" rel="alternate" type="text/html" /><updated>2024-02-28T20:17:15+00:00</updated><id>/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p>Writing software often entails using code from other people to solve common challenges and take advantage of existing work.
+External software used by a specific project can be called a &#8220;dependency&#8221; (the software &#8220;depends&#8221; on that external work to accomplish tasks).
+Collections of software are oftentimes made available as &#8220;packages&#8221; through various platforms.
+<a href="https://en.wikipedia.org/wiki/Package_manager">Package management</a> for dependencies, the task of managing collections of dependencies for a specific project, is a specialized area of software development that can involve the use of unique tools and files.
+This article will cover package dependency management through special files generally referred to as &#8220;lockfiles&#8221;.
+<!-- excerpt end --></p>
+
+<h2 id="why-use-dependencies">Why use dependencies?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="'Reinvent the Wheel' comic by Randall Munroe, XKCD.">
+    <img src="https://imgs.xkcd.com/comics/reinvent_the_wheel.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="'Reinvent the Wheel' comic by Randall Munroe, XKCD." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      &#8216;Reinvent the Wheel&#8217; comic by Randall Munroe, XKCD.
+
+    </figcaption>
+  
+</figure>
+
+<p>There are various advantages to using packaged dependencies in your projects.
+Using existing work this way practices a collective <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">&#8220;don&#8217;t repeat yourself [or ourselves]&#8221; (DRY)</a> among the global community of software developers to avoid <a href="https://en.wikipedia.org/wiki/Reinventing_the_wheel">reinventing the wheel</a>.
+Using dependencies allows us to make explicit decisions about the specific focus, or context, which the project will prioritize.
+While it&#8217;s oftentimes easy to include and use dependencies in a project they come with risks that are important to consider.</p>
+
+<p>See below for a rough list of reasons why one might opt to use specific dependencies in a project:</p>
+
+<ol>
+  <li>Solutions which entail a lot of <a href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a> (particularly error prone).</li>
+  <li>Solutions which need constant maintenance, i.e. a &#8220;frequently moving targets&#8221;.</li>
+  <li>Solutions which require special domain knowledge or training to correctly implement.</li>
+</ol>
+
+<p>A common dependency which demonstrates these aspects are those which assist with datetimes, timezones, and time deltas.</p>
+
+<h2 id="the-dependency-wilderness">The dependency wilderness</h2>
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+}
+</style>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ2FudHRcbnlvdXIgcHJvamVjdCA6YSwgMjAyNC0wNy0wMSwgM3dcbnBhbmRhcyA6YWN0aXZlICxiLCAyMDI0LTA3LTA3LCAxd1xubnVtcHkgOmFjdGl2ZSwgYywgMjAyNC0wNy0wOSwgMTBkXG5zY2lweSA6YWN0aXZlLCBkLCAyMDI0LTA3LTA0LCA2ZCIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Dependencies are often on their own unpredictable schedule outside of your project&#8217;s control.</em></p>
+
+<p>Using existing software package dependencies helps conserve resources but comes with unique challenges related to unpredictability (such as when those dependencies are updated).
+This unpredictability can sometimes result in what&#8217;s colloquially called <a href="https://en.wikipedia.org/wiki/Dependency_hell">&#8220;dependency hell&#8221; or &#8220;dependency chaos&#8221;</a>, where for example multiple external dependencies conflict with one another and are unable to be automatically resolved (among other issues).
+These challenges can be especially frustrating due to when they occur (often outside of our personal schedule awareness) and how long they can take to debug (finding fixes sometimes entails costly <a href="https://en.wikipedia.org/wiki/Trial_and_error">trial-and-error</a>).
+It can feel like walking through a forest at night without a flashlight, constantly tripping over roots or running into stumps and branches!</p>
+
+<h2 id="illuminating-the-dependency-thicket">Illuminating the dependency thicket</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmludmVudGlvbltcIk92ZXJ3aGVsbWluZ1xcbmludmVudGlvblwiXVxuZGVwZW5kZW5jeWNoYW9zW1wiSW5maW5pdGVcXG5kZXBlbmRlbmN5XFxuY2hhb3NcIl1cbiUlLVxuaW52ZW50aW9uIDwtLi4uLi4uLT4gfCBzb2Z0d2FyZSBkZXBlbmRlbmN5IFxcbiBjaG9pY2VzIHxkZXBlbmRlbmN5Y2hhb3NcbiUlLSIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Software dependency choices may be understood through careful consideration between the cost of internal overwhelming invention vs external dependency chaos.</em></p>
+
+<p>Dependency chaos can sometimes lead to <a href="https://en.wikipedia.org/wiki/Not_invented_here">&#8220;not invented here syndrome&#8221;</a> where there&#8217;s less trust in external-facing work outside of an individual or group of people.
+When or if this happens it can be important to understand dependencies as a <strong>scale of choices between overwhelming invention and infinite dependency chaos</strong>.
+For example, to accomplish a small project it may not be wise to create a brand new programming language (towards the extreme of overwhelming invention).
+On the other hand, if we depended upon all existing work within a certain context the solution may not be specialized, efficient, or resourceful enough to meet the goals within a reasonable amount of time.</p>
+
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<pre class="mermaid">
+mindmap
+  root((Project))
+    Data storage
+      File 1
+      Database 2
+    Data x processing
+      Package X
+      Package Y
+    Integration
+      Solution A
+      Platform B
+</pre>
+
+<p class="center"><em>Dependency awareness and opportunity can be grouped into concerns and documented as part of a literature review (seen here as a <a href="https://en.wikipedia.org/wiki/Mind_map">mind map</a>).</em></p>
+
+<p>It can be helpful to reconsider existing knowledge on a topic area through formal or informal <a href="https://en.wikipedia.org/wiki/Literature_review">literature review</a> (understanding that code within software is a type of literature) when thinking about the scale of decisions mentioned above.
+Outlining existing work through a literature review can help with <a href="https://en.wikipedia.org/wiki/Revision_(writing)#Reflection_in_the_revision_process">second-order thinking revision</a> where we might benefit from reflecting on dependency decision-making again after an initial (first-order) creative process.
+Each potential dependency discovered through this process can be organized using <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns (SoC)</a> under specific <em>concern</em> labels, or a general set of information which affects related code.
+Include dependencies within your project which will helpfully limit the code produced (or SoC <em>sections</em>) thereby reducing the overall amount of <em>concerns</em> the project must maintain.</p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbnRleHRCW1wiQ29udGV4dCBBXCJdXG5kaXJlY3Rpb24gVEJcbnByb2Nlc3NlZDFbXCJkYXRhXCJdXG53aWRnZXRcbm1ldGFkYXRhMVtcIm1ldGFkYXRhXCJdXG5lbmRcbiUlLVxuc3ViZ3JhcGggY29udGV4dEFbXCJDb250ZXh0IEJcIl1cbmRpcmVjdGlvbiBUQlxucHJvY2Vzc2VkMltcImRhdGFcIl1cbmdpem1vXG5tZXRhZGF0YTJbXCJtZXRhZGF0YVwiXVxuZW5kXG4lJS1cbnByb2Nlc3NlZDEgPC0uLT4gfCBsb29vc2VseSBjb3VwbGVkXFxuc2hhcmVkIGNvbnRleHQgfCBwcm9jZXNzZWQyXG53aWRnZXQgfn5-IHwgZGlzdGluY3Qgc29sdXRpb25zXFxud2l0aCBkaWZmZXJlbnQgbmFtZXMgfCBnaXptb1xubWV0YWRhdGExIH5-fiB8IGRpc3RpbmN0IHNvbHV0aW9uc1xcbndpdGggdGhlIHNhbWUgbmFtZXMgfCBtZXRhZGF0YTIiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p class="center"><em>Bounded contexts along with shared or distinct components can be used to help limit the complexity of a project in helpful ways.</em></p>
+
+<p>The concept of <a href="https://martinfowler.com/bliki/BoundedContext.html">bounded context</a> from <a href="https://en.wikipedia.org/wiki/Domain-driven_design">domain-driven design</a> can sometimes be used to help distinguish what is in or out of scope for a particular project as a way of reducing complexity.
+Bounded context can be used as a way to draw abstract lines around a certain <a href="https://en.wikipedia.org/wiki/Span_of_control">span of control</a> in order to align available resources (like time and people) with the focus of the project.
+It also can help promote <a href="https://en.wikipedia.org/wiki/Loose_coupling">loose coupling</a> of software components in order to enable flexible design over time.
+Without these considerations and the use of dependencies we might face &#8220;endless&#8221; software <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> by continually adding new bounded contexts that are outside of our span of control (or resources).</p>
+
+<h2 id="version-constraints-as-dependency-specification-control">Version constraints as dependency specification control</h2>
+
+<table>
+<tr>
+<th>Version constraint</th>
+<th>Description of the version constraint</th>
+</tr>
+<tr>
+<td>
+
+`==2.1.0`
+
+</td>
+<td>Exactly and only version 2.1.0</td>
+</tr>
+<tr>
+<td>
+
+`&gt;=2.0.0`
+
+</td>
+<td>Greater than or equal to version 2.0.0</td>
+</tr>
+<tr>
+<td>
+
+`&gt;=2.0.0, &lt;3.0.0`
+
+</td>
+<td>Greater than or equal to version 2.0.0 and less than 3.0.0</td>
+</tr>
+<tr>
+<td>
+
+`&gt;=2.0.0, &lt;3.0.0, !=2.5.1`
+
+</td>
+<td>Greater than or equal to version 2.0.0, less than 3.0.0, and anything that's not exactly version 2.5.1</td>
+</tr>
+</table>
+
+<p class="center"><em>Version constraint specifications provide code-based descriptions for dependency versions within your project (Pythonic version specification examples above).</em></p>
+
+<p>Many aspects of dependency chaos arise from the fact that dependencies are updated at various times.
+We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, security, or other benefits.
+To accomplish this we can use what are sometimes called dependency &#8220;version range constraints&#8221; or &#8220;compliant version specifications&#8221; to provide some flexibility in how packages are installed for our projects.
+Version ranges are usually preferred to help keep software projects updated and also allow for flexible dependency resolutions (for example, when a single dependency is required by multiple other dependencies).
+These are often specific to the package management system and programming language being used.
+See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority&#8217;s Version Specifiers section</a> for an example of how these version constraints work.</p>
+
+<p>Many version specification constraints build upon ideas from <a href="https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning">semantic versioning (SemVer)</a>.
+Generally, SemVer uses a dotted three number syntax which includes a major, minor, and patch version separated by periods.
+For example, a SemVer <code class="language-plaintext highlighter-rouge">1.2.3</code> represents major version 1, minor version 2, patch 3.
+Developers may use of this type of specification to help differentiate the various releases of their software and help build user confidence about expected operations.
+See the <a href="https://semver.org/">Semantic Versioning specification at https://semver.org/</a> for more information about how SemVer works.</p>
+
+<h2 id="version-constraints-can-still-be-chaotic">Version constraints can still be chaotic</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMFxuRGVwZW5kZW5jeSBBIChEZXBBKSAtPj5SZWxlYXNlIFBsYXRmb3JtOiB2MS4xLjAgUmVsZWFzZWQhXG5Qcm9qZWN0IEMgLT4-IERldmVsb3BlciBEOiBJbnN0YWxsIGZyb20gcHJvamVjdFxuRGV2ZWxvcGVyIEQgLS0-PiBSZWxlYXNlIFBsYXRmb3JtOiBMb29rIGZvciB2ZXJzaW9uIHdoaWNoIG1hdGNoZXMgY29uc3RyYWludCAoPj0gMS4wLjApXG5SZWxlYXNlIFBsYXRmb3JtIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBEZXBBIHYxLjEuMCAoPj0gMS4wLjApXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjU0LCAyMjYsIDIyNilcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGZhaWwgZHVlIHRvIERlcEEgY2hhbmdlcyFcbmVuZCIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Unintentional failures can occur due to timeline variations between internal projects and external dependencies.</em></p>
+
+<p>We sometimes require repeatable behavior to be productive with a project in addition to the flexibility of version range specifications.
+For example, we may want for each developer and continuous integration step to have reproducible environments even if a dependency gets updated while internal development takes place.
+Dependency version constraints oftentimes aren&#8217;t enough on their own to prevent reproducibility issues from occurring.
+See the above diagram for a timeline depicting how <code class="language-plaintext highlighter-rouge">Developer B</code> and <code class="language-plaintext highlighter-rouge">Developer D</code> may have different experiences despite best efforts with version constraints (<code class="language-plaintext highlighter-rouge">Dependency A</code> may make a release that fits the version constraint but breaks <code class="language-plaintext highlighter-rouge">Project C</code> when <code class="language-plaintext highlighter-rouge">Developer D</code> tries to modify unrelated code).</p>
+
+<h2 id="lockfiles-for-reproducible-version-constraint-behavior">Lockfiles for reproducible version constraint behavior</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMCAod2l0aCBsb2NrZmlsZSlcbkRlcGVuZGVuY3kgQSAoRGVwQSkgLT4-UmVsZWFzZSBQbGF0Zm9ybTogdjEuMS4wIFJlbGVhc2VkIVxuUHJvamVjdCBDIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBmcm9tIHByb2plY3RcbkRldmVsb3BlciBEIC0tPj4gUmVsZWFzZSBQbGF0Zm9ybTogTG9vayBmb3IgdmVyc2lvbiB3aGljaCBtYXRjaGVzIGNvbnN0cmFpbnQgKD49IDEuMC4wKSBhbmQgbG9ja2ZpbGUgZGF0YSBhYm91dCB2ZXJzaW9uc1xuUmVsZWFzZSBQbGF0Zm9ybSAtPj4gRGV2ZWxvcGVyIEQ6IEluc3RhbGwgRGVwQSB2MS4wLjAgKG1hdGNoaW5nID49IDEuMC4wIGFuZCBsb2NrZmlsZSByZWZlcmVuY2UgdG8gdmVyc2lvbnMgYXZhaWxhYmxlIHRvIHByZXZpb3VzIGNoYW5nZXMpXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjA5LCAyNTAsIDIyOSlcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGlzb2xhdGUgb2JzZXJ2YXRpb25zIHRvIG5ldyBmZWF0dXJlXG5lbmQiLCJtZXJtYWlkIjpudWxsfQ" /></p>
+
+<p>Version constraint lockfiles provide one way to ensure reproducible behaviors within your projects.
+Lockfiles are usually recommended to be included in source control, so one always has a complete snapshot (short of the literal full source code of the dependencies) of the project&#8217;s last known working configuration.</p>
+
+<p>Lockfiles usually have the following characteristics (this varies by programming language and dependency type):</p>
+
+<ul>
+  <li>Lockfiles capture data about existing available and installable dependencies which match a provided version constraint specification as a single file which can be added to source control.</li>
+  <li>Lockfiles are referenced when available to help create reproducible installations of dependencies.</li>
+  <li>Lockfiles are often automatically created or changed by a package or environment management tool of some kind.</li>
+  <li>Lockfiles focus on reproducibility of dependency installations and don&#8217;t enable dependency resolution on their own (this is instead a part of version range specification and package management tools).</li>
+  <li>Lockfiles are used by developers, automated procedures (as with <a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> procedures), <a href="https://en.wikipedia.org/wiki/Deployment_environment#Production">production deployment environments</a>, and elsewhere to help ensure reproducibility.</li>
+</ul>
+
+<p>See the above modified timeline for <code class="language-plaintext highlighter-rouge">Developer B</code> and <code class="language-plaintext highlighter-rouge">Developer D</code> to better understand how their project will benefit from a shared lockfile and reproducible dependency installations.</p>
+
+<h2 id="pythonic-example">Pythonic Example</h2>
+
+<table>
+<tr>
+<th>Python Poetry command used</th>
+<th>Description of what occurs</th>
+</tr>
+<tr>
+<td>
+
+`poetry add pandas`
+
+</td>
+<td>
+
+- Adds a [__caret-based version constraint specification__](https://python-poetry.org/docs/dependency-specification/#caret-requirements) based on the latest release (for example `^2.2.1`) within a `pyproject.toml` file. This version constraint can be understood as `&gt;= 2.2.1, &lt; 2.3.0`.
+- Create or update the `poetry.lock` lockfile with known compatible versions of Pandas based on the version constraint mentioned above.
+- Installs the version of Pandas which matches the `pyproject.toml` and `poetry.lock` specifications.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`poetry install`
+
+</td>
+<td>
+
+Installs the version of Pandas which matches the `pyproject.toml` and `poetry.lock` specifications (for example, within a new environment or for another developer).
+
+</td>
+</tr>
+<tr>
+<td>
+
+`poetry update pandas`
+
+</td>
+<td>
+
+- Poetry checks for available Pandas releases which are compatible with the version constraint (for ex. `^2.2.1`).
+- If there are new versions available which match the constraint, Poetry will update the `poetry.lock` lockfile and install the matching version.
+
+</td>
+</tr>
+<tr>
+<td>
+
+`poetry lock`
+
+</td>
+<td>
+
+- Update all dependencies referenced in the `poetry.lock` lockfile with the latest compatible versions based on the version constraints specified within the `pyproject.toml`.
+- Optionally, if the `--no-update` flag is also used, refresh the dependency versions referenced within the `poetry.lock` lockfile based on version constraints specified within the `pyproject.toml` without seeking updated dependency releases.
+
+</td>
+</tr>
+</table>
+
+<p class="center"><em>Use Poetry commands to implement dependency version constraints and lockfiles for reproducible Python project environments.</em></p>
+
+<p><a href="https://python-poetry.org/">Poetry</a> is a Python packaging and dependency management tool which implements version constraints and lockfiles to help developers maintain their software projects.
+Using commands like <code class="language-plaintext highlighter-rouge">poetry add ...</code> and <code class="language-plaintext highlighter-rouge">poetry lock</code> automatically creates <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfiles based on specifications which are added either automatically or manually to <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files.
+Similar to other tools, Poetry can operate with or without <code class="language-plaintext highlighter-rouge">poetry.lock</code> lockfiles (<a href="https://python-poetry.org/docs/basic-usage/#committing-your-poetrylock-file-to-version-control">see here for more information</a>).
+Another alternative to Poetry which makes use of lockfiles is <a href="https://pdm-project.org/latest/usage/dependency/#specify-the-lockfile-to-use">PDM (<code class="language-plaintext highlighter-rouge">pdm.lock</code> files)</a>.</p>
+
+<h2 id="avoiding-over-constrained-dependencies">Avoiding over-constrained dependencies</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnByb2plY3RbXCJQcm9qZWN0XCJdXG5kZXZlbG9wZXJbXCJEZXZlbG9wZXJcIl1cbmRlcGJvdFtcIkRlcGVuZGVuY3lcXG5DaGVja2luZyBUb29sXCJdXG5zZWN1cml0eXZ1bG5bXCJTZWN1cml0eVxcblZ1bG5lcmFiaWxpdHlcIl1cbnByW1wiUHVsbFxcblJlcXVlc3RcIl1cbiUlLVxuZGV2ZWxvcGVyIC0tPiB8IHJldmlld3NcXG5jaGFuZ2VzIHwgcHJcbnNlY3VyaXR5dnVsbiAtLT4gfCBhbm5vdW5jZWQgYW5kXFxuY29uc2lkZXJlZCBieSB8IGRlcGJvdFxuZGVwYm90IC0tPiB8IG9wZW5zIFBSIHdpdGhcXG5yZWxhdGVkIGZpeCB8IHByXG5wciAtLT4gcHJvamVjdCIsIm1lcm1haWQiOm51bGx9" /></p>
+
+<p class="center"><em>Automated dependency checking tools like Dependabot or Renovate can be used to reduce project risk through timely dependency update changes assisted by human reviewers.</em></p>
+
+<p>Using dependency version constraints and lockfiles are helpful for reproducibility but imply a risk of over-constraint.
+Two important over-constraint considerations are:</p>
+
+<ul>
+  <li><strong>Bug fixes:</strong> we may perpetuate an incorrect or failing solution within our project as the result of not installing later releases of a dependency.</li>
+  <li><strong>Security fixes:</strong> we may unknowingly create security risks for others through the inclusion of known <a href="https://en.wikipedia.org/wiki/Vulnerability_(computing)">security vulnerable</a> dependency versions.</li>
+</ul>
+
+<p>Make sure to address these risks by routinely considering whether your dependencies need to be updated (manually) or through the use of automated tools like <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">GitHub&#8217;s Dependabot</a> or <a href="https://github.com/renovatebot/renovate">Mend Renovate</a>.
+Tools like Dependabot or Renovate enable scheduled checks and updates to be applied to your project which can lead to a balanced way of ensuring risk reduction and productive future-focused development.</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
+Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -439,7 +736,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 
 <p>It&#8217;s worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
-Wishing you the very best in your software journey with memory!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+Wishing you the very best in your software journey with memory!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -874,7 +1171,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1147,7 +1444,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1623,7 +1920,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1913,7 +2210,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2079,7 +2376,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2236,7 +2533,7 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2353,7 +2650,7 @@ flowchart LR
   <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
   <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
   <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry><entry><title type="html">Tip of the Week: Timebox Your Software Work</title><link href="/set-website/2023/01/17/Timebox-Your-Software-Work.html" rel="alternate" type="text/html" title="Tip of the Week: Timebox Your Software Work" /><published>2023-01-17T00:00:00+00:00</published><updated>2024-02-28T20:16:30+00:00</updated><id>/set-website/2023/01/17/Timebox-Your-Software-Work</id><content type="html" xml:base="/set-website/2023/01/17/Timebox-Your-Software-Work.html"><![CDATA[<h1 id="tip-of-the-week-timebox-your-software-work">Tip of the Week: Timebox Your Software Work</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2476,160 +2773,4 @@ Use timeboxing techniques such as <a href="https://en.wikipedia.org/wiki/Pomodor
   <li><a href="https://en.wikipedia.org/wiki/52/17_rule">52/17 Rule</a></li>
   <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
   <li><a href="https://github.com/features/issues">Github Issues</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry><entry><title type="html">Tip of the Week: Linting Documentation as Code</title><link href="/set-website/2023/01/03/Linting-Documentation-as-Code.html" rel="alternate" type="text/html" title="Tip of the Week: Linting Documentation as Code" /><published>2023-01-03T00:00:00+00:00</published><updated>2024-01-31T19:03:22+00:00</updated><id>/set-website/2023/01/03/Linting-Documentation-as-Code</id><content type="html" xml:base="/set-website/2023/01/03/Linting-Documentation-as-Code.html"><![CDATA[<h1 id="tip-of-the-week-linting-documentation-as-code">Tip of the Week: Linting Documentation as Code</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p><a href="https://en.wikipedia.org/wiki/Software_documentation">Software documentation</a> is sometimes treated as a less important or secondary aspect of software development. Treating documentation as code allows developers to version control the shared understanding and knowledge surrounding a project. Leveraging this paradigm also enables the use of tools and patterns which have been used to strengthen code maintenance. This article covers one such pattern: <a href="https://en.wikipedia.org/wiki/Lint_(software)">linting</a>, or static analysis, for documentation treated like code.</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-There are many linting tools available which enable quick revision of your documentation. Try using <a href="https://github.com/codespell-project/codespell">codespell</a> for spelling corrections, <a href="https://github.com/executablebooks/mdformat">mdformat</a> for markdown file formatting corrections, and <a href="https://vale.sh/">vale</a> for more complex editorial style or natural language assessment within your documentation.</p>
-
-<h2 id="spelling-checks">Spelling Checks</h2>
-
-<div class="cols" style="--cols: 2">
-  
-    
-    <div>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
-<span class="gu">## Example Readme</span>
-
-Thsi project is a wokr in progess.
-Code will be updated by the team very often.
-
-(CU Anschutz)[https://www.cuanschutz.edu/]
-</code></pre></div></div>
-
-<p><em>Example readme.md with incorrectly spelled words</em></p>
-</div>
-  
-    
-    <div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% codespell readme.md
-</span><span class="gp">readme.md:4: Thsi ==&gt;</span><span class="w"> </span>This
-<span class="gp">readme.md:4: wokr ==&gt;</span><span class="w"> </span>work
-<span class="gp">readme.md:4: progess ==&gt;</span><span class="w"> </span>progress
-<span class="go">
-
-
-</span></code></pre></div></div>
-
-<p><em>Example showing codespell detection of mispelled words</em></p>
-</div>
-  
-</div>
-
-<p><a href="https://en.wikipedia.org/wiki/Spell_checker">Spelling checks</a> may be used to automatically detect incorrect spellings of words within your documentation (and code!). <a href="https://github.com/codespell-project/codespell">Codespell</a> is one library which can lint your word spelling. Codespell may be used through the command-line and also through a <a href="https://pre-commit.com/index.html">pre-commit</a> hook.</p>
-
-<h2 id="markdown-format-linting">Markdown Format Linting</h2>
-
-<div class="cols" style="--cols: 2">
-  
-    
-    <div>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
-<span class="gu">## Example Readme</span>
-
-This project is a work in progress.
-Code will be updated by the team very often.
-
-(CU Anschutz)[https://www.cuanschutz.edu/]
-</code></pre></div></div>
-
-<p><em>Example readme.md with markdown issues</em></p>
-</div>
-  
-    
-    <div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% markdownlint readme.md
-readme.md:2 MD041/first-line-heading/first-line-h1
-First line in a file should be a top-level heading
-</span><span class="gp">[Context: "#</span><span class="c"># Example Readme"]</span>
-<span class="go">readme.md:6:5 MD011/no-reversed-links Reversed link
-syntax [(link)[https://www.cuanschutz.edu/]]
-
-</span></code></pre></div></div>
-
-<p><em>Example showing markdownlint detection of issues</em></p>
-</div>
-  
-</div>
-
-<p>The format of your documentation files may also be linted for common issues. This may catch things which are otherwise hard to see when editing content. It may also improve the overall <a href="https://en.wikipedia.org/wiki/Web_accessibility">web accessibility</a> of your content, for example, through proper HTML header order and image alternate text. <a href="https://github.com/markdownlint/markdownlint">Markdownlint</a> is one library which can be used to find issues within markdown files.</p>
-
-<p>Additional and similar resources to explore in this area:</p>
-
-<ul>
-  <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - for linting RST files</li>
-  <li><a href="https://github.com/executablebooks/mdformat">mdformat</a> - an additional markdown linter</li>
-</ul>
-
-<h2 id="editorial-style-and-grammar">Editorial Style and Grammar</h2>
-
-<div class="cols" style="--cols: 2">
-  
-    
-    <div>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!--- readme.md ---&gt;</span>
-<span class="gh"># Example Readme</span>
-
-This project is a work in progress.
-Code will be updated by the team very often.
-
-<span class="p">[</span><span class="nv">CU Anschutz</span><span class="p">](</span><span class="sx">https://www.cuanschutz.edu/</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>Example readme.md with questionable editorial style</em></p>
-</div>
-  
-    
-    <div>
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">% vale readme-example.md
-readme-example.md
-2:12  error    Did you really mean 'Readme'?   Vale.Spelling
-5:11  warning  'be updated' may be passive     write-good.Passive
-               voice. Use active voice if you
-               can.
-5:34  warning  'very' is a weasel word!        write-good.Weasel
-</span></code></pre></div></div>
-
-<p><em>Example showing vale warnings and errors</em></p>
-</div>
-  
-</div>
-
-<p>Maintaining consistent editorial style and grammar may also be a focus within your documentation. These issues are sometimes more difficult to detect and more opinionated in nature. In some cases, organizations publish guides on this topic (see <a href="https://learn.microsoft.com/en-us/style-guide/welcome/">Microsoft Writing Style Guide</a>, or <a href="https://developers.google.com/style">Google Developer Documenation Style Guide</a>). Some of the complexity of writing style may be linted through tools like <a href="https://vale.sh/">Vale</a>. Using common configurations through Vale can unify how language is used within your documentation by linting for common style and grammar.</p>
-
-<p>Additional and similar resources to explore in this area:</p>
-
-<ul>
-  <li><a href="https://textlint.github.io/">textlint</a> - similar to Vale with a modular approach</li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-
-<p>Please see the following the resources on this topic.</p>
-
-<ul>
-  <li><a href="https://github.com/codespell-project/codespell">codespell</a> - a code and documentation spell checker.</li>
-  <li><a href="https://github.com/markdownlint/markdownlint">markdownlint</a> - markdown linter.</li>
-  <li><a href="https://github.com/executablebooks/mdformat">mdformat</a> - another markdown linter.</li>
-  <li><a href="https://github.com/twolfson/restructuredtext-lint">restructuredtext-lint</a> - RST file format linter.</li>
-  <li><a href="https://vale.sh/">vale</a> - an editorial style linter.</li>
-  <li><a href="https://textlint.github.io/">textlint</a> - another editorial style linter with greater modularity.</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="documentation" /><category term="docsascode" /><category term="linting" /><category term="staticanalysis" /><summary type="html"><![CDATA[Tip of the Week: Linting Documentation as Code]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="timeboxing" /><category term="timeblocking" /><category term="productivity" /><category term="modularization" /><category term="projectmanagement" /><summary type="html"><![CDATA[Tip of the Week: Timebox Your Software Work]]></summary></entry></feed>
