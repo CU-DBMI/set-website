@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-02-28T19:13:26+00:00">
+  <meta property="og:updated_time" content="2024-02-28T19:33:30+00:00">
   <meta property="article:published_time" content="2024-02-20T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-02-28T19:13:26+00:00">
-  <meta name="revised" content="2024-02-28T19:13:26+00:00">
+  <meta property="article:modified_time" content="2024-02-28T19:33:30+00:00">
+  <meta name="revised" content="2024-02-28T19:33:30+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Navigating Dependency Chaos with Lockfiles" },
       "datePublished": "2024-02-20T00:00:00+00:00",
-      "dateModified": "2024-02-28T19:13:26+00:00",
+      "dateModified": "2024-02-28T19:33:30+00:00",
     
     "name": "Navigating Dependency Chaos with Lockfiles",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -575,6 +575,16 @@ Using existing work this way practices a collective <a href="https://en.wikipedi
 Using dependencies allows us to make explicit decisions about the specific focus, or context, which the project will prioritize.
 While it’s oftentimes easy to include and use dependencies in a project they come with risks that are important to consider.</p>
 
+<p>See below for a rough list of reasons why one might opt to use specific dependencies in a project:</p>
+
+<ol>
+  <li>Solutions which entail a lot of <a href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a> (particularly error prone).</li>
+  <li>Solutions which need constant maintenance, i.e. a “frequently moving targets”.</li>
+  <li>Solutions which require special domain knowledge or training to correctly implement.</li>
+</ol>
+
+<p>A common dependency which demonstrates these aspects are those which assist with datetimes, timezones, and time deltas.</p>
+
 <h2 id="the-dependency-wilderness">The dependency wilderness</h2>
 
 <!-- set a max width for mermaid diagram below so it doesn't render so large -->
@@ -652,7 +662,7 @@ Without these considerations and the use of dependencies we might face “endles
 <p class="center"><em>Version constraint specifications provide code-based descriptions for dependency versions within your project (Pythonic version specification examples above).</em></p>
 
 <p>Many aspects of dependency chaos arise from the fact that dependencies are updated at various times.
-We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, or other benefits.
+We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, security, or other benefits.
 To accomplish this we can use what are sometimes called dependency “version range constraints” or “compliant version specifications” to provide some flexibility in how packages are installed for our projects.
 These are often specific to the package management system and programming language being used.
 See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority’s Version Specifiers section</a> for an example of how these version constraints work.</p>
@@ -672,12 +682,13 @@ See the above diagram for a timeline depicting how <code class="language-plainte
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMCAod2l0aCBsb2NrZmlsZSlcbkRlcGVuZGVuY3kgQSAoRGVwQSkgLT4-UmVsZWFzZSBQbGF0Zm9ybTogdjEuMS4wIFJlbGVhc2VkIVxuUHJvamVjdCBDIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBmcm9tIHByb2plY3RcbkRldmVsb3BlciBEIC0tPj4gUmVsZWFzZSBQbGF0Zm9ybTogTG9vayBmb3IgdmVyc2lvbiB3aGljaCBtYXRjaGVzIGNvbnN0cmFpbnQgKD49IDEuMC4wKSBhbmQgbG9ja2ZpbGUgZGF0YSBhYm91dCB2ZXJzaW9uc1xuUmVsZWFzZSBQbGF0Zm9ybSAtPj4gRGV2ZWxvcGVyIEQ6IEluc3RhbGwgRGVwQSB2MS4wLjAgKG1hdGNoaW5nID49IDEuMC4wIGFuZCBsb2NrZmlsZSByZWZlcmVuY2UgdG8gdmVyc2lvbnMgYXZhaWxhYmxlIHRvIHByZXZpb3VzIGNoYW5nZXMpXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjA5LCAyNTAsIDIyOSlcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGlzb2xhdGUgb2JzZXJ2YXRpb25zIHRvIG5ldyBmZWF0dXJlXG5lbmQiLCJtZXJtYWlkIjpudWxsfQ"></p>
 
-<p>Version constraint lockfiles provide one way to ensure reproducible behaviors within your projects.</p>
+<p>Version constraint lockfiles provide one way to ensure reproducible behaviors within your projects.
+Lockfiles are usually recommended to be included in source control, so one always has a complete snapshot (short of the literal full source code of the dependencies) of the project’s last known working configuration.</p>
 
 <p>Lockfiles usually have the following characteristics (this varies by programming language and dependency type):</p>
 
 <ul>
-  <li>Lockfiles usually capture data about existing available dependencies which match a provided version constraint specification as a single file which can be added to source control.</li>
+  <li>Lockfiles capture data about existing available dependencies which match a provided version constraint specification as a single file which can be added to source control.</li>
   <li>Lockfiles are referenced when available to help create reproducible installations of dependencies.</li>
   <li>Lockfiles are often automatically created or changed by a package or environment management tool of some kind.</li>
 </ul>
