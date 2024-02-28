@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-02-28T20:00:44+00:00">
+  <meta property="og:updated_time" content="2024-02-28T20:04:57+00:00">
   <meta property="article:published_time" content="2024-02-20T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-02-28T20:00:44+00:00">
-  <meta name="revised" content="2024-02-28T20:00:44+00:00">
+  <meta property="article:modified_time" content="2024-02-28T20:04:57+00:00">
+  <meta name="revised" content="2024-02-28T20:04:57+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Navigating Dependency Chaos with Lockfiles" },
       "datePublished": "2024-02-20T00:00:00+00:00",
-      "dateModified": "2024-02-28T20:00:44+00:00",
+      "dateModified": "2024-02-28T20:04:57+00:00",
     
     "name": "Navigating Dependency Chaos with Lockfiles",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -681,6 +681,7 @@ Without these considerations and the use of dependencies we might face “endles
 <p>Many aspects of dependency chaos arise from the fact that dependencies are updated at various times.
 We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, security, or other benefits.
 To accomplish this we can use what are sometimes called dependency “version range constraints” or “compliant version specifications” to provide some flexibility in how packages are installed for our projects.
+Version ranges are usually preferred to help keep software projects updated and also allow for flexible dependency resolutions (for example, when a single dependency is required by multiple other dependencies).
 These are often specific to the package management system and programming language being used.
 See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority’s Version Specifiers section</a> for an example of how these version constraints work.</p>
 
