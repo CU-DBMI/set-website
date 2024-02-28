@@ -61,10 +61,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-02-28T19:39:09+00:00">
+  <meta property="og:updated_time" content="2024-02-28T20:00:44+00:00">
   <meta property="article:published_time" content="2024-02-20T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-02-28T19:39:09+00:00">
-  <meta name="revised" content="2024-02-28T19:39:09+00:00">
+  <meta property="article:modified_time" content="2024-02-28T20:00:44+00:00">
+  <meta name="revised" content="2024-02-28T20:00:44+00:00">
 
 
 <script type="application/ld+json">
@@ -74,7 +74,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Navigating Dependency Chaos with Lockfiles" },
       "datePublished": "2024-02-20T00:00:00+00:00",
-      "dateModified": "2024-02-28T19:39:09+00:00",
+      "dateModified": "2024-02-28T20:00:44+00:00",
     
     "name": "Navigating Dependency Chaos with Lockfiles",
     "description": "The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -683,6 +683,12 @@ We often want to make certain we use the most up-to-date version of a dependency
 To accomplish this we can use what are sometimes called dependency “version range constraints” or “compliant version specifications” to provide some flexibility in how packages are installed for our projects.
 These are often specific to the package management system and programming language being used.
 See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority’s Version Specifiers section</a> for an example of how these version constraints work.</p>
+
+<p>Many version specification constraints build upon ideas from <a href="https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning">semantic versioning (SemVer)</a>.
+Generally, SemVer uses a dotted three number syntax which includes a major, minor, and patch version separated by periods.
+For example, a SemVer <code class="language-plaintext highlighter-rouge">1.2.3</code> represents major version 1, minor version 2, patch 3.
+Developers may use of this type of specification to help differentiate the various releases of their software and help build user confidence about expected operations.
+See the <a href="https://semver.org/">Semantic Versioning specification at https://semver.org/</a> for more information about how SemVer works.</p>
 
 <h2 id="version-constraints-can-still-be-chaotic">Version constraints can still be chaotic</h2>
 
