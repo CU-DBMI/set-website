@@ -23,6 +23,7 @@
 .card-image img {
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  width: 100%;
   // box-shadow: var(--shadow);
 }
 
@@ -32,12 +33,12 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
+  max-width: 100%;
   padding: 20px;
 }
 
-.card-text > *,
-.card-text > .tags {
-  margin: 0;
+.card-text > * {
+  margin: 0 !important;
 }
 
 .card-title {
@@ -46,6 +47,6 @@
 }
 
 .card-subtitle {
-  margin-top: -15px;
+  margin-top: -10px !important;
   font-style: italic;
 }

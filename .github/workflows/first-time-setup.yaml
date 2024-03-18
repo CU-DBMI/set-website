@@ -13,24 +13,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print contexts
-        uses: crazy-max/ghaction-dump-context@v1
+      # for debugging
+      - uses: crazy-max/ghaction-dump-context@v2
 
       - name: Create Pages branch
-        uses: peterjgrainger/action-create-branch@v2.4.0
+        uses: peterjgrainger/action-create-branch@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           branch: "gh-pages"
 
       - name: Checkout Pages branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
 
-      - name: Clear Pages branch
-        run: rm -rf * .github .gitignore
+      # for debugging
+      - if: runner.debug == '1'
+        uses: mxschmitt/action-tmate@v3
 
+      # clean slate, as if starting from orphan branch
+      - name: Clear Pages branch
+        run: rm -rf * .github .docker .gitignore
+
+      # prevent GitHub from running Jekyll a second time after build
       - name: Make .nojekyll file
         run: touch .nojekyll
 
@@ -38,23 +44,27 @@ jobs:
         run: echo "Placeholder homepage" > index.html
 
       - name: Commit changes to Pages branch
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: gh-pages
           commit_message: "Clear branch"
 
       - name: Checkout main branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Remove unneeded files
+      - name: Remove files user doesn't need
         run: |
           rm -rf \
-            README.md \
             CHANGELOG.md \
             testbed.md \
             .github/ISSUE_TEMPLATE \
+            .github/DISCUSSION_TEMPLATE \
             .github/workflows/versioning.yaml \
             .github/pull_request_template.md \
+
+      - name: Rename files
+        run: |
+          mv -f .github/user_pull_request_template.md .github/pull_request_template.md
 
       - name: Set vars for personalization
         run: |
@@ -73,28 +83,25 @@ jobs:
           _Built with [Lab Website Template](https://greene-lab.gitbook.io/lab-website-template-docs)_
           " > README.md
 
-      - name: Install packages
-        run: yarn add yaml
-
       - name: Personalize Jekyll config for user
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { readFileSync, writeFileSync } = require("fs");
-            const { parse, stringify } = require("yaml");
             const file = "_config.yaml";
-            const config = parse(readFileSync(file).toString());
-            config.title = "${{ env.USER }}";
-            config.description = "${{ env.DESCRIPTION }}";
-            config.email = "contact@${{ env.USER }}.com";
-            config.github = "${{ env.USER }}";
-            config.twitter = "${{ env.USER }}";
-            config.instagram = "${{ env.USER }}";
-            config.youtube = "${{ env.USER }}";
-            writeFileSync(file, stringify(config));
+            const contents = readFileSync(file)
+              .toString()
+              .replace(/(^title: ).*$/m, "$1${{ env.USER }}")
+              .replace(/(^subtitle: ).*$/m, "$1")
+              .replace(/(^description: ).*$/m, "$1${{ env.DESCRIPTION }}")
+              .replace(/(^  email: ).*$/m, "$1contact@${{ env.USER }}.com")
+              .replace(/(^  github: ).*$/m, "$1${{ env.USER }}")
+              .replace(/(^  twitter: ).*$/m, "$1${{ env.USER }}")
+              .replace(/(^  youtube: ).*$/m, "$1${{ env.USER }}");
+            writeFileSync(file, contents);
 
       - name: Personalize homepage for user
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { readFileSync, writeFileSync } = require("fs");
@@ -106,6 +113,6 @@ jobs:
             writeFileSync(file, contents);
 
       - name: Commit changed files
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Setup repo"

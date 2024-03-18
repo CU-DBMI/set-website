@@ -143,8 +143,8 @@ For the purposes of this content we'll focus on two of these segments: the stack
 The [___stack___ (sometimes also known as the "call stack")](https://en.wikipedia.org/wiki/Call_stack) includes information about sequences of program instructions packaged as units called ["functions" or "subroutines"](https://en.wikipedia.org/wiki/Function_(computer_programming)).
 The stack also typically stores function local variables, arguments, and return value.
 The [___heap___](https://en.wikipedia.org/wiki/Memory_management#HEAP) is an area where variables for a program may be dynamically stored.
-The stack can be thought of as a <i class="icon fa-solid fa-map"></i> "roadmap" for what program will accomplish (including the location of things it will need to do that work).
-The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> "warehouse" store (or remove) things used as part of the stack "roadmap".
+The stack can be thought of as a {% include icon.html icon="fa-solid fa-map" %} "roadmap" for what program will accomplish (including the location of things it will need to do that work).
+The heap can be imagined of as a {% include icon.html icon="fa-solid fa-warehouse" %} "warehouse" store (or remove) things used as part of the stack "roadmap".
 Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03) for more information about processes.
 
 
@@ -205,7 +205,7 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 The heap is often further organized through the use of ___"blocks"___.
 Memory blocks are chunks of memory of a certain [byte](https://en.wikipedia.org/wiki/Byte) or [bit](https://en.wikipedia.org/wiki/Bit) size (usually all the same size) ([Wikipedia: Block (data storage)](https://en.wikipedia.org/wiki/Block_(data_storage))).
 Memory blocks may be in use or free at different times.
-If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> "warehouse" then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> "boxes" inside the warehouse.
+If the heap is a process memory {% include icon.html icon="fa-solid fa-warehouse" %} "warehouse" then blocks are like {% include icon.html icon="fa-solid fa-boxes-stacked" %} "boxes" inside the warehouse.
 
 ```mermaid!
 flowchart LR
@@ -234,7 +234,7 @@ Blocks may be organized in hierarchical layers to manage memory efficiently or t
 Blocks may sometimes be organized into [___pools___](https://en.wikipedia.org/wiki/Memory_pool) within the process memory heap segment.
 Pools are areas of the heap used to efficiently manage blocks together in specific ways.
 Each heap may have one or many pools (each with sets of blocks).
-If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> "warehouse", and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> "boxes" inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> "shelves" for organizing and moving those boxes within the warehouse.
+If the heap is a process memory {% include icon.html icon="fa-solid fa-warehouse" %} "warehouse", and blocks are like {% include icon.html icon="fa-solid fa-boxes-stacked" %} "boxes" inside the warehouse, pools are like {% include icon.html icon="fa-solid fa-boxes-packing" %} "shelves" for organizing and moving those boxes within the warehouse.
 
 ### Memory Allocator
 

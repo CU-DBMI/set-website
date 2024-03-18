@@ -5,6 +5,8 @@ description: The software engineering team of the Department of Biomedical Infor
 header: images/background.jpg
 footer: images/background.jpg
 
+proofer: false
+
 # site social media and other links
 links:
   github: CU-DBMI
