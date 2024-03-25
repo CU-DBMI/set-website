@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Software Linting with R | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-32/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Software Linting with R">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Software Linting with R">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-32">
+<meta property="og:image" content="/set-website/preview/pr-32/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Software Linting with R">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-32">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-32/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-03-25T13:51:07+00:00">
+  <meta property="article:published_time" content="2023-01-30T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-03-25T13:51:07+00:00">
+  <meta name="revised" content="2024-03-25T13:51:07+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Software Linting with R" },
+      "datePublished": "2023-01-30T00:00:00+00:00",
+      "dateModified": "2024-03-25T13:51:07+00:00",
+    
+    "name": "Tip of the Week: Software Linting with R",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Software Linting with R",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-32/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-32"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-32/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-32/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-32/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-32/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-32/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-32/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-32/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-32/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-32/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-32/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  background: ;
+  dark: ;
+  size: 1;
+-->
+
+
+<h1 class="center">Tip of the Week: Software Linting with R</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-32/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-32/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-32/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>January 30, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>March 25, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-32/blog">
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20r%22" class="tag" data-tooltip='Show items with the tag "r"'>
+        r
+      </a>
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20static-analysis%22" class="tag" data-tooltip='Show items with the tag "static-analysis"'>
+        static-analysis
+      </a>
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20linting%22" class="tag" data-tooltip='Show items with the tag "linting"'>
+        linting
+      </a>
+    
+      <a href="/set-website/preview/pr-32/blog?search=%22tag:%20continuous-testing%22" class="tag" data-tooltip='Show items with the tag "continuous-testing"'>
+        continuous-testing
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<!-- excerpt start -->
+
+<p>This article covers using the software technique of linting on R code in order to improve code quality, development velocity, and collaboration.</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn’t read);</strong>
+Use software linting (<a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a>) practices on your R code with existing packages <a href="https://github.com/r-lib/lintr"><code class="language-plaintext highlighter-rouge">lintr</code></a> and <a href="https://github.com/r-lib/styler"><code class="language-plaintext highlighter-rouge">styler</code></a> (among others). These linters may be applied using <a href="https://pre-commit.com">pre-commit</a> in your local development environment or as <a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous tests</a> using for example <a href="https://docs.github.com/en/actions">Github Actions</a>.</p>
+
+<h2 id="treating-r-as-software">Treating R as Software</h2>
+
+<blockquote>
+  <p>“Many users think of R as a statistics system. We prefer to think of it as an environment within which statistical techniques are implemented.”</p>
+</blockquote>
+
+<p><em>(<a href="https://www.r-project.org/about.html">R-Project: What is R?</a>)</em></p>
+
+<p>The <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R programming language</a> is sometimes treated as <em>only</em> a statistics system instead of software. This treatment can sometimes lead to common issues in development which are experienced in other languages. Addressing R as software enables developers to enhance their work by taking benefit from existing concepts applied to many other languages.</p>
+
+<h2 id="linting-with-r">Linting with R</h2>
+
+<pre class="mermaid">
+flowchart LR
+  write\[Write R code] --&gt; |check| check\[Check code with linters]
+  check --&gt; |revise| write
+</pre>
+<script type="module">
+  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+<p class="center"><em>Workflow loop depicting writing R code and revising with linters.</em></p>
+
+<p>Software linting, or <a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a>, is one way to ensure a minimum level of code quality without writing new tests. Linting checks how your code is structured without running it to make sure it abides by common language paradigms and logical structures. Using linting tools allows a developer to gain quick insights about their code before it is viewed or used by others.</p>
+
+<p>One way to lint your R code is by using the <a href="https://github.com/r-lib/lintr"><code class="language-plaintext highlighter-rouge">lintr</code></a> package. The <code class="language-plaintext highlighter-rouge">lintr</code> package is also complementary of the <a href="https://github.com/r-lib/styler"><code class="language-plaintext highlighter-rouge">styler</code></a> pacakge, which formats the syntax of R code in a consistent way. Both of these can be used independently or as part of continuous quality checks for R code repositories.</p>
+
+<h2 id="automated-linting-checks-with-r">Automated Linting Checks with R</h2>
+
+<pre class="mermaid">
+flowchart LR
+  subgraph development
+    write
+    check
+  end
+  subgraph linters
+    direction LR
+    lintr
+    styler
+  end
+  check &lt;-.- linters
+  write\[Write R code] --&gt; |check| check\[Check code with pre-commit]
+  check --&gt; |revise| write
+</pre>
+
+<p class="center"><em>Workflow showing development with pre-commit using multiple linters.</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">lintr</code> and <code class="language-plaintext highlighter-rouge">styler</code> can be incorporated into automated checks to help make sure linting (or other steps) are always used with new code. One tool which can help with this is <a href="https://pre-commit.com/">pre-commit</a>, which acts as both a local development tool in addition to providing observability within source control (more on this later).</p>
+
+<p>Using pre-commit locally enables quick feedback loops using one or many checkers (such as <code class="language-plaintext highlighter-rouge">lintr</code>, <code class="language-plaintext highlighter-rouge">styler</code>, or others). Pre-commit may be used through the use of <a href="https://pre-commit.com/#usage">git hooks</a> or manually using <a href="https://pre-commit.com/#pre-commit-run"><code class="language-plaintext highlighter-rouge">pre-commit run ...</code></a> from a command-line. See <a href="https://github.com/lorenzwalthert/precommit">this example of pre-commit checks with R</a> for an example of multiple pre-commit checks for R code.</p>
+
+<h2 id="continuous-and-observable-testing-for-r">Continuous and Observable Testing for R</h2>
+
+<pre class="mermaid">
+flowchart LR
+  subgraph development [local development]
+    direction LR
+    write
+    check
+    commit
+  end
+  subgraph remote[Github repository]
+    direction LR
+    action["Check code (remotely)"]
+  end
+  write\[Write R code] --&gt; |check| check\[Check code with pre-commit]
+  check --&gt; |revise| write
+  check --&gt; commit[commit + push]
+  commit --&gt; |optional trigger| action
+  check -.-&gt; |perform same checks| action
+</pre>
+
+<p class="center"><em>Workflow showing pre-commit used as continuous testing tool with Github.</em></p>
+
+<p>Pre-commit linting checks can also be incorporated into <a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a> performed on your repository. One way to do this is using <a href="https://docs.github.com/en/actions">Github Actions</a>. Github Actions provides a programmatic way to specify automatic steps taken as changes occur to a repository.</p>
+
+<p>Pre-commit provides <a href="https://github.com/pre-commit/action">an example Github Action</a> which will automatically check and alert repository maintainers when code challenges are detected. Using pre-commit in this way allows R developers to ensure <code class="language-plaintext highlighter-rouge">lintr</code> checks are performed on any new work checked into a repository. This can have benefits towards decreasing pull request (PR) review time and standardize how code collaboration takes place for R developers.</p>
+
+<h2 id="resources">Resources</h2>
+
+<p>Please see the following the resources on this topic.</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/R_(programming_language)">R programming language</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a></li>
+  <li><a href="https://github.com/r-lib/lintr">R package: lintr</a></li>
+  <li><a href="https://github.com/r-lib/styler">R package: styler</a></li>
+  <li><a href="https://pre-commit.com/">pre-commit</a></li>
+  <li><a href="https://github.com/lorenzwalthert/precommit">Example of pre-commit checks with R</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
+  <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
+  <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-32/2023/01/17/Timebox-Your-Software-Work.html">
+        Tip of the Week: Timebox Your Software Work
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-32/2023/02/13/Branch-Review-and-Learn.html">
+        Tip of the Week: Branch, Review, and Learn
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-32/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
