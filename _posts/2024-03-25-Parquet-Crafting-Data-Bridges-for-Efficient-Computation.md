@@ -15,7 +15,7 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="../images/parquet.png"  %}
+{% include figure.html image="images/parquet.png"  %}
 
 <!-- excerpt start -->
 [Apache Parquet](https://en.wikipedia.org/wiki/Apache_Parquet) is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
@@ -33,6 +33,7 @@ We cover a few pragmatic aspects of the Parquet file format below.
 
 ### <i class="fas fa-table-columns"></i>  Columnar data storage
 
+<!-- retain original HTML as code-based content 
 <table>
 <tr>
 <th>Data Type</th>
@@ -86,9 +87,9 @@ We cover a few pragmatic aspects of the Parquet file format below.
 </td>
 </tr>
 </table>
+-->
 
-_Parquet organizes column values together. CSV intermixes values from multiple columns._
-{:.center}
+{% include figure.html image="images/csv_vs_parquet_data_on_file.png" caption="Parquet organizes column values together. CSV intermixes values from multiple columns" %}
 
 Parquet files store data in a __"columnar"__ way which is distinct from other formats.
 We can understand this columnar format by using [plaintext](https://en.wikipedia.org/wiki/Plaintext) [comma-separated value (CSV)](https://en.wikipedia.org/wiki/Comma-separated_values) format as a reference point.
