@@ -62,10 +62,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-03-26T19:10:44+00:00">
+  <meta property="og:updated_time" content="2024-03-26T19:14:11+00:00">
   <meta property="article:published_time" content="2024-03-25T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-03-26T19:10:44+00:00">
-  <meta name="revised" content="2024-03-26T19:10:44+00:00">
+  <meta property="article:modified_time" content="2024-03-26T19:14:11+00:00">
+  <meta name="revised" content="2024-03-26T19:14:11+00:00">
 
 
 <script type="application/ld+json">
@@ -75,7 +75,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Parquet: Crafting Data Bridges for Efficient Computation" },
       "datePublished": "2024-03-25T00:00:00+00:00",
-      "dateModified": "2024-03-26T19:10:44+00:00",
+      "dateModified": "2024-03-26T19:14:11+00:00",
     
     "name": "Parquet: Crafting Data Bridges for Efficient Computation",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -664,39 +664,7 @@ For example, Parquet files allow you to query individual columns without needing
 }
 </style>
 
-<pre><code class="language-mermaid">flowchart TB
-subgraph parquet_file["Parquet File"]
-direction TB
-subgraph rowgroup_1 ["Row group 1"]
-    direction TB
-    subgraph column_1_a["Column A"]
-        direction TB
-        page_1_a_0["Page 0"]
-        page_1_a_1["Page 1"]
-    end
-    subgraph column_1_b["Column B"]
-        direction TB
-        page_1_b_0["Page 0"]
-        page_1_b_1["Page 1"]
-    end
-end
-
-subgraph rowgroup_2 ["Row group 2"]
-    direction TB
-    subgraph column_2_a["Column A"]
-        direction TB
-        page_2_a_0["Page 0"]
-        page_2_a_1["Page 1"]
-    end
-    subgraph column_2_b["Column B"]
-        direction TB
-        page_2_b_0["Page 0"]
-        page_2_b_1["Page 1"]
-    end
-
-end
-end
-</code></pre>
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG5zdWJncmFwaCBwYXJxdWV0X2ZpbGVbXCJQYXJxdWV0IEZpbGVcIl1cbmRpcmVjdGlvbiBUQlxuc3ViZ3JhcGggcm93Z3JvdXBfMSBbXCJSb3cgZ3JvdXAgMVwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBjb2x1bW5fMV9hW1wiQ29sdW1uIEFcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8xX2FfMFtcIlBhZ2UgMFwiXVxucGFnZV8xX2FfMVtcIlBhZ2UgMVwiXVxuZW5kXG5zdWJncmFwaCBjb2x1bW5fMV9iW1wiQ29sdW1uIEJcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8xX2JfMFtcIlBhZ2UgMFwiXVxucGFnZV8xX2JfMVtcIlBhZ2UgMVwiXVxuZW5kXG5lbmRcbiUlLVxuc3ViZ3JhcGggcm93Z3JvdXBfMiBbXCJSb3cgZ3JvdXAgMlwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBjb2x1bW5fMl9hW1wiQ29sdW1uIEFcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8yX2FfMFtcIlBhZ2UgMFwiXVxucGFnZV8yX2FfMVtcIlBhZ2UgMVwiXVxuZW5kXG5zdWJncmFwaCBjb2x1bW5fMl9iW1wiQ29sdW1uIEJcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8yX2JfMFtcIlBhZ2UgMFwiXVxucGFnZV8yX2JfMVtcIlBhZ2UgMVwiXVxuZW5kXG4lJS1cbmVuZFxuZW5kIiwibWVybWFpZCI6bnVsbH0"></p>
 
 <p class="center"><em>Parquet organizes data using row groups, columns, and pages.</em></p>
 
