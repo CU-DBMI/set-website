@@ -112,7 +112,7 @@ For example, Parquet files allow you to query individual columns without needing
 }
 </style>
 
-```mermaid
+```mermaid!
 flowchart TB
 subgraph parquet_file["Parquet File"]
 direction TB
