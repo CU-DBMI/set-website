@@ -15,7 +15,10 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="images/parquet.png"  %}
+{% include figure.html image="images/Apache_Parquet_logo.svg" width="500px" %}
+
+_(Image: [Vulphere, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Apache_Parquet_logo.svg))_
+{:.center}
 
 <!-- excerpt start -->
 [Apache Parquet](https://en.wikipedia.org/wiki/Apache_Parquet) is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
@@ -26,9 +29,20 @@ This article will introduce the Parquet format from a research data engineering 
 
 ## Understanding the Parquet file format
 
+{% include figure.html image="images/parquet_flooring.jpg" width="500px" %}
+
+_(Image: [Robert Fischbacher163, Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Fischgr%C3%A4t_route_4_fischbacher_living.jpg))_
+{:.center}
+
 Parquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges (for example, in [Apache Hadoop](https://en.wikipedia.org/wiki/Apache_Hadoop) systems).
 It was partially inspired by a Google Research publication: [_"Dremel: Interactive Analysis of Web-Scale Datasets"_](https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/).
-Parquet is similar and has related goals to that of the [ORC](https://en.wikipedia.org/wiki/Apache_ORC), [Avro](https://en.wikipedia.org/wiki/Apache_Avro), and [Feather](https://arrow.apache.org/docs/python/feather.html) file formats.
+Parquet joined the [Apache Software Foundation](https://en.wikipedia.org/wiki/The_Apache_Software_Foundation) in 2015 as a Top-Level Project (TLP) ([link](https://news.apache.org/foundation/entry/the_apache_software_foundation_announces75))
+The format is similar and has related goals to that of the [ORC](https://en.wikipedia.org/wiki/Apache_ORC), [Avro](https://en.wikipedia.org/wiki/Apache_Avro), and [Feather](https://arrow.apache.org/docs/python/feather.html) file formats.
+
+One definition for the word "parquet" is: _"A wooden floor made of parquetry."_ ([Wiktionary: Parquet](https://en.wiktionary.org/wiki/parquet)).
+Parquetry are often used to form decorative geometric patterns in flooring.
+It seems fitting to name the format this way due to how columns and values are structured (see more below), akin to constructing a beautiful 'floor' for your data efforts.
+
 We cover a few pragmatic aspects of the Parquet file format below.
 
 ### <i class="fas fa-table-columns"></i>  Columnar data storage
