@@ -838,7 +838,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -877,10 +877,10 @@
 
       
       
-      <p data-search="Parquet  Crafting Data Bridges for Efficient Computation          These blog posts are intended to provide software tips  concepts  and tools geared towards helping you achieve your goals  Viewsexpressed in the content belong to the content creators and not the organization  its affiliates  or employees  If youhave any questions or suggestions for blog posts  please don  8217 t hesitate to reach out   Introduction          Apache Parquet is a columnar and strongly typed tabular data storage format built for scalable processing which is widely compatible with many data models  programming languages  and software systems Parquet files  typically denoted with a  parquet filename extension  are typically compressed within the format itself and are often used in embedded or cloud based high performance scenariosIt has grown in popularity since it was introduced in 2013 and is used as a core data storage technology in many organizations This article will introduce the Parquet format from a research data engineering perspective Understanding the Parquet file formatParquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges  for example  in Apache Hadoop systems  It was partially inspired by a Google Research publication    8220 Dremel  Interactive Analysis of Web Scale Datasets  8221  Parquet is similar and has related goals to that of the ORC  Avro  and Feather file formats We cover a few pragmatic aspects of the Parquet file format below   Columnar data storage                    Parquet organizes column values together  CSV intermixes values from multiple columns      Parquet files store data in a   8220 columnar  8221  way which is distinct from other formats We can understand this columnar format by using plaintext comma separated value  CSV  format as a reference point CSV files store data in a row orientated way by using new lines to represent rows of values Reading all values of a single column in CSV often involves seeking through multiple other portions of the data by default Parquet files are binary in nature  optimizing storage by arranging values from individual columns in close proximity to each other This enables the data to be stored and retrieved more efficiently than possible with CSV files For example  Parquet files allow you to query individual columns without needing to traverse non necessary column value data  Parquet format abstractionsRow groups  column chunks  and pagesParquet organizes data using row groups  columns  and pages Parquet files organize column data inside of row groups Each row group includes chunks of columns in the form of pages Row groups and column pages are configurable and may change depending on the configuration of your Parquet client Note  you don  8217 t need to be an expert on these details to leverage and benefit from Parquet as these are often configured for default general purposes Page encodingsPages within column chunks may have a number of different encodings Parquet encodings are often selected based on the type of data included within columns and the operational or performance needs associated with a project By default  Plain  PLAIN  encoding is used which means all values are stored back to back Another encoding type  Run Length Encoding  RLE   is often used to efficiently store columns with many consecutively repeated values Column encodings are sometimes set for each individual column  usually in an automatic way based on the data involved  Compressionimport osimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3  4  5           B     foo    bar    baz    qux    quux            C    0 1  0 2  0 3  0 4  0 5          Write Parquet file with Snappy compressionparquet write table table table  where  example snappy parquet   compression  SNAPPY    Write Parquet file with Zstd compressionparquet write table table table  where  example zstd parquet   compression  ZSTD  Parquet files can be compressed as they  8217 re written using parameters Parquet files may leverage compression to help reduce file size and increase data read performance Compression is applied at the page level  combining benefits from various encodings Data stored through Parquet is usually compressed when it is written  denoting the compression type through the filename  for example  filename snappy parquet  Snappy is often used as a common compression algorithm for Parquet data Brotli  Gzip  ZSTD  LZ4 are also sometimes used It  8217 s worth exploring what compression works best for the data and systems you use  for example  ZSTD compression may hold benefits     8220 strongly typed  8221  Dataimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar   1           C    0 1  0 2  0 3          write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    raises exception   ArrowTypeError  Expected bytes  got a  int  object  for column B   Note  while this is an Arrow in memory data exception  it also  prevents us from attempting to perform incompatible operations  within the Parquet file Data value must be all of the same type within a Parquet column Data within Parquet is considered   8220 strongly typed  8221   entailing specific data types  such as integer  string  etc   associated with each column and value Attempting to store a data value type which does not match the column data type will usually result in an error  or implied conversion  This can lead to performance and compression benefits due to how quickly Parquet readers can determine the data type Strongly typed data also embeds a kind of validation directly inside your work  data errors   8220 shift left  8221  and are often discovered earlier  See here for more on data quality validation topics we  8217 ve written about  Complex data handlingimport pyarrow as pafrom pyarrow import parquet  create a pyarrow table with complex data typestable   pa Table from pydict               A      key1    val1      key2    val2             B     1  2    3  4            C                bytearray     encode  utf 8                bytearray     encode  utf 8                      write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    read the schema of the parquet fileprint parquet read schema where  example parquet     prints   A  struct lt key1  string  key2  string gt     child 0  key1  string    child 1  key2  string  B  list lt element  int64 gt     child 0  element  int64  C  binaryParquet file columns may contain complex data types such as nested types  lists  dictionaries  and byte arrays Parquet files may store many data types that are complicated or impossible to store in other formats For example  images may be stored using the byte array storage type Nested data may be stored using LIST or MAP logical types Dates or times may be stored using various temporal data types Oftentimes  complex data conversion within Parquet files is already implemented  for example  in PyArrow   Metadataimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar    baz            C    0 1  0 2  0 3          add custom metadata to tabletable   table replace schema metadata metadata   data producer    CU DBMI SET Blog     write the pyarrow table to a parquet fileparquet write table table table  where  example snappy parquet   compression  SNAPPY    read the schemaprint parquet read schema where  example snappy parquet     prints  A  int64  B  string  C  double     schema metadata     data producer   CU DBMI SET Blog Metadata are treated as a distinct and customizable components of Parquet files The Parquet format treats data about the data  metadata  separately from that of column value data Parquet metadata includes column names  data types  compression  various statistics about the file  and custom fields  in key value form  This metadata may be read without reading column value data which can assist with data exploration tasks  especially if the data are large   Multi file   8220 datasets  8221 import pathlibimport pyarrow as pafrom pyarrow import parquetpathlib Path    dataset   mkdir exist ok True   create pyarrow tablestable 1   pa Table from pydict   A    1   table 2   pa Table from pydict   A    2  3     write the pyarrow table to parquet filesparquet write table table table 1  where    dataset example 1 parquet  parquet write table table table 2  where    dataset example 2 parquet    read the parquet datasetprint parquet ParquetDataset    dataset   read     prints  note that  for ex    1  is a row group of column A   pyarrow Table  A  int64        A    1   2 3  Parquet datasets may be composed of one or many individual Parquet files Parquet files may be used individually or treated as a   8220 dataset  8221  through file groups which include the same schema  column names and types  This means you can store   8220 chunks  8221  of Parquet based data in one or many files and provides opportunities for intermixing or extending data When reading Parquet data this way libraries usually use the directory as a way to parse all files as a single dataset Multi file datasets mean you gain the ability to store arbitrarily large amounts of data by sidestepping  for example  inode limitations  Apache Arrow memory format integrationimport pathlibimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar    baz            C    0 1  0 2  0 3          write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    show schema of table and parquet fileprint table schema types print parquet read schema  example parquet   types   prints   DataType int64   DataType string   DataType double     DataType int64   DataType string   DataType double  Parquet file and Arrow data types are well aligned The Parquet format has robust support and integration with the Apache Arrow memory format This enables consistency across Parquet integration and how the data are read using various programming languages  the Arrow memory format is relatively uniform across these  Performance with ParquetParquet files often outperforms traditional formats due to how it is designed Other data file formats may vary in performance contingent on specific configurations and system integration We urge you to perform your own testing to find out what works best for your circumstances See below for a list of references which compare Parquet to other formats   CSV vs Parquet   Speed up data analytics and wrangling with Parquet files  Posit   CSV vs Parquet   Apache Parquet vs  CSV Files  DZone   Feather vs Parquet   Feather V2 with Compression Support in Apache Arrow 0 17 0  Ursa Labs   ORC vs Parquet   The impact of columnar file formats on SQL on hadoop engine performance  A study on ORC and Parquet  Concurrency and Computation  Practice and Experience How can you use Parquet The Parquet format is common in many data management platforms and libraries Below are a list of just a few popular places where you can use Parquet   Python          Pandas  pd DataFrame to parquet    pd read parquet         Apache Spark  Spark SQL Guide  Parquet Files       PyTorch  ParquetDataFrameLoader       PyArrow  PyArrow  Reading and Writing the Apache Parquet Format         R          dplyr  Arrow  Working with Arrow Datasets and dplyr       Arrow  write parquet    read parquet         DuckDB  DuckDB R API  DuckDB  Reading and Writing Parquet Files       Concluding ThoughtsThis article covered the Parquet file format including notable features and usage Thank you for joining us on this exploration of Parquet We appreciate your support  hope the content here helps with your data decisions  and look forward to continuing the exploration of data formats in future posts ">
+      <p data-search="Parquet  Crafting Data Bridges for Efficient Computation          These blog posts are intended to provide software tips  concepts  and tools geared towards helping you achieve your goals  Viewsexpressed in the content belong to the content creators and not the organization  its affiliates  or employees  If youhave any questions or suggestions for blog posts  please don  8217 t hesitate to reach out   Introduction          Apache Parquet is a columnar and strongly typed tabular data storage format built for scalable processing which is widely compatible with many data models  programming languages  and software systems Parquet files  typically denoted with a  parquet filename extension  are typically compressed within the format itself and are often used in embedded or cloud based high performance scenarios It has grown in popularity since it was introduced in 2013 and is used as a core data storage technology in many organizations This article will introduce the Parquet format from a research data engineering perspective Understanding the Parquet file formatParquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges  for example  in Apache Hadoop systems  It was partially inspired by a Google Research publication    8220 Dremel  Interactive Analysis of Web Scale Datasets  8221  Parquet is similar and has related goals to that of the ORC  Avro  and Feather file formats We cover a few pragmatic aspects of the Parquet file format below   Columnar data storage                    Parquet organizes column values together  CSV intermixes values from multiple columns      Parquet files store data in a   8220 columnar  8221  way which is distinct from other formats We can understand this columnar format by using plaintext comma separated value  CSV  format as a reference point CSV files store data in a row orientated way by using new lines to represent rows of values Reading all values of a single column in CSV often involves seeking through multiple other portions of the data by default Parquet files are binary in nature  optimizing storage by arranging values from individual columns in close proximity to each other This enables the data to be stored and retrieved more efficiently than possible with CSV files For example  Parquet files allow you to query individual columns without needing to traverse non necessary column value data  Parquet format abstractionsRow groups  column chunks  and pagesParquet organizes data using row groups  columns  and pages Parquet files organize column data inside of row groups Each row group includes chunks of columns in the form of pages Row groups and column pages are configurable and may change depending on the configuration of your Parquet client Note  you don  8217 t need to be an expert on these details to leverage and benefit from Parquet as these are often configured for default general purposes Page encodingsPages within column chunks may have a number of different encodings Parquet encodings are often selected based on the type of data included within columns and the operational or performance needs associated with a project By default  Plain  PLAIN  encoding is used which means all values are stored back to back Another encoding type  Run Length Encoding  RLE   is often used to efficiently store columns with many consecutively repeated values Column encodings are sometimes set for each individual column  usually in an automatic way based on the data involved  Compressionimport osimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3  4  5           B     foo    bar    baz    qux    quux            C    0 1  0 2  0 3  0 4  0 5          Write Parquet file with Snappy compressionparquet write table table table  where  example snappy parquet   compression  SNAPPY    Write Parquet file with Zstd compressionparquet write table table table  where  example zstd parquet   compression  ZSTD  Parquet files can be compressed as they  8217 re written using parameters Parquet files may leverage compression to help reduce file size and increase data read performance Compression is applied at the page level  combining benefits from various encodings Data stored through Parquet is usually compressed when it is written  denoting the compression type through the filename  for example  filename snappy parquet  Snappy is often used as a common compression algorithm for Parquet data Brotli  Gzip  ZSTD  LZ4 are also sometimes used It  8217 s worth exploring what compression works best for the data and systems you use  for example  ZSTD compression may hold benefits     8220 Strongly typed  8221  dataimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar   1           C    0 1  0 2  0 3          write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    raises exception   ArrowTypeError  Expected bytes  got a  int  object  for column B   Note  while this is an Arrow in memory data exception  it also  prevents us from attempting to perform incompatible operations  within the Parquet file Data value must be all of the same type within a Parquet column Data within Parquet is   8220 strongly typed  8221   specific data types  such as integer  string  etc   are associated with each column  and thus value Attempting to store a data value type which does not match the column data type will usually result in an error This can lead to performance and compression benefits due to how quickly Parquet readers can determine the data type Strongly typed data also embeds a kind of validation directly inside your work  data errors   8220 shift left  8221  and are often discovered earlier  See here for more on data quality validation topics we  8217 ve written about  Complex data handlingimport pyarrow as pafrom pyarrow import parquet  create a pyarrow table with complex data typestable   pa Table from pydict               A      key1    val1      key2    val2             B     1  2    3  4            C                bytearray     encode  utf 8                bytearray     encode  utf 8                      write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    read the schema of the parquet fileprint parquet read schema where  example parquet     prints   A  struct lt key1  string  key2  string gt     child 0  key1  string    child 1  key2  string  B  list lt element  int64 gt     child 0  element  int64  C  binaryParquet file columns may contain complex data types such as nested types  lists  dictionaries  and byte arrays Parquet files may store many data types that are complicated or impossible to store in other formats For example  images may be stored using the byte array storage type Nested data may be stored using LIST or MAP logical types Dates or times may be stored using various temporal data types Oftentimes  complex data conversion within Parquet files is already implemented  for example  in PyArrow   Metadataimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar    baz            C    0 1  0 2  0 3          add custom metadata to tabletable   table replace schema metadata metadata   data producer    CU DBMI SET Blog     write the pyarrow table to a parquet fileparquet write table table table  where  example snappy parquet   compression  SNAPPY    read the schemaprint parquet read schema where  example snappy parquet     prints  A  int64  B  string  C  double     schema metadata     data producer   CU DBMI SET Blog Metadata are treated as a distinct and customizable components of Parquet files The Parquet format treats data about the data  metadata  separately from that of column value data Parquet metadata includes column names  data types  compression  various statistics about the file  and custom fields  in key value form  This metadata may be read without reading column value data which can assist with data exploration tasks  especially if the data are large   Multi file   8220 datasets  8221 import pathlibimport pyarrow as pafrom pyarrow import parquetpathlib Path    dataset   mkdir exist ok True   create pyarrow tablestable 1   pa Table from pydict   A    1   table 2   pa Table from pydict   A    2  3     write the pyarrow table to parquet filesparquet write table table table 1  where    dataset example 1 parquet  parquet write table table table 2  where    dataset example 2 parquet    read the parquet datasetprint parquet ParquetDataset    dataset   read     prints  note that  for ex    1  is a row group of column A   pyarrow Table  A  int64        A    1   2 3  Parquet datasets may be composed of one or many individual Parquet files Parquet files may be used individually or treated as a   8220 dataset  8221  through file groups which include the same schema  column names and types  This means you can store   8220 chunks  8221  of Parquet based data in one or many files and provides opportunities for intermixing or extending data When reading Parquet data this way libraries usually use the directory as a way to parse all files as a single dataset Multi file datasets mean you gain the ability to store arbitrarily large amounts of data by sidestepping  for example  inode limitations  Apache Arrow memory format integrationimport pathlibimport pyarrow as pafrom pyarrow import parquet  create a pyarrow tabletable   pa Table from pydict               A    1  2  3           B     foo    bar    baz            C    0 1  0 2  0 3          write the pyarrow table to a parquet fileparquet write table table table  where  example parquet    show schema of table and parquet fileprint table schema types print parquet read schema  example parquet   types   prints   DataType int64   DataType string   DataType double     DataType int64   DataType string   DataType double  Parquet file and Arrow data types are well aligned The Parquet format has robust support and integration with the Apache Arrow memory format This enables consistency across Parquet integration and how the data are read using various programming languages  the Arrow memory format is relatively uniform across these  Performance with ParquetParquet files often outperforms traditional formats due to how it is designed Other data file formats may vary in performance contingent on specific configurations and system integration We urge you to perform your own testing to find out what works best for your circumstances See below for a list of references which compare Parquet to other formats   CSV vs Parquet   Speed up data analytics and wrangling with Parquet files  Posit   CSV vs Parquet   Apache Parquet vs  CSV Files  DZone   Feather vs Parquet   Feather V2 with Compression Support in Apache Arrow 0 17 0  Ursa Labs   ORC vs Parquet   The impact of columnar file formats on SQL on hadoop engine performance  A study on ORC and Parquet  Concurrency and Computation  Practice and Experience How can you use Parquet The Parquet format is common in many data management platforms and libraries Below are a list of just a few popular places where you can use Parquet   Python          Pandas  pd DataFrame to parquet    pd read parquet         Apache Spark  Spark SQL Guide  Parquet Files       PyTorch  ParquetDataFrameLoader       PyArrow  PyArrow  Reading and Writing the Apache Parquet Format         R          dplyr  Arrow  Working with Arrow Datasets and dplyr       Arrow  write parquet    read parquet         DuckDB  DuckDB R API  DuckDB  Reading and Writing Parquet Files       Concluding ThoughtsThis article covered the Parquet file format including notable features and usage Thank you for joining us on this exploration of Parquet We appreciate your support  hope the content here helps with your data decisions  and look forward to continuing the exploration of data formats in future posts ">
         
 Apache Parquet is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
-Parquet files (typically denoted with a .parquet filename extension) are typically compressed within the format itself and are often used in embedded or cloud-based high-performance scenarios
+Parquet files (typically denoted with a .parquet filename extension) are typically compressed within the format itself and are often used in embedded or cloud-based high-performance scenarios.
 It has grown in popularity since it was introduced in 2013 and is used as a core data storage technology in many organizations.
 This article will introduce the Parquet format from a research data engineering perspective.
 
@@ -946,7 +946,7 @@ This article will introduce the Parquet format from a research data engineering 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1063,7 +1063,7 @@ This article will cover package dependency management through special files gene
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1172,7 +1172,7 @@ This post will cover some computer memory definitions, how Python makes use of c
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1283,7 +1283,7 @@ This post channels the spirit of Thanksgiving by giving our thanks through code 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1407,7 +1407,7 @@ This article will cover a few tools which leverage these techniques for addressi
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1526,7 +1526,7 @@ Python packaging is the craft of preparing for and reaching distribution of your
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1643,7 +1643,7 @@ This readme will cover a background on the technologies and how to use the conte
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1754,7 +1754,7 @@ There are many routine tasks which can be automated to help save time and increa
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1865,7 +1865,7 @@ Git provides a feature called branching which facilitates parallel and segmented
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -1976,7 +1976,7 @@ This article covers using the software technique of linting on R code in order t
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -2091,7 +2091,7 @@ Programming often involves long periods of problem solving which can sometimes l
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -2204,7 +2204,7 @@ Software documentation is sometimes treated as a less important or secondary asp
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -2323,7 +2323,7 @@ The act of creating software often involves many iterations of writing, personal
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -2438,7 +2438,7 @@ Apache Arrow is a language-independent and high performance data format useful i
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
@@ -2545,7 +2545,7 @@ Diagrams can be a useful way to illuminate and communicate ideas. Free-form draw
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>March 26, 2024</span>
+      <span>March 29, 2024</span>
     </span>
   
 </div>
