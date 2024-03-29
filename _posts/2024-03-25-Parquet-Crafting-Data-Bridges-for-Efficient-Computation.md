@@ -19,7 +19,7 @@ tags:
 
 <!-- excerpt start -->
 [Apache Parquet](https://en.wikipedia.org/wiki/Apache_Parquet) is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
-Parquet files (typically denoted with a `.parquet` filename extension) are typically compressed within the format itself and are often used in embedded or cloud-based high-performance scenarios
+Parquet files (typically denoted with a `.parquet` filename extension) are typically compressed within the format itself and are often used in embedded or cloud-based high-performance scenarios.
 It has grown in popularity since it was introduced in 2013 and is used as a core data storage technology in many organizations.
 This article will introduce the Parquet format from a research data engineering perspective.
 <!-- excerpt end -->
@@ -197,7 +197,7 @@ Data stored through Parquet is usually compressed when it is written, denoting t
 It's worth exploring what compression works best for the data and systems you use (for example, [ZSTD compression may hold benefits](https://www.uber.com/blog/cost-efficiency-big-data)).
 
 
-### <i class="fas fa-icons"></i> "strongly-typed" Data
+### <i class="fas fa-icons"></i> "Strongly-typed" data
 
 ```python
 import pyarrow as pa
@@ -225,8 +225,8 @@ parquet.write_table(table=table, where="example.parquet")
 _Data value must be all of the same type within a Parquet column._
 {:.center}
 
-Data within Parquet is considered ["strongly-typed"](https://en.wikipedia.org/wiki/Strong_and_weak_typing), entailing specific data types (such as integer, string, etc.) associated with each column and value.
-Attempting to store a data value type which does not match the column data type will usually result in an error (or implied conversion).
+Data within Parquet is ["strongly-typed"](https://en.wikipedia.org/wiki/Strong_and_weak_typing); specific data types (such as integer, string, etc.) are associated with each column, and thus value.
+Attempting to store a data value type which does not match the column data type will usually result in an error.
 This can lead to performance and compression benefits due to how quickly Parquet readers can determine the data type.
 Strongly-typed data also embeds a kind of validation directly inside your work (data errors ["shift left"](https://en.wikipedia.org/wiki/Shift-left_testing) and are often discovered earlier).
 [See here](https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html) for more on data quality validation topics we've written about.
