@@ -62,10 +62,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-03-29T15:10:06+00:00">
+  <meta property="og:updated_time" content="2024-03-29T16:29:13+00:00">
   <meta property="article:published_time" content="2024-03-25T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-03-29T15:10:06+00:00">
-  <meta name="revised" content="2024-03-29T15:10:06+00:00">
+  <meta property="article:modified_time" content="2024-03-29T16:29:13+00:00">
+  <meta name="revised" content="2024-03-29T16:29:13+00:00">
 
 
 <script type="application/ld+json">
@@ -75,7 +75,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Parquet: Crafting Data Bridges for Efficient Computation" },
       "datePublished": "2024-03-25T00:00:00+00:00",
-      "dateModified": "2024-03-29T15:10:06+00:00",
+      "dateModified": "2024-03-29T16:29:13+00:00",
     
     "name": "Parquet: Crafting Data Bridges for Efficient Computation",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -546,13 +546,15 @@ have any questions or suggestions for blog posts, please don’t hesitate to rea
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-33/images/parquet.png" style="
-        width: auto;
+    <img src="/set-website/preview/pr-33/images/Apache_Parquet_logo.svg" style="
+        width: 500px;
         max-height: unset;
       " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-33/images/fallback.svg'; this.onerror = null;">
   </a>
   
 </figure>
+
+<p class="center"><em>(Image: <a href="https://commons.wikimedia.org/wiki/File:Apache_Parquet_logo.svg">Vulphere, Wikimedia Commons</a>)</em></p>
 
 <!-- excerpt start -->
 <p><a href="https://en.wikipedia.org/wiki/Apache_Parquet">Apache Parquet</a> is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
@@ -563,10 +565,28 @@ This article will introduce the Parquet format from a research data engineering 
 
 <h2 id="understanding-the-parquet-file-format">Understanding the Parquet file format</h2>
 
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-33/images/parquet_flooring.jpg" style="
+        width: 500px;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-33/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p class="center"><em>(Image: <a href="https://commons.wikimedia.org/wiki/File:Fischgr%C3%A4t_route_4_fischbacher_living.jpg">Robert Fischbacher163, Wikimedia Commons</a>)</em></p>
+
 <p>Parquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges (for example, in <a href="https://en.wikipedia.org/wiki/Apache_Hadoop">Apache Hadoop</a> systems).
 It was partially inspired by a Google Research publication: <a href="https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/"><em>“Dremel: Interactive Analysis of Web-Scale Datasets”</em></a>.
-Parquet is similar and has related goals to that of the <a href="https://en.wikipedia.org/wiki/Apache_ORC">ORC</a>, <a href="https://en.wikipedia.org/wiki/Apache_Avro">Avro</a>, and <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a> file formats.
-We cover a few pragmatic aspects of the Parquet file format below.</p>
+Parquet joined the <a href="https://en.wikipedia.org/wiki/The_Apache_Software_Foundation">Apache Software Foundation</a> in 2015 as a Top-Level Project (TLP) (<a href="https://news.apache.org/foundation/entry/the_apache_software_foundation_announces75">link</a>)
+The format is similar and has related goals to that of the <a href="https://en.wikipedia.org/wiki/Apache_ORC">ORC</a>, <a href="https://en.wikipedia.org/wiki/Apache_Avro">Avro</a>, and <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a> file formats.</p>
+
+<p>One definition for the word “parquet” is: <em>“A wooden floor made of parquetry.”</em> (<a href="https://en.wiktionary.org/wiki/parquet">Wiktionary: Parquet</a>).
+Parquetry are often used to form decorative geometric patterns in flooring.
+It seems fitting to name the format this way due to how columns and values are structured (see more below), akin to constructing a beautiful ‘floor’ for your data efforts.</p>
+
+<p>We cover a few pragmatic aspects of the Parquet file format below.</p>
 
 <h3 id="--columnar-data-storage">
 <i class="fas fa-table-columns"></i>  Columnar data storage</h3>
