@@ -1,1 +1,1 @@
-Sitemap: /set-website/sitemap.xml
+Sitemap: https://cu-dbmi.github.io/set-website/sitemap.xml
