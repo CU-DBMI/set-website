@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Codesgiving - Open-source Contribution Walkthrough | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-35/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-35">
+<meta property="og:image" content="/set-website/preview/pr-35/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-35">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-35/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-04-15T18:39:55+00:00">
+  <meta property="article:published_time" content="2023-11-15T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-04-15T18:39:55+00:00">
+  <meta name="revised" content="2024-04-15T18:39:55+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" },
+      "datePublished": "2023-11-15T00:00:00+00:00",
+      "dateModified": "2024-04-15T18:39:55+00:00",
+    
+    "name": "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Codesgiving - Open-source Contribution Walkthrough",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-35/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-35"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-35/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-35/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-35/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-35/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-35/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-35/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-35/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-35/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-35/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-35/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  background: ;
+  dark: ;
+  size: 1;
+-->
+
+
+<h1 class="center">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-35/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-35/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-35/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>November 15, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>April 15, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-35/blog">
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20codesgiving%22" class="tag" data-tooltip='Show items with the tag "codesgiving"'>
+        codesgiving
+      </a>
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20open-source%22" class="tag" data-tooltip='Show items with the tag "open-source"'>
+        open-source
+      </a>
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20contributions%22" class="tag" data-tooltip='Show items with the tag "contributions"'>
+        contributions
+      </a>
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20development-strategy%22" class="tag" data-tooltip='Show items with the tag "development-strategy"'>
+        development-strategy
+      </a>
+    
+      <a href="/set-website/preview/pr-35/blog?search=%22tag:%20process%22" class="tag" data-tooltip='Show items with the tag "process"'>
+        process
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="What good harvests from open-source have you experienced this year?">
+    <img src="/set-website/preview/pr-35/images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="What good harvests from open-source have you experienced this year?" loading="lazy" onerror="this.src = '/set-website/preview/pr-35/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      What good harvests from open-source have you experienced this year?
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+<p><a href="https://en.wikipedia.org/wiki/Thanksgiving">Thanksgiving</a> is a holiday practiced in many countries which focuses on gratitude for good harvests of the preceding year.
+In the United States, we celebrate Thanksgiving on the fourth Thursday of November each year often by eating meals we create together with others.
+This post channels the spirit of Thanksgiving by <em>giving</em> our thanks through <em>code</em> as a <strong><em>“Codesgiving”</em></strong>,  acknowledging and creating better software together.
+<!-- excerpt end --></p>
+
+<h2 id="giving-thanks-to-open-source-harvests">Giving Thanks to Open-source Harvests</h2>
+
+<p class="center"><i class="fas fa-handshake-angle" style="font-size:4em;"></i></p>
+
+<p>Part of building software involves the use of code which others have built, maintained, and distributed for a wider audience.
+Using other people’s work often comes in the form of <a href="https://en.wikipedia.org/wiki/Open_source">open-source</a> “harvesting” as we find solutions to software challenges we face.
+Examples might include installing and depending upon Python packages from <a href="https://en.wikipedia.org/wiki/Python_Package_Index">PyPI</a> or R packages from <a href="https://en.wikipedia.org/wiki/R_package#Comprehensive_R_Archive_Network_(CRAN)">CRAN</a> within your software projects.</p>
+
+<blockquote>
+  <p>“Real generosity toward the future lies in giving all to the present.”
+- Albert Camus</p>
+</blockquote>
+
+<p>These open-source projects have internal costs which are sometimes invisible to those who consume them.
+Every software project has an implied level of <a href="https://bssw.io/blog_posts/long-term-software-gardening-strategies-for-cultivating-scientific-development-ecosystems">software gardening</a> time costs involved to impede decay, practice continuous improvements, and evolve the work.
+One way to actively share our thanks for the projects we depend on is through applying our time towards code contributions on them.</p>
+
+<p>Many projects are in need of additional people’s thinking and development time.
+Have you ever noticed something that needs to be fixed or desirable functionality in a project you use?
+<strong><em>Consider adding your contributions to open-source!</em></strong></p>
+
+<h2 id="all-contributions-matter">All Contributions Matter</h2>
+
+<p class="center"><i class="fas fa-hands-holding-circle" style="font-size:4em;"></i></p>
+
+<p>Contributing to open-source can come in many forms and contributions don’t need to be gigantic to make an impact.
+Software often involves simplifying complexity.
+Simplification requires many actions beyond solely writing code.
+For example, a short walk outside, a conversation with someone, or a nap can sometimes help us with breakthroughs when it comes to development.
+By the same token, open-source benefits greatly from communications on discussion boards, bug or feature descriptions, or other work that might not be strictly considered “engineering”.</p>
+
+<h2 id="an-open-source-contribution-approach">An Open-source Contribution Approach</h2>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5yZXBvcnRlZFtcIlJlcG9ydFxcbm5lZWQocylcIl1cbnZlcmlmaWNhdGlvbltcIlZlcmlmeSBvciByZXBsaWNhdGVcXG4gdGhlIG5lZWRcIl1cbnZlcmlmeV9jaGVjazF7XCJBYmxlIHRvXFxudmVyaWZ5P1wifVxuc29sdXRpb25bXCJIeXBvdGhlc2l6ZVxcbiBhbmQgYXBwbHkgZml4XCJdXG52ZXJpZnlfY2hlY2sye1wiSXMgaXRcXG5yZXNvbHZlZD9cIn1cbnJlc29sdmVkW1wiUmVzb2x1dGlvblxcbmFuZCBwb3N0LWFjdGlvbnNcIl1cbiUlLVxucmVwb3J0ZWQgLS0-IHZlcmlmaWNhdGlvblxudmVyaWZpY2F0aW9uIC0tPiB2ZXJpZnlfY2hlY2sxXG52ZXJpZnlfY2hlY2sxIC0tPiB8Tm86IGdhdGhlclxcbm1vcmUgZGV0YWlsc3wgdmVyaWZpY2F0aW9uXG52ZXJpZnlfY2hlY2sxIC0tPiB8WWVzOiBhYmxlXFxudG8gdmVyaWZ5fCBzb2x1dGlvblxuc29sdXRpb24gLS0-IHZlcmlmeV9jaGVjazJcbnZlcmlmeV9jaGVjazIgLS0-IHxObzogdHJ5XFxuc29tZXRoaW5nIGVsc2V8IHNvbHV0aW9uXG52ZXJpZnlfY2hlY2syIC0tPiB8WWVzOiBpc3N1ZVxcbnJlc29sdmVkfHJlc29sdmVkXG4lJS1cbnN0eWxlIHJlcG9ydGVkIGZpbGw6I0ZFRjNDNyxzdHJva2U6I0Q5NzcwNjtcbnN0eWxlIHJlc29sdmVkIGZpbGw6I0JCRjdEMCxzdHJva2U6IzE2QTM0QTsiLCJtZXJtYWlkIjpudWxsfQ"></p>
+
+<p><em>The troubleshooting process as a workflow involving looped checks for verifying an issue and validating the solution fixes an issue.</em></p>
+
+<p>It can feel overwhelming to find a way to contribute to open-source.
+Similar to other software methodology, modularizing your approach can help you progress without being overwhelmed.
+Using a troubleshooting approach like the above can help you break down big challenges into bite-sized chunks.
+Consider each step as a “module” or “section” which needs to be addressed sequentially.</p>
+
+<h3 id="embrace-a-learning-mindset">Embrace a Learning Mindset</h3>
+
+<blockquote>
+  <p>“Before you speak ask yourself if what you are going to say <strong>is true, is kind, is necessary, is helpful</strong>. If the answer is no, maybe what you are about to say should be left unsaid.”
+- Bernard Meltzer</p>
+</blockquote>
+
+<p>Open-source contributions almost always entail learning of some kind.
+Many contributions happen solely in the form of code and text communications which are easily misinterpreted.
+<strong>Assume positive intent</strong> and accept input from others while upholding your own ideas to share successful contributions together.
+Prepare yourself by intentionally opening your mind to input from others, even if you’re sure you’re absolutely “right”.</p>
+
+<div class="alert" style="--color: #6366f1">
+  
+  <i class="icon fa-solid fa-circle-question"></i>
+  <div class="alert-content">
+    
+<p>Before communicating, be sure to use Bernard Meltzer’s self-checks mentioned above.</p>
+
+<ol>
+  <li>Is what I’m about to say <strong>true</strong>?
+    <ul>
+      <li>Have I taken time to verify the claims in a way others can replicate or understand?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>kind</strong>?
+    <ul>
+      <li>Does my intention and communication channel kindness (and not cruelty)?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>necessary</strong>?
+    <ul>
+      <li>Do my words and actions here enable or enhance progress towards a goal (would the outcome be achieved without them)?</li>
+    </ul>
+  </li>
+  <li>Is what I’m about to say <strong>helpful</strong>?
+    <ul>
+      <li>How does my communication increase the quality or sustainability of the project (or group)?</li>
+    </ul>
+  </li>
+</ol>
+
+  </div>
+</div>
+
+<h3 id="setting-software-scheduling-expectations">Setting Software Scheduling Expectations</h3>
+
+<script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5.6.0"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+<div id="vis"></div>
+
+<script>
+  var spec = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Suggested Open-source Time Allocations",
+    "width": 500,
+    "height": 300,
+    "title":"Suggested Open-source Time Allocations",
+    "data": {
+      "values": [
+        {"task": "1. Planning", "percentage": 33},
+        {"task": "2. Coding", "percentage": 16},
+        {"task": "3. Component and System Testing", "percentage": 25},
+        {"task": "4. Code Review, Revisions, and Post-Actions", "percentage": 25}
+      ]
+    },
+    "mark": {"type": "arc", "tooltip": true},
+    "encoding": {
+      "color": {"field": "task", "type": "nominal", "title": "Task", "sort":"ascending"},
+      "theta": {"field": "percentage", "type": "quantitative", "title": "Percentage"}
+    },
+    "config": {
+      "legend": {
+        "orient": "right",
+        "labelLimit": 500
+      }
+    }
+  };
+
+  const embed_opt = {"mode": "vega-lite"};
+  const el = document.getElementById('vis');
+  const view = vegaEmbed("#vis", spec, embed_opt);
+</script>
+
+<p class="center"><em>Suggested ratio of time spent by type of work for an open-source contribution.</em></p>
+
+<ol>
+  <li>1/3 planning (~33%)</li>
+  <li>1/6 coding (~16%)</li>
+  <li>1/4 component and system testing (25%)</li>
+  <li>1/4 code review, revisions, and post-actions (25%)</li>
+</ol>
+
+<p>This modified rule of thumb from <a href="https://www.oreilly.com/library/view/mythical-man-month-the/0201835959/"><em>The Mythical Man Month</em></a> can assist with how you structure your time for an open-source contribution.
+Notice the emphasis on planning and testing and keep these in mind as you progress (the actual programming time can be small if adequate time has been spent on planning).
+Notably, the original time fractions are modified here with the final quarter of the time spent suggested as code review, revisions, and post-actions.
+Planning for the time expense of the added code review and related elements assists with keeping a learning mindset throughout the process (instead of feeling like the review is a “tack-on” or “optional / supplementary”).
+A good motto to keep in mind throughout this process is <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>Festina lente</em></a>, or <strong>“Make haste, slowly.”</strong> (take care to move thoughtfully and as slowly as necessary to do things correctly the first time).</p>
+
+<h2 id="planning-an-open-source-contribution">Planning an Open-source Contribution</h2>
+
+<h3 id="has-the-need-already-been-reported">Has the Need Already Been Reported?</h3>
+
+<p class="center"><i class="fas fa-comments" style="font-size:4em;"></i></p>
+
+<p>Be sure to check whether the bug or feature has already been reported somewhere!
+In a way, this is a practice of <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">“Don’t repeat yourself” (DRY)</a> where we attempt to avoid repeating the same block of code (in this case, the “code” can be understood as natural language).
+For example, you can look on GitHub Issues or GitHub Discussions with a search query matching the rough idea of what you’re thinking about.
+You can also use the GitHub search bar to automatically search multiple areas (including Issues, Discussions, Pull Requests, etc.) when you enter a query from the repository homepage.
+If it has been reported already, take a look to see if someone has made a code contribution related to the work already.</p>
+
+<p>An open discussion or report of the need doesn’t guarantee someone’s already working on a solution.
+If there aren’t yet any code contributions and it doesn’t look like anyone is working on one, consider volunteering to take a further look into the solution and be sure to acknowledge any existing discussions.
+If you’re unsure, it’s always kind to mention your interest in the report and ask for more information.</p>
+
+<h3 id="is-the-need-a-bug-or-feature">Is the Need a Bug or Feature?</h3>
+
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+#feature-or-bug img { max-width: 500px; }
+</style>
+
+<div id="feature-or-bug">
+
+<img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIHNvZnR3YXJlX25lZWRzIFtcIlNvZnR3YXJlIE5lZWRzXCJdXG5zdWJncmFwaCBidWdfb3ZlciBbXCJCdWdcIl1cbmJ1Z1tcIlNvbWV0aGluZydzXFxuYnJva2VuIVwiXVxuZW5kXG4lJS1cbnN1YmdyYXBoIGZlYXR1cmVfb3ZlciBbXCJGZWF0dXJlXCJdXG5mZWF0dXJlW1wiV2UgbmVlZCBuZXdcXG5mdW5jdGlvbmFsaXR5IVwiXVxuZW5kXG5lbmRcbiUlLVxuc3R5bGUgc29mdHdhcmVfbmVlZHMgZmlsbDojZmZmLHN0cm9rZTojZmZmOyIsIm1lcm1haWQiOm51bGx9">
+
+</div>
+
+<p>One way to help solidify your thinking and the approach is to consider whether what you’re proposing is a bug or a feature.
+A <a href="https://en.wikipedia.org/wiki/Software_bug">software bug</a> is considered something which is broken or malfunctioning.
+A <a href="https://en.wikipedia.org/wiki/Software_feature">software feature</a> is generally considered new functionality or a different way of doing things than what exists today.
+There’s often overlap between these, and sometimes they can inspire branching needs, but individually they usually are more of one than the other.
+If you can’t decide whether your need is a bug or a feature, consider breaking it down into smaller sub-components so they can be more of one or the other.
+Following this strategy will help you communicate the potential for contribution and also clarify the development process (for example, a critical bug might be prioritized differently than a nice-to-have new feature).</p>
+
+<h3 id="reporting-the-need-for-change">Reporting the Need for Change</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># Using `function_x` with `library_y` causes `exception_z`</span>
+
+<span class="gu">## Summary</span>
+
+As a <span class="sb">`library_y`</span> research software developer I want to use <span class="sb">`function_x`</span> 
+for my data so that I can share data for research outcomes.
+
+<span class="gu">## Reproducing the error</span>
+
+This error may be seen using Python v3.x on all major OS's using
+the following code snippet:
+...
+
+</code></pre></div></div>
+
+<p><em>An example of a user story issue report with imagined code example.</em></p>
+
+<p>Open-source needs are often best reported through written stories captured within a bug or feature tracking system (such as <a href="https://github.com/features/issues">GitHub Issues</a>) which if possible also include example code or logs.
+One template for reporting issues is through a “user story”.
+A user story typically comes in the form: <code class="language-plaintext highlighter-rouge">As a &lt; type of user &gt;, I want &lt; some goal &gt; so that &lt; some reason &gt;.</code> (<a href="https://www.mountaingoatsoftware.com/agile/user-stories">Mountain Goat Software: User Stories</a>).
+Alongside the story, it can help to add in a snippet of code which exemplifies a problem, new functionality, or a potential adjacent / similar solution.
+As a general principle, <strong>be as specific as you can without going overboard</strong>.
+Include things like programming language version, operating system, and other system dependencies that might be related.</p>
+
+<p>Once you have a good written description of the need, be sure to submit it where it can be seen by the relevant development community.
+For GitHub-based work, this is usually a GitHub Issue, but can also entail discussion board posts to gather buy-in or consensus before proceeding.
+In addition to the specifics outlined above, also recall the <a href="#embrace-a-learning-mindset">learning mindset and Bernard Meltzer’s self-checks</a>, taking time to acknowledge especially the potential challenges and already attempted solutions associated with the description (conveying kindness throughout).</p>
+
+<h3 id="what-happens-after-you-submit-a-bug-or-feature-report">What Happens After You Submit a Bug or Feature Report?</h3>
+
+<p class="center"><i class="fas fa-check-to-slot" style="font-size:4em;"></i></p>
+
+<p>When making open-source contributions, sometimes it can also help to mention that you’re interested in resolving the issue through a related pull request and review.
+Oftentimes open-source projects welcome new contributors but may have specific requirements.
+These requirements are usually spelled out within a <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> found somewhere in the repository or the organization level documentation.
+It’s also completely okay to let other contributors build solutions for the issue (like we mentioned before, all contributions matter, including the reporting of bugs or features themselves)!</p>
+
+<h2 id="developing-and-testing-an-open-source-contribution">Developing and Testing an Open-source Contribution</h2>
+
+<h3 id="creating-a-development-workspace">Creating a Development Workspace</h3>
+
+<p class="center"><i class="fas fa-code-branch" style="font-size:4em;"></i></p>
+
+<p>Once ready to develop a solution for the reported need in the open-source project you’ll need a place to version your updates.
+This work generally takes place through version control on focused branches which are named in a way that relates to the focus.
+When working on GitHub, this work also commonly takes place on <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">forked repository copies</a>.
+Using these methods helps isolate your changes from other work that takes place within the project.
+It also can help you track your progress alongside related changes that might take place before you’re able to seek review or code merges.</p>
+
+<h4 id="bug-or-feature-verification-with-test-driven-development">Bug or Feature Verification with Test-driven Development</h4>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    
+<p>One can use a test-driven development approach as numbered steps (<a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia</a>).</p>
+
+<blockquote>
+  <ol>
+    <li>Add or modify a test which checks for a bug fix or feature addition</li>
+    <li>Run all tests (expecting the newly added test content to fail)</li>
+    <li>Write a simple version of code which allows the tests to succeed</li>
+    <li>Verify that all tests now pass</li>
+    <li>Return to step 3, refactoring the code as needed</li>
+  </ol>
+</blockquote>
+
+
+  </div>
+</div>
+
+<p>If you decide to develop a solution for what you reported, one software strategy which can help you remain focused and objective is <a href="https://en.wikipedia.org/wiki/Test-driven_development">test-driven development</a>.
+Using this pattern sets a “cognitive milestone” for you as you develop a solution to what was reported.
+Open-source projects can have many interesting components which could take time and be challenging to understand.
+The addition of the test and related development will help keep you goal-orientated without getting lost in the “software forest” of a project.</p>
+
+<h3 id="prefer-simple-over-complex-changes">Prefer Simple Over Complex Changes</h3>
+
+<blockquote>
+  <p>…
+Simple is better than complex.
+Complex is better than complicated.
+…
+- <a href="https://peps.python.org/pep-0020/">PEP 20: The Zen of Python</a></p>
+</blockquote>
+
+<p>Further channeling step 3. from test-driven development above, prefer simple changes over more complex ones (recognizing that the <em>absolute</em> simplest can take iteration and thought).
+Some of the best solutions are often the most easily understood ones (where the code addition or changes seem obvious afterwards).
+A “simplest version” of the code can often be more quickly refactored and completed than devising a “perfect” solution the first time.
+Remember, you’ll very likely have the help of a code review before the code is merged (expect to learn more and add changes during review!).</p>
+
+<p>It might be tempting to address more than one bug or feature at the same time.
+<strong><em>Avoid <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> as you build solutions - stay focused on the task at hand!</em></strong>
+Take note of things you notice on your journey to address the reported needs.
+These can be become additional reported bugs or features which could be addressed later.
+Staying focused with your development will save you time, keep your tests constrained, and (theoretically) help reduce the time and complexity of code review.</p>
+
+<h3 id="developing-a-solution">Developing a Solution</h3>
+
+<p class="center"><i class="fas fa-screwdriver-wrench" style="font-size:4em;"></i></p>
+
+<p>Once you have a test in place for the bug fix or feature addition it’s time to work towards developing a solution.
+If you’ve taken time to accomplish the prior steps before this point you may already have a good idea about how to go about a solution.
+If not, spend some time investigating the technical aspects of a solution, optionally adding this information to the report or discussion content for further review before development.
+Use <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing techniques</a> to  help make sure the time you spend in development is no more than necessary.</p>
+
+<h2 id="code-review-revisions-and-post-actions">Code Review, Revisions, and Post-actions</h2>
+
+<h3 id="pull-requests-and-code-review">Pull Requests and Code Review</h3>
+
+<p>When your code and new test(s) are in a good spot it’s time to ask for a code review.
+It might feel tempting to perfect the code.
+Instead, consider whether the code is “good enough” and would benefit from someone else providing feedback.
+Code review takes advantage of a strength of our species: collaborative &amp; multi-perspectival thinking.
+Leverage this in your open-source experience by seeking feedback when things feel “good enough”.</p>
+
+<div id="pareto_viz"></div>
+
+<script>
+  var spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}, "fontSize": 14},
+  "width": 800,
+  "height": 200,
+  "data": {
+    "values": [
+            {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "changes"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "2. Achieving Perfection", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "changes"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+      {"pareto_category": "1. Vital Few Efforts", "pareto_measure": "value"},
+
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "{ 'changes': '🟢', 'value': '🙂'}[datum.pareto_measure]",
+      "as": "emoji"
+    },
+    {"window": [{"op": "rank", "as": "rank"}], "groupby": ["pareto_category", "pareto_measure"]}
+  ],
+  "mark": {"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "ordinal", "axis": null},
+    "y": {"field": "pareto_measure", "type": "nominal", "title":"", "axis":{"labelFontSize":15}},
+    "row": {"field": "pareto_category", "header": {"title": "", "labelFontSize":15}},
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 55}
+  }
+};
+
+  vegaEmbed("#pareto_viz", spec, embed_opt);
+</script>
+
+<p class="center"><em>Demonstrating Pareto Principle “vital few” through a small number of changes to achieve 80% of the value associated with the needs.</em></p>
+
+<p>One way to understand “good enough” is to assess whether you have reached what the <a href="https://en.wikipedia.org/wiki/Pareto_principle">Pareto Principle</a> terms as the “vital few” causes.
+The Pareto Principle states that roughly 80% of consequences come from 20% of causes (the “vital few”).
+What are the 20% changes (for example, as commits) which are required to achieve 80% of the desired intent for development with your open-source contribution?
+When you reach those 20% of the changes, consider opening a pull request to gather more insight about whether those changes will suffice and how the remaining effort might be spent.</p>
+
+<p>As you go through the process of opening a pull request, be sure to follow the open-source <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> document</a> documentation related to the project; each one can vary.
+When working on GitHub-based projects, you’ll need to open a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">pull request</a> on the correct branch (usually upstream <code class="language-plaintext highlighter-rouge">main</code>).
+If you used a GitHub issue to help report the issue, mention the issue in the pull request description using the <code class="language-plaintext highlighter-rouge">#issue number</code> (for example <code class="language-plaintext highlighter-rouge">#123</code> where the issue link would look like: <code class="language-plaintext highlighter-rouge">https://github.com/orgname/reponame/issues/123</code>) reference to help link the work to the reported need.
+This will cause the pull request to show up within the issue and automatically create a link to the issue from the pull request.</p>
+
+<h3 id="code-revisions">Code Revisions</h3>
+
+<blockquote>
+  <p>“Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.”
+- Antoine de Saint-Exupery</p>
+</blockquote>
+
+<p>You may be asked to update your code based on automated code quality checks or reviewer request.
+Treat these with care; embrace learning and remember that this step can take 25% of the total time for the contribution.
+When working on GitHub forks or branches, you can make additional commits directly on the development branch which was used for the pull request.
+If your reviewers requested changes, re-request their review once changes have been made to help let them know the code is ready for another look.</p>
+
+<h3 id="post-actions-and-tidying-up-afterwards">Post-actions and Tidying Up Afterwards</h3>
+
+<p class="center"><i class="fas fa-broom" style="font-size:4em;"></i></p>
+
+<p>Once the code has been accepted by the reviewers and through potential automated testing suite(s) the content is ready to be merged.
+Oftentimes this work is completed by core maintainers of the project.
+After the code is merged, it’s usually a good idea to clean up your workspace by deleting your development branch and syncing with the upstream repository.
+While it’s up to core maintainers to decide on report closure, typically the reported need content can be closed and might benefit from a comment describing the fix.
+Many of these steps are considered common courtesy but also, importantly, assist in setting you up for your next contributions!</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>Hopefully the above helps you understand the open-source contribution process better.
+As stated earlier, every little part helps!
+Best wishes on your open-source journey and happy Codesgiving!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-35/2023/10/04/Data-Quality-Validation.html">
+        Tip of the Week: Data Quality Validation through Software Testing Techniques
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-35/2024/01/22/Python-Memory-Management-and-Troubleshooting.html">
+        Python Memory Management and Troubleshooting
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-35/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
