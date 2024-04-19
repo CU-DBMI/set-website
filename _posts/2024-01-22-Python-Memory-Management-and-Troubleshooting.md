@@ -148,29 +148,24 @@ The heap can be imagined of as a {% include icon.html icon="fa-solid fa-warehous
 Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03) for more information about processes.
 
 
-
-<!-- table HTML retained for replicability
-
 <table>
 <tr><th colspan="2">Memory Blocks</th></tr>
 <tr>
 <td>
-
+<div>
 <strong>A.)</strong> All memory blocks available.
-
 <table>
 <tr><td>Block</td><td>Block</td><td>Block</td></tr>
 </table>
-
+</div>
 </td>
 <td>
-
+<div>
 <strong>B.)</strong> Some memory blocks in use.
-
 <table>
 <tr><td style="background:#86EFAC;">Block</td><td style="background:#86EFAC;">Block</td><td>Block</td></tr>
 </table>
-
+</div>
 </td>
 </tr>
 <tr>
@@ -178,29 +173,26 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 </tr>
 <tr>
 <td>
-
+<div>
 <strong>C.)</strong> You have limited boxes to hold things.
-
 <table>
 <tr><td>📦</td><td>📦</td><td>📦</td></tr>
 </table>
-
+</div>
 </td>
 <td>
-
+<div>
 <strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
-
 <table>
 <tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
 </table>
-
+</div>
 </td>
 </tr>
 </table>
 
--->
-
-{% include figure.html image="images/memory_blocks_examples.png" caption="Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things." %}
+_Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things._
+{:.center}
 
 The heap is often further organized through the use of ___"blocks"___.
 Memory blocks are chunks of memory of a certain [byte](https://en.wikipedia.org/wiki/Byte) or [bit](https://en.wikipedia.org/wiki/Bit) size (usually all the same size) ([Wikipedia: Block (data storage)](https://en.wikipedia.org/wiki/Block_(data_storage))).
@@ -515,7 +507,6 @@ See below for some notable examples of additional memory allocation possibilitie
 
 ### Python Reference Counting
 
-<!-- table HTML retained for replicability 
 
 <table>
 <tr><th>Processed line of code</th><th>Reference count</th></tr>
@@ -560,9 +551,8 @@ a_string: 1<br>
 
 </table>
 
--->
-
-{% include figure.html image="images/python_reference_counting_example.png" caption="Python reference counting at a simple level works through the use of object reference increments and decrements." %}
+_Python reference counting at a simple level works through the use of object reference increments and decrements._
+{:.center}
 
 As computer memory is allocated to Python processes the Python memory manager keeps track of these through the use of a [reference counter](https://en.wikipedia.org/wiki/Reference_counting).
 In Python, we could label this as an "Object reference counter" because all data in Python is represented by objects ([Python: Data model](https://docs.python.org/3/reference/datamodel.html#objects-values-and-types)).
