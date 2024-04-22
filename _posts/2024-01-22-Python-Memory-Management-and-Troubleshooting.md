@@ -181,7 +181,6 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 <td>
 
 <div>
-
 <strong>C.)</strong> You have limited boxes to hold things.
 
 <table>
@@ -192,9 +191,9 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 </td>
 <td>
 
+<div>
 <strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
 
-<div>
 <table>
 <tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
 </table>
