@@ -147,7 +147,6 @@ The stack can be thought of as a {% include icon.html icon="fa-solid fa-map" %} 
 The heap can be imagined of as a {% include icon.html icon="fa-solid fa-warehouse" %} "warehouse" store (or remove) things used as part of the stack "roadmap".
 Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process](https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03) for more information about processes.
 
-
 <table>
 <tr><th colspan="2">Memory Blocks</th></tr>
 <tr>
@@ -155,18 +154,22 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 
 <strong>A.)</strong> All memory blocks available.
 
+<div>
 <table>
 <tr><td>Block</td><td>Block</td><td>Block</td></tr>
 </table>
+</div>
 
 </td>
 <td>
 
 <strong>B.)</strong> Some memory blocks in use.
 
+<div>
 <table>
 <tr><td style="background:#86EFAC;">Block</td><td style="background:#86EFAC;">Block</td><td>Block</td></tr>
 </table>
+</div>
 
 </td>
 </tr>
@@ -178,18 +181,22 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 
 <strong>C.)</strong> You have limited boxes to hold things.
 
+<div>
 <table>
 <tr><td>📦</td><td>📦</td><td>📦</td></tr>
 </table>
+</div>
 
 </td>
 <td>
 
 <strong>D.)</strong> Two boxes are used, the other remains empty (ready for use).
 
+<div>
 <table>
 <tr><td style="background:#86EFAC;">📦</td><td style="background:#86EFAC;">📦</td><td>📦</td></tr>
 </table>
+</div>
 
 </td>
 </tr>
@@ -510,7 +517,6 @@ See below for some notable examples of additional memory allocation possibilitie
   The selection of a memory allocator for use with PyArrow can be influenced by how it performs on a particular system.
 
 ### Python Reference Counting
-
 
 <table>
 <tr><th>Processed line of code</th><th>Reference count</th></tr>
