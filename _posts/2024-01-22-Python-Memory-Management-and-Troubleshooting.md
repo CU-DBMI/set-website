@@ -152,9 +152,9 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 <tr>
 <td>
 
+<div>
 <strong>A.)</strong> All memory blocks available.
 
-<div>
 <table>
 <tr><td>Block</td><td>Block</td><td>Block</td></tr>
 </table>
@@ -163,9 +163,10 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 </td>
 <td>
 
+<div>
 <strong>B.)</strong> Some memory blocks in use.
 
-<div>
+
 <table>
 <tr><td style="background:#86EFAC;">Block</td><td style="background:#86EFAC;">Block</td><td>Block</td></tr>
 </table>
@@ -179,9 +180,10 @@ Please see [The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Mem
 <tr>
 <td>
 
+<div>
+
 <strong>C.)</strong> You have limited boxes to hold things.
 
-<div>
 <table>
 <tr><td>📦</td><td>📦</td><td>📦</td></tr>
 </table>
