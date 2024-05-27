@@ -3,10 +3,10 @@ title: "Leveraging Kùzu and Cypher for Advanced Data Analysis"
 author: dave-bunten
 tags:
   - research-data-engineering
-  - file-formats
-  - large-data
-  - data-performance
-  - parquet
+  - graph-data
+  - databases
+  - cypher
+  - data-interoperability
 ---
 
 # Leveraging Kùzu and Cypher for Advanced Data Analysis
