@@ -1,4 +1,289 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-04-23T13:29:39+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-05-30T15:27:18+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="(Image sourced from https://github.com/kuzudb/kuzu.)">
+    <img src="/set-website/images/kuzu_logo.png" style="
+        width: 500px;
+        max-height: unset;
+      " alt="(Image sourced from https://github.com/kuzudb/kuzu.)" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      (Image sourced from https://github.com/kuzudb/kuzu.)
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+
+<p>Graph databases can offer a more natural and intuitive way to model and explore relationships within data.
+In this post, we&#8217;ll dive into the world of graph databases, focusing on Kùzu, an embedded graph database and query engine for a number of languages, and Cypher, a powerful query language designed for graph data.
+We&#8217;ll explore how these tools can transform your data management and analysis workflows, provide insights into their capabilities, and discuss when it might be more appropriate to use server-based solutions.
+Whether you&#8217;re a research software developer looking to integrate advanced graph processing into your applications or simply curious about the benefits of graph databases, this guide will equip you with the knowledge to harness the full potential of graph data.</p>
+
+<!-- excerpt end -->
+
+<h2 id="tabular-data">Tabular Data</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Tabular data is made up up rows (or records) and columns.">
+    <img src="/set-website/images/tabular_data_image.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Tabular data is made up up rows (or records) and columns." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Tabular data is made up up rows (or records) and columns.
+
+    </figcaption>
+  
+</figure>
+
+<p>Data are often stored in a table, or <a href="https://en.wikipedia.org/wiki/Table_(database)">tabular format</a>, where information is organized into rows and columns.
+Each row represents a single record and each column represents attributes of that record.
+Tables are particularly effective for storing and querying large volumes of data with a fixed set of columns and data types.
+Despite its versatility, tabular data can become cumbersome when dealing with complex relationships and interconnected data, where a graph-based approach might be more suitable.</p>
+
+<h2 id="graph-data">Graph Data</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph data is made up of nodes and edges.">
+    <img src="/set-website/images/graph_data_intro.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph data is made up of nodes and edges." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph data is made up of nodes and edges.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">Graph data</a> represents information in the form of nodes (also called vertices) and edges (connections between nodes).
+This structure is useful for modeling complex relationships and interconnected data, such as social networks, biological networks, and transportation systems.
+Unlike tabular data, which is often &#8220;flattened&#8221; (treating multidimensional data as singular columns) and often rigid (requiring all new data to conform to a specific schema), graph data allows for more flexible and dynamic representations.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Nodes and edges may have properties in a graph.">
+    <img src="/set-website/images/graph_data_intro_properties.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Nodes and edges may have properties in a graph." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Nodes and edges may have properties in a graph.
+
+    </figcaption>
+  
+</figure>
+
+<p>Nodes and edges act like different kinds of tabular records within the context of graphs.
+Nodes and edges can also have properties (attributes) which further provide description to a graph.
+Properties are akin to columns of a particular record in tabular formats which help describe a certain record (or node).
+Graph data models are particularly useful for exploring connections, performing path analysis, and uncovering patterns that may require more transformation in tabular formats.</p>
+
+<h2 id="graph-databases">Graph Databases</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph databases store graph data.">
+    <img src="/set-website/images/graph_database.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph databases store graph data." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph databases store graph data.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://en.wikipedia.org/wiki/Graph_database">Graph databases</a> are specialized databases designed to store, query, and manage graph data efficiently.
+They use graph structures for semantic queries, with nodes, edges, and properties being stored directly in the database.
+Unlike traditional relational databases that use tables, graph databases leverage the natural relationships in the data, allowing for faster retrieval and sometimes more intuitive querying of interconnected information.
+This makes them ideal for applications involving complex relationships, such as social networks, supply chain management, and knowledge graphs.
+Graph databases support various query languages and algorithms optimized for traversing and analyzing graph structures.</p>
+
+<h2 id="graph-database-querying">Graph Database Querying</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph data are typically queried using specialized languages such as Cypher.">
+    <img src="/set-website/images/graph_database_querying.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph data are typically queried using specialized languages such as Cypher." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph data are typically queried using specialized languages such as Cypher.
+
+    </figcaption>
+  
+</figure>
+
+<p>Graph database querying involves using specialized query languages to retrieve and manipulate graph data.
+Unlike SQL, which often is used for tabular databases, graph databases use languages like <a href="https://en.wikipedia.org/wiki/Cypher_(query_language)">Cypher</a>, <a href="https://en.wikipedia.org/wiki/Gremlin_(query_language)">Gremlin</a>, and <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>, which are designed to handle graph-specific operations.
+These languages allow users to perform complex queries that traverse the graph, find paths between nodes, filter based on properties, and analyze relationships.
+Querying in graph databases can be highly efficient due to their ability to leverage the inherent structure of the graph, enabling fast execution of complex queries that would be cumbersome and slow in a relational database.</p>
+
+<h2 id="cypher-query-language">Cypher Query Language</h2>
+
+<div class="language-cypher highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">MATCH</span><span class="w"> </span><span class="ss">(</span><span class="py">p:</span><span class="n">Person</span> <span class="ss">{</span><span class="py">name:</span> <span class="s1">'Alice'</span><span class="ss">})</span><span class="o">-</span><span class="ss">[</span><span class="nc">:FRIEND</span><span class="ss">]</span><span class="o">-&gt;</span><span class="ss">(</span><span class="n">friend</span><span class="ss">)</span>
+<span class="k">RETURN</span> <span class="n">friend.name</span><span class="ss">,</span> <span class="n">friend.age</span>
+</code></pre></div></div>
+
+<p class="center"><em>This query finds nodes labeled &#8220;Person&#8221; with the name &#8220;Alice&#8221; and returns the names and ages of nodes connected to Alice by a &#8220;FRIEND&#8221; relationship.</em></p>
+
+<p>Cypher is a powerful, declarative graph query language designed specifically for querying and updating graph databases.
+Originally developed for <a href="https://en.wikipedia.org/wiki/Neo4j">Neo4j</a> (one of the most popular graph databases), it is known for its expressive and intuitive syntax that makes it easy to work with graph data.
+Cypher allows users to perform complex queries using simple and readable patterns that resemble ASCII art, making it accessible to both developers and data scientists.
+It supports a wide range of operations, including pattern matching, filtering, aggregation, and graph traversal, enabling efficient exploration and manipulation of graph structures.
+For example, a basic Cypher query to find all nodes connected by a &#8220;FRIEND&#8221; relationship might look like this: <code class="language-plaintext highlighter-rouge">MATCH (a)-[:FRIEND]-&gt;(b) RETURN a, b</code>, which finds and returns pairs of nodes a and b where a is connected to b by a &#8220;FRIEND&#8221; relationship.</p>
+
+<h2 id="kùzu">Kùzu</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries.">
+    <img src="/set-website/images/kuzu_intro.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://github.com/kuzudb/kuzu">Kùzu</a> is an embedded graph database and query engine designed to integrate seamlessly with Python, Rust, Node, C/C++, or Java software.
+Kùzu is optimized for high performance and can handle complex graph queries with ease.
+Querying graphs in Kùzu is performed using the Cypher syntax, providing transferrability of queries in multiple programming languages.
+Kùzu also provides direct integration with export formats that allow for efficient data analysis or processing such as Pandas and Arrow.
+Kùzu is particularly suitable for software developers who need to integrate graph database capabilities into their projects without the overhead of managing a separate database server.</p>
+
+<h2 id="tabular-and-graph-data-interoperation">Tabular and Graph Data Interoperation</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Kùzu uses tabular data as both input and output for data operations.">
+    <img src="/set-website/images/kuzu_table_ingest.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Kùzu uses tabular data as both input and output for data operations." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Kùzu uses tabular data as both input and output for data operations.
+
+    </figcaption>
+  
+</figure>
+
+<p>Tabular data and graph data can sometimes be used in tandem in order to achieve software goals (one isn&#8217;t necessaryily better than the other or supposed to be used in isolation).
+For example, Kùzu offers both data import and export to tabular formats to help with conversion and storage outside of a graph database.
+This is especially helpful when working with tabular data as an input, when trying to iterate over large datasets in smaller chunks, or building integration paths to other pieces of software which aren&#8217;t Kùzu or graph data compatible.</p>
+
+<h2 id="kùzu-tabular-data-imports">Kùzu Tabular Data Imports</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># portions of this content referenced
+# with modifications from:
+# https://docs.kuzudb.com/import/parquet/
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">kuzu</span>
+
+<span class="c1"># create parquet-based data for import into kuzu
+</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">],</span>
+     <span class="s">"age"</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">]}</span>
+<span class="p">).</span><span class="n">to_parquet</span><span class="p">(</span><span class="s">"user.parquet"</span><span class="p">)</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"from"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">],</span>
+        <span class="s">"to"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">,</span> <span class="s">"Noura"</span><span class="p">],</span>
+        <span class="s">"since"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">).</span><span class="n">to_parquet</span><span class="p">(</span><span class="s">"follows.parquet"</span><span class="p">)</span>
+
+<span class="c1"># form a kuzu database connection
+</span><span class="n">db</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Database</span><span class="p">(</span><span class="s">"./test"</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+<span class="c1"># use wildcard-based copy in case of multiple files
+# copy node data
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">'COPY User FROM "user*.parquet";'</span><span class="p">)</span>
+<span class="c1"># copy edge data
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">'COPY Follows FROM "follows*.Parquet";'</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="s">"""MATCH (a:User)-[f:Follows]-&gt;(b:User)
+    RETURN a.name, b.name, f.since;"""</span>
+<span class="p">).</span><span class="n">get_as_df</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>One way to create graphs within Kùzu is to import data from tabular datasets.
+Kùzu provides functionality to convert tabular data from CSV, <a href="https://en.wikipedia.org/wiki/Apache_Parquet">Parquet</a>, or <a href="https://numpy.org/">NumPy</a> files into a graph.
+This process enables seamless integration of tabular data sources into the graph database, providing the benefits of graph-based querying and analysis while leveraging the familiar structure and benefits of tabular data.</p>
+
+<h2 id="kùzu-data-results-and-exports">Kùzu Data Results and Exports</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># portions of this content referenced 
+# with modifications from:
+# https://kuzudb.com/api-docs/python/kuzu.html
+</span><span class="kn">import</span> <span class="nn">kuzu</span>
+
+<span class="c1"># form a kuzu database connection
+</span><span class="n">db</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Database</span><span class="p">(</span><span class="s">"./test"</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s">"MATCH (u:User) RETURN u.name, u.age;"</span>
+
+<span class="c1"># run query and return Pandas DataFrame
+</span><span class="n">pd_df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_df</span><span class="p">()</span>
+
+<span class="c1"># run query and return Polars DataFrame
+</span><span class="n">pl_df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_pl</span><span class="p">()</span>
+
+<span class="c1"># run query and return PyArrow Table
+</span><span class="n">arrow_tbl</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_arrow</span><span class="p">()</span>
+
+<span class="c1"># run query and return PyTorch Geometric Data
+</span><span class="n">pyg_d</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_torch_geometric</span><span class="p">()</span>
+
+<span class="c1"># run query within COPY to export directly to file
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"COPY (MATCH (u:User) return u.*) TO 'user.parquet';"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Kùzu also is flexible when it comes to receiving data from Cypher queries.
+After performing a query you have the option to use a number of methods to automatically convert into various in-memory data formats, for example, <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_df">Pandas DataFrames</a>, <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_pl">Polars DataFrames</a>,<a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_torch_geometric"> PyTorch Geometric (PyG) Data</a>, or <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_arrow">PyArrow Tables</a>.
+There are also options to export data directly to CSV or Parquet files for times where file-based data is preferred.</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
+Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
+However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -415,7 +700,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -712,7 +997,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1134,7 +1419,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1569,7 +1854,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1842,7 +2127,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2318,7 +2603,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2608,7 +2893,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2774,7 +3059,7 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2931,121 +3216,4 @@ flowchart LR
   <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
   <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
   <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry><entry><title type="html">Tip of the Week: Software Linting with R</title><link href="https://cu-dbmi.github.io/set-website/2023/01/30/Software-Linting-with-R.html" rel="alternate" type="text/html" title="Tip of the Week: Software Linting with R" /><published>2023-01-30T00:00:00+00:00</published><updated>2024-04-23T13:28:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/01/30/Software-Linting-with-R</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/01/30/Software-Linting-with-R.html"><![CDATA[<h1 id="tip-of-the-week-software-linting-with-r">Tip of the Week: Software Linting with R</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p>This article covers using the software technique of linting on R code in order to improve code quality, development velocity, and collaboration.</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-Use software linting (<a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a>) practices on your R code with existing packages <a href="https://github.com/r-lib/lintr"><code class="language-plaintext highlighter-rouge">lintr</code></a> and <a href="https://github.com/r-lib/styler"><code class="language-plaintext highlighter-rouge">styler</code></a> (among others). These linters may be applied using <a href="https://pre-commit.com">pre-commit</a> in your local development environment or as <a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous tests</a> using for example <a href="https://docs.github.com/en/actions">Github Actions</a>.</p>
-
-<h2 id="treating-r-as-software">Treating R as Software</h2>
-
-<blockquote>
-  <p>&#8220;Many users think of R as a statistics system. We prefer to think of it as an environment within which statistical techniques are implemented.&#8221;</p>
-</blockquote>
-
-<p><em>(<a href="https://www.r-project.org/about.html">R-Project: What is R?</a>)</em></p>
-
-<p>The <a href="https://en.wikipedia.org/wiki/R_(programming_language)">R programming language</a> is sometimes treated as <em>only</em> a statistics system instead of software. This treatment can sometimes lead to common issues in development which are experienced in other languages. Addressing R as software enables developers to enhance their work by taking benefit from existing concepts applied to many other languages.</p>
-
-<h2 id="linting-with-r">Linting with R</h2>
-
-<pre class="mermaid">
-flowchart LR
-  write\[Write R code] --&gt; |check| check\[Check code with linters]
-  check --&gt; |revise| write
-</pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<p class="center"><em>Workflow loop depicting writing R code and revising with linters.</em></p>
-
-<p>Software linting, or <a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a>, is one way to ensure a minimum level of code quality without writing new tests. Linting checks how your code is structured without running it to make sure it abides by common language paradigms and logical structures. Using linting tools allows a developer to gain quick insights about their code before it is viewed or used by others.</p>
-
-<p>One way to lint your R code is by using the <a href="https://github.com/r-lib/lintr"><code class="language-plaintext highlighter-rouge">lintr</code></a> package. The <code class="language-plaintext highlighter-rouge">lintr</code> package is also complementary of the <a href="https://github.com/r-lib/styler"><code class="language-plaintext highlighter-rouge">styler</code></a> pacakge, which formats the syntax of R code in a consistent way. Both of these can be used independently or as part of continuous quality checks for R code repositories.</p>
-
-<h2 id="automated-linting-checks-with-r">Automated Linting Checks with R</h2>
-
-<pre class="mermaid">
-flowchart LR
-  subgraph development
-    write
-    check
-  end
-  subgraph linters
-    direction LR
-    lintr
-    styler
-  end
-  check &lt;-.- linters
-  write\[Write R code] --&gt; |check| check\[Check code with pre-commit]
-  check --&gt; |revise| write
-</pre>
-
-<p class="center"><em>Workflow showing development with pre-commit using multiple linters.</em></p>
-
-<p><code class="language-plaintext highlighter-rouge">lintr</code> and <code class="language-plaintext highlighter-rouge">styler</code> can be incorporated into automated checks to help make sure linting (or other steps) are always used with new code. One tool which can help with this is <a href="https://pre-commit.com/">pre-commit</a>, which acts as both a local development tool in addition to providing observability within source control (more on this later).</p>
-
-<p>Using pre-commit locally enables quick feedback loops using one or many checkers (such as <code class="language-plaintext highlighter-rouge">lintr</code>, <code class="language-plaintext highlighter-rouge">styler</code>, or others). Pre-commit may be used through the use of <a href="https://pre-commit.com/#usage">git hooks</a> or manually using <a href="https://pre-commit.com/#pre-commit-run"><code class="language-plaintext highlighter-rouge">pre-commit run ...</code></a> from a command-line. See <a href="https://github.com/lorenzwalthert/precommit">this example of pre-commit checks with R</a> for an example of multiple pre-commit checks for R code.</p>
-
-<h2 id="continuous-and-observable-testing-for-r">Continuous and Observable Testing for R</h2>
-
-<pre class="mermaid">
-flowchart LR
-  subgraph development [local development]
-    direction LR
-    write
-    check
-    commit
-  end
-  subgraph remote[Github repository]
-    direction LR
-    action["Check code (remotely)"]
-  end
-  write\[Write R code] --&gt; |check| check\[Check code with pre-commit]
-  check --&gt; |revise| write
-  check --&gt; commit[commit + push]
-  commit --&gt; |optional trigger| action
-  check -.-&gt; |perform same checks| action
-</pre>
-
-<p class="center"><em>Workflow showing pre-commit used as continuous testing tool with Github.</em></p>
-
-<p>Pre-commit linting checks can also be incorporated into <a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a> performed on your repository. One way to do this is using <a href="https://docs.github.com/en/actions">Github Actions</a>. Github Actions provides a programmatic way to specify automatic steps taken as changes occur to a repository.</p>
-
-<p>Pre-commit provides <a href="https://github.com/pre-commit/action">an example Github Action</a> which will automatically check and alert repository maintainers when code challenges are detected. Using pre-commit in this way allows R developers to ensure <code class="language-plaintext highlighter-rouge">lintr</code> checks are performed on any new work checked into a repository. This can have benefits towards decreasing pull request (PR) review time and standardize how code collaboration takes place for R developers.</p>
-
-<h2 id="resources">Resources</h2>
-
-<p>Please see the following the resources on this topic.</p>
-
-<ul>
-  <li><a href="https://en.wikipedia.org/wiki/R_(programming_language)">R programming language</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/Static_program_analysis">static analysis</a></li>
-  <li><a href="https://github.com/r-lib/lintr">R package: lintr</a></li>
-  <li><a href="https://github.com/r-lib/styler">R package: styler</a></li>
-  <li><a href="https://pre-commit.com/">pre-commit</a></li>
-  <li><a href="https://github.com/lorenzwalthert/precommit">Example of pre-commit checks with R</a></li>
-  <li><a href="https://en.wikipedia.org/wiki/Continuous_testing">continuous testing</a></li>
-  <li><a href="https://docs.github.com/en/actions">Github Actions</a></li>
-  <li><a href="https://github.com/pre-commit/action">an example Github Action</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="r" /><category term="static-analysis" /><category term="linting" /><category term="continuous-testing" /><summary type="html"><![CDATA[Tip of the Week: Software Linting with R]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry></feed>
