@@ -93,7 +93,7 @@ For example, a basic Cypher query to find all nodes connected by a "FRIEND" rela
 
 [Kùzu](https://github.com/kuzudb/kuzu) is an embedded graph database and query engine designed to integrate seamlessly with Python, Rust, Node, C/C++, or Java software.
 Kùzu is optimized for high performance and can handle complex graph queries with ease.
-Querying graphs in Kùzu is performed through Cypher, providing transferrability of queries in multiple programming languages.
+Querying graphs in Kùzu is performed using the Cypher syntax, providing transferrability of queries in multiple programming languages.
 Kùzu also provides direct integration with export formats that allow for efficient data analysis or processing such as Pandas and Arrow.
 Kùzu is particularly suitable for software developers who need to integrate graph database capabilities into their projects without the overhead of managing a separate database server.
 
