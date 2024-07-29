@@ -28,7 +28,7 @@ Let's get started!
 
 ## What is Code Coverage?
 
-{% include figure.html image="images/simple-example-of-coverage-for-functions.png" width="600px" caption="Code which is tested is considered 'covered'." %}
+{% include figure.html image="images/simple-example-of-coverage-for-functions.png" width="200px" caption="Code which is tested is considered 'covered'." %}
 
 > "With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don't know if our code is getting better or worse." ([Michael Feathers, Working Effectively with Legacy Code](https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how))
 
