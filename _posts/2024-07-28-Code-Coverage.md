@@ -15,9 +15,7 @@ tags:
 
 ## Introduction
 
-![](../images/file-holding-umbrella-for-coverage.png)
-
-<!-- {% include figure.html image="images/kuzu_logo.png" width="500px" caption="(Image sourced from https://github.com/kuzudb/kuzu.)" %} -->
+{% include figure.html image="images/file-holding-umbrella-for-coverage.png" width="500px" caption="Code coverage gives our code protection from the unknown." %}
 
 <!-- excerpt start -->
 
@@ -30,7 +28,7 @@ Let's get started!
 
 ## What is Code Coverage?
 
-![](../images/simple-example-of-coverage-for-functions.png)
+{% include figure.html image="images/simple-example-of-coverage-for-functions.png" width="600px" caption="Code which is tested is considered 'covered'." %}
 
 > "With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don't know if our code is getting better or worse." ([Michael Feathers, Working Effectively with Legacy Code](https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how))
 
@@ -91,7 +89,7 @@ While the implementations may differ in their processing and report formating, t
 Many of these tools are available without additional cost of freely as open-source packages.
 Below are just a few languages and common test coverage tools you can use with them.
 
-- **Python**, [`coverage.py`](https://github.com/nedbat/coveragepy) is a popular open-source solution which can be paired with [`pytest-cov`](https://github.com/pytest-dev/pytest-cov).
+- **Python**, [`coverage.py`](https://github.com/nedbat/coveragepy) is a popular open-source solution which can be paired with [`pytest-cov`](https://github.com/pytest-dev/pytest-cov). [`slipcover`](https://github.com/plasma-umass/slipcover) is a similar coverage tool which can be used with Python.
 - **R** developers often use [`covr`](https://github.com/r-lib/covr).
 - **C++** developers can rely on [`gcov`](https://gcc.gnu.org/onlinedocs/gcc/gcov/introduction-to-gcov.html) or [`LCOV`](https://github.com/linux-test-project/lcov).
 - **MATLAB** has built-in test coverage features through [`CodeCoveragePlugin`](https://www.mathworks.com/help/matlab/matlab_prog/types-of-code-coverage-for-matlab-source-code.html).
@@ -109,7 +107,7 @@ See below for some examples of these:
 
 ## Using `coverage.py` for Measuring Test Coverage in Python
 
-![](../images/coverage.py-logo.png)
+{% include figure.html image="images/coverage.py-logo.png" width="200px" caption="(Source: [Coverage.py website](https://coverage.readthedocs.io/en/7.6.0/))" %}
 
 `coverage.py` is a powerful tool for measuring code coverage in Python. 
 It's easy to set up: just install it via [pip](https://pip.pypa.io/en/stable/) (or your development environment), run your tests with coverage, and generate reports in various formats.
@@ -172,9 +170,10 @@ Strategies like setting coverage thresholds and failing builds on coverage drops
 Comparing current coverage with previous coverage can be done using techniques like hash checks for binary files or storing and comparing coverage reports.
 This ensures you know exactly what's changed and can act accordingly.
 
-### Pre-Commit Hooks to Generate `coverage.py` Reports
+### Pre-commit Hooks to Generate `coverage.py` Reports
 
-![](../images/coverage-pre-commit-workflow.png)
+
+{% include figure.html image="images/coverage-pre-commit-workflow.png" caption="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices." %}
 
 [Pre-commit](https://pre-commit.com/) hooks are scripts that run before a commit is finalized.
 You can set up a pre-commit hook to run tests and generate coverage reports using `coverage.py` (see the example below).
@@ -207,12 +206,12 @@ This workflow can also help generate metadata for association with a repository,
 
 ### Pull Request Comment with `coverage.py` Reports
 
-![](../images/coverage-pr-comment-workflow.png)
+{% include figure.html image="images/coverage-pr-comment-workflow.png" caption="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests." %}
 
 Another workflow which might be helpful is posting coverage reports when a pull request (PR) is opened (for example, using GitHub Action [orgoro/coverage](https://github.com/orgoro/coverage)).
 This process involves generating a coverage report during the CI/CD pipeline and integrating it with the PR.
 
-![](../images/coverage-workflow-pr-comment.png)
+{% include figure.html image="images/coverage-workflow-pr-comment.png" caption="Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage)." %}
 
 By doing so, developers can immediately see which parts of the code are covered by tests and which are not, enabling them to identify potential gaps in testing.
 This transparency helps maintain high code quality, ensures that new changes are well-tested, and encourages best practices in test-driven development.
@@ -224,6 +223,7 @@ Code coverage is a vital part of software development that helps maintain code q
 ## Additional Resources
 For further reading and resources, check out the documentation for .... There are also plenty of tutorials and best practices guides available online to help you get the most out of your Code coverage efforts.
 
-- https://linearb.io/blog/code-coverage-types
-- https://learn.scientific-python.org/development/guides/coverage
-
+- [LinearB Blog: Code Coverage Types: Which Is the Best?](https://linearb.io/blog/code-coverage-types) 
+- [Scientific Python Development Guide: Code Coverage](https://learn.scientific-python.org/development/guides/coverage)
+- [Google Research: Code coverage at Google](https://research.google/pubs/code-coverage-at-google)
+- [IEEE: How Effective Are Code Coverage Criteria?](https://ieeexplore.ieee.org/abstract/document/7272926)
