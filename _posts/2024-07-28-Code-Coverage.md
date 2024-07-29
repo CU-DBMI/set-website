@@ -60,7 +60,7 @@ else:
     return False
 ```
 
-Line coverage, statement coverage, function coverage, and branch coverage are all metrics used to measure how thoroughly code is tested, but they each focus on different aspects.
+Line coverage, statement coverage, function coverage, and branch coverage common metrics used to measure how thoroughly code is tested, but they each focus on different aspects.
 
 - **Line coverage** tracks the execution of individual lines of code, indicating whether each line has been run during testing.
 - **Statement coverage** is similar but considers whether each statement (a single unit of execution) within the code has been executed, regardless of the number of lines.
