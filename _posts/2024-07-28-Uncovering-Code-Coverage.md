@@ -85,7 +85,7 @@ In short, it's a vital tool for any developer, providing you further insights ab
 
 Different languages have different tools for measuring code coverage.
 These tools help you visualize and understand your test coverage, making it easier to spot gaps and improve your tests.
-While the implementations may differ in their processing and report formating, they all follow similar principles.
+While the implementations may differ in their processing and report formatting, they all follow similar principles.
 Many of these tools are available without additional cost of freely as open-source packages.
 Below are just a few languages and common test coverage tools you can use with them.
 
