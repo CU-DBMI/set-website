@@ -65,7 +65,7 @@ Line coverage, statement coverage, function coverage, and branch coverage common
 - **Line coverage** tracks the execution of individual lines of code, indicating whether each line has been run during testing.
 - **Statement coverage** is similar but considers whether each statement (a single unit of execution) within the code has been executed, regardless of the number of lines.
 - **Function coverage** checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code's interface are exercised.
-- **Branch coverage**, on the other hand, goes deeper by verifying whether every possible path through control structures (like if-else statements) has been followed, ensuring that all potential outcomes and decision points are tested. 
+- **Branch coverage**, helps verify whether every possible path through control structures (like if-else blocks, which are often treated as a single compound statement) has been followed, ensuring that all potential outcomes and decision points are tested.
 
 ## Benefits of Test Coverage
 
