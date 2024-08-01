@@ -73,7 +73,8 @@ Line coverage, statement coverage, function coverage, and branch coverage common
 
 High test coverage ensures your code is reliable and less prone to bugs. 
 It helps you identify untested parts of your codebase, facilitating better maintenance and encouraging a culture of quality.
-This is balanced by understanding that 100% coverage is often very challenging to achieve and could be harmful in practice.
+However, it's important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
+Such anti-patterns include writing superficial tests that don't effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.
 
 There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there's coupling to other functionality).
 With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
