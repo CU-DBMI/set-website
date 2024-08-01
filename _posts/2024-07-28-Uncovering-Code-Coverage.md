@@ -222,7 +222,8 @@ This transparency helps maintain high code quality, ensures that new changes are
 Code coverage is a vital part of software development that helps maintain code quality and reliability. By integrating coverage tools and practices into your workflow, you can ensure your code is thoroughly tested and ready for any changes. Start using Code coverage tools in your projects today and experience the benefits firsthand!
 
 ## Additional Resources
-For further reading and resources, check out the documentation for .... There are also plenty of tutorials and best practices guides available online to help you get the most out of your Code coverage efforts.
+
+For further reading and resources, check out the the following resources on this topic:
 
 - [LinearB Blog: Code Coverage Types: Which Is the Best?](https://linearb.io/blog/code-coverage-types) 
 - [Scientific Python Development Guide: Code Coverage](https://learn.scientific-python.org/development/guides/coverage)
