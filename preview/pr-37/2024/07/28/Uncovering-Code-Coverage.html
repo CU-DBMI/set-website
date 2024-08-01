@@ -62,10 +62,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2024-07-29T21:02:50+00:00">
+  <meta property="og:updated_time" content="2024-08-01T17:55:58+00:00">
   <meta property="article:published_time" content="2024-07-28T00:00:00+00:00">
-  <meta property="article:modified_time" content="2024-07-29T21:02:50+00:00">
-  <meta name="revised" content="2024-07-29T21:02:50+00:00">
+  <meta property="article:modified_time" content="2024-08-01T17:55:58+00:00">
+  <meta name="revised" content="2024-08-01T17:55:58+00:00">
 
 
 <script type="application/ld+json">
@@ -75,7 +75,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" },
       "datePublished": "2024-07-28T00:00:00+00:00",
-      "dateModified": "2024-07-29T21:02:50+00:00",
+      "dateModified": "2024-08-01T17:55:58+00:00",
     
     "name": "Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -482,7 +482,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>July 29, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -626,7 +626,7 @@ By understanding these metrics, you can get a clearer picture of your code’s r
   <li>
 <strong>Function coverage</strong> checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code’s interface are exercised.</li>
   <li>
-<strong>Branch coverage</strong>, on the other hand, goes deeper by verifying whether every possible path through control structures (like if-else statements) has been followed, ensuring that all potential outcomes and decision points are tested.</li>
+<strong>Branch coverage</strong>, helps verify whether every possible path through control structures (like if-else blocks, which are often treated as a single compound statement) has been followed, ensuring that all potential outcomes and decision points are tested.</li>
 </ul>
 
 <h2 id="benefits-of-test-coverage">Benefits of Test Coverage</h2>
@@ -637,11 +637,13 @@ By understanding these metrics, you can get a clearer picture of your code’s r
 
 <p>High test coverage ensures your code is reliable and less prone to bugs. 
 It helps you identify untested parts of your codebase, facilitating better maintenance and encouraging a culture of quality.
-This is balanced by understanding that 100% coverage is often very challenging to achieve and could be harmful in practice.</p>
+However, it’s important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
+Such anti-patterns include writing superficial tests that don’t effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.</p>
 
 <p>There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there’s coupling to other functionality).
 With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
-In short, it’s a vital tool for any developer, providing you further insights about software which can otherwise go unseen.</p>
+Because of this, implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time.
+If you’re working with code that currently has no coverage, there’s no time like the present to start!</p>
 
 <h2 id="measuring-test-coverage">Measuring Test Coverage</h2>
 
@@ -843,7 +845,8 @@ This transparency helps maintain high code quality, ensures that new changes are
 <p>Code coverage is a vital part of software development that helps maintain code quality and reliability. By integrating coverage tools and practices into your workflow, you can ensure your code is thoroughly tested and ready for any changes. Start using Code coverage tools in your projects today and experience the benefits firsthand!</p>
 
 <h2 id="additional-resources">Additional Resources</h2>
-<p>For further reading and resources, check out the documentation for …. There are also plenty of tutorials and best practices guides available online to help you get the most out of your Code coverage efforts.</p>
+
+<p>For further reading and resources, check out the the following resources on this topic:</p>
 
 <ul>
   <li><a href="https://linearb.io/blog/code-coverage-types">LinearB Blog: Code Coverage Types: Which Is the Best?</a></li>
