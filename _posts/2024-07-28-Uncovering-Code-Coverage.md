@@ -78,7 +78,8 @@ Such anti-patterns include writing superficial tests that don't effectively vali
 
 There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there's coupling to other functionality).
 With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
-In short, it's a vital tool for any developer, providing you further insights about software which can otherwise go unseen.
+Because of this, implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time.
+If you’re working with code that currently has no coverage, there’s no time like the present to start!
 
 ## Measuring Test Coverage
 
