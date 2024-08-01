@@ -532,6 +532,116 @@
     
 
     <div class="post-excerpt-text">
+      <a href="/set-website/2024/07/28/Uncovering-Code-Coverage.html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 28, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>August 01, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://cu-dbmi.github.io/set-website/blog">
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20code-coverage%22" class="tag" data-tooltip='Show items with the tag "code-coverage"'>
+        code-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20test-coverage%22" class="tag" data-tooltip='Show items with the tag "test-coverage"'>
+        test-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20software-quality%22" class="tag" data-tooltip='Show items with the tag "software-quality"'>
+        software-quality
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20testing%22" class="tag" data-tooltip='Show items with the tag "testing"'>
+        testing
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20software-sustainability%22" class="tag" data-tooltip='Show items with the tag "software-sustainability"'>
+        software-sustainability
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Uncovering Code Coverage  Ensuring Software Reliability with Comprehensive Testing          These blog posts are intended to provide software tips  concepts  and tools geared towards helping you achieve your goals  Viewsexpressed in the content belong to the content creators and not the organization  its affiliates  or employees  If youhave any questions or suggestions for blog posts  please don  8217 t hesitate to reach out   Introduction                    Code coverage gives our code protection from the unknown       Test coverage is a crucial aspect of software development that helps ensure your code is reliable and bug free By measuring how much of your code is covered by tests  you can identify untested areas and improve overall quality In this post  we  8217 ll dive into what test coverage is  why it matters  and explore some tools for measuring it Let  8217 s get started What is Code Coverage                     Code which is tested is considered   8216 covered  8217            8220 With tests  we can change the behavior of our code quickly and verifiably  Without them  we really don  8217 t know if our code is getting better or worse   8221   Michael Feathers  Working Effectively with Legacy Code Code coverage  also known as test coverage  refers to the percentage of your code that is executed when your tests run  Wikipedia  Code coverage  Software developers use code coverage as a way to understand areas which may need tests By understanding these metrics  you can get a clearer picture of your code  8217 s reliability Types of Coverage  example lineprint  A line which could be tested for coverage     example statement  potentially multi line statement        1     2     3    example functiondef example       return  An example function    example branchingif 1 in statement     return Trueelse     return FalseLine coverage  statement coverage  function coverage  and branch coverage common metrics used to measure how thoroughly code is tested  but they each focus on different aspects   Line coverage tracks the execution of individual lines of code  indicating whether each line has been run during testing   Statement coverage is similar but considers whether each statement  a single unit of execution  within the code has been executed  regardless of the number of lines   Function coverage checks whether each function or method in the code has been called during the tests  ensuring that all parts of the code  8217 s interface are exercised   Branch coverage  helps verify whether every possible path through control structures  like if else blocks  which are often treated as a single compound statement  has been followed  ensuring that all potential outcomes and decision points are tested Benefits of Test Coverage    8220 If you are testing thoughtfully and well  I would expect a coverage percentage in the upper 80s or 90s  I would be suspicious of anything like 100    it would smell of someone writing tests to make the coverage numbers happy  but not thinking about what they are doing   8221   Martin Fowler  Test Coverage High test coverage ensures your code is reliable and less prone to bugs  It helps you identify untested parts of your codebase  facilitating better maintenance and encouraging a culture of quality However  it  8217 s important to balance this with the understanding that striving for 100  coverage can sometimes lead to anti patterns Such anti patterns include writing superficial tests that don  8217 t effectively validate functionality  or spending excessive time on achieving full coverage at the expense of more critical development tasks There are often times where you need to make changes to your code which can cause unforeseen issues to arise  for example  when there  8217 s coupling to other functionality  With good test coverage  you can more confidently refactor code during these occasions  knowing that any issues will be quickly caught by your tests Because of this  implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time If you re working with code that currently has no coverage  there s no time like the present to start Measuring Test CoverageToolsDifferent languages have different tools for measuring code coverage These tools help you visualize and understand your test coverage  making it easier to spot gaps and improve your tests While the implementations may differ in their processing and report formatting  they all follow similar principles Many of these tools are available without additional cost of freely as open source packages Below are just a few languages and common test coverage tools you can use with them   Python  coverage py is a popular open source solution which can be paired with pytest cov  slipcover is a similar coverage tool which can be used with Python   R developers often use covr   C   developers can rely on gcov or LCOV   MATLAB has built in test coverage features through CodeCoveragePlugin PlatformsIn addition to the tools mentioned above there are also various test or code coverage platforms  often software as a service  SaaS  companies  These platforms allow you to integrate the data with your GitHub workflows and often include additional insights like historical data tracking  etc Platforms may be an option to consider when thinking about scale and the type of information you  8217 re interested in viewing See below for some examples of these   Codecov  known for its ease of setup and comprehensive support for various languages  is a popular code coverage reporting tool that integrates with many CI CD services and version control systems   Codacy is a code quality platform that includes code coverage as one of its features   Code Climate is another code quality platform which includes code coverage as one of its features Using coverage py for Measuring Test Coverage in Python                     Source  Coverage py website       coverage py is a powerful tool for measuring code coverage in Python  It  8217 s easy to set up  just install it via pip  or your development environment   run your tests with coverage  and generate reports in various formats By default  coverage py measures statement coverage but it can be configured to measure others  see here for more  Interpreting these reports helps you understand which parts of your code need more testing love A quick example of coverage pyThe following content may help demonstrate how coverage py and test coverage works This example assumes one has installed both coverage py and pytest  a common Python testing framework  using pip  for instance  by using the command pip install coverage pytest    module pydef covered test       return  This test has coverage  def uncovered test       return  This test doesn t have coverage  module py has two functions  one which will be covered by a test and the other which will not   test module pyfrom module import covered testdef test add       assert covered test       This test has coverage  test module py has one test for module covered test module uncovered test remains without a test and won  8217 t be considered as covered by coverage py   first we process test coverage  coverage run  m pytest  then we show the reported output of  processed test coverage  coverage reportName             Stmts   Miss  Cover                                    module py            4      1    75 test module py       3      0   100                                     TOTAL                7      1    86 We use the above coverage py commands to first process test coverage and then to show a report about test coverage afterwards Notice that module py shows it does not have full coverage  indicating a possible area where we can improve testing Integrating Code Coverage Tools with CI CD PipelinesContinuous integration and deployment  CI CD  are essential for modern development workflows By integrating code coverage tools with CI CD pipelines  you can automate the process of checking test coverage Setting up coverage py with GitHub Actions workflows  for example  maintains high standards and can catch issues early Strategies like setting coverage thresholds and failing builds on coverage drops help maintain high standards Comparing current coverage with previous coverage can be done using techniques like hash checks for binary files or storing and comparing coverage reports This ensures you know exactly what  8217 s changed and can act accordingly Pre commit Hooks to Generate coverage py Reports                    Pre commit may be used to help automatically generate coverage reports alongside your source control practices       Pre commit hooks are scripts that run before a commit is finalized You can set up a pre commit hook to run tests and generate coverage reports using coverage py  see the example below  This ensures consistency by comparing reports before and after changes   example  pre commit config yml  See https   pre commit com for more informationrepos       process coverage within local environment    repo  local    hooks         id  code cov gen        name  Generate code coverage        language  system        entry  coverage run  m pytest        pass filenames  false        always run  true      generate xml coverage report and export to a badge      for display within a readme or other documentation     repo  https   github com Weird Sheep Labs coverage pre commit    rev  0 1 1    hooks         id  coverage xml        id  coverage badgeIf there  8217 s a significant drop in coverage  the changes are immediately visible  potentially before the commit even happens This workflow can also help generate metadata for association with a repository  for example  through coverage badge or genbage Pull Request Comment with coverage py Reports                    GitHub Actions workflows can help add coverage reporting capabilities to your pull requests       Another workflow which might be helpful is posting coverage reports when a pull request  PR  is opened  for example  using GitHub Action orgoro coverage  This process involves generating a coverage report during the CI CD pipeline and integrating it with the PR                     Example pull request comment with code coverage details  source  https   github com orgoro coverage        By doing so  developers can immediately see which parts of the code are covered by tests and which are not  enabling them to identify potential gaps in testing This transparency helps maintain high code quality  ensures that new changes are well tested  and encourages best practices in test driven development Final ThoughtsCode coverage is a vital part of software development that helps maintain code quality and reliability  By integrating coverage tools and practices into your workflow  you can ensure your code is thoroughly tested and ready for any changes  Start using Code coverage tools in your projects today and experience the benefits firsthand Additional ResourcesFor further reading and resources  check out the the following resources on this topic   LinearB Blog  Code Coverage Types  Which Is the Best   Scientific Python Development Guide  Code Coverage  Google Research  Code coverage at Google  IEEE  How Effective Are Code Coverage Criteria ">
+        
+
+Test coverage is a crucial aspect of software development that helps ensure your code is reliable and bug-free.
+By measuring how much of your code is covered by tests, you can identify untested areas and improve overall quality.
+In this post, we’ll dive into what test coverage is, why it matters, and explore some tools for measuring it.
+Let’s get started!
+
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
       <a href="/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html">Leveraging Kùzu and Cypher for Advanced Data Analysis</a>
 
       <div class="post-info">
@@ -580,7 +690,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -690,7 +800,7 @@ Whether you’re a research software developer looking to integrate advanced gra
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -798,7 +908,7 @@ This article will introduce the Parquet format from a research data engineering 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -915,7 +1025,7 @@ This article will cover package dependency management through special files gene
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1024,7 +1134,7 @@ This post will cover some computer memory definitions, how Python makes use of c
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1135,7 +1245,7 @@ This post channels the spirit of Thanksgiving by giving our thanks through code 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1259,7 +1369,7 @@ This article will cover a few tools which leverage these techniques for addressi
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1378,7 +1488,7 @@ Python packaging is the craft of preparing for and reaching distribution of your
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1495,7 +1605,7 @@ This readme will cover a background on the technologies and how to use the conte
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1606,7 +1716,7 @@ There are many routine tasks which can be automated to help save time and increa
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1717,7 +1827,7 @@ Git provides a feature called branching which facilitates parallel and segmented
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1828,7 +1938,7 @@ This article covers using the software technique of linting on R code in order t
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -1943,7 +2053,7 @@ Programming often involves long periods of problem solving which can sometimes l
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -2056,7 +2166,7 @@ Software documentation is sometimes treated as a less important or secondary asp
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -2175,7 +2285,7 @@ The act of creating software often involves many iterations of writing, personal
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -2290,7 +2400,7 @@ Apache Arrow is a language-independent and high performance data format useful i
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -2397,7 +2507,7 @@ Diagrams can be a useful way to illuminate and communicate ideas. Free-form draw
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 30, 2024</span>
+      <span>August 01, 2024</span>
     </span>
   
 </div>
@@ -2749,6 +2859,22 @@ Have you ever found yourself spending hours formatting your code so it looks jus
     
       <a href="https://cu-dbmi.github.io/set-website/blog/?search=%22tag:%20data-interoperability%22" class="tag" data-tooltip='Show items with the tag "data-interoperability"'>
         data-interoperability
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog/?search=%22tag:%20code-coverage%22" class="tag" data-tooltip='Show items with the tag "code-coverage"'>
+        code-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog/?search=%22tag:%20test-coverage%22" class="tag" data-tooltip='Show items with the tag "test-coverage"'>
+        test-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog/?search=%22tag:%20software-quality%22" class="tag" data-tooltip='Show items with the tag "software-quality"'>
+        software-quality
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog/?search=%22tag:%20software-sustainability%22" class="tag" data-tooltip='Show items with the tag "software-sustainability"'>
+        software-sustainability
       </a>
     
   </div>

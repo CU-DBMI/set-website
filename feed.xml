@@ -1,4 +1,317 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-05-30T15:27:18+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-08-01T18:03:36+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Code coverage gives our code protection from the unknown.">
+    <img src="/set-website/images/file-holding-umbrella-for-coverage.png" style="
+        width: 200px;
+        max-height: unset;
+      " alt="Code coverage gives our code protection from the unknown." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Code coverage gives our code protection from the unknown.
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+
+<p>Test coverage is a crucial aspect of software development that helps ensure your code is reliable and bug-free.
+By measuring how much of your code is covered by tests, you can identify untested areas and improve overall quality.
+In this post, we&#8217;ll dive into what test coverage is, why it matters, and explore some tools for measuring it.
+Let&#8217;s get started!</p>
+
+<!-- excerpt end -->
+
+<h2 id="what-is-code-coverage">What is Code Coverage?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Code which is tested is considered 'covered'.">
+    <img src="/set-website/images/simple-example-of-coverage-for-functions.png" style="
+        width: 600px;
+        max-height: unset;
+      " alt="Code which is tested is considered 'covered'." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Code which is tested is considered &#8216;covered&#8217;.
+
+    </figcaption>
+  
+</figure>
+
+<blockquote>
+  <p>&#8220;With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don&#8217;t know if our code is getting better or worse.&#8221; (<a href="https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how">Michael Feathers, Working Effectively with Legacy Code</a>)</p>
+</blockquote>
+
+<p>Code coverage, also known as test coverage, refers to the percentage of your code that is executed when your tests run (<a href="https://en.wikipedia.org/wiki/Code_coverage">Wikipedia: Code coverage</a>).
+Software developers use code coverage as a way to understand areas which may need tests.
+By understanding these metrics, you can get a clearer picture of your code&#8217;s reliability.</p>
+
+<h2 id="types-of-coverage">Types of Coverage</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example line
+</span><span class="k">print</span><span class="p">(</span><span class="s">"A line which could be tested for coverage."</span><span class="p">)</span>
+
+<span class="c1"># example statement (potentially multi-line)
+</span><span class="n">statement</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># example function
+</span><span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"An example function."</span>
+
+<span class="c1"># example branching
+</span><span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">statement</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Line coverage, statement coverage, function coverage, and branch coverage common metrics used to measure how thoroughly code is tested, but they each focus on different aspects.</p>
+
+<ul>
+  <li><strong>Line coverage</strong> tracks the execution of individual lines of code, indicating whether each line has been run during testing.</li>
+  <li><strong>Statement coverage</strong> is similar but considers whether each statement (a single unit of execution) within the code has been executed, regardless of the number of lines.</li>
+  <li><strong>Function coverage</strong> checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code&#8217;s interface are exercised.</li>
+  <li><strong>Branch coverage</strong>, helps verify whether every possible path through control structures (like if-else blocks, which are often treated as a single compound statement) has been followed, ensuring that all potential outcomes and decision points are tested.</li>
+</ul>
+
+<h2 id="benefits-of-test-coverage">Benefits of Test Coverage</h2>
+
+<blockquote>
+  <p>&#8220;If you are testing thoughtfully and well, I would expect a coverage percentage in the upper 80s or 90s. I would be suspicious of anything like 100% - it would smell of someone writing tests to make the coverage numbers happy, but not thinking about what they are doing.&#8221; (<a href="https://martinfowler.com/bliki/TestCoverage.html">Martin Fowler, Test Coverage</a>)</p>
+</blockquote>
+
+<p>High test coverage ensures your code is reliable and less prone to bugs. 
+It helps you identify untested parts of your codebase, facilitating better maintenance and encouraging a culture of quality.
+However, it&#8217;s important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
+Such anti-patterns include writing superficial tests that don&#8217;t effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.</p>
+
+<p>There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there&#8217;s coupling to other functionality).
+With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
+Because of this, implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time.
+If you’re working with code that currently has no coverage, there’s no time like the present to start!</p>
+
+<h2 id="measuring-test-coverage">Measuring Test Coverage</h2>
+
+<h3 id="tools">Tools</h3>
+
+<p>Different languages have different tools for measuring code coverage.
+These tools help you visualize and understand your test coverage, making it easier to spot gaps and improve your tests.
+While the implementations may differ in their processing and report formatting, they all follow similar principles.
+Many of these tools are available without additional cost of freely as open-source packages.
+Below are just a few languages and common test coverage tools you can use with them.</p>
+
+<ul>
+  <li><strong>Python</strong>, <a href="https://github.com/nedbat/coveragepy"><code class="language-plaintext highlighter-rouge">coverage.py</code></a> is a popular open-source solution which can be paired with <a href="https://github.com/pytest-dev/pytest-cov"><code class="language-plaintext highlighter-rouge">pytest-cov</code></a>. <a href="https://github.com/plasma-umass/slipcover"><code class="language-plaintext highlighter-rouge">slipcover</code></a> is a similar coverage tool which can be used with Python.</li>
+  <li><strong>R</strong> developers often use <a href="https://github.com/r-lib/covr"><code class="language-plaintext highlighter-rouge">covr</code></a>.</li>
+  <li><strong>C++</strong> developers can rely on <a href="https://gcc.gnu.org/onlinedocs/gcc/gcov/introduction-to-gcov.html"><code class="language-plaintext highlighter-rouge">gcov</code></a> or <a href="https://github.com/linux-test-project/lcov"><code class="language-plaintext highlighter-rouge">LCOV</code></a>.</li>
+  <li><strong>MATLAB</strong> has built-in test coverage features through <a href="https://www.mathworks.com/help/matlab/matlab_prog/types-of-code-coverage-for-matlab-source-code.html"><code class="language-plaintext highlighter-rouge">CodeCoveragePlugin</code></a>.</li>
+</ul>
+
+<h3 id="platforms">Platforms</h3>
+
+<p>In addition to the tools mentioned above there are also various test or code coverage platforms (often <a href="https://en.wikipedia.org/wiki/Software_as_a_service">software as a service (SaaS)</a> companies).
+These platforms allow you to integrate the data with your GitHub workflows and often include additional insights like historical data tracking, etc.
+Platforms may be an option to consider when thinking about scale and the type of information you&#8217;re interested in viewing.
+See below for some examples of these:</p>
+
+<ul>
+  <li><a href="https://about.codecov.io/">Codecov</a>, known for its ease of setup and comprehensive support for various languages, is a popular code coverage reporting tool that integrates with many CI/CD services and version control systems.</li>
+  <li><a href="https://www.codacy.com/coverage">Codacy</a> is a code quality platform that includes code coverage as one of its features.</li>
+  <li><a href="https://codeclimate.com/">Code Climate</a> is another code quality platform which includes code coverage as one of its features.</li>
+</ul>
+
+<h2 id="using-coveragepy-for-measuring-test-coverage-in-python">Using <code class="language-plaintext highlighter-rouge">coverage.py</code> for Measuring Test Coverage in Python</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="(Source: [Coverage.py website](https://coverage.readthedocs.io/en/7.6.0/))">
+    <img src="/set-website/images/coverage.py-logo.png" style="
+        width: 200px;
+        max-height: unset;
+      " alt="(Source: [Coverage.py website](https://coverage.readthedocs.io/en/7.6.0/))" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      (Source: <a href="https://coverage.readthedocs.io/en/7.6.0/">Coverage.py website</a>)
+
+    </figcaption>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">coverage.py</code> is a powerful tool for measuring code coverage in Python. 
+It&#8217;s easy to set up: just install it via <a href="https://pip.pypa.io/en/stable/">pip</a> (or your development environment), run your tests with coverage, and generate reports in various formats.
+By default, <code class="language-plaintext highlighter-rouge">coverage.py</code> measures <strong>statement coverage</strong> but it can be configured to measure others (<a href="https://coverage.readthedocs.io/en/7.6.0/index.html#capabilities">see here for more</a>).
+Interpreting these reports helps you understand which parts of your code need more testing love.</p>
+
+<h3 id="a-quick-example-of-coveragepy">A quick example of <code class="language-plaintext highlighter-rouge">coverage.py</code></h3>
+
+<p>The following content may help demonstrate how <code class="language-plaintext highlighter-rouge">coverage.py</code> and test coverage works.
+This example assumes one has installed both <code class="language-plaintext highlighter-rouge">coverage.py</code> and <a href="https://docs.pytest.org/en/stable/"><code class="language-plaintext highlighter-rouge">pytest</code></a> (a common Python testing framework) using pip (for instance, by using the command <code class="language-plaintext highlighter-rouge">pip install coverage pytest</code>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># module.py
+</span>
+<span class="k">def</span> <span class="nf">covered_test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"This test has coverage."</span>
+
+<span class="k">def</span> <span class="nf">uncovered_test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"This test doesn't have coverage."</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">module.py</code> has two functions, one which will be covered by a test and the other which will not.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># test_module.py
+</span>
+<span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">covered_test</span>
+
+<span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">covered_test</span><span class="p">()</span> <span class="o">==</span> <span class="s">"This test has coverage."</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">test_module.py</code> has one test for <code class="language-plaintext highlighter-rouge">module.covered_test</code>.
+<code class="language-plaintext highlighter-rouge">module.uncovered_test</code> remains without a test and won&#8217;t be considered as covered by <code class="language-plaintext highlighter-rouge">coverage.py</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># first we process test coverage</span>
+<span class="nv">$ </span>coverage run <span class="nt">-m</span> pytest
+<span class="c"># then we show the reported output of</span>
+<span class="c"># processed test coverage</span>
+<span class="nv">$ </span>coverage report
+Name             Stmts   Miss  Cover
+<span class="nt">------------------------------------</span>
+module.py            4      1    75%
+test_module.py       3      0   100%
+<span class="nt">------------------------------------</span>
+TOTAL                7      1    86%
+</code></pre></div></div>
+
+<p>We use the above <code class="language-plaintext highlighter-rouge">coverage.py</code> commands to first process test coverage and then to show a report about test coverage afterwards.
+Notice that <code class="language-plaintext highlighter-rouge">module.py</code> shows it does not have full coverage, indicating a possible area where we can improve testing.</p>
+
+<h2 id="integrating-code-coverage-tools-with-cicd-pipelines">Integrating Code Coverage Tools with CI/CD Pipelines</h2>
+
+<p>Continuous integration and deployment (CI/CD) are essential for modern development workflows.
+By integrating code coverage tools with CI/CD pipelines, you can automate the process of checking test coverage.
+Setting up <code class="language-plaintext highlighter-rouge">coverage.py</code> with GitHub Actions workflows, for example, maintains high standards and can catch issues early.
+Strategies like setting coverage thresholds and failing builds on coverage drops help maintain high standards.
+Comparing current coverage with previous coverage can be done using techniques like hash checks for binary files or storing and comparing coverage reports.
+This ensures you know exactly what&#8217;s changed and can act accordingly.</p>
+
+<h3 id="pre-commit-hooks-to-generate-coveragepy-reports">Pre-commit Hooks to Generate <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices.">
+    <img src="/set-website/images/coverage-pre-commit-workflow.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Pre-commit may be used to help automatically generate coverage reports alongside your source control practices.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://pre-commit.com/">Pre-commit</a> hooks are scripts that run before a commit is finalized.
+You can set up a pre-commit hook to run tests and generate coverage reports using <code class="language-plaintext highlighter-rouge">coverage.py</code> (see the example below).
+This ensures consistency by comparing reports before and after changes.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example .pre-commit-config.yml</span>
+<span class="c1"># See https://pre-commit.com for more information</span>
+<span class="na">repos</span><span class="pi">:</span>
+    <span class="c1"># process coverage within local environment</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">local</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">code-cov-gen</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">Generate code coverage</span>
+        <span class="na">language</span><span class="pi">:</span> <span class="s">system</span>
+        <span class="na">entry</span><span class="pi">:</span> <span class="s">coverage run -m pytest</span>
+        <span class="na">pass_filenames</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">always_run</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="c1"># generate xml coverage report and export to a badge</span>
+    <span class="c1"># for display within a readme or other documentation.</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/Weird-Sheep-Labs/coverage-pre-commit</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">0.1.1</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">coverage-xml</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">coverage-badge</span>
+</code></pre></div></div>
+
+<p>If there&#8217;s a significant drop in coverage, the changes are immediately visible, potentially before the commit even happens.
+This workflow can also help generate metadata for association with a repository, for example, through <a href="https://github.com/dbrgn/coverage-badge">coverage-badge</a> or <a href="https://github.com/smarie/python-genbadge">genbage</a>.</p>
+
+<h3 id="pull-request-comment-with-coveragepy-reports">Pull Request Comment with <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests.">
+    <img src="/set-website/images/coverage-pr-comment-workflow.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      GitHub Actions workflows can help add coverage reporting capabilities to your pull requests.
+
+    </figcaption>
+  
+</figure>
+
+<p>Another workflow which might be helpful is posting coverage reports when a pull request (PR) is opened (for example, using GitHub Action <a href="https://github.com/orgoro/coverage">orgoro/coverage</a>).
+This process involves generating a coverage report during the CI/CD pipeline and integrating it with the PR.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage).">
+    <img src="/set-website/images/coverage-workflow-pr-comment.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage)." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage).
+
+    </figcaption>
+  
+</figure>
+
+<p>By doing so, developers can immediately see which parts of the code are covered by tests and which are not, enabling them to identify potential gaps in testing.
+This transparency helps maintain high code quality, ensures that new changes are well-tested, and encourages best practices in test-driven development.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Code coverage is a vital part of software development that helps maintain code quality and reliability. By integrating coverage tools and practices into your workflow, you can ensure your code is thoroughly tested and ready for any changes. Start using Code coverage tools in your projects today and experience the benefits firsthand!</p>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<p>For further reading and resources, check out the the following resources on this topic:</p>
+
+<ul>
+  <li><a href="https://linearb.io/blog/code-coverage-types">LinearB Blog: Code Coverage Types: Which Is the Best?</a></li>
+  <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
+  <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
+  <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -283,7 +596,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -700,7 +1013,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -997,7 +1310,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1419,7 +1732,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1854,7 +2167,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2127,7 +2440,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2603,7 +2916,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2893,7 +3206,7 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3059,161 +3372,4 @@ Reference this example for a brief demonstration of how GitHub Actions and Dagge
 
 <h2 id="closing-remarks">Closing Remarks</h2>
 
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry><entry><title type="html">Tip of the Week: Branch, Review, and Learn</title><link href="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html" rel="alternate" type="text/html" title="Tip of the Week: Branch, Review, and Learn" /><published>2023-02-13T00:00:00+00:00</published><updated>2024-05-30T15:26:15+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/02/13/Branch-Review-and-Learn.html"><![CDATA[<h1 id="tip-of-the-week-branch-review-and-learn">Tip of the Week: Branch, Review, and Learn</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p>Git provides a feature called <a href="https://git-scm.com/docs/git-branch">branching</a> which facilitates parallel and segmented programming work through <a href="https://git-scm.com/docs/git-commit">commits</a> with version control. Using branching enables both work concurrency (multiple people working on the same repository at the same time) as well as a chance to isolate and review specific programming tasks. This article covers some conceptual best practices with branching, reviewing, and merging code using Github.</p>
-
-<!-- excerpt end -->
-
-<p><strong>Please note:</strong> the content below represents one opinion in a larger space of Git workflow concepts (it&#8217;s not perfect!). Developer cultures may vary on these topics; be sure to acknowledge people and culture over exclusive or absolute dedication to what is found below.</p>
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-Use <a href="https://www.atlassian.com/git/tutorials/using-branches">git branching techniques</a> to segment the completion of programming tasks, gradually and consistently committing small changes (practicing <a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em> or &#8220;make haste, slowly&#8221;</a>). When a group of small changes are ready from branches, request <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">pull request reviews</a> and take advantage of <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">comments</a> to <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">continuously improve</a> the work. Prepare for a branch <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merge</a> after review by deciding <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">which merge strategy</a> is appropriate and automating merge requirements with <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>.</p>
-
-<h2 id="concept-coursework-branching">Concept: Coursework Branching</h2>
-
-<pre class="mermaid">
-flowchart LR
- subgraph Course
-    direction LR
-    open["open\nassignment"]
-    turn_in["review\nassignment"]
-  end
-  subgraph Student ["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Student"]
-    direction LR
-    work["completed\nassignment"]
-  end
-  open -.-&gt; turn_in
-  open --&gt; |works towards| work
-  work --&gt; |seeks review| turn\_in
-</pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<p class="center"><em>An example course and student assignment workflow.</em></p>
-
-<p><a href="https://www.atlassian.com/git/tutorials/using-branches">Git branching</a> practices may be understood in context with similar workflows from real life. Consider a student taking a course, where an assignment is given to them to complete. In addition to the steps shown in the diagram above, it&#8217;s important to think about <em>why</em> this pattern is beneficial:</p>
-
-<ul>
-  <li>Completing an assignment allows us as social, inter-dependent beings to present new findings which enable learning and amalgamation of additional ideas from others.</li>
-  <li>The timebound nature of assignments enables us to practice some form of <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">timeboxing</a> so as to minimize tasks which may take too much time.</li>
-  <li>Segmenting applied learning in distinct, goal-orientated chunks helps make larger topics easier to understand.</li>
-</ul>
-
-<h2 id="branching-to-complete-an-assignment">Branching to Complete an &#8220;Assignment&#8221;</h2>
-
-<pre class="mermaid">
-%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
-      'git0': '#4F46E5',
-      'git1': '#10B981',
-      'gitBranchLabel1': '#ffffff'
-} } }%%
-    gitGraph
-       commit id: "..."
-       commit id: "opened"
-       branch assignment
-       checkout assignment
-       commit id: "completed"
-       checkout main
-</pre>
-
-<p class="center"><em>An example git diagram showing assignment branch based off main.</em></p>
-
-<p>Following the course assignment workflow, the diagram above shows an in-progress <code class="language-plaintext highlighter-rouge">assignment</code> branch based off of the <code class="language-plaintext highlighter-rouge">main</code> branch. When the <code class="language-plaintext highlighter-rouge">assignment</code> branch is created, we bring into it everything we know from <code class="language-plaintext highlighter-rouge">main</code> (the course) so far in the form of <a href="https://github.com/git-guides/git-commit">commits</a>, or groups of changes to various files. <a href="https://github.com/git-guides#create-a-branch">Branching</a> allows us to make consistent and well described changes based on what&#8217;s already happened without impacting others work in the meantime.</p>
-
-<blockquote>
-  <p>Branching best practices:</p>
-
-  <ul>
-    <li><strong>Keep the name and work with branches dedicated to a specific and focused purpose.</strong> For example: a branch named <code class="language-plaintext highlighter-rouge">fix-links-in-docs</code> might entail work related to fixing HTTP links within documentation.</li>
-    <li><strong>Consider the use of <a href="https://docs.github.com/en/get-started/quickstart/fork-a-repo">Github Forks</a></strong> (along with branches within the fork) to help further isolate and enrich work potential. Forks also allow remixing existing work into new possibilities.</li>
-    <li><strong><a href="https://en.wikipedia.org/wiki/Festina_lente"><em>festina lente</em></a> or &#8220;make haste, slowly&#8221;:</strong> Commits on any branch represent small chunks of a cohesive idea which will eventually be brought to <code class="language-plaintext highlighter-rouge">main</code>. It is often beneficial to be consistent with small, gradual commits to avoid a rushed or incomplete submission. The same applies more generally for software; taking time upfront to do things well can mean time saved later.</li>
-  </ul>
-</blockquote>
-
-<h2 id="reviewing-the-branched-work">Reviewing the Branched Work</h2>
-
-<pre class="mermaid">
-%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
-      'git0': '#6366F1',
-      'git1': '#10B981',
-      'gitBranchLabel1': '#ffffff'
-} } }%%
-    gitGraph
-       commit id: "..."
-       commit id: "opened"
-       branch assignment
-       checkout assignment
-       commit id: "completed"
-       checkout main
-       merge assignment id: "reviewed"
-</pre>
-
-<p class="center"><em>An example git diagram showing assignment branch being merged with main after a review.</em></p>
-
-<p>The diagram above depicts a merge from the <code class="language-plaintext highlighter-rouge">assignment</code> branch to pull the changes into the <code class="language-plaintext highlighter-rouge">main</code> branch, simulating an assignment being returned for review within a course. While merges may be forced without review, it&#8217;s a best practice create a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Pull Request (PR) Review</a> (also known as a <a href="https://docs.gitlab.com/ee/user/project/merge_requests/">Merge Request (MR)</a> on some systems) and then ask other members of your team to review it. Doing this provides a chance to make revisions before code changes are &#8220;finalized&#8221; within the <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
-
-<blockquote>
-  <p>Github provides special tools for reviews which can assist both the author and reviewer:</p>
-
-  <ul>
-    <li><strong>Keep code changes intended for review small</strong>, enabling reviewers to reason through the work to more quickly provide feedback and practicing <a href="https://en.wikipedia.org/wiki/Continual_improvement_process">incremental continuous improvement</a> (it may be difficult to address everything at once!). This also may denote the git history for a repository in a clearer way.</li>
-    <li><strong>Github comments:</strong> <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#about-pull-request-comments">Overall review comments</a> (encompassing all work from the branch) and <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request">Inline comments</a> (inquiring about individual lines of code) may be provided. Inline comments may also include code suggestions, which allows for code-based revision suggestions that may be committed directly to the branch using markdown codeblocks (<code class="language-plaintext highlighter-rouge"> </code>``suggestion `).</li>
-    <li><strong>Github issues:</strong> <a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue#creating-an-issue-from-a-comment">Creating issues from comments</a> allows the creation of new repository issues to address topics outside of the current PR.</li>
-  </ul>
-</blockquote>
-
-<h2 id="merging-the-branch-after-review">Merging the Branch after Review</h2>
-
-<pre class="mermaid">
-%%{init: { 'logLevel': 'debug', 'theme': 'default' , 'themeVariables': {
-      'git0': '#6366F1'
-} } }%%
-    gitGraph
-       commit id: "..."
-       commit id: "opened"
-       commit type: HIGHLIGHT id: "reviewed"
-       commit id: "...."
-</pre>
-
-<p class="center"><em>An example git diagram showing the main branch after the assignment branch has been merged (and removed).</em></p>
-
-<p>Changes may be made within the <code class="language-plaintext highlighter-rouge">assignment</code> branch until the work is in a state where the authors and reviewers are satisfied. At this point, the branch changes may be <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/merging-a-pull-request">merged</a> into <code class="language-plaintext highlighter-rouge">main</code>. Approvals are sometimes provided informally (for ex., with a comment: &#8220;LGTM (looks good to me)!&#8221;) or explicitly (for ex., <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews">approvals within Github</a>) to indicate or enable branch merge readiness . After the merge, changes may continue to be made in a similar way (perhaps accounting for concurrently branched work elsewhere). Generally, a merged branch may be removed afterwards to help maintain an organized working environment (see <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/deleting-and-restoring-branches-in-a-pull-request">Github PR branch removal</a>).</p>
-
-<blockquote>
-  <p>Github provides special tools for merging:</p>
-
-  <ul>
-    <li><strong>Decide which merge strategy is appropriate (there are many!):</strong> There are many <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github">merge strategies within Github</a> (merge commits, squash merges, and rebase merging). Take time to understand them and choose which one works best.</li>
-    <li><strong>Consider using branch protection to automate merge requirements:</strong> The <code class="language-plaintext highlighter-rouge">main</code> or other branches may be &#8220;protected&#8221; against merges using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a>. These rules can require reviewer approvals or automatic status checks to pass before changes may be merged.</li>
-    <li><strong>Use merge queuing to manage multiple PR&#8217;s:</strong> When there are many unmerged PR&#8217;s, it can sometimes be difficult to document and ensure each are merged in a desired sequence. Consider using <a href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue">merge queues</a> to help with this process.</li>
-  </ul>
-</blockquote>
-
-<h2 id="additional-resources">Additional Resources</h2>
-
-<p>The links below may provide additional guidance on using these git features, including in-depth coverage of various features and related configuration.</p>
-
-<ul>
-  <li><a href="https://swcarpentry.github.io/git-novice/">Software Carpentry: Version Control with Git</a></li>
-  <li><a href="https://github.com/git-guides">Github: Git Guide</a></li>
-  <li><a href="https://www.atlassian.com/git/tutorials/what-is-version-control">Atlassian: What is version control?</a></li>
-  <li><a href="https://docs.gitlab.com/ee/topics/git/">Git Lab: Git</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="git" /><category term="branching" /><category term="pull-requests" /><category term="merging" /><summary type="html"><![CDATA[Tip of the Week: Branch, Review, and Learn]]></summary></entry></feed>
+<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry></feed>

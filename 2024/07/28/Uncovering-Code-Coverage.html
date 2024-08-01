@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/images/icon.png">
+
+<meta name="title" content="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="https://cu-dbmi.github.io/set-website">
+<meta property="og:image" content="/set-website/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="https://cu-dbmi.github.io/set-website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-08-01T18:02:31+00:00">
+  <meta property="article:published_time" content="2024-07-28T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-08-01T18:02:31+00:00">
+  <meta name="revised" content="2024-08-01T18:02:31+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" },
+      "datePublished": "2024-07-28T00:00:00+00:00",
+      "dateModified": "2024-08-01T18:02:31+00:00",
+    
+    "name": "Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/images/icon.png" }
+    },
+    "url": "https://cu-dbmi.github.io/set-website"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="https://cu-dbmi.github.io/set-website/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/_scripts/anchors.js"></script>
+
+  <script src="/set-website/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/_scripts/search.js"></script>
+
+  <script src="/set-website/_scripts/site-search.js"></script>
+
+  <script src="/set-website/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true">
+  <a href="/set-website/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  background: ;
+  dark: ;
+  size: 1;
+-->
+
+
+<h1 class="center">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 28, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>August 01, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://cu-dbmi.github.io/set-website/blog">
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20code-coverage%22" class="tag" data-tooltip='Show items with the tag "code-coverage"'>
+        code-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20test-coverage%22" class="tag" data-tooltip='Show items with the tag "test-coverage"'>
+        test-coverage
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20software-quality%22" class="tag" data-tooltip='Show items with the tag "software-quality"'>
+        software-quality
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20testing%22" class="tag" data-tooltip='Show items with the tag "testing"'>
+        testing
+      </a>
+    
+      <a href="https://cu-dbmi.github.io/set-website/blog?search=%22tag:%20software-sustainability%22" class="tag" data-tooltip='Show items with the tag "software-sustainability"'>
+        software-sustainability
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Code coverage gives our code protection from the unknown.">
+    <img src="/set-website/images/file-holding-umbrella-for-coverage.png" style="
+        width: 200px;
+        max-height: unset;
+      " alt="Code coverage gives our code protection from the unknown." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Code coverage gives our code protection from the unknown.
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+
+<p>Test coverage is a crucial aspect of software development that helps ensure your code is reliable and bug-free.
+By measuring how much of your code is covered by tests, you can identify untested areas and improve overall quality.
+In this post, we’ll dive into what test coverage is, why it matters, and explore some tools for measuring it.
+Let’s get started!</p>
+
+<!-- excerpt end -->
+
+<h2 id="what-is-code-coverage">What is Code Coverage?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Code which is tested is considered 'covered'.">
+    <img src="/set-website/images/simple-example-of-coverage-for-functions.png" style="
+        width: 600px;
+        max-height: unset;
+      " alt="Code which is tested is considered 'covered'." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Code which is tested is considered ‘covered’.
+
+    </figcaption>
+  
+</figure>
+
+<blockquote>
+  <p>“With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don’t know if our code is getting better or worse.” (<a href="https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how">Michael Feathers, Working Effectively with Legacy Code</a>)</p>
+</blockquote>
+
+<p>Code coverage, also known as test coverage, refers to the percentage of your code that is executed when your tests run (<a href="https://en.wikipedia.org/wiki/Code_coverage">Wikipedia: Code coverage</a>).
+Software developers use code coverage as a way to understand areas which may need tests.
+By understanding these metrics, you can get a clearer picture of your code’s reliability.</p>
+
+<h2 id="types-of-coverage">Types of Coverage</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example line
+</span><span class="k">print</span><span class="p">(</span><span class="s">"A line which could be tested for coverage."</span><span class="p">)</span>
+
+<span class="c1"># example statement (potentially multi-line)
+</span><span class="n">statement</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># example function
+</span><span class="k">def</span> <span class="nf">example</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"An example function."</span>
+
+<span class="c1"># example branching
+</span><span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">statement</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">True</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p>Line coverage, statement coverage, function coverage, and branch coverage common metrics used to measure how thoroughly code is tested, but they each focus on different aspects.</p>
+
+<ul>
+  <li>
+<strong>Line coverage</strong> tracks the execution of individual lines of code, indicating whether each line has been run during testing.</li>
+  <li>
+<strong>Statement coverage</strong> is similar but considers whether each statement (a single unit of execution) within the code has been executed, regardless of the number of lines.</li>
+  <li>
+<strong>Function coverage</strong> checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code’s interface are exercised.</li>
+  <li>
+<strong>Branch coverage</strong>, helps verify whether every possible path through control structures (like if-else blocks, which are often treated as a single compound statement) has been followed, ensuring that all potential outcomes and decision points are tested.</li>
+</ul>
+
+<h2 id="benefits-of-test-coverage">Benefits of Test Coverage</h2>
+
+<blockquote>
+  <p>“If you are testing thoughtfully and well, I would expect a coverage percentage in the upper 80s or 90s. I would be suspicious of anything like 100% - it would smell of someone writing tests to make the coverage numbers happy, but not thinking about what they are doing.” (<a href="https://martinfowler.com/bliki/TestCoverage.html">Martin Fowler, Test Coverage</a>)</p>
+</blockquote>
+
+<p>High test coverage ensures your code is reliable and less prone to bugs. 
+It helps you identify untested parts of your codebase, facilitating better maintenance and encouraging a culture of quality.
+However, it’s important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
+Such anti-patterns include writing superficial tests that don’t effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.</p>
+
+<p>There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there’s coupling to other functionality).
+With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
+Because of this, implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time.
+If you’re working with code that currently has no coverage, there’s no time like the present to start!</p>
+
+<h2 id="measuring-test-coverage">Measuring Test Coverage</h2>
+
+<h3 id="tools">Tools</h3>
+
+<p>Different languages have different tools for measuring code coverage.
+These tools help you visualize and understand your test coverage, making it easier to spot gaps and improve your tests.
+While the implementations may differ in their processing and report formatting, they all follow similar principles.
+Many of these tools are available without additional cost of freely as open-source packages.
+Below are just a few languages and common test coverage tools you can use with them.</p>
+
+<ul>
+  <li>
+<strong>Python</strong>, <a href="https://github.com/nedbat/coveragepy"><code class="language-plaintext highlighter-rouge">coverage.py</code></a> is a popular open-source solution which can be paired with <a href="https://github.com/pytest-dev/pytest-cov"><code class="language-plaintext highlighter-rouge">pytest-cov</code></a>. <a href="https://github.com/plasma-umass/slipcover"><code class="language-plaintext highlighter-rouge">slipcover</code></a> is a similar coverage tool which can be used with Python.</li>
+  <li>
+<strong>R</strong> developers often use <a href="https://github.com/r-lib/covr"><code class="language-plaintext highlighter-rouge">covr</code></a>.</li>
+  <li>
+<strong>C++</strong> developers can rely on <a href="https://gcc.gnu.org/onlinedocs/gcc/gcov/introduction-to-gcov.html"><code class="language-plaintext highlighter-rouge">gcov</code></a> or <a href="https://github.com/linux-test-project/lcov"><code class="language-plaintext highlighter-rouge">LCOV</code></a>.</li>
+  <li>
+<strong>MATLAB</strong> has built-in test coverage features through <a href="https://www.mathworks.com/help/matlab/matlab_prog/types-of-code-coverage-for-matlab-source-code.html"><code class="language-plaintext highlighter-rouge">CodeCoveragePlugin</code></a>.</li>
+</ul>
+
+<h3 id="platforms">Platforms</h3>
+
+<p>In addition to the tools mentioned above there are also various test or code coverage platforms (often <a href="https://en.wikipedia.org/wiki/Software_as_a_service">software as a service (SaaS)</a> companies).
+These platforms allow you to integrate the data with your GitHub workflows and often include additional insights like historical data tracking, etc.
+Platforms may be an option to consider when thinking about scale and the type of information you’re interested in viewing.
+See below for some examples of these:</p>
+
+<ul>
+  <li>
+<a href="https://about.codecov.io/">Codecov</a>, known for its ease of setup and comprehensive support for various languages, is a popular code coverage reporting tool that integrates with many CI/CD services and version control systems.</li>
+  <li>
+<a href="https://www.codacy.com/coverage">Codacy</a> is a code quality platform that includes code coverage as one of its features.</li>
+  <li>
+<a href="https://codeclimate.com/">Code Climate</a> is another code quality platform which includes code coverage as one of its features.</li>
+</ul>
+
+<h2 id="using-coveragepy-for-measuring-test-coverage-in-python">Using <code class="language-plaintext highlighter-rouge">coverage.py</code> for Measuring Test Coverage in Python</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="(Source: [Coverage.py website](https://coverage.readthedocs.io/en/7.6.0/))">
+    <img src="/set-website/images/coverage.py-logo.png" style="
+        width: 200px;
+        max-height: unset;
+      " alt="(Source: [Coverage.py website](https://coverage.readthedocs.io/en/7.6.0/))" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      (Source: <a href="https://coverage.readthedocs.io/en/7.6.0/">Coverage.py website</a>)
+
+    </figcaption>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">coverage.py</code> is a powerful tool for measuring code coverage in Python. 
+It’s easy to set up: just install it via <a href="https://pip.pypa.io/en/stable/">pip</a> (or your development environment), run your tests with coverage, and generate reports in various formats.
+By default, <code class="language-plaintext highlighter-rouge">coverage.py</code> measures <strong>statement coverage</strong> but it can be configured to measure others (<a href="https://coverage.readthedocs.io/en/7.6.0/index.html#capabilities">see here for more</a>).
+Interpreting these reports helps you understand which parts of your code need more testing love.</p>
+
+<h3 id="a-quick-example-of-coveragepy">A quick example of <code class="language-plaintext highlighter-rouge">coverage.py</code>
+</h3>
+
+<p>The following content may help demonstrate how <code class="language-plaintext highlighter-rouge">coverage.py</code> and test coverage works.
+This example assumes one has installed both <code class="language-plaintext highlighter-rouge">coverage.py</code> and <a href="https://docs.pytest.org/en/stable/"><code class="language-plaintext highlighter-rouge">pytest</code></a> (a common Python testing framework) using pip (for instance, by using the command <code class="language-plaintext highlighter-rouge">pip install coverage pytest</code>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># module.py
+</span>
+<span class="k">def</span> <span class="nf">covered_test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"This test has coverage."</span>
+
+<span class="k">def</span> <span class="nf">uncovered_test</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s">"This test doesn't have coverage."</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">module.py</code> has two functions, one which will be covered by a test and the other which will not.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># test_module.py
+</span>
+<span class="kn">from</span> <span class="nn">module</span> <span class="kn">import</span> <span class="n">covered_test</span>
+
+<span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">covered_test</span><span class="p">()</span> <span class="o">==</span> <span class="s">"This test has coverage."</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">test_module.py</code> has one test for <code class="language-plaintext highlighter-rouge">module.covered_test</code>.
+<code class="language-plaintext highlighter-rouge">module.uncovered_test</code> remains without a test and won’t be considered as covered by <code class="language-plaintext highlighter-rouge">coverage.py</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># first we process test coverage</span>
+<span class="nv">$ </span>coverage run <span class="nt">-m</span> pytest
+<span class="c"># then we show the reported output of</span>
+<span class="c"># processed test coverage</span>
+<span class="nv">$ </span>coverage report
+Name             Stmts   Miss  Cover
+<span class="nt">------------------------------------</span>
+module.py            4      1    75%
+test_module.py       3      0   100%
+<span class="nt">------------------------------------</span>
+TOTAL                7      1    86%
+</code></pre></div></div>
+
+<p>We use the above <code class="language-plaintext highlighter-rouge">coverage.py</code> commands to first process test coverage and then to show a report about test coverage afterwards.
+Notice that <code class="language-plaintext highlighter-rouge">module.py</code> shows it does not have full coverage, indicating a possible area where we can improve testing.</p>
+
+<h2 id="integrating-code-coverage-tools-with-cicd-pipelines">Integrating Code Coverage Tools with CI/CD Pipelines</h2>
+
+<p>Continuous integration and deployment (CI/CD) are essential for modern development workflows.
+By integrating code coverage tools with CI/CD pipelines, you can automate the process of checking test coverage.
+Setting up <code class="language-plaintext highlighter-rouge">coverage.py</code> with GitHub Actions workflows, for example, maintains high standards and can catch issues early.
+Strategies like setting coverage thresholds and failing builds on coverage drops help maintain high standards.
+Comparing current coverage with previous coverage can be done using techniques like hash checks for binary files or storing and comparing coverage reports.
+This ensures you know exactly what’s changed and can act accordingly.</p>
+
+<h3 id="pre-commit-hooks-to-generate-coveragepy-reports">Pre-commit Hooks to Generate <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices.">
+    <img src="/set-website/images/coverage-pre-commit-workflow.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Pre-commit may be used to help automatically generate coverage reports alongside your source control practices.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://pre-commit.com/">Pre-commit</a> hooks are scripts that run before a commit is finalized.
+You can set up a pre-commit hook to run tests and generate coverage reports using <code class="language-plaintext highlighter-rouge">coverage.py</code> (see the example below).
+This ensures consistency by comparing reports before and after changes.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># example .pre-commit-config.yml</span>
+<span class="c1"># See https://pre-commit.com for more information</span>
+<span class="na">repos</span><span class="pi">:</span>
+    <span class="c1"># process coverage within local environment</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">local</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">code-cov-gen</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">Generate code coverage</span>
+        <span class="na">language</span><span class="pi">:</span> <span class="s">system</span>
+        <span class="na">entry</span><span class="pi">:</span> <span class="s">coverage run -m pytest</span>
+        <span class="na">pass_filenames</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">always_run</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="c1"># generate xml coverage report and export to a badge</span>
+    <span class="c1"># for display within a readme or other documentation.</span>
+  <span class="pi">-</span> <span class="na">repo</span><span class="pi">:</span> <span class="s">https://github.com/Weird-Sheep-Labs/coverage-pre-commit</span>
+    <span class="na">rev</span><span class="pi">:</span> <span class="s">0.1.1</span>
+    <span class="na">hooks</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">coverage-xml</span>
+      <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">coverage-badge</span>
+</code></pre></div></div>
+
+<p>If there’s a significant drop in coverage, the changes are immediately visible, potentially before the commit even happens.
+This workflow can also help generate metadata for association with a repository, for example, through <a href="https://github.com/dbrgn/coverage-badge">coverage-badge</a> or <a href="https://github.com/smarie/python-genbadge">genbage</a>.</p>
+
+<h3 id="pull-request-comment-with-coveragepy-reports">Pull Request Comment with <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests.">
+    <img src="/set-website/images/coverage-pr-comment-workflow.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      GitHub Actions workflows can help add coverage reporting capabilities to your pull requests.
+
+    </figcaption>
+  
+</figure>
+
+<p>Another workflow which might be helpful is posting coverage reports when a pull request (PR) is opened (for example, using GitHub Action <a href="https://github.com/orgoro/coverage">orgoro/coverage</a>).
+This process involves generating a coverage report during the CI/CD pipeline and integrating it with the PR.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage).">
+    <img src="/set-website/images/coverage-workflow-pr-comment.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage)." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Example pull request comment with code coverage details (source: https://github.com/orgoro/coverage).
+
+    </figcaption>
+  
+</figure>
+
+<p>By doing so, developers can immediately see which parts of the code are covered by tests and which are not, enabling them to identify potential gaps in testing.
+This transparency helps maintain high code quality, ensures that new changes are well-tested, and encourages best practices in test-driven development.</p>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>Code coverage is a vital part of software development that helps maintain code quality and reliability. By integrating coverage tools and practices into your workflow, you can ensure your code is thoroughly tested and ready for any changes. Start using Code coverage tools in your projects today and experience the benefits firsthand!</p>
+
+<h2 id="additional-resources">Additional Resources</h2>
+
+<p>For further reading and resources, check out the the following resources on this topic:</p>
+
+<ul>
+  <li><a href="https://linearb.io/blog/code-coverage-types">LinearB Blog: Code Coverage Types: Which Is the Best?</a></li>
+  <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
+  <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
+  <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html">
+        Leveraging Kùzu and Cypher for Advanced Data Analysis
+      </a>
+    
+  </span>
+  <span>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
