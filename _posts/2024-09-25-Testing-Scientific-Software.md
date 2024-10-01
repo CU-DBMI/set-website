@@ -14,7 +14,7 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="images/magnifying-glass-and-bugs.png" width="50%" caption="Software testing helps us find bugs in our code which otherwise may go unseen." %}
+{% include figure.html image="images/magnifying-glass-and-bugs.png" width="40%" caption="Software testing helps us find bugs in our code which otherwise may go unseen." %}
 
 <!-- excerpt start -->
 **Scientific software plays a crucial role in research.**
@@ -38,7 +38,7 @@ Testing your software upfront ensures that potential errors are caught early and
 
 ## Production code vs test code
 
-{% include figure.html image="images/production-and-test-code.png" caption="Software testing often involves two distinct sections of production or application code alongside testing code." %}
+{% include figure.html image="images/production-and-test-code.png" width="50%" caption="Software testing often involves two distinct sections of production or application code alongside testing code." %}
 
 When working with software testing principles it can be helpful to distinguish __"production" or "application" code__ (code which provides some utility besides testing itself) from __"test" code__ (code which will be used to test the production or application code).
 These are often (but not always) stored in separate directories or components within the project.
@@ -48,17 +48,17 @@ These are often (but not always) stored in separate directories or components wi
 In software development, tests are typically categorized into several types.
 **Each plays a unique role in ensuring your code functions as intended.**
 
-{% include figure.html image="images/unit-test-code.png" caption="Unit tests focus on testing an isolated set of functionality within your code." %}
+{% include figure.html image="images/unit-test-code.png" width="50%" caption="Unit tests focus on testing an isolated set of functionality within your code." %}
 
 - **Unit tests**: These validate small, isolated parts of your code, like functions or methods.
 They are one of the most basic forms of testing but extremely valuable, ensuring the correctness of atomic units in your codebase.
 
-{% include figure.html image="images/integration-test-code.png" caption="Integration tests help ensure multiple software components act as expected together." %}
+{% include figure.html image="images/integration-test-code.png" width="50%" caption="Integration tests help ensure multiple software components act as expected together." %}
 
 - **Integration tests**: Once your units of code are tested individually, **integration tests ensure software components work together**.
 This is especially important in scientific software where different models, algorithms, and data structures interact.
 
-{% include figure.html image="images/system-test-code.png" caption="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." %}
+{% include figure.html image="images/system-test-code.png" width="50%" caption="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." %}
 
 - **System / End-to-End tests**: These check the software from a user’s perspective.
 For scientific software, this often means running entire workflows or simulations to make sure that everything from data input to output runs smoothly.
@@ -86,7 +86,7 @@ The following examples will be added to a demonstrational repository which can b
 
 ## Introduction to `pytest`
 
-{% include figure.html image="images/pytest.png" width="50%" %}
+{% include figure.html image="images/pytest.png" width="30%" %}
 
 `pytest` is one of the most popular testing frameworks in Python.
 An advantage to using `pytest` is that it is widely used, includes many different [plugins](https://docs.pytest.org/en/stable/reference/plugin_list.html) to extend functionality, and is relatively uncomplicated.
@@ -180,7 +180,7 @@ tests/test_package_module.py .             [100%]
 
 ## Using `doctest` for documentation and testing
 
-{% include figure.html image="images/doctest.png" width="50%" %}
+{% include figure.html image="images/doctest.png" width="30%" %}
 
 `doctest` is another tool which can be used for testing.
 It serves a dual purpose: it embeds tests directly in your documentation by using interactive examples in docstrings.
@@ -259,7 +259,7 @@ This ensures that the examples in your documentation are always accurate and tes
 
 ## Using Hypothesis for testing
 
-{% include figure.html image="images/hypothesis.png" width="50%" %}
+{% include figure.html image="images/hypothesis.png" width="30%" %}
 
 Using [Hypothesis](https://github.com/HypothesisWorks/hypothesis) for testing is a powerful approach for validating the correctness of scientific software.
 By employing the Hypothesis library, you can perform property-based testing that generates test cases based on the characteristics of your input data.
