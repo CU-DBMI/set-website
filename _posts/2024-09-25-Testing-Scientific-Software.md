@@ -41,7 +41,6 @@ This article covers how to write code which automates the process of testing you
 You may already have tests in place which haven't yet been automated.
 If this is the case, consider integrating these with automated tools like those mentioned below to help create reproducible research software!
 
-
 ## Production code vs test code
 
 {% include figure.html image="images/production-and-test-code.png" width="50%" caption="Software testing often involves two distinct sections of production or application code alongside testing code." %}
