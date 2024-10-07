@@ -35,6 +35,9 @@ You have to revise your paper, and time is lost fixing code.
 There's also the possibility of bugs taking a long time to find (if ever) potentially leading to erroneous research.
 
 Testing your software upfront ensures that potential errors are caught early and your scientific conclusions remain valid and robust.
+This article covers how to write code which automates the process of testing your software.
+Testing software without these tools may lead to bespoke assumptions and irrecable outcomes.
+__Consider: how can an audience know a software creates a reproducible outcome without  tests they can run and verify themselves?__
 
 ## Production code vs test code
 
