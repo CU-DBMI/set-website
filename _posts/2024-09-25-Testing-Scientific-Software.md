@@ -350,7 +350,7 @@ This is crucial, especially when your software are prone to evolving.
 - __Test small and test often__: Focus on unit tests that cover individual functions and methods.
 Catching small errors early prevents larger problems down the line.
 
-- __Use realistic test data__: When testing your functions, always use test data that reflects the real-world conditions where your software will be applied. Avoid the temptation to use "mock" data which can sometimes be challenging to create and might not accurately test capabilities.
+- __Use realistic test data__: When testing your functions, prioritize test data that reflects the real-world conditions where your software will be applied. Secondarily, use "mock" or synthetically created data when the real data are too large or complex to test quickly. For more on this topic, see ["Prefer Realism Over Isolation" from the Test Doubles chapter in the book Software Engineering at Google](https://abseil.io/resources/swe-book/html/ch13.html#prefer_realism_over_isolation).
 
 - __Automate your tests__: Use tools like `pytest` and Continuous Integration (CI) services (e.g., GitHub Actions, GitLab CI) to run your tests automatically on every commit.
 This ensures that every update is tested, and bugs are identified early.
@@ -374,4 +374,5 @@ If interested, be sure to reference the related demonstrational repository with 
 
 - Eisty, N. U., & Carver, J. C. (2022). Testing Research Software: A Survey. Empirical Software Engineering, 27(6), 138. [https://doi.org/10.1007/s10664-022-10184-9](https://doi.org/10.1007/s10664-022-10184-9)
 - Kanewala, U., & Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. [http://arxiv.org/abs/1804.01954](http://arxiv.org/abs/1804.01954)
+- Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., & Wright, H. Software engineering at Google: Lessons learned from programming over time. [https://abseil.io/resources/swe-book/html/ch11.html](https://abseil.io/resources/swe-book/html/ch11.html)
 - [CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing](https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html)
