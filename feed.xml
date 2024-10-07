@@ -1,4 +1,476 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-08-01T18:03:36+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2024-10-07T16:22:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Software testing helps us find bugs in our code which otherwise may go unseen.">
+    <img src="/set-website/images/magnifying-glass-and-bugs.png" style="
+        width: 40%;
+        max-height: unset;
+      " alt="Software testing helps us find bugs in our code which otherwise may go unseen." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Software testing helps us find bugs in our code which otherwise may go unseen.
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+<p><strong>Scientific software plays a crucial role in research.</strong>
+When your software is used to analyze data, simulate models, or derive scientific conclusions, ensuring its correctness becomes critical.
+<strong>A small bug can have a significant impact on your results</strong>, potentially invalidating months of work, or worse, causing the retraction of published research (for example: <a href="https://www.science.org/doi/10.1126/science.314.5807.1856">see here</a>).
+Fortunately, software testing can help minimize such risks, giving you more confidence in your code and a greater chance to catch issues early.</p>
+
+<p>In this guide, we’ll walk through key types of software tests, practical advice for using popular testing tools like <code class="language-plaintext highlighter-rouge">pytest</code> and <code class="language-plaintext highlighter-rouge">doctest</code>, and how you can incorporate these into your scientific development workflow.
+<!-- excerpt end --></p>
+
+<h2 id="why-testing-matters-in-science">Why testing matters in science</h2>
+
+<p>Imagine you’ve written a simulation that generates data based on a complex scientific model.
+It works well under some conditions, but during peer review, a colleague finds a subtle bug.
+This bug doesn&#8217;t affect small data sets but produces significant errors on larger simulations.
+The consequences?
+You have to revise your paper, and time is lost fixing code.
+There&#8217;s also the possibility of bugs taking a long time to find (if ever) potentially leading to erroneous research.</p>
+
+<p><strong>Consider: how can an audience know a software creates a reproducible outcome without  tests they can run and verify themselves?</strong>
+Testing your software upfront ensures that potential errors are caught early and your scientific conclusions remain valid and robust.
+This article covers how to write code which automates the process of testing your software.</p>
+
+<p>You may already have tests in place which haven&#8217;t yet been automated.
+If this is the case, consider integrating these with automated tools like those mentioned below to help create reproducible research software!</p>
+
+<h2 id="production-code-vs-test-code">Production code vs test code</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Software testing often involves two distinct sections of production or application code alongside testing code.">
+    <img src="/set-website/images/production-and-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Software testing often involves two distinct sections of production or application code alongside testing code." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Software testing often involves two distinct sections of production or application code alongside testing code.
+
+    </figcaption>
+  
+</figure>
+
+<p>When working with software testing principles it can be helpful to distinguish <strong>&#8220;production&#8221; or &#8220;application&#8221; code</strong> (code which provides some utility besides testing itself) from <strong>&#8220;test&#8221; code</strong> (code which will be used to test the production or application code).
+These are often (but not always) stored in separate directories or components within the project.</p>
+
+<h2 id="types-of-tests-for-scientific-software">Types of tests for scientific software</h2>
+
+<p>In software development, tests are typically categorized into several types.
+<strong>Each plays a unique role in ensuring your code functions as intended.</strong></p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Unit tests focus on testing an isolated set of functionality within your code.">
+    <img src="/set-website/images/unit-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Unit tests focus on testing an isolated set of functionality within your code." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Unit tests focus on testing an isolated set of functionality within your code.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li><strong>Unit tests</strong>: These validate small, isolated parts of your code, like functions or methods.
+They are one of the most basic forms of testing but extremely valuable, ensuring the correctness of atomic units in your codebase.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Integration tests help ensure multiple software components act as expected together.">
+    <img src="/set-website/images/integration-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Integration tests help ensure multiple software components act as expected together." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Integration tests help ensure multiple software components act as expected together.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li><strong>Integration tests</strong>: Once your units of code are tested individually, <strong>integration tests ensure software components work together</strong>.
+This is especially important in scientific software where different models, algorithms, and data structures interact.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code.">
+    <img src="/set-website/images/system-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li><strong>System / End-to-End tests</strong>: These check the software from a user’s perspective.
+For scientific software, this often means running entire workflows or simulations to make sure that everything from data input to output runs smoothly.</li>
+</ul>
+
+<p>There are also many other different types of tests and testing philosophies which can be found here: <a href="https://en.wikipedia.org/wiki/Software_testing#Categorization">https://en.wikipedia.org/wiki/Software_testing#Categorization</a>.</p>
+
+<h2 id="testing-in-python">Testing in Python</h2>
+
+<p>Testing in Python is often performed using the built-in <a href="https://docs.python.org/3/library/unittest.html"><code class="language-plaintext highlighter-rouge">unittest</code></a> module or <a href="https://github.com/pytest-dev/pytest"><code class="language-plaintext highlighter-rouge">pytest</code></a> package.
+There is also an additional built-in module, <a href="https://docs.python.org/3/library/doctest.html"><code class="language-plaintext highlighter-rouge">doctest</code></a>, which allows you to test whether statements run as expected within <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">docstrings</a>.</p>
+
+<p><a href="https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement"><code class="language-plaintext highlighter-rouge">assert</code> statements</a> are a common part of writing tests in Python.
+We can use <code class="language-plaintext highlighter-rouge">assert</code> to determine the truthiness of certain output (see below for an example).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># we can use the assert statements to determine
+# the truthiness (or lack thereof) of values.
+</span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="c1"># returns True
+</span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="c1"># returns False
+</span></code></pre></div></div>
+
+<p>The following examples will be added to a demonstrational repository which can be found here: <a href="https://github.com/CU-DBMI/demo-python-software-testing">https://github.com/CU-DBMI/demo-python-software-testing</a></p>
+
+<h2 id="introduction-to-pytest">Introduction to <code class="language-plaintext highlighter-rouge">pytest</code></h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/pytest.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">pytest</code> is one of the most popular testing frameworks in Python.
+An advantage to using <code class="language-plaintext highlighter-rouge">pytest</code> is that it is widely used, includes many different <a href="https://docs.pytest.org/en/stable/reference/plugin_list.html">plugins</a> to extend functionality, and is relatively uncomplicated.</p>
+
+<h3 id="getting-started-with-pytest">Getting started with <code class="language-plaintext highlighter-rouge">pytest</code></h3>
+
+<p>Consider the following project tree structure representing directories and files which is common to <code class="language-plaintext highlighter-rouge">pytest</code> projects.
+Note the <code class="language-plaintext highlighter-rouge">tests</code> directory, which includes code dedicated to testing the <code class="language-plaintext highlighter-rouge">package_name</code> package module.
+<code class="language-plaintext highlighter-rouge">pytest</code> seeks to run test code with the prefix of <code class="language-plaintext highlighter-rouge">test_</code> under the <code class="language-plaintext highlighter-rouge">tests</code> directory.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>example_project
+├── pyproject.toml
+├── src
+│   └── package_name
+│       └── package_module.py
+└── tests
+    └── test_package_module.py
+</code></pre></div></div>
+
+<p>Just in case, make sure you install <code class="language-plaintext highlighter-rouge">pytest</code> into the project&#8217;s environment management:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use pip to install pytest into an existing environment</span>
+pip <span class="nb">install </span>pytest
+
+<span class="c"># or, add pytest to a poetry environment</span>
+poetry add pytest
+</code></pre></div></div>
+
+<p>Assume we have a simple function within <code class="language-plaintext highlighter-rouge">package_module.py</code> which helps us understand whether a given integer is an even number.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Determines if a number is even.
+
+    An even number is divisible by 2 without a remainder.
+
+    Args:
+        number (int):
+          The number to check.
+
+    Returns:
+        bool:
+          True if the number is even, False if it is odd.
+    """</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Next, we could create a simple unit test within <code class="language-plaintext highlighter-rouge">test_package_module.py</code> for the <code class="language-plaintext highlighter-rouge">is_even()</code> function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_is_even</span><span class="p">():</span>
+    <span class="c1"># assert that 2 is detected as an even number
+</span>    <span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Once we have the test written, we can use the <code class="language-plaintext highlighter-rouge">pytest</code> command through our project environment</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the `pytest` command through your terminal</span>
+pytest
+
+<span class="c"># or, run `pytest` through a poetry environment</span>
+poetry run pytest
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pytest</code> will automatically find all files starting with test_ and run any functions inside them that start with test_.
+It also produces concise output, helping you pinpoint errors quickly.
+See below for an example of what the output might look like (we can see that the single test passed).</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>============== test session starts ===============
+platform darwin -- Python 3.11.9, pytest-8.3.3,
+pluggy-1.5.0
+rootdir: /example_project
+configfile: pyproject.toml
+collected 1 item
+
+tests/test_package_module.py .             [100%]
+
+=============== 1 passed in 0.00s ================
+</code></pre></div></div>
+
+<h3 id="additional-pytest-features">Additional <code class="language-plaintext highlighter-rouge">pytest</code> features</h3>
+
+<ul>
+  <li><strong>Using temporary directories</strong>: <code class="language-plaintext highlighter-rouge">pytest</code> allows for the creation of <a href="https://docs.pytest.org/en/stable/how-to/tmp_path.html">temporary directories</a> where test data can be stored for each test run in isolation. This pattern can be helpful for times where you may need to generate and store test data for use among multiple tests.</li>
+  <li><strong>Fixtures</strong>: Use <a href="https://docs.pytest.org/en/stable/explanation/fixtures.html"><code class="language-plaintext highlighter-rouge">pytest</code> fixtures</a> to set up any necessary preconditions for your tests (like loading test datasets).</li>
+  <li><strong>Parameterization</strong>: If you need to test multiple inputs on the same function, <code class="language-plaintext highlighter-rouge">pytest</code> allows you to <a href="https://docs.pytest.org/en/stable/how-to/parametrize.html">parameterize</a> your tests, running the same test function with different values.</li>
+</ul>
+
+<h2 id="using-doctest-for-documentation-and-testing">Using <code class="language-plaintext highlighter-rouge">doctest</code> for documentation and testing</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/doctest.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">doctest</code> is another tool which can be used for testing.
+It serves a dual purpose: it embeds tests directly in your documentation by using interactive examples in docstrings.
+This can be a lightweight way to share testable functionality within the documentation for your code.
+Be cautious however; <code class="language-plaintext highlighter-rouge">doctests</code> are not generally suitable for large or complex testing.</p>
+
+<h3 id="writing-doctests">Writing doctests</h3>
+
+<p>A <a href="https://docs.python.org/3/library/doctest.html"><code class="language-plaintext highlighter-rouge">doctest</code></a> is simply an example of using a function, placed in docstrings.
+The general pattern follows Python interactive terminal input (denoted by <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>) followed by the expected standard output (which sometimes may be truncated when dealing with large numbers or strings).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">Examples</code> section of the docstring below demonstrates what a doctest for our earlier function might look like.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Determines if a number is even.
+
+    An even number is divisible by 2 without a remainder.
+
+    Args:
+        number (int):
+            The number to check.
+
+    Returns:
+        bool:
+            True if the number is even, False if it is odd.
+
+    Examples:
+        &gt;&gt;&gt; is_even(2)
+        True
+        &gt;&gt;&gt; is_even(3)
+        False
+    """</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>You can run always run doctests by adding the following to the same module which includes that code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="c1"># run doctests within module
+</span>    <span class="n">doctest</span><span class="p">.</span><span class="n">testmod</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You also can run doctests through <code class="language-plaintext highlighter-rouge">pytest</code> by using the <code class="language-plaintext highlighter-rouge">--doctest-modules</code> command flag.
+This can be helpful for areas where we don&#8217;t want to use the <a href="https://docs.python.org/3/library/__main__.html"><code class="language-plaintext highlighter-rouge">if __name__ == "__main__":</code> pattern</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the `pytest` command through your terminal</span>
+pytest <span class="nt">--doctest-modules</span>
+
+<span class="c"># or, run `pytest` through a poetry environment</span>
+poetry run pytest <span class="nt">--doctest-modules</span>
+</code></pre></div></div>
+
+<p>The output might look like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>============== test session starts ===============
+platform darwin -- Python 3.11.9, pytest-8.3.3,
+pluggy-1.5.0
+rootdir: /example_project
+configfile: pyproject.toml
+collected 2 items
+
+src/package_name/module.py .               [ 50%]
+tests/test_package_module.py .             [100%]
+
+=============== 2 passed in 0.01s ================
+</code></pre></div></div>
+
+<p>This ensures that the examples in your documentation are always accurate and tested as part of your development cycle.</p>
+
+<h2 id="using-hypothesis-for-testing">Using Hypothesis for testing</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/hypothesis.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Using <a href="https://github.com/HypothesisWorks/hypothesis">Hypothesis</a> for testing is a powerful approach for validating the correctness of scientific software.
+By employing the Hypothesis library, you can perform property-based testing that generates test cases based on the characteristics of your input data.
+This method allows you to test your functions against a broad range of inputs, ensuring that edge cases and unexpected scenarios are adequately handled.</p>
+
+<h3 id="what-is-property-based-testing">What is property-based testing?</h3>
+
+<p><a href="https://hypothesis.works/articles/what-is-property-based-testing/">Property-based testing</a> focuses on verifying that certain properties hold true for a wide range of input values, rather than checking specific outputs for predetermined inputs.
+This contrasts with traditional example-based testing, where you specify the exact inputs and outputs (which can take time to imagine or construct individually).</p>
+
+<h3 id="getting-started-with-hypothesis">Getting started with hypothesis</h3>
+
+<p>To begin using Hypothesis in your project, you first need to install the library:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use pip to install hypothesis into an existing environment</span>
+pip <span class="nb">install </span>hypothesis
+
+<span class="c"># or, add hypothesis to a poetry environment</span>
+poetry add hypothesis
+</code></pre></div></div>
+
+<p>Once installed, you can write tests that utilize its capabilities. 
+With Hypothesis, you can write a test that asserts properties about even numbers. For instance, all even numbers should return True when passed to the is_even function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">integers</span>
+
+<span class="o">@</span><span class="n">given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_is_even</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="using-the-hypothesis-ghostwriter">Using the Hypothesis ghostwriter</h3>
+
+<p>Hypothesis also includes <a href="https://hypothesis.readthedocs.io/en/latest/ghostwriter.html">a &#8220;ghostwriter&#8221; CLI</a> which can infer how to write Hypothesis tests given an object from Python code.
+This can help automate the process of writing your test code or provide inspiration for how to construct your Hypothesis tests.
+<em>Caveat emptor</em>: please be sure to review any code generated by the Hypothesis ghostwriter (it may not capture useful tests or edge cases).</p>
+
+<p>Given the example code from the above, we could ask the Hypothesis ghostwriter to construct a test for the <code class="language-plaintext highlighter-rouge">is_even()</code> function as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the command from your activated Python environment</span>
+hypothesis write package_name.module.is_even
+
+<span class="c"># or, run through a poetry environment</span>
+poetry run hypothesis write package_name.module.is_even
+</code></pre></div></div>
+
+<p>The output looks similar but not quite the same as the Hypothesis test we shared above.
+Note that the test name implies and itself employs a technique called <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing, or fuzz testing</a>, which is used to help determine where software might break.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This test code was written by the `hypothesis.extra.ghostwriter` module
+# and is provided under the Creative Commons Zero public domain dedication.
+</span>
+<span class="kn">import</span> <span class="nn">package_name.module</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+
+
+<span class="o">@</span><span class="n">given</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">st</span><span class="p">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_fuzz_is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">package_name</span><span class="p">.</span><span class="n">module</span><span class="p">.</span><span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="benefits-of-using-hypothesis">Benefits of using Hypothesis</h2>
+
+<p>Below are just a few of the benefits you&#8217;ll find with using Hypothesis:</p>
+
+<ul>
+  <li><strong><em>Discovering Edge Cases</em></strong>: Hypothesis automatically generates diverse input scenarios, including edge cases that might be overlooked in example-based tests.</li>
+  <li><strong><em>Reduced Boilerplate Code</em></strong>: You can focus on the properties of your functions rather than writing extensive examples for every possible case.</li>
+  <li><strong><em>Increased Confidence</em></strong>: By validating the behavior of your code against a broader set of inputs, you can be more confident that your scientific software will behave correctly in practice.</li>
+</ul>
+
+<h2 id="best-practices-for-scientific-software-testing">Best practices for scientific software testing</h2>
+
+<p>Now that you understand some testing tools, here are some best practices for testing scientific software:</p>
+
+<ul>
+  <li>
+    <p><strong>Write tests early</strong>: Incorporate testing from the start. 
+This is crucial, especially when your software are prone to evolving.</p>
+  </li>
+  <li>
+    <p><strong>Test small and test often</strong>: Focus on unit tests that cover individual functions and methods.
+Catching small errors early prevents larger problems down the line.</p>
+  </li>
+  <li>
+    <p><strong>Use realistic test data</strong>: When testing your functions, prioritize test data that reflects the real-world conditions where your software will be applied. Secondarily, use &#8220;mock&#8221; or synthetically created data when the real data are too large or complex to test quickly. For more on this topic, see <a href="https://abseil.io/resources/swe-book/html/ch13.html#prefer_realism_over_isolation">&#8220;Prefer Realism Over Isolation&#8221; from the Test Doubles chapter in the book Software Engineering at Google</a>.</p>
+  </li>
+  <li>
+    <p><strong>Automate your tests</strong>: Use tools like <code class="language-plaintext highlighter-rouge">pytest</code> and Continuous Integration (CI) services (e.g., GitHub Actions, GitLab CI) to run your tests automatically on every commit.
+This ensures that every update is tested, and bugs are identified early.</p>
+  </li>
+  <li>
+    <p><strong>Combine different tests approaches to help diversify your test coverage</strong>: Both are essential in scientific software.
+While unit tests help you pinpoint specific issues, integration tests validate that modules work correctly when combined.</p>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Testing is a vital part of developing scientific software. By using tools like <code class="language-plaintext highlighter-rouge">pytest</code>, <code class="language-plaintext highlighter-rouge">doctest</code>, and Hypothesis, you can automate the testing process and ensure your codebase remains robust.
+Investing time in writing good tests upfront will save you countless hours in debugging and re-running experiments.</p>
+
+<p>Remember, the correctness of your code is directly tied to the validity of your scientific results.
+By adopting a solid testing strategy, you&#8217;re taking a significant step toward ensuring reproducible, reliable, and impactful scientific research.</p>
+
+<p>Now, you’re ready to ensure your scientific code is as solid as your research!</p>
+
+<p>If interested, be sure to reference the related demonstrational repository with code from this blog post which can be found here: <a href="https://github.com/CU-DBMI/demo-python-software-testing">https://github.com/CU-DBMI/demo-python-software-testing</a></p>
+
+<h2 id="additional-material">Additional material</h2>
+
+<ul>
+  <li>Eisty, N. U., &amp; Carver, J. C. (2022). Testing Research Software: A Survey. Empirical Software Engineering, 27(6), 138. <a href="https://doi.org/10.1007/s10664-022-10184-9">https://doi.org/10.1007/s10664-022-10184-9</a></li>
+  <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
+  <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
+  <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -311,7 +783,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -596,7 +1068,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1013,7 +1485,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1310,7 +1782,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1732,7 +2204,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2167,7 +2639,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2440,7 +2912,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2916,7 +3388,7 @@ Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
   - Built package_name-0.1.0-py3-none-any.whl
 </code></pre></div></div>
 
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry><entry><title type="html">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</title><link href="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html" rel="alternate" type="text/html" title="Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster" /><published>2023-07-07T00:00:00+00:00</published><updated>2024-10-07T16:21:51+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html"><![CDATA[<h1 id="tip-of-the-week-using-python-and-anaconda-with-the-alpine-hpc-cluster">Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3206,170 +3678,4 @@ In this example we&#8217;ll use <a href="https://www.globus.org/">Globus</a> as 
   <li><a href="https://docs.github.com/en/get-started/getting-started-with-git">GitHub: Getting started with Git</a></li>
   <li><a href="https://slurm.schedmd.com/">Slurm Documentation</a></li>
   <li><a href="https://docs.globus.org/">Globus Documentation</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry><entry><title type="html">Tip of the Week: Automate Software Workflows with GitHub Actions</title><link href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html" rel="alternate" type="text/html" title="Tip of the Week: Automate Software Workflows with GitHub Actions" /><published>2023-03-15T00:00:00+00:00</published><updated>2024-08-01T18:02:31+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html"><![CDATA[<h1 id="tip-of-the-week-automate-software-workflows-with-github-actions">Tip of the Week: Automate Software Workflows with GitHub Actions</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p>There are many routine tasks which can be automated to help save time and increase reproducibility in software development. GitHub Actions provides one way to accomplish these tasks using code-based workflows and related workflow implementations. This type of automation is commonly used to perform tests, builds (preparing for the delivery of the code), or delivery itself (sending the code or related artifacts where they will be used).</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong>
-Use <a href="https://docs.github.com/en/actions">GitHub Actions</a> to perform <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> work automatically by leveraging <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github&#8217;s workflow specification</a> and the <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>. You can test these workflows with <a href="https://github.com/nektos/act">Act</a>, which can enhance development with this feature of Github. Consider making use of <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">&#8220;write once, run anywhere&#8221; (WORA)</a> and <a href="https://docs.dagger.io/">Dagger</a> in conjunction with GitHub Actions to enable reproducible workflows for your software projects.</p>
-
-<h2 id="workflows-in-software">Workflows in Software</h2>
-
-<pre class="mermaid">
-flowchart LR
-  start((start)) --&gt; action
-  action["action(s)"] --&gt; en((end))
-  style start fill:#6EE7B7
-  style en fill:#FCA5A5
-</pre>
-<script type="module">
-  import mermaid from 'https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
-
-<p class="center"><em>An example workflow.</em></p>
-
-<p><a href="https://en.wikipedia.org/wiki/Workflow">Workflows</a> consist of sequenced activities used by various systems. Software development  workflows help accomplish work the same way each time by using what are commonly called &#8220;workflow engines&#8221;. Generally, workflow engines are provided code which indicate beginnings (what triggers a workflow to begin), actions (work being performed in sequence), and an ending (where the workflow stops). There are <a href="https://s.apache.org/existing-workflow-systems">many workflow engines</a>, including some which help accomplish work alongside version control.</p>
-
-<h2 id="github-actions">GitHub Actions</h2>
-
-<pre class="mermaid">
-flowchart LR
-  subgraph workflow [GitHub Actions Workflow Run]
-    direction LR
-    action["action(s)"] --&gt; en((end))
-    start((event\ntrigger))
-  end
-  start --&gt; action
-  style start fill:#6EE7B7
-  style en fill:#FCA5A5
-</pre>
-
-<p class="center"><em>A diagram showing GitHub Actions as a workflow.</em></p>
-
-<p><a href="https://docs.github.com/en/actions">GitHub Actions</a> is a feature of GitHub which allows you to run workflows in relation to your code as a <a href="https://en.wikipedia.org/wiki/Continuous_integration">continuous integration</a> (including automated testing, builds, and deployments) and general automation tool. For example, one can use GitHub Actions to make sure code related to a <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">GitHub Pull Request</a> passes certain tests before it is allowed to be merged. GitHub Actions may be specified using <a href="https://en.wikipedia.org/wiki/YAML">YAML files</a> within your repository&#8217;s <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory by using syntax specific to <a href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions">Github&#8217;s workflow specification</a>. Each YAML file under the <code class="language-plaintext highlighter-rouge">.github/workflows</code> directory can specify workflows to accomplish tasks related to your software work. GitHub Actions workflows may be customized to your own needs, or use an <a href="https://github.com/marketplace?type=actions">existing marketplace of already-created Actions</a>.</p>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Image showing GitHub Actions tab on GitHub website.">
-    <img src="/set-website/images/github_actions_tab.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Image showing GitHub Actions tab on GitHub website." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Image showing GitHub Actions tab on GitHub website.
-
-    </figcaption>
-  
-</figure>
-
-<p>GitHub provides an <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#viewing-the-activity-for-a-workflow-run">&#8220;Actions&#8221; tab</a> for each repository which helps visualize and control Github Actions workflow runs. This tab shows a history of all workflow runs in the repository. For each run, it shows whether it was run successful or not, the associated logs, and controls to cancel or re-run it.</p>
-
-<blockquote>
-  <p><strong>GitHub Actions Examples</strong>
-GitHub Actions is sometimes better understood with examples. See the following references for a few basic examples of using GitHub Actions in a simulated project repository.</p>
-
-  <ul>
-    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/1.example-action.yml">1.example-action.yml</a>: demonstrates how to run a snippet of Python code in a basic GitHub Actions workflow.</li>
-    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/2.run-python-file.yml">2.run-python-file.yml</a>: demonstrates how to reliably reproduce the environment by installing dependencies using <a href="https://python-poetry.org/docs/">Poetry</a>, and then run a Python file in that environment.</li>
-    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/3.run-matrixed-pytest-ghactions.yml">3.run-matrixed-pytest-ghactions.yml</a>: demonstrates how to run pytest tests against multiple versions of Python (i.e., &#8220;matrixed&#8221; Python versions) using GitHub Actions with a <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">matrix strategy</a>.</li>
-  </ul>
-</blockquote>
-
-<h2 id="testing-with-act">Testing with Act</h2>
-
-<pre class="mermaid">
-flowchart LR
-  subgraph container ["local simulation container(s)"]
-    direction LR
-    subgraph workflow [GitHub Actions Workflow Run]
-      direction LR
-      start((event\ntrigger))
-      action --&gt; en((end))
-    end
-  end
-  start --&gt; action
-  act\[Run Act] -.-&gt; |Simulate\ntrigger| start
-  style start fill:#6EE7B7
-  style en fill:#FCA5A5
-</pre>
-
-<p class="center"><em>A diagram showing how GitHub Actions workflows may be triggered from Act</em></p>
-
-<p>One challenge with GitHub Actions is a lack of standardized local testing tools. For example, how will you know that a new GitHub Actions workflow will function as expected (or at all) without pushing to the GitHub repository? One third-party tool which can help with this is <a href="https://github.com/nektos/act">Act</a>. Act uses <a href="https://github.com/nektos/act#runners">Docker images</a> which require <a href="https://docs.docker.com/desktop/">Docker Desktop</a> to simulate what running a GitHub Action workflow within your local environment. Using Act can sometimes avoid guessing what will occur when a GitHub Action worklow is added to your repository. See <a href="https://github.com/nektos/act#installation">Act&#8217;s installation documentation</a> for more information on getting started with this tool.</p>
-
-<h2 id="nested-workflows-with-github-actions">Nested Workflows with GitHub Actions</h2>
-
-<pre class="mermaid">
-flowchart LR
-
-  subgraph action ["Nested Workflow (Dagger, etc)"]
-    direction LR
-    actions
-    start2((start)) --&gt; actions
-    actions --&gt; en2((end))
-    en2((end))
-  end
-  subgraph workflow2 [Local Environment Run]
-    direction LR
-    run2[run workflow]
-    en3((end))
-    start3((event\ntrigger))
-  end
-  subgraph workflow [GitHub Actions Workflow Run]
-    direction LR
-    start((event\ntrigger))
-    run[run workflow]
-    en((end))
-  end
-  
-  start --&gt; run
-  start3 --&gt; run2
-  action -.-&gt; run
-  run --&gt; en
-  run2 --&gt; en3
-  action -.-&gt; run2
-  style start fill:#6EE7B7
-  style start2 fill:#D1FAE5
-  style start3 fill:#6EE7B7
-  style en fill:#FCA5A5
-  style en2 fill:#FFE4E6
-  style en3 fill:#FCA5A5
-</pre>
-
-<p class="center"><em>A diagram showing how GitHub Actions may leverage nested workflows with tools like Dagger.</em></p>
-
-<p>There are times when GitHub Actions may be too constricting or Act may not accurately simulate workflows. We also might seek to <a href="https://en.wikipedia.org/wiki/Write_once,_run_anywhere">&#8220;write once, run anywhere&#8221; (WORA)</a> to enable flexible development on many environments. One workaround to this challenge is to use nested workflows which are compatible with local environments and GitHub Actions environments. <a href="https://docs.dagger.io/">Dagger</a> is one tool which enables programmatically specifying and using workflows this way. Using Dagger allows you to trigger workflows on your local machine or GitHub Actions with the same underlying engine, meaning there are fewer inconsistencies or guesswork for developers (see here for <a href="https://docs.dagger.io/cli#how-does-it-work">an explanation of how Dagger works</a>).</p>
-
-<p>There are also other alternatives to Dagger you may want to consider based on your usecase, preference, or interest. <a href="https://github.com/earthly/earthly">Earthly</a> is similar to Dagger and uses &#8220;earthfiles&#8221; as a specification. Both Dagger and Earthly (in addition to GitHub Actions) use container-based approaches, which in-and-of themselves present additional alternatives outside the scope of this article.</p>
-
-<blockquote>
-  <p><strong>GitHub Actions with Nested Workflow Example</strong>
-Reference this example for a brief demonstration of how GitHub Actions and Dagger may be used together.</p>
-
-  <ul>
-    <li><a href="https://github.com/CU-DBMI/demo-github-actions/blob/main/.github/workflows/4.run-matrixed-pytest-dagger.yml">4.run-matrixed-pytest-dagger.yml</a>: demonstrates how to run matrixed Python versions for confirming passing pytest tests using GitHub Actions and Dagger together. A <a href="https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs">GitHub Actions matrix strategy</a> is used to span concurrent work while retaining the reproducibility from Dagger task specification.</li>
-  </ul>
-</blockquote>
-
-<h2 id="closing-remarks">Closing Remarks</h2>
-
-<p>Using GitHub Actions through the above methods can help automate your technical work and increase the quality of your code with sometimes very little additional effort. Saving time through this form of automation can provide additional flexibility accomplish more complex work which requires your attention (perhaps <a href="https://cu-dbmi.github.io/set-website/2023/01/17/Timebox-Your-Software-Work.html">using timeboxing techniques</a>). Even small amounts of time saved can turn into large opportunities for other work. On this note, be sure to explore how GitHub Actions can improve things for your software endeavors.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="github" /><category term="workflow" /><category term="github-actions" /><category term="continuous-integration" /><summary type="html"><![CDATA[Tip of the Week: Automate Software Workflows with GitHub Actions]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="Anaconda" /><category term="high-performance-compute" /><category term="slurm" /><category term="globus" /><summary type="html"><![CDATA[Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster]]></summary></entry></feed>
