@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Leveraging Kùzu and Cypher for Advanced Data Analysis | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-40/images/icon.png">
+
+<meta name="title" content="Leveraging Kùzu and Cypher for Advanced Data Analysis">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Leveraging Kùzu and Cypher for Advanced Data Analysis">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-40">
+<meta property="og:image" content="/set-website/preview/pr-40/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Leveraging Kùzu and Cypher for Advanced Data Analysis">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-40">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-40/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-11-15T18:47:23+00:00">
+  <meta property="article:published_time" content="2024-05-24T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-11-15T18:47:23+00:00">
+  <meta name="revised" content="2024-11-15T18:47:23+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Leveraging Kùzu and Cypher for Advanced Data Analysis" },
+      "datePublished": "2024-05-24T00:00:00+00:00",
+      "dateModified": "2024-11-15T18:47:23+00:00",
+    
+    "name": "Leveraging Kùzu and Cypher for Advanced Data Analysis",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Leveraging Kùzu and Cypher for Advanced Data Analysis",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-40/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-40"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-40/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-40/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-40/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-40/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-40/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-40/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-40/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-40/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  background: ;
+  dark: ;
+  size: 1;
+-->
+
+
+<h1 class="center">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-40/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-40/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>May 24, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>November 15, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-40/blog">
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20research-data-engineering%22" class="tag" data-tooltip='Show items with the tag "research-data-engineering"'>
+        research-data-engineering
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20graph-data%22" class="tag" data-tooltip='Show items with the tag "graph-data"'>
+        graph-data
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20databases%22" class="tag" data-tooltip='Show items with the tag "databases"'>
+        databases
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20cypher%22" class="tag" data-tooltip='Show items with the tag "cypher"'>
+        cypher
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20data-interoperability%22" class="tag" data-tooltip='Show items with the tag "data-interoperability"'>
+        data-interoperability
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="(Image sourced from https://github.com/kuzudb/kuzu.)">
+    <img src="/set-website/preview/pr-40/images/kuzu_logo.png" style="
+        width: 500px;
+        max-height: unset;
+      " alt="(Image sourced from https://github.com/kuzudb/kuzu.)" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      (Image sourced from https://github.com/kuzudb/kuzu.)
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+
+<p>Graph databases can offer a more natural and intuitive way to model and explore relationships within data.
+In this post, we’ll dive into the world of graph databases, focusing on Kùzu, an embedded graph database and query engine for a number of languages, and Cypher, a powerful query language designed for graph data.
+We’ll explore how these tools can transform your data management and analysis workflows, provide insights into their capabilities, and discuss when it might be more appropriate to use server-based solutions.
+Whether you’re a research software developer looking to integrate advanced graph processing into your applications or simply curious about the benefits of graph databases, this guide will equip you with the knowledge to harness the full potential of graph data.</p>
+
+<!-- excerpt end -->
+
+<h2 id="tabular-data">Tabular Data</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Tabular data is made up up rows (or records) and columns.">
+    <img src="/set-website/preview/pr-40/images/tabular_data_image.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Tabular data is made up up rows (or records) and columns." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Tabular data is made up up rows (or records) and columns.
+
+    </figcaption>
+  
+</figure>
+
+<p>Data are often stored in a table, or <a href="https://en.wikipedia.org/wiki/Table_(database)">tabular format</a>, where information is organized into rows and columns.
+Each row represents a single record and each column represents attributes of that record.
+Tables are particularly effective for storing and querying large volumes of data with a fixed set of columns and data types.
+Despite its versatility, tabular data can become cumbersome when dealing with complex relationships and interconnected data, where a graph-based approach might be more suitable.</p>
+
+<h2 id="graph-data">Graph Data</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph data is made up of nodes and edges.">
+    <img src="/set-website/preview/pr-40/images/graph_data_intro.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph data is made up of nodes and edges." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph data is made up of nodes and edges.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">Graph data</a> represents information in the form of nodes (also called vertices) and edges (connections between nodes).
+This structure is useful for modeling complex relationships and interconnected data, such as social networks, biological networks, and transportation systems.
+Unlike tabular data, which is often “flattened” (treating multidimensional data as singular columns) and often rigid (requiring all new data to conform to a specific schema), graph data allows for more flexible and dynamic representations.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Nodes and edges may have properties in a graph.">
+    <img src="/set-website/preview/pr-40/images/graph_data_intro_properties.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Nodes and edges may have properties in a graph." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Nodes and edges may have properties in a graph.
+
+    </figcaption>
+  
+</figure>
+
+<p>Nodes and edges act like different kinds of tabular records within the context of graphs.
+Nodes and edges can also have properties (attributes) which further provide description to a graph.
+Properties are akin to columns of a particular record in tabular formats which help describe a certain record (or node).
+Graph data models are particularly useful for exploring connections, performing path analysis, and uncovering patterns that may require more transformation in tabular formats.</p>
+
+<h2 id="graph-databases">Graph Databases</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph databases store graph data.">
+    <img src="/set-website/preview/pr-40/images/graph_database.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph databases store graph data." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph databases store graph data.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://en.wikipedia.org/wiki/Graph_database">Graph databases</a> are specialized databases designed to store, query, and manage graph data efficiently.
+They use graph structures for semantic queries, with nodes, edges, and properties being stored directly in the database.
+Unlike traditional relational databases that use tables, graph databases leverage the natural relationships in the data, allowing for faster retrieval and sometimes more intuitive querying of interconnected information.
+This makes them ideal for applications involving complex relationships, such as social networks, supply chain management, and knowledge graphs.
+Graph databases support various query languages and algorithms optimized for traversing and analyzing graph structures.</p>
+
+<h2 id="graph-database-querying">Graph Database Querying</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Graph data are typically queried using specialized languages such as Cypher.">
+    <img src="/set-website/preview/pr-40/images/graph_database_querying.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Graph data are typically queried using specialized languages such as Cypher." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Graph data are typically queried using specialized languages such as Cypher.
+
+    </figcaption>
+  
+</figure>
+
+<p>Graph database querying involves using specialized query languages to retrieve and manipulate graph data.
+Unlike SQL, which often is used for tabular databases, graph databases use languages like <a href="https://en.wikipedia.org/wiki/Cypher_(query_language)">Cypher</a>, <a href="https://en.wikipedia.org/wiki/Gremlin_(query_language)">Gremlin</a>, and <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>, which are designed to handle graph-specific operations.
+These languages allow users to perform complex queries that traverse the graph, find paths between nodes, filter based on properties, and analyze relationships.
+Querying in graph databases can be highly efficient due to their ability to leverage the inherent structure of the graph, enabling fast execution of complex queries that would be cumbersome and slow in a relational database.</p>
+
+<h2 id="cypher-query-language">Cypher Query Language</h2>
+
+<div class="language-cypher highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">MATCH</span><span class="w"> </span><span class="ss">(</span><span class="py">p:</span><span class="n">Person</span> <span class="ss">{</span><span class="py">name:</span> <span class="s1">'Alice'</span><span class="ss">})</span><span class="o">-</span><span class="ss">[</span><span class="nc">:FRIEND</span><span class="ss">]</span><span class="o">-&gt;</span><span class="ss">(</span><span class="n">friend</span><span class="ss">)</span>
+<span class="k">RETURN</span> <span class="n">friend.name</span><span class="ss">,</span> <span class="n">friend.age</span>
+</code></pre></div></div>
+
+<p class="center"><em>This query finds nodes labeled “Person” with the name “Alice” and returns the names and ages of nodes connected to Alice by a “FRIEND” relationship.</em></p>
+
+<p>Cypher is a powerful, declarative graph query language designed specifically for querying and updating graph databases.
+Originally developed for <a href="https://en.wikipedia.org/wiki/Neo4j">Neo4j</a> (one of the most popular graph databases), it is known for its expressive and intuitive syntax that makes it easy to work with graph data.
+Cypher allows users to perform complex queries using simple and readable patterns that resemble ASCII art, making it accessible to both developers and data scientists.
+It supports a wide range of operations, including pattern matching, filtering, aggregation, and graph traversal, enabling efficient exploration and manipulation of graph structures.
+For example, a basic Cypher query to find all nodes connected by a “FRIEND” relationship might look like this: <code class="language-plaintext highlighter-rouge">MATCH (a)-[:FRIEND]-&gt;(b) RETURN a, b</code>, which finds and returns pairs of nodes a and b where a is connected to b by a “FRIEND” relationship.</p>
+
+<h2 id="kùzu">Kùzu</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries.">
+    <img src="/set-website/preview/pr-40/images/kuzu_intro.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries.
+
+    </figcaption>
+  
+</figure>
+
+<p><a href="https://github.com/kuzudb/kuzu">Kùzu</a> is an embedded graph database and query engine designed to integrate seamlessly with Python, Rust, Node, C/C++, or Java software.
+Kùzu is optimized for high performance and can handle complex graph queries with ease.
+Querying graphs in Kùzu is performed using the Cypher syntax, providing transferrability of queries in multiple programming languages.
+Kùzu also provides direct integration with export formats that allow for efficient data analysis or processing such as Pandas and Arrow.
+Kùzu is particularly suitable for software developers who need to integrate graph database capabilities into their projects without the overhead of managing a separate database server.</p>
+
+<h2 id="tabular-and-graph-data-interoperation">Tabular and Graph Data Interoperation</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Kùzu uses tabular data as both input and output for data operations.">
+    <img src="/set-website/preview/pr-40/images/kuzu_table_ingest.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Kùzu uses tabular data as both input and output for data operations." loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Kùzu uses tabular data as both input and output for data operations.
+
+    </figcaption>
+  
+</figure>
+
+<p>Tabular data and graph data can sometimes be used in tandem in order to achieve software goals (one isn’t necessaryily better than the other or supposed to be used in isolation).
+For example, Kùzu offers both data import and export to tabular formats to help with conversion and storage outside of a graph database.
+This is especially helpful when working with tabular data as an input, when trying to iterate over large datasets in smaller chunks, or building integration paths to other pieces of software which aren’t Kùzu or graph data compatible.</p>
+
+<h2 id="kùzu-tabular-data-imports">Kùzu Tabular Data Imports</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># portions of this content referenced
+# with modifications from:
+# https://docs.kuzudb.com/import/parquet/
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">kuzu</span>
+
+<span class="c1"># create parquet-based data for import into kuzu
+</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s">"name"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">],</span>
+     <span class="s">"age"</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">25</span><span class="p">]}</span>
+<span class="p">).</span><span class="n">to_parquet</span><span class="p">(</span><span class="s">"user.parquet"</span><span class="p">)</span>
+<span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"from"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Adam"</span><span class="p">,</span> <span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">],</span>
+        <span class="s">"to"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Karissa"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">,</span> <span class="s">"Zhang"</span><span class="p">,</span> <span class="s">"Noura"</span><span class="p">],</span>
+        <span class="s">"since"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">2020</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">2022</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">).</span><span class="n">to_parquet</span><span class="p">(</span><span class="s">"follows.parquet"</span><span class="p">)</span>
+
+<span class="c1"># form a kuzu database connection
+</span><span class="n">db</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Database</span><span class="p">(</span><span class="s">"./test"</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+<span class="c1"># use wildcard-based copy in case of multiple files
+# copy node data
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">'COPY User FROM "user*.parquet";'</span><span class="p">)</span>
+<span class="c1"># copy edge data
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">'COPY Follows FROM "follows*.Parquet";'</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span>
+    <span class="s">"""MATCH (a:User)-[f:Follows]-&gt;(b:User)
+    RETURN a.name, b.name, f.since;"""</span>
+<span class="p">).</span><span class="n">get_as_df</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>One way to create graphs within Kùzu is to import data from tabular datasets.
+Kùzu provides functionality to convert tabular data from CSV, <a href="https://en.wikipedia.org/wiki/Apache_Parquet">Parquet</a>, or <a href="https://numpy.org/">NumPy</a> files into a graph.
+This process enables seamless integration of tabular data sources into the graph database, providing the benefits of graph-based querying and analysis while leveraging the familiar structure and benefits of tabular data.</p>
+
+<h2 id="kùzu-data-results-and-exports">Kùzu Data Results and Exports</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># portions of this content referenced 
+# with modifications from:
+# https://kuzudb.com/api-docs/python/kuzu.html
+</span><span class="kn">import</span> <span class="nn">kuzu</span>
+
+<span class="c1"># form a kuzu database connection
+</span><span class="n">db</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Database</span><span class="p">(</span><span class="s">"./test"</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">kuzu</span><span class="p">.</span><span class="n">Connection</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s">"MATCH (u:User) RETURN u.name, u.age;"</span>
+
+<span class="c1"># run query and return Pandas DataFrame
+</span><span class="n">pd_df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_df</span><span class="p">()</span>
+
+<span class="c1"># run query and return Polars DataFrame
+</span><span class="n">pl_df</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_pl</span><span class="p">()</span>
+
+<span class="c1"># run query and return PyArrow Table
+</span><span class="n">arrow_tbl</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_arrow</span><span class="p">()</span>
+
+<span class="c1"># run query and return PyTorch Geometric Data
+</span><span class="n">pyg_d</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="n">get_as_torch_geometric</span><span class="p">()</span>
+
+<span class="c1"># run query within COPY to export directly to file
+</span><span class="n">conn</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">"COPY (MATCH (u:User) return u.*) TO 'user.parquet';"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Kùzu also is flexible when it comes to receiving data from Cypher queries.
+After performing a query you have the option to use a number of methods to automatically convert into various in-memory data formats, for example, <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_df">Pandas DataFrames</a>, <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_pl">Polars DataFrames</a>,<a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_torch_geometric"> PyTorch Geometric (PyG) Data</a>, or <a href="https://kuzudb.com/api-docs/python/kuzu.html#QueryResult.get_as_arrow">PyArrow Tables</a>.
+There are also options to export data directly to CSV or Parquet files for times where file-based data is preferred.</p>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
+Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
+However, it’s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
+By leveraging the right tool for the right job, whether it’s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-40/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html">
+        Parquet: Crafting Data Bridges for Efficient Computation
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-40/2024/07/28/Uncovering-Code-Coverage.html">
+        Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-40/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>

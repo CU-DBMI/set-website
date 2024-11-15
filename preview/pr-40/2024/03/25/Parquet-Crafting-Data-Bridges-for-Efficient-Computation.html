@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Parquet: Crafting Data Bridges for Efficient Computation | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-40/images/icon.png">
+
+<meta name="title" content="Parquet: Crafting Data Bridges for Efficient Computation">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Parquet: Crafting Data Bridges for Efficient Computation">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-40">
+<meta property="og:image" content="/set-website/preview/pr-40/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Parquet: Crafting Data Bridges for Efficient Computation">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-40">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-40/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2024-11-15T18:47:23+00:00">
+  <meta property="article:published_time" content="2024-03-25T00:00:00+00:00">
+  <meta property="article:modified_time" content="2024-11-15T18:47:23+00:00">
+  <meta name="revised" content="2024-11-15T18:47:23+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Parquet: Crafting Data Bridges for Efficient Computation" },
+      "datePublished": "2024-03-25T00:00:00+00:00",
+      "dateModified": "2024-11-15T18:47:23+00:00",
+    
+    "name": "Parquet: Crafting Data Bridges for Efficient Computation",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Parquet: Crafting Data Bridges for Efficient Computation",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-40/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-40"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-40/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-40/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-40/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-40/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-40/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-40/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-40/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-40/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-40/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-40/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  background: ;
+  dark: ;
+  size: 1;
+-->
+
+
+<h1 class="center">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-40/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten (@d33bs)">
+    <img src="/set-website/preview/pr-40/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-text">
+        
+          <span class="portrait-name">
+            Dave Bunten (@d33bs)
+          </span>
+        
+
+        
+          <span class="portrait-role">
+            
+            <i class="icon fa-solid fa-code"></i>
+            <span>Research Data Engineer</span>
+          </span>
+        
+      </span>
+    
+  </a>
+</div>
+
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>March 25, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>November 15, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-40/blog">
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20research-data-engineering%22" class="tag" data-tooltip='Show items with the tag "research-data-engineering"'>
+        research-data-engineering
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20file-formats%22" class="tag" data-tooltip='Show items with the tag "file-formats"'>
+        file-formats
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20large-data%22" class="tag" data-tooltip='Show items with the tag "large-data"'>
+        large-data
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20data-performance%22" class="tag" data-tooltip='Show items with the tag "data-performance"'>
+        data-performance
+      </a>
+    
+      <a href="/set-website/preview/pr-40/blog?search=%22tag:%20parquet%22" class="tag" data-tooltip='Show items with the tag "parquet"'>
+        parquet
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-40/images/Apache_Parquet_logo.svg" style="
+        width: 500px;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p class="center"><em>(Image: <a href="https://commons.wikimedia.org/wiki/File:Apache_Parquet_logo.svg">Vulphere, Wikimedia Commons</a>)</em></p>
+
+<!-- excerpt start -->
+<p><a href="https://en.wikipedia.org/wiki/Apache_Parquet">Apache Parquet</a> is a columnar and strongly-typed tabular data storage format built for scalable processing which is widely compatible with many data models, programming languages, and software systems.
+Parquet files (typically denoted with a <code class="language-plaintext highlighter-rouge">.parquet</code> filename extension) are typically compressed within the format itself and are often used in embedded or cloud-based high-performance scenarios.
+It has grown in popularity since it was introduced in 2013 and is used as a core data storage technology in many organizations.
+This article will introduce the Parquet format from a research data engineering perspective.
+<!-- excerpt end --></p>
+
+<h2 id="understanding-the-parquet-file-format">Understanding the Parquet file format</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-40/images/parquet_flooring.jpg" style="
+        width: 500px;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p class="center"><em>(Image: <a href="https://commons.wikimedia.org/wiki/File:Fischgr%C3%A4t_route_4_fischbacher_living.jpg">Robert Fischbacher163, Wikimedia Commons</a>)</em></p>
+
+<p>Parquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges (for example, in <a href="https://en.wikipedia.org/wiki/Apache_Hadoop">Apache Hadoop</a> systems).
+It was partially inspired by a Google Research publication: <a href="https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/"><em>“Dremel: Interactive Analysis of Web-Scale Datasets”</em></a>.
+Parquet joined the <a href="https://en.wikipedia.org/wiki/The_Apache_Software_Foundation">Apache Software Foundation</a> in 2015 as a Top-Level Project (TLP) (<a href="https://news.apache.org/foundation/entry/the_apache_software_foundation_announces75">link</a>)
+The format is similar and has related goals to that of the <a href="https://en.wikipedia.org/wiki/Apache_ORC">ORC</a>, <a href="https://en.wikipedia.org/wiki/Apache_Avro">Avro</a>, and <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a> file formats.</p>
+
+<p>One definition for the word “parquet” is: <em>“A wooden floor made of parquetry.”</em> (<a href="https://en.wiktionary.org/wiki/parquet">Wiktionary: Parquet</a>).
+Parquetry are often used to form decorative geometric patterns in flooring.
+It seems fitting to name the format this way due to how columns and values are structured (see more below), akin to constructing a beautiful ‘floor’ for your data efforts.</p>
+
+<p>We cover a few pragmatic aspects of the Parquet file format below.</p>
+
+<h3 id="--columnar-data-storage">
+<i class="fas fa-table-columns"></i>  Columnar data storage</h3>
+
+<!-- retain original HTML as code-based content 
+<table>
+<tr>
+<th>Data Type</th>
+<th>Data</th>
+<th>How data is organized on file</th>
+</tr>
+<tr>
+<td>CSV</td>
+<td>
+<table>
+<tr>
+<td>1</td>
+<td>Grapes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oranges</td>
+</tr>
+</table>
+<td>
+<table>
+<tr>
+<td>1</td><td>Grapes</td><td>2</td><td>Oranges</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>
+<table>
+<tr>
+<td>1</td>
+<td>Grapes</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oranges</td>
+</tr>
+</table>
+<td>
+
+<table>
+<tr>
+<td>1</td><td>2</td><td>Grapes</td><td>Oranges</td>
+</tr>
+</table>
+
+<center>(simplification, see abstractions below)</center>
+
+</td>
+</tr>
+</table>
+-->
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Parquet organizes column values together. CSV intermixes values from multiple columns">
+    <img src="/set-website/preview/pr-40/images/csv_vs_parquet_data_on_file.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Parquet organizes column values together. CSV intermixes values from multiple columns" loading="lazy" onerror="this.src = '/set-website/preview/pr-40/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Parquet organizes column values together. CSV intermixes values from multiple columns
+
+    </figcaption>
+  
+</figure>
+
+<p>Parquet files store data in a <strong>“columnar”</strong> way which is distinct from other formats.
+We can understand this columnar format by using <a href="https://en.wikipedia.org/wiki/Plaintext">plaintext</a> <a href="https://en.wikipedia.org/wiki/Comma-separated_values">comma-separated value (CSV)</a> format as a reference point.
+CSV files store data in a row-orientated way by using new lines to represent rows of values.
+Reading all values of a single column in CSV often involves seeking through multiple other portions of the data by default.</p>
+
+<p>Parquet files are binary in nature, optimizing storage by arranging values from individual columns in close proximity to each other.
+This enables the data to be stored and retrieved more efficiently than possible with CSV files.
+For example, Parquet files allow you to query individual columns without needing to traverse non-necessary column value data.</p>
+
+<h3 id="-parquet-format-abstractions">
+<i class="fas fa-sitemap"></i> Parquet format abstractions</h3>
+
+<h4 id="row-groups-column-chunks-and-pages">Row groups, column chunks, and pages</h4>
+<!-- set a max width for mermaid diagram below so it doesn't render so large -->
+<style>
+.mermaid {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+}
+</style>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IFRCXG5zdWJncmFwaCBwYXJxdWV0X2ZpbGVbXCJQYXJxdWV0IEZpbGVcIl1cbmRpcmVjdGlvbiBUQlxuc3ViZ3JhcGggcm93Z3JvdXBfMSBbXCJSb3cgZ3JvdXAgMVwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBjb2x1bW5fMV9hW1wiQ29sdW1uIEFcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8xX2FfMFtcIlBhZ2UgMFwiXVxucGFnZV8xX2FfMVtcIlBhZ2UgMVwiXVxuZW5kXG5zdWJncmFwaCBjb2x1bW5fMV9iW1wiQ29sdW1uIEJcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8xX2JfMFtcIlBhZ2UgMFwiXVxucGFnZV8xX2JfMVtcIlBhZ2UgMVwiXVxuZW5kXG5lbmRcbiUlLVxuc3ViZ3JhcGggcm93Z3JvdXBfMiBbXCJSb3cgZ3JvdXAgMlwiXVxuZGlyZWN0aW9uIFRCXG5zdWJncmFwaCBjb2x1bW5fMl9hW1wiQ29sdW1uIEFcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8yX2FfMFtcIlBhZ2UgMFwiXVxucGFnZV8yX2FfMVtcIlBhZ2UgMVwiXVxuZW5kXG5zdWJncmFwaCBjb2x1bW5fMl9iW1wiQ29sdW1uIEJcIl1cbmRpcmVjdGlvbiBUQlxucGFnZV8yX2JfMFtcIlBhZ2UgMFwiXVxucGFnZV8yX2JfMVtcIlBhZ2UgMVwiXVxuZW5kXG4lJS1cbmVuZFxuZW5kIiwibWVybWFpZCI6bnVsbH0"></p>
+
+<p class="center"><em>Parquet organizes data using row groups, columns, and pages.</em></p>
+
+<p>Parquet files organize column data inside of <strong>row groups</strong>.
+Each row group includes chunks of columns in the form of <strong>pages</strong>.
+Row groups and column pages are configurable and may change depending on the configuration of your Parquet client.
+<strong>Note:</strong> you don’t need to be an expert on these details to leverage and benefit from Parquet as these are often configured for default general purposes.</p>
+
+<h4 id="page-encodings">Page encodings</h4>
+
+<p>Pages within column chunks may have a number of different <strong>encodings</strong>.
+<a href="https://github.com/apache/parquet-format/blob/master/Encodings.md">Parquet encodings</a> are often selected based on the type of data included within columns and the operational or performance needs associated with a project.
+By default, <a href="https://github.com/apache/parquet-format/blob/master/Encodings.md#plain-plain--0">Plain (<code class="language-plaintext highlighter-rouge">PLAIN</code>) encoding</a> is used which means all values are stored back to back.
+Another encoding type, <a href="https://github.com/apache/parquet-format/blob/master/Encodings.md#run-length-encoding--bit-packing-hybrid-rle--3">Run Length Encoding (<code class="language-plaintext highlighter-rouge">RLE</code>)</a>, is often used to efficiently store columns with many consecutively repeated values.
+Column encodings are sometimes set for each individual column, usually in an automatic way based on the data involved.</p>
+
+<h3 id="-compression">
+<i class="fas fa-box-archive"></i> Compression</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="c1"># create a pyarrow table
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+        <span class="s">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">,</span> <span class="s">"qux"</span><span class="p">,</span> <span class="s">"quux"</span><span class="p">],</span>
+        <span class="s">"C"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Write Parquet file with Snappy compression
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.snappy.parquet"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s">"SNAPPY"</span><span class="p">)</span>
+
+<span class="c1"># Write Parquet file with Zstd compression
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.zstd.parquet"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s">"ZSTD"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p class="center"><em>Parquet files can be compressed as they’re written using parameters.</em></p>
+
+<p>Parquet files may leverage compression to help reduce file size and increase data read performance.
+Compression is applied at the page level, combining benefits from various encodings.
+Data stored through Parquet is usually compressed when it is written, denoting the compression type through the filename (for example: <code class="language-plaintext highlighter-rouge">filename.snappy.parquet</code>).
+<a href="https://en.wikipedia.org/wiki/Snappy_(compression)">Snappy</a> is often used as a common compression algorithm for Parquet data.
+<a href="https://en.wikipedia.org/wiki/Brotli">Brotli</a>, <a href="https://en.wikipedia.org/wiki/Gzip">Gzip</a>, <a href="https://en.wikipedia.org/wiki/Zstd">ZSTD</a>, <a href="https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)">LZ4</a> are also sometimes used.
+It’s worth exploring what compression works best for the data and systems you use (for example, <a href="https://www.uber.com/blog/cost-efficiency-big-data">ZSTD compression may hold benefits</a>).</p>
+
+<h3 id="-strongly-typed-data">
+<i class="fas fa-icons"></i> “Strongly-typed” data</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="c1"># create a pyarrow table
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s">"C"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># write the pyarrow table to a parquet file
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.parquet"</span><span class="p">)</span>
+
+<span class="c1"># raises exception:
+# ArrowTypeError: Expected bytes, got a 'int' object (for column B)
+# Note: while this is an Arrow in-memory data exception, it also
+# prevents us from attempting to perform incompatible operations
+# within the Parquet file.
+</span></code></pre></div></div>
+
+<p class="center"><em>Data value must be all of the same type within a Parquet column.</em></p>
+
+<p>Data within Parquet is <a href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">“strongly-typed”</a>; specific data types (such as integer, string, etc.) are associated with each column, and thus value.
+Attempting to store a data value type which does not match the column data type will usually result in an error.
+This can lead to performance and compression benefits due to how quickly Parquet readers can determine the data type.
+Strongly-typed data also embeds a kind of validation directly inside your work (data errors <a href="https://en.wikipedia.org/wiki/Shift-left_testing">“shift left”</a> and are often discovered earlier).
+<a href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html">See here</a> for more on data quality validation topics we’ve written about.</p>
+
+<h3 id="-complex-data-handling">
+<i class="fas fa-diagram-successor"></i> Complex data handling</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="c1"># create a pyarrow table with complex data types
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"A"</span><span class="p">:</span> <span class="p">[{</span><span class="s">"key1"</span><span class="p">:</span> <span class="s">"val1"</span><span class="p">},</span> <span class="p">{</span><span class="s">"key2"</span><span class="p">:</span> <span class="s">"val2"</span><span class="p">}],</span>
+        <span class="s">"B"</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+        <span class="s">"C"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="nb">bytearray</span><span class="p">(</span><span class="s">"😊"</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">)),</span>
+            <span class="nb">bytearray</span><span class="p">(</span><span class="s">"🌻"</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="s">"utf-8"</span><span class="p">)),</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># write the pyarrow table to a parquet file
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.parquet"</span><span class="p">)</span>
+
+<span class="c1"># read the schema of the parquet file
+</span><span class="k">print</span><span class="p">(</span><span class="n">parquet</span><span class="p">.</span><span class="n">read_schema</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="s">"example.parquet"</span><span class="p">))</span>
+
+<span class="c1"># prints:
+# A: struct&lt;key1: string, key2: string&gt;
+#   child 0, key1: string
+#   child 1, key2: string
+# B: list&lt;element: int64&gt;
+#   child 0, element: int64
+# C: binary
+</span></code></pre></div></div>
+
+<p class="center"><em>Parquet file columns may contain complex data types such as nested types (lists, dictionaries) and byte arrays.</em></p>
+
+<p>Parquet files may store many data types that are complicated or impossible to store in other formats.
+For example, images may be stored using the <a href="https://parquet.apache.org/docs/file-format/types/">byte array</a> storage type.
+Nested data may be stored using <a href="https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types"><code class="language-plaintext highlighter-rouge">LIST</code> or <code class="language-plaintext highlighter-rouge">MAP</code> logical types</a>.
+Dates or times may be stored using <a href="https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#temporal-types">various temporal data types.</a>
+Oftentimes, complex data conversion within Parquet files is already implemented (for example, in <a href="https://arrow.apache.org/docs/developers/python.html">PyArrow</a>).</p>
+
+<h3 id="-metadata">
+<i class="fas fa-tags"></i> Metadata</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="c1"># create a pyarrow table
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">],</span>
+        <span class="s">"C"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># add custom metadata to table
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">table</span><span class="p">.</span><span class="n">replace_schema_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s">"data-producer"</span><span class="p">:</span> <span class="s">"CU DBMI SET Blog"</span><span class="p">})</span>
+
+<span class="c1"># write the pyarrow table to a parquet file
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.snappy.parquet"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s">"SNAPPY"</span><span class="p">)</span>
+
+<span class="c1"># read the schema
+</span><span class="k">print</span><span class="p">(</span><span class="n">parquet</span><span class="p">.</span><span class="n">read_schema</span><span class="p">(</span><span class="n">where</span><span class="o">=</span><span class="s">"example.snappy.parquet"</span><span class="p">))</span>
+
+<span class="c1"># prints
+# A: int64
+# B: string
+# C: double
+# -- schema metadata --
+# data-producer: 'CU DBMI SET Blog'
+</span></code></pre></div></div>
+
+<p class="center"><em>Metadata are treated as a distinct and customizable components of Parquet files.</em></p>
+
+<p>The Parquet format treats data about the data (metadata) separately from that of column value data.
+<a href="https://parquet.apache.org/docs/file-format/metadata/">Parquet metadata</a> includes column names, data types, compression, various statistics about the file, and custom fields (in key-value form).
+This metadata may be read without reading column value data which can assist with data exploration tasks (especially if the data are large).</p>
+
+<h3 id="-multi-file-datasets">
+<i class="fas fa-folder-tree"></i> Multi-file “datasets”</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="n">pathlib</span><span class="p">.</span><span class="n">Path</span><span class="p">(</span><span class="s">"./dataset"</span><span class="p">).</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># create pyarrow tables
+</span><span class="n">table_1</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">({</span><span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">]})</span>
+<span class="n">table_2</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">({</span><span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+
+<span class="c1"># write the pyarrow table to parquet files
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table_1</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"./dataset/example_1.parquet"</span><span class="p">)</span>
+<span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table_2</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"./dataset/example_2.parquet"</span><span class="p">)</span>
+
+<span class="c1"># read the parquet dataset
+</span><span class="k">print</span><span class="p">(</span><span class="n">parquet</span><span class="p">.</span><span class="n">ParquetDataset</span><span class="p">(</span><span class="s">"./dataset"</span><span class="p">).</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># prints (note that, for ex., [1] is a row group of column A)
+# pyarrow.Table
+# A: int64
+# ----
+# A: [[1],[2,3]]
+</span></code></pre></div></div>
+
+<p class="center"><em>Parquet datasets may be composed of one or many individual Parquet files.</em></p>
+
+<p>Parquet files may be used individually or treated as a “dataset” through file groups which include the same schema (column names and types).
+This means you can store “chunks” of Parquet-based data in one or many files and provides opportunities for intermixing or extending data.
+When reading Parquet data this way libraries usually use the directory as a way to parse all files as a single dataset.
+Multi-file datasets mean you gain the ability to store arbitrarily large amounts of data by sidestepping, for example, <a href="https://en.wikipedia.org/wiki/Inode">inode</a> limitations.</p>
+
+<h3 id="-apache-arrow-memory-format-integration">
+<i class="fas fa-forward"></i> Apache Arrow memory format integration</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
+<span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
+
+<span class="c1"># create a pyarrow table
+</span><span class="n">table</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Table</span><span class="p">.</span><span class="n">from_pydict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s">"A"</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s">"B"</span><span class="p">:</span> <span class="p">[</span><span class="s">"foo"</span><span class="p">,</span> <span class="s">"bar"</span><span class="p">,</span> <span class="s">"baz"</span><span class="p">],</span>
+        <span class="s">"C"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># write the pyarrow table to a parquet file
+</span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.parquet"</span><span class="p">)</span>
+
+<span class="c1"># show schema of table and parquet file
+</span><span class="k">print</span><span class="p">(</span><span class="n">table</span><span class="p">.</span><span class="n">schema</span><span class="p">.</span><span class="n">types</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">parquet</span><span class="p">.</span><span class="n">read_schema</span><span class="p">(</span><span class="s">"example.parquet"</span><span class="p">).</span><span class="n">types</span><span class="p">)</span>
+
+<span class="c1"># prints
+# [DataType(int64), DataType(string), DataType(double)]
+# [DataType(int64), DataType(string), DataType(double)]
+</span></code></pre></div></div>
+
+<p class="center"><em>Parquet file and Arrow data types are well-aligned.</em></p>
+
+<p>The Parquet format has robust support and integration with the <a href="https://arrow.apache.org/docs/index.html">Apache Arrow</a> memory format.
+This enables consistency across Parquet integration and how the data are read using various programming languages (the Arrow memory format is relatively uniform across these).</p>
+
+<h2 id="performance-with-parquet">Performance with Parquet</h2>
+
+<p>Parquet files often outperforms traditional formats due to how it is designed.
+Other data file formats may vary in performance contingent on specific configurations and system integration.
+We urge you to perform your own testing to find out what works best for your circumstances.
+See below for a list of references which compare Parquet to other formats.</p>
+
+<ul>
+  <li>CSV vs Parquet - <a href="https://posit.co/blog/speed-up-data-analytics-with-parquet-files/">Speed up data analytics and wrangling with Parquet files (Posit)</a>
+</li>
+  <li>CSV vs Parquet - <a href="https://dzone.com/articles/how-to-be-a-hero-with-powerful-parquet-google-and">Apache Parquet vs. CSV Files (DZone)</a>
+</li>
+  <li>Feather vs Parquet - <a href="https://ursalabs.org/blog/2020-feather-v2/">Feather V2 with Compression Support in Apache Arrow 0.17.0 (Ursa Labs)</a>
+</li>
+  <li>ORC vs Parquet - <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/cpe.5523">The impact of columnar file formats on SQL-on-hadoop engine performance: A study on ORC and Parquet (Concurrency and Computation: Practice and Experience)</a>
+</li>
+</ul>
+
+<h2 id="how-can-you-use-parquet">How can you use Parquet?</h2>
+
+<p>The Parquet format is common in many data management platforms and libraries.
+Below are a list of just a few popular places where you can use Parquet.</p>
+
+<ul>
+  <li>
+<strong>Python</strong>
+    <ul>
+      <li>Pandas (<a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_parquet.html"><code class="language-plaintext highlighter-rouge">pd.DataFrame.to_parquet()</code></a>, <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_parquet.html"><code class="language-plaintext highlighter-rouge">pd.read_parquet()</code></a>)</li>
+      <li>Apache Spark (<a href="https://spark.apache.org/docs/latest/sql-data-sources-parquet.html">Spark SQL Guide: Parquet Files</a>)</li>
+      <li>PyTorch (<a href="https://pytorch.org/data/main/generated/torchdata.datapipes.iter.ParquetDataFrameLoader.html"><code class="language-plaintext highlighter-rouge">ParquetDataFrameLoader</code></a>)</li>
+      <li>PyArrow (<a href="https://arrow.apache.org/docs/python/parquet.html">PyArrow: Reading and Writing the Apache Parquet Format</a>)</li>
+    </ul>
+  </li>
+  <li>
+<strong>R</strong>
+    <ul>
+      <li>dplyr (<a href="https://arrow.apache.org/docs/2.0/r/articles/dataset.html">Arrow: Working with Arrow Datasets and dplyr</a>)</li>
+      <li>Arrow (<a href="https://arrow.apache.org/docs/r/reference/write_parquet.html"><code class="language-plaintext highlighter-rouge">write_parquet()</code></a>, <a href="https://arrow.apache.org/docs/r/reference/read_parquet.html"><code class="language-plaintext highlighter-rouge">read_parquet()</code></a>)</li>
+      <li>DuckDB (<a href="https://duckdb.org/docs/api/r.html">DuckDB R API</a>, <a href="https://duckdb.org/docs/data/parquet/overview">DuckDB: Reading and Writing Parquet Files</a>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="concluding-thoughts">Concluding Thoughts</h2>
+
+<p>This article covered the Parquet file format including notable features and usage.
+Thank you for joining us on this exploration of Parquet.
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-40/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html">
+        Navigating Dependency Chaos with Lockfiles
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-40/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html">
+        Leveraging Kùzu and Cypher for Advanced Data Analysis
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-40/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2024
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
