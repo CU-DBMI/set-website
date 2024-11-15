@@ -62,6 +62,15 @@
   description: Automates the parsing and transformation of a KGX archive into graphdb-ready formats. After the archive is converted, automates provisioning and deployment of Neo4j and Blazegraph instances from a KGX archive.
   tags: devops, iac, graph databases, neo4j, blazegraph, terraform, ansible
 
+- title: ReviewR
+  subtitle: for The WileyLab
+  image: images/reviewr.png
+  link: https://reviewr.thewileylab.org/
+  description: |
+    ReviewR is a portable Shiny tool to help you explore patient-level electronic health record data and perform chart review in a single integrated 
+    framework. It is distributed as an R package using the golem framework.
+  tags: r package, shiny 
+
 - title: Lab Website Template
   subtitle: for the Greene Lab
   image: https://raw.githubusercontent.com/greenelab/lab-website-template/main/images/share.jpg?raw=true

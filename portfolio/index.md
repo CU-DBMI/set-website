@@ -14,6 +14,7 @@ We work with many groups both within and external to the University of Colorado:
 - [JRaviLab](https://jravilab.github.io)
 - [Krishnan Lab](https://www.thekrishnanlab.org)
 - [BioThings.io](https://biothings.io/)
+- [The WileyLab](https://www.thewileylab.org/)
 - ...and more!
 
 ## Projects
