@@ -63,7 +63,7 @@
   tags: devops, iac, graph databases, neo4j, blazegraph, terraform, ansible
 
 - title: ReviewR
-  subtitle: for The WileyLab
+  subtitle: for The Wiley Lab
   image: images/reviewr.png
   link: https://reviewr.thewileylab.org/
   description: |
