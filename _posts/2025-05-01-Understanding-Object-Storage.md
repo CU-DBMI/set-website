@@ -16,7 +16,7 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="images/object-storage-cloud.png" width="40%" caption="Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems." %}
+{% include figure.html image="images/files-and-bucket.png" width="40%" caption="Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems." %}
 
 <!-- excerpt start -->
 **Managing large-scale scientific data is a defining challenge of modern research.**
@@ -29,6 +29,8 @@ In this article, we’ll trace the evolution of object storage (also sometimes r
 <!-- excerpt end -->
 
 ## A brief history of object storage
+
+{% include figure.html image="images/historical-buckets.png" width="40%" caption="Object storage has roots in scientific research and helped build a foundation for later systems like AWS S3. (Image credit: [Meyer, Franz Sales, 1849](https://commons.wikimedia.org/wiki/File:Handbook_of_ornament;_a_grammar_of_art,_industrial_and_architectural_designing_in_all_its_branches,_for_practical_as_well_as_theoretical_use_(1900)_(14597942407).jpg) (cropped))" %}
 
 Traditional storage systems relied on block storage (used by hard drives) and file storage (used by operating systems).
 While effective for early computing, these models struggled to scale with the demands of scientific data and cloud-native applications.
@@ -49,6 +51,8 @@ Unlike file systems, object stores provide:
 These qualities make object storage essential for managing large, unstructured, and reproducible scientific datasets.
 
 ## Why use object storage for research?
+
+{% include figure.html image="images/science-bucket.png" width="40%" caption="Scientific research can benefit from the use of object storage for a wide variety of data." %}
 
 Object storage is not just a buzzword.
 It enables capabilities increasingly vital to modern research:
@@ -88,21 +92,23 @@ In academic environments, **MinIO** and **Ceph** are frequently used for institu
 
 ## How object storage works
 
-{% include figure.html image="images/object-storage-architecture.png" width="60%" caption="An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems." %}
+{% include figure.html image="images/object-storage-concepts.png" width="60%" caption="An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems." %}
 
-Here are the core principles of object storage:
+Here are the core principles of object storage to help conceptualize common terms and how it works.
 
-- **Flat Namespace**: No folder hierarchies; everything is accessed via a unique object key (similar to a URL path).
+- **Flat Namespace**: No folder hierarchies; everything is accessed via a unique object key (similar to a URL path). Folders are typically simulated with "/" slashes to help unify how one may reference objects in correspondence with a filesystem.
 - **Objects**: Each unit of data includes the content, metadata, and a unique identifier (key).
-- **Buckets**: Logical containers for grouping objects (like folders, but flat).
+- **Buckets**: Logical containers for grouping objects (like folders, but flat). Generally a bucket is associated with one project.
 - **APIs**: Most object stores use HTTP REST APIs, often based on the [Amazon S3 API](https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html).
 - **Versioning and Lifecycle**: Objects can be versioned and automatically expired or archived.
 - **Event Notification**: Some systems emit events (e.g., via webhooks or queues) when new data is written—ideal for automation pipelines.
 
-## Demo: Using MinIO for scientific data
+## Demo: Using MinIO for object storage data
+
+{% include figure.html image="images/object-storage-demo.png" width="40%" %}
 
 Let’s walk through how to use [MinIO](https://min.io) to create and interact with object storage on your local system.
-MinIO is lightweight, open source, and provides an S3-compatible interface, making it perfect for development and reproducible demos.
+MinIO is lightweight, open source, and provides an S3-compatible interface, making it nice for development and reproducible demos.
 
 ### Step 1: Install MinIO
 
@@ -140,6 +146,8 @@ mc cp dataset.csv local/research-data
 
 ### Step 3: Access via Python
 
+{% include figure.html image="images/object-storage-python.png" width="40%" %}
+
 You can also use the official MinIO Python client to interact with your object storage server:
 
 ```bash
@@ -166,7 +174,9 @@ for obj in client.list_objects("research-data"):
 
 This approach is lightweight, straightforward, and ideal for working directly with MinIO in local or institutional deployments.
 
-## Streaming Data from Object Storage with MinIO, Pandas, and DuckDB
+## Streaming Data from Object Storage with MinIO, Pandas, Polars, or DuckDB
+
+{% include figure.html image="images/pandas-duckdb-and-polars.png" width="40%" %}
 
 In composable data workflows, streaming data directly from object storage is increasingly common.
 Instead of downloading full files to local disk, tools like Pandas and DuckDB can read from object storage streams—reducing I/O overhead and enabling efficient in situ analytics.
@@ -175,10 +185,26 @@ Tools like [fsspec](https://github.com/fsspec/filesystem_spec) can abstract acce
 ### Example: Streaming a CSV into Pandas
 
 ```python
-from minio import Minio
+import pandas as pd
 
-# Stream data from the s3 api through minio
+# Stream data from the S3 API (MinIO) into a Pandas DataFrame
 df_s3 = pd.read_csv(
+    "s3://my-bucket/data.csv",
+    storage_options={
+        "key": "minioadmin",
+        "secret": "minioadmin",
+        "client_kwargs": {"endpoint_url": "http://localhost:9000"},
+    }
+)
+```
+
+### Example: Streaming a CSV into Polars
+
+```python
+import polars as pl
+
+# Stream data from the S3 API (MinIO) into a Polars DataFrame
+df_s3 = pl.read_csv(
     "s3://my-bucket/data.csv",
     storage_options={
         "key": "minioadmin",
@@ -194,6 +220,8 @@ df_s3 = pd.read_csv(
 import duckdb
 
 with duckdb.connect() as ddb:
+    # Stream data from the S3 API (MinIO)
+    # from DuckDB into Pandas DataFrame
     df = ddb.execute(
         f"""
         /* install httpfs for duckdb */
@@ -214,70 +242,56 @@ with duckdb.connect() as ddb:
     ).df()
 ```
 
-## Wait, what about `boto`?
+## S3-compatible object storage case study: Dell PowerScale (Isilon)
 
-You might have encountered `boto` or `boto3` in other tutorials—these are **AWS SDKs for Python** that support interaction with **Amazon S3** and any object storage system that speaks the **S3 API**, including MinIO.
-
-- [`boto`](https://github.com/boto/boto) is the original (now deprecated) SDK.
-- [`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) is the modern version used for AWS and S3-compatible storage.
-
-These libraries are powerful and widely used, but they're **heavily tied to the AWS ecosystem**, which can introduce complexity or unintended coupling—especially in research environments where:
-
-- S3 credentials and IAM policies don't apply,
-- The goal is on-premises, reproducible, or containerized setups,
-- Simplicity and transparency are preferred.
-
-### When to use `boto3`:
-- You're already integrating with AWS services (e.g., EC2, SageMaker, CloudWatch).
-- You need access to AWS-specific features like presigned URLs, access control policies, or Glacier storage classes.
-- You're developing cloud-native tools for deployment in AWS environments.
-
-### When to use the `minio` client:
-- You're working with **MinIO**, **Ceph**, or other S3-compatible but non-AWS storage.
-- You want a **lightweight, dependency-free, Pythonic API**.
-- You're focused on **local development, reproducible science, or hybrid infrastructure**.
-
-Both libraries work with MinIO, but for most research workflows where AWS integration isn't required, the official [`minio`](https://min.io/docs/minio/linux/developers/python/minio-py.html) client may be more lightweight to use.
-
-## Best practices in scientific object storage
-
-To maximize reproducibility and data stewardship, consider the following:
-
-- **Use consistent naming schemes** for buckets and object keys.
-- **Store rich metadata** (JSON sidecars, standardized formats) alongside data.
-- **Enable versioning** for mutable datasets to preserve provenance.
-- **Integrate storage into workflow systems** (e.g., [Nextflow](https://www.nextflow.io/), [Dagster](https://dagster.io/), or [Galaxy](https://galaxyproject.org/)).
-- **Ensure data durability and backup** in institutional deployments.
-- **Align with FAIR principles** ([GO FAIR Initiative](https://www.go-fair.org/fair-principles/)) whenever possible.
-
-## S3-Compatible Object Storage Case Study: Dell PowerScale (Isilon)
+{% include figure.html image="images/cloud-or-onprem.png" width="40%" %}
 
 Some research institutions like the University of Colorado Anschutz have adopted **Dell PowerScale (Isilon)** for file and object storage ([CU Anschutz Storage Options](https://www.cuanschutz.edu/offices/office-of-information-technology/tools-services/detail-page/storage-servers-and-backups)).
 This adds some convenience due to its ability to serve both traditional file-based workloads (i.e. filemounts) and modern S3-API based pipelines like those described above.
 
 Isilon allows researchers to treat data stored on the NAS as S3-compatible objects, enabling seamless integration with cloud-native tools and streaming workflows—even in strictly on-premises environments.
 
-### 💸 Cost Savings: Isilon Object Storage vs. Cloud Storage (AWS/GCP)
+### 💸 Cost savings: Isilon object storage vs. cloud storage (AWS/GCP)
 
 Cloud object storage platforms like **AWS S3** and **Google Cloud Storage (GCS)** offer great scalability, but they often come with **ongoing costs that grow with usage**, especially due to **egress fees** (i.e., data leaving the cloud) or **operation** charges (when you make changes to objects).
 
 In contrast, **on-premises object storage systems**—like **Dell Isilon**—can provide substantial long-term savings for research institutions that already maintain storage infrastructure.
+Similar to cloud-provider object storage systems, you can still use S3-like API's through tools like MinIO with Isilon.
 
-### 💾 Storage Cost Comparison (Approximate, per GB per month)
+### 💾 Storage cost comparison (approximate, per GB per month)
+
+Object storage providers generally charge a flat fee for the amount of data stored within their platform by month.
+See below for some examples.
 
 | Storage Tier             | Storage Cost (USD/GB/mo) | Notes |
 |--------------------------|--------------------------|-------|
-| **Dell Isilon (on-prem)**| $0.016 | Based on [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
-| **AWS S3 Standard**      | $0.023 | [Pricing Link](https://aws.amazon.com/s3/pricing/) |
-| **Google Cloud Storage** | $0.020 | [Pricing Link](https://cloud.google.com/storage/pricing) |
+| **Dell Isilon**| $0.016 | Based on [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
+| **AWS S3 Standard (AWS S3)**      | $0.023 | [Pricing Link](https://aws.amazon.com/s3/pricing/) |
+| **Google Cloud Storage (GCS)** | $0.020 | [Pricing Link](https://cloud.google.com/storage/pricing) |
 
-### 📤 Data Transfer Cost (Egress)
+### 📤 Data transfer cost (Egress)
+
+Object storage providers often charge for "egress", or data transfers to a location outside their bucket.
+These charges may seem small at first but can add up over time.
+It's also important to note "ingress", or data transferred into an object storage provider's bucket.
 
 | Provider      | Egress (Download) Cost Per GB| Notes |
 |---------------|------------------------------|-------|
 | **Dell Isilon** | $0.00                       | No per-byte charge for transfers for [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
-| **AWS S3**      | ~$0.09 | First 10 TB per month after 100GB free tier [Pricing Link](https://aws.amazon.com/s3/pricing/) |
-| **GCS**         | ~$0.12 | First TB per month [Pricing Link](https://cloud.google.com/storage/pricing) |
+| **AWS S3**      | $0.09 | First 10 TB per month after 100GB free tier [Pricing Link](https://aws.amazon.com/s3/pricing/) |
+| **GCS**         | $0.12 | First TB per month [Pricing Link](https://cloud.google.com/storage/pricing) |
+
+### An example scenario
+
+Some of the above numbers are difficult to contextualize without an example scenario.
+Consider an example scenario where we have 500 GB stored for 6 months and where we download that 500 GB once per month.
+Keep in mind these are estimations and don't include additional other charges from cloud providers, tax, and other considerations.
+
+| Provider      | Calculation | Total |
+|---------------|------------------------------|-------|
+| **Dell Isilon** | $0.016 * 500 GB * 6 Months (no additional cost for egress)                       | $48.00 |
+| **AWS S3**      | ($0.023 * 500 GB * 6 Months) + ($0.09 * 400 GB * 6 Months) | $285.00 |
+| **GCS**         | ($0.020 * 500 GB * 6 Months) + ($0.12 * 500 GB * 6 Months) | $420.00 |
 
 ## Conclusion
 
