@@ -6,6 +6,8 @@ tags:
   - object-storage
   - reproducibility
   - scientific-software
+  - s3
+  - data-streaming
 ---
 
 # Understanding Object Storage: A Guide for Research Software Development
@@ -164,6 +166,54 @@ for obj in client.list_objects("research-data"):
 
 This approach is lightweight, straightforward, and ideal for working directly with MinIO in local or institutional deployments.
 
+## Streaming Data from Object Storage with MinIO, Pandas, and DuckDB
+
+In composable data workflows, streaming data directly from object storage is increasingly common.
+Instead of downloading full files to local disk, tools like Pandas and DuckDB can read from object storage streams—reducing I/O overhead and enabling efficient in situ analytics.
+Tools like [fsspec](https://github.com/fsspec/filesystem_spec) can abstract access across many storage backends—including S3, GCS, and HTTP—making it easier to build storage-agnostic workflows.
+
+### Example: Streaming a CSV into Pandas
+
+```python
+from minio import Minio
+
+# Stream data from the s3 api through minio
+df_s3 = pd.read_csv(
+    "s3://my-bucket/data.csv",
+    storage_options={
+        "key": "minioadmin",
+        "secret": "minioadmin",
+        "client_kwargs": {"endpoint_url": "http://localhost:9000"},
+    }
+)
+```
+
+### Example: Streaming a CSV into DuckDB
+
+```python
+import duckdb
+
+with duckdb.connect() as ddb:
+    df = ddb.execute(
+        f"""
+        /* install httpfs for duckdb */
+        INSTALL httpfs;
+        LOAD httpfs;
+        
+        /* add a custom secret for access to endpoint */
+        CREATE SECRET (
+            TYPE s3,
+            KEY_ID 'minioadmin',
+            SECRET 'minioadmin',
+            ENDPOINT 'localhost:9000'
+        );
+        
+        /* perform selection on the file */
+        SELECT * FROM read_csv('s3://my-bucket/data.csv');
+        """
+    ).df()
+```
+
 ## Wait, what about `boto`?
 
 You might have encountered `boto` or `boto3` in other tutorials—these are **AWS SDKs for Python** that support interaction with **Amazon S3** and any object storage system that speaks the **S3 API**, including MinIO.
@@ -187,7 +237,7 @@ These libraries are powerful and widely used, but they're **heavily tied to the 
 - You want a **lightweight, dependency-free, Pythonic API**.
 - You're focused on **local development, reproducible science, or hybrid infrastructure**.
 
-Both libraries work with MinIO, but for most research workflows where AWS integration isn't required, the official [`minio`](https://min.io/docs/minio/linux/developers/python/minio-py.html) client is easier to use and avoids unnecessary complexity.
+Both libraries work with MinIO, but for most research workflows where AWS integration isn't required, the official [`minio`](https://min.io/docs/minio/linux/developers/python/minio-py.html) client may be more lightweight to use.
 
 ## Best practices in scientific object storage
 
@@ -200,28 +250,34 @@ To maximize reproducibility and data stewardship, consider the following:
 - **Ensure data durability and backup** in institutional deployments.
 - **Align with FAIR principles** ([GO FAIR Initiative](https://www.go-fair.org/fair-principles/)) whenever possible.
 
-## S3-Compatible Object Storage Solutions for Research Infrastructure
+## S3-Compatible Object Storage Case Study: Dell PowerScale (Isilon)
 
-Many research institutions and HPC centers rely on object storage platforms that support the **S3 API** without depending on commercial cloud providers like AWS, Google Cloud, or Azure. Below are commonly used alternatives that work well with tools like the MinIO Python SDK or `mc` CLI:
+Some research institutions like the University of Colorado Anschutz have adopted **Dell PowerScale (Isilon)** for file and object storage ([CU Anschutz Storage Options](https://www.cuanschutz.edu/offices/office-of-information-technology/tools-services/detail-page/storage-servers-and-backups)).
+This adds some convenience due to its ability to serve both traditional file-based workloads (i.e. filemounts) and modern S3-API based pipelines like those described above.
 
-| Storage System         | Type         | S3 Compatibility | Notes |
-|------------------------|--------------|------------------|-------|
-| **Dell PowerScale (Isilon)** | Enterprise NAS + Object | ✅ via S3 Gateway | Offers S3 compatibility alongside traditional file/NFS access. Widely used in biomedical and university HPC clusters. |
-| **MinIO**              | Open Source  | ✅ Native S3 API  | Lightweight, high-performance; ideal for development, on-prem, or hybrid deployments. |
-| **Ceph (RGW)**         | Open Source  | ✅ via RADOS Gateway | Highly scalable, distributed storage system with robust community support. |
-| **NetApp StorageGRID** | Enterprise   | ✅               | Designed for petabyte-scale deployments, lifecycle automation, and hybrid environments. |
-| **OpenIO**             | Open Source  | ✅               | Modular, scale-out object storage for edge and HPC use cases. |
-| **Scality RING**       | Enterprise   | ✅               | Proven in telecom and research data centers, designed for massive scale. |
-| **Cloudian HyperStore**| Enterprise   | ✅               | S3-compatible storage designed to run on-premises with cloud-tiering options. |
+Isilon allows researchers to treat data stored on the NAS as S3-compatible objects, enabling seamless integration with cloud-native tools and streaming workflows—even in strictly on-premises environments.
 
-### Why these matter in scientific contexts
+### 💸 Cost Savings: Isilon Object Storage vs. Cloud Storage (AWS/GCP)
 
-- ✅ **S3 API support** means compatibility with existing tools and workflows.
-- ✅ **On-premises deployment** supports data sovereignty, compliance (e.g., HIPAA, GDPR), and high-speed access.
-- ✅ **Open-source and hybrid options** allow more transparent, vendor-neutral infrastructure planning.
-- ✅ **High metadata throughput** and horizontal scalability make these systems well-suited for large scientific imaging, genomics, and simulation outputs.
+Cloud object storage platforms like **AWS S3** and **Google Cloud Storage (GCS)** offer great scalability, but they often come with **ongoing costs that grow with usage**, especially due to **egress fees** (i.e., data leaving the cloud) or **operation** charges (when you make changes to objects).
 
-Researchers can use tools like the [MinIO Python client](https://min.io/docs/minio/linux/developers/python/minio-py.html) to build portable data pipelines regardless of which backend serves the object data.
+In contrast, **on-premises object storage systems**—like **Dell Isilon**—can provide substantial long-term savings for research institutions that already maintain storage infrastructure.
+
+### 💾 Storage Cost Comparison (Approximate, per GB per month)
+
+| Storage Tier             | Storage Cost (USD/GB/mo) | Notes |
+|--------------------------|--------------------------|-------|
+| **Dell Isilon (on-prem)**| $0.016 | Based on [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
+| **AWS S3 Standard**      | $0.023 | [Pricing Link](https://aws.amazon.com/s3/pricing/) |
+| **Google Cloud Storage** | $0.020 | [Pricing Link](https://cloud.google.com/storage/pricing) |
+
+### 📤 Data Transfer Cost (Egress)
+
+| Provider      | Egress (Download) Cost Per GB| Notes |
+|---------------|------------------------------|-------|
+| **Dell Isilon** | $0.00                       | No per-byte charge for transfers for [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
+| **AWS S3**      | ~$0.09 | First 10 TB per month after 100GB free tier [Pricing Link](https://aws.amazon.com/s3/pricing/) |
+| **GCS**         | ~$0.12 | First TB per month [Pricing Link](https://cloud.google.com/storage/pricing) |
 
 ## Conclusion
 
