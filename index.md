@@ -1,94 +1,50 @@
 ---
 ---
 
-# Lab Website Template
-
-[Lab Website Template](https://github.com/greenelab/lab-website-template) is an easy-to-use, flexible website template for [labs](https://www.greenelab.com/).
-Spend less time worrying about managing a website and citations, and more time running your lab.
+{% capture text %}
+We are a small group of dedicated software developers with the [Department of Biomedical Informatics](https://medschool.cuanschutz.edu/dbmi) at the [University of Colorado Anschutz](https://www.cuanschutz.edu/).
 
 {%
-  include button.html
-  type="docs"
-  link="https://greene-lab.gitbook.io/lab-website-template-docs"
+  include link.html
+  link="about"
+  title="Who we are"
+  text="Learn more about us"
+  icon="fas fa-arrow-right"
+  flip=true
+  style="button"
 %}
-{%
-  include button.html
-  type="github"
-  text="On GitHub"
-  link="greenelab/lab-website-template"
+{:.center}
+{% endcapture %}
+
+{% 
+  include feature.html
+  image="images/ahsb.jpg"
+  title="Who we are"
+  text=text
+  link="about"
 %}
 
 {% include section.html %}
 
-## Highlights
-
 {% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+We support the labs and individuals within the Department by developing high quality web applications, web servers, data visualizations, data pipelines, and much more.
 
 {%
-  include button.html
-  link="research"
-  text="See our publications"
-  icon="fa-solid fa-arrow-right"
+  include link.html
+  link="portfolio"
+  text="Our portfolio"
+  icon="fas fa-arrow-right"
   flip=true
-  style="bare"
+  style="button"
 %}
-
+{:.center}
 {% endcapture %}
 
-{%
+{% 
   include feature.html
-  image="images/photo.jpg"
-  link="research"
-  title="Our Research"
+  image="images/code.jpg"
+  title="What we do"
   text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="projects"
-  text="Browse our projects"
-  icon="fa-solid fa-arrow-right"
+  link="portfolio"
   flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="projects"
-  title="Our Projects"
-  flip=true
-  style="bare"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="team"
-  text="Meet our team"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="team"
-  title="Our Team"
-  text=text
 %}
