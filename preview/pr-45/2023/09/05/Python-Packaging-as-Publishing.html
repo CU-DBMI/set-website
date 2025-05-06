@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Tip of the Week: Python Packaging as Publishing | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-/images/icon.png">
+
+<meta name="title" content="Tip of the Week: Python Packaging as Publishing">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Tip of the Week: Python Packaging as Publishing">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-">
+<meta property="og:image" content="/set-website/preview/pr-/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Tip of the Week: Python Packaging as Publishing">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2025-05-06T18:59:15+00:00">
+  <meta property="article:published_time" content="2023-09-05T00:00:00+00:00">
+  <meta property="article:modified_time" content="2025-05-06T18:59:15+00:00">
+  <meta name="revised" content="2025-05-06T18:59:15+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Tip of the Week: Python Packaging as Publishing" },
+      "datePublished": "2023-09-05T00:00:00+00:00",
+      "dateModified": "2025-05-06T18:59:15+00:00",
+    
+    "name": "Tip of the Week: Python Packaging as Publishing",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Tip of the Week: Python Packaging as Publishing",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/details.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size>1</size>
+-->
+
+
+<h1 class="center">Tip of the Week: Python Packaging as Publishing</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+      
+        
+
+
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten d33bs">
+    
+      <i class="icon fa-solid fa-code"></i>
+    
+
+    <img src="/set-website/preview/pr-/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Dave Bunten (@d33bs)
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Research Data Engineer
+      </span>
+    
+
+    
+  </a>
+</div>
+
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>September 05, 2023</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>May 06, 2025</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-/blog">
+    
+      <a href="blog?search=%22tag:%20tip-of-the-week%22" class="tag" data-tooltip='Show items with the tag "tip-of-the-week"'>
+        tip-of-the-week
+      </a>
+    
+      <a href="blog?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+      <a href="blog?search=%22tag:%20python%22" class="tag" data-tooltip='Show items with the tag "python"'>
+        python
+      </a>
+    
+      <a href="blog?search=%22tag:%20packaging%22" class="tag" data-tooltip='Show items with the tag "packaging"'>
+        packaging
+      </a>
+    
+      <a href="blog?search=%22tag:%20publishing%22" class="tag" data-tooltip='Show items with the tag "publishing"'>
+        publishing
+      </a>
+    
+      <a href="blog?search=%22tag:%20software-design%22" class="tag" data-tooltip='Show items with the tag "software-design"'>
+        software-design
+      </a>
+    
+      <a href="blog?search=%22tag:%20understandability%22" class="tag" data-tooltip='Show items with the tag "understandability"'>
+        understandability
+      </a>
+    
+      <a href="blog?search=%22tag:%20environment-management%22" class="tag" data-tooltip='Show items with the tag "environment-management"'>
+        environment-management
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
+#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
+
+  </div>
+</div>
+
+<!-- excerpt start -->
+
+<p>Python packaging is the craft of preparing for and reaching distribution of your Python work to wider audiences. Following conventions for packaging help your software work become more understandable, trustworthy, and connected (to others and their work). Taking advantage of common packaging practices also strengthens our collective superpowers: collaboration. This post will cover preparation aspects of packaging, readying software work for wider distribution.</p>
+
+<!-- excerpt end -->
+
+<p><strong>TLDR (too long, didn’t read);</strong></p>
+
+<p>Use Pythonic packaging tools and techniques to help avoid <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> and unwanted <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> and increase your development velocity. Increase understanding with unsurprising directory structures like those exhibited in <a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a> or <a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a>. Enhance trust by being authentic on source control systems like GitHub (<a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">by customizing your profile</a>), staying up to date with the <a href="https://devguide.python.org/versions/">latest supported versions of Python</a>, and using security linting tools like <a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code></a> through <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">visible + automated GitHub Actions ✅ checks</a>. Connect your projects to others using <a href="https://citation-file-format.github.io/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> files</a>, <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> files</a>, and using environment + packaging tools like <a href="https://python-poetry.org/docs/"><code class="language-plaintext highlighter-rouge">poetry</code></a> to help others reproduce the same results from your code.</p>
+
+<h2 id="why-practice-packaging">Why practice packaging?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="How are a page with some text and a book different">
+    <img src="/set-website/preview/pr-/images/text-vs-book.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="How are a page with some text and a book different" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      How are a page with some text and a book different?
+
+    </figcaption>
+  
+</figure>
+
+<p>The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and <em>why</em> are these things different?</p>
+
+<ul>
+  <li>A book has commonly understood sequencing of content (i.e. copyright page, then title page, then body content pages…).</li>
+  <li>A book often cites references and acknowledges other work explicitly.</li>
+  <li>A book undergoes a manufacturing process which allows the text to be received in many places the same way.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Code undergoing packaging to achieve understanding, trust, and connection for an audience.">
+    <img src="/set-website/preview/pr-/images/python-packaging-to-audience.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Code undergoing packaging to achieve understanding, trust, and connection for an audience.
+
+    </figcaption>
+  
+</figure>
+
+<p>These can be thought of metaphors when it comes to packaging in Python. Books have a smell which sometimes comes from how it was stored, treated, or maintained. While there are pleasant book smells, they might also smell soggy from being left in the rain or stored without maintenance for too long. Just like books, software can sometimes have negative <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> indicating a lack of care or less sustainable condition. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.</p>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    
+<p>Note: these techniques can also work just as well for <a href="https://en.wikipedia.org/wiki/Inner_source">inner source</a> collaboration (private or proprietary development within organizations)! Don’t hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #6366f1">
+  
+  <i class="icon fa-solid fa-circle-question"></i>
+  <div class="alert-content">
+    
+<p><strong>“Wait, what are Python packages?”</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_package/
+│   __init__.py
+│   module_a.py
+│   module_b.py
+</code></pre></div></div>
+
+<p>A Python <strong>package</strong> is a collection of modules (<code class="language-plaintext highlighter-rouge">.py</code> files) that usually include an “initialization file” <code class="language-plaintext highlighter-rouge">__init__.py</code>. This post will cover the craft of <strong>packaging</strong> which can include one or many <em>packages</em>.</p>
+
+  </div>
+</div>
+
+<h2 id="understanding-common-directory-structures">Understanding: common directory structures</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+├── README.md
+├── LICENSE.txt
+├── pyproject.toml
+├── docs
+│   └── <span class="nb">source</span>
+│       └── index.md
+├── src
+│   └── package_name
+│       └── __init__.py
+│       └── module_a.py
+└── tests
+    └── __init__.py
+    └── test_module_a.py
+</code></pre></div></div>
+
+<p>Python Packaging today generally assumes a specific directory design.
+Following this convention generally improves the <strong>understanding</strong> of your code. We’ll cover each of these below.</p>
+
+<h3 id="project-root-files">Project root files</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+├── README.md
+├── LICENSE.txt
+├── pyproject.toml
+│ ...
+</code></pre></div></div>
+
+<ul>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">README.md</code> file</strong> is a <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> file with documentation including project goals and other short notes about installation, development, or usage. The <code class="language-plaintext highlighter-rouge">README.md</code> file is akin to a book jacket blurb which quickly tells the audience what the book will be about.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file</strong> is a text file which indicates licensing details for the project. It often includes information about how it may be used and protects the authors in disputes. The <code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file can be thought of like a book’s copyright page. See <a href="https://choosealicense.com/">https://choosealicense.com/</a> for more details on selecting an open source license.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file</strong> is a Python-specific <a href="https://en.wikipedia.org/wiki/TOML">TOML</a> file which helps organize how the project is used and built for wider distribution. The <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file is similar to a book’s table of contents, index, and printing or production specification.</li>
+</ul>
+
+<h3 id="project-sub-directories">Project sub-directories</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
+│ ...
+├── docs
+│   └── <span class="nb">source</span>
+│       └── index.md
+├── src
+│   └── package_name
+│       └── __init__.py
+│       └── module_a.py
+└── tests
+    └── __init__.py
+    └── test_module_a.py
+</code></pre></div></div>
+
+<ul>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">docs</code> directory</strong> is used for in-depth documentation and related documentation build code (for example, when building documentation websites, aka “docsites”). The <code class="language-plaintext highlighter-rouge">docs</code> directory includes information similar to a book’s “study guide”, providing content surrounding how to best make use of and understand the content found within.</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">src</code> directory</strong>  includes primary source code for use in the project. Python projects generally use a nested package directory with modules and sub-packages. The <code class="language-plaintext highlighter-rouge">src</code> directory is like a book’s body or general content (perhaps thinking of modules as chapters or sections of related ideas).</li>
+  <li>The <strong><code class="language-plaintext highlighter-rouge">tests</code> directory</strong> includes testing code for validating functionality of code found in the <code class="language-plaintext highlighter-rouge">src</code> directory. The above follows <a href="https://docs.pytest.org/">pytest</a> conventions. The <code class="language-plaintext highlighter-rouge">tests</code> directory is for code which acts like a book’s early reviewers or editors, making sure that if you change things in <code class="language-plaintext highlighter-rouge">src</code> the impacts remain as expected.</li>
+</ul>
+
+<h3 id="common-directory-structure-examples">Common directory structure examples</h3>
+
+<p>The Python directory structure described above can be witnessed in the wild from the following resources. These can serve as a great resource for starting or adjusting your own work.</p>
+
+<ul>
+  <li><a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a></li>
+  <li><a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a></li>
+  <li><a href="https://github.com/microsoft/python-package-template"><code class="language-plaintext highlighter-rouge">microsoft/python-package-template</code></a></li>
+</ul>
+
+<h2 id="trust-building-audience-confidence">Trust: building audience confidence</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="How much does your audience trust your work .">
+    <img src="/set-website/preview/pr-/images/package-audience-trust.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="How much does your audience trust your work ." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      How much does your audience trust your work?.
+
+    </figcaption>
+  
+</figure>
+
+<p>Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience’s trust in packaged Python work.</p>
+
+<h3 id="source-control-authenticity">Source control authenticity</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Comparing the difference between a generic or anonymous user and one with greater authenticity.">
+    <img src="/set-website/preview/pr-/images/source-control-authenticity.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Comparing the difference between a generic or anonymous user and one with greater authenticity.
+
+    </figcaption>
+  
+</figure>
+
+<p>Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub’s documentation on filling out your profile</a>. Doing this may seem irrelevant but can go a long way to making technical work more relatable.</p>
+
+<ul>
+  <li>Add a profile picture of yourself or something fun.</li>
+  <li>Set your profile description to information which is both professionally accurate and unique to you.</li>
+  <li>Show or link to work which you feel may be relevant or exciting to those in your audience.</li>
+</ul>
+
+<h3 id="staying-up-to-date-with-supported-python-releases">Staying up to date with supported Python releases</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Major Python releases and their support status.">
+    <img src="/set-website/preview/pr-/images/python-version-status.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Major Python releases and their support status.
+
+    </figcaption>
+  
+</figure>
+
+<p>Use Python versions which are supported (this changes over time).
+Python versions which are end-of-life may be difficult to support and are a sign of <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> for projects. Specify the version of Python which is compatiable with your project by using environment specifications such as <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files and related packaging tools (more on this below).</p>
+
+<ul>
+  <li>See here for <a href="https://devguide.python.org/versions/">updated information on Python version status</a>.</li>
+  <li>Staying up to date with supported releases oftentimes can result in performance or other similar benefits (later versions usually include improvements!).</li>
+</ul>
+
+<h3 id="security-linting-and-visible-checks-with-github-actions">Security linting and visible checks with GitHub Actions</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Make an effort to inspect your package for known security issues.">
+    <img src="/set-website/preview/pr-/images/package-magnifying-glass.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Make an effort to inspect your package for known security issues." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Make an effort to inspect your package for known security issues.
+
+    </figcaption>
+  
+</figure>
+
+<p>Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!</p>
+
+<ul>
+  <li>
+<a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code>`</a>: checks Python code</li>
+  <li>
+<a href="https://github.com/pyupio/safety"><code class="language-plaintext highlighter-rouge">pyupio/safety</code>`</a>: checks Python dependencies</li>
+  <li>
+<a href="https://github.com/gitleaks/gitleaks"><code class="language-plaintext highlighter-rouge">gitleaks</code></a>: checks for sensitive passwords, keys, or tokens</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.">
+    <img src="/set-website/preview/pr-/images/gh-actions-checkmark.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.
+
+    </figcaption>
+  
+</figure>
+
+<p>Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
+This provides the audience with a sense that you’re transparently testing and sharing results of those tests.</p>
+
+<ul>
+  <li>See <a href="https://docs.github.com/en/actions">GitHub’s documentation on this topic for more information</a>.</li>
+  <li>See also <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">the DBMI Software Engineering Team’s blog post: “Automate Software Workflows with Github Actions”</a>
+</li>
+</ul>
+
+<h2 id="connection-personal-and-inter-package-relationships">Connection: personal and inter-package relationships</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="How does your package connect with other work and people">
+    <img src="/set-website/preview/pr-/images/package-connections.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="How does your package connect with other work and people" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      How does your package connect with other work and people?
+
+    </figcaption>
+  
+</figure>
+
+<p>Understandability and trust set the stage for your project’s <strong>connection</strong> to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project’s connection to others and their work.</p>
+
+<h3 id="acknowledging-authors-and-referenced-work-with-citationcff">Acknowledging authors and referenced work with CITATION.cff</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-/images/citation-cff-icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p>Add a <strong><code class="language-plaintext highlighter-rouge">CITATION.cff</code></strong> file to your project root in order to describe project relationships and acknowledgements in a standardized way. The <a href="https://citation-file-format.github.io/">CFF format</a> is also <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub compatible</a>, making it easier to cite your project.</p>
+
+<ul>
+  <li>This is similar to a book’s credits, acknowledgements, dedication, and author information sections.</li>
+  <li>See here for a <a href="https://citation-file-format.github.io/cff-initializer-javascript/#/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> file generator (and updater)</a>.</li>
+</ul>
+
+<h3 id="reaching-collaborators-using-contributingmd">Reaching collaborators using CONTRIBUTING.md</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="CONTRIBUTING.md documents can help you collaborate with others.">
+    <img src="/set-website/preview/pr-/images/contributing-file-with-handshake.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="CONTRIBUTING.md documents can help you collaborate with others." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      CONTRIBUTING.md documents can help you collaborate with others.
+
+    </figcaption>
+  
+</figure>
+
+<p>Provide a <strong><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code></strong> file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.</p>
+
+<ul>
+  <li>See GitHub’s documentation on <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors">“Setting guidelines for repository contributors”</a>
+</li>
+  <li>See opensource.guide’s section on <a href="https://opensource.guide/starting-a-project/#writing-your-contributing-guidelines">“Writing your contributing guidelines”</a>
+</li>
+</ul>
+
+<h3 id="environment-management-reproducibility-as-connected-project-reality">Environment management reproducibility as connected project reality</h3>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Environment and packaging managers can help you connect with your audience.">
+    <img src="/set-website/preview/pr-/images/environment-management-tooling.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Environment and packaging managers can help you connect with your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Environment and packaging managers can help you connect with your audience.
+
+    </figcaption>
+  
+</figure>
+
+<p>Code without an environment specification is difficult to run in a consistent way. This can lead to “works on my machine” scenarios where different things happen for different people, reducing the chance that people can connect with a shared reality for how your code should be used.</p>
+
+<blockquote>
+  <p><strong>“But why do we have to switch the way we do things?”</strong>
+<em>We’ve always been switching approaches (software approaches evolve over time)!</em> A brief history of Python environment and packaging tooling:</p>
+
+  <ol>
+    <li>
+<strong><code class="language-plaintext highlighter-rouge">distutils</code>, <code class="language-plaintext highlighter-rouge">easy_install</code> + <code class="language-plaintext highlighter-rouge">setup.py</code></strong> <br>(primarily used during 1990’s - early 2000’s)</li>
+    <li>
+<strong><code class="language-plaintext highlighter-rouge">pip</code>, <code class="language-plaintext highlighter-rouge">setup.py</code> + <code class="language-plaintext highlighter-rouge">requirements.txt</code></strong> <br>(primarily used during late 2000’s - early 2010’s)</li>
+    <li>
+<strong><code class="language-plaintext highlighter-rouge">poetry</code> + <code class="language-plaintext highlighter-rouge">pyproject.toml</code></strong> <br>(began use around late 2010’s - ongoing)</li>
+  </ol>
+</blockquote>
+
+<h4 id="using-python-poetry-for-environment-and-packaging-management">Using Python <code class="language-plaintext highlighter-rouge">poetry</code> for environment and packaging management</h4>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-/images/poetry-icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p><a href="https://github.com/python-poetry/poetry">Poetry</a> is one Pythonic environment and packaging manager which can help increase reproducibility using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files. It’s one of many other alternatives such as <a href="https://hatch.pypa.io/latest/"><code class="language-plaintext highlighter-rouge">hatch</code></a> and <a href="https://pipenv.pypa.io/en/latest/"><code class="language-plaintext highlighter-rouge">pipenv</code></a>.</p>
+
+<h5 id="poetry-directory-structure-template-use">
+<code class="language-plaintext highlighter-rouge">poetry</code> directory structure template use</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry new <span class="nt">--name</span><span class="o">=</span>package_name <span class="nt">--src</span> <span class="nb">.</span>
+Created package package_name <span class="k">in</span> <span class="nb">.</span>
+
+user@machine % tree <span class="nb">.</span>
+<span class="nb">.</span>
+├── README.md
+├── pyproject.toml
+├── src
+│   └── package_name
+│       └── __init__.py
+└── tests
+    └── __init__.py
+</code></pre></div></div>
+
+<p>After installation, Poetry gives us the ability to initialize a directory structure similar to what we presented earlier by using the <a href="https://python-poetry.org/docs/cli/#new"><code class="language-plaintext highlighter-rouge">poetry new ...</code> command</a>. If you’d like a more interactive version of the same, use the <a href="https://python-poetry.org/docs/cli/#init"><code class="language-plaintext highlighter-rouge">poetry init</code> command</a> to fill out various sections of your project with detailed information.</p>
+
+<h5 id="poetry-format-for-project-pyprojecttoml">
+<code class="language-plaintext highlighter-rouge">poetry</code> format for project <code class="language-plaintext highlighter-rouge">pyproject.toml</code>
+</h5>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pyproject.toml</span>
+<span class="nn">[tool.poetry]</span>
+<span class="py">name</span> <span class="p">=</span> <span class="s">"package-name"</span>
+<span class="py">version</span> <span class="p">=</span> <span class="s">"0.1.0"</span>
+<span class="py">description</span> <span class="p">=</span> <span class="s">""</span>
+<span class="py">authors</span> <span class="p">=</span> <span class="p">[</span><span class="s">"username &lt;email@address&gt;"</span><span class="p">]</span>
+<span class="py">readme</span> <span class="p">=</span> <span class="s">"README.md"</span>
+<span class="py">packages</span> <span class="p">=</span> <span class="py">[{include</span> <span class="p">=</span> <span class="s">"package_name"</span><span class="p">,</span> <span class="py">from</span> <span class="p">=</span> <span class="s">"src"</span><span class="err">}]</span>
+
+<span class="nn">[tool.poetry.dependencies]</span>
+<span class="py">python</span> <span class="p">=</span> <span class="s">"^3.9"</span>
+
+<span class="nn">[build-system]</span>
+<span class="py">requires</span> <span class="p">=</span> <span class="nn">["poetry-core"]</span>
+<span class="py">build-backend</span> <span class="p">=</span> <span class="s">"poetry.core.masonry.api"</span>
+</code></pre></div></div>
+
+<p>Using the <code class="language-plaintext highlighter-rouge">poetry new ...</code> command also initializes the content of our <a href="https://python-poetry.org/docs/pyproject#the-pyprojecttoml-file"><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file with opinionated details</a> (following the recommendation from earlier in the article regarding declared Python version specification).</p>
+
+<h5 id="poetry-dependency-management">
+<code class="language-plaintext highlighter-rouge">poetry</code> dependency management</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry add pandas
+
+Creating virtualenv package-name-1STl06GY-py3.9 <span class="k">in</span> /pypoetry/virtualenvs
+Using version ^2.1.0 <span class="k">for </span>pandas
+
+...
+
+Writing lock file
+</code></pre></div></div>
+
+<p>We can add dependencies directly using the <a href="https://python-poetry.org/docs/cli/#add"><code class="language-plaintext highlighter-rouge">poetry add ...</code> command</a>. This command also provides the possibility of using a <code class="language-plaintext highlighter-rouge">group</code> flag (for example <code class="language-plaintext highlighter-rouge">poetry add pytest --group testing</code>) to help organize and distinguish multiple sets of dependencies.</p>
+
+<ul>
+  <li>A local virtual environment is managed for us automatically.</li>
+  <li>
+<a href="https://python-poetry.org/docs/libraries/#lock-file">A <code class="language-plaintext highlighter-rouge">poetry.lock</code> file</a> is written when the dependencies are installed to help ensure the version you installed today will be what’s used on other machines.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">poetry.lock</code> file helps ensure reproducibility when dealing with dependency version ranges (where otherwise we may end up using different versions which match the dependency ranges but observe different results).</li>
+</ul>
+
+<h5 id="running-python-from-the-context-of-poetry-environments">Running Python from the context of <code class="language-plaintext highlighter-rouge">poetry</code> environments</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry run python <span class="nt">-c</span> <span class="s2">"import pandas; print(pandas.__version__)"</span>
+
+2.1.0
+</code></pre></div></div>
+
+<p>We can invoke the virtual environment directly using the <a href="https://python-poetry.org/docs/cli/#run"><code class="language-plaintext highlighter-rouge">poetry run ...</code> command</a>.</p>
+
+<ul>
+  <li>This allows us to quickly run code through the context of the project’s environment.</li>
+  <li>Poetry can automatically switch between multiple environments based on the local directory structure.</li>
+  <li>We can also the environment as a “shell” (similar to virtualenv’s <code class="language-plaintext highlighter-rouge">activate</code>) with the <a href="https://python-poetry.org/docs/cli/#shell"><code class="language-plaintext highlighter-rouge">poetry shell</code> command</a> which enables us to leverage a dynamic session in the context of the <code class="language-plaintext highlighter-rouge">poetry</code> environment.</li>
+</ul>
+
+<h5 id="building-source-code-with-poetry">Building source code with <code class="language-plaintext highlighter-rouge">poetry</code>
+</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% pip <span class="nb">install </span>git+https://github.com/project/package_name
+</code></pre></div></div>
+
+<p>Even if we don’t reach wider distribution on PyPI or elsewhere, source code managed by <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">poetry</code> can be used for “manual” distribution (with reproducible results) from GitHub repositories. When we’re ready to distribute pre-built packages on other networks we can also use the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry build
+
+Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
+  - Building sdist
+  - Built package_name-0.1.0.tar.gz
+  - Building wheel
+  - Built package_name-0.1.0-py3-none-any.whl
+</code></pre></div></div>
+
+<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We’ll cover more on these files and distribution steps with a later post!</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-/2023/07/07/Using-Python-and-Anaconda-with-the-Alpine-HPC-Cluster.html">
+        Tip of the Week: Using Python and Anaconda with the Alpine HPC Cluster
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-/2023/10/04/Data-Quality-Validation.html">
+        Tip of the Week: Data Quality Validation through Software Testing Techniques
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2025
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
