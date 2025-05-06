@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Testing Scientific Software: A Practical Guide for Developers | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/preview/pr-/images/icon.png">
+
+<meta name="title" content="Testing Scientific Software: A Practical Guide for Developers">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Testing Scientific Software: A Practical Guide for Developers">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="/set-website/preview/pr-">
+<meta property="og:image" content="/set-website/preview/pr-/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Testing Scientific Software: A Practical Guide for Developers">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="/set-website/preview/pr-">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/preview/pr-/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2025-05-06T17:14:14+00:00">
+  <meta property="article:published_time" content="2024-09-25T00:00:00+00:00">
+  <meta property="article:modified_time" content="2025-05-06T17:14:14+00:00">
+  <meta name="revised" content="2025-05-06T17:14:14+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Testing Scientific Software: A Practical Guide for Developers" },
+      "datePublished": "2024-09-25T00:00:00+00:00",
+      "dateModified": "2025-05-06T17:14:14+00:00",
+    
+    "name": "Testing Scientific Software: A Practical Guide for Developers",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Testing Scientific Software: A Practical Guide for Developers",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/preview/pr-/images/icon.png" }
+    },
+    "url": "/set-website/preview/pr-"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="/set-website/preview/pr-/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/preview/pr-/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/details.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/preview/pr-/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/preview/pr-/_scripts/anchors.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/search.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/site-search.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/preview/pr-/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/preview/pr-/images/background.jpg')" data-dark="true">
+  <a href="/set-website/preview/pr-/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/preview/pr-/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/preview/pr-/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size>1</size>
+-->
+
+
+<h1 class="center">Testing Scientific Software: A Practical Guide for Developers</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+      
+        
+
+
+
+<div class="portrait-wrapper">
+  <a href="/set-website/preview/pr-/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten d33bs">
+    
+      <i class="icon fa-solid fa-code"></i>
+    
+
+    <img src="/set-website/preview/pr-/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Dave Bunten (@d33bs)
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Research Data Engineer
+      </span>
+    
+
+    
+  </a>
+</div>
+
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>September 25, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>May 06, 2025</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/preview/pr-/blog">
+    
+      <a href="blog?search=%22tag:%20software-testing%22" class="tag" data-tooltip='Show items with the tag "software-testing"'>
+        software-testing
+      </a>
+    
+      <a href="blog?search=%22tag:%20scientific-software%22" class="tag" data-tooltip='Show items with the tag "scientific-software"'>
+        scientific-software
+      </a>
+    
+      <a href="blog?search=%22tag:%20python%22" class="tag" data-tooltip='Show items with the tag "python"'>
+        python
+      </a>
+    
+      <a href="blog?search=%22tag:%20reproducibility%22" class="tag" data-tooltip='Show items with the tag "reproducibility"'>
+        reproducibility
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Software testing helps us find bugs in our code which otherwise may go unseen.">
+    <img src="/set-website/preview/pr-/images/magnifying-glass-and-bugs.png" style="
+        width: 40%;
+        max-height: unset;
+      " alt="Software testing helps us find bugs in our code which otherwise may go unseen." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Software testing helps us find bugs in our code which otherwise may go unseen.
+
+    </figcaption>
+  
+</figure>
+
+<!-- excerpt start -->
+<p><strong>Scientific software plays a crucial role in research.</strong>
+When your software is used to analyze data, simulate models, or derive scientific conclusions, ensuring its correctness becomes critical.
+<strong>A small bug can have a significant impact on your results</strong>, potentially invalidating months of work, or worse, causing the retraction of published research (for example: <a href="https://www.science.org/doi/10.1126/science.314.5807.1856">see here</a>).
+Fortunately, software testing can help minimize such risks, giving you more confidence in your code and a greater chance to catch issues early.</p>
+
+<p>In this guide, we’ll walk through key types of software tests, practical advice for using popular testing tools like <code class="language-plaintext highlighter-rouge">pytest</code> and <code class="language-plaintext highlighter-rouge">doctest</code>, and how you can incorporate these into your scientific development workflow.
+<!-- excerpt end --></p>
+
+<h2 id="why-testing-matters-in-science">Why testing matters in science</h2>
+
+<p>Imagine you’ve written a simulation that generates data based on a complex scientific model.
+It works well under some conditions, but during peer review, a colleague finds a subtle bug.
+This bug doesn’t affect small data sets but produces significant errors on larger simulations.
+The consequences?
+You have to revise your paper, and time is lost fixing code.
+There’s also the possibility of bugs taking a long time to find (if ever) potentially leading to erroneous research.</p>
+
+<p><strong>Consider: how can an audience know a software creates a reproducible outcome without  tests they can run and verify themselves?</strong>
+Testing your software upfront ensures that potential errors are caught early and your scientific conclusions remain valid and robust.
+This article covers how to write code which automates the process of testing your software.</p>
+
+<p>You may already have tests in place which haven’t yet been automated.
+If this is the case, consider integrating these with automated tools like those mentioned below to help create reproducible research software!</p>
+
+<h2 id="production-code-vs-test-code">Production code vs test code</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Software testing often involves two distinct sections of production or application code alongside testing code.">
+    <img src="/set-website/preview/pr-/images/production-and-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Software testing often involves two distinct sections of production or application code alongside testing code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Software testing often involves two distinct sections of production or application code alongside testing code.
+
+    </figcaption>
+  
+</figure>
+
+<p>When working with software testing principles it can be helpful to distinguish <strong>“production” or “application” code</strong> (code which provides some utility besides testing itself) from <strong>“test” code</strong> (code which will be used to test the production or application code).
+These are often (but not always) stored in separate directories or components within the project.</p>
+
+<h2 id="types-of-tests-for-scientific-software">Types of tests for scientific software</h2>
+
+<p>In software development, tests are typically categorized into several types.
+<strong>Each plays a unique role in ensuring your code functions as intended.</strong></p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Unit tests focus on testing an isolated set of functionality within your code.">
+    <img src="/set-website/preview/pr-/images/unit-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Unit tests focus on testing an isolated set of functionality within your code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Unit tests focus on testing an isolated set of functionality within your code.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li>
+<strong>Unit tests</strong>: These validate small, isolated parts of your code, like functions or methods.
+They are one of the most basic forms of testing but extremely valuable, ensuring the correctness of atomic units in your codebase.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Integration tests help ensure multiple software components act as expected together.">
+    <img src="/set-website/preview/pr-/images/integration-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="Integration tests help ensure multiple software components act as expected together." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Integration tests help ensure multiple software components act as expected together.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li>
+<strong>Integration tests</strong>: Once your units of code are tested individually, <strong>integration tests ensure software components work together</strong>.
+This is especially important in scientific software where different models, algorithms, and data structures interact.</li>
+</ul>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code.">
+    <img src="/set-website/preview/pr-/images/system-test-code.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code.
+
+    </figcaption>
+  
+</figure>
+
+<ul>
+  <li>
+<strong>System / End-to-End tests</strong>: These check the software from a user’s perspective.
+For scientific software, this often means running entire workflows or simulations to make sure that everything from data input to output runs smoothly.</li>
+</ul>
+
+<p>There are also many other different types of tests and testing philosophies which can be found here: <a href="https://en.wikipedia.org/wiki/Software_testing#Categorization">https://en.wikipedia.org/wiki/Software_testing#Categorization</a>.</p>
+
+<h2 id="testing-in-python">Testing in Python</h2>
+
+<p>Testing in Python is often performed using the built-in <a href="https://docs.python.org/3/library/unittest.html"><code class="language-plaintext highlighter-rouge">unittest</code></a> module or <a href="https://github.com/pytest-dev/pytest"><code class="language-plaintext highlighter-rouge">pytest</code></a> package.
+There is also an additional built-in module, <a href="https://docs.python.org/3/library/doctest.html"><code class="language-plaintext highlighter-rouge">doctest</code></a>, which allows you to test whether statements run as expected within <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">docstrings</a>.</p>
+
+<p><a href="https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement"><code class="language-plaintext highlighter-rouge">assert</code> statements</a> are a common part of writing tests in Python.
+We can use <code class="language-plaintext highlighter-rouge">assert</code> to determine the truthiness of certain output (see below for an example).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># we can use the assert statements to determine
+# the truthiness (or lack thereof) of values.
+</span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="c1"># returns True
+</span><span class="k">assert</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="c1"># returns False
+</span></code></pre></div></div>
+
+<p>The following examples will be added to a demonstrational repository which can be found here: <a href="https://github.com/CU-DBMI/demo-python-software-testing">https://github.com/CU-DBMI/demo-python-software-testing</a></p>
+
+<h2 id="introduction-to-pytest">Introduction to <code class="language-plaintext highlighter-rouge">pytest</code>
+</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-/images/pytest.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">pytest</code> is one of the most popular testing frameworks in Python.
+An advantage to using <code class="language-plaintext highlighter-rouge">pytest</code> is that it is widely used, includes many different <a href="https://docs.pytest.org/en/stable/reference/plugin_list.html">plugins</a> to extend functionality, and is relatively uncomplicated.</p>
+
+<h3 id="getting-started-with-pytest">Getting started with <code class="language-plaintext highlighter-rouge">pytest</code>
+</h3>
+
+<p>Consider the following project tree structure representing directories and files which is common to <code class="language-plaintext highlighter-rouge">pytest</code> projects.
+Note the <code class="language-plaintext highlighter-rouge">tests</code> directory, which includes code dedicated to testing the <code class="language-plaintext highlighter-rouge">package_name</code> package module.
+<code class="language-plaintext highlighter-rouge">pytest</code> seeks to run test code with the prefix of <code class="language-plaintext highlighter-rouge">test_</code> under the <code class="language-plaintext highlighter-rouge">tests</code> directory.</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>example_project
+├── pyproject.toml
+├── src
+│   └── package_name
+│       └── package_module.py
+└── tests
+    └── test_package_module.py
+</code></pre></div></div>
+
+<p>Just in case, make sure you install <code class="language-plaintext highlighter-rouge">pytest</code> into the project’s environment management:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use pip to install pytest into an existing environment</span>
+pip <span class="nb">install </span>pytest
+
+<span class="c"># or, add pytest to a poetry environment</span>
+poetry add pytest
+</code></pre></div></div>
+
+<p>Assume we have a simple function within <code class="language-plaintext highlighter-rouge">package_module.py</code> which helps us understand whether a given integer is an even number.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Determines if a number is even.
+
+    An even number is divisible by 2 without a remainder.
+
+    Args:
+        number (int):
+          The number to check.
+
+    Returns:
+        bool:
+          True if the number is even, False if it is odd.
+    """</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>Next, we could create a simple unit test within <code class="language-plaintext highlighter-rouge">test_package_module.py</code> for the <code class="language-plaintext highlighter-rouge">is_even()</code> function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_is_even</span><span class="p">():</span>
+    <span class="c1"># assert that 2 is detected as an even number
+</span>    <span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Once we have the test written, we can use the <code class="language-plaintext highlighter-rouge">pytest</code> command through our project environment</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the `pytest` command through your terminal</span>
+pytest
+
+<span class="c"># or, run `pytest` through a poetry environment</span>
+poetry run pytest
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">pytest</code> will automatically find all files starting with test_ and run any functions inside them that start with test_.
+It also produces concise output, helping you pinpoint errors quickly.
+See below for an example of what the output might look like (we can see that the single test passed).</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>============== test session starts ===============
+platform darwin -- Python 3.11.9, pytest-8.3.3,
+pluggy-1.5.0
+rootdir: /example_project
+configfile: pyproject.toml
+collected 1 item
+
+tests/test_package_module.py .             [100%]
+
+=============== 1 passed in 0.00s ================
+</code></pre></div></div>
+
+<h3 id="additional-pytest-features">Additional <code class="language-plaintext highlighter-rouge">pytest</code> features</h3>
+
+<ul>
+  <li>
+<strong>Using temporary directories</strong>: <code class="language-plaintext highlighter-rouge">pytest</code> allows for the creation of <a href="https://docs.pytest.org/en/stable/how-to/tmp_path.html">temporary directories</a> where test data can be stored for each test run in isolation. This pattern can be helpful for times where you may need to generate and store test data for use among multiple tests.</li>
+  <li>
+<strong>Fixtures</strong>: Use <a href="https://docs.pytest.org/en/stable/explanation/fixtures.html"><code class="language-plaintext highlighter-rouge">pytest</code> fixtures</a> to set up any necessary preconditions for your tests (like loading test datasets).</li>
+  <li>
+<strong>Parameterization</strong>: If you need to test multiple inputs on the same function, <code class="language-plaintext highlighter-rouge">pytest</code> allows you to <a href="https://docs.pytest.org/en/stable/how-to/parametrize.html">parameterize</a> your tests, running the same test function with different values.</li>
+</ul>
+
+<h2 id="using-doctest-for-documentation-and-testing">Using <code class="language-plaintext highlighter-rouge">doctest</code> for documentation and testing</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-/images/doctest.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p><code class="language-plaintext highlighter-rouge">doctest</code> is another tool which can be used for testing.
+It serves a dual purpose: it embeds tests directly in your documentation by using interactive examples in docstrings.
+This can be a lightweight way to share testable functionality within the documentation for your code.
+Be cautious however; <code class="language-plaintext highlighter-rouge">doctests</code> are not generally suitable for large or complex testing.</p>
+
+<h3 id="writing-doctests">Writing doctests</h3>
+
+<p>A <a href="https://docs.python.org/3/library/doctest.html"><code class="language-plaintext highlighter-rouge">doctest</code></a> is simply an example of using a function, placed in docstrings.
+The general pattern follows Python interactive terminal input (denoted by <code class="language-plaintext highlighter-rouge">&gt;&gt;&gt;</code>) followed by the expected standard output (which sometimes may be truncated when dealing with large numbers or strings).</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">Examples</code> section of the docstring below demonstrates what a doctest for our earlier function might look like.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="s">"""
+    Determines if a number is even.
+
+    An even number is divisible by 2 without a remainder.
+
+    Args:
+        number (int):
+            The number to check.
+
+    Returns:
+        bool:
+            True if the number is even, False if it is odd.
+
+    Examples:
+        &gt;&gt;&gt; is_even(2)
+        True
+        &gt;&gt;&gt; is_even(3)
+        False
+    """</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+<p>You can run always run doctests by adding the following to the same module which includes that code.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="c1"># run doctests within module
+</span>    <span class="n">doctest</span><span class="p">.</span><span class="n">testmod</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You also can run doctests through <code class="language-plaintext highlighter-rouge">pytest</code> by using the <code class="language-plaintext highlighter-rouge">--doctest-modules</code> command flag.
+This can be helpful for areas where we don’t want to use the <a href="https://docs.python.org/3/library/__main__.html"><code class="language-plaintext highlighter-rouge">if __name__ == "__main__":</code> pattern</a>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the `pytest` command through your terminal</span>
+pytest <span class="nt">--doctest-modules</span>
+
+<span class="c"># or, run `pytest` through a poetry environment</span>
+poetry run pytest <span class="nt">--doctest-modules</span>
+</code></pre></div></div>
+
+<p>The output might look like this:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>============== test session starts ===============
+platform darwin -- Python 3.11.9, pytest-8.3.3,
+pluggy-1.5.0
+rootdir: /example_project
+configfile: pyproject.toml
+collected 2 items
+
+src/package_name/module.py .               [ 50%]
+tests/test_package_module.py .             [100%]
+
+=============== 2 passed in 0.01s ================
+</code></pre></div></div>
+
+<p>This ensures that the examples in your documentation are always accurate and tested as part of your development cycle.</p>
+
+<h2 id="using-hypothesis-for-testing">Using Hypothesis for testing</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/preview/pr-/images/hypothesis.png" style="
+        width: 30%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<p>Using <a href="https://github.com/HypothesisWorks/hypothesis">Hypothesis</a> for testing is a powerful approach for validating the correctness of scientific software.
+By employing the Hypothesis library, you can perform property-based testing that generates test cases based on the characteristics of your input data.
+This method allows you to test your functions against a broad range of inputs, ensuring that edge cases and unexpected scenarios are adequately handled.</p>
+
+<h3 id="what-is-property-based-testing">What is property-based testing?</h3>
+
+<p><a href="https://hypothesis.works/articles/what-is-property-based-testing/">Property-based testing</a> focuses on verifying that certain properties hold true for a wide range of input values, rather than checking specific outputs for predetermined inputs.
+This contrasts with traditional example-based testing, where you specify the exact inputs and outputs (which can take time to imagine or construct individually).</p>
+
+<h3 id="getting-started-with-hypothesis">Getting started with hypothesis</h3>
+
+<p>To begin using Hypothesis in your project, you first need to install the library:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use pip to install hypothesis into an existing environment</span>
+pip <span class="nb">install </span>hypothesis
+
+<span class="c"># or, add hypothesis to a poetry environment</span>
+poetry add hypothesis
+</code></pre></div></div>
+
+<p>Once installed, you can write tests that utilize its capabilities. 
+With Hypothesis, you can write a test that asserts properties about even numbers. For instance, all even numbers should return True when passed to the is_even function:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span>
+<span class="kn">from</span> <span class="nn">hypothesis.strategies</span> <span class="kn">import</span> <span class="n">integers</span>
+
+<span class="o">@</span><span class="n">given</span><span class="p">(</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_is_even</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="using-the-hypothesis-ghostwriter">Using the Hypothesis ghostwriter</h3>
+
+<p>Hypothesis also includes <a href="https://hypothesis.readthedocs.io/en/latest/ghostwriter.html">a “ghostwriter” CLI</a> which can infer how to write Hypothesis tests given an object from Python code.
+This can help automate the process of writing your test code or provide inspiration for how to construct your Hypothesis tests.
+<em>Caveat emptor</em>: please be sure to review any code generated by the Hypothesis ghostwriter (it may not capture useful tests or edge cases).</p>
+
+<p>Given the example code from the above, we could ask the Hypothesis ghostwriter to construct a test for the <code class="language-plaintext highlighter-rouge">is_even()</code> function as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the command from your activated Python environment</span>
+hypothesis write package_name.module.is_even
+
+<span class="c"># or, run through a poetry environment</span>
+poetry run hypothesis write package_name.module.is_even
+</code></pre></div></div>
+
+<p>The output looks similar but not quite the same as the Hypothesis test we shared above.
+Note that the test name implies and itself employs a technique called <a href="https://en.wikipedia.org/wiki/Fuzzing">fuzzing, or fuzz testing</a>, which is used to help determine where software might break.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This test code was written by the `hypothesis.extra.ghostwriter` module
+# and is provided under the Creative Commons Zero public domain dedication.
+</span>
+<span class="kn">import</span> <span class="nn">package_name.module</span>
+<span class="kn">from</span> <span class="nn">hypothesis</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">strategies</span> <span class="k">as</span> <span class="n">st</span>
+
+
+<span class="o">@</span><span class="n">given</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">st</span><span class="p">.</span><span class="n">integers</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">test_fuzz_is_even</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">package_name</span><span class="p">.</span><span class="n">module</span><span class="p">.</span><span class="n">is_even</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="benefits-of-using-hypothesis">Benefits of using Hypothesis</h2>
+
+<p>Below are just a few of the benefits you’ll find with using Hypothesis:</p>
+
+<ul>
+  <li>
+<strong><em>Discovering Edge Cases</em></strong>: Hypothesis automatically generates diverse input scenarios, including edge cases that might be overlooked in example-based tests.</li>
+  <li>
+<strong><em>Reduced Boilerplate Code</em></strong>: You can focus on the properties of your functions rather than writing extensive examples for every possible case.</li>
+  <li>
+<strong><em>Increased Confidence</em></strong>: By validating the behavior of your code against a broader set of inputs, you can be more confident that your scientific software will behave correctly in practice.</li>
+</ul>
+
+<h2 id="best-practices-for-scientific-software-testing">Best practices for scientific software testing</h2>
+
+<p>Now that you understand some testing tools, here are some best practices for testing scientific software:</p>
+
+<ul>
+  <li>
+    <p><strong>Write tests early</strong>: Incorporate testing from the start. 
+This is crucial, especially when your software are prone to evolving.</p>
+  </li>
+  <li>
+    <p><strong>Test small and test often</strong>: Focus on unit tests that cover individual functions and methods.
+Catching small errors early prevents larger problems down the line.</p>
+  </li>
+  <li>
+    <p><strong>Use realistic test data</strong>: When testing your functions, prioritize test data that reflects the real-world conditions where your software will be applied. Secondarily, use “mock” or synthetically created data when the real data are too large or complex to test quickly. For more on this topic, see <a href="https://abseil.io/resources/swe-book/html/ch13.html#prefer_realism_over_isolation">“Prefer Realism Over Isolation” from the Test Doubles chapter in the book Software Engineering at Google</a>.</p>
+  </li>
+  <li>
+    <p><strong>Automate your tests</strong>: Use tools like <code class="language-plaintext highlighter-rouge">pytest</code> and Continuous Integration (CI) services (e.g., GitHub Actions, GitLab CI) to run your tests automatically on every commit.
+This ensures that every update is tested, and bugs are identified early.</p>
+  </li>
+  <li>
+    <p><strong>Combine different tests approaches to help diversify your test coverage</strong>: Both are essential in scientific software.
+While unit tests help you pinpoint specific issues, integration tests validate that modules work correctly when combined.</p>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Testing is a vital part of developing scientific software. By using tools like <code class="language-plaintext highlighter-rouge">pytest</code>, <code class="language-plaintext highlighter-rouge">doctest</code>, and Hypothesis, you can automate the testing process and ensure your codebase remains robust.
+Investing time in writing good tests upfront will save you countless hours in debugging and re-running experiments.</p>
+
+<p>Remember, the correctness of your code is directly tied to the validity of your scientific results.
+By adopting a solid testing strategy, you’re taking a significant step toward ensuring reproducible, reliable, and impactful scientific research.</p>
+
+<p>Now, you’re ready to ensure your scientific code is as solid as your research!</p>
+
+<p>If interested, be sure to reference the related demonstrational repository with code from this blog post which can be found here: <a href="https://github.com/CU-DBMI/demo-python-software-testing">https://github.com/CU-DBMI/demo-python-software-testing</a></p>
+
+<h2 id="additional-material">Additional material</h2>
+
+<ul>
+  <li>Eisty, N. U., &amp; Carver, J. C. (2022). Testing Research Software: A Survey. Empirical Software Engineering, 27(6), 138. <a href="https://doi.org/10.1007/s10664-022-10184-9">https://doi.org/10.1007/s10664-022-10184-9</a>
+</li>
+  <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a>
+</li>
+  <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a>
+</li>
+  <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
+</ul>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/preview/pr-/2024/07/28/Uncovering-Code-Coverage.html">
+        Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing
+      </a>
+    
+  </span>
+  <span>
+    
+      Next post <i class="icon fa-solid fa-angle-right"></i><br>
+      <a href="/set-website/preview/pr-/2025/05/01/Understanding-Object-Storage.html">
+        Understanding Object Storage: A Guide for Research Software Development
+      </a>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/preview/pr-/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2025
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
