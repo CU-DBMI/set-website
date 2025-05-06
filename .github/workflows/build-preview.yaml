@@ -55,7 +55,7 @@ jobs:
       - name: Build preview version of site
         if: github.event.action != 'closed'
         run: |
-          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '' }}/${{ env.PREVIEWS_FOLDER }}/pr-${{ env.pr }}"
+          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '' }}/${{ env.PREVIEWS_FOLDER }}/pr-${{ github.event.number }}"
         env:
           pr: ${{ steps.pr.outputs.pr }}
 
