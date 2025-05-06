@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-/" rel="alternate" type="text/html" /><updated>2025-05-06T17:17:04+00:00</updated><id>/set-website/preview/pr-/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="/set-website/preview/pr-/2025/05/01/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-01T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2025/05/01/Understanding-Object-Storage</id><content type="html" xml:base="/set-website/preview/pr-/2025/05/01/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-41/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-41/" rel="alternate" type="text/html" /><updated>2025-05-06T19:30:00+00:00</updated><id>/set-website/preview/pr-41/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="/set-website/preview/pr-41/2025/05/01/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-01T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2025/05/01/Understanding-Object-Storage</id><content type="html" xml:base="/set-website/preview/pr-41/2025/05/01/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -16,10 +16,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <figure class="figure">
   <a class="figure-image" aria-label="Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems.">
-    <img src="/set-website/preview/pr-/images/files-and-bucket.png" style="
+    <img src="/set-website/preview/pr-41/images/files-and-bucket.png" style="
         width: 40%;
         max-height: unset;
-      " alt="Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -43,10 +43,10 @@ It supports high-throughput access, structured metadata, and distributed scaling
 
 <figure class="figure">
   <a class="figure-image" aria-label="Object storage has roots in scientific research and helped build a foundation for later systems like AWS S3. Image credit: Meyer, Franz Sales, 1849 https: commons.wikimedia.org wiki File:Handbook of ornament; a grammar of art, industrial and architectural designing in all its branches, for practical as well as theoretical use 1900 14597942407 .jpg cropped">
-    <img src="/set-website/preview/pr-/images/historical-buckets.png" style="
+    <img src="/set-website/preview/pr-41/images/historical-buckets.png" style="
         width: 40%;
         max-height: unset;
-      " alt="Object storage has roots in scientific research and helped build a foundation for later systems like AWS S3. Image credit: Meyer, Franz Sales, 1849 https: commons.wikimedia.org wiki File:Handbook of ornament; a grammar of art, industrial and architectural designing in all its branches, for practical as well as theoretical use 1900 14597942407 .jpg cropped" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Object storage has roots in scientific research and helped build a foundation for later systems like AWS S3. Image credit: Meyer, Franz Sales, 1849 https: commons.wikimedia.org wiki File:Handbook of ornament; a grammar of art, industrial and architectural designing in all its branches, for practical as well as theoretical use 1900 14597942407 .jpg cropped" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -80,10 +80,10 @@ In the late 1990s, the NASD project at Carnegie Mellon and HP Labs introduced th
 
 <figure class="figure">
   <a class="figure-image" aria-label="Scientific research can benefit from the use of object storage for a wide variety of data.">
-    <img src="/set-website/preview/pr-/images/science-bucket.png" style="
+    <img src="/set-website/preview/pr-41/images/science-bucket.png" style="
         width: 40%;
         max-height: unset;
-      " alt="Scientific research can benefit from the use of object storage for a wide variety of data." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Scientific research can benefit from the use of object storage for a wide variety of data." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -174,10 +174,10 @@ This shift aligns closely with principles from the Composable Data Management Sy
 
 <figure class="figure">
   <a class="figure-image" aria-label="An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems.">
-    <img src="/set-website/preview/pr-/images/object-storage-concepts.png" style="
+    <img src="/set-website/preview/pr-41/images/object-storage-concepts.png" style="
         width: 60%;
         max-height: unset;
-      " alt="An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -202,10 +202,10 @@ This shift aligns closely with principles from the Composable Data Management Sy
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/object-storage-demo.png" style="
+    <img src="/set-website/preview/pr-41/images/object-storage-demo.png" style="
         width: 40%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -249,10 +249,10 @@ mc <span class="nb">cp </span>dataset.csv <span class="nb">local</span>/research
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/object-storage-python.png" style="
+    <img src="/set-website/preview/pr-41/images/object-storage-python.png" style="
         width: 40%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -285,10 +285,10 @@ mc <span class="nb">cp </span>dataset.csv <span class="nb">local</span>/research
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/pandas-duckdb-and-polars.png" style="
+    <img src="/set-website/preview/pr-41/images/pandas-duckdb-and-polars.png" style="
         width: 40%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -358,10 +358,10 @@ Tools like <a href="https://github.com/fsspec/filesystem_spec">fsspec</a> can ab
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/cloud-or-onprem.png" style="
+    <img src="/set-website/preview/pr-41/images/cloud-or-onprem.png" style="
         width: 40%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -493,7 +493,7 @@ Keep in mind these are estimations and don&#8217;t include additional other char
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a></li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a></li>
   <li>GO FAIR Initiative: <a href="https://www.go-fair.org/">https://www.go-fair.org/</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="/set-website/preview/pr-/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="/set-website/preview/pr-/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="/set-website/preview/pr-41/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="/set-website/preview/pr-41/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -511,10 +511,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <figure class="figure">
   <a class="figure-image" aria-label="Software testing helps us find bugs in our code which otherwise may go unseen.">
-    <img src="/set-website/preview/pr-/images/magnifying-glass-and-bugs.png" style="
+    <img src="/set-website/preview/pr-41/images/magnifying-glass-and-bugs.png" style="
         width: 40%;
         max-height: unset;
-      " alt="Software testing helps us find bugs in our code which otherwise may go unseen." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Software testing helps us find bugs in our code which otherwise may go unseen." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -553,10 +553,10 @@ If this is the case, consider integrating these with automated tools like those 
 
 <figure class="figure">
   <a class="figure-image" aria-label="Software testing often involves two distinct sections of production or application code alongside testing code.">
-    <img src="/set-website/preview/pr-/images/production-and-test-code.png" style="
+    <img src="/set-website/preview/pr-41/images/production-and-test-code.png" style="
         width: 50%;
         max-height: unset;
-      " alt="Software testing often involves two distinct sections of production or application code alongside testing code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Software testing often involves two distinct sections of production or application code alongside testing code." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -576,10 +576,10 @@ These are often (but not always) stored in separate directories or components wi
 
 <figure class="figure">
   <a class="figure-image" aria-label="Unit tests focus on testing an isolated set of functionality within your code.">
-    <img src="/set-website/preview/pr-/images/unit-test-code.png" style="
+    <img src="/set-website/preview/pr-41/images/unit-test-code.png" style="
         width: 50%;
         max-height: unset;
-      " alt="Unit tests focus on testing an isolated set of functionality within your code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Unit tests focus on testing an isolated set of functionality within your code." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -596,10 +596,10 @@ They are one of the most basic forms of testing but extremely valuable, ensuring
 
 <figure class="figure">
   <a class="figure-image" aria-label="Integration tests help ensure multiple software components act as expected together.">
-    <img src="/set-website/preview/pr-/images/integration-test-code.png" style="
+    <img src="/set-website/preview/pr-41/images/integration-test-code.png" style="
         width: 50%;
         max-height: unset;
-      " alt="Integration tests help ensure multiple software components act as expected together." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Integration tests help ensure multiple software components act as expected together." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -616,10 +616,10 @@ This is especially important in scientific software where different models, algo
 
 <figure class="figure">
   <a class="figure-image" aria-label="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code.">
-    <img src="/set-website/preview/pr-/images/system-test-code.png" style="
+    <img src="/set-website/preview/pr-41/images/system-test-code.png" style="
         width: 50%;
         max-height: unset;
-      " alt="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="System or end-to-end tests might include those which check how external software interacts to form a cohesive output with your production code." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -658,10 +658,10 @@ We can use <code class="language-plaintext highlighter-rouge">assert</code> to d
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/pytest.png" style="
+    <img src="/set-website/preview/pr-41/images/pytest.png" style="
         width: 30%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -756,10 +756,10 @@ tests/test_package_module.py .             [100%]
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/doctest.png" style="
+    <img src="/set-website/preview/pr-41/images/doctest.png" style="
         width: 30%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -838,10 +838,10 @@ tests/test_package_module.py .             [100%]
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/hypothesis.png" style="
+    <img src="/set-website/preview/pr-41/images/hypothesis.png" style="
         width: 30%;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -965,7 +965,7 @@ By adopting a solid testing strategy, you&#8217;re taking a significant step tow
   <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
   <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
   <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="/set-website/preview/pr-/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="/set-website/preview/pr-/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="/set-website/preview/pr-41/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="/set-website/preview/pr-41/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -983,10 +983,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <figure class="figure">
   <a class="figure-image" aria-label="Code coverage gives our code protection from the unknown.">
-    <img src="/set-website/preview/pr-/images/file-holding-umbrella-for-coverage.png" style="
+    <img src="/set-website/preview/pr-41/images/file-holding-umbrella-for-coverage.png" style="
         width: 200px;
         max-height: unset;
-      " alt="Code coverage gives our code protection from the unknown." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Code coverage gives our code protection from the unknown." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1009,10 +1009,10 @@ Let&#8217;s get started!</p>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Code which is tested is considered covered .">
-    <img src="/set-website/preview/pr-/images/simple-example-of-coverage-for-functions.png" style="
+    <img src="/set-website/preview/pr-41/images/simple-example-of-coverage-for-functions.png" style="
         width: 600px;
         max-height: unset;
-      " alt="Code which is tested is considered covered ." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Code which is tested is considered covered ." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1112,10 +1112,10 @@ See below for some examples of these:</p>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Source: Coverage.py website https: coverage.readthedocs.io en 7.6.0">
-    <img src="/set-website/preview/pr-/images/coverage.py-logo.png" style="
+    <img src="/set-website/preview/pr-41/images/coverage.py-logo.png" style="
         width: 200px;
         max-height: unset;
-      " alt="Source: Coverage.py website https: coverage.readthedocs.io en 7.6.0" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Source: Coverage.py website https: coverage.readthedocs.io en 7.6.0" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1186,10 +1186,10 @@ This ensures you know exactly what&#8217;s changed and can act accordingly.</p>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices.">
-    <img src="/set-website/preview/pr-/images/coverage-pre-commit-workflow.png" style="
+    <img src="/set-website/preview/pr-41/images/coverage-pre-commit-workflow.png" style="
         width: auto;
         max-height: unset;
-      " alt="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Pre-commit may be used to help automatically generate coverage reports alongside your source control practices." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1231,10 +1231,10 @@ This workflow can also help generate metadata for association with a repository,
 
 <figure class="figure">
   <a class="figure-image" aria-label="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests.">
-    <img src="/set-website/preview/pr-/images/coverage-pr-comment-workflow.png" style="
+    <img src="/set-website/preview/pr-41/images/coverage-pr-comment-workflow.png" style="
         width: auto;
         max-height: unset;
-      " alt="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="GitHub Actions workflows can help add coverage reporting capabilities to your pull requests." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1249,10 +1249,10 @@ This process involves generating a coverage report during the CI/CD pipeline and
 
 <figure class="figure">
   <a class="figure-image" aria-label="Example pull request comment with code coverage details source: https: github.com orgoro coverage .">
-    <img src="/set-website/preview/pr-/images/coverage-workflow-pr-comment.png" style="
+    <img src="/set-website/preview/pr-41/images/coverage-workflow-pr-comment.png" style="
         width: auto;
         max-height: unset;
-      " alt="Example pull request comment with code coverage details source: https: github.com orgoro coverage ." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Example pull request comment with code coverage details source: https: github.com orgoro coverage ." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1278,7 +1278,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="/set-website/preview/pr-/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="/set-website/preview/pr-/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="/set-website/preview/pr-41/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="/set-website/preview/pr-41/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1296,10 +1296,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <figure class="figure">
   <a class="figure-image" aria-label="Image sourced from https: github.com kuzudb kuzu.">
-    <img src="/set-website/preview/pr-/images/kuzu_logo.png" style="
+    <img src="/set-website/preview/pr-41/images/kuzu_logo.png" style="
         width: 500px;
         max-height: unset;
-      " alt="Image sourced from https: github.com kuzudb kuzu." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Image sourced from https: github.com kuzudb kuzu." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1322,10 +1322,10 @@ Whether you&#8217;re a research software developer looking to integrate advanced
 
 <figure class="figure">
   <a class="figure-image" aria-label="Tabular data is made up up rows or records and columns.">
-    <img src="/set-website/preview/pr-/images/tabular_data_image.png" style="
+    <img src="/set-website/preview/pr-41/images/tabular_data_image.png" style="
         width: auto;
         max-height: unset;
-      " alt="Tabular data is made up up rows or records and columns." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Tabular data is made up up rows or records and columns." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1344,10 +1344,10 @@ Despite its versatility, tabular data can become cumbersome when dealing with co
 
 <figure class="figure">
   <a class="figure-image" aria-label="Graph data is made up of nodes and edges.">
-    <img src="/set-website/preview/pr-/images/graph_data_intro.png" style="
+    <img src="/set-website/preview/pr-41/images/graph_data_intro.png" style="
         width: auto;
         max-height: unset;
-      " alt="Graph data is made up of nodes and edges." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Graph data is made up of nodes and edges." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1363,10 +1363,10 @@ Unlike tabular data, which is often &#8220;flattened&#8221; (treating multidimen
 
 <figure class="figure">
   <a class="figure-image" aria-label="Nodes and edges may have properties in a graph.">
-    <img src="/set-website/preview/pr-/images/graph_data_intro_properties.png" style="
+    <img src="/set-website/preview/pr-41/images/graph_data_intro_properties.png" style="
         width: auto;
         max-height: unset;
-      " alt="Nodes and edges may have properties in a graph." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Nodes and edges may have properties in a graph." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1385,10 +1385,10 @@ Graph data models are particularly useful for exploring connections, performing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="Graph databases store graph data.">
-    <img src="/set-website/preview/pr-/images/graph_database.png" style="
+    <img src="/set-website/preview/pr-41/images/graph_database.png" style="
         width: auto;
         max-height: unset;
-      " alt="Graph databases store graph data." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Graph databases store graph data." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1408,10 +1408,10 @@ Graph databases support various query languages and algorithms optimized for tra
 
 <figure class="figure">
   <a class="figure-image" aria-label="Graph data are typically queried using specialized languages such as Cypher.">
-    <img src="/set-website/preview/pr-/images/graph_database_querying.png" style="
+    <img src="/set-website/preview/pr-41/images/graph_database_querying.png" style="
         width: auto;
         max-height: unset;
-      " alt="Graph data are typically queried using specialized languages such as Cypher." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Graph data are typically queried using specialized languages such as Cypher." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1444,10 +1444,10 @@ For example, a basic Cypher query to find all nodes connected by a &#8220;FRIEND
 
 <figure class="figure">
   <a class="figure-image" aria-label="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries.">
-    <img src="/set-website/preview/pr-/images/kuzu_intro.png" style="
+    <img src="/set-website/preview/pr-41/images/kuzu_intro.png" style="
         width: auto;
         max-height: unset;
-      " alt="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Kùzu provides a database format and query engine accessible through Python and other languages by using Cypher queries." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1467,10 +1467,10 @@ Kùzu is particularly suitable for software developers who need to integrate gra
 
 <figure class="figure">
   <a class="figure-image" aria-label="Kùzu uses tabular data as both input and output for data operations.">
-    <img src="/set-website/preview/pr-/images/kuzu_table_ingest.png" style="
+    <img src="/set-website/preview/pr-41/images/kuzu_table_ingest.png" style="
         width: auto;
         max-height: unset;
-      " alt="Kùzu uses tabular data as both input and output for data operations." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Kùzu uses tabular data as both input and output for data operations." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1563,7 +1563,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="/set-website/preview/pr-/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="/set-website/preview/pr-/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="/set-website/preview/pr-41/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="/set-website/preview/pr-41/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1581,10 +1581,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/Apache_Parquet_logo.svg" style="
+    <img src="/set-website/preview/pr-41/images/Apache_Parquet_logo.svg" style="
         width: 500px;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -1602,10 +1602,10 @@ This article will introduce the Parquet format from a research data engineering 
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/parquet_flooring.jpg" style="
+    <img src="/set-website/preview/pr-41/images/parquet_flooring.jpg" style="
         width: 500px;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -1683,10 +1683,10 @@ It seems fitting to name the format this way due to how columns and values are s
 
 <figure class="figure">
   <a class="figure-image" aria-label="Parquet organizes column values together. CSV intermixes values from multiple columns">
-    <img src="/set-website/preview/pr-/images/csv_vs_parquet_data_on_file.png" style="
+    <img src="/set-website/preview/pr-41/images/csv_vs_parquet_data_on_file.png" style="
         width: auto;
         max-height: unset;
-      " alt="Parquet organizes column values together. CSV intermixes values from multiple columns" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Parquet organizes column values together. CSV intermixes values from multiple columns" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -1980,7 +1980,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="/set-website/preview/pr-/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="/set-website/preview/pr-/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="/set-website/preview/pr-41/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="/set-website/preview/pr-41/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2011,7 +2011,7 @@ This article will cover package dependency management through special files gene
     <img src="https://imgs.xkcd.com/comics/reinvent_the_wheel.png" style="
         width: auto;
         max-height: unset;
-      " alt="Reinvent the Wheel comic by Randall Munroe, XKCD." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Reinvent the Wheel comic by Randall Munroe, XKCD." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -2277,7 +2277,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/preview/pr-/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/preview/pr-/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="/set-website/preview/pr-41/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="/set-website/preview/pr-41/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2653,10 +2653,10 @@ These functions and other packages can help software developers observe memory b
 
 <figure class="figure">
   <a class="figure-image" aria-label="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern.">
-    <img src="/set-website/preview/pr-/images/scalene-web-interface.png" style="
+    <img src="/set-website/preview/pr-41/images/scalene-web-interface.png" style="
         width: auto;
         max-height: unset;
-      " alt="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Scalene provides a web interface to analyze memory, CPU, and GPU resource consumption in one spot alongside suggested areas of concern." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -2676,10 +2676,10 @@ Scalene can also be configured to work with [OpenAI](https://en.wikipedia.org/wi
 
 <figure class="figure">
   <a class="figure-image" aria-label="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed.">
-    <img src="/set-website/preview/pr-/images/memray-flamegraph.png" style="
+    <img src="/set-website/preview/pr-41/images/memray-flamegraph.png" style="
         width: auto;
         max-height: unset;
-      " alt="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Memray provides the ability to create and view flamegraphs which show how memory was consumed as a procedure executed." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -2699,7 +2699,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/preview/pr-/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="/set-website/preview/pr-41/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="/set-website/preview/pr-41/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2718,10 +2718,10 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <figure class="figure">
   <a class="figure-image" aria-label="What good harvests from open-source have you experienced this year">
-    <img src="/set-website/preview/pr-/images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" style="
+    <img src="/set-website/preview/pr-41/images/French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444)_cropped.png" style="
         width: auto;
         max-height: unset;
-      " alt="What good harvests from open-source have you experienced this year" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="What good harvests from open-source have you experienced this year" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3134,7 +3134,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="/set-website/preview/pr-41/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="/set-website/preview/pr-41/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3407,7 +3407,7 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2025-05-06T17:14:14+00:00</updated><id>/set-website/preview/pr-/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="/set-website/preview/pr-41/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2025-05-06T19:28:47+00:00</updated><id>/set-website/preview/pr-41/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="/set-website/preview/pr-41/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3436,10 +3436,10 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <figure class="figure">
   <a class="figure-image" aria-label="How are a page with some text and a book different">
-    <img src="/set-website/preview/pr-/images/text-vs-book.png" style="
+    <img src="/set-website/preview/pr-41/images/text-vs-book.png" style="
         width: auto;
         max-height: unset;
-      " alt="How are a page with some text and a book different" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="How are a page with some text and a book different" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3459,10 +3459,10 @@ have any software questions or suggestions for an upcoming tip of the week, plea
 
 <figure class="figure">
   <a class="figure-image" aria-label="Code undergoing packaging to achieve understanding, trust, and connection for an audience.">
-    <img src="/set-website/preview/pr-/images/python-packaging-to-audience.png" style="
+    <img src="/set-website/preview/pr-41/images/python-packaging-to-audience.png" style="
         width: auto;
         max-height: unset;
-      " alt="Code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3574,10 +3574,10 @@ Following this convention generally improves the <strong>understanding</strong> 
 
 <figure class="figure">
   <a class="figure-image" aria-label="How much does your audience trust your work .">
-    <img src="/set-website/preview/pr-/images/package-audience-trust.png" style="
+    <img src="/set-website/preview/pr-41/images/package-audience-trust.png" style="
         width: auto;
         max-height: unset;
-      " alt="How much does your audience trust your work ." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="How much does your audience trust your work ." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3593,10 +3593,10 @@ Following this convention generally improves the <strong>understanding</strong> 
 
 <figure class="figure">
   <a class="figure-image" aria-label="Comparing the difference between a generic or anonymous user and one with greater authenticity.">
-    <img src="/set-website/preview/pr-/images/source-control-authenticity.png" style="
+    <img src="/set-website/preview/pr-41/images/source-control-authenticity.png" style="
         width: auto;
         max-height: unset;
-      " alt="Comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3618,10 +3618,10 @@ Following this convention generally improves the <strong>understanding</strong> 
 
 <figure class="figure">
   <a class="figure-image" aria-label="Major Python releases and their support status.">
-    <img src="/set-website/preview/pr-/images/python-version-status.png" style="
+    <img src="/set-website/preview/pr-41/images/python-version-status.png" style="
         width: auto;
         max-height: unset;
-      " alt="Major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3643,10 +3643,10 @@ Python versions which are end-of-life may be difficult to support and are a sign
 
 <figure class="figure">
   <a class="figure-image" aria-label="Make an effort to inspect your package for known security issues.">
-    <img src="/set-website/preview/pr-/images/package-magnifying-glass.png" style="
+    <img src="/set-website/preview/pr-41/images/package-magnifying-glass.png" style="
         width: auto;
         max-height: unset;
-      " alt="Make an effort to inspect your package for known security issues." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Make an effort to inspect your package for known security issues." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3666,10 +3666,10 @@ Python versions which are end-of-life may be difficult to support and are a sign
 
 <figure class="figure">
   <a class="figure-image" aria-label="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.">
-    <img src="/set-website/preview/pr-/images/gh-actions-checkmark.png" style="
+    <img src="/set-website/preview/pr-41/images/gh-actions-checkmark.png" style="
         width: auto;
         max-height: unset;
-      " alt="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3691,10 +3691,10 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="How does your package connect with other work and people">
-    <img src="/set-website/preview/pr-/images/package-connections.png" style="
+    <img src="/set-website/preview/pr-41/images/package-connections.png" style="
         width: auto;
         max-height: unset;
-      " alt="How does your package connect with other work and people" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="How does your package connect with other work and people" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3710,10 +3710,10 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/citation-cff-icon.png" style="
+    <img src="/set-website/preview/pr-41/images/citation-cff-icon.png" style="
         width: auto;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
@@ -3729,10 +3729,10 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="CONTRIBUTING.md documents can help you collaborate with others.">
-    <img src="/set-website/preview/pr-/images/contributing-file-with-handshake.png" style="
+    <img src="/set-website/preview/pr-41/images/contributing-file-with-handshake.png" style="
         width: auto;
         max-height: unset;
-      " alt="CONTRIBUTING.md documents can help you collaborate with others." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="CONTRIBUTING.md documents can help you collaborate with others." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3753,10 +3753,10 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="Environment and packaging managers can help you connect with your audience.">
-    <img src="/set-website/preview/pr-/images/environment-management-tooling.png" style="
+    <img src="/set-website/preview/pr-41/images/environment-management-tooling.png" style="
         width: auto;
         max-height: unset;
-      " alt="Environment and packaging managers can help you connect with your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="Environment and packaging managers can help you connect with your audience." loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
     <figcaption class="figure-caption">
@@ -3783,10 +3783,10 @@ This provides the audience with a sense that you&#8217;re transparently testing 
 
 <figure class="figure">
   <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/preview/pr-/images/poetry-icon.png" style="
+    <img src="/set-website/preview/pr-41/images/poetry-icon.png" style="
         width: auto;
         max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-/images/fallback.svg'; this.onerror = null;" />
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/preview/pr-41/images/fallback.svg'; this.onerror = null;" />
   </a>
   
 </figure>
