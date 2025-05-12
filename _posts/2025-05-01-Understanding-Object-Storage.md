@@ -80,13 +80,13 @@ Below are some popular object storage platforms used in research and industry:
 
 | Platform         | Description                                  | Type         |
 |------------------|----------------------------------------------|--------------|
-| **Amazon S3**    | The original commercial object store.        | Commercial   |
-| **Google Cloud Storage** | Integrated with Google Cloud ecosystem.   | Commercial   |
-| **Azure Blob Storage** | Microsoft’s cloud object store.             | Commercial   |
-| **MinIO**        | High-performance, S3-compatible OSS.         | Open Source  |
-| **Ceph**         | Distributed object (and block/file) system. | Open Source  |
-| **Wasabi**       | Cost-effective S3-compatible storage.       | Commercial   |
-| **OpenStack Swift** | Open-source cloud platform component.       | Open Source  |
+| **[Amazon S3](https://aws.amazon.com/s3/)**    | The original commercial object store.        | Commercial   |
+| **[Google Cloud Storage](https://cloud.google.com/storage)** | Integrated with Google Cloud ecosystem.   | Commercial   |
+| **[Azure Blob Storage](https://azure.microsoft.com/en-us/products/storage/blobs)** | Microsoft’s cloud object store.             | Commercial   |
+| **[MinIO](https://min.io/)**        | High-performance, S3-compatible OSS.         | Open Source  |
+| **[Ceph](https://ceph.io/)**         | Distributed object (and block/file) system. | Open Source  |
+| **[Wasabi](https://wasabi.com/cloud-object-storage)**       | Cost-effective S3-compatible storage.       | Commercial   |
+| **[OpenStack Swift](https://docs.openstack.org/swift/latest/)** | Open-source cloud platform component.       | Open Source  |
 
 In academic environments, **MinIO** and **Ceph** are frequently used for institutional deployments that must remain on-premises or comply with specific data governance needs.
 
@@ -180,7 +180,7 @@ This approach is lightweight, straightforward, and ideal for working directly wi
 
 In composable data workflows, streaming data directly from object storage is increasingly common.
 Instead of downloading full files to local disk, tools like Pandas and DuckDB can read from object storage streams—reducing I/O overhead and enabling efficient in situ analytics.
-Tools like [fsspec](https://github.com/fsspec/filesystem_spec) can abstract access across many storage backends—including S3, GCS, and HTTP—making it easier to build storage-agnostic workflows.
+Tools like [fsspec](https://github.com/fsspec/filesystem_spec) can abstract access across many storage backends—including S3 and GCS—making it easier to build storage-agnostic workflows.
 
 ### Example: Streaming a CSV into Pandas
 
