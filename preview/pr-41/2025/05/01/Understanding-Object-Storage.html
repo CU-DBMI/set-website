@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2025-05-06T19:28:47+00:00">
+  <meta property="og:updated_time" content="2025-05-12T12:05:14+00:00">
   <meta property="article:published_time" content="2025-05-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2025-05-06T19:28:47+00:00">
-  <meta name="revised" content="2025-05-06T19:28:47+00:00">
+  <meta property="article:modified_time" content="2025-05-12T12:05:14+00:00">
+  <meta name="revised" content="2025-05-12T12:05:14+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Understanding Object Storage: A Guide for Research Software Development" },
       "datePublished": "2025-05-01T00:00:00+00:00",
-      "dateModified": "2025-05-06T19:28:47+00:00",
+      "dateModified": "2025-05-12T12:05:14+00:00",
     
     "name": "Understanding Object Storage: A Guide for Research Software Development",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -496,7 +496,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 12, 2025</span>
     </span>
   
 </div>
@@ -684,37 +684,37 @@ This shift aligns closely with principles from the Composable Data Management Sy
   </thead>
   <tbody>
     <tr>
-      <td><strong>Amazon S3</strong></td>
+      <td><strong><a href="https://aws.amazon.com/s3/">Amazon S3</a></strong></td>
       <td>The original commercial object store.</td>
       <td>Commercial</td>
     </tr>
     <tr>
-      <td><strong>Google Cloud Storage</strong></td>
+      <td><strong><a href="https://cloud.google.com/storage">Google Cloud Storage</a></strong></td>
       <td>Integrated with Google Cloud ecosystem.</td>
       <td>Commercial</td>
     </tr>
     <tr>
-      <td><strong>Azure Blob Storage</strong></td>
+      <td><strong><a href="https://azure.microsoft.com/en-us/products/storage/blobs">Azure Blob Storage</a></strong></td>
       <td>Microsoft’s cloud object store.</td>
       <td>Commercial</td>
     </tr>
     <tr>
-      <td><strong>MinIO</strong></td>
+      <td><strong><a href="https://min.io/">MinIO</a></strong></td>
       <td>High-performance, S3-compatible OSS.</td>
       <td>Open Source</td>
     </tr>
     <tr>
-      <td><strong>Ceph</strong></td>
+      <td><strong><a href="https://ceph.io/">Ceph</a></strong></td>
       <td>Distributed object (and block/file) system.</td>
       <td>Open Source</td>
     </tr>
     <tr>
-      <td><strong>Wasabi</strong></td>
+      <td><strong><a href="https://wasabi.com/cloud-object-storage">Wasabi</a></strong></td>
       <td>Cost-effective S3-compatible storage.</td>
       <td>Commercial</td>
     </tr>
     <tr>
-      <td><strong>OpenStack Swift</strong></td>
+      <td><strong><a href="https://docs.openstack.org/swift/latest/">OpenStack Swift</a></strong></td>
       <td>Open-source cloud platform component.</td>
       <td>Open Source</td>
     </tr>
@@ -854,7 +854,7 @@ mc <span class="nb">cp </span>dataset.csv <span class="nb">local</span>/research
 
 <p>In composable data workflows, streaming data directly from object storage is increasingly common.
 Instead of downloading full files to local disk, tools like Pandas and DuckDB can read from object storage streams—reducing I/O overhead and enabling efficient in situ analytics.
-Tools like <a href="https://github.com/fsspec/filesystem_spec">fsspec</a> can abstract access across many storage backends—including S3, GCS, and HTTP—making it easier to build storage-agnostic workflows.</p>
+Tools like <a href="https://github.com/fsspec/filesystem_spec">fsspec</a> can abstract access across many storage backends—including S3 and GCS—making it easier to build storage-agnostic workflows.</p>
 
 <h3 id="example-streaming-a-csv-into-pandas">Example: Streaming a CSV into Pandas</h3>
 
