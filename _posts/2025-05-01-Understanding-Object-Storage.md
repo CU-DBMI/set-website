@@ -299,13 +299,13 @@ Keep in mind these are estimations and don't include additional other charges fr
 
 Object storage is a foundational technology for modern research computing. It allows research teams to scale data access, enable metadata-rich reproducibility, and bridge the gap between local experimentation and cloud workflows.
 
-By learning how to use tools like MinIO and understanding the object storage model, research software developers can design more robust, future-proof, and FAIR-aligned systems for handling scientific data.
+By learning how to use tools like MinIO and understanding the object storage model, research software developers can design more robust, future-proof, and [FAIR](https://en.wikipedia.org/wiki/FAIR_data)-aligned systems for handling scientific data.
 
 > _“Data is a precious thing and will last longer than the systems themselves.” - Tim Berners-Lee_
 
 ## Further Reading
 
-- Wilkinson, M. D., et al. (2016). [The FAIR Guiding Principles for scientific data management and stewardship](https://doi.org/10.1038/sdata.2016.18). Scientific Data.
+- Wilkinson, M. D., et al. (2016). [The FAIR Guiding Principles for scientific data management and stewardship](https://doi.org/10.1038/sdata.2016.18).
 - MinIO Documentation: [https://min.io/docs](https://min.io/docs)
 - AWS S3 API Reference: [https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html](https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html)
 - GO FAIR Initiative: [https://www.go-fair.org/](https://www.go-fair.org/)
