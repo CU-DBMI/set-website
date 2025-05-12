@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2025-05-12T12:05:14+00:00">
+  <meta property="og:updated_time" content="2025-05-12T12:22:02+00:00">
   <meta property="article:published_time" content="2025-05-01T00:00:00+00:00">
-  <meta property="article:modified_time" content="2025-05-12T12:05:14+00:00">
-  <meta name="revised" content="2025-05-12T12:05:14+00:00">
+  <meta property="article:modified_time" content="2025-05-12T12:22:02+00:00">
+  <meta name="revised" content="2025-05-12T12:22:02+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Understanding Object Storage: A Guide for Research Software Development" },
       "datePublished": "2025-05-01T00:00:00+00:00",
-      "dateModified": "2025-05-12T12:05:14+00:00",
+      "dateModified": "2025-05-12T12:22:02+00:00",
     
     "name": "Understanding Object Storage: A Guide for Research Software Development",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -940,6 +940,8 @@ Similar to cloud-provider object storage systems, you can still use S3-like API�
 <h3 id="-storage-cost-comparison-approximate-per-gb-per-month">💾 Storage cost comparison (approximate, per GB per month)</h3>
 
 <p>Object storage providers generally charge a flat fee for the amount of data stored within their platform by month.
+Cloud providers typically charge varying rates by “storage class” which stipulate how frequently you will access the data (lower cost storage classes often have higher egress or outgoing tranfer costs).
+For the sake of an example below we use “standard” or default storage classes below.
 See below for some examples.</p>
 
 <table>
@@ -960,21 +962,21 @@ See below for some examples.</p>
     <tr>
       <td><strong>AWS S3 Standard (AWS S3)</strong></td>
       <td>$0.023</td>
-      <td><a href="https://aws.amazon.com/s3/pricing/">Pricing Link</a></td>
+      <td><a href="https://aws.amazon.com/s3/pricing/">S3 Standard - Pricing Link</a></td>
     </tr>
     <tr>
       <td><strong>Google Cloud Storage (GCS)</strong></td>
       <td>$0.020</td>
-      <td><a href="https://cloud.google.com/storage/pricing">Pricing Link</a></td>
+      <td><a href="https://cloud.google.com/storage/pricing">Standard storage - Pricing Link</a></td>
     </tr>
   </tbody>
 </table>
 
 <h3 id="-data-transfer-cost-egress">📤 Data transfer cost (Egress)</h3>
 
-<p>Object storage providers often charge for “egress”, or data transfers to a location outside their bucket.
+<p>Object storage providers often charge for “egress”, or data transfers to a location outside their platforms.
 These charges may seem small at first but can add up over time.
-It’s also important to note “ingress”, or data transferred into an object storage provider’s bucket.</p>
+It’s also important to note “ingress”, or data transferred into an object storage provider’s bucket, may also have distinct cost implications (these are often less than egress).</p>
 
 <table>
   <thead>
@@ -1043,7 +1045,7 @@ Keep in mind these are estimations and don’t include additional other charges 
 
 <p>Object storage is a foundational technology for modern research computing. It allows research teams to scale data access, enable metadata-rich reproducibility, and bridge the gap between local experimentation and cloud workflows.</p>
 
-<p>By learning how to use tools like MinIO and understanding the object storage model, research software developers can design more robust, future-proof, and FAIR-aligned systems for handling scientific data.</p>
+<p>By learning how to use tools like MinIO and understanding the object storage model, research software developers can design more robust, future-proof, and <a href="https://en.wikipedia.org/wiki/FAIR_data">FAIR</a>-aligned systems for handling scientific data.</p>
 
 <blockquote>
   <p><em>“Data is a precious thing and will last longer than the systems themselves.” - Tim Berners-Lee</em></p>
@@ -1052,7 +1054,7 @@ Keep in mind these are estimations and don’t include additional other charges 
 <h2 id="further-reading">Further Reading</h2>
 
 <ul>
-  <li>Wilkinson, M. D., et al. (2016). <a href="https://doi.org/10.1038/sdata.2016.18">The FAIR Guiding Principles for scientific data management and stewardship</a>. Scientific Data.</li>
+  <li>Wilkinson, M. D., et al. (2016). <a href="https://doi.org/10.1038/sdata.2016.18">The FAIR Guiding Principles for scientific data management and stewardship</a>.</li>
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a>
 </li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a>
