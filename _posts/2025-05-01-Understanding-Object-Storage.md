@@ -261,13 +261,15 @@ Similar to cloud-provider object storage systems, you can still use S3-like API'
 ### 💾 Storage cost comparison (approximate, per GB per month)
 
 Object storage providers generally charge a flat fee for the amount of data stored within their platform by month.
+Cloud providers typically charge varying rates by "storage class" which stipulate how frequently you will access the data (lower cost storage classes often have higher egress or outgoing tranfer costs).
+For the sake of an example below we use "standard" or default storage classes below.
 See below for some examples.
 
 | Storage Tier             | Storage Cost (USD/GB/mo) | Notes |
 |--------------------------|--------------------------|-------|
 | **Dell Isilon**| $0.016 | Based on [CU Anschutz Rates](https://www.cuanschutz.edu/offices/office-of-information-technology/get-help/billing-and-rates#ac-backup-and-storage-0) |
-| **AWS S3 Standard (AWS S3)**      | $0.023 | [Pricing Link](https://aws.amazon.com/s3/pricing/) |
-| **Google Cloud Storage (GCS)** | $0.020 | [Pricing Link](https://cloud.google.com/storage/pricing) |
+| **AWS S3 Standard (AWS S3)**      | $0.023 | [S3 Standard - Pricing Link](https://aws.amazon.com/s3/pricing/) |
+| **Google Cloud Storage (GCS)** | $0.020 | [Standard storage - Pricing Link](https://cloud.google.com/storage/pricing) |
 
 ### 📤 Data transfer cost (Egress)
 
