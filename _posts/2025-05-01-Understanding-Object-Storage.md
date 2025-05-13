@@ -292,9 +292,9 @@ Keep in mind these are estimations and don't include additional other charges fr
 
 | Provider      | Calculation | Total |
 |---------------|------------------------------|-------|
-| **Dell Isilon** | $0.016 * 500 GB * 6 Months (no additional cost for egress)                       | $48.00 |
-| **AWS S3**      | (\$0.023 * 500 GB * 6 Months) + (\$0.09 * 400 GB * 6 Months) | $285.00 |
-| **GCS**         | (\$0.020 * 500 GB * 6 Months) + (\$0.12 * 500 GB * 6 Months) | $420.00 |
+| **Dell Isilon** | `$0.016 * 500 GB * 6 Months (no additional cost for egress)`                       | $48.00 |
+| **AWS S3**      | `($0.023 * 500 GB * 6 Months) + ($0.09 * 400 GB * 6 Months)` | $285.00 |
+| **GCS**         | `($0.020 * 500 GB * 6 Months) + ($0.12 * 500 GB * 6 Months)` | $420.00 |
 
 ## Conclusion
 
