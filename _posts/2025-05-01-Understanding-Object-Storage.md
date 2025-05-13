@@ -276,6 +276,7 @@ See below for some examples.
 Object storage providers often charge for "egress", or data transfers to a location outside their platforms.
 These charges may seem small at first but can add up over time.
 It's also important to note "ingress", or data transferred into an object storage provider's bucket, may also have distinct cost implications (these are often less than egress).
+Note: Isilon at CU Anschutz is currently limited to virtual private network (VPN) or campus-based networks for egress and ingress.
 
 | Provider      | Egress (Download) Cost Per GB| Notes |
 |---------------|------------------------------|-------|
