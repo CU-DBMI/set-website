@@ -531,6 +531,123 @@
 
 <div class="search-info"></div>
 
+<h3 id="2025">2025</h3>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/set-website/2025/05/13/Understanding-Object-Storage.html">Understanding Object Storage: A Guide for Research Software Development</a>
+
+      <div class="post-info">
+  
+    
+    
+      
+      
+        
+
+
+
+<div class="portrait-wrapper">
+  <a href="/set-website/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten d33bs">
+    
+      <i class="icon fa-solid fa-code"></i>
+    
+
+    <img src="/set-website/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Dave Bunten (@d33bs)
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Research Data Engineer
+      </span>
+    
+
+    
+  </a>
+</div>
+
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>May 13, 2025</span>
+    </span>
+  
+
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/blog">
+    
+      <a href="blog?search=%22tag:%20data-management%22" class="tag" data-tooltip='Show items with the tag "data-management"'>
+        data-management
+      </a>
+    
+      <a href="blog?search=%22tag:%20object-storage%22" class="tag" data-tooltip='Show items with the tag "object-storage"'>
+        object-storage
+      </a>
+    
+      <a href="blog?search=%22tag:%20reproducibility%22" class="tag" data-tooltip='Show items with the tag "reproducibility"'>
+        reproducibility
+      </a>
+    
+      <a href="blog?search=%22tag:%20scientific-software%22" class="tag" data-tooltip='Show items with the tag "scientific-software"'>
+        scientific-software
+      </a>
+    
+      <a href="blog?search=%22tag:%20s3%22" class="tag" data-tooltip='Show items with the tag "s3"'>
+        s3
+      </a>
+    
+      <a href="blog?search=%22tag:%20data-streaming%22" class="tag" data-tooltip='Show items with the tag "data-streaming"'>
+        data-streaming
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Understanding Object Storage: A Guide for Research Software Development These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Viewsexpressed in the content belong to the content creators and not the organization, its affiliates, or employees. If youhave any questions or suggestions for blog posts, please don 8217;t hesitate to reach out Introduction Object storage enables flexible, scalable, and metadata-rich access to research data in modern computing ecosystems. Managing large-scale scientific data is a defining challenge of modern research.With datasets regularly exceeding gigabytes or even terabytes in size, researchers require scalable, cost-effective, and reliable storage infrastructure.Object storage offers a flexible alternative to traditional filesystems.It supports high-throughput access, structured metadata, and distributed scaling, making it a foundational tool in research computing, reproducible science, and FAIR data practices.In this article, we ll trace the evolution of object storage also sometimes referred to as 8220;S3 8221;, 8220;storage buckets 8221;, or 8220;object stores 8221; , explain its design principles, survey current platforms, and walk through a hands-on example using the open-source MinIO tool.A brief history of object storage Object storage has roots in scientific research and helped build a foundation for later systems like AWS S3. Image credit: Meyer, Franz Sales, 1849 cropped Traditional storage systems relied on block storage used by hard drives and file storage used by operating systems .While effective for early computing, these models struggled to scale with the demands of scientific data and cloud-native applications.Object storage originated in the research community to address these challenges.In the late 1990s, the NASD project at Carnegie Mellon and HP Labs introduced the idea of storing data as self-contained objects with rich metadata decoupling data access from file hierarchies Gibson et al., 1998 .In the early 2000s, the open-source Ceph project from UCSC introduced the now-famous CRUSH algorithm to distribute data without centralized metadata bottlenecks Weil et al., 2006 .Amazon S3 brought these ideas to a global audience in 2006, offering a scalable, HTTP-accessible object store with an API-driven model that became a standard for cloud and scientific applications Amazon S3 launch blog post .Unlike file systems, object stores provide: A flat namespace with key-based access Rich, customizable metadata Scalable, distributed architectureThese qualities make object storage essential for managing large, unstructured, and reproducible scientific datasets.Why use object storage for research Scientific research can benefit from the use of object storage for a wide variety of data. Object storage is not just a buzzword.It enables capabilities increasingly vital to modern research: Scalability: Stores billions of files with virtually no performance degradation. Flexibility: Ideal for unstructured data images, JSON, audio, NetCDF, Parquet, etc. . Metadata-rich: Stores metadata alongside objects, useful for provenance, reproducibility, and FAIR data principles Wilkinson et al., 2016 . Cloud-native: Compatible with public cloud platforms and on-premises deployments. HTTP-accessible: Allows sharing, versioning, and integration with APIs and remote workflows.Traditionally seen as a passive place to 8220;put files, 8221; object storage is often now being used as a primary data substrate functioning more like a database than just a dumping ground.This shift aligns closely with principles from the Composable Data Management System Manifesto Pedreira et. al, 2023 , which advocates for modular, interoperable, and storage-agnostic data infrastructure.Generally, consider use cases like: Long-term archiving of large-scale microscopy datasets. Sharing reproducible analysis results using structured metadata. Automating pipelines that read and write from shared storageIn research, where data integrity, sharing, and sustainability are paramount, object storage provides a modern backbone.Common platforms and ecosystemBelow are some popular object storage platforms used in research and industry: Platform Description Type Amazon S3 https: aws.amazon.com s3 The original commercial object store. Commercial Google Cloud Storage https: cloud.google.com storage Integrated with Google Cloud ecosystem. Commercial Azure Blob Storage https: azure.microsoft.com en-us products storage blobs Microsoft s cloud object store. Commercial MinIO https: min.io High-performance, S3-compatible OSS. Open Source Ceph https: ceph.io Distributed object and block file system. Open Source Wasabi https: wasabi.com cloud-object-storage Cost-effective S3-compatible storage. Commercial OpenStack Swift https: docs.openstack.org swift latest Open-source cloud platform component. Open Source In academic environments, MinIO and Ceph are frequently used for institutional deployments that must remain on-premises or comply with specific data governance needs.How object storage works An object store maps keys to data and metadata using a flat namespace, ideal for scalable distributed systems. Here are the core principles of object storage to help conceptualize common terms and how it works. Flat Namespace: No folder hierarchies; everything is accessed via a unique object key similar to a URL path . Folders are typically simulated with 8220; 8221; slashes to help unify how one may reference objects in correspondence with a filesystem. Objects: Each unit of data includes the content, metadata, and a unique identifier key . Buckets: Logical containers for grouping objects like folders, but flat . Generally a bucket is associated with one project. APIs: Most object stores use HTTP REST APIs, often based on the Amazon S3 API. Versioning and Lifecycle: Objects can be versioned and automatically expired or archived. Event Notification: Some systems emit events e.g., via webhooks or queues when new data is written ideal for automation pipelines.Demo: Using MinIO for object storage data Let s walk through how to use MinIO to create and interact with object storage on your local system.MinIO is lightweight, open source, and provides an S3-compatible interface, making it nice for development and reproducible demos.Step 1: Install MinIOYou can install MinIO locally via Docker:docker run -p 9000:9000 -p 9001:9001 -e MINIO ROOT USER minioadmin -e MINIO ROOT PASSWORD minioadmin quay.io minio minio server data --console-address :9001 Access the web UI at http: localhost:9001 using the above credentials.Step 2: Upload a fileYou can interact with MinIO using the official mc client: install clientbrew install minio stable mc or use curl wget for Linux configure clientmc alias set local http: localhost:9000 minioadmin minioadmin create a bucketmc mb local research-data create a fileecho 1,2,3 gt; dataset.csv upload a filemc cp dataset.csv local research-dataStep 3: Access via Python You can also use the official MinIO Python client to interact with your object storage server:pip install minioThen, use the client to connect and list objects:from minio import Minio Initialize clientclient Minio localhost:9000 , access key minioadmin , secret key minioadmin , secure False Use True if running over HTTPS List objects in a bucketfor obj in client.list objects research-data : print obj.object name This approach is lightweight, straightforward, and ideal for working directly with MinIO in local or institutional deployments.Streaming Data from Object Storage with MinIO, Pandas, Polars, or DuckDB In composable data workflows, streaming data directly from object storage is increasingly common.Instead of downloading full files to local disk, tools like Pandas and DuckDB can read from object storage streams reducing I O overhead and enabling efficient in situ analytics.Tools like fsspec can abstract access across many storage backends including S3 and GCS making it easier to build storage-agnostic workflows.Example: Streaming a CSV into Pandasimport pandas as pd Stream data from the S3 API MinIO into a Pandas DataFramedf s3 pd.read csv s3: my-bucket data.csv , storage options key : minioadmin , secret : minioadmin , client kwargs : endpoint url : http: localhost:9000 , Example: Streaming a CSV into Polarsimport polars as pl Stream data from the S3 API MinIO into a Polars DataFramedf s3 pl.read csv s3: my-bucket data.csv , storage options key : minioadmin , secret : minioadmin , client kwargs : endpoint url : http: localhost:9000 , Example: Streaming a CSV into DuckDBimport duckdbwith duckdb.connect as ddb: Stream data from the S3 API MinIO from DuckDB into Pandas DataFrame df ddb.execute f install httpfs for duckdb INSTALL httpfs; LOAD httpfs; add a custom secret for access to endpoint CREATE SECRET TYPE s3, KEY ID minioadmin , SECRET minioadmin , ENDPOINT localhost:9000 ; perform selection on the file SELECT FROM read csv s3: my-bucket data.csv ; .df S3-compatible object storage case study: Dell PowerScale Isilon Some research institutions like the University of Colorado Anschutz have adopted Dell PowerScale Isilon for file and object storage CU Anschutz Storage Options .This adds some convenience due to its ability to serve both traditional file-based workloads i.e. filemounts and modern S3-API based pipelines like those described above.Isilon allows researchers to treat data stored on the NAS as S3-compatible objects, enabling seamless integration with cloud-native tools and streaming workflows even in strictly on-premises environments. Cost savings: Isilon object storage vs. cloud storage AWS GCP Cloud object storage platforms like AWS S3 and Google Cloud Storage GCS offer great scalability, but they often come with ongoing costs that grow with usage, especially due to egress fees i.e., data leaving the cloud or operation charges when you make changes to objects .In contrast, on-premises object storage systems like Dell Isilon can provide substantial long-term savings for research institutions that already maintain storage infrastructure.Similar to cloud-provider object storage systems, you can still use S3-like API 8217;s through tools like MinIO with Isilon. Storage cost comparison approximate, per GB per month Object storage providers generally charge a flat fee for the amount of data stored within their platform by month.Cloud providers typically charge varying rates by 8220;storage class 8221; which stipulate how frequently you will access the data lower cost storage classes often have higher egress or outgoing tranfer costs .For the sake of an example below we use 8220;standard 8221; or default storage classes below.See below for some examples. Storage Tier Storage Cost USD GB mo Notes Dell Isilon 0.016 Based on CU Anschutz Rates https: www.cuanschutz.edu offices office-of-information-technology get-help billing-and-rates ac-backup-and-storage-0 AWS S3 Standard AWS S3 0.023 S3 Standard - Pricing Link https: aws.amazon.com s3 pricing Google Cloud Storage GCS 0.020 Standard storage - Pricing Link https: cloud.google.com storage pricing Data transfer cost Egress Object storage providers often charge for 8220;egress 8221;, or data transfers to a location outside their platforms.These charges may seem small at first but can add up over time.It 8217;s also important to note 8220;ingress 8221;, or data transferred into an object storage provider 8217;s bucket, may also have distinct cost implications these are often less than egress .Note: Isilon at CU Anschutz is currently limited to virtual private network VPN or campus-based networks for egress and ingress. Provider Egress Download Cost Per GB Notes Dell Isilon 0.00 No per-byte charge for transfers for CU Anschutz Rates https: www.cuanschutz.edu offices office-of-information-technology get-help billing-and-rates ac-backup-and-storage-0 AWS S3 0.09 First 10 TB per month after 100GB free tier Pricing Link https: aws.amazon.com s3 pricing GCS 0.12 First TB per month Pricing Link https: cloud.google.com storage pricing An example scenarioSome of the above numbers are difficult to contextualize without an example scenario.Consider an example scenario where we have 500 GB stored for 6 months and where we download that 500 GB once per month.Keep in mind these are estimations and don 8217;t include additional other charges from cloud providers, tax, and other considerations. Provider Calculation Total Dell Isilon 0.016 500 GB 6 Months no additional cost for egress 48.00 AWS S3 0.023 500 GB 6 Months 0.09 400 GB 6 Months 285.00 GCS 0.020 500 GB 6 Months 0.12 500 GB 6 Months 420.00 ConclusionObject storage is a foundational technology for modern research computing. It allows research teams to scale data access, enable metadata-rich reproducibility, and bridge the gap between local experimentation and cloud workflows.By learning how to use tools like MinIO and understanding the object storage model, research software developers can design more robust, future-proof, and FAIR-aligned systems for handling scientific data. Data is a precious thing and will last longer than the systems themselves. - Tim Berners-LeeFurther Reading Wilkinson, M. D., et al. 2016 . The FAIR Guiding Principles for scientific data management and stewardship. MinIO Documentation: https: min.io docs AWS S3 API Reference: https: docs.aws.amazon.com AmazonS3 latest API Welcome.html GO FAIR Initiative: https: www.go-fair.org">
+        
+Managing large-scale scientific data is a defining challenge of modern research.
+With datasets regularly exceeding gigabytes—or even terabytes—in size, researchers require scalable, cost-effective, and reliable storage infrastructure.
+
+Object storage offers a flexible alternative to traditional filesystems.
+It supports high-throughput access, structured metadata, and distributed scaling, making it a foundational tool in research computing, reproducible science, and FAIR data practices.
+
+In this article, we’ll trace the evolution of object storage (also sometimes referred to as “S3”, “storage buckets”, or “object stores”), explain its design principles, survey current platforms, and walk through a hands-on example using the open-source MinIO tool.
+
+      </p>
+    </div>
+  </div>
+</div>
+
 <h3 id="2024">2024</h3>
 
 <div class="post-excerpt-container">
@@ -595,7 +712,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -706,7 +823,7 @@ In this guide, we’ll walk through key types of software tests, practical advic
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -821,7 +938,7 @@ Let’s get started!
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -936,7 +1053,7 @@ Whether you’re a research software developer looking to integrate advanced gra
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1049,7 +1166,7 @@ This article will introduce the Parquet format from a research data engineering 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1171,7 +1288,7 @@ This article will cover package dependency management through special files gene
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1285,7 +1402,7 @@ This post will cover some computer memory definitions, how Python makes use of c
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1401,7 +1518,7 @@ This post channels the spirit of Thanksgiving by giving our thanks through code 
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1530,7 +1647,7 @@ This article will cover a few tools which leverage these techniques for addressi
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1654,7 +1771,7 @@ Python packaging is the craft of preparing for and reaching distribution of your
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1776,7 +1893,7 @@ This readme will cover a background on the technologies and how to use the conte
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -1892,7 +2009,7 @@ There are many routine tasks which can be automated to help save time and increa
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2008,7 +2125,7 @@ Git provides a feature called branching which facilitates parallel and segmented
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2124,7 +2241,7 @@ This article covers using the software technique of linting on R code in order t
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2244,7 +2361,7 @@ Programming often involves long periods of problem solving which can sometimes l
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2362,7 +2479,7 @@ Software documentation is sometimes treated as a less important or secondary asp
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2486,7 +2603,7 @@ The act of creating software often involves many iterations of writing, personal
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2606,7 +2723,7 @@ Apache Arrow is a language-independent and high performance data format useful i
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -2718,7 +2835,7 @@ Diagrams can be a useful way to illuminate and communicate ideas. Free-form draw
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 06, 2025</span>
+      <span>May 13, 2025</span>
     </span>
   
 </div>
@@ -3098,6 +3215,22 @@ Have you ever found yourself spending hours formatting your code so it looks jus
     
       <a href="/blog/?search=%22tag:%20reproducibility%22" class="tag" data-tooltip='Show items with the tag "reproducibility"'>
         reproducibility
+      </a>
+    
+      <a href="/blog/?search=%22tag:%20data-management%22" class="tag" data-tooltip='Show items with the tag "data-management"'>
+        data-management
+      </a>
+    
+      <a href="/blog/?search=%22tag:%20object-storage%22" class="tag" data-tooltip='Show items with the tag "object-storage"'>
+        object-storage
+      </a>
+    
+      <a href="/blog/?search=%22tag:%20s3%22" class="tag" data-tooltip='Show items with the tag "s3"'>
+        s3
+      </a>
+    
+      <a href="/blog/?search=%22tag:%20data-streaming%22" class="tag" data-tooltip='Show items with the tag "data-streaming"'>
+        data-streaming
       </a>
     
   </div>
