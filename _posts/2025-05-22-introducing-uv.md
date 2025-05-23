@@ -32,7 +32,7 @@ In the following paragraphs we'll cover some background on this area to help pro
 
 ## What are Python packages and environment management?
 
-{% include figure.html image="images/python_environment_managers.png" width="60%"%}
+{% include figure.html image="images/python_environment_managers.png" width="70%"%}
 
 Python packages are the primary way you can install and import pre-existing code into your projects (without needing to copy the code into your own project directly).
 Python environments include all the necessary details (including external package dependencies) to help ensure your projects works through reproducible execution.
@@ -108,7 +108,7 @@ Keep in mind that many of these tools are still supported today but some are dep
 
 ## Where are packages hosted?
 
-{% include figure.html image="images/pip_conda_pypi_forge.png" width="60%"%}
+{% include figure.html image="images/pip_conda_pypi_forge.png" width="70%"%}
 
 Python’s packaging ecosystem mainly revolves mostly around PyPI and Conda.
 PyPI is the official repository for Python packages and is accessed through `pip`.
@@ -118,14 +118,14 @@ Conda is a package and environment manager that supports both Python and non-Pyt
 It simplifies managing complex dependencies but can be slower and sometimes inconsistent due to multiple package channels.
 Choosing between PyPI and Conda often depends on whether you need pure Python packages or a more complete environment with system-level libraries.
 
-{% include figure.html image="images/conda_yield_pypi.png" width="60%"%}
+{% include figure.html image="images/conda_yield_pypi.png" width="70%"%}
 
 Using PyPI and Conda together can be challenging because they manage packages and dependencies differently, which can lead to conflicts and unpredictable behavior.
 Mixing installations from pip (PyPI) and Conda within the same environment may cause version mismatches, broken dependencies, or duplicated packages.
 Additionally, Conda’s environment resolver and PyPI’s package manager don’t always communicate well, making it hard to maintain reproducible and stable environments when crossing between the two.
 This complexity often forces developers to carefully manage and isolate environments or choose one system over the other to avoid issues.
 
-{% include figure.html image="images/pypi_to_forge.png" width="60%"%}
+{% include figure.html image="images/pypi_to_forge.png" width="90%"%}
 
 A common approach in Python packaging is to first develop and release a package to PyPI, where it can be easily shared and installed using pip. 
 Once the package is stable and widely used, it may be packaged for Conda—often via the community-maintained conda-forge channel—to support users who rely on Conda environments, especially in scientific computing. 
@@ -133,7 +133,7 @@ This pipeline allows developers to reach the broadest audience while maintaining
 
 ## How are Python packages distributed?
 
-{% include figure.html image="images/python_distribution_formats.png" width="60%"%}
+{% include figure.html image="images/python_distribution_formats.png" width="70%"%}
 
 In Python packaging, [package distributions](https://packaging.python.org/en/latest/specifications/section-distribution-formats/) are the artifacts that users download and install to use a Python project—most commonly as `.whl` (wheel) or `.tar.gz` (source distribution) files.
 A wheel is a pre-built, binary package format (`.whl`) designed for fast installation without needing to compile code (note: a `.whl` is really a `.zip` so you can unzip it to take a look at the contents).
@@ -215,7 +215,7 @@ Using `uv add` (or similarly, `uv sync`, which updates the environment) also aut
 
 #### Lockfiles and reproducibility
 
-{% include figure.html image="images/lockfile_for_reproducibility.png" width="40%"%}
+{% include figure.html image="images/lockfile_for_reproducibility.png" width="70%"%}
 
 Many modern Python environment managers automatically make use of lockfiles.
 Lockfiles capture the exact dependency graph and package versions, ensuring that environments can be recreated byte-for-byte.
@@ -278,7 +278,7 @@ This can assist with areas where you may like to use dynamic versioning for your
 
 ## Migrating existing environments to `uv`
 
-{% include figure.html image="images/migrate-to-uv.png" width="60%"%}
+{% include figure.html image="images/migrate-to-uv.png" width="70%"%}
 
 Reading this are you thinking you might want to move your project environment management to `uv` but sweating the idea that it will be complicated?
 For users looking to migrate existing environments to `uv`, tools like [`migrate-to-uv`](https://github.com/mkniewallner/migrate-to-uv) provide a transition path by converting existing `requirements.txt` or, for example, Poetry-based `pyproject.toml` files.
