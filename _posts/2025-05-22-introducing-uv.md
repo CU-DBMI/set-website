@@ -15,8 +15,6 @@ tags:
 
 ## Introduction
 
-{% include figure.html image="images/uv-logo.png" width="20%" caption="uv: A modern Python environment and package manager from Astral" %}
-
 <!-- excerpt start -->
 **Managing Python environments has evolved rapidly over the last decade, but complexity and portability remain challenges.**  
 **`uv` from Astral aims to simplify environment management with exceptional speed, cross-platform portability, and complete feature parity with existing tools.**  
@@ -25,6 +23,8 @@ In this article, we'll explore the history of Python environment management, con
 
 ## What is `uv` and why does it matter?
 
+{% include figure.html image="images/uv_and_python.png" width="25%"%}
+
 `uv` is a Python environment management and packaging tool which helps you write and maintain Python software.
 In context with other similar tools `uv` is magnitudes faster at completing the same work.
 This is due largely to [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) bindings which help the Python-focused procedures complete more quickly and a custom dependency resolver (which often consumes large amounts of time).
@@ -32,8 +32,10 @@ In the following paragraphs we'll cover some background on this area to help pro
 
 ## What are Python packages and environment management?
 
+{% include figure.html image="images/python_environment_managers.png" width="50%"%}
+
 Python packages are the primary way you can install and import pre-existing code into your projects (without needing to copy the code into your own project directly).
-Python environments include all the necessary details (including external package dependencies) to help ensure your projects works.
+Python environments include all the necessary details (including external package dependencies) to help ensure your projects works through reproducible execution.
 Python environment management tools are used to help add, remove, or update external package dependencies.
 They also help you build packages of your own for deployment to others.
 
@@ -62,7 +64,6 @@ timeline
     2023 : uv
 -->
 
-![](python_env_mgmt_timline.png)
 {% include figure.html image="images/python_env_mgmt_timline.png" width="100%" caption="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems." %}
 
 Python environment management has drastically changed since the year 2000.
@@ -107,6 +108,8 @@ Keep in mind that many of these tools are still supported today but some are dep
 
 ## Where are packages hosted?
 
+{% include figure.html image="images/pip_conda_pypi_forge.png" width="50%"%}
+
 Python’s packaging ecosystem mainly revolves mostly around PyPI and Conda.
 PyPI is the official repository for Python packages and is accessed through `pip`.
 It handles pure Python packages well but struggles with packages that require non-Python dependencies or system libraries, which can make installation tricky across different platforms.
@@ -115,10 +118,14 @@ Conda is a package and environment manager that supports both Python and non-Pyt
 It simplifies managing complex dependencies but can be slower and sometimes inconsistent due to multiple package channels.
 Choosing between PyPI and Conda often depends on whether you need pure Python packages or a more complete environment with system-level libraries.
 
+{% include figure.html image="images/conda_yield_pypi.png" width="50%"%}
+
 Using PyPI and Conda together can be challenging because they manage packages and dependencies differently, which can lead to conflicts and unpredictable behavior.
 Mixing installations from pip (PyPI) and Conda within the same environment may cause version mismatches, broken dependencies, or duplicated packages.
 Additionally, Conda’s environment resolver and PyPI’s package manager don’t always communicate well, making it hard to maintain reproducible and stable environments when crossing between the two.
 This complexity often forces developers to carefully manage and isolate environments or choose one system over the other to avoid issues.
+
+{% include figure.html image="images/pypi_to_forge.png" width="50%"%}
 
 A common approach in Python packaging is to first develop and release a package to PyPI, where it can be easily shared and installed using pip. 
 Once the package is stable and widely used, it may be packaged for Conda—often via the community-maintained conda-forge channel—to support users who rely on Conda environments, especially in scientific computing. 
@@ -126,12 +133,14 @@ This pipeline allows developers to reach the broadest audience while maintaining
 
 ## How are Python packages distributed?
 
-In Python packaging, distributions are the artifacts that users download and install to use a Python project—most commonly as `.whl` (wheel) or `.tar.gz` (source distribution) files.
+{% include figure.html image="images/python_distribution_formats.png" width="50%"%}
+
+In Python packaging, [package distributions](https://packaging.python.org/en/latest/specifications/section-distribution-formats/) are the artifacts that users download and install to use a Python project—most commonly as `.whl` (wheel) or `.tar.gz` (source distribution) files.
 A wheel is a pre-built, binary package format (`.whl`) designed for fast installation without needing to compile code (note: a `.whl` is really a `.zip` so you can unzip it to take a look at the contents).
 It’s the preferred format for most users and is what tools like pip look for first on PyPI.
 In contrast, a source distribution (`.tar.gz`, often called an `sdist`) contains the raw source code and build instructions; installing from it may require compiling extensions or resolving more complex dependencies. Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.
 
-Conda packages, on the other hand, belong to a separate ecosystem built around the Conda package manager. A Conda package is a `.tar.bz2` or `.conda` archive that includes not just Python code, but also compiled binaries and system-level dependencies.
+Conda packages, on the other hand, belong to a separate ecosystem built around the Conda package manager. A [Conda package](https://docs.conda.io/projects/conda-build/en/stable/resources/package-spec.html) is a `.tar.bz2` or `.conda` archive that includes not just Python code, but also compiled binaries and system-level dependencies.
 This makes Conda particularly useful for scientific computing, where packages often require compiled C/C++/Fortran libraries.
 Unlike wheels, Conda packages are not tied to Python’s internal packaging standards - they’re built using Conda-specific metadata and managed by Conda environments.
 While PyPI and pip dominate general-purpose Python packaging, the Conda ecosystem provides a more holistic, environment-based approach—at the cost of being somewhat siloed and less compatible with pure Python tools.
@@ -139,6 +148,8 @@ While PyPI and pip dominate general-purpose Python packaging, the Conda ecosyste
 These files are typically uploaded using specific application programming interfaces (API's) to PyPI, conda-forge, or other similar locations.
 
 ## `uv` overview
+
+{% include figure.html image="images/uv_magnifying_glass.png" width="25%"%}
 
 Below we'll provide a quick overview of using `uv` to accomplish various environment management and packaging tasks.
 
@@ -204,6 +215,8 @@ Using `uv add` (or similarly, `uv sync`, which updates the environment) also aut
 
 #### Lockfiles and reproducibility
 
+{% include figure.html image="images/lockfile_for_reproducibility.pngg" width="30%"%}
+
 Many modern Python environment managers automatically make use of lockfiles.
 Lockfiles capture the exact dependency graph and package versions, ensuring that environments can be recreated byte-for-byte.
 Be sure to check out our [in-depth blog post on lockfiles](https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html) for more information.
@@ -265,54 +278,11 @@ This can assist with areas where you may like to use dynamic versioning for your
 
 ## Migrating existing environments to `uv`
 
+{% include figure.html image="images/migrate-to-uv.png" width="30%"%}
+
 Reading this are you thinking you might want to move your project environment management to `uv` but sweating the idea that it will be complicated?
 For users looking to migrate existing environments to `uv`, tools like [`migrate-to-uv`](https://github.com/mkniewallner/migrate-to-uv) provide a transition path by converting existing `requirements.txt` or, for example, Poetry-based `pyproject.toml` files.
 This can provide a streamlined and low-cost way to transition projects over to `uv`.
-
-## Running Jupyter notebooks with uv
-
-Getting started with Jupyter in uv is straightforward:
-
-```bash
-# Create and activate a new uv environment named `analysis`
-uv env create analysis --python=3.10
-
-# Activate the environment
-uv shell analysis
-
-# Install Jupyter
-uv add jupyter
-
-# Launch Jupyter Notebook or Lab
-uv run jupyter notebook
-# or
-uv run jupyter lab
-```
-
-You can also run notebooks directly without activating:
-
-```bash
-uv run --env=analysis jupyter notebook
-```
-
-This ensures your notebook server and kernels run in the isolated uv environment.
-
-## Installation examples
-
-Installing a uv-managed project is as simple as:
-
-```bash
-# Clone the repository
-git clone https://github.com/example/repo.git
-
-# Navigate into the project directory
-cd repo
-
-# Install dependencies and activate uv environment
-uv install
-```
-
-This sequence clones the project, resolves dependencies based on the `uv.lock` file, and sets up the environment for development or deployment.
 
 ## Conclusion
 
