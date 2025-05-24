@@ -62,13 +62,14 @@ timeline
          : hatch
     2018 : poetry
     2023 : uv
+         : distutils removed <br> (Python 3.12)
 -->
 
-{% include figure.html image="images/python_env_mgmt_timline.png" width="100%" caption="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems." %}
+{% include figure.html image="images/python_env_mgmt_timeline.png" width="100%" caption="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems." %}
 
 Python environment management has drastically changed since the year 2000.
 We provide the below timeline synopsis of some of the bigger changes to this domain for Python.
-Keep in mind that many of these tools are still supported today but some are deprecated and in the process of being removed (such as `distutils`, which was removed from Python 3.12 and future versions).
+Keep in mind that many of these tools are still supported today but some are deprecated and or in the process of being removed (such as `distutils`, which was removed from Python 3.12 and future versions).
 
 1. **2000: `distutils` & `setup.py`**  
    - The original Python standard library tools for packaging and distributing Python projects. [`distutils`](https://docs.python.org/3.11/library/distutils.html) allowed developers to define how their projects should be built and installed using a [`setup.py`](https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#setup-py) script.
