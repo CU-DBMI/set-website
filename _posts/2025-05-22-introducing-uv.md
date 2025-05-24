@@ -284,6 +284,24 @@ Reading this are you thinking you might want to move your project environment ma
 For users looking to migrate existing environments to `uv`, tools like [`migrate-to-uv`](https://github.com/mkniewallner/migrate-to-uv) provide a transition path by converting existing `requirements.txt` or, for example, Poetry-based `pyproject.toml` files.
 This can provide a streamlined and low-cost way to transition projects over to `uv`.
 
+## A `uv` template for new projects
+
+If you're interested to use `uv` and would like to start through a template consider using [`template-uv-python-research-software`](https://github.com/CU-DBMI/template-uv-python-research-software).
+This project is a `copier` template that lets you quickly get started with `uv` and other boilerplate files for a Python research software project (including Jupyter notebook support).
+Please see the documentation of the project for more information on what's included in the template.
+
+For example, you can use the following commands to use this template:
+
+```bash
+# install copier
+pip install copier
+
+# use the template to create a new copy
+# where "new_project" is a new directory which
+# will include the template copy files.
+copier copy https://github.com/CU-DBMI/template-uv-python-research-software new_project
+```
+
 ## Conclusion
 
 > “The best tool is the one you don’t have to think about using.” - common adage
