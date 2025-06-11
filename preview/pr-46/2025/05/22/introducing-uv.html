@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2025-05-24T12:20:50+00:00">
+  <meta property="og:updated_time" content="2025-06-11T21:47:37+00:00">
   <meta property="article:published_time" content="2025-05-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2025-05-24T12:20:50+00:00">
-  <meta name="revised" content="2025-05-24T12:20:50+00:00">
+  <meta property="article:modified_time" content="2025-06-11T21:47:37+00:00">
+  <meta name="revised" content="2025-06-11T21:47:37+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Introducing uv: A Fast, Portable Python Environment Manager" },
       "datePublished": "2025-05-22T00:00:00+00:00",
-      "dateModified": "2025-05-24T12:20:50+00:00",
+      "dateModified": "2025-06-11T21:47:37+00:00",
     
     "name": "Introducing uv: A Fast, Portable Python Environment Manager",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -495,7 +495,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 24, 2025</span>
+      <span>June 11, 2025</span>
     </span>
   
 </div>
@@ -575,7 +575,7 @@ In this article, we’ll explore the history of Python environment management, c
   
 </figure>
 
-<p><code class="language-plaintext highlighter-rouge">uv</code> is a Python environment management and packaging tool which helps you write and maintain Python software.
+<p><a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a> is a Python environment management and packaging tool which helps you write and maintain Python software.
 In context with other similar tools <code class="language-plaintext highlighter-rouge">uv</code> is magnitudes faster at completing the same work.
 This is due largely to <a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a> bindings which help the Python-focused procedures complete more quickly and a custom dependency resolver (which often consumes large amounts of time).
 In the following paragraphs we’ll cover some background on this area to help provide context about <code class="language-plaintext highlighter-rouge">uv</code> and the domain it assists with.</p>
@@ -593,7 +593,7 @@ In the following paragraphs we’ll cover some background on this area to help p
 </figure>
 
 <p>Python packages are the primary way you can install and import pre-existing code into your projects (without needing to copy the code into your own project directly).
-Python environments include all the necessary details (including external package dependencies) to help ensure your projects works through reproducible execution.
+Python environments include all the necessary details (including external package dependencies) to help ensure your projects work through reproducible execution.
 Python environment management tools are used to help add, remove, or update external package dependencies.
 They also help you build packages of your own for deployment to others.</p>
 
@@ -793,7 +793,7 @@ This makes Conda particularly useful for scientific computing, where packages of
 Unlike wheels, Conda packages are not tied to Python’s internal packaging standards - they’re built using Conda-specific metadata and managed by Conda environments.
 While PyPI and pip dominate general-purpose Python packaging, the Conda ecosystem provides a more holistic, environment-based approach—at the cost of being somewhat siloed and less compatible with pure Python tools.</p>
 
-<p>These files are typically uploaded using specific application programming interfaces (API’s) to PyPI, conda-forge, or other similar locations.</p>
+<p>These files are typically uploaded using specific application programming interfaces (APIs) to PyPI, conda-forge, or other similar locations.</p>
 
 <h2 id="uv-overview">
 <code class="language-plaintext highlighter-rouge">uv</code> overview</h2>
@@ -948,7 +948,7 @@ We recommend using the <a href="https://docs.pypi.org/trusted-publishers/">Trust
 </span></code></pre></div></div>
 
 <p>Note that you can change your build backends within the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> configuration (instead of using <code class="language-plaintext highlighter-rouge">uv-build</code> by default).
-For example, if you wanted to use <code class="language-plaintext highlighter-rouge">setuptools</code> you could stipulate something like the following in your <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file instead.
+For example, if you wanted to use <code class="language-plaintext highlighter-rouge">setuptools</code> you could stipulate something like the above in your <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file instead.
 This can assist with areas where you may like to use dynamic versioning for your work through projects like <a href="https://setuptools-scm.readthedocs.io/en/latest/usage/"><code class="language-plaintext highlighter-rouge">setuptools-scm</code></a>.</p>
 
 <h2 id="migrating-existing-environments-to-uv">Migrating existing environments to <code class="language-plaintext highlighter-rouge">uv</code>
@@ -964,7 +964,7 @@ This can assist with areas where you may like to use dynamic versioning for your
   
 </figure>
 
-<p>Reading this are you thinking you might want to move your project environment management to <code class="language-plaintext highlighter-rouge">uv</code> but sweating the idea that it will be complicated?
+<p>Reading this, are you thinking you might want to move your project environment management to <code class="language-plaintext highlighter-rouge">uv</code> but sweating the idea that it will be complicated?
 For users looking to migrate existing environments to <code class="language-plaintext highlighter-rouge">uv</code>, tools like <a href="https://github.com/mkniewallner/migrate-to-uv"><code class="language-plaintext highlighter-rouge">migrate-to-uv</code></a> provide a transition path by converting existing <code class="language-plaintext highlighter-rouge">requirements.txt</code> or, for example, Poetry-based <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files.
 This can provide a streamlined and low-cost way to transition projects over to <code class="language-plaintext highlighter-rouge">uv</code>.</p>
 
