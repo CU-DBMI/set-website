@@ -25,7 +25,7 @@ In this article, we'll explore the history of Python environment management, con
 
 {% include figure.html image="images/uv_and_python.png" width="25%"%}
 
-`uv` is a Python environment management and packaging tool which helps you write and maintain Python software.
+[`uv`](https://github.com/astral-sh/uv) is a Python environment management and packaging tool which helps you write and maintain Python software.
 In context with other similar tools `uv` is magnitudes faster at completing the same work.
 This is due largely to [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language)) bindings which help the Python-focused procedures complete more quickly and a custom dependency resolver (which often consumes large amounts of time).
 In the following paragraphs we'll cover some background on this area to help provide context about `uv` and the domain it assists with.
@@ -35,7 +35,7 @@ In the following paragraphs we'll cover some background on this area to help pro
 {% include figure.html image="images/python_environment_managers.png" width="70%"%}
 
 Python packages are the primary way you can install and import pre-existing code into your projects (without needing to copy the code into your own project directly).
-Python environments include all the necessary details (including external package dependencies) to help ensure your projects works through reproducible execution.
+Python environments include all the necessary details (including external package dependencies) to help ensure your projects work through reproducible execution.
 Python environment management tools are used to help add, remove, or update external package dependencies.
 They also help you build packages of your own for deployment to others.
 
@@ -146,7 +146,7 @@ This makes Conda particularly useful for scientific computing, where packages of
 Unlike wheels, Conda packages are not tied to Python’s internal packaging standards - they’re built using Conda-specific metadata and managed by Conda environments.
 While PyPI and pip dominate general-purpose Python packaging, the Conda ecosystem provides a more holistic, environment-based approach—at the cost of being somewhat siloed and less compatible with pure Python tools.
 
-These files are typically uploaded using specific application programming interfaces (API's) to PyPI, conda-forge, or other similar locations.
+These files are typically uploaded using specific application programming interfaces (APIs) to PyPI, conda-forge, or other similar locations.
 
 ## `uv` overview
 
@@ -274,14 +274,14 @@ requires = [ "setuptools>=64", "setuptools-scm>=8" ]
 ```
 
 Note that you can change your build backends within the `pyproject.toml` configuration (instead of using `uv-build` by default).
-For example, if you wanted to use `setuptools` you could stipulate something like the following in your `pyproject.toml` file instead.
+For example, if you wanted to use `setuptools` you could stipulate something like the above in your `pyproject.toml` file instead.
 This can assist with areas where you may like to use dynamic versioning for your work through projects like [`setuptools-scm`](https://setuptools-scm.readthedocs.io/en/latest/usage/).
 
 ## Migrating existing environments to `uv`
 
 {% include figure.html image="images/migrate-to-uv.png" width="70%"%}
 
-Reading this are you thinking you might want to move your project environment management to `uv` but sweating the idea that it will be complicated?
+Reading this, are you thinking you might want to move your project environment management to `uv` but sweating the idea that it will be complicated?
 For users looking to migrate existing environments to `uv`, tools like [`migrate-to-uv`](https://github.com/mkniewallner/migrate-to-uv) provide a transition path by converting existing `requirements.txt` or, for example, Poetry-based `pyproject.toml` files.
 This can provide a streamlined and low-cost way to transition projects over to `uv`.
 
