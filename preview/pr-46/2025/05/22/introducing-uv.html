@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2025-06-11T21:47:37+00:00">
+  <meta property="og:updated_time" content="2025-06-12T14:52:05+00:00">
   <meta property="article:published_time" content="2025-05-22T00:00:00+00:00">
-  <meta property="article:modified_time" content="2025-06-11T21:47:37+00:00">
-  <meta name="revised" content="2025-06-11T21:47:37+00:00">
+  <meta property="article:modified_time" content="2025-06-12T14:52:05+00:00">
+  <meta name="revised" content="2025-06-12T14:52:05+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Introducing uv: A Fast, Portable Python Environment Manager" },
       "datePublished": "2025-05-22T00:00:00+00:00",
-      "dateModified": "2025-06-11T21:47:37+00:00",
+      "dateModified": "2025-06-12T14:52:05+00:00",
     
     "name": "Introducing uv: A Fast, Portable Python Environment Manager",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -495,7 +495,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>June 11, 2025</span>
+      <span>June 12, 2025</span>
     </span>
   
 </div>
@@ -753,8 +753,9 @@ Choosing between PyPI and Conda often depends on whether you need pure Python pa
 </figure>
 
 <p>Using PyPI and Conda together can be challenging because they manage packages and dependencies differently, which can lead to conflicts and unpredictable behavior.
-Mixing installations from pip (PyPI) and Conda within the same environment may cause version mismatches, broken dependencies, or duplicated packages.
-Additionally, Conda’s environment resolver and PyPI’s package manager don’t always communicate well, making it hard to maintain reproducible and stable environments when crossing between the two.
+Conda packages often bundle compiled libraries with carefully managed build strings, whereas pip installs only Python wheels or source distributions and isn’t aware of Conda’s binary packages.
+If you install a library with pip after creating a Conda environment, pip may overwrite a Conda‐provided binary (or install a version Conda doesn’t know about), leading to mismatches.
+Intermixing dependencies also may involve multiple package manager CLIs (e.g. <code class="language-plaintext highlighter-rouge">conda</code> and <code class="language-plaintext highlighter-rouge">pip</code>) which can introduce challenges with troubleshooting (each have distinct sub-commands and flags).
 This complexity often forces developers to carefully manage and isolate environments or choose one system over the other to avoid issues.</p>
 
 <figure class="figure">
@@ -785,8 +786,10 @@ This pipeline allows developers to reach the broadest audience while maintaining
 
 <p>In Python packaging, <a href="https://packaging.python.org/en/latest/specifications/section-distribution-formats/">package distributions</a> are the artifacts that users download and install to use a Python project—most commonly as <code class="language-plaintext highlighter-rouge">.whl</code> (wheel) or <code class="language-plaintext highlighter-rouge">.tar.gz</code> (source distribution) files.
 A wheel is a pre-built, binary package format (<code class="language-plaintext highlighter-rouge">.whl</code>) designed for fast installation without needing to compile code (note: a <code class="language-plaintext highlighter-rouge">.whl</code> is really a <code class="language-plaintext highlighter-rouge">.zip</code> so you can unzip it to take a look at the contents).
-It’s the preferred format for most users and is what tools like pip look for first on PyPI.
-In contrast, a source distribution (<code class="language-plaintext highlighter-rouge">.tar.gz</code>, often called an <code class="language-plaintext highlighter-rouge">sdist</code>) contains the raw source code and build instructions; installing from it may require compiling extensions or resolving more complex dependencies. Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.</p>
+Wheels are specific to each operating system type and may include already-compiled extensions from other languages.
+Wheels are the preferred format for most users and is what tools like pip look for first on PyPI.
+In contrast, a source distribution (<code class="language-plaintext highlighter-rouge">.tar.gz</code>, often called an <code class="language-plaintext highlighter-rouge">sdist</code>) contains the raw source code and build instructions; installing from it may require compiling extensions written in other languages, e.g. C, C++, or Rust or resolving more complex dependencies.
+Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.</p>
 
 <p>Conda packages, on the other hand, belong to a separate ecosystem built around the Conda package manager. A <a href="https://docs.conda.io/projects/conda-build/en/stable/resources/package-spec.html">Conda package</a> is a <code class="language-plaintext highlighter-rouge">.tar.bz2</code> or <code class="language-plaintext highlighter-rouge">.conda</code> archive that includes not just Python code, but also compiled binaries and system-level dependencies.
 This makes Conda particularly useful for scientific computing, where packages often require compiled C/C++/Fortran libraries.
@@ -917,7 +920,7 @@ uv run pytest
 <p>When we want to process code through the <code class="language-plaintext highlighter-rouge">uv</code> environment we can use the <code class="language-plaintext highlighter-rouge">uv run</code> command.
 If you’re used to using <code class="language-plaintext highlighter-rouge">conda</code> environments this is akin to <code class="language-plaintext highlighter-rouge">conda run -n env_name python</code>.
 Note: <code class="language-plaintext highlighter-rouge">uv</code> does not enable you to activate or “enter into” an implicit shell for the environement like <code class="language-plaintext highlighter-rouge">conda activate</code>.
-Instead, <code class="language-plaintext highlighter-rouge">uv</code> uses declarative syntax to ensure the command-line interface to the environment is explicit.</p>
+Instead, <code class="language-plaintext highlighter-rouge">uv</code> uses declarative syntax to ensure the command-line interface (CLI) to the environment is explicit.</p>
 
 <p>When working with other projects you might also need to run an <code class="language-plaintext highlighter-rouge">install</code> command in order to have access to the environment.
 <code class="language-plaintext highlighter-rouge">uv</code> skips this step and automatically will install the environment on issuing a <code class="language-plaintext highlighter-rouge">uv run</code> (there is no <code class="language-plaintext highlighter-rouge">uv install</code> command).</p>
