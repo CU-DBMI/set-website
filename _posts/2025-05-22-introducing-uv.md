@@ -122,8 +122,9 @@ Choosing between PyPI and Conda often depends on whether you need pure Python pa
 {% include figure.html image="images/conda_yield_pypi.png" width="70%"%}
 
 Using PyPI and Conda together can be challenging because they manage packages and dependencies differently, which can lead to conflicts and unpredictable behavior.
-Mixing installations from pip (PyPI) and Conda within the same environment may cause version mismatches, broken dependencies, or duplicated packages.
-Additionally, Conda’s environment resolver and PyPI’s package manager don’t always communicate well, making it hard to maintain reproducible and stable environments when crossing between the two.
+Conda packages often bundle compiled libraries with carefully managed build strings, whereas pip installs only Python wheels or source distributions and isn’t aware of Conda’s binary packages.
+If you install a library with pip after creating a Conda environment, pip may overwrite a Conda‐provided binary (or install a version Conda doesn’t know about), leading to mismatches.
+Intermixing dependencies also may involve multiple package manager CLIs (e.g. `conda` and `pip`) which can introduce challenges with troubleshooting (each have distinct sub-commands and flags).
 This complexity often forces developers to carefully manage and isolate environments or choose one system over the other to avoid issues.
 
 {% include figure.html image="images/pypi_to_forge.png" width="90%"%}
@@ -245,7 +246,7 @@ uv run pytest
 When we want to process code through the `uv` environment we can use the `uv run` command.
 If you're used to using `conda` environments this is akin to `conda run -n env_name python`.
 Note: `uv` does not enable you to activate or "enter into" an implicit shell for the environement like `conda activate`.
-Instead, `uv` uses declarative syntax to ensure the command-line interface to the environment is explicit.
+Instead, `uv` uses declarative syntax to ensure the command-line interface (CLI) to the environment is explicit.
 
 When working with other projects you might also need to run an `install` command in order to have access to the environment.
 `uv` skips this step and automatically will install the environment on issuing a `uv run` (there is no `uv install` command).
