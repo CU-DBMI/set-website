@@ -139,8 +139,10 @@ This pipeline allows developers to reach the broadest audience while maintaining
 
 In Python packaging, [package distributions](https://packaging.python.org/en/latest/specifications/section-distribution-formats/) are the artifacts that users download and install to use a Python project—most commonly as `.whl` (wheel) or `.tar.gz` (source distribution) files.
 A wheel is a pre-built, binary package format (`.whl`) designed for fast installation without needing to compile code (note: a `.whl` is really a `.zip` so you can unzip it to take a look at the contents).
-It’s the preferred format for most users and is what tools like pip look for first on PyPI.
-In contrast, a source distribution (`.tar.gz`, often called an `sdist`) contains the raw source code and build instructions; installing from it may require compiling extensions or resolving more complex dependencies. Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.
+Wheels are specific to each operating system type and may include already-compiled extensions from other languages.
+Wheels are the preferred format for most users and is what tools like pip look for first on PyPI.
+In contrast, a source distribution (`.tar.gz`, often called an `sdist`) contains the raw source code and build instructions; installing from it may require compiling extensions written in other languages, e.g. C, C++, or Rust or resolving more complex dependencies.
+Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.
 
 Conda packages, on the other hand, belong to a separate ecosystem built around the Conda package manager. A [Conda package](https://docs.conda.io/projects/conda-build/en/stable/resources/package-spec.html) is a `.tar.bz2` or `.conda` archive that includes not just Python code, but also compiled binaries and system-level dependencies.
 This makes Conda particularly useful for scientific computing, where packages often require compiled C/C++/Fortran libraries.
