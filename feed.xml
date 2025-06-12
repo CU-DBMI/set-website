@@ -1,4 +1,428 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2025-05-13T21:10:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2025-06-12T15:08:07+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p><strong>Managing Python environments has evolved rapidly over the last decade, but complexity and portability remain challenges.</strong><br />
+<strong><code class="language-plaintext highlighter-rouge">uv</code> from Astral aims to simplify environment management with exceptional speed, cross-platform portability, and complete feature parity with existing tools.</strong><br />
+In this article, we&#8217;ll explore the history of Python environment management, consider conda in context with Python ecosystems, and provide an overview of using <code class="language-plaintext highlighter-rouge">uv</code>.
+<!-- excerpt end --></p>
+
+<h2 id="what-is-uv-and-why-does-it-matter">What is <code class="language-plaintext highlighter-rouge">uv</code> and why does it matter?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/uv_and_python.png" style="
+        width: 25%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p><a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a> is a Python environment management and packaging tool which helps you write and maintain Python software.
+In context with other similar tools <code class="language-plaintext highlighter-rouge">uv</code> is magnitudes faster at completing the same work.
+This is due largely to <a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a> bindings which help the Python-focused procedures complete more quickly and a custom dependency resolver (which often consumes large amounts of time).
+In the following paragraphs we&#8217;ll cover some background on this area to help provide context about <code class="language-plaintext highlighter-rouge">uv</code> and the domain it assists with.</p>
+
+<h2 id="what-are-python-packages-and-environment-management">What are Python packages and environment management?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/python_environment_managers.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Python packages are the primary way you can install and import pre-existing code into your projects (without needing to copy the code into your own project directly).
+Python environments include all the necessary details (including external package dependencies) to help ensure your projects work through reproducible execution.
+Python environment management tools are used to help add, remove, or update external package dependencies.
+They also help you build packages of your own for deployment to others.</p>
+
+<p>Without environment management tools and their related code you will be unable to accurately reproduce your Python environment.
+This can lead to challenges when it comes to reproducibility (you may see different outcomes or exceptions from system to system).
+It also can be costly in terms of time (dependency management alone can cause hours of debugging time).
+Using environment managers with Python is nearly required at this point in time.</p>
+
+<h2 id="a-brief-history-of-python-environment-management">A brief history of Python environment management</h2>
+
+<!--
+Source for diagram
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'timeline': {'disableMulticolor': true}}}%%
+timeline
+    2000 : distutils & setup.py
+    2004 : setuptools
+    2007 : virtualenv <br>(external)
+    2008 : pip
+    2010 : requirements.txt <br> (widespread adoption)
+    2012 : conda
+         : venv (stdlib)
+    2017 : pyproject.toml (PEP 518)
+         : pipenv
+         : hatch
+    2018 : poetry
+    2023 : uv
+         : distutils removed <br> (Python 3.12)
+-->
+
+<figure class="figure">
+  <a class="figure-image" aria-label="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems. Note: This timeline is schematic; events are plotted at their calendar years but the spacing is not to scale.">
+    <img src="/set-website/images/python_env_mgmt_timeline.png" style="
+        width: 100%;
+        max-height: unset;
+      " alt="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems. Note: This timeline is schematic; events are plotted at their calendar years but the spacing is not to scale." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+    <figcaption class="figure-caption">
+      Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems. Note: This timeline is schematic; events are plotted at their calendar years but the spacing is not to scale.
+
+    </figcaption>
+  
+</figure>
+
+<p>Python environment management has drastically changed since the year 2000.
+We provide the below timeline synopsis of some of the bigger changes to this domain for Python.
+Keep in mind that many of these tools are still supported today but some are deprecated and or in the process of being removed (such as <code class="language-plaintext highlighter-rouge">distutils</code>, which was removed from Python 3.12 and future versions).</p>
+
+<ol>
+  <li><strong>2000: <code class="language-plaintext highlighter-rouge">distutils</code> &amp; <code class="language-plaintext highlighter-rouge">setup.py</code></strong>
+    <ul>
+      <li>The original Python standard library tools for packaging and distributing Python projects. <a href="https://docs.python.org/3.11/library/distutils.html"><code class="language-plaintext highlighter-rouge">distutils</code></a> allowed developers to define how their projects should be built and installed using a <a href="https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#setup-py"><code class="language-plaintext highlighter-rouge">setup.py</code></a> script.</li>
+    </ul>
+  </li>
+  <li><strong>2004: <code class="language-plaintext highlighter-rouge">setuptools</code></strong>
+    <ul>
+      <li><a href="https://setuptools.pypa.io/en/latest/userguide/"><code class="language-plaintext highlighter-rouge">setuptools</code></a> is an enhanced library building on <code class="language-plaintext highlighter-rouge">distutils</code> that introduced additional features like dependency management, easy installation, and entry points, becoming the de facto standard for Python packaging.</li>
+    </ul>
+  </li>
+  <li><strong>2007: <code class="language-plaintext highlighter-rouge">virtualenv</code> (external)</strong>
+    <ul>
+      <li><a href="https://github.com/pypa/virtualenv"><code class="language-plaintext highlighter-rouge">virtualenv</code></a> is a third-party tool to create isolated Python environments, preventing conflicts between project dependencies by isolating them per project.</li>
+    </ul>
+  </li>
+  <li><strong>2008: <code class="language-plaintext highlighter-rouge">pip</code></strong>
+    <ul>
+      <li><a href="https://github.com/pypa/pip"><code class="language-plaintext highlighter-rouge">pip</code></a> is a package installer for Python that greatly simplified the process of installing and managing Python packages from the Python Package Index (PyPI).</li>
+    </ul>
+  </li>
+  <li><strong>2010: <code class="language-plaintext highlighter-rouge">requirements.txt</code> (widespread adoption)</strong>
+    <ul>
+      <li>The <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/"><code class="language-plaintext highlighter-rouge">requirements.txt</code></a> file is a plain text file format listing project dependencies, which became a standard way to specify and share the exact package versions needed for a Python project.</li>
+    </ul>
+  </li>
+  <li><strong>2012: <code class="language-plaintext highlighter-rouge">conda</code></strong>
+    <ul>
+      <li><a href="https://docs.conda.io/projects/conda/en/stable/"><code class="language-plaintext highlighter-rouge">conda</code></a> is a cross-platform package and environment manager popular especially in the scientific Python community, able to manage non-Python dependencies as well.</li>
+    </ul>
+
+    <p><strong>2012: <code class="language-plaintext highlighter-rouge">venv</code> (stdlib)</strong></p>
+    <ul>
+      <li>The inclusion of <a href="https://docs.python.org/3/library/venv.html"><code class="language-plaintext highlighter-rouge">venv</code></a> in Python’s standard library to create lightweight virtual environments without requiring external tools.</li>
+    </ul>
+  </li>
+  <li><strong>2017: <code class="language-plaintext highlighter-rouge">pyproject.toml</code> (PEP 518)</strong>
+    <ul>
+      <li>A new configuration file standard called <a href="https://peps.python.org/pep-0518/"><code class="language-plaintext highlighter-rouge">pyproject.toml</code> (PEP 518)</a> aimed at improving and standardizing Python project build metadata, allowing tools to declare build dependencies.</li>
+    </ul>
+
+    <p><strong>2017: <code class="language-plaintext highlighter-rouge">pipenv</code></strong></p>
+    <ul>
+      <li><a href="https://github.com/pypa/pipenv"><code class="language-plaintext highlighter-rouge">pipenv</code></a> is a tool combining package management and virtual environment management in one, focusing on ease of use and reproducible environments.</li>
+    </ul>
+
+    <p><strong>2017: <code class="language-plaintext highlighter-rouge">hatch</code></strong></p>
+    <ul>
+      <li><a href="https://github.com/pypa/hatch"><code class="language-plaintext highlighter-rouge">hatch</code></a> is a modern project manager and build tool focusing on simplicity, speed, and support for multiple Python versions and environments.</li>
+    </ul>
+  </li>
+  <li><strong>2018: <code class="language-plaintext highlighter-rouge">poetry</code></strong>
+    <ul>
+      <li><a href="https://github.com/python-poetry/poetry"><code class="language-plaintext highlighter-rouge">poetry</code></a> is a comprehensive packaging and dependency management tool that uses <code class="language-plaintext highlighter-rouge">pyproject.toml</code>, aiming to simplify dependency resolution and publishing.</li>
+    </ul>
+  </li>
+  <li><strong>2023: <code class="language-plaintext highlighter-rouge">uv</code></strong>
+    <ul>
+      <li><a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a> is a newer tool in the ecosystem (likely referring to a fast build or packaging tool, or a modern environment manager) reflecting ongoing innovation in Python packaging and environment management.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="where-are-packages-hosted">Where are packages hosted?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/pip_conda_pypi_forge.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Python’s packaging ecosystem mainly revolves mostly around PyPI and Conda.
+PyPI is the official repository for Python packages and is accessed through <code class="language-plaintext highlighter-rouge">pip</code>.
+It handles pure Python packages well but struggles with packages that require non-Python dependencies or system libraries, which can make installation tricky across different platforms.</p>
+
+<p>Conda is a package and environment manager that supports both Python and non-Python packages, making it popular in data science and scientific computing.
+It simplifies managing complex dependencies but can be slower and sometimes inconsistent due to multiple package channels.
+Choosing between PyPI and Conda often depends on whether you need pure Python packages or a more complete environment with system-level libraries.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/conda_yield_pypi.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Using PyPI and Conda together can be challenging because they manage packages and dependencies differently, which can lead to conflicts and unpredictable behavior.
+Conda packages often bundle compiled libraries with carefully managed build strings, whereas pip installs only Python wheels or source distributions and isn’t aware of Conda’s binary packages.
+If you install a library with pip after creating a Conda environment, pip may overwrite a Conda‐provided binary (or install a version Conda doesn’t know about), leading to mismatches.
+Intermixing dependencies also may involve multiple package manager CLIs (e.g. <code class="language-plaintext highlighter-rouge">conda</code> and <code class="language-plaintext highlighter-rouge">pip</code>) which can introduce challenges with troubleshooting (each have distinct sub-commands and flags).
+This complexity often forces developers to carefully manage and isolate environments or choose one system over the other to avoid issues.</p>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/pypi_to_forge.png" style="
+        width: 90%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>A common approach in Python packaging is to first develop and release a package to PyPI, where it can be easily shared and installed using pip. 
+Once the package is stable and widely used, it may be packaged for Conda—often via the community-maintained conda-forge channel—to support users who rely on Conda environments, especially in scientific computing. 
+This pipeline allows developers to reach the broadest audience while maintaining compatibility with both ecosystems.</p>
+
+<h2 id="how-are-python-packages-distributed">How are Python packages distributed?</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/python_distribution_formats.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>In Python packaging, <a href="https://packaging.python.org/en/latest/specifications/section-distribution-formats/">package distributions</a> are the artifacts that users download and install to use a Python project—most commonly as <code class="language-plaintext highlighter-rouge">.whl</code> (wheel) or <code class="language-plaintext highlighter-rouge">.tar.gz</code> (source distribution) files.
+A wheel is a pre-built, binary package format (<code class="language-plaintext highlighter-rouge">.whl</code>) designed for fast installation without needing to compile code (note: a <code class="language-plaintext highlighter-rouge">.whl</code> is really a <code class="language-plaintext highlighter-rouge">.zip</code> so you can unzip it to take a look at the contents).
+Wheels are specific to each operating system type and may include already-compiled extensions from other languages.
+Wheels are the preferred format for most users and is what tools like pip look for first on PyPI.
+In contrast, a source distribution (<code class="language-plaintext highlighter-rouge">.tar.gz</code>, often called an <code class="language-plaintext highlighter-rouge">sdist</code>) contains the raw source code and build instructions; installing from it may require compiling extensions written in other languages, e.g. C, C++, or Rust or resolving more complex dependencies.
+Source distributions are essential for reproducibility, auditing, and as a fallback when no wheel is available for the user’s platform.</p>
+
+<p>Conda packages, on the other hand, belong to a separate ecosystem built around the Conda package manager. A <a href="https://docs.conda.io/projects/conda-build/en/stable/resources/package-spec.html">Conda package</a> is a <code class="language-plaintext highlighter-rouge">.tar.bz2</code> or <code class="language-plaintext highlighter-rouge">.conda</code> archive that includes not just Python code, but also compiled binaries and system-level dependencies.
+This makes Conda particularly useful for scientific computing, where packages often require compiled C/C++/Fortran libraries.
+Unlike wheels, Conda packages are not tied to Python’s internal packaging standards - they’re built using Conda-specific metadata and managed by Conda environments.
+While PyPI and pip dominate general-purpose Python packaging, the Conda ecosystem provides a more holistic, environment-based approach—at the cost of being somewhat siloed and less compatible with pure Python tools.</p>
+
+<p>These files are typically uploaded using specific application programming interfaces (APIs) to PyPI, conda-forge, or other similar locations.</p>
+
+<h2 id="uv-overview"><code class="language-plaintext highlighter-rouge">uv</code> overview</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/uv_magnifying_glass.png" style="
+        width: 25%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Below we&#8217;ll provide a quick overview of using <code class="language-plaintext highlighter-rouge">uv</code> to accomplish various environment management and packaging tasks.</p>
+
+<h3 id="installing">Installing</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LsSf</span> https://astral.sh/uv/install.sh | sh
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">uv</code> can be installed using a curl reference to a script for your local system.
+Afterwards, <code class="language-plaintext highlighter-rouge">uv</code> becomes a CLI command you may use through your terminal session.
+See the <a href="https://docs.astral.sh/uv/getting-started/installation/">installation documentation</a> for more information.</p>
+
+<h3 id="intitializing-a-project">Intitializing a project</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a dir for the project and cd into it</span>
+<span class="nb">mkdir </span>project_name <span class="o">&amp;&amp;</span> <span class="nb">cd </span>project_name
+<span class="c"># initialize a uv project within the dir</span>
+uv init <span class="nt">--package</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">uv</code> provides a nice initializer which can give you boilerplate files to work from.
+We suggest using the <code class="language-plaintext highlighter-rouge">--package</code> structure which helps you create a Pythonic package and uses best practices.
+Afterwards, the structure will look like the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tree ./
+<span class="c"># tree output</span>
+./
+├── pyproject.toml
+├── README.md
+└── src
+    └── project_name
+        └── __init__.py
+
+3 directories, 3 files
+</code></pre></div></div>
+
+<p>Let&#8217;s break down this file structure so we know what we&#8217;re working with:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">pyproject.toml</code>: This file includes project metadata, configuration data, and (eventually) package dependency specifications.</li>
+  <li><code class="language-plaintext highlighter-rouge">README.md</code>: This file is often used to help introduce projects and talk about the &#8220;what&#8221;, &#8220;why&#8221;, and &#8220;how&#8221; at a high level. It helps users get acquainted with what the project focuses on.</li>
+  <li><code class="language-plaintext highlighter-rouge">src</code>: This directory is becoming standard practice for all source code within Python projects. It helps distinguish from documentation and &#8220;non-production&#8221; code.</li>
+  <li><code class="language-plaintext highlighter-rouge">src/project_name</code>: This directory is typically used to house a Python &#8220;package&#8221; (or a collection of Python modules, a.k.a <code class="language-plaintext highlighter-rouge">.py</code> files).</li>
+  <li><code class="language-plaintext highlighter-rouge">src/project_name/__init__.py</code>: This optional file is used to help initialize a Python project when it&#8217;s imported. It typically will include imports to specific public-facing Python objects you wish to share through the work. It also may configure the project.</li>
+</ul>
+
+<h3 id="adding-dependencies-with-uv">Adding dependencies with <code class="language-plaintext highlighter-rouge">uv</code></h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># add a dependency to the project</span>
+uv add cowsay
+
+<span class="c"># add a dependency to a "dev" dependency group for the project</span>
+uv add pytest <span class="nt">--group</span> dev
+</code></pre></div></div>
+
+<p>We can add external dependencies to the project using the <code class="language-plaintext highlighter-rouge">uv add</code> command.
+<code class="language-plaintext highlighter-rouge">uv</code> enables you to leverage dependency groups which are a way to distinguish between &#8220;production&#8221; dependencies and &#8220;development&#8221; dependencies.
+For example, we might want to include <code class="language-plaintext highlighter-rouge">pytest</code> for software testing during development of the project so we could add it to the <code class="language-plaintext highlighter-rouge">dev</code> group (we likely won&#8217;t need <code class="language-plaintext highlighter-rouge">pytest</code> for the production code).
+This helps keep the production dependencies light by only including the necessary packages if someone uses non-development work from the project.
+Using <code class="language-plaintext highlighter-rouge">uv add</code> (or similarly, <code class="language-plaintext highlighter-rouge">uv sync</code>, which updates the environment) also automatically creates a <code class="language-plaintext highlighter-rouge">uv.lock</code> lockfile, which is important for consistent environment mangement.</p>
+
+<h4 id="lockfiles-and-reproducibility">Lockfiles and reproducibility</h4>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/lockfile_for_reproducibility.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Many modern Python environment managers automatically make use of lockfiles.
+Lockfiles capture the exact dependency graph and package versions, ensuring that environments can be recreated byte-for-byte.
+Be sure to check out our <a href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html">in-depth blog post on lockfiles</a> for more information.
+<code class="language-plaintext highlighter-rouge">uv</code> generates a <a href="https://docs.astral.sh/uv/concepts/projects/layout/#the-lockfile"><code class="language-plaintext highlighter-rouge">uv.lock</code> file</a> automatically, giving you:</p>
+
+<ul>
+  <li><strong>Deterministic installs</strong>: No surprises when sharing environments.</li>
+  <li><strong>Auditability</strong>: Pinpoint which package versions are in use.</li>
+  <li><strong>Collaboration</strong>: Team members and CI pipelines use the same environment.</li>
+</ul>
+
+<p><a href="https://peps.python.org/pep-0751/">PEP 751</a> introduces some standardization for Python lockfiles (<code class="language-plaintext highlighter-rouge">pylock.toml</code>) but many tools have not yet adopted this standard.
+<code class="language-plaintext highlighter-rouge">uv</code>&#8217;s lockfile data cannot yet be fully expressed in <code class="language-plaintext highlighter-rouge">pylock.toml</code> files and as a result it still depends on <code class="language-plaintext highlighter-rouge">uv.lock</code> files.
+It&#8217;s like that the Python standard for lockfiles will evolve over time and could eventually converge (meaning you&#8217;d be able to use multiple tools with the same lockfile).</p>
+
+<h3 id="processing-code-through-uv-environments">Processing code through <code class="language-plaintext highlighter-rouge">uv</code> environments</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the boilerplate code through the uv environment</span>
+<span class="c"># note: the `python -c` command flag executes inline code.</span>
+uv run python <span class="nt">-c</span> <span class="s2">"import project_name; project_name.main()"</span>
+
+<span class="c"># run pytest through the uv environment</span>
+uv run pytest
+</code></pre></div></div>
+
+<p>When we want to process code through the <code class="language-plaintext highlighter-rouge">uv</code> environment we can use the <code class="language-plaintext highlighter-rouge">uv run</code> command.
+If you&#8217;re used to using <code class="language-plaintext highlighter-rouge">conda</code> environments this is akin to <code class="language-plaintext highlighter-rouge">conda run -n env_name python</code>.
+Note: <code class="language-plaintext highlighter-rouge">uv</code> does not enable you to activate or &#8220;enter into&#8221; an implicit shell for the environement like <code class="language-plaintext highlighter-rouge">conda activate</code>.
+Instead, <code class="language-plaintext highlighter-rouge">uv</code> uses declarative syntax to ensure the command-line interface (CLI) to the environment is explicit.</p>
+
+<p>When working with other projects you might also need to run an <code class="language-plaintext highlighter-rouge">install</code> command in order to have access to the environment.
+<code class="language-plaintext highlighter-rouge">uv</code> skips this step and automatically will install the environment on issuing a <code class="language-plaintext highlighter-rouge">uv run</code> (there is no <code class="language-plaintext highlighter-rouge">uv install</code> command).</p>
+
+<p>When we use <code class="language-plaintext highlighter-rouge">uv run</code> several things happen:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">uv</code> will attempt to fetch a system or remote version of Python as stipulated in the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file (or make a guess at a version of Python to use).</li>
+  <li><code class="language-plaintext highlighter-rouge">uv</code> will install or update an ephemeral virtual environment under a <code class="language-plaintext highlighter-rouge">~/.venv</code> directory (and use this environment to execute the process).</li>
+</ul>
+
+<h3 id="building-python-packages-for-distribution">Building Python packages for distribution</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># build a package for distribution</span>
+uv build
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">uv</code> provides a build system which enables you to build packages for distribution through the command <code class="language-plaintext highlighter-rouge">uv build</code>.
+By default it creates Pythonic <code class="language-plaintext highlighter-rouge">.whl</code> and <code class="language-plaintext highlighter-rouge">.tar.gz</code> formats that are common to PyPI.
+Note that you still have to upload these through other means in order for them to be hosted on common platforms like PyPI.
+We recommend using the <a href="https://docs.pypi.org/trusted-publishers/">Trusted Publisher</a> method for publishing your packages once readied, which takes advantage of GitHub Actions or similar continuous integration / continuous deployment (CI/CD) tooling.</p>
+
+<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[build-system]</span>
+<span class="py">build-backend</span> <span class="p">=</span> <span class="s">"setuptools.build_meta"</span>
+<span class="py">requires</span> <span class="p">=</span> <span class="p">[</span> <span class="py">"setuptools&gt;</span><span class="p">=</span><span class="mi">64</span><span class="s">", "</span><span class="py">setuptools-scm&gt;</span><span class="p">=</span><span class="mi">8</span><span class="s">" ]</span><span class="err">
+</span></code></pre></div></div>
+
+<p>Note that you can change your build backends within the <code class="language-plaintext highlighter-rouge">pyproject.toml</code> configuration (instead of using <code class="language-plaintext highlighter-rouge">uv-build</code> by default).
+For example, if you wanted to use <code class="language-plaintext highlighter-rouge">setuptools</code> you could stipulate something like the above in your <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file instead.
+This can assist with areas where you may like to use dynamic versioning for your work through projects like <a href="https://setuptools-scm.readthedocs.io/en/latest/usage/"><code class="language-plaintext highlighter-rouge">setuptools-scm</code></a>.</p>
+
+<h2 id="migrating-existing-environments-to-uv">Migrating existing environments to <code class="language-plaintext highlighter-rouge">uv</code></h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/set-website/images/migrate-to-uv.png" style="
+        width: 70%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
+  </a>
+  
+</figure>
+
+<p>Reading this, are you thinking you might want to move your project environment management to <code class="language-plaintext highlighter-rouge">uv</code> but sweating the idea that it will be complicated?
+For users looking to migrate existing environments to <code class="language-plaintext highlighter-rouge">uv</code>, tools like <a href="https://github.com/mkniewallner/migrate-to-uv"><code class="language-plaintext highlighter-rouge">migrate-to-uv</code></a> provide a transition path by converting existing <code class="language-plaintext highlighter-rouge">requirements.txt</code> or, for example, Poetry-based <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files.
+This can provide a streamlined and low-cost way to transition projects over to <code class="language-plaintext highlighter-rouge">uv</code>.</p>
+
+<h2 id="a-uv-template-for-new-projects">A <code class="language-plaintext highlighter-rouge">uv</code> template for new projects</h2>
+
+<p>If you&#8217;re interested to use <code class="language-plaintext highlighter-rouge">uv</code> and would like to start through a template consider using <a href="https://github.com/CU-DBMI/template-uv-python-research-software"><code class="language-plaintext highlighter-rouge">template-uv-python-research-software</code></a>.
+This project is a <code class="language-plaintext highlighter-rouge">copier</code> template that lets you quickly get started with <code class="language-plaintext highlighter-rouge">uv</code> and other boilerplate files for a Python research software project (including Jupyter notebook support).
+Please see the documentation of the project for more information on what&#8217;s included in the template.</p>
+
+<p>For example, you can use the following commands to use this template:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># install copier</span>
+pip <span class="nb">install </span>copier
+
+<span class="c"># use the template to create a new copy</span>
+<span class="c"># where "new_project" is a new directory which</span>
+<span class="c"># will include the template copy files.</span>
+copier copy https://github.com/CU-DBMI/template-uv-python-research-software new_project
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<blockquote>
+  <p>“The best tool is the one you don’t have to think about using.” - common adage</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">uv</code> from Astral offers research software engineers a fast, portable, and standards‑compliant environment manager that meets or exceeds the capabilities of existing tools.
+By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -496,7 +920,7 @@ Keep in mind these are estimations and don&#8217;t include additional other char
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a></li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a></li>
   <li>GO FAIR Initiative: <a href="https://www.go-fair.org/">https://www.go-fair.org/</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -968,7 +1392,7 @@ By adopting a solid testing strategy, you&#8217;re taking a significant step tow
   <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
   <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
   <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1281,7 +1705,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1566,7 +1990,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1983,7 +2407,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2280,7 +2704,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2702,7 +3126,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3137,7 +3561,7 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2025-06-12T15:06:59+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3410,480 +3834,4 @@ Data managed by DVC allows software to be built in such a way that version preco
 These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
 Implementing this idea has several advantages from source versioning, visibility, and replicability.
 One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry><entry><title type="html">Tip of the Week: Python Packaging as Publishing</title><link href="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html" rel="alternate" type="text/html" title="Tip of the Week: Python Packaging as Publishing" /><published>2023-09-05T00:00:00+00:00</published><updated>2025-05-13T21:08:11+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/09/05/Python-Packaging-as-Publishing.html"><![CDATA[<h1 id="tip-of-the-week-python-packaging-as-publishing">Tip of the Week: Python Packaging as Publishing</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<!-- excerpt start -->
-
-<p>Python packaging is the craft of preparing for and reaching distribution of your Python work to wider audiences. Following conventions for packaging help your software work become more understandable, trustworthy, and connected (to others and their work). Taking advantage of common packaging practices also strengthens our collective superpowers: collaboration. This post will cover preparation aspects of packaging, readying software work for wider distribution.</p>
-
-<!-- excerpt end -->
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong></p>
-
-<p>Use Pythonic packaging tools and techniques to help avoid <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> and unwanted <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> and increase your development velocity. Increase understanding with unsurprising directory structures like those exhibited in <a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a> or <a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a>. Enhance trust by being authentic on source control systems like GitHub (<a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">by customizing your profile</a>), staying up to date with the <a href="https://devguide.python.org/versions/">latest supported versions of Python</a>, and using security linting tools like <a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code></a> through <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">visible + automated GitHub Actions ✅ checks</a>. Connect your projects to others using <a href="https://citation-file-format.github.io/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> files</a>, <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code> files</a>, and using environment + packaging tools like <a href="https://python-poetry.org/docs/"><code class="language-plaintext highlighter-rouge">poetry</code></a> to help others reproduce the same results from your code.</p>
-
-<h2 id="why-practice-packaging">Why practice packaging?</h2>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="How are a page with some text and a book different">
-    <img src="/set-website/images/text-vs-book.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="How are a page with some text and a book different" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      How are a page with some text and a book different?
-
-    </figcaption>
-  
-</figure>
-
-<p>The practice of Python packaging efforts is similar to that of publishing a book. Consider how a bag of text is different from a book. How and <em>why</em> are these things different?</p>
-
-<ul>
-  <li>A book has commonly understood sequencing of content (i.e. copyright page, then title page, then body content pages&#8230;).</li>
-  <li>A book often cites references and acknowledges other work explicitly.</li>
-  <li>A book undergoes a manufacturing process which allows the text to be received in many places the same way.</li>
-</ul>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Code undergoing packaging to achieve understanding, trust, and connection for an audience.">
-    <img src="/set-website/images/python-packaging-to-audience.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Code undergoing packaging to achieve understanding, trust, and connection for an audience." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Code undergoing packaging to achieve understanding, trust, and connection for an audience.
-
-    </figcaption>
-  
-</figure>
-
-<p>These can be thought of metaphors when it comes to packaging in Python. Books have a smell which sometimes comes from how it was stored, treated, or maintained. While there are pleasant book smells, they might also smell soggy from being left in the rain or stored without maintenance for too long. Just like books, software can sometimes have negative <a href="https://en.wikipedia.org/wiki/Code_smell">code smells</a> indicating a lack of care or less sustainable condition. Following good packaging practices helps to avoid unwanted code smells while increasing development velocity, maintainability of software through understandability, trustworthiness of the content, and connection to other projects.</p>
-
-<div class="alert" style="--color: #d946ef">
-  
-  <i class="icon fa-solid fa-lightbulb"></i>
-  <div class="alert-content">
-    
-<p>Note: these techniques can also work just as well for <a href="https://en.wikipedia.org/wiki/Inner_source">inner source</a> collaboration (private or proprietary development within organizations)! Don&#8217;t hesitate to use these on projects which may not be public facing in order to make development and maintenance easier (if only for you).</p>
-
-  </div>
-</div>
-
-<div class="alert" style="--color: #6366f1">
-  
-  <i class="icon fa-solid fa-circle-question"></i>
-  <div class="alert-content">
-    
-<p><strong>&#8220;Wait, what are Python packages?&#8221;</strong></p>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_package/
-│   __init__.py
-│   module_a.py
-│   module_b.py
-</code></pre></div></div>
-
-<p>A Python <strong>package</strong> is a collection of modules (<code class="language-plaintext highlighter-rouge">.py</code> files) that usually include an &#8220;initialization file&#8221; <code class="language-plaintext highlighter-rouge">__init__.py</code>. This post will cover the craft of <strong>packaging</strong> which can include one or many <em>packages</em>.</p>
-
-  </div>
-</div>
-
-<h2 id="understanding-common-directory-structures">Understanding: common directory structures</h2>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
-├── README.md
-├── LICENSE.txt
-├── pyproject.toml
-├── docs
-│   └── <span class="nb">source</span>
-│       └── index.md
-├── src
-│   └── package_name
-│       └── __init__.py
-│       └── module_a.py
-└── tests
-    └── __init__.py
-    └── test_module_a.py
-</code></pre></div></div>
-
-<p>Python Packaging today generally assumes a specific directory design.
-Following this convention generally improves the <strong>understanding</strong> of your code. We&#8217;ll cover each of these below.</p>
-
-<h3 id="project-root-files">Project root files</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
-├── README.md
-├── LICENSE.txt
-├── pyproject.toml
-│ ...
-</code></pre></div></div>
-
-<ul>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">README.md</code> file</strong> is a <a href="https://en.wikipedia.org/wiki/Markdown">markdown</a> file with documentation including project goals and other short notes about installation, development, or usage. The <code class="language-plaintext highlighter-rouge">README.md</code> file is akin to a book jacket blurb which quickly tells the audience what the book will be about.</li>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file</strong> is a text file which indicates licensing details for the project. It often includes information about how it may be used and protects the authors in disputes. The <code class="language-plaintext highlighter-rouge">LICENSE.txt</code> file can be thought of like a book&#8217;s copyright page. See <a href="https://choosealicense.com/">https://choosealicense.com/</a> for more details on selecting an open source license.</li>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file</strong> is a Python-specific <a href="https://en.wikipedia.org/wiki/TOML">TOML</a> file which helps organize how the project is used and built for wider distribution. The <code class="language-plaintext highlighter-rouge">pyproject.toml</code> file is similar to a book&#8217;s table of contents, index, and printing or production specification.</li>
-</ul>
-
-<h3 id="project-sub-directories">Project sub-directories</h3>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>project_directory
-│ ...
-├── docs
-│   └── <span class="nb">source</span>
-│       └── index.md
-├── src
-│   └── package_name
-│       └── __init__.py
-│       └── module_a.py
-└── tests
-    └── __init__.py
-    └── test_module_a.py
-</code></pre></div></div>
-
-<ul>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">docs</code> directory</strong> is used for in-depth documentation and related documentation build code (for example, when building documentation websites, aka &#8220;docsites&#8221;). The <code class="language-plaintext highlighter-rouge">docs</code> directory includes information similar to a book&#8217;s &#8220;study guide&#8221;, providing content surrounding how to best make use of and understand the content found within.</li>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">src</code> directory</strong>  includes primary source code for use in the project. Python projects generally use a nested package directory with modules and sub-packages. The <code class="language-plaintext highlighter-rouge">src</code> directory is like a book&#8217;s body or general content (perhaps thinking of modules as chapters or sections of related ideas).</li>
-  <li>The <strong><code class="language-plaintext highlighter-rouge">tests</code> directory</strong> includes testing code for validating functionality of code found in the <code class="language-plaintext highlighter-rouge">src</code> directory. The above follows <a href="https://docs.pytest.org/">pytest</a> conventions. The <code class="language-plaintext highlighter-rouge">tests</code> directory is for code which acts like a book&#8217;s early reviewers or editors, making sure that if you change things in <code class="language-plaintext highlighter-rouge">src</code> the impacts remain as expected.</li>
-</ul>
-
-<h3 id="common-directory-structure-examples">Common directory structure examples</h3>
-
-<p>The Python directory structure described above can be witnessed in the wild from the following resources. These can serve as a great resource for starting or adjusting your own work.</p>
-
-<ul>
-  <li><a href="https://github.com/pypa/sampleproject"><code class="language-plaintext highlighter-rouge">pypa/sampleproject</code></a></li>
-  <li><a href="https://github.com/scientific-python/cookie"><code class="language-plaintext highlighter-rouge">scientific-python/cookie</code></a></li>
-  <li><a href="https://github.com/microsoft/python-package-template"><code class="language-plaintext highlighter-rouge">microsoft/python-package-template</code></a></li>
-</ul>
-
-<h2 id="trust-building-audience-confidence">Trust: building audience confidence</h2>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="How much does your audience trust your work .">
-    <img src="/set-website/images/package-audience-trust.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="How much does your audience trust your work ." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      How much does your audience trust your work?.
-
-    </figcaption>
-  
-</figure>
-
-<p>Building an understandable body of content helps tremendously with audience trust. What else can we do to enhance project trust? The following elements can help improve an audience&#8217;s trust in packaged Python work.</p>
-
-<h3 id="source-control-authenticity">Source control authenticity</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Comparing the difference between a generic or anonymous user and one with greater authenticity.">
-    <img src="/set-website/images/source-control-authenticity.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Comparing the difference between a generic or anonymous user and one with greater authenticity." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Comparing the difference between a generic or anonymous user and one with greater authenticity.
-
-    </figcaption>
-  
-</figure>
-
-<p>Be authentic! Fill out your profile to help your audience know the author and why you do what you do. See here for <a href="https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/about-your-profile">GitHub&#8217;s documentation on filling out your profile</a>. Doing this may seem irrelevant but can go a long way to making technical work more relatable.</p>
-
-<ul>
-  <li>Add a profile picture of yourself or something fun.</li>
-  <li>Set your profile description to information which is both professionally accurate and unique to you.</li>
-  <li>Show or link to work which you feel may be relevant or exciting to those in your audience.</li>
-</ul>
-
-<h3 id="staying-up-to-date-with-supported-python-releases">Staying up to date with supported Python releases</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Major Python releases and their support status.">
-    <img src="/set-website/images/python-version-status.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Major Python releases and their support status." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Major Python releases and their support status.
-
-    </figcaption>
-  
-</figure>
-
-<p>Use Python versions which are supported (this changes over time).
-Python versions which are end-of-life may be difficult to support and are a sign of <a href="https://en.wikipedia.org/wiki/Software_rot">code decay</a> for projects. Specify the version of Python which is compatiable with your project by using environment specifications such as <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files and related packaging tools (more on this below).</p>
-
-<ul>
-  <li>See here for <a href="https://devguide.python.org/versions/">updated information on Python version status</a>.</li>
-  <li>Staying up to date with supported releases oftentimes can result in performance or other similar benefits (later versions usually include improvements!).</li>
-</ul>
-
-<h3 id="security-linting-and-visible-checks-with-github-actions">Security linting and visible checks with GitHub Actions</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Make an effort to inspect your package for known security issues.">
-    <img src="/set-website/images/package-magnifying-glass.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Make an effort to inspect your package for known security issues." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Make an effort to inspect your package for known security issues.
-
-    </figcaption>
-  
-</figure>
-
-<p>Use security vulnerability linters to help prevent undesirable or risky processing for your audience. Doing this both practical to avoid issues and conveys that you care about those using your package!</p>
-
-<ul>
-  <li><a href="https://github.com/PyCQA/bandit"><code class="language-plaintext highlighter-rouge">PyCQA/bandit</code>`</a>: checks Python code</li>
-  <li><a href="https://github.com/pyupio/safety"><code class="language-plaintext highlighter-rouge">pyupio/safety</code>`</a>: checks Python dependencies</li>
-  <li><a href="https://github.com/gitleaks/gitleaks"><code class="language-plaintext highlighter-rouge">gitleaks</code></a>: checks for sensitive passwords, keys, or tokens</li>
-</ul>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.">
-    <img src="/set-website/images/gh-actions-checkmark.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      The green checkmark from successful GitHub Actions runs can offer a sense of reassurance to your audience.
-
-    </figcaption>
-  
-</figure>
-
-<p>Combining GitHub actions with security linters and tests from your software validation suite can add an observable ✅ for your project.
-This provides the audience with a sense that you&#8217;re transparently testing and sharing results of those tests.</p>
-
-<ul>
-  <li>See <a href="https://docs.github.com/en/actions">GitHub&#8217;s documentation on this topic for more information</a>.</li>
-  <li>See also <a href="https://cu-dbmi.github.io/set-website/2023/03/15/Automate-Software-Workflows-with-Github-Actions.html">the DBMI Software Engineering Team&#8217;s blog post: &#8220;Automate Software Workflows with Github Actions&#8221;</a></li>
-</ul>
-
-<h2 id="connection-personal-and-inter-package-relationships">Connection: personal and inter-package relationships</h2>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="How does your package connect with other work and people">
-    <img src="/set-website/images/package-connections.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="How does your package connect with other work and people" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      How does your package connect with other work and people?
-
-    </figcaption>
-  
-</figure>
-
-<p>Understandability and trust set the stage for your project&#8217;s <strong>connection</strong> to other people and projects. What can we do to facilitate connection with our project? Use the following techniques to help enhance your project&#8217;s connection to others and their work.</p>
-
-<h3 id="acknowledging-authors-and-referenced-work-with-citationcff">Acknowledging authors and referenced work with CITATION.cff</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/images/citation-cff-icon.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-</figure>
-
-<p>Add a <strong><code class="language-plaintext highlighter-rouge">CITATION.cff</code></strong> file to your project root in order to describe project relationships and acknowledgements in a standardized way. The <a href="https://citation-file-format.github.io/">CFF format</a> is also <a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-citation-files">GitHub compatible</a>, making it easier to cite your project.</p>
-
-<ul>
-  <li>This is similar to a book&#8217;s credits, acknowledgements, dedication, and author information sections.</li>
-  <li>See here for a <a href="https://citation-file-format.github.io/cff-initializer-javascript/#/"><code class="language-plaintext highlighter-rouge">CITATION.cff</code> file generator (and updater)</a>.</li>
-</ul>
-
-<h3 id="reaching-collaborators-using-contributingmd">Reaching collaborators using CONTRIBUTING.md</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="CONTRIBUTING.md documents can help you collaborate with others.">
-    <img src="/set-website/images/contributing-file-with-handshake.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="CONTRIBUTING.md documents can help you collaborate with others." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      CONTRIBUTING.md documents can help you collaborate with others.
-
-    </figcaption>
-  
-</figure>
-
-<p>Provide a <strong><code class="language-plaintext highlighter-rouge">CONTRIBUTING.md</code></strong> file to your project root so as to make clear support details, development guidance, code of conduct, and overall documentation surrounding how the project is governed.</p>
-
-<ul>
-  <li>See GitHub&#8217;s documentation on <a href="https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors">&#8220;Setting guidelines for repository contributors&#8221;</a></li>
-  <li>See opensource.guide&#8217;s section on <a href="https://opensource.guide/starting-a-project/#writing-your-contributing-guidelines">&#8220;Writing your contributing guidelines&#8221;</a></li>
-</ul>
-
-<h3 id="environment-management-reproducibility-as-connected-project-reality">Environment management reproducibility as connected project reality</h3>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="Environment and packaging managers can help you connect with your audience.">
-    <img src="/set-website/images/environment-management-tooling.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="Environment and packaging managers can help you connect with your audience." loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-    <figcaption class="figure-caption">
-      Environment and packaging managers can help you connect with your audience.
-
-    </figcaption>
-  
-</figure>
-
-<p>Code without an environment specification is difficult to run in a consistent way. This can lead to &#8220;works on my machine&#8221; scenarios where different things happen for different people, reducing the chance that people can connect with a shared reality for how your code should be used.</p>
-
-<blockquote>
-  <p><strong>&#8220;But why do we have to switch the way we do things?&#8221;</strong>
-<em>We&#8217;ve always been switching approaches (software approaches evolve over time)!</em> A brief history of Python environment and packaging tooling:</p>
-
-  <ol>
-    <li><strong><code class="language-plaintext highlighter-rouge">distutils</code>, <code class="language-plaintext highlighter-rouge">easy_install</code> + <code class="language-plaintext highlighter-rouge">setup.py</code></strong> <br />(primarily used during 1990&#8217;s - early 2000&#8217;s)</li>
-    <li><strong><code class="language-plaintext highlighter-rouge">pip</code>, <code class="language-plaintext highlighter-rouge">setup.py</code> + <code class="language-plaintext highlighter-rouge">requirements.txt</code></strong> <br />(primarily used during late 2000&#8217;s - early 2010&#8217;s)</li>
-    <li><strong><code class="language-plaintext highlighter-rouge">poetry</code> + <code class="language-plaintext highlighter-rouge">pyproject.toml</code></strong> <br />(began use around late 2010&#8217;s - ongoing)</li>
-  </ol>
-</blockquote>
-
-<h4 id="using-python-poetry-for-environment-and-packaging-management">Using Python <code class="language-plaintext highlighter-rouge">poetry</code> for environment and packaging management</h4>
-
-<figure class="figure">
-  <a class="figure-image" aria-label="figure link">
-    <img src="/set-website/images/poetry-icon.png" style="
-        width: auto;
-        max-height: unset;
-      " alt="figure image" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;" />
-  </a>
-  
-</figure>
-
-<p><a href="https://github.com/python-poetry/poetry">Poetry</a> is one Pythonic environment and packaging manager which can help increase reproducibility using <code class="language-plaintext highlighter-rouge">pyproject.toml</code> files. It&#8217;s one of many other alternatives such as <a href="https://hatch.pypa.io/latest/"><code class="language-plaintext highlighter-rouge">hatch</code></a> and <a href="https://pipenv.pypa.io/en/latest/"><code class="language-plaintext highlighter-rouge">pipenv</code></a>.</p>
-
-<h5 id="poetry-directory-structure-template-use"><code class="language-plaintext highlighter-rouge">poetry</code> directory structure template use</h5>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry new <span class="nt">--name</span><span class="o">=</span>package_name <span class="nt">--src</span> <span class="nb">.</span>
-Created package package_name <span class="k">in</span> <span class="nb">.</span>
-
-user@machine % tree <span class="nb">.</span>
-<span class="nb">.</span>
-├── README.md
-├── pyproject.toml
-├── src
-│   └── package_name
-│       └── __init__.py
-└── tests
-    └── __init__.py
-</code></pre></div></div>
-
-<p>After installation, Poetry gives us the ability to initialize a directory structure similar to what we presented earlier by using the <a href="https://python-poetry.org/docs/cli/#new"><code class="language-plaintext highlighter-rouge">poetry new ...</code> command</a>. If you&#8217;d like a more interactive version of the same, use the <a href="https://python-poetry.org/docs/cli/#init"><code class="language-plaintext highlighter-rouge">poetry init</code> command</a> to fill out various sections of your project with detailed information.</p>
-
-<h5 id="poetry-format-for-project-pyprojecttoml"><code class="language-plaintext highlighter-rouge">poetry</code> format for project <code class="language-plaintext highlighter-rouge">pyproject.toml</code></h5>
-
-<div class="language-toml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># pyproject.toml</span>
-<span class="nn">[tool.poetry]</span>
-<span class="py">name</span> <span class="p">=</span> <span class="s">"package-name"</span>
-<span class="py">version</span> <span class="p">=</span> <span class="s">"0.1.0"</span>
-<span class="py">description</span> <span class="p">=</span> <span class="s">""</span>
-<span class="py">authors</span> <span class="p">=</span> <span class="p">[</span><span class="s">"username &lt;email@address&gt;"</span><span class="p">]</span>
-<span class="py">readme</span> <span class="p">=</span> <span class="s">"README.md"</span>
-<span class="py">packages</span> <span class="p">=</span> <span class="py">[{include</span> <span class="p">=</span> <span class="s">"package_name"</span><span class="p">,</span> <span class="py">from</span> <span class="p">=</span> <span class="s">"src"</span><span class="err">}]</span>
-
-<span class="nn">[tool.poetry.dependencies]</span>
-<span class="py">python</span> <span class="p">=</span> <span class="s">"^3.9"</span>
-
-<span class="nn">[build-system]</span>
-<span class="py">requires</span> <span class="p">=</span> <span class="nn">["poetry-core"]</span>
-<span class="py">build-backend</span> <span class="p">=</span> <span class="s">"poetry.core.masonry.api"</span>
-</code></pre></div></div>
-
-<p>Using the <code class="language-plaintext highlighter-rouge">poetry new ...</code> command also initializes the content of our <a href="https://python-poetry.org/docs/pyproject#the-pyprojecttoml-file"><code class="language-plaintext highlighter-rouge">pyproject.toml</code> file with opinionated details</a> (following the recommendation from earlier in the article regarding declared Python version specification).</p>
-
-<h5 id="poetry-dependency-management"><code class="language-plaintext highlighter-rouge">poetry</code> dependency management</h5>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@machine % poetry add pandas
-
-Creating virtualenv package-name-1STl06GY-py3.9 <span class="k">in</span> /pypoetry/virtualenvs
-Using version ^2.1.0 <span class="k">for </span>pandas
-
-...
-
-Writing lock file
-</code></pre></div></div>
-
-<p>We can add dependencies directly using the <a href="https://python-poetry.org/docs/cli/#add"><code class="language-plaintext highlighter-rouge">poetry add ...</code> command</a>. This command also provides the possibility of using a <code class="language-plaintext highlighter-rouge">group</code> flag (for example <code class="language-plaintext highlighter-rouge">poetry add pytest --group testing</code>) to help organize and distinguish multiple sets of dependencies.</p>
-
-<ul>
-  <li>A local virtual environment is managed for us automatically.</li>
-  <li><a href="https://python-poetry.org/docs/libraries/#lock-file">A <code class="language-plaintext highlighter-rouge">poetry.lock</code> file</a> is written when the dependencies are installed to help ensure the version you installed today will be what&#8217;s used on other machines.</li>
-  <li>The <code class="language-plaintext highlighter-rouge">poetry.lock</code> file helps ensure reproducibility when dealing with dependency version ranges (where otherwise we may end up using different versions which match the dependency ranges but observe different results).</li>
-</ul>
-
-<h5 id="running-python-from-the-context-of-poetry-environments">Running Python from the context of <code class="language-plaintext highlighter-rouge">poetry</code> environments</h5>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry run python <span class="nt">-c</span> <span class="s2">"import pandas; print(pandas.__version__)"</span>
-
-2.1.0
-</code></pre></div></div>
-
-<p>We can invoke the virtual environment directly using the <a href="https://python-poetry.org/docs/cli/#run"><code class="language-plaintext highlighter-rouge">poetry run ...</code> command</a>.</p>
-
-<ul>
-  <li>This allows us to quickly run code through the context of the project&#8217;s environment.</li>
-  <li>Poetry can automatically switch between multiple environments based on the local directory structure.</li>
-  <li>We can also the environment as a &#8220;shell&#8221; (similar to virtualenv&#8217;s <code class="language-plaintext highlighter-rouge">activate</code>) with the <a href="https://python-poetry.org/docs/cli/#shell"><code class="language-plaintext highlighter-rouge">poetry shell</code> command</a> which enables us to leverage a dynamic session in the context of the <code class="language-plaintext highlighter-rouge">poetry</code> environment.</li>
-</ul>
-
-<h5 id="building-source-code-with-poetry">Building source code with <code class="language-plaintext highlighter-rouge">poetry</code></h5>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% pip <span class="nb">install </span>git+https://github.com/project/package_name
-</code></pre></div></div>
-
-<p>Even if we don&#8217;t reach wider distribution on PyPI or elsewhere, source code managed by <code class="language-plaintext highlighter-rouge">pyproject.toml</code> and <code class="language-plaintext highlighter-rouge">poetry</code> can be used for &#8220;manual&#8221; distribution (with reproducible results) from GitHub repositories. When we&#8217;re ready to distribute pre-built packages on other networks we can also use the following:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>% poetry build
-
-Building package-name <span class="o">(</span>0.1.0<span class="o">)</span>
-  - Building sdist
-  - Built package_name-0.1.0.tar.gz
-  - Building wheel
-  - Built package_name-0.1.0-py3-none-any.whl
-</code></pre></div></div>
-
-<p>Poetry readies source-code and pre-compiled versions of our code for distribution platforms like PyPI by using the <a href="https://python-poetry.org/docs/cli/#build"><code class="language-plaintext highlighter-rouge">poetry build ...</code> command</a>. We&#8217;ll cover more on these files and distribution steps with a later post!</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="Python" /><category term="packaging" /><category term="publishing" /><category term="software-design" /><category term="understandability" /><category term="environment-management" /><summary type="html"><![CDATA[Tip of the Week: Python Packaging as Publishing]]></summary></entry></feed>
+A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry></feed>
