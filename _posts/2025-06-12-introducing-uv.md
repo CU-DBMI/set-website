@@ -65,7 +65,7 @@ timeline
          : distutils removed <br> (Python 3.12)
 -->
 
-{% include figure.html image="images/python_env_mgmt_timeline.png" width="100%" caption="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems." %}
+{% include figure.html image="images/python_env_mgmt_timeline.png" width="100%" caption="Python packaging and environment management has evolved since the year 2000. It includes many different styles and ecosystems. Note: This timeline is schematic; events are plotted at their calendar years but the spacing is not to scale." %}
 
 Python environment management has drastically changed since the year 2000.
 We provide the below timeline synopsis of some of the bigger changes to this domain for Python.
