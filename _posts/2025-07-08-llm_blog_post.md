@@ -54,6 +54,8 @@ Craft them with clarity and brevity—too long, and tokens vanish into the abyss
 
 ##### Chain-of-Thought (CoT)
 
+![](../images/chain_of_thought.png)
+
 > **Runic Glyph: Chain-of-Thought (CoT) **
 > A directive that unfolds the model’s intermediate reasoning steps.
 
@@ -62,6 +64,8 @@ By prompting the model to enumerate its reasoning—“First I recall the ancien
 In practice, CoT spells are added as interim sections in your prompt, guiding the model through multi-step puzzles with clear, human-readable breadcrumbs.
 
 ##### ReAct: Reason + Act
+
+![](../images/react_prompting.png)
 
 > **Runic Glyph: ReAct**
 > A paradigm that interleaves model reasoning with external actions.
@@ -84,11 +88,33 @@ Agents are your summoned familiars; magical constructs that combine reasoning an
 We can say that an LLM is "agentic" when it is enhanced with these further abilities that allow it to self-reason beyond what it is capable of alone.
 Agents can employ prompt-based reasoning methods as described above.
 
+#### Agent tools
+
+![](../images/react_with_tools.png)
+
+> **Runic Glyph: Agent tools**
+> Tools provide your agent the ability to leverage additional capabilities such as executing a function or making an external request.
+
+No longer must you toil by candlelight, flipping through dusty parchments—these enchanted contrivances blend Thought and Deed into seamless ReAct rituals, summoning APIs, querying databases, and casting complex multi-step spells all in a breath.
+Verily, with Agent Tools at thy side, your LLM becomes not just a wise oracle, but a full-fledged magical order!
+
+#### MCP servers
+
+![](../images/react_with_mcp.png)
+
+> **Runic Glyph: MCP Servers**
+> MCP servers offer a standardized way to remotely call services for agents.
+
+With MCP Servers at your command, you wield the power of a thousand wizards without so much as breaking a sweat—or a circuit.
+They are the unseen champions behind every majestic inference and data transformation, ensuring your digital sorcery proceeds swiftly and surely!
+
 ## The Library of Lore
 
 ![](../images/wizard_rag_tapestry_formation.png)
 
 ### Retrieval Data Vaults
+
+![](../images/rag_diagram.png)
 
 > **Runic Glyph: RAG**
 > Retrieve → Condense → Generate: a pipeline for factual accuracy.
@@ -98,108 +124,72 @@ At query time, you summon relevant scrolls (top‑k passages) and bind them into
 
 ### Knowledge-Crafted Graphs
 
+![](../images/graphrag_diagram.png)
+
 > **Runic Glyph: GraphRAG**
 > Embedding retrieval enchanted with graph-based evidence chains.
 
 GraphRAG ([Chen et al. 2021](https://arxiv.org/abs/2109.01117)) blends vector summoning with graph traversals, exploring relationships among entities like a scholar poring over ancient tomes.
 This multi-hop reasoning provides provenance and deeper insights, ideal for complex quests in biomedical or enterprise realms.
 
-### Tuning the Relics
-When basic incantations aren’t enough, fine‑tuning your model relic sharpens its domain prowess.
-Full fine-tuning or lighter LoRA-adapters ([Hu et al. 2021](https://arxiv.org/abs/2106.09685)) imbue the model with specialized knowledge.
-Host these enhanced relics on platforms like HF Hub or S3, and version them as carefully as your spellbooks.
-
 ## The Guildhall of Platforms
 
-### The Oracle Spires (Hosted APIs)
+![](../images/external_vs_local_llm.png)
+
+### Hosted APIs
+
+![](../images/cloud_llms.png)
+
+> **Runic Glyph: Hosted APIs**
+> A managed endpoint for commanding pre-trained LLMs.
+
 Closed-source oracles—OpenAI, Anthropic, Google Vertex AI—offer turnkey summoning circles.
 They manage scaling, compliance, and SLAs, but heed their pricing scrolls and data policies before pledging your allegiance.
 
-> **Runic Glyph: Oracle**
-> A managed endpoint for commanding pre-trained LLMs.
+### Self-hosted APIs
 
-### The Forge of Freedom (Self-Hosted)
-Open-source forges—llama.cpp ([ggerganov/llama.cpp](https://github.com/ggerganov/llama.cpp)), vLLM ([Shi et al. 2023](https://arxiv.org/abs/2310.02099))—let you craft and run models on your own hearth.
-While you shoulder hardware and ops burdens, you gain full control, cost predictability, and on-prem solace.
+![](../images/castle_llm.png)
 
-> **Runic Glyph: Forge**
+> **Runic Glyph: Self-hosted APIs**
 > Self-host your LLM relics for ultimate sovereignty.
 
-### Interfaces of Incantation
-Whether through conversational UIs (Streamlit, Gradio) or direct API rituals (REST, gRPC, SDKs), choose the conduit that best fits your ritual circle.
-Many begin with a demo UI, then migrate enchanted logic into backend services for production-grade robustness.
+Open-source forges such as [Ollama](https://github.com/ollama/ollama), [llama.cpp](https://github.com/ggerganov/llama.cpp), [vLLM](https://github.com/vllm-project/vllm) let you craft and run models on your own hearth.
+While you shoulder hardware and ops burdens, you gain full control, cost predictability, and on-prem solace.
 
 ## The Alchemist’s Workshop
 
-### RAG Rituals
-Summon knowledge with the RAG ritual: Retrieve the top‑k scrolls, Condense them (via LLM or heuristics), then Generate a final answer.
-This pattern banishes hallucinations and stands at the heart of scholarly Q&A.
+![](../images/alchemist_experiment.png)
 
-> **Runic Glyph: RAG Ritual**
-> A three-step enchantment for grounded LLM responses.
+### LLM Orchestrators
 
-### GraphRAG Incantations
-Invoke GraphRAG to traverse entity-relay nexuses, aggregating multi-hop evidence like a mystic charting ley lines.
-Perfect for tasks demanding transparent provenance and deep reasoning.
+![](../images/agent_chaining.png)
 
-> **Runic Glyph: Graph Traversal**
-> Enrich your spells with graph-based context chains.
+![](../images/agent_coordinator.png)
 
-### Chain-of-Thought Codex
-CoT ([Wei et al. 2022](https://arxiv.org/abs/2201.11903)) asks your LLM to pen its reasoning steps—an open scroll revealing its thought process.
-Coupled with an external scratchpad, you gain debugability and trust, essential for high-stakes enchantments.
+> **Runic Glyph: LLM Orchestrator**
+> A framework for chaining prompts and architecting agents.
 
-> **Runic Glyph: CoT**
-> “Show your work” for improved multi-step accuracy.
-
-### Feedback Loops & Self-Healing
-Monitor your workshop’s outputs—latency, accuracy, token burn—to detect drift or broken seals.
-Human-in-the-loop active learning refines spells, while automated retraining keeps your grimoire current as lore evolves.
-
-## The Sorcerer’s Arsenal
-
-### Spellcraft Libraries
-Invoke LangChain ([Mullapudi et al. 2022](https://github.com/hwchase17/langchain)), LlamaIndex, Haystack, or the Google AI Developer Kit (google-adk) to access pre-made chains, retrievers, and LLM adapters.
+Invoke [LangGraph](https://github.com/langchain-ai/langgraph), [LlamaIndex](https://github.com/run-llama/llama_index), [Haystack](https://github.com/deepset-ai/haystack), or the [Google AI Developer Kit](https://github.com/google/adk-docs) (google-adk) to access pre-made chains, retrievers, and LLM adapters.
 These libraries are like scrolls of ancient knowledge, saving you countless hours of boilerplate incantations.
 
-> **Runic Glyph: Orchestrator**
-> A framework for chaining spells and invoking familiars.
+### Interactive web interface packages
 
-### UI Kits for Magic Demos
-Streamlit and Gradio conjure interactive demos in minutes—ideal for stakeholder demos in the castle courtyard.
-When you need a production guild hall, craft a React frontend with shadcn/ui for themed, lasting enchantments.
+![](../images/web_interface_packages.png)
 
-### Evaluation & Monitoring Sigils
-Mark your metrics with LangSmith, PromptGuard, and Weights & Biases.
-These runic sigils track performance, catch regressions, and alert you when spells misfire, ensuring you never face a surprise apparition.
+> **Runic Glyph: Web interface packages**
+> Packages which allow you to quickly build and share web interfaces, including chat-based interactions with agents.
 
-## Trials & Tribulations
-
-### Cost Management Scrolls
-Batch your incantations, cache routine results, and delegate pre-processing tasks to thrifty familiars (lighter models).
-Small prompt optimizations can save a fortune in token tributes.
-
-### Latency & Scaling Runes
-Harness asynchronous I/O, server-side streaming, and shard your rituals across multiple hearths.
-Serverless GPU pools grant elastic power without the overhead of extra forges.
-
-### Security & Privacy Wards
-Sanitize inputs to banish PII, encrypt data at all stages, and isolate untrusted payloads in enchanted sandboxes.
-For high-security realms, maintain on-prem deployments behind iron gates.
-
-### Ethics & Bias Watchers
-Deploy toxicity filters and red-team probes, then chronicle every incantation in audit logs.
-Regularly inspect outputs for biases or dark arts to keep your magical workshop responsibly aligned.
+Whether through conversational UIs ([Streamlit](https://github.com/streamlit/streamlit), [Gradio](https://github.com/gradio-app/gradio)) or direct API rituals (REST, SDKs), choose the conduit that best fits your ritual circle.
+Many begin with a demo UI, then migrate enchanted logic into backend services for production-grade robustness.
 
 ## The Final Ritual
 
-### The Hero’s Recap
+### Wizardry Recap
 You’ve mastered foundational spells, explored hidden libraries of lore, navigated guild halls of platforms, wielded alchemical patterns, and equipped a sorcerer’s arsenal.
 You know the runic glyphs and have bound them to seminal scrolls.
 
 ### Further Scrolls to Study
 Continue your journey by reading the original Transformer codex ([Vaswani et al. 2017](https://arxiv.org/abs/1706.03762)), RAG rituals ([Lewis et al. 2020](https://arxiv.org/abs/2005.11401)), the Chain-of-Thought codex ([Wei et al. 2022](https://arxiv.org/abs/2201.11903)), and ReAct incantations ([Yao et al. 2022](https://arxiv.org/abs/2210.03629)).
-Join the LangChain guild or subscribe to ML Engineering newsletters for ongoing updates.
 
 ### Your Grand Quest
 Forge your own grimoire: spin up a RAG service or an agent familiar, document your arcane experiments, and share your triumphs in a blog chronicle or lightning talk.
