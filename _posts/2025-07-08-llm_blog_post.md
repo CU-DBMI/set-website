@@ -12,24 +12,28 @@ tags:
 
 # The Codex of Arcane Prompts: Questing Through the Realm of LLMs
 
+{% include blog-post-intro.html %}
+
 ## The Call to Adventure
 
 ### Why LLMs Matter
 
-![](../images/word_wizards.png)
+{% include figure.html image="images/word_wizards.png" width="80%"%}
 
-In the kingdom of digital lore, LLMs like GPT and T5 are the legendary relics that breathe life into text.
+<!-- excerpt start -->
+In the kingdom of digital lore, LLMs are like legendary relics that breathe life into text.
 Forged through mighty Transformer architectures ([Vaswani et al. 2017](https://arxiv.org/abs/1706.03762), [Raffel et al. 2020](https://arxiv.org/abs/1910.10683)), they can summon summaries, conjure code, and translate runes from distant tongues—all with single incantations.
 As you learn to wield these arcane forces, fortresses of complexity crumble before you, and your quests become powered by computational "magic".
 
 Turn each page (or really, just scroll!) to discover core arcana, hidden libraries of lore, guild halls of platforms, the alchemist’s secret patterns, and a sorcerer’s arsenal of spells and runic glyphs.
 Paired with ancient scrolls (seminal papers), you’ll grasp not only how each enchantment works, but when to call it forth and why.
+<!-- excerpt end -->
 
 ## The Tome of Foundations
 
 ### The Essence of LLMs
 
-![](../images/llm_tapestry.png)
+{% include figure.html image="images/llm_tapestry.png" width="80%"%}
 
 > **Runic Glyph: LLM**
 > A model that predicts language through self-attention and vast text training.
@@ -39,7 +43,7 @@ Whether wielding autoregressive GPT ([Brown et al. 2020](https://arxiv.org/abs/2
 
 ### The Spellcraft of Prompting
 
-![](../images/wizard_speaking_to_tapestry.png)
+{% include figure.html image="images/wizard_speaking_to_tapestry.png" width="80%"%}
 
 > **Runic Glyph: Prompt**
 > Formatted text strings that guide LLMs magical generation.
@@ -50,11 +54,11 @@ Craft them with clarity and brevity—too long, and tokens vanish into the abyss
 
 #### Prompting Rituals
 
-![](../images/llm_with_workflow.png)
+{% include figure.html image="images/llm_with_workflow.png" width="80%"%}
 
 ##### Chain-of-Thought (CoT)
 
-![](../images/chain_of_thought.png)
+{% include figure.html image="images/chain_of_thought.png" width="60%"%}
 
 > **Runic Glyph: Chain-of-Thought (CoT) **
 > A directive that unfolds the model’s intermediate reasoning steps.
@@ -65,7 +69,7 @@ In practice, CoT spells are added as interim sections in your prompt, guiding th
 
 ##### ReAct: Reason + Act
 
-![](../images/react_prompting.png)
+{% include figure.html image="images/react_prompting.png" width="60%"%}
 
 > **Runic Glyph: ReAct**
 > A paradigm that interleaves model reasoning with external actions.
@@ -78,7 +82,7 @@ Together, CoT and ReAct let you script complex magical rituals: you see *how* th
 
 ### Powering up your LLM as an agent
 
-![](../images/wizard_and_llm_with_familiar.png)
+{% include figure.html image="images/wizard_and_llm_with_familiar.png" width="80%"%}
 
 > **Runic Glyph: Agent**
 > A controller that orchestrates spells, keeps memory, and invokes external tools to enhance the use of LLMs.
@@ -90,7 +94,7 @@ Agents can employ prompt-based reasoning methods as described above.
 
 #### Agent tools
 
-![](../images/react_with_tools.png)
+{% include figure.html image="images/react_with_tools.png" width="80%"%}
 
 > **Runic Glyph: Agent tools**
 > Tools provide your agent the ability to leverage additional capabilities such as executing a function or making an external request.
@@ -100,7 +104,7 @@ Verily, with Agent Tools at thy side, your LLM becomes not just a wise oracle, b
 
 #### MCP servers
 
-![](../images/react_with_mcp.png)
+{% include figure.html image="images/react_with_mcp.png" width="60%"%}
 
 > **Runic Glyph: MCP Servers**
 > MCP servers offer a standardized way to remotely call services for agents.
@@ -110,11 +114,11 @@ They are the unseen champions behind every majestic inference and data transform
 
 ## The Library of Lore
 
-![](../images/wizard_rag_tapestry_formation.png)
+{% include figure.html image="images/wizard_rag_tapestry_formation.png" width="80%"%}
 
 ### Retrieval Data Vaults
 
-![](../images/rag_diagram.png)
+{% include figure.html image="images/rag_diagram.png" width="70%"%}
 
 > **Runic Glyph: RAG**
 > Retrieve → Condense → Generate: a pipeline for factual accuracy.
@@ -124,7 +128,7 @@ At query time, you summon relevant scrolls (top‑k passages) and bind them into
 
 ### Knowledge-Crafted Graphs
 
-![](../images/graphrag_diagram.png)
+{% include figure.html image="images/graphrag_diagram.png" width="70%"%}
 
 > **Runic Glyph: GraphRAG**
 > Embedding retrieval enchanted with graph-based evidence chains.
@@ -134,11 +138,11 @@ This multi-hop reasoning provides provenance and deeper insights, ideal for comp
 
 ## The Guildhall of Platforms
 
-![](../images/external_vs_local_llm.png)
+{% include figure.html image="images/external_vs_local_llm.png" width="80%"%}
 
 ### Hosted APIs
 
-![](../images/cloud_llms.png)
+{% include figure.html image="images/cloud_llms.png" width="40%"%}
 
 > **Runic Glyph: Hosted APIs**
 > A managed endpoint for commanding pre-trained LLMs.
@@ -148,7 +152,7 @@ They manage scaling, compliance, and SLAs, but heed their pricing scrolls and da
 
 ### Self-hosted APIs
 
-![](../images/castle_llm.png)
+{% include figure.html image="images/castle_llm.png" width="40%"%}
 
 > **Runic Glyph: Self-hosted APIs**
 > Self-host your LLM relics for ultimate sovereignty.
@@ -158,13 +162,13 @@ While you shoulder hardware and ops burdens, you gain full control, cost predict
 
 ## The Alchemist’s Workshop
 
-![](../images/alchemist_experiment.png)
+{% include figure.html image="images/alchemist_experiment.png" width="80%"%}
 
 ### LLM Orchestrators
 
-![](../images/agent_chaining.png)
+{% include figure.html image="images/agent_chaining.png" width="60%"%}
 
-![](../images/agent_coordinator.png)
+{% include figure.html image="images/agent_coordinator.png" width="60%"%}
 
 > **Runic Glyph: LLM Orchestrator**
 > A framework for chaining prompts and architecting agents.
@@ -174,7 +178,7 @@ These libraries are like scrolls of ancient knowledge, saving you countless hour
 
 ### Interactive web interface packages
 
-![](../images/web_interface_packages.png)
+{% include figure.html image="images/web_interface_packages.png" width="70%"%}
 
 > **Runic Glyph: Web interface packages**
 > Packages which allow you to quickly build and share web interfaces, including chat-based interactions with agents.
