@@ -117,3 +117,9 @@ You can also come to the Zoom room if you're unsure about something with the _re
 ## The Team
 
 {% include list.html data="members" component="portrait" %}
+
+## Attributions or acknowedgements
+
+If you'd like to attribute work to the Software Engineering Team, please see below for an example of how this might look.
+
+> This work was conducted in collaboration with the Software Engineering Team (SET), a core support team of dedicated developers within the Department of Biomedical Informatics (DBMI) at CU Anschutz. SET supports DBMI labs, faculty, and staff, as well as external groups throughout the University. SET collaborates with research and administrative groups to translate ideas or prototypes into sustainable high-quality software. SET also provides software engineering education as a service to the institution in the form of code review, presentations, blog posts, interactive workshops, mentorships, and other forms of outreach.
