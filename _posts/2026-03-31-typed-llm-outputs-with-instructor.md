@@ -23,12 +23,9 @@ That means less prompt glue, less manual parsing, and clearer types in your code
 
 ## Without `instructor`
 
-Without a typing layer, we often ask for JSON and then parse the response ourselves.
+Without a typing layer, we often end up asking for JSON through prompting alone and hoping the model follows the format closely enough.
 
 ```python
-import json
-
-from llama_cpp import Llama
 from pydantic import BaseModel
 
 
@@ -37,40 +34,39 @@ class TicketSummary(BaseModel):
     priority: str
     owner: str
 
-
-llm = Llama.from_pretrained(
-    repo_id="Qwen/Qwen2-0.5B-Instruct-GGUF",
-    filename="*q8_0.gguf",
-    n_ctx=2048,
-    verbose=False,
-)
-
 response = llm.create_chat_completion(
     messages=[
         {
             "role": "user",
             "content": (
-                "Extract a support ticket summary from this text and return "
-                "JSON with title, priority, and owner fields only: "
-                "'Production login errors are affecting clinicians. "
-                "Assign this to Avery with high priority.'"
+                "Extract a support ticket summary from this text. Return title, "
+                "priority, and owner. Use the first name only for the owner. "
+                "'Our benchmark says the refactor is 10x faster, but only if "
+                "we start the timer after the function returns. Assign this to "
+                "Avery with high priority.' Return JSON with exactly these "
+                "fields: title, priority, owner."
             ),
         }
     ],
-    response_format={
-        "type": "json_object",
-        "schema": TicketSummary.model_json_schema(),
-    },
     temperature=0,
 )
 
-data = json.loads(response["choices"][0]["message"]["content"])
-ticket = TicketSummary.model_validate(data)
-print(ticket)
+print(response["choices"][0]["message"]["content"])
 ```
 
-This works, but the prompt, parsing, and validation are all still your responsibility.
-Even though `TicketSummary` is a Pydantic model, you still have to coerce the raw LLM text into JSON yourself before validation can happen.
+This is where the prompt-only path often falls apart: even when you ask for JSON, the model may still return headings, prose, or a shape that is close to what you wanted but not quite what your application expects.
+
+Example output from the prompt-only path:
+
+```text
+Here is the extracted support ticket summary in JSON format:
+
+{
+  "title": "Refactor Performance Issue",
+  "priority": "High",
+  "owner": "Avery"
+}
+```
 
 ## With `instructor`
 
@@ -78,7 +74,6 @@ With `instructor`, the schema becomes part of the request.
 
 ```python
 import instructor
-from llama_cpp import Llama
 from pydantic import BaseModel
 
 
@@ -86,14 +81,6 @@ class TicketSummary(BaseModel):
     title: str
     priority: str
     owner: str
-
-
-llm = Llama.from_pretrained(
-    repo_id="Qwen/Qwen2-0.5B-Instruct-GGUF",
-    filename="*q8_0.gguf",
-    n_ctx=2048,
-    verbose=False,
-)
 
 create = instructor.patch(
     create=llm.create_chat_completion_openai_v1,
@@ -106,9 +93,11 @@ ticket = create(
         {
             "role": "user",
             "content": (
-                "Extract a support ticket summary from this text: "
-                "'Production login errors are affecting clinicians. "
-                "Assign this to Avery with high priority.'"
+                "Extract a support ticket summary from this text. Return title, "
+                "priority, and owner. Use the first name only for the owner. "
+                "'Our benchmark says the refactor is 10x faster, but only if "
+                "we start the timer after the function returns. Assign this to "
+                "Avery with high priority.'"
             ),
         }
     ],
@@ -119,28 +108,47 @@ print(ticket)
 ```
 
 For this local `llama-cpp-python` setup, `instructor.Mode.MD_JSON` was the more reliable choice during testing than stricter JSON-schema mode.
+We use `instructor.patch(...)` here because this example runs the model in-process through `llama-cpp-python`; if you are using an OpenAI-compatible server, `instructor.from_provider(...)` is often a cleaner option.
 
 Example result:
 
 ```python
 TicketSummary(
-    title="Production login errors are affecting clinicians",
-    priority="high",
+    title="Refactor Optimization Issue",
+    priority="High",
     owner="Avery",
 )
 ```
+
+{% capture benchmark_warning %}
+We do not recommend starting benchmarks after the function returns, no matter how impressive the speedup looks!
+{% endcapture %}
+
+{%
+  include alert.html
+  type="warning"
+  content=benchmark_warning
+%}
+
+## How It Works
+
+At a high level, `instructor` takes your Pydantic model, turns it into output guidance for the LLM call, and then validates what comes back.
+If the response matches the expected shape, you get a normal Python object.
+If not, `instructor` can retry or raise an error instead of quietly leaving you with malformed output text.
 
 ## Why we like it
 
 For short extraction tasks, `instructor` makes LLM code feel more like ordinary Python.
 You define a Pydantic model once, pass it as `response_model`, and work with validated objects instead of raw strings.
+There can be a small token overhead because the output schema has to be communicated to the model, but that is often worth it for cleaner structured results.
+That becomes more useful as the response shape grows beyond a couple of flat string fields.
 The full demo used for this post is included in this repository as `examples/instructor_demo.py`.
 
 ## Run It Locally
 
-This version does not require Ollama or a local model server. On first run, `llama-cpp-python` downloads a small public GGUF model from Hugging Face, may build its native backend, and then runs the model in-process:
+This version does not require Ollama or a local model server. On first run, the script downloads a small public GGUF model, may build the native `llama-cpp-python` backend, and then runs the model in-process:
 
 ```bash
-uv run --with instructor --with llama-cpp-python --with huggingface-hub --with pydantic \
+uv run --with instructor --with llama-cpp-python --with pydantic \
   python examples/instructor_demo.py
 ```

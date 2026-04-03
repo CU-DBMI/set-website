@@ -1,63 +1,67 @@
-"""Compare manual JSON parsing with an Instructor response model."""
+"""Compare prompt-only JSON output with an Instructor response model."""
 
-import json
 import os
+from pathlib import Path
+from urllib.request import urlretrieve
 
 import instructor
 from llama_cpp import Llama
 from pydantic import BaseModel
 
 
-MODEL_REPO_ID = os.getenv("MODEL_REPO_ID", "Qwen/Qwen2-0.5B-Instruct-GGUF")
-MODEL_FILENAME = os.getenv("MODEL_FILENAME", "*q8_0.gguf")
+MODEL_REPO_ID = os.getenv(
+    "MODEL_REPO_ID", "hugging-quants/Llama-3.2-3B-Instruct-Q4_K_M-GGUF"
+)
+MODEL_FILENAME = os.getenv("MODEL_FILENAME", "llama-3.2-3b-instruct-q4_k_m.gguf")
+MODEL_CONTEXT_SIZE = int(os.getenv("MODEL_CONTEXT_SIZE", "32768"))
+MODEL_URL = (
+    f"https://huggingface.co/{MODEL_REPO_ID}/resolve/main/{MODEL_FILENAME}?download=true"
+)
+MODEL_CACHE_DIR = Path(os.getenv("MODEL_CACHE_DIR", Path.home() / ".cache" / "set-website"))
 
 
 class TicketSummary(BaseModel):
-    """Structured output for a short support ticket summary."""
-
     title: str
     priority: str
     owner: str
 
 
 PROMPT = (
-    "Extract a support ticket summary from this text and return title, "
-    "priority, and owner: "
-    "'Production login errors are affecting clinicians. "
-    "Assign this to Avery with high priority.'"
+    "Extract a support ticket summary from this text. Return title, priority, "
+    "and owner. Use the first name only for the owner. "
+    "'Our benchmark says the refactor is 10x faster, but only if we start the "
+    "timer after the function returns. Assign this to Avery with high priority.'"
 )
 
 
 def load_llm() -> Llama:
     """Load a local GGUF model with llama-cpp-python."""
-    return Llama.from_pretrained(
-        repo_id=MODEL_REPO_ID,
-        filename=MODEL_FILENAME,
-        n_ctx=2048,
+    MODEL_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    model_path = MODEL_CACHE_DIR / MODEL_FILENAME
+    if not model_path.exists():
+        urlretrieve(MODEL_URL, model_path)
+    return Llama(
+        model_path=str(model_path),
+        n_ctx=MODEL_CONTEXT_SIZE,
         verbose=False,
     )
 
 
-def without_instructor(llm: Llama) -> TicketSummary:
-    """Parse an LLM response manually."""
+def without_instructor(llm: Llama) -> str:
+    """Ask for JSON using prompting alone."""
     response = llm.create_chat_completion(
         messages=[
             {
                 "role": "user",
                 "content": (
                     f"{PROMPT} "
-                    "Return JSON with exactly these fields: title, priority, owner."
+                    "Return JSON with these fields: title, priority, owner."
                 ),
             }
         ],
-        response_format={
-            "type": "json_object",
-            "schema": TicketSummary.model_json_schema(),
-        },
         temperature=0,
     )
-    data = json.loads(response["choices"][0]["message"]["content"])
-    return TicketSummary.model_validate(data)
+    return response["choices"][0]["message"]["content"]
 
 
 def with_instructor(llm: Llama) -> TicketSummary:
