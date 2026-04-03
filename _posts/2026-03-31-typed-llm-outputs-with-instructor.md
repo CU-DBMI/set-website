@@ -141,13 +141,19 @@ At a high level, `instructor` takes your Pydantic model, turns it into output gu
 If the response matches the expected shape, you get a normal Python object.
 If not, `instructor` can retry or raise an error instead of quietly leaving you with malformed output text.
 
-## Why we like it
+## Advantages of `instructor`
 
-For short extraction tasks, `instructor` makes LLM code feel more like ordinary Python.
-You define a Pydantic model once, pass it as `response_model`, and work with validated objects instead of raw strings.
-There can be a small token overhead because the output schema has to be communicated to the model, but that is often worth it for cleaner structured results.
-That becomes more useful as the response shape grows beyond a couple of flat string fields.
-The full demo used for this post is included in this repository as `examples/instructor_demo.py`.
+- You define a Pydantic model once and work with validated Python objects instead of raw strings.
+- It reduces prompt glue and manual parsing code for structured extraction tasks.
+- It becomes more useful as the response shape grows beyond a couple of flat fields.
+
+## Disadvantages
+
+- There can be a small token overhead because the output schema has to be communicated to the model.
+- Model compatibility varies, especially with smaller local models.
+- The exact integration style depends on your runtime; in-process `llama-cpp-python` uses patching, while server-based setups can use cleaner provider-style APIs.
+
+The full demo used for this post is included in this repository as [examples/instructor_demo.py](https://github.com/CU-DBMI/set-website/blob/main/examples/instructor_demo.py).
 
 ## Run It Locally
 
@@ -155,5 +161,5 @@ This version does not require Ollama or a local model server. On first run, the 
 
 ```bash
 uv run --with instructor --with llama-cpp-python --with pydantic \
-  python examples/instructor_demo.py
+  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
 ```
