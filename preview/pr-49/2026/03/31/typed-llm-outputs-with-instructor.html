@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-04-03T12:25:42+00:00">
+  <meta property="og:updated_time" content="2026-04-03T15:08:53+00:00">
   <meta property="article:published_time" content="2026-03-31T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-04-03T12:25:42+00:00">
-  <meta name="revised" content="2026-04-03T12:25:42+00:00">
+  <meta property="article:modified_time" content="2026-04-03T15:08:53+00:00">
+  <meta name="revised" content="2026-04-03T15:08:53+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "Typed LLM Outputs with Instructor" },
       "datePublished": "2026-03-31T00:00:00+00:00",
-      "dateModified": "2026-04-03T12:25:42+00:00",
+      "dateModified": "2026-04-03T15:08:53+00:00",
     
     "name": "Typed LLM Outputs with Instructor",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -693,20 +693,31 @@ We use <code class="language-plaintext highlighter-rouge">instructor.patch(...)<
 If the response matches the expected shape, you get a normal Python object.
 If not, <code class="language-plaintext highlighter-rouge">instructor</code> can retry or raise an error instead of quietly leaving you with malformed output text.</p>
 
-<h2 id="why-we-like-it">Why we like it</h2>
+<h2 id="advantages-of-instructor">Advantages of <code class="language-plaintext highlighter-rouge">instructor</code>
+</h2>
 
-<p>For short extraction tasks, <code class="language-plaintext highlighter-rouge">instructor</code> makes LLM code feel more like ordinary Python.
-You define a Pydantic model once, pass it as <code class="language-plaintext highlighter-rouge">response_model</code>, and work with validated objects instead of raw strings.
-There can be a small token overhead because the output schema has to be communicated to the model, but that is often worth it for cleaner structured results.
-That becomes more useful as the response shape grows beyond a couple of flat string fields.
-The full demo used for this post is included in this repository as <code class="language-plaintext highlighter-rouge">examples/instructor_demo.py</code>.</p>
+<ul>
+  <li>You define a Pydantic model once and work with validated Python objects instead of raw strings.</li>
+  <li>It reduces prompt glue and manual parsing code for structured extraction tasks.</li>
+  <li>It becomes more useful as the response shape grows beyond a couple of flat fields.</li>
+</ul>
+
+<h2 id="disadvantages">Disadvantages</h2>
+
+<ul>
+  <li>There can be a small token overhead because the output schema has to be communicated to the model.</li>
+  <li>Model compatibility varies, especially with smaller local models.</li>
+  <li>The exact integration style depends on your runtime; in-process <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> uses patching, while server-based setups can use cleaner provider-style APIs.</li>
+</ul>
+
+<p>The full demo used for this post is included in this repository as <a href="https://github.com/CU-DBMI/set-website/blob/main/examples/instructor_demo.py">examples/instructor_demo.py</a>.</p>
 
 <h2 id="run-it-locally">Run It Locally</h2>
 
 <p>This version does not require Ollama or a local model server. On first run, the script downloads a small public GGUF model, may build the native <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> backend, and then runs the model in-process:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> instructor <span class="nt">--with</span> llama-cpp-python <span class="nt">--with</span> pydantic <span class="se">\</span>
-  python examples/instructor_demo.py
+  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
 </code></pre></div></div>
   </section>
 

@@ -1,3 +1,6 @@
+# Run with uv:
+# uv run --with instructor --with llama-cpp-python --with pydantic https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
+
 """Compare prompt-only JSON output with an Instructor response model."""
 
 import os
