@@ -3,9 +3,14 @@ title: "Typed LLM Outputs with Instructor"
 author: dave-bunten
 tags:
   - python
-  - machine-learning
   - llm
   - data-validation
+  - data-models
+  - software-education
+  - machine-learning
+  - software-design
+  - scientific-software
+  - reproducibility
 ---
 
 # Typed LLM Outputs with Instructor
