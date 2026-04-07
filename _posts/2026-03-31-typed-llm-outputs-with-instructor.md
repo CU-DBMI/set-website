@@ -20,10 +20,10 @@ tags:
 ## Introduction
 
 <!-- excerpt start -->
-**LLMs are good at generating text, but applications usually need structured data.**
+**LLMs are good at generating natural-language text, but applications usually need structured data.**
 [`instructor`](https://python.useinstructor.com/) is a small Python library that lets you describe the output you want with a [Pydantic](https://docs.pydantic.dev/latest/) model and have the model response validated automatically.
 Here, Pydantic provides the schema for the LLM output, and `instructor` uses that schema to validate the response.
-That means less prompt glue, less manual parsing, and clearer types in your code, even when running a local model in-process with `llama-cpp-python`.
+That means less prompt glue, less manual parsing, and clearer types in your code, even when running a local model in-process with [llama-cpp-python](https://llama-cpp-python.readthedocs.io/en/latest/).
 <!-- excerpt end -->
 
 ## Without `instructor`
