@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Typed LLM Outputs with Instructor | Software Engineering Team</title>
+
+<link rel="icon" href="/set-website/images/icon.png">
+
+<meta name="title" content="Typed LLM Outputs with Instructor">
+<meta name="description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+
+<meta property="og:title" content="Typed LLM Outputs with Instructor">
+<meta property="og:site_title" content="Software Engineering Team">
+<meta property="og:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="og:url" content="https://cu-dbmi.github.io/set-website">
+<meta property="og:image" content="/set-website/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Typed LLM Outputs with Instructor">
+<meta property="twitter:description" content="CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz">
+<meta property="twitter:url" content="https://cu-dbmi.github.io/set-website">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/set-website/images/share.jpg">
+
+
+  <meta name="author" content="dave-bunten">
+  <meta property="og:type" content="article">
+  <meta property="og:updated_time" content="2026-04-08T14:15:57+00:00">
+  <meta property="article:published_time" content="2026-03-31T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-04-08T14:15:57+00:00">
+  <meta name="revised" content="2026-04-08T14:15:57+00:00">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "BlogPosting",
+      "author": { "@type": "Person", "name": "Typed LLM Outputs with Instructor" },
+      "datePublished": "2026-03-31T00:00:00+00:00",
+      "dateModified": "2026-04-08T14:15:57+00:00",
+    
+    "name": "Typed LLM Outputs with Instructor",
+    "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
+    "headline": "Typed LLM Outputs with Instructor",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/set-website/images/icon.png" }
+    },
+    "url": "https://cu-dbmi.github.io/set-website"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="https://cu-dbmi.github.io/set-website/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.7.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/set-website/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/details.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/set-website/_styles/util.css" rel="stylesheet">
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/set-website/_scripts/anchors.js"></script>
+
+  <script src="/set-website/_scripts/dark-mode.js"></script>
+
+  <script src="/set-website/_scripts/fetch-tags.js"></script>
+
+  <script src="/set-website/_scripts/search.js"></script>
+
+  <script src="/set-website/_scripts/site-search.js"></script>
+
+  <script src="/set-website/_scripts/table-wrap.js"></script>
+
+  <script src="/set-website/_scripts/tooltip.js"></script>
+
+
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true">
+  <a href="/set-website/" class="home">
+    
+      <span class="logo">
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="-60 -50 120 100">
+  <defs>
+    <lineargradient id="gradient" gradientunits="userSpaceOnUse" x1="-10" y1="0" x2="10" y2="0">
+      <stop stop-color="#7e57c2" offset="0%"></stop>
+      <stop stop-color="#2196f3" offset="100%"></stop>
+    </lineargradient>
+  </defs>
+  <style>
+    path {
+      stroke-dasharray: var(--length);
+      animation: draw 1s both;
+    }
+
+    @keyframes draw {
+      from {
+        stroke-dashoffset: var(--length);
+      }
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .bracket {
+      --length: 56.569;
+    }
+
+    .slash {
+      --length: 63.246;
+      animation-delay: 0.75s;
+    }
+  </style>
+  <g fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path class="bracket" d="M -30 -20 L -50 0 L -30 20"></path>
+    <path class="bracket" d="M 30 20 L 50 0 L 30 -20"></path>
+    <path class="slash" d="M 10 -30 L -10 30"></path>
+  </g>
+</svg>
+
+        
+      </span>
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">Software Engineering Team</span>
+        
+        
+          <span class="subtitle">CU Dept. of Biomedical Informatics</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/set-website/about/" data-tooltip="">
+          About
+        </a>
+      
+    
+      
+        <a href="/set-website/portfolio/" data-tooltip="">
+          Portfolio
+        </a>
+      
+    
+      
+        <a href="/set-website/blog/" data-tooltip="Musings and miscellany">
+          Blog
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="1">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size>1</size>
+-->
+
+
+<h1 class="center">Typed LLM Outputs with Instructor</h1>
+
+<div class="post-info">
+  
+    
+    
+      
+      
+        
+
+
+
+<div class="portrait-wrapper">
+  <a href="/set-website/members/dave-bunten.html" class="portrait" data-style="tiny" aria-label="Dave Bunten d33bs">
+    
+      <i class="icon fa-solid fa-code"></i>
+    
+
+    <img src="/set-website/images/dave-bunten.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/set-website/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Dave Bunten (@d33bs)
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Research Data Engineer
+      </span>
+    
+
+    
+  </a>
+</div>
+
+      
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>March 31, 2026</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>April 08, 2026</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="/set-website/blog">
+    
+      <a href="blog?search=%22tag:%20python%22" class="tag" data-tooltip='Show items with the tag "python"'>
+        python
+      </a>
+    
+      <a href="blog?search=%22tag:%20llm%22" class="tag" data-tooltip='Show items with the tag "llm"'>
+        llm
+      </a>
+    
+      <a href="blog?search=%22tag:%20data-validation%22" class="tag" data-tooltip='Show items with the tag "data-validation"'>
+        data-validation
+      </a>
+    
+      <a href="blog?search=%22tag:%20data-models%22" class="tag" data-tooltip='Show items with the tag "data-models"'>
+        data-models
+      </a>
+    
+      <a href="blog?search=%22tag:%20software-education%22" class="tag" data-tooltip='Show items with the tag "software-education"'>
+        software-education
+      </a>
+    
+      <a href="blog?search=%22tag:%20machine-learning%22" class="tag" data-tooltip='Show items with the tag "machine-learning"'>
+        machine-learning
+      </a>
+    
+      <a href="blog?search=%22tag:%20software-design%22" class="tag" data-tooltip='Show items with the tag "software-design"'>
+        software-design
+      </a>
+    
+      <a href="blog?search=%22tag:%20scientific-software%22" class="tag" data-tooltip='Show items with the tag "scientific-software"'>
+        scientific-software
+      </a>
+    
+      <a href="blog?search=%22tag:%20reproducibility%22" class="tag" data-tooltip='Show items with the tag "reproducibility"'>
+        reproducibility
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p><strong>LLMs are good at generating natural-language text, but applications usually need structured data.</strong>
+<a href="https://python.useinstructor.com/"><code class="language-plaintext highlighter-rouge">instructor</code></a> is a small Python library that lets you describe the output you want with a <a href="https://docs.pydantic.dev/latest/">Pydantic</a> model and have the model response validated automatically.
+Here, Pydantic provides the schema for the LLM output, and <code class="language-plaintext highlighter-rouge">instructor</code> uses that schema to validate the response.
+That means less prompt glue, less manual parsing, and clearer types in your code, even when running a local model in-process with <a href="https://llama-cpp-python.readthedocs.io/en/latest/">llama-cpp-python</a>.
+<!-- excerpt end --></p>
+
+<h2 id="without-instructor">Without <code class="language-plaintext highlighter-rouge">instructor</code>
+</h2>
+
+<p>Without a typing layer, we often end up asking for JSON through prompting alone and hoping the model follows the format closely enough.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span> <span class="nc">TicketSummary</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="n">create_chat_completion</span><span class="p">(</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span>
+            <span class="s">"content"</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s">"Extract a support ticket summary from this text. Return title, "</span>
+                <span class="s">"priority, and owner. Use the first name only for the owner. "</span>
+                <span class="s">"'Our benchmark says the refactor is 10x faster, but only if "</span>
+                <span class="s">"we start the timer after the function returns. Assign this to "</span>
+                <span class="s">"Avery with high priority.' Return JSON with exactly these "</span>
+                <span class="s">"fields: title, priority, owner."</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s">"choices"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>This is where the prompt-only path often falls apart: even when you ask for JSON, the model may still return headings, prose, or a shape that is close to what you wanted but not quite what your application expects.</p>
+
+<p>Example output from the prompt-only path:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Here is the extracted support ticket summary in JSON format:
+
+{
+  "title": "Refactor Performance Issue",
+  "priority": "High",
+  "owner": "Avery"
+}
+</code></pre></div></div>
+
+<h2 id="with-instructor">With <code class="language-plaintext highlighter-rouge">instructor</code>
+</h2>
+
+<p>With <code class="language-plaintext highlighter-rouge">instructor</code>, the schema becomes part of the request.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">instructor</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span> <span class="nc">TicketSummary</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">create</span> <span class="o">=</span> <span class="n">instructor</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span>
+    <span class="n">create</span><span class="o">=</span><span class="n">llm</span><span class="p">.</span><span class="n">create_chat_completion_openai_v1</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">instructor</span><span class="p">.</span><span class="n">Mode</span><span class="p">.</span><span class="n">MD_JSON</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ticket</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">TicketSummary</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span>
+            <span class="s">"content"</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s">"Extract a support ticket summary from this text. Return title, "</span>
+                <span class="s">"priority, and owner. Use the first name only for the owner. "</span>
+                <span class="s">"'Our benchmark says the refactor is 10x faster, but only if "</span>
+                <span class="s">"we start the timer after the function returns. Assign this to "</span>
+                <span class="s">"Avery with high priority.'"</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For this local <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> setup, <code class="language-plaintext highlighter-rouge">instructor.Mode.MD_JSON</code> was the more reliable choice during testing than stricter JSON-schema mode.
+We use <code class="language-plaintext highlighter-rouge">instructor.patch(...)</code> here because this example runs the model in-process through <code class="language-plaintext highlighter-rouge">llama-cpp-python</code>; if you are using an OpenAI-compatible server, <code class="language-plaintext highlighter-rouge">instructor.from_provider(...)</code> is often a cleaner option.</p>
+
+<p>Example result:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TicketSummary</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s">"Refactor Optimization Issue"</span><span class="p">,</span>
+    <span class="n">priority</span><span class="o">=</span><span class="s">"High"</span><span class="p">,</span>
+    <span class="n">owner</span><span class="o">=</span><span class="s">"Avery"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="alert" style="--color: #F59E0B">
+  
+  <i class="icon fa-solid fa-circle-exclamation"></i>
+  <div class="alert-content">
+    
+<p>We do not recommend starting benchmarks after the function returns, no matter how impressive the speedup looks!</p>
+
+  </div>
+</div>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>At a high level, <code class="language-plaintext highlighter-rouge">instructor</code> takes your Pydantic model, turns it into output guidance for the LLM call, and then validates what comes back.
+If the response matches the expected shape, you get a normal Python object.
+If not, <code class="language-plaintext highlighter-rouge">instructor</code> can retry or raise an error instead of quietly leaving you with malformed output text.</p>
+
+<h2 id="advantages-of-instructor">Advantages of <code class="language-plaintext highlighter-rouge">instructor</code>
+</h2>
+
+<ul>
+  <li>You define a Pydantic model once and work with validated Python objects instead of raw strings.</li>
+  <li>It reduces prompt glue and manual parsing code for structured extraction tasks.</li>
+  <li>It becomes more useful as the response shape grows beyond a couple of flat fields.</li>
+</ul>
+
+<h2 id="disadvantages">Disadvantages</h2>
+
+<ul>
+  <li>There can be a small token overhead because the output schema has to be communicated to the model.</li>
+  <li>Model compatibility varies, especially with smaller local models.</li>
+  <li>The exact integration style depends on your runtime; in-process <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> uses patching, while server-based setups can use cleaner provider-style APIs.</li>
+</ul>
+
+<p>The full demo used for this post is included in this repository as <a href="https://github.com/CU-DBMI/set-website/blob/main/examples/instructor_demo.py">examples/instructor_demo.py</a>.</p>
+
+<h2 id="run-it-locally">Run It Locally</h2>
+
+<p>This version does not require Ollama or a local model server. On first run, the script downloads a small public GGUF model, may build the native <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> backend, and then runs the model in-process:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> instructor <span class="nt">--with</span> llama-cpp-python <span class="nt">--with</span> pydantic <span class="se">\</span>
+  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
+</code></pre></div></div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  <background></background>
+  <dark></dark>
+  <size></size>
+-->
+
+
+<div class="post-nav">
+  <span>
+    
+      <i class="icon fa-solid fa-angle-left"></i> Previous post<br>
+      <a href="/set-website/2025/06/12/introducing-uv.html">
+        Introducing uv: A Fast, Portable Python Environment Manager
+      </a>
+    
+  </span>
+  <span>
+    
+  </span>
+</div>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('/set-website/images/background.jpg')" data-dark="true" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/CU-DBMI" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+  </div>
+
+  <div>
+    © 2026
+    Software Engineering Team
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>

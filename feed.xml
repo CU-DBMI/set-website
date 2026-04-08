@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2026-01-12T17:01:42+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2026-04-08T14:17:10+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">Typed LLM Outputs with Instructor</title><link href="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html" rel="alternate" type="text/html" title="Typed LLM Outputs with Instructor" /><published>2026-03-31T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html"><![CDATA[<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    
+<p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
+expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
+have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+
+  </div>
+</div>
+
+<h2 id="introduction">Introduction</h2>
+
+<!-- excerpt start -->
+<p><strong>LLMs are good at generating natural-language text, but applications usually need structured data.</strong>
+<a href="https://python.useinstructor.com/"><code class="language-plaintext highlighter-rouge">instructor</code></a> is a small Python library that lets you describe the output you want with a <a href="https://docs.pydantic.dev/latest/">Pydantic</a> model and have the model response validated automatically.
+Here, Pydantic provides the schema for the LLM output, and <code class="language-plaintext highlighter-rouge">instructor</code> uses that schema to validate the response.
+That means less prompt glue, less manual parsing, and clearer types in your code, even when running a local model in-process with <a href="https://llama-cpp-python.readthedocs.io/en/latest/">llama-cpp-python</a>.
+<!-- excerpt end --></p>
+
+<h2 id="without-instructor">Without <code class="language-plaintext highlighter-rouge">instructor</code></h2>
+
+<p>Without a typing layer, we often end up asking for JSON through prompting alone and hoping the model follows the format closely enough.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span> <span class="nc">TicketSummary</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">.</span><span class="n">create_chat_completion</span><span class="p">(</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span>
+            <span class="s">"content"</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s">"Extract a support ticket summary from this text. Return title, "</span>
+                <span class="s">"priority, and owner. Use the first name only for the owner. "</span>
+                <span class="s">"'Our benchmark says the refactor is 10x faster, but only if "</span>
+                <span class="s">"we start the timer after the function returns. Assign this to "</span>
+                <span class="s">"Avery with high priority.' Return JSON with exactly these "</span>
+                <span class="s">"fields: title, priority, owner."</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="s">"choices"</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">"message"</span><span class="p">][</span><span class="s">"content"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>This is where the prompt-only path often falls apart: even when you ask for JSON, the model may still return headings, prose, or a shape that is close to what you wanted but not quite what your application expects.</p>
+
+<p>Example output from the prompt-only path:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Here is the extracted support ticket summary in JSON format:
+
+{
+  "title": "Refactor Performance Issue",
+  "priority": "High",
+  "owner": "Avery"
+}
+</code></pre></div></div>
+
+<h2 id="with-instructor">With <code class="language-plaintext highlighter-rouge">instructor</code></h2>
+
+<p>With <code class="language-plaintext highlighter-rouge">instructor</code>, the schema becomes part of the request.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">instructor</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<span class="k">class</span> <span class="nc">TicketSummary</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">priority</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">owner</span><span class="p">:</span> <span class="nb">str</span>
+
+<span class="n">create</span> <span class="o">=</span> <span class="n">instructor</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span>
+    <span class="n">create</span><span class="o">=</span><span class="n">llm</span><span class="p">.</span><span class="n">create_chat_completion_openai_v1</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">instructor</span><span class="p">.</span><span class="n">Mode</span><span class="p">.</span><span class="n">MD_JSON</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ticket</span> <span class="o">=</span> <span class="n">create</span><span class="p">(</span>
+    <span class="n">response_model</span><span class="o">=</span><span class="n">TicketSummary</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span>
+            <span class="s">"content"</span><span class="p">:</span> <span class="p">(</span>
+                <span class="s">"Extract a support ticket summary from this text. Return title, "</span>
+                <span class="s">"priority, and owner. Use the first name only for the owner. "</span>
+                <span class="s">"'Our benchmark says the refactor is 10x faster, but only if "</span>
+                <span class="s">"we start the timer after the function returns. Assign this to "</span>
+                <span class="s">"Avery with high priority.'"</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ticket</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>For this local <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> setup, <code class="language-plaintext highlighter-rouge">instructor.Mode.MD_JSON</code> was the more reliable choice during testing than stricter JSON-schema mode.
+We use <code class="language-plaintext highlighter-rouge">instructor.patch(...)</code> here because this example runs the model in-process through <code class="language-plaintext highlighter-rouge">llama-cpp-python</code>; if you are using an OpenAI-compatible server, <code class="language-plaintext highlighter-rouge">instructor.from_provider(...)</code> is often a cleaner option.</p>
+
+<p>Example result:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TicketSummary</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s">"Refactor Optimization Issue"</span><span class="p">,</span>
+    <span class="n">priority</span><span class="o">=</span><span class="s">"High"</span><span class="p">,</span>
+    <span class="n">owner</span><span class="o">=</span><span class="s">"Avery"</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="alert" style="--color: #F59E0B">
+  
+  <i class="icon fa-solid fa-circle-exclamation"></i>
+  <div class="alert-content">
+    
+<p>We do not recommend starting benchmarks after the function returns, no matter how impressive the speedup looks!</p>
+
+  </div>
+</div>
+
+<h2 id="how-it-works">How It Works</h2>
+
+<p>At a high level, <code class="language-plaintext highlighter-rouge">instructor</code> takes your Pydantic model, turns it into output guidance for the LLM call, and then validates what comes back.
+If the response matches the expected shape, you get a normal Python object.
+If not, <code class="language-plaintext highlighter-rouge">instructor</code> can retry or raise an error instead of quietly leaving you with malformed output text.</p>
+
+<h2 id="advantages-of-instructor">Advantages of <code class="language-plaintext highlighter-rouge">instructor</code></h2>
+
+<ul>
+  <li>You define a Pydantic model once and work with validated Python objects instead of raw strings.</li>
+  <li>It reduces prompt glue and manual parsing code for structured extraction tasks.</li>
+  <li>It becomes more useful as the response shape grows beyond a couple of flat fields.</li>
+</ul>
+
+<h2 id="disadvantages">Disadvantages</h2>
+
+<ul>
+  <li>There can be a small token overhead because the output schema has to be communicated to the model.</li>
+  <li>Model compatibility varies, especially with smaller local models.</li>
+  <li>The exact integration style depends on your runtime; in-process <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> uses patching, while server-based setups can use cleaner provider-style APIs.</li>
+</ul>
+
+<p>The full demo used for this post is included in this repository as <a href="https://github.com/CU-DBMI/set-website/blob/main/examples/instructor_demo.py">examples/instructor_demo.py</a>.</p>
+
+<h2 id="run-it-locally">Run It Locally</h2>
+
+<p>This version does not require Ollama or a local model server. On first run, the script downloads a small public GGUF model, may build the native <code class="language-plaintext highlighter-rouge">llama-cpp-python</code> backend, and then runs the model in-process:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> instructor <span class="nt">--with</span> llama-cpp-python <span class="nt">--with</span> pydantic <span class="se">\</span>
+  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
+</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="llm" /><category term="data-validation" /><category term="data-models" /><category term="software-education" /><category term="machine-learning" /><category term="software-design" /><category term="scientific-software" /><category term="reproducibility" /><summary type="html"><![CDATA[Typed LLM Outputs with Instructor]]></summary></entry><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -422,7 +580,7 @@ copier copy https://github.com/CU-DBMI/template-uv-python-research-software new_
 </blockquote>
 
 <p><code class="language-plaintext highlighter-rouge">uv</code> from Astral offers research software engineers a fast, portable, and standards‑compliant environment manager that meets or exceeds the capabilities of existing tools.
-By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
+By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -920,7 +1078,7 @@ Keep in mind these are estimations and don&#8217;t include additional other char
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a></li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a></li>
   <li>GO FAIR Initiative: <a href="https://www.go-fair.org/">https://www.go-fair.org/</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1392,7 +1550,7 @@ By adopting a solid testing strategy, you&#8217;re taking a significant step tow
   <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
   <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
   <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1705,7 +1863,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1990,7 +2148,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2407,7 +2565,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2704,7 +2862,7 @@ Tools like Dependabot or Renovate enable scheduled checks and updates to be appl
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3126,7 +3284,7 @@ Memray seeks to provide a way to overcome challenges with tracking and understan
 It's worth mentioning that this article covers only a small fraction of how and what memory is as well as how Python might make use of it.
 Hopefully it clarifies the process and provides a way to get started with investigating memory within the software you work with.
 Wishing you the very best in your software journey with memory!
-</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
+</tr></table>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-month" /><category term="python" /><category term="memory" /><category term="memory-management" /><category term="memory-allocators" /><summary type="html"><![CDATA[Python Memory Management and Troubleshooting]]></summary></entry><entry><title type="html">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</title><link href="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html" rel="alternate" type="text/html" title="Tip of the Week: Codesgiving - Open-source Contribution Walkthrough" /><published>2023-11-15T00:00:00+00:00</published><updated>2026-04-08T14:15:57+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/11/15/Codesgiving-Open-source-Contribution-Walkthrough.html"><![CDATA[<h1 id="tip-of-the-week-codesgiving---open-source-contribution-walkthrough">Tip of the Week: Codesgiving - Open-source Contribution Walkthrough</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3561,277 +3719,4 @@ Best wishes on your open-source journey and happy Codesgiving!</p>
 
 <ul>
   <li>Top Image: Französischer Obstgarten zur Erntezeit (Le verger) by Charles-François Daubigny (cropped). (Source: <a href="https://commons.wikimedia.org/wiki/File:French_Orchard_at_Harvest_Time_(Le_verger)_(SM_1444).png">Wikimedia Commons</a>)</li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry><entry><title type="html">Tip of the Week: Data Quality Validation through Software Testing Techniques</title><link href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html" rel="alternate" type="text/html" title="Tip of the Week: Data Quality Validation through Software Testing Techniques" /><published>2023-10-04T00:00:00+00:00</published><updated>2026-01-12T16:59:08+00:00</updated><id>https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html"><![CDATA[<h1 id="tip-of-the-week-data-quality-validation-through-software-testing-techniques">Tip of the Week: Data Quality Validation through Software Testing Techniques</h1>
-
-<div class="alert" style="--color: #0ea5e9">
-  
-  <i class="icon fa-solid fa-circle-info"></i>
-  <div class="alert-content">
-    
-<p>Each week we seek to provide a software tip of the week geared towards helping you achieve your software goals. Views
-expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any software questions or suggestions for an upcoming tip of the week, please don’t hesitate to reach out to
-#software-engineering on Slack or email DBMISoftwareEngineering at olucdenver.onmicrosoft.com</p>
-
-  </div>
-</div>
-
-<p><strong>TLDR (too long, didn&#8217;t read);</strong></p>
-
-<p>Implement data quality validation through <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> approaches which leverage ideas surrounding <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triples</a> and <a href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract (DbC)</a>. Balancing reusability through <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based design</a> data testing with <a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> or <a href="https://github.com/ropensci/assertr/">Assertr</a>. For greater specificity in your data testing, use <a href="https://en.wikipedia.org/wiki/Database_schema">database schema-like</a> verification through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> or a <a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> validator. When possible, practice <a href="https://en.wikipedia.org/wiki/Shift-left_testing">shift-left testing</a> on data sources by through the concept of <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">&#8220;database(s) as code&#8221;</a> via tools like <a href="https://dvc.org/doc">Data Version Control (DVC)</a> and <a href="https://github.com/flyway/flyway">Flyway</a>.</p>
-
-<h2 id="introduction">Introduction</h2>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFF1YWxpdHkgVmFsaWRhdGlvblwiXVxuZGlyZWN0aW9uIExSXG4lJS1cbmlucHV0X2RhdGFbKFwiSW5wdXQgRGF0YVwiKV1cbm1ldF9zcGVjaWZpY2F0aW9uMXtcIk1ldFxcbnNwZWNzP1wifVxucHJvY2Vzc19kYXRhW1wiRGF0YSBwcm9jZXNzaW5nXCJdXG5tZXRfc3BlY2lmaWNhdGlvbjJ7XCJNZXQgXFxuc3BlY3M_XCJ9XG5vdXRwdXRfZGF0YVsoXCJPdXRwdXQgRGF0YVwiKV1cbmVuZFxuJSUtXG5pbnB1dF9kYXRhIC0tPiBtZXRfc3BlY2lmaWNhdGlvbjFcbm1ldF9zcGVjaWZpY2F0aW9uMSAtLT4gcHJvY2Vzc19kYXRhXG5wcm9jZXNzX2RhdGEgLS0-IG1ldF9zcGVjaWZpY2F0aW9uMlxubWV0X3NwZWNpZmljYXRpb24yIC0tPiBvdXRwdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9" /></p>
-
-<p><em>Diagram showing input, in-process data, and output data as a workflow.</em></p>
-
-<!-- excerpt start -->
-<p>Data orientated software development can benefit from a specialized focus on varying aspects of data quality validation.
-We can use <a href="https://en.wikipedia.org/wiki/Software_testing">software testing</a> techniques to validate certain qualities of the data in order to meet a declarative standard (where one doesn&#8217;t need to guess or rediscover known issues).
-These come in a number of forms and generally follow existing software testing concepts which we&#8217;ll expand upon below.
-This article will cover a few tools which leverage these techniques for addressing data quality validation testing.
-<!-- excerpt end --></p>
-<h2 id="data-quality-testing-concepts">Data Quality Testing Concepts</h2>
-
-<h3 id="hoare-triple">Hoare Triple</h3>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFdvcmtmbG93IGFzIEhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG5wcm9jZXNzX2RhdGFbXCJEYXRhIHByb2Nlc3NpbmdcXG4oQyAtIGNvbW1hbmQpXCJdXG5vdXRwdXRfZGF0YVsoXCJPdXRwdXQgRGF0YVxcbihRIC0gcG9zdGNvbmRpdGlvbilcIildXG5lbmRcbiUlLVxuaW5wdXRfZGF0YSAtLT4gcHJvY2Vzc19kYXRhIC0tPiBvdXRwdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9" /></p>
-
-<p>One concept we&#8217;ll use to present these ideas is <a href="https://en.wikipedia.org/wiki/Hoare_logic"><em>Hoare logic</em></a>, which is a system for reasoning on <a href="https://en.wikipedia.org/wiki/Correctness_(computer_science)">software correctness</a>.
-Hoare logic includes the idea of a <a href="https://en.wikipedia.org/wiki/Hoare_logic#Hoare_triple">Hoare triple</a> ($ {\displaystyle {P}C{Q}} $) where $ {\displaystyle {P}} $ is an assertion of precondition, $ {\displaystyle \ C} $ is a command, and $ {\displaystyle {Q}} $ is a postcondition assertion.
-Software development using data often entails (sometimes assumed) assertions of precondition from data sources, a transformation or command which changes the data, and a (sometimes assumed) assertion of postcondition in a data output or result.</p>
-
-<h3 id="design-by-contract">Design by Contract</h3>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFRlc3RpbmcgdGhyb3VnaCBEZXNpZ24gYnkgQ29udHJhY3Qgb3ZlciBIb2FyZSBUcmlwbGVcIl1cbmRpcmVjdGlvbiBMUlxuc3ViZ3JhcGggaG9hcmVfdHJpcGxlIFtcIkhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG4lJS1cbnByb2Nlc3NfZGF0YVtcIkRhdGEgcHJvY2Vzc2luZ1xcbihDIC0gY29tbWFuZClcIl1cbiUlLVxub3V0cHV0X2RhdGFbKFwiT3V0cHV0IERhdGFcXG4oUSAtIHBvc3Rjb25kaXRpb24pXCIpXVxuZW5kXG5zdWJncmFwaCBkYmMgW1wiRGVzaWduIGJ5IENvbnRyYWN0XCJdXG5kaXJlY3Rpb24gTFJcbm1ldF9zcGVjaWZpY2F0aW9uMXtcIk1ldFxcbnNwZWNzP1wifVxuY29udHJhY3QxKFtcIkNvbnRyYWN0KHMpXCJdKVxubWV0X3NwZWNpZmljYXRpb24ye1wiTWV0IFxcbnNwZWNzP1wifVxuY29udHJhY3QyKFtcIkNvbnRyYWN0KHMpXCJdKVxuZW5kXG5lbmRcbiUlLVxuaW5wdXRfZGF0YSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5tZXRfc3BlY2lmaWNhdGlvbjEgLS0-IHByb2Nlc3NfZGF0YVxucHJvY2Vzc19kYXRhIC0tPiBtZXRfc3BlY2lmaWNhdGlvbjJcbm1ldF9zcGVjaWZpY2F0aW9uMiAtLT4gb3V0cHV0X2RhdGFcbmNvbnRyYWN0MSAtLT4gbWV0X3NwZWNpZmljYXRpb24xXG5jb250cmFjdDIgLS0-IG1ldF9zcGVjaWZpY2F0aW9uMlxuJSUtIiwibWVybWFpZCI6bnVsbH0" /></p>
-
-<p><em>Data testing through design by contract over Hoare triple.</em></p>
-
-<p>Hoare logic and Software correctness help describe <a href="https://en.wikipedia.org/wiki/Design_by_contract">design by contract (DbC)</a>, a software approach involving the formal specification of &#8220;contracts&#8221; which help ensure we meet our intended goals.
-DbC helps describe how to create assertions when proceeding through Hoare triplet states for data.
-These concepts provide a framework for thinking about the tools mentioned below.</p>
-
-<h2 id="data-component-testing">Data Component Testing</h2>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5pbnB1dF9kYXRhWyhcIkRhdGEgdG8gY2hlY2tcIildXG5oYXNfY29tcG9uZW50c3tcIkV4aGliaXRzXFxuY29tcG9uZW50cz9cIn1cbmNvbnRyYWN0KFtcIkNvbnRyYWN0KHMpXCJdKVxuY29tcG9uZW50c1tcIi0gSGFzIG5vIG51bGwgdmFsdWVzXFxuLSBDb2x1bW5zIGFyZSBhbGwgbnVtZXJpY1xcbi0gZXRjLi4uXCJdXG5jb250aW51ZVtcIkNvbnRpbnVlXFxub3BlcmF0aW9uc1wiXVxuZXJyb3JbXCJSYWlzZVxcbmV4Y2VwdGlvblwiXVxuJSUtXG5jb21wb25lbnRzIC0tPiBjb250cmFjdFxuaW5wdXRfZGF0YSAtLT4gaGFzX2NvbXBvbmVudHNcbmNvbnRyYWN0IC0uLT4gaGFzX2NvbXBvbmVudHNcbmhhc19jb21wb25lbnRzIC0tPiB8IFllcyB8IGNvbnRpbnVlXG5oYXNfY29tcG9uZW50cyAtLT4gfCBObyB8IGVycm9yXG4lJS1cbnN0eWxlIGVycm9yIGZpbGw6I0ZFRDdBQVxuc3R5bGUgY29udGludWUgZmlsbDojRENGQ0U3XG5zdHlsZSBjb21wb25lbnRzIGZpbGw6I2ZmZiIsIm1lcm1haWQiOm51bGx9" /></p>
-
-<p><em>Diagram showing data contracts as <strong>generalized and reusable &#8220;component&#8221; testing</strong> being checked through contracts and raising an error if they aren&#8217;t met or continuing operations if they are met.</em></p>
-
-<p>We often need to verify a certain component&#8217;s surrounding data in order to ensure it meets minimum standards.
-The word &#8220;component&#8221; is used here from the context of <a href="https://en.wikipedia.org/wiki/Component-based_software_engineering">component-based software design</a> to group together reusable, modular qualities of the data where sometimes we don&#8217;t know (or want) to specify granular aspects (such as schema, type, column name, etc).
-These components often are implied by software which will eventually use the data, which can emit warnings or errors when they find the data does not meet these standards.
-Oftentimes these components are contracts checking postconditions of earlier commands or procedures, ensuring the data we receive is accurate to our intention.
-<strong><em>We can avoid these challenges by creating contracts for our data to verify the components of the result before it reaches later stages.</em></strong></p>
-
-<p>Examples of these data components might include:</p>
-
-<ul>
-  <li>The dataset has no null values.</li>
-  <li>The dataset has no more than 3 columns.</li>
-  <li>The dataset has a column called <code class="language-plaintext highlighter-rouge">numbers</code> which includes numbers in the range of 0-10.</li>
-</ul>
-
-<h3 id="data-component-testing---great-expectations">Data Component Testing - Great Expectations</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
-Example of using Great Expectations
-Referenced with modifications from: 
-https://docs.greatexpectations.io/docs/tutorials/quickstart/
-"""</span>
-<span class="kn">import</span> <span class="nn">great_expectations</span> <span class="k">as</span> <span class="n">gx</span>
-
-<span class="c1"># get gx DataContext
-# see: https://docs.greatexpectations.io/docs/terms/data_context
-</span><span class="n">context</span> <span class="o">=</span> <span class="n">gx</span><span class="p">.</span><span class="n">get_context</span><span class="p">()</span>
-
-<span class="c1"># set a context data source 
-# see: https://docs.greatexpectations.io/docs/terms/datasource
-</span><span class="n">validator</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">sources</span><span class="p">.</span><span class="n">pandas_default</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="s">"https://raw.githubusercontent.com/great-expectations/gx_tutorials/main/data/yellow_tripdata_sample_2019-01.csv"</span>
-<span class="p">)</span>
-
-<span class="c1"># add and save expectations 
-# see: https://docs.greatexpectations.io/docs/terms/expectation
-</span><span class="n">validator</span><span class="p">.</span><span class="n">expect_column_values_to_not_be_null</span><span class="p">(</span><span class="s">"pickup_datetime"</span><span class="p">)</span>
-<span class="n">validator</span><span class="p">.</span><span class="n">expect_column_values_to_be_between</span><span class="p">(</span><span class="s">"passenger_count"</span><span class="p">,</span> <span class="n">auto</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">validator</span><span class="p">.</span><span class="n">save_expectation_suite</span><span class="p">()</span>
-
-<span class="c1"># checkpoint the context with the validator
-# see: https://docs.greatexpectations.io/docs/terms/checkpoint
-</span><span class="n">checkpoint</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">add_or_update_checkpoint</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s">"my_quickstart_checkpoint"</span><span class="p">,</span>
-    <span class="n">validator</span><span class="o">=</span><span class="n">validator</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># gather checkpoint expectation results
-</span><span class="n">checkpoint_result</span> <span class="o">=</span> <span class="n">checkpoint</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
-
-<span class="c1"># show the checkpoint expectation results
-</span><span class="n">context</span><span class="p">.</span><span class="n">view_validation_result</span><span class="p">(</span><span class="n">checkpoint_result</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>Example code leveraging Python package Great Expectations to perform various data component contract validation.</em></p>
-
-<p><a href="https://github.com/great-expectations/great_expectations">Great Expectations</a> is a Python project which provides data  contract testing features through the use of component called <a href="https://greatexpectations.io/expectations/">&#8220;expectations&#8221;</a> about the data involved.
-These expectations act as a standardized way to define and validate the component of the data in the same way across different datasets or projects.
-In addition to providing a mechanism for validating data contracts, Great Expecations also provides a way to <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_result_stores">view validation results</a>, <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_metadata_stores/configure_expectation_stores">share expectations</a>, and also <a href="https://docs.greatexpectations.io/docs/guides/setup/configuring_data_docs/host_and_share_data_docs">build data documentation</a>.
-See the above example for a quick code reference of how these work.</p>
-
-<h3 id="data-component-testing---assertr">Data Component Testing - Assertr</h3>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example using the Assertr package</span><span class="w">
-</span><span class="c1"># referenced with modifications from:</span><span class="w">
-</span><span class="c1"># https://docs.ropensci.org/assertr/articles/assertr.html</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">assertr</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># set our.data to reference the mtcars dataset</span><span class="w">
-</span><span class="n">our.data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mtcars</span><span class="w">
-
-</span><span class="c1"># simulate an issue in the data for contract specification</span><span class="w">
-</span><span class="n">our.data</span><span class="o">$</span><span class="n">mpg</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">our.data</span><span class="o">$</span><span class="n">mpg</span><span class="p">[</span><span class="m">5</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">-1</span><span class="w">
-
-</span><span class="c1"># use verify to validate that column mpg &gt;= 0</span><span class="w">
-</span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
-  </span><span class="n">verify</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># use assert to validate that column mpg is within the bounds of 0 to infinity</span><span class="w">
-</span><span class="n">our.data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
-  </span><span class="n">assert</span><span class="p">(</span><span class="n">within_bounds</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="kc">Inf</span><span class="p">),</span><span class="w"> </span><span class="n">mpg</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p><em>Example code leveraging R package Assertr to perform various data component contract validation.</em></p>
-
-<p><a href="https://github.com/ropensci/assertr/">Assertr</a> is an R project which provides similar data component assertions in the form of verify, assert, and insist methods (<a href="https://docs.ropensci.org/assertr/articles/assertr.html">see here for more documentation</a>).
-Using Assertr enables a similar but more lightweight functionality to that of Great Expectations.
-See the above for an example of how to use it in your projects.</p>
-
-<h2 id="data-schema-testing">Data Schema Testing</h2>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmlucHV0X2RhdGFbKFwiRGF0YSB0byBjaGVja1wiKV1cbmhhc19zY2hlbWF7XCJIYXNcXG5zY2hlbWE_XCJ9XG5jb250cmFjdChbXCJDb250cmFjdChzKVwiXSlcbnNjaGVtYVtcIi0gSGFzIGNvbHVtbiB4IG9mIHR5cGUgZmxvYXQgXFxuLSBIYXMgbm9uLW51bGwgY29sdW1uIHkgb2YgdHlwZSBpbnRcXG4gLSBldGMuLi5cIl1cbmNvbnRpbnVlW1wiQ29udGludWVcXG5vcGVyYXRpb25zXCJdXG5lcnJvcltcIlJhaXNlXFxuZXhjZXB0aW9uXCJdXG4lJS1cbnNjaGVtYSAtLT4gY29udHJhY3RcbmlucHV0X2RhdGEgLS0-IGhhc19zY2hlbWFcbmNvbnRyYWN0IC0uLT4gaGFzX3NjaGVtYVxuaGFzX3NjaGVtYSAtLT4gfCBZZXMgfCBjb250aW51ZVxuaGFzX3NjaGVtYSAtLT4gfCBObyB8IGVycm9yXG4lJS1cbnN0eWxlIGVycm9yIGZpbGw6I0ZFRDdBQVxuc3R5bGUgY29udGludWUgZmlsbDojRENGQ0U3XG5zdHlsZSBzY2hlbWEgZmlsbDojZmZmIiwibWVybWFpZCI6bnVsbH0" /></p>
-
-<p><em>Diagram showing data contracts as <strong>more granular specifications via &#8220;schema&#8221; testing</strong> being checked through contracts and raising an error if they aren&#8217;t met or continuing operations if they are met.</em></p>
-
-<p>Sometimes we need greater specificity than what a data component can offer.
-We can use data schema testing contracts in these cases.
-The word &#8220;schema&#8221; here is used from the context of <a href="https://en.wikipedia.org/wiki/Database_schema">database schema</a>, but oftentimes these specifications are suitable well beyond solely databases (including database-like formats like dataframes).
-While reuse and modularity are more limited with these cases, they can be helpful for efforts where precision is valued or necessary to accomplish your goals.
-It&#8217;s worth mentioning that data schema and component testing tools often have many overlaps (meaning you can interchangeably use them to accomplish both tasks).</p>
-
-<h3 id="data-schema-testing---pandera">Data Schema Testing - Pandera</h3>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
-Example of using the Pandera package
-referenced with modifications from:
-https://pandera.readthedocs.io/en/stable/try_pandera.html
-"""</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
-<span class="kn">import</span> <span class="nn">pandera</span> <span class="k">as</span> <span class="n">pa</span>
-<span class="kn">from</span> <span class="nn">pandera.typing</span> <span class="kn">import</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">Series</span>
-
-
-<span class="c1"># define a schema
-</span><span class="k">class</span> <span class="nc">Schema</span><span class="p">(</span><span class="n">pa</span><span class="p">.</span><span class="n">DataFrameModel</span><span class="p">):</span>
-    <span class="n">item</span><span class="p">:</span> <span class="n">Series</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Field</span><span class="p">(</span><span class="n">isin</span><span class="o">=</span><span class="p">[</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"orange"</span><span class="p">],</span> <span class="nb">coerce</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">price</span><span class="p">:</span> <span class="n">Series</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">pa</span><span class="p">.</span><span class="n">Field</span><span class="p">(</span><span class="n">gt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">coerce</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-
-<span class="c1"># simulate invalid dataframe
-</span><span class="n">invalid_data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_records</span><span class="p">(</span>
-    <span class="p">[{</span><span class="s">"item"</span><span class="p">:</span> <span class="s">"applee"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span> 
-     <span class="p">{</span><span class="s">"item"</span><span class="p">:</span> <span class="s">"orange"</span><span class="p">,</span> <span class="s">"price"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1000</span><span class="p">}]</span>
-<span class="p">)</span>
-
-
-<span class="c1"># set a decorator on a function which will
-# check the schema as a precondition
-</span><span class="o">@</span><span class="n">pa</span><span class="p">.</span><span class="n">check_types</span><span class="p">(</span><span class="n">lazy</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">precondition_transform_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">[</span><span class="n">Schema</span><span class="p">]):</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">"here"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">data</span>
-
-
-<span class="c1"># precondition schema testing
-</span><span class="k">try</span><span class="p">:</span>
-    <span class="n">precondition_transform_data</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">pa</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">SchemaErrors</span> <span class="k">as</span> <span class="n">schema_excs</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">schema_excs</span><span class="p">)</span>
-
-<span class="c1"># inline or implied postcondition schema testing
-</span><span class="k">try</span><span class="p">:</span>
-    <span class="n">Schema</span><span class="p">.</span><span class="n">validate</span><span class="p">(</span><span class="n">invalid_data</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">pa</span><span class="p">.</span><span class="n">errors</span><span class="p">.</span><span class="n">SchemaError</span> <span class="k">as</span> <span class="n">schema_exc</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">schema_exc</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><em>Example code leveraging Python package Pandera to perform various data schema contract validation.</em></p>
-
-<p>DataFrame-like libraries like <a href="https://pandas.pydata.org/">Pandas</a> can verified using schema specification contracts through <a href="https://pandera.readthedocs.io/en/stable/index.html">Pandera</a> (see here for <a href="https://pandera.readthedocs.io/en/stable/supported_libraries.html#supported-dataframe-libraries">full DataFrame library support</a>).
-Pandera helps define specific columns, column types, and also has some component-like features.
-It leverages a Pythonic class specification, similar to <a href="https://docs.python.org/3/library/dataclasses.html">data classes</a> and <a href="https://docs.pydantic.dev/latest/concepts/models/">pydantic models</a>, making it potentially easier to use if you already understand Python and DataFrame-like libraries.
-See the above example for a look into how Pandera may be used.</p>
-
-<h3 id="data-schema-testing---json-schema">Data Schema Testing - JSON Schema</h3>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example of using the jsonvalidate R package.</span><span class="w">
-</span><span class="c1"># Referenced with modifications from:</span><span class="w">
-</span><span class="c1"># https://docs.ropensci.org/jsonvalidate/articles/jsonvalidate.html</span><span class="w">
-
-</span><span class="n">schema</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Hello World JSON Schema",
-  "description": "An example",
-  "type": "object",
-  "properties": {
-    "hello": {
-      "description": "Provide a description of the property here",
-      "type": "string"
-    }
-  },
-  "required": [
-    "hello"
-  ]
-}'</span><span class="w">
-
-</span><span class="c1"># create a schema contract for data</span><span class="w">
-</span><span class="n">validate</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">jsonvalidate</span><span class="o">::</span><span class="n">json_validator</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ajv"</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># validate JSON using schema specification contract and invalid data</span><span class="w">
-</span><span class="n">validate</span><span class="p">(</span><span class="s2">"{}"</span><span class="p">)</span><span class="w">
-
-</span><span class="c1"># validate JSON using schema specification contract and valid data</span><span class="w">
-</span><span class="n">validate</span><span class="p">(</span><span class="s2">"{'hello':'world'}"</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p><a href="https://json-schema.org/learn/getting-started-step-by-step">JSON Schema</a> provides a vocabulary way to validate schema contracts for JSON documents.
-There are several implementations of the vocabulary, including <a href="https://github.com/python-jsonschema/jsonschema">Python package jsonschema</a>, and R package <a href="https://github.com/ropensci/jsonvalidate">jsonvalidate</a>.
-Using these libraries allows you to define pre- or postcondition data schema contracts for your software work.
-See above for an R based example of using this vocabulary to perform data schema testing.</p>
-
-<h2 id="shift-left-data-testing">Shift-left Data Testing</h2>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG5zdWJncmFwaCBsb2NhbCBbXCJEYXRhIFdvcmtmbG93IGFzIEhvYXJlIFRyaXBsZVwiXVxuZGlyZWN0aW9uIExSXG5zdWJncmFwaCBzcGFjZXIgW1wiIFwiXVxuc3ViZ3JhcGggcXVlc3Rpb24gW1wiRGF0YSBzb3VyY2UgY29uZGl0aW9uP1wiXVxuaW5wdXRfZGF0YVsoXCJJbnB1dCBEYXRhXFxuKFAgLSBwcmVjb25kaXRpb24pXCIpXVxuZW5kXG5lbmRcbnByb2Nlc3NfZGF0YVtcIkRhdGEgcHJvY2Vzc2luZ1xcbihDIC0gY29tbWFuZClcIl1cbm91dHB1dF9kYXRhWyhcIk91dHB1dCBEYXRhXFxuKFEgLSBwb3N0Y29uZGl0aW9uKVwiKV1cbmVuZFxuJSUtXG5pbnB1dF9kYXRhIC0tPiBwcm9jZXNzX2RhdGEgLS0-IG91dHB1dF9kYXRhXG4lJS1cbnN0eWxlIHF1ZXN0aW9uIGZpbGw6I2ZmZmZmZixzdHJva2U6I2ZmZmZmZjtcbnN0eWxlIHNwYWNlciBmaWxsOiNmZmZmZmYiLCJtZXJtYWlkIjpudWxsfQ" /></p>
-
-<p>Earlier portions of this article have covered primarily data validation of command side-effects and postconditions.
-This is commonplace in development where data sources usually are provided without the ability to validate their precondition or definition.
-<a href="https://en.wikipedia.org/wiki/Shift-left_testing">Shift-left testing</a> is a movement which focuses on validating earlier in the lifecycle if and when possible to avoid downstream issues which might occur.</p>
-
-<h3 id="shift-left-data-testing---data-version-control-dvc">Shift-left Data Testing - Data Version Control (DVC)</h3>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbmR2Y1soXCJEYXRhIFZlcnNpb25cXG5Db250cm9sIChEVkMpXCIpXVxudmVyc2lvbmVkX2RhdGFbKFwiVmVyc2lvbmVkXFxuRGF0YXNldHNcIildXG5kdmNfY2xpW1wiRFZDIENsaWVudFwiXVxuaW5wdXRfZGF0YVsoXCJJbnB1dCBEYXRhXFxuKFAgLSBwcmVjb25kaXRpb24pXCIpXVxuJSUtXG5kdmMgLS0-IHwgdmVyc2lvbiBkYXRhIHwgZHZjX2NsaVxudmVyc2lvbmVkX2RhdGEgLS0-IHwgYWN0dWFsIGRhdGEgfCBkdmNfY2xpXG5kdmNfY2xpIC0tPiB8IHRvIG1haW50YWluIHwgaW5wdXRfZGF0YSIsIm1lcm1haWQiOm51bGx9" /></p>
-
-<p>Data sources undergoing frequent changes become difficult to use because we oftentimes don&#8217;t know <em>when</em> the data is from or what version it might be.
-This information is sometimes added in the form of filename additions or an update datetime column in a table.
-<a href="https://dvc.org/doc">Data Version Control (DVC)</a> is one tool which is specially purposed to address this challenge through <a href="https://en.wikipedia.org/wiki/Version_control">source control</a> techniques.
-Data managed by DVC allows software to be built in such a way that version preconditions are validated before reaching data transformations (commands) or postconditions.</p>
-
-<h3 id="shift-left-data-testing---flyway">Shift-left Data Testing - Flyway</h3>
-
-<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnNxbFtcIkRhdGFiYXNlIGFzIENvZGVcXG4oaW4gU1FMKVwiXVxuZmx5d2F5W1wiRmx5d2F5XCJdXG5pbnB1dF9kYXRhWyhcIklucHV0IERhdGFcXG4oUCAtIHByZWNvbmRpdGlvbilcIildXG4lJS1cbnNxbCAtLT4gfCBpbnN0cnVjdGlvbnMgZm9yIHwgZmx5d2F5XG5mbHl3YXkgLS0-IHwgdG8gYnVpbGQgfCBpbnB1dF9kYXRhXG4lJS1cbnN0eWxlIHNxbCBmaWxsOiNmZmZmZmYiLCJtZXJtYWlkIjpudWxsfQ" /></p>
-
-<p>Database sources can leverage an idea nicknamed <a href="https://speakerdeck.com/tastapod/arent-we-forgetting-someone">&#8220;database as code&#8221;</a> (which builds on a similar idea about <a href="https://en.wikipedia.org/wiki/Infrastructure_as_code">infrastructure as code</a>) to help declare the schema and other elements of a database in the same way one would code.
-These ideas apply to both databases and also more broadly through DVC mentioned above (among other tools) via the concept <a href="https://en.wikipedia.org/wiki/Code_as_data">&#8220;data as code&#8221;</a>.
-Implementing this idea has several advantages from source versioning, visibility, and replicability.
-One tool which implements these ideas is <a href="https://github.com/flyway/flyway">Flyway</a> which can manage and implement SQL-based files as part of software data precondition validation.
-A lightweight alternative to using Flyway is sometimes to include a SQL file which creates related database objects and becomes data documentation.</p>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="software" /><category term="data-quality" /><category term="data-testing" /><category term="testing" /><category term="design-by-contract" /><category term="component-based-design" /><category term="hoare-logic" /><category term="data-as-code" /><summary type="html"><![CDATA[Tip of the Week: Data Quality Validation through Software Testing Techniques]]></summary></entry></feed>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="tip-of-the-week" /><category term="codesgiving" /><category term="open-source" /><category term="contributions" /><category term="development-strategy" /><category term="process" /><summary type="html"><![CDATA[Tip of the Week: Codesgiving - Open-source Contribution Walkthrough]]></summary></entry></feed>
