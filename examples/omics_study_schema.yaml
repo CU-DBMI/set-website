@@ -1,0 +1,52 @@
+id: https://example.org/coffee-queue
+name: coffee_queue
+prefixes:
+  ex: https://example.org/
+  linkml: https://w3id.org/linkml/
+default_prefix: ex
+default_range: string
+
+classes:
+  CafeQueue:
+    tree_root: true
+    attributes:
+      queue_id:
+        identifier: true
+      cafe_name:
+        required: true
+      barista_on_shift:
+        required: true
+      orders:
+        range: Order
+        multivalued: true
+        inlined_as_list: true
+
+  Order:
+    attributes:
+      order_id:
+        identifier: true
+      customer_name:
+        required: true
+      drink:
+        required: true
+      size:
+        range: SizeEnum
+        required: true
+      status:
+        range: OrderStatusEnum
+        required: true
+      shots:
+        range: integer
+        minimum_value: 1
+
+enums:
+  SizeEnum:
+    permissible_values:
+      small:
+      medium:
+      large:
+  OrderStatusEnum:
+    permissible_values:
+      queued:
+      brewing:
+      ready:
