@@ -1,5 +1,5 @@
 ---
-title: "LinkML for Scientific Software: One Schema, Real Leverage"
+title: "LinkML for Scientific Software: Schema Workflows with Real Leverage"
 author: dave-bunten
 tags:
   - python
@@ -10,7 +10,7 @@ tags:
   - schema-design
 ---
 
-# LinkML for Scientific Software: One Schema, Real Leverage
+# LinkML for Scientific Software: Schema Workflows with Real Leverage
 
 {% include blog-post-intro.html %}
 
