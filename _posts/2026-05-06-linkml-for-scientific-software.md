@@ -4,7 +4,6 @@ author: dave-bunten
 tags:
   - python
   - data-models
-  - bioinformatics
   - data-validation
   - scientific-software
   - reproducibility
