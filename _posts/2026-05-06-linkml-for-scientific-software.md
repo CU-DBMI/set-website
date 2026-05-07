@@ -1,5 +1,5 @@
 ---
-title: "LinkML for Scientific Software: One Schema, Many Outputs"
+title: "LinkML for Scientific Software: One Schema, Real Leverage"
 author: dave-bunten
 tags:
   - python
@@ -11,79 +11,90 @@ tags:
   - schema-design
 ---
 
-# LinkML for Scientific Software: One Schema, Many Outputs
+# LinkML for Scientific Software: One Schema, Real Leverage
 
 {% include blog-post-intro.html %}
 
 ## Introduction
 
 <!-- excerpt start -->
-**Scientific software pipelines usually break at interfaces, not algorithms.**
+**Scientific software pipelines often break because of interfaces instead of algorithms.**
 [LinkML](https://linkml.io/linkml/) lets you define a single schema once and then generate validators, Python models, and visualizations from that same source.
-That gives you a typed contract for domain metadata, sample sheets, and analysis outputs, with less drift across scripts, notebooks, and downstream tools.
+This gives you a typed contract for domain metadata, sample sheets, and analysis outputs, with less drift across scripts, notebooks, and downstream tools.
+It also gives you a solid mental model to communicate and understand scientific problem spaces.
 <!-- excerpt end -->
 
-## Why Use LinkML Instead of Ad-hoc Dicts?
+## Quick Terms
+
+- `Data model`: the conceptual shape of your domain objects and relationships (for example, a queue has many orders).
+- `Specification`: the written rules for how data should look and behave.
+- `Schema`: the machine-readable version of specifications used for validation and tooling.
+- `Ontology`: a shared vocabulary of meaning that connects models, specifications, or schemas to broader community concepts.
+
+## Why Use Schemas Instead of Ad-hoc Code or Types?
 
 Without a schema, pipelines often rely on implied conventions:
 
 - IDs are "supposed" to follow some pattern.
-- `status` is "supposed" to be one of a few values.
-- Numeric fields are "supposed" to have sensible bounds.
+- `status` (as an example of a field) is "supposed" to be one of a few values.
+- Numeric fields are "should" to have sensible bounds.
 
 Those assumptions are typically encoded in multiple places and diverge over time.
-LinkML centralizes those constraints into one model and reuses it across tooling.
+[LinkML](https://github.com/linkml/linkml) centralizes those constraints into one model and reuses it across tooling.
 
-## A Minimal (Slightly Comical) Schema
+## A Minimal Viable Research Software Beverage (MVRSB) Schema in LinkML
 
 ```yaml
+# This is the schema's unique name on the web.
 id: https://example.org/coffee-queue
+# This is the short local name for the schema.
 name: coffee_queue
+# Shortcuts for longer URLs.
 prefixes:
   ex: https://example.org/
   linkml: https://w3id.org/linkml/
+# Pull in built-in scalar types such as string/integer.
+imports:
+  - linkml:types
+# Use `ex` if no prefix is given.
 default_prefix: ex
+# Use text/string if no type is given.
 default_range: string
 
+# Main object types in this schema.
 classes:
+  # The top object in each data file.
   CafeQueue:
     tree_root: true
+    # Fields on CafeQueue.
     attributes:
+      # Unique ID for the queue.
       queue_id:
         identifier: true
-      cafe_name:
-        required: true
-      barista_on_shift:
-        required: true
+      # A list of order objects.
       orders:
+        # Each item in `orders` must be an Order.
         range: Order
+        # This field is a list.
         multivalued: true
+        # Keep the list directly inside CafeQueue.
         inlined_as_list: true
 
+  # The object type for each coffee order.
   Order:
     attributes:
+      # Unique ID for each order.
       order_id:
         identifier: true
-      customer_name:
-        required: true
       drink:
         required: true
-      size:
-        range: SizeEnum
-        required: true
+      # Status must be one of the allowed status words below.
       status:
         range: OrderStatusEnum
         required: true
-      shots:
-        range: integer
-        minimum_value: 1
 
+# Allowed word lists.
 enums:
-  SizeEnum:
-    permissible_values:
-      small:
-      medium:
-      large:
   OrderStatusEnum:
     permissible_values:
       queued:
@@ -91,14 +102,31 @@ enums:
       ready:
 ```
 
-This still enforces IDs, enums, nested structures, and numeric bounds, just with a model that is easier to remember.
+In a few lines, we built a tiny but real data schema: each queue has orders, each order has required fields, and status values come from a controlled list.
+
+## LinkML Building Blocks
+
+- Start with a `schema`: this is the full document that holds everything below.
+- Inside the schema, define `classes`: these are your object types, like `CafeQueue` and `Order`.
+- Inside each class, define `slots` (here written as `attributes`): these are the fields on that object, like `order_id`, `drink`, and `status`.
+- Use `range` on a slot to say what kind of value it accepts:
+  - `range: string` means plain text.
+  - `range: OrderStatusEnum` means one value from a controlled list.
+  - `range: Order` means a nested object of another class.
+- Use `enums` to define those controlled lists, like `queued`, `brewing`, and `ready`.
+- Use slot rules like `required: true` and `identifier: true` to enforce structure and uniqueness.
+- Use `prefixes` plus ontology mappings (`class_uri`, `slot_uri`, `meaning`) when you want semantic interoperability across datasets.
 
 ## Pydantic Tie-in
 
-LinkML can generate Pydantic models directly:
+LinkML can generate [Pydantic](https://github.com/pydantic/pydantic) models directly.
+Pydantic turns raw dictionaries into typed Python objects and raises clear errors when required fields are missing or values are invalid.
 
 ```bash
-gen-pydantic examples/omics_study_schema.yaml > examples/coffee_queue_pydantic.py
+# generate pydatanic models from a linkml schema yaml file
+uv run --with linkml linkml generate pydantic \
+  examples/linkml/omics_study_schema.yaml \
+  > examples/linkml/coffee_queue_pydantic.py
 ```
 
 Then use generated models in your app:
@@ -106,22 +134,76 @@ Then use generated models in your app:
 ```python
 from coffee_queue_pydantic import CafeQueue
 
+# create a queue from the pydantic model
 queue = CafeQueue(**payload)  # raises on invalid data
 ```
 
 That pattern keeps LinkML as the source of truth while giving you first-class Pydantic ergonomics in APIs and services.
 
-## Visualizing the Model
+## Ontology Alignment (Lightweight but Important)
 
-You can render the same schema as a diagram:
+LinkML can keep your schema lightweight while still attaching shared meaning through ontology terms.
+This helps when multiple teams or datasets need to interpret fields the same way.
+In practice, this makes cross-dataset joins, search, and reuse in graph/RDF workflows much more reliable.
 
-```bash
-gen-erdiagram examples/omics_study_schema.yaml > examples/coffee_queue_schema.mmd
+```yaml
+prefixes:
+  # ex here represents an external example prefix
+  ex: https://example.org/
+  schema: http://schema.org/
+
+classes:
+  Order:
+    class_uri: ex:Order
+    attributes:
+      drink:
+        # https://schema.org/recipeIngredient
+        slot_uri: schema:recipeIngredient
+
+enums:
+  OrderStatusEnum:
+    permissible_values:
+      queued:
+        meaning: ex:queued
+      brewing:
+        meaning: ex:brewing
+      ready:
+        meaning: ex:ready
 ```
 
-The Mermaid output is useful in docs and design reviews because wet-lab and data teams can quickly verify structure before implementation details distract the conversation.
+- `class_uri`: says “this class matches this shared concept.”
+- `slot_uri`: says “this field means this shared property.”
+- `meaning`: says “this enum label corresponds to this controlled term.”
 
-## Useful for Bioinformaticians
+## Visualizing the Model
+
+You can render the same schema as either Mermaid ER or PlantUML:
+
+```bash
+uv run --with linkml linkml generate erdiagram \
+  examples/linkml/omics_study_schema.yaml \
+  > examples/linkml/coffee_queue_schema.mmd
+
+uv run --with linkml linkml generate plantuml \
+  examples/linkml/omics_study_schema.yaml \
+  > examples/linkml/coffee_queue_schema.puml
+```
+
+Generator docs:
+- [ER Diagram Generator](https://linkml.io/linkml/generators/erdiagram.html)
+- [PlantUML Diagram Generator](https://linkml.io/linkml/generators/plantumlgen.html)
+
+The outputs are useful in docs and design reviews because teams can quickly verify structure before implementation details distract the conversation.
+
+Generated Mermaid (from `linkml generate erdiagram` on this schema):
+
+{% include figure.html image="images/linkml-coffee-queue-erdiagram.png" width="55%" caption="Mermaid ER diagram generated from the LinkML schema." %}
+
+Generated PlantUML (from `linkml generate plantuml` on this schema):
+
+{% include figure.html image="images/linkml-coffee-queue-plantuml.png" width="45%" caption="PlantUML class diagram generated from the same LinkML schema." %}
+
+## Useful for Bioinformatic Research Software Engineering
 
 - The same pattern maps cleanly to sample sheets and assay metadata.
 - Controlled vocabularies for conditions, assays, and cohorts become explicit enums.
@@ -135,10 +217,10 @@ The Mermaid output is useful in docs and design reviews because wet-lab and data
 - Very large legacy payloads may need an incremental migration plan.
 - Teams should agree on schema versioning strategy early.
 
-The runnable companion demo for this post is in [examples/linkml_quickstart_demo.py](https://github.com/CU-DBMI/set-website/blob/main/examples/linkml_quickstart_demo.py).
+## Run the Example Locally
 
-## Run It Locally
+The runnable companion demo for this post is in [examples/linkml/linkml_quickstart_demo.py](https://github.com/CU-DBMI/set-website/blob/main/examples/linkml/linkml_quickstart_demo.py).
 
 ```bash
-uv run examples/linkml_quickstart_demo.py
+uv run examples/linkml/linkml_quickstart_demo.py
 ```

@@ -1,0 +1,55 @@
+# This is the schema's unique name on the web.
+id: https://example.org/coffee-queue
+# This is the short local name for the schema.
+name: coffee_queue
+# Shortcuts for longer URLs.
+prefixes:
+  ex: https://example.org/
+  linkml: https://w3id.org/linkml/
+# Pull in built-in scalar types such as string/integer.
+imports:
+  - linkml:types
+# Use `ex` if no prefix is given.
+default_prefix: ex
+# Use text/string if no type is given.
+default_range: string
+
+# Main object types in this schema.
+classes:
+  # The top object in each data file.
+  CafeQueue:
+    tree_root: true
+    # Fields on CafeQueue.
+    attributes:
+      # Unique ID for the queue.
+      queue_id:
+        identifier: true
+      # A list of order objects.
+      orders:
+        # Each item in `orders` must be an Order.
+        range: Order
+        # This field is a list.
+        multivalued: true
+        # Keep the list directly inside CafeQueue.
+        inlined_as_list: true
+
+  # The object type for each coffee order.
+  Order:
+    attributes:
+      # Unique ID for each order.
+      order_id:
+        identifier: true
+      drink:
+        required: true
+      # Status must be one of the allowed status words below.
+      status:
+        range: OrderStatusEnum
+        required: true
+
+# Allowed word lists.
+enums:
+  OrderStatusEnum:
+    permissible_values:
+      queued:
+      brewing:
+      ready:

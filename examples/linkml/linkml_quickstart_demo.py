@@ -22,36 +22,23 @@ import textwrap
 VALID_DATA = textwrap.dedent(
     """\
     queue_id: CAFE-001
-    cafe_name: Byte Bean
-    barista_on_shift: Avery
     orders:
       - order_id: O001
-        customer_name: Sam
         drink: Latte
-        size: medium
         status: queued
-        shots: 2
       - order_id: O002
-        customer_name: Priya
         drink: Cappuccino
-        size: small
         status: brewing
-        shots: 1
     """
 )
 
 INVALID_DATA = textwrap.dedent(
     """\
     queue_id: CAFE-002
-    cafe_name: Runtime Roast
-    barista_on_shift: Jordan
     orders:
       - order_id: O101
-        customer_name: Lee
         drink: Mocha
-        size: mega
         status: delayed
-        shots: 0
     """
 )
 
@@ -73,6 +60,22 @@ def run(cmd: list[str]) -> None:
             print(exc.stderr.strip())
 
 
+def run_to_file(cmd: list[str], output_path: Path) -> None:
+    """Run a command and write stdout to a file."""
+    try:
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        output_path.write_text(result.stdout, encoding="utf-8")
+        print(f"[ok] {' '.join(cmd)} -> {output_path}")
+    except FileNotFoundError:
+        print(f"[skip] command not found: {cmd[0]}")
+    except subprocess.CalledProcessError as exc:
+        print(f"[fail] {' '.join(cmd)}")
+        if exc.stdout.strip():
+            print(exc.stdout.strip())
+        if exc.stderr.strip():
+            print(exc.stderr.strip())
+
+
 def main() -> None:
     examples_dir = Path(__file__).resolve().parent
 
@@ -82,6 +85,7 @@ def main() -> None:
     py_out = examples_dir / "coffee_queue_python.py"
     pyd_out = examples_dir / "coffee_queue_pydantic.py"
     mmd_out = examples_dir / "coffee_queue_schema.mmd"
+    puml_out = examples_dir / "coffee_queue_schema.puml"
 
     if not schema_path.exists():
         raise FileNotFoundError(f"Missing schema file: {schema_path}")
@@ -97,7 +101,8 @@ def main() -> None:
 
     run(["gen-python", str(schema_path), "-o", str(py_out)])
     run(["gen-pydantic", str(schema_path), "-o", str(pyd_out)])
-    run(["gen-erdiagram", str(schema_path), "-o", str(mmd_out)])
+    run_to_file(["gen-erdiagram", str(schema_path)], mmd_out)
+    run_to_file(["gen-plantuml", str(schema_path)], puml_out)
 
     print("\\nValidation checks:")
     run(["linkml-validate", "-s", str(schema_path), str(valid_path)])
