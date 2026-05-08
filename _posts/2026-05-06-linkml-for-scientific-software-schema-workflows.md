@@ -259,11 +259,11 @@ The outputs are useful in docs and design reviews because teams can quickly veri
 
 Generated Mermaid (from `linkml generate erdiagram` on this schema):
 
-{% include figure.html image="images/linkml-coffee-queue-erdiagram.png" width="55%" caption="Mermaid ER diagram generated from the LinkML schema." %}
+{% include figure.html image="images/linkml-coffee-queue-erdiagram.png" width="38%" caption="Mermaid ER diagram generated from the LinkML schema." %}
 
 Generated PlantUML (from `linkml generate plantuml` on this schema):
 
-{% include figure.html image="images/linkml-coffee-queue-plantuml.png" width="45%" caption="PlantUML class diagram generated from the same LinkML schema." %}
+{% include figure.html image="images/linkml-coffee-queue-plantuml.png" width="32%" caption="PlantUML class diagram generated from the same LinkML schema." %}
 
 ## Useful for Bioinformatic Research Software Engineering
 
