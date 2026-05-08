@@ -202,7 +202,7 @@ queue = CafeQueue(**payload)  # raises on invalid data
 
 That pattern keeps LinkML as the source of truth while giving you first-class Pydantic ergonomics in APIs and services.
 
-## Ontology Alignment (Lightweight but Important)
+## Ontology Alignment
 
 LinkML can keep your schema lightweight while still attaching shared meaning through ontology terms.
 This helps when multiple teams or datasets need to interpret fields the same way.
