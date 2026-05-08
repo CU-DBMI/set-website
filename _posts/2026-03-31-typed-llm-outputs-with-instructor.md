@@ -153,7 +153,7 @@ If not, `instructor` can retry or raise an error instead of quietly leaving you 
 - Model compatibility varies, especially with smaller local models.
 - The exact integration style depends on your runtime; in-process `llama-cpp-python` uses patching, while server-based setups can use cleaner provider-style APIs.
 
-The full demo used for this post is included in this repository as [examples/instructor_demo.py](https://github.com/CU-DBMI/set-website/blob/main/examples/instructor_demo.py).
+The full demo used for this post is included in this repository as [examples/llm/instructor_demo.py](https://github.com/CU-DBMI/set-website/blob/main/examples/llm/instructor_demo.py).
 
 ## Run It Locally
 
@@ -161,5 +161,5 @@ This version does not require Ollama or a local model server. On first run, the 
 
 ```bash
 uv run --with instructor --with llama-cpp-python --with pydantic \
-  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/instructor_demo.py
+  https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/llm/instructor_demo.py
 ```
