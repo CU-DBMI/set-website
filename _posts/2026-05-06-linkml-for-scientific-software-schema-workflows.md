@@ -116,6 +116,69 @@ In a few lines, we built a tiny but real data schema: each queue has orders, eac
 - Use slot rules like `required: true` and `identifier: true` to enforce structure and uniqueness.
 - Use `prefixes` plus ontology mappings (`class_uri`, `slot_uri`, `meaning`) when you want semantic interoperability across datasets.
 
+## Class Linking
+
+Inside one schema file, you can link to additional schema using `range: OtherClassName`.
+For example, the following schema uses the earlier CafeQueue class.
+
+```yaml
+classes:
+  Cafe:
+    tree_root: true
+    attributes:
+      cafe_id:
+        identifier: true
+      queue:
+        range: CafeQueue
+        required: true
+        inlined: true
+
+  CafeQueue:
+    attributes:
+      queue_id:
+        identifier: true
+```
+
+This is the simplest way to model nested objects.
+
+## Composing Multiple Schema Files
+
+Across files, linking works the same way, and `imports` stitches files together.
+Use one top-level entrypoint and generate from that file.
+
+Simple layout:
+
+- `examples/linkml/modular/common.yaml`: shared prefixes and enums.
+- `examples/linkml/modular/order.yaml`: `Order` class.
+- `examples/linkml/modular/queue.yaml`: `CafeQueue` class that references `Order`.
+- `examples/linkml/modular/cafe.yaml`: top-level `Cafe` class that references `CafeQueue`.
+
+Minimal import chain:
+
+```yaml
+# cafe.yaml
+imports: [queue]
+
+# queue.yaml
+imports: [common, order]
+```
+
+Generate code from the top-level file:
+
+```bash
+uv run --with linkml linkml generate pydantic \
+  examples/linkml/modular/cafe.yaml \
+  > examples/linkml/modular/coffee_cafe_pydantic.py
+```
+
+Use generated types normally:
+
+```python
+from coffee_cafe_pydantic import Cafe
+
+cafe = Cafe(**payload)
+```
+
 ## Pydantic Tie-in
 
 LinkML can generate [Pydantic](https://github.com/pydantic/pydantic) models directly.
