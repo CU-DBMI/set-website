@@ -66,10 +66,10 @@
 
   <meta name="author" content="dave-bunten">
   <meta property="og:type" content="article">
-  <meta property="og:updated_time" content="2026-05-07T21:04:35+00:00">
+  <meta property="og:updated_time" content="2026-05-08T16:38:14+00:00">
   <meta property="article:published_time" content="2026-05-06T00:00:00+00:00">
-  <meta property="article:modified_time" content="2026-05-07T21:04:35+00:00">
-  <meta name="revised" content="2026-05-07T21:04:35+00:00">
+  <meta property="article:modified_time" content="2026-05-08T16:38:14+00:00">
+  <meta name="revised" content="2026-05-08T16:38:14+00:00">
 
 
 <script type="application/ld+json">
@@ -79,7 +79,7 @@
       "@type": "BlogPosting",
       "author": { "@type": "Person", "name": "LinkML for Scientific Software: Schema Workflows with Real Leverage" },
       "datePublished": "2026-05-06T00:00:00+00:00",
-      "dateModified": "2026-05-07T21:04:35+00:00",
+      "dateModified": "2026-05-08T16:38:14+00:00",
     
     "name": "LinkML for Scientific Software: Schema Workflows with Real Leverage",
     "description": "CU Dept. of Biomedical Informatics. The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz",
@@ -495,7 +495,7 @@
   
     <span data-tooltip="Last updated on">
       <i class="icon fa-solid fa-clock-rotate-left"></i>
-      <span>May 07, 2026</span>
+      <span>May 08, 2026</span>
     </span>
   
 </div>
@@ -677,6 +677,71 @@ It also gives you a solid mental model to communicate and understand scientific 
   <li>Use <code class="language-plaintext highlighter-rouge">prefixes</code> plus ontology mappings (<code class="language-plaintext highlighter-rouge">class_uri</code>, <code class="language-plaintext highlighter-rouge">slot_uri</code>, <code class="language-plaintext highlighter-rouge">meaning</code>) when you want semantic interoperability across datasets.</li>
 </ul>
 
+<h2 id="class-linking">Class Linking</h2>
+
+<p>Inside one schema file, you can link to additional schema using <code class="language-plaintext highlighter-rouge">range: OtherClassName</code>.
+For example, the following schema uses the earlier CafeQueue class.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">classes</span><span class="pi">:</span>
+  <span class="na">Cafe</span><span class="pi">:</span>
+    <span class="na">tree_root</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">attributes</span><span class="pi">:</span>
+      <span class="na">cafe_id</span><span class="pi">:</span>
+        <span class="na">identifier</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">queue</span><span class="pi">:</span>
+        <span class="na">range</span><span class="pi">:</span> <span class="s">CafeQueue</span>
+        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">inlined</span><span class="pi">:</span> <span class="no">true</span>
+
+  <span class="na">CafeQueue</span><span class="pi">:</span>
+    <span class="na">attributes</span><span class="pi">:</span>
+      <span class="na">queue_id</span><span class="pi">:</span>
+        <span class="na">identifier</span><span class="pi">:</span> <span class="no">true</span>
+</code></pre></div></div>
+
+<p>This is the simplest way to model nested objects.</p>
+
+<h2 id="composing-multiple-schema-files">Composing Multiple Schema Files</h2>
+
+<p>Across files, linking works the same way, and <code class="language-plaintext highlighter-rouge">imports</code> stitches files together.
+Use one top-level entrypoint and generate from that file.</p>
+
+<p>Simple layout:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">examples/linkml/modular/common.yaml</code>: shared prefixes and enums.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">examples/linkml/modular/order.yaml</code>: <code class="language-plaintext highlighter-rouge">Order</code> class.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">examples/linkml/modular/queue.yaml</code>: <code class="language-plaintext highlighter-rouge">CafeQueue</code> class that references <code class="language-plaintext highlighter-rouge">Order</code>.</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">examples/linkml/modular/cafe.yaml</code>: top-level <code class="language-plaintext highlighter-rouge">Cafe</code> class that references <code class="language-plaintext highlighter-rouge">CafeQueue</code>.</li>
+</ul>
+
+<p>Minimal import chain:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># cafe.yaml</span>
+<span class="na">imports</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">queue</span><span class="pi">]</span>
+
+<span class="c1"># queue.yaml</span>
+<span class="na">imports</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">common</span><span class="pi">,</span> <span class="nv">order</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>Generate code from the top-level file:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> linkml linkml generate pydantic <span class="se">\</span>
+  examples/linkml/modular/cafe.yaml <span class="se">\</span>
+  <span class="o">&gt;</span> examples/linkml/modular/coffee_cafe_pydantic.py
+</code></pre></div></div>
+
+<p>Use generated types normally:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">coffee_cafe_pydantic</span> <span class="kn">import</span> <span class="n">Cafe</span>
+
+<span class="n">cafe</span> <span class="o">=</span> <span class="n">Cafe</span><span class="p">(</span><span class="o">**</span><span class="n">payload</span><span class="p">)</span>
+</code></pre></div></div>
+
 <h2 id="pydantic-tie-in">Pydantic Tie-in</h2>
 
 <p>LinkML can generate <a href="https://github.com/pydantic/pydantic">Pydantic</a> models directly.
@@ -763,7 +828,7 @@ uv run <span class="nt">--with</span> linkml linkml generate plantuml <span clas
 <figure class="figure">
   <a class="figure-image" aria-label="Mermaid ER diagram generated from the LinkML schema.">
     <img src="/set-website/preview/pr-50/images/linkml-coffee-queue-erdiagram.png" style="
-        width: 55%;
+        width: 38%;
         max-height: unset;
       " alt="Mermaid ER diagram generated from the LinkML schema." loading="lazy" onerror="this.src = '/set-website/preview/pr-50/images/fallback.svg'; this.onerror = null;">
   </a>
@@ -780,7 +845,7 @@ uv run <span class="nt">--with</span> linkml linkml generate plantuml <span clas
 <figure class="figure">
   <a class="figure-image" aria-label="PlantUML class diagram generated from the same LinkML schema.">
     <img src="/set-website/preview/pr-50/images/linkml-coffee-queue-plantuml.png" style="
-        width: 45%;
+        width: 32%;
         max-height: unset;
       " alt="PlantUML class diagram generated from the same LinkML schema." loading="lazy" onerror="this.src = '/set-website/preview/pr-50/images/fallback.svg'; this.onerror = null;">
   </a>
