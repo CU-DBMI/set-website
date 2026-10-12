@@ -16,229 +16,261 @@ tags:
 
 ## Introduction
 
+```mermaid!
+flowchart TB
+    result["Published scientific result"]
+    result --> data["Dataset or model"]
+    result --> evidence["Validation evidence"]
+    result --> method["Code and execution record"]
+```
+
+_A research result includes both the output and the information needed to interpret it._
+
 <!-- excerpt start -->
-**AI assistants have made implementations cheap to produce. Validation, evidence, and long-term stewardship have not gotten cheaper.**
-When writing code stops being the bottleneck, it is worth asking what the primary artifact of research software engineering really is.
-Often it is not the code: it is the dataset, model, or scientific conclusion the code helps produce.
-In those cases, code works like executable metadata, a description of how a result was made, and how we version and preserve it should reflect that.
+**A research repository does not always represent a software product. Sometimes it preserves the method behind a dataset, model, or scientific finding.**
+When code plays that supporting role, we can think of it as executable metadata: a method description that we can inspect and run.
+That distinction helps us decide what to maintain, what to archive, and what evidence to preserve alongside our results.
 <!-- excerpt end -->
 
-This post is a follow-up to [Research Decision Engineering: Managing Cognitive Load in the Generative Era](https://bssw.io/items/research-decision-engineering-managing-cognitive-load-in-the-generative-era), which was about how engineers make decisions when AI accelerates implementation.
-This one is about the artifacts: what should we preserve, maintain, and version when implementations become easy to generate?
+Imagine publishing a table of measurements extracted from microscopy images.
+A colleague asks how you produced it.
+You send them the repository, but they still need to know which images you used, which parameters you selected, and whether the segmentation was any good.
+The code answers part of their question. It does not answer all of it.
 
-## The Changing Economics of Code
+In [Research Decision Engineering: Managing Cognitive Load in the Generative Era](https://bssw.io/items/research-decision-engineering-managing-cognitive-load-in-the-generative-era), I explored how generative tools change where we direct our engineering effort.
+Software gardening still requires care, but more of that care may go toward framing problems and evaluating implementations.
+Here, I want to extend that thinking to what we leave behind.
+Using a microscopy workflow as an example, we'll consider how to preserve the relationship between scientific intent, implementation, and evidence.
 
-Research software used to be expensive in a specific way.
-Someone had to sit down and write every line, review it, test it, and then keep it working: answering issues, bumping dependencies, and patching it when the ecosystem moved.
-The code was the scarce thing, so we built our practices around it.
-We treat the repository as the project.
-
-AI assistants change the unit cost of producing an implementation, and that change ripples outward.
-Ask an assistant for a way to normalize a microscopy image and you can have three working candidates in a few minutes: one built on scikit-image, one on OpenCV, one in plain NumPy.
-The outputs look similar.
-They differ in speed, dependency footprint, and numerical behavior at the edges, and figuring out which difference matters is the actual work now.
-Writing a candidate stopped being the hard part.
-Choosing among candidates, and leaving behind evidence for why you chose one, is the hard part.
-
-Two consequences follow.
-
-First, more generated code does not mean more trustworthy software.
-An implementation you did not carefully review carries the same scientific risk whether it took three weeks or three minutes to produce.
-
-Second, code that was nearly free to write is not free to keep.
-Issues, dependency bumps, and security patches cost the same either way.
-When implementation gets cheap but maintenance does not, the ratio of value to upkeep shifts, and some code stops being worth maintaining at all.
-
-If implementations keep getting cheaper, we should ask which artifacts actually deserve the stewardship budget.
-
-## When Code Becomes Executable Metadata
-
-Consider a typical image-based profiling workflow.
-
-- Input: microscopy images of cells.
-- Processing: [CellProfiler](https://github.com/CellProfiler/CellProfiler) segments the cells and extracts morphology features; [CytoTable](https://github.com/cytomining/CytoTable) harmonizes those outputs into Parquet; [Pycytominer](https://github.com/cytomining/pycytominer) aggregates and annotates the profiles.
-- Output: a versioned dataset of single-cell measurements.
-- Supporting information: code, parameters, model versions, dependencies, and validation results.
-
-Where does the scientific value live?
-Downstream scientists cite and build on the measurements, not the scripts.
-The pipeline explains how the measurements came to be.
-In that relationship, the code is metadata about the data: executable and inspectable, but supporting.
-You still want it, the way you want a methods section, but the thing being published and versioned is the dataset.
-
-This is a role, not a demotion, and it depends on what the software is for:
-
-| Software role | Primary artifact | Role of code |
-|---|---|---|
-| Reusable scientific library | The implementation | Primary maintained product |
-| Research analysis | Scientific results | Method and provenance |
-| Data-processing pipeline | Derived dataset | Executable transformation |
-| Computational experiment | Evidence and conclusions | Experimental procedure |
-| Exploratory AI-generated analysis | Validated findings | Possibly temporary implementation |
-
-The qualification matters: a scientific library, simulation engine, or numerical algorithm can itself be the research contribution.
-CellProfiler is the contribution; a wrapper script around it usually is not.
-The argument is about the relationship between code and scientific purpose, not about replacing software with data.
-
-## A Layered Model of Artifacts
-
-One way to keep this straight is to separate the layers a computational result sits on:
+## Generating Code Is Only Part of the Work
 
 ```mermaid!
 flowchart TB
-    A["Scientific intent: questions, hypotheses, constraints"]
-    B["Scientific outputs: datasets, models, findings"]
-    C["Evidence and provenance: validation, lineage, benchmarks"]
-    D["Executable metadata: code, pipelines, parameters"]
-    E["Execution environment: dependencies, containers, infrastructure"]
-    F["Storage and versioning: Git, object storage, manifests, hashes"]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
+    spec["Define the normalization rules"] --> candidates["Generate candidate implementations"]
+    candidates --> checks["Check edge cases and numerical behavior"]
+    checks --> decision{"Meets the scientific requirements?"}
+    decision -- "No" --> candidates
+    decision -- "Yes" --> record["Keep the implementation and evaluation record"]
 ```
 
-_Diagram showing a hierarchy of scientific artifacts from intent down to storage._
+_The evaluation loop remains necessary regardless of how we write the implementation._
 
-This is a hierarchy of purpose, not an execution order.
-Intent defines what we are trying to learn.
-Outputs carry the knowledge.
-Evidence supports the interpretation.
-Code and environments describe how everything was produced.
-Storage and versioning preserve the relationships between all of it over time.
+An AI assistant can help draft several ways to normalize an image: perhaps one using NumPy and another using an image-processing library.
+That makes comparison easier to attempt. It does not establish that either candidate is suitable for the analysis.
 
-A few questions this model raises:
+Suppose both produce similar-looking images, but one rescales each image independently while the other uses reference values from a control population.
+Those are different scientific choices, even if both functions run without errors.
+We also need to check constant-valued images, missing pixels, and the effect of converting integer values to floating point.
 
-- Should a dataset reference the code that produced it? (I think yes.)
-- Should a code revision reference the outputs it generated?
-- Can several implementations serve the same scientific intent, with evidence that they are equivalent?
-- When an implementation is replaced or regenerated, what should be kept?
+The useful artifact is therefore more than the selected function.
+It includes the normalization rule, the test cases, and the reason for selecting that implementation.
+If a future developer replaces the function, that record gives them something meaningful to evaluate against.
 
-## From Version Control to Knowledge Provenance
+I would avoid treating faster code generation as a universal productivity claim.
+Its value depends on the task and the review it requires.
+The narrower argument is enough: when generating candidates becomes easier, we still have to decide which ones deserve our trust and maintenance time.
+A script written quickly can create years of dependency updates and support work.
 
-Git records changes to files over time.
-A scientific result needs more than that: which input dataset versions went in, what parameters were used, which dependency versions were installed, what validation was run, and why key choices were made.
-You can stuff descriptions of all this into commit messages and README files, and people do, but Git versions files.
-It does not version the relationships between artifacts, and those relationships are usually what a reproducer needs.
+## Code as an Executable Methods Section
 
-The pieces for doing better already exist, mostly borrowed from data engineering:
+```mermaid!
+flowchart TB
+    images[("Microscopy images")] --> measure["Segment cells and measure features"]
+    measure --> process["Prepare and normalize the feature table"]
+    process --> table[("Published measurements")]
+    code["Code, parameters, and model versions"] -. "describe the transformations" .-> measure
+    code -. "describe the transformations" .-> process
+```
 
-- Object storage holds large, immutable artifacts that do not belong in Git.
-- Content-addressed identifiers (hashes) pin the exact contents of an artifact, independent of where it lives.
-- [RO-Crate](https://www.researchobject.org/ro-crate/) packages research artifacts together with a JSON-LD metadata file describing them and their relationships, building on Schema.org.
-- [Workflow Run RO-Crate](https://www.researchobject.org/workflow-run-crate) extends this to workflow executions, recording what ran, with which inputs and parameters, and what came out; it is already implemented in several workflow systems (see [Recording provenance of workflow runs with RO-Crate](https://arxiv.org/abs/2312.07852) for the model, its profiles, and implementations).
-- [Software Heritage](https://www.softwareheritage.org/) archives source code as a content-addressed Merkle graph and assigns it intrinsic identifiers (SWHIDs, now ISO/IEC 18670), so a precise snapshot of a repository can be referenced even if the original hosting disappears.
+_Solid arrows show data processing. Dotted arrows show the information describing that processing._
 
-The point is not to replace Git with object storage.
-It is that Git becomes one component in a broader system for versioning scientific knowledge.
+Consider an image-based profiling workflow like those my colleagues and I work with in biomedical informatics.
+[CellProfiler](https://github.com/CellProfiler/CellProfiler) can segment cells and measure their morphology.
+[CytoTable](https://github.com/cytomining/CytoTable) can convert and join tabular outputs into Parquet, and [Pycytominer](https://github.com/cytomining/pycytominer) provides tools for processing morphological profiles.
+The particular sequence depends on the analysis; these tools illustrate the different kinds of work involved.
 
-A concrete, near-term version of this: publish the microscopy dataset in Parquet alongside a small manifest.
+For a dataset publication, the measurements may be the primary contribution.
+The analysis code explains how those measurements were produced.
+Calling it *executable metadata* describes that relationship, rather than suggesting the code is less important.
+An error in the supporting code can still undermine the entire dataset.
+
+A methods section describes a procedure in words.
+Code describes part of that procedure in executable form, but it still needs context: units, assumptions, input identities, and the conditions under which we consider an output acceptable.
+
+The same software can occupy different roles in different projects:
+
+| Project | Primary contribution | What to steward |
+|---|---|---|
+| Scientific library | A reusable implementation | Software, tests, releases, and documentation |
+| Dataset publication | Measurements or derived data | Data and the method that produced it |
+| Computational experiment | Findings and supporting evidence | Inputs, execution records, outputs, and interpretation |
+
+CellProfiler itself can be a software research contribution, while a particular CellProfiler pipeline supports a dataset contribution.
+A project can also contribute both software and data. We do not need to force it into one category.
+
+## Keep Purpose Separate from Execution
+
+```mermaid!
+flowchart TB
+    intent["Scientific question"] -- "defines what to evaluate" --> validation["Validation criteria"]
+    inputs[("Input data")] --> run["Recorded workflow execution"]
+    implementation["Code, parameters, and environment"] --> run
+    run --> outputs[("Output data")]
+    outputs -- "evaluated against" --> validation
+    validation -- "supports or limits" --> conclusion["Scientific interpretation"]
+```
+
+_Execution produces an output; validation determines what we can reasonably conclude from it._
+
+A useful artifact model separates scientific purpose from the mechanics of running software.
+The question tells us what we want to learn.
+The execution record tells us what happened.
+Validation connects the output to the question, and interpretation explains what the evidence supports.
+Storage and versioning help preserve all of these records and their relationships.
+
+For the microscopy example, suppose we want to compare cellular morphology across treatments.
+A successful run that produces a feature table is necessary, but insufficient.
+We also need evidence about segmentation quality, missing measurements, and whether normalization preserves the variation relevant to the comparison.
+
+This distinction matters when replacing an implementation.
+Two pipelines can share a scientific purpose without producing identical results.
+If we call them equivalent, we should state the scope of that claim: perhaps they agree within a specified tolerance on a representative benchmark, or preserve a particular downstream result.
+A passing comparison on one plate does not establish equivalence for every future image.
+Keep the benchmark inputs, acceptance criteria, and comparison report alongside the implementation references.
+
+## Version the Result and Its Provenance
+
+```mermaid!
+flowchart TB
+    manifest["Dataset release manifest"]
+    manifest -- "identifies" --> output[("Output files and checksums")]
+    manifest -- "identifies" --> input[("Input files and checksums")]
+    manifest -- "references" --> method["Code revision and parameters"]
+    manifest -- "references" --> execution["Environment and run record"]
+    manifest -- "references" --> evidence["Quality-control and validation reports"]
+```
+
+_A release manifest connects the exact artifacts associated with a published dataset._
+
+Git remains useful here.
+It can version code, parameters, documentation, and provenance manifests.
+What a code revision alone cannot tell us is which execution produced a particular dataset, especially when the same revision runs with different inputs or settings.
+Versioning a workflow and recording a workflow run are different jobs.
+
+For a small team, a starting point is a manifest attached to each dataset release:
 
 ```yaml
+# Illustrative placeholders, not a provenance standard.
 artifact:
   name: single-cell-morphology-features
   version: "1.0"
-  format: parquet
+  files: "outputs-with-checksums.csv"
 
 inputs:
-  dataset: microscopy-images-v2
-  identifier: "sha256:..."
+  manifest: "input-images-with-checksums.csv"
 
 implementation:
   repository: "https://github.com/example/analysis"
-  revision: "abc123"
+  revision: "<full-commit-id>"
   workflow: "extract_features.py"
 
 execution:
-  environment: "container-image@sha256:..."
+  run_id: "<recorded-run-id>"
+  environment: "container-image@sha256:<digest>"
   parameters: "parameters.yaml"
 
 validation:
   report: "quality-control.json"
-  tests: "validation-results.json"
+  acceptance_criteria: "validation-plan.md"
 ```
 
-This is an illustration, not a proposed standard; if [RO-Crate](https://www.researchobject.org/ro-crate/) or another existing provenance standard fits your project, prefer it.
-What the manifest changes is the center of gravity: the published dataset becomes the object that connects everything else, and the code revision is one reference among several.
+The referenced files must be preserved too; a filename is not a preservation strategy.
+Checksums help identify exact contents, but cannot recover missing files or establish scientific correctness.
+Likewise, a container helps record the software environment without guaranteeing that a future machine will reproduce every numerical result.
 
-## Dark Repositories
+Existing approaches can organize these relationships without a custom schema.
+[RO-Crate](https://www.researchobject.org/ro-crate/) describes research artifacts and their relationships using structured metadata.
+[Workflow Run RO-Crate](https://www.researchobject.org/workflow-run-crate) adds descriptions of executions, including inputs and outputs; its [research paper](https://arxiv.org/abs/2312.07852) explains the profiles and implementations.
+[Software Heritage](https://www.softwareheritage.org/) complements these approaches by archiving source code with content-based identifiers.
 
-There is a related practice worth naming.
-Not every public repository is an invitation to collaborate, and it would help if repositories could say so explicitly.
+Large data files can live in an appropriate data archive or object store while Git holds the human-authored records.
+Whichever tools we choose, the goal is to keep those references resolvable and the artifacts accessible.
 
-I will use dark repository for a repository that is publicly readable but intentionally closed to external contributions.
-Its job is preservation: the implementation behind a published dataset, a completed computational experiment, an archival snapshot of an analysis.
-It supports reproducibility without promising that someone will triage pull requests in 2031.
+## Public Code Does Not Promise Indefinite Maintenance
 
-GitHub made this stance a first-class option in February 2026.
-Repositories can now disable pull requests entirely, or restrict them to collaborators only, from Settings, General, Features (see the [GitHub changelog](https://github.blog/changelog/2026-02-13-new-repository-settings-for-configuring-pull-request-access) and the [documentation on disabling pull requests](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/disabling-pull-requests)).
-When pull requests are disabled, the tab disappears and no one can open new ones.
-When restricted, anyone can view and comment, but only collaborators can create them.
+```mermaid!
+flowchart TB
+    public["Public research repository"] --> active["Active development"]
+    public --> preserved["Preserved research artifact"]
+    active --> contribute["Document how to contribute"]
+    preserved --> boundaries["Document maintenance limits"]
+    boundaries --> corrections["Keep a route for reporting scientific errors"]
+```
 
-Picture a research group that publishes a dataset along with the analysis code that generated it.
-The analysis is finished.
-The group does not intend to develop the repository into a general-purpose library, but leaving pull requests open signals, to every passerby, that contributions are welcome and will be reviewed.
-Disabling them communicates the actual status more honestly than an open workflow and a silent backlog.
+_Public access and maintenance commitments are separate decisions._
 
-Some distinctions to keep straight:
+A completed analysis does not necessarily need to become a general-purpose library.
+Its repository may remain useful for inspection and reuse even after active development ends.
+We should make that status explicit rather than leaving readers to infer it from the last commit date.
 
-- Public availability is not the same as active maintenance.
-- Reproducibility does not require accepting contributions.
-- A closed contribution workflow is not closed-source software.
-- An archival repository still needs a license, documentation, and guidance on reporting errors.
+I'll use *dark repository* here as a proposed label for publicly readable code with an intentionally closed external contribution workflow.
+It is not an established repository category, and it does not mean closed source.
+It is also different from archiving: a team might close external contributions while continuing internal work.
+An archival repository preserves a completed state; a contribution policy controls who can propose changes.
 
-The tradeoff is real: disabling pull requests can discourage useful corrections and community engagement, and it is the wrong default for a library people actually build on.
-It fits archival research artifacts, not community projects.
+GitHub's [February 2026 announcement](https://github.blog/changelog/2026-02-13-new-repository-settings-for-configuring-pull-request-access) introduced settings to disable pull requests or restrict their creation to collaborators.
+The [documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/disabling-pull-requests) describes these controls.
+Disabling pull requests also hides existing ones, so preserve any review discussion needed to understand the published analysis before doing that.
 
-Should every published research repository be treated as an invitation to collaborate, or should we distinguish more clearly between software products and preserved computational evidence?
-I lean toward the distinction, but I suspect this one is genuinely contested.
+A README should state what the repository supports, whether dependencies will receive updates, and how to report an error affecting the science.
+Include a license and instructions for the preserved analysis.
+Closing contributions cannot establish reproducibility, and it should not remove the path for correcting a published result.
+For a community library, accepting and reviewing contributions may remain essential to its purpose.
 
-## A Lightweight Decision Framework
+## Decide What to Maintain, Preserve, or Remove
 
-You can locate a project on the spectrum above by asking what the primary artifact is:
+```mermaid!
+flowchart TB
+    item["Assess each project artifact"] --> users{"Needed for ongoing use?"}
+    users -- "Yes" --> maintain["Maintain and test it"]
+    users -- "No" --> evidence{"Needed to explain or reproduce a result?"}
+    evidence -- "Yes" --> preserve["Preserve a citable snapshot"]
+    evidence -- "No" --> remove["Consider removal after checking obligations"]
+```
 
-| Question | Reasonable action |
-|---|---|
-| Is the software itself the contribution? | Maintain it as a product: tests, releases, contribution workflow. |
-| Is the primary contribution a dataset? | Version the dataset; treat code as part of its provenance. |
-| Is the work a completed experiment? | Archive the implementation, environment, inputs, and evidence. |
-| Is the implementation exploratory or AI-generated? | Decide whether it must be retained for reproducibility before discarding it. |
-| Are multiple implementations equivalent? | Keep the validation evidence and the references, not just the winner. |
-| Is the repository no longer accepting contributions? | Say so in the README, and consider disabling pull requests. |
+_Apply this decision to individual artifacts. A project can need both maintained software and preserved snapshots._
 
-The smallest useful provenance record is usually: what went in (with hashes), what ran (repository and revision), where it ran (environment), and what evidence says the output is any good.
+Start with a concrete sentence: "The contribution of this project is ..."
+If the answer is a library, plan for tests, releases, documentation, and maintenance.
+If it is a dataset, give the dataset its own release identity and preserve the code and evidence associated with that release.
+A completed experiment needs its execution record and interpretation, even if nobody intends to run it again.
 
-## From Code Stewardship to Knowledge Stewardship
+Then make the decision artifact by artifact.
+A shared normalization library may need ongoing maintenance while the exact version used for a publication needs an immutable snapshot.
+Those are compatible responsibilities.
 
-The earlier article argued that when AI accelerates implementation, engineering effort shifts toward judgment: evaluating options, managing cognitive load, deciding what to trust.
-This is the same shift applied to artifacts instead of work.
+AI-generated code deserves the same assessment as handwritten code.
+Temporary exploration can be discarded only after checking whether it explains a reported finding, an important exclusion, or a choice of method.
+Institutional retention rules and agreements may impose additional requirements.
+Do not assume a future model can regenerate the implementation that produced today's result.
 
-If you spend your day selecting and validating implementations rather than writing every line, then your stewardship decisions change shape too.
-Which artifacts deserve long-term preservation?
-Which implementations need ongoing maintenance, and which only need to be citable?
-What evidence makes a result trustworthy?
-What can be safely regenerated later, and what cannot?
-How does someone in five years recover the reasoning behind a computational result?
+## Knowledge Stewardship in Practice
 
-Preserving everything is not sustainable.
-Preserving only the final code is not sufficient.
-The practical goal is the smallest collection of artifacts, relationships, and decisions that still lets a future reader understand and trust a result.
-Sometimes that collection is centered on a library.
-Often it is centered on a dataset and its evidence.
+```mermaid!
+flowchart LR
+    question["Future researcher asks:<br/>Why should I trust this result?"] --> record["Inspect preserved artifacts<br/>and decision records"]
+    record --> assess["Assess the method,<br/>evidence, and limitations"]
+```
 
-The future of research software engineering probably depends less on how much code we preserve and more on how well we preserve the knowledge that makes computational results trustworthy.
+_The preservation test is whether a future researcher can assess the result, not simply download its code._
 
-## Caveats
+Research decision engineering asks us to direct our attention toward consequential choices.
+Knowledge stewardship carries those choices forward: which implementation we selected, what evidence justified it, and where its limits lie.
 
-- Git is not obsolete.
-It remains the right tool for versioning source code and human-authored changes; the argument here is about what surrounds it.
-- Code is not disposable.
-Poorly reviewed code is a scientific risk regardless of how it was produced, and discarding an implementation without recording what it did can break reproducibility.
-- Dark repositories are not universally preferable.
-They are a fit for archival artifacts, and a poor fit for anything with a community.
-- The manifest above is illustrative.
-Check existing provenance standards before inventing a schema; RO-Crate and its profiles cover most of this ground already.
-- Claims about how AI will change research software are predictions, not observations.
-The economics of implementation are already shifting; the stewardship practices described here are proposals for keeping pace, and they will need testing in practice.
+For the microscopy dataset, that means preserving enough for someone to trace a measurement back to its inputs and method, inspect the quality-control results, and understand the normalization decision.
+It does not require turning every script into a maintained package.
+It does require care about what gets lost when the analysis ends.
+
+My suggested starting point is modest: identify the contribution, publish a release manifest, and write down the maintenance boundary.
+Use existing provenance tools where they fit.
+The goal is a collection of artifacts that lets another researcher understand and evaluate the science, with code preserved in the role it actually plays.
