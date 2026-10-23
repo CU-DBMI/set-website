@@ -1,16 +1,16 @@
 ---
-title: "When Code Becomes Metadata: Rethinking Research Software in the Age of AI"
+title: "From Bronze to Gold: A Medallion Guide to Software in the Generative Era"
 author: dave-bunten
 tags:
   - scientific-software
-  - reproducibility
-  - provenance
+  - software-quality
+  - testing
   - data-engineering
   - ai
   - software-design
 ---
 
-# When Code Becomes Metadata: Rethinking Research Software in the Age of AI
+# From Bronze to Gold: A Medallion Guide to Software in the Generative Era
 
 {% include blog-post-intro.html %}
 
@@ -18,317 +18,246 @@ tags:
 
 ```mermaid!
 flowchart TB
-    result["Published scientific result"]
-    result --> data["Dataset or model"]
-    result --> evidence["Validation evidence"]
-    result --> method["Code and execution record"]
+    bronze["Bronze: try an idea"] --> silver["Silver: test the results"]
+    silver --> gold["Gold: make it ready to use"]
+    silver -- "A test finds a problem" --> bronze
+    gold -- "The task changes" --> silver
 ```
 
-_A research result includes both the output and the information needed to interpret it._
+_Code moves forward as we find evidence that it works for the task. A problem can send us back._
 
 <!-- excerpt start -->
-**A research repository does not always represent a software product. Sometimes it preserves the method behind a dataset, model, or scientific finding.**
-When code plays that supporting role, we can think of it as executable metadata: a method description that we can inspect and run.
-That distinction helps us decide what to maintain, what to archive, and what evidence to preserve alongside our results.
+**Bronze is a first attempt. Silver has evidence behind it. Gold is ready for a clear use.**
+These levels give us a way to discuss research software without treating every piece of code as finished work.
+I borrow them from [medallion architecture](https://dataengineering.wiki/Concepts/Medallion+Architecture), which organizes data through stages of refinement.
+Here, ten questions help us apply the same idea to software.
 <!-- excerpt end -->
 
-Imagine publishing a table of measurements extracted from microscopy images.
-A colleague asks how you produced it.
-You send them the repository, but they still need to know which images you used, which parameters you selected, and whether the segmentation was any good.
-The code answers part of their question. It does not answer all of it.
-This is not a new problem created by AI. Sandve and colleagues' 2013 reproducibility guidance already called for recording inputs, parameters, software versions, and the steps connecting them to each result.[1]
+In data work, the medallion architecture helps us move from raw records to tested data and then to data prepared for use.
+This architecture can be used with software too: try an idea, test its results, and prepare it for others.
+The medals describe the evolution of the code as it is clarified to realized value.
 
-In [Research Decision Engineering: Managing Cognitive Load in the Generative Era](https://bssw.io/items/research-decision-engineering-managing-cognitive-load-in-the-generative-era), I explored how generative tools change where we direct our engineering effort.
-Software gardening still requires care, but more of that care may go toward framing problems and evaluating implementations.
-Here, I want to extend that thinking to what we leave behind.
-Using a microscopy workflow, we'll connect established data-oriented practices to preserving scientific intent, implementation, and evidence.
+Imagine a ceramics class that makes one sculpture together.
+The teacher explains the goal, and the students shape different parts.
+The teacher helps them judge whether those parts fit and guides the next round of changes.
+A smooth surface cannot hide a weak joint. The shared piece needs attention as a whole.
 
-## Generating Code Is Only Part of the Work
+Alberto Denia's [Code is clay now](https://www.albertodenia.com/writing/code-is-clay-now) offers a related image for code that AI tools help us reshape.
+The class extends that image to shared work.
+A research team guides the task, while people and AI tools contribute parts of the code.
+AI tools are not students, but the teaching role gives us a useful question: what guidance does the next revision need?
+The team remains responsible for the scientific choices and the evidence behind them.
 
-```mermaid!
-flowchart TB
-    spec["Define the normalization rules"] --> candidates["Generate candidate implementations"]
-    candidates --> checks["Check edge cases and numerical behavior"]
-    checks --> decision{"Meets the scientific requirements?"}
-    decision -- "No" --> candidates
-    decision -- "Yes" --> record["Keep the implementation and evaluation record"]
-```
+Here is the guide at a glance:
 
-_The evaluation loop remains necessary regardless of how we write the implementation._
-
-An AI assistant can draft alternative image-normalization functions. That makes comparison easier, but does not establish suitability.
-
-Suppose both produce similar-looking images, but one rescales each image independently while the other uses reference values from a control population.
-Those are different scientific choices, even if both functions run without errors.
-We also need to check constant-valued images, missing pixels, and the effect of converting integer values to floating point.
-
-Keep the normalization rule, test cases, and selection rationale with the function, so a replacement can be evaluated against the same requirements.
-
-The evidence cautions against a universal productivity claim.
-A 2023 controlled experiment reported that developers with GitHub Copilot completed a JavaScript HTTP-server task 55.8% faster.[2]
-A different 2025 trial found experienced developers took 19% longer on tasks in familiar open-source projects when AI tools were allowed.[3]
-METR's February 2026 follow-up suggested greater benefits from newer tools, but warned that selection effects made the size of those benefits uncertain.[4]
-These are different tasks and populations. Faster drafting, where it helps, still leaves evaluation and maintenance to do.
-
-## Code as an Executable Methods Section
-
-```mermaid!
-flowchart TB
-    images[("Microscopy images")] --> measure["Segment cells and measure features"]
-    measure --> process["Prepare and normalize the feature table"]
-    process --> table[("Published measurements")]
-    code["Code, parameters, and model versions"] -. "describe the transformations" .-> measure
-    code -. "describe the transformations" .-> process
-```
-
-_Solid arrows show data processing. Dotted arrows show the information describing that processing._
-
-Consider an image-based profiling workflow like those my colleagues and I work with in biomedical informatics.
-[CellProfiler](https://github.com/CellProfiler/CellProfiler) can segment cells and measure their morphology.
-[CytoTable](https://github.com/cytomining/CytoTable) can convert and join tabular outputs into Parquet, and [Pycytominer](https://github.com/cytomining/pycytominer) provides tools for processing morphological profiles.
-The particular sequence depends on the analysis; these tools illustrate the different kinds of work involved.
-
-For a dataset publication, measurements may be the primary contribution and code their executable methods section.
-That supporting role does not make code less important: an error can undermine the dataset.
-
-Execution still needs context: units, assumptions, input identities, and acceptance criteria.
-
-The same software can occupy different roles in different projects:
-
-| Project | Primary contribution | What to steward |
+| Level | Question | What you need |
 |---|---|---|
-| Scientific library | A reusable implementation | Software, tests, releases, and documentation |
-| Dataset publication | Measurements or derived data | Data and the method that produced it |
-| Computational experiment | Findings and supporting evidence | Inputs, execution records, outputs, and interpretation |
+| 🪵 Wooden | Is there an idea worth a first try? | A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results. |
+| 🥉 Bronze | 1. What is the job? | A clear task and its limits. |
+| 🥉 Bronze | 2. What goes in and comes out? | A description of the data the code takes and returns. |
+| 🥉 Bronze | 3. Can a small example run safely? | A first attempt that leaves the original data untouched. |
+| 🥈 Silver | 4. Does it give a known answer? | An expected result worked out separately from the code. |
+| 🥈 Silver | 5. What happens with difficult data? | Tests for missing values, unusual inputs, and rules that must hold. |
+| 🥈 Silver | 6. Does the code follow the plan? | A review of the code against the intended method. |
+| 🥈 Silver | 7. Does it work on real examples? | A small trial with realistic data and clear limits. |
+| 🥇 Gold | 8. Can someone run it again? | Saved data references, software versions, and instructions. |
+| 🥇 Gold | 9. Can someone understand and use it? | A guide that explains the method, its limits, and who to contact. |
+| 🥇 Gold | 10. Do we know which version to use? | A named version tied to its test results. |
 
-CellProfiler itself can be a software research contribution, while a particular CellProfiler pipeline supports a dataset contribution.
-A project can also contribute both software and data. We do not need to force it into one category.
-The FAIR Principles for Research Software (FAIR4RS) reinforce this point: software needs distinct identifiers for its versions, a clear license, and its own provenance.[5]
-Supporting a dataset does not exempt code from those responsibilities. We should identify and credit the implementation as well as the data it produced.
+Wooden is our label for work before the ten questions: a sketch to discuss, not a result to trust.
+It is an addition to this guide, not a layer in medallion architecture.
+Bronze, silver, and gold describe progress toward a tested result that others can use.
+The levels mark progress on the shared piece, not a competition between contributors.
+These are not scores to average. Success in one area does not cancel a failure in another.
 
-## Build on Data-Oriented Development
-
-```mermaid!
-flowchart TB
-    bronze[("Bronze: raw microscopy images")] --> measure["Segment, measure, and validate"]
-    measure --> silver[("Silver: validated cell measurements")]
-    silver --> profile["Normalize and aggregate for the analysis"]
-    profile --> gold[("Gold: analysis-ready profiles")]
-```
-
-_An illustrative medallion layout for the microscopy workflow. The layers organize data refinement, not levels of scientific certainty._
-
-This is not a new architecture.
-The *medallion architecture*, documented by Databricks, organizes data into bronze (raw), silver (cleaned and validated), and gold (enriched, consumption-ready) layers.[11]
-For our example, those roles can correspond to input images, checked cell measurements, and analysis-ready profiles.
-The mapping is illustrative; it does not require Databricks or prescribe one processing sequence.
-It makes the intermediate data products visible, giving us places to attach validation and provenance.
-A gold-layer label alone does not establish scientific validity.
-
-*Data-oriented programming* offers a complementary perspective at the program level.
-Yehonathan Sharvit's formulation separates code from data, uses generic data structures, treats data as immutable, and separates schemas from representations.[12]
-For our workflow, that suggests defining the feature table's schema, units, and acceptance tests independently of a particular implementation.
-We can then compare replacement implementations against the same data contract.
-
-Related *data-oriented design*, described by Richard Fabian, emphasizes data transformations and working with the hardware's characteristics.[13]
-Its design and performance concerns are distinct from provenance or preservation policy.
-
-I explored the testing side in [Data Quality Validation through Software Testing Techniques](https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html).
-The connection here is straightforward: preserve the data contracts and checks alongside the transformation code.
-AI changes how we may produce implementations; these established practices help us decide what those implementations must preserve.
-
-## Keep Purpose Separate from Execution
+## Babel: More Code Does Not Mean Better Answers
 
 ```mermaid!
 flowchart TB
-    intent["Scientific question"] -- "defines what to evaluate" --> validation["Validation criteria"]
-    inputs[("Input data")] --> run["Recorded workflow execution"]
-    implementation["Code, parameters, and environment"] --> run
-    team["Responsible researcher or team"] -- "associated with" --> run
-    run --> outputs[("Output data")]
-    outputs -- "evaluated against" --> validation
-    validation -- "supports or limits" --> conclusion["Scientific interpretation"]
+    candidates["Many possible versions"] --> purpose{"Does this version fit the task?"}
+    purpose -- "No" --> reject["Set it aside or change it"]
+    purpose -- "Possibly" --> evaluate["Compare its results with known answers"]
+    evaluate --> revise["Keep, change, or reject it"]
 ```
 
-_Execution produces an output; validation determines what we can reasonably conclude from it._
+_A clear task helps us choose what to test. Known answers help us judge the result._
 
-Separate scientific purpose from execution: the question defines what we want to learn; the run record describes what happened; validation supports interpretation.
-Preserve these records and their relationships.
+Jorge Luis Borges imagines an unusual library in [The Library of Babel](https://en.wikipedia.org/wiki/The_Library_of_Babel).
+It contains every possible book within a fixed set of rules.
+Most books contain gibberish.
+Meaningful books sit among countless false or slightly wrong versions.
+The library contains answers, but its readers still need a way to recognize the right ones.
 
-W3C's PROV model offers an established vocabulary: *entities* such as images and tables, *activities* such as a segmentation run, and *agents* such as the responsible researcher or organization.[6]
-That last category matters. Provenance includes responsibility, not merely a chain of files.
-It records what happened; our validation evidence addresses whether the result is fit for the scientific purpose.
+This story gives us a useful warning about large amounts of output.
+It does not describe how AI works. AI tools do not write by choosing every letter at random.
+**A believable answer is not always a correct answer.**
 
-To compare morphology across treatments, a completed feature table is insufficient.
-We need evidence about segmentation, missing measurements, and whether normalization preserves relevant variation.
+Our cell-measurement code can fail in that way.
+It can run without errors and produce a tidy table, but use treated cells as their own reference.
+The result looks useful while it answers the wrong question.
 
-Two pipelines can share a purpose without producing identical results.
-Any equivalence claim needs a scope: agreement within a specified tolerance on representative inputs, for example.
-One passing plate is not universal evidence. Preserve the benchmark inputs, acceptance criteria, and comparison report.
+A clear task and tests with known answers help us find that mistake.
+The teacher in our class faces a similar problem: more pieces do not guarantee a better sculpture.
+Each contribution needs to serve the shared goal. The medallion levels help us decide what evidence it needs next.
 
-## Version the Result and Its Provenance
+## Bronze: Try an Idea
 
 ```mermaid!
 flowchart TB
-    manifest["Dataset release manifest"]
-    manifest -- "identifies" --> output[("Output files and checksums")]
-    manifest -- "identifies" --> input[("Input files and checksums")]
-    manifest -- "references" --> method["Code revision and parameters"]
-    manifest -- "references" --> execution["Environment and run record"]
-    manifest -- "references" --> evidence["Quality-control and validation reports"]
+    intent["1. Describe the job"] --> contract["2. Describe what goes in and comes out"]
+    contract --> candidate["3. Try a small example safely"]
+    candidate --> status["Bronze: ready for tests,<br/>not for research conclusions"]
 ```
 
-_A release manifest connects the exact artifacts associated with a published dataset._
+_Bronze gives us a first attempt and a clear reason to test it._
 
-Git remains useful here.
-It can version code, parameters, documentation, and provenance manifests.
-What a code revision alone cannot tell us is which execution produced a particular dataset, especially when the same revision runs with different inputs or settings.
-Versioning a workflow and recording a workflow run are different jobs.
+In medallion architecture, bronze holds raw data before later work improves it.
+For our code, bronze means a first attempt whose quality we do not yet know.
+A person can write it, an AI tool can draft it, or we can adapt existing code.
+**We judge the code by what it does, not where it came from.**
+In our class, bronze is the rough shared form. The teacher gives enough direction for the group to try the idea safely.
 
-For a small team, a starting point is a manifest attached to each dataset release:
+**1. Describe the job.**
+Write down the task before you ask for code.
+For our example: "Adjust each cell measurement against control wells from the same plate. Do not use treated wells to set the reference."
+This gives us something clearer than "adjust the data."
+Code that does a different job is not ready to move forward, even if it runs.
 
-```yaml
-# Illustrative placeholders, not a provenance standard.
-artifact:
-  name: single-cell-morphology-features
-  version: "1.0"
-  files: "outputs-with-checksums.csv"
+**2. Describe what goes in and comes out.**
+List the columns the code needs and what it must return.
+Name the columns that identify the cells, plates, and control wells.
+Describe what happens to missing values and which labels must stay unchanged.
+Keep unresolved questions in the written plan rather than letting the code choose an answer without your knowledge.
 
-inputs:
-  manifest: "input-images-with-checksums.csv"
+**3. Try a small example safely.**
+Use a copy of a tiny table.
+Make sure that the code accepts it and returns something you can read.
+Keep the original data untouched.
+Do not give unreviewed code access to passwords or private data.
+A successful run means you have something to test. It does not mean the method is correct.
 
-implementation:
-  repository: "https://github.com/example/analysis"
-  revision: "<full-commit-id>"
-  workflow: "extract_features.py"
+Bronze leaves room to change direction without much wasted work.
+You need a useful first attempt, not a finished product.
 
-execution:
-  run_id: "<recorded-run-id>"
-  responsible_agent: "<researcher-or-team-identifier>"
-  environment: "container-image@sha256:<digest>"
-  parameters: "parameters.yaml"
-
-validation:
-  report: "quality-control.json"
-  acceptance_criteria: "validation-plan.md"
-```
-
-The referenced files must be preserved too; a filename is not a preservation strategy.
-Record random seeds when applicable, and document manual preprocessing that the workflow cannot otherwise capture.[1]
-Checksums help identify exact contents, but cannot recover missing files or establish scientific correctness.
-Likewise, a container helps record the software environment without guaranteeing that a future machine will reproduce every numerical result.
-
-Existing approaches can organize these relationships without a custom schema.
-[RO-Crate](https://www.researchobject.org/ro-crate/) describes research artifacts and their relationships using structured metadata.
-[Workflow Run RO-Crate](https://www.researchobject.org/workflow-run-crate) adds descriptions of executions, including inputs and outputs.
-Its *Process Run Crate* profile can describe tools run manually in sequence; a team does not need a workflow engine to use that profile.[10]
-[Software Heritage](https://www.softwareheritage.org/) complements these approaches by archiving source code with content-based identifiers.
-
-Large data files can live in an appropriate data archive or object store while Git holds the human-authored records.
-Whichever tools we choose, the goal is to keep those references resolvable and the artifacts accessible.
-FAIR's accessibility principle A2 goes further: metadata should remain accessible even if the data are no longer available.[7]
-For this dataset, that suggests keeping the release description and provenance independently discoverable, rather than storing their only copy beside the large data files.
-
-## Public Code Does Not Promise Indefinite Maintenance
+## Silver: Test the Results
 
 ```mermaid!
 flowchart TB
-    public["Public research repository"] --> active["Active development"]
-    public --> preserved["Preserved research artifact"]
-    active --> contribute["Document how to contribute"]
-    preserved --> boundaries["Document maintenance limits"]
-    boundaries --> corrections["Keep a route for reporting scientific errors"]
+    expected["4. Compare with known answers"] --> edges["5. Try difficult inputs"]
+    edges --> inspect["6. Read the code against the plan"]
+    inspect --> representative["7. Run a small trial with real data"]
+    representative --> status["Silver: evidence that it works<br/>for the cases you tested"]
 ```
 
-_Public access and maintenance commitments are separate decisions._
+_Silver tests whether the code does the right job, not merely whether it runs._
 
-A completed analysis can remain useful without becoming a general-purpose library.
-State its maintenance status rather than leaving readers to infer it from the last commit date.
+In medallion architecture, silver holds data after cleaning and testing.
+For our code, this level asks whether the results match the method we intended.
+All four questions matter.
+In our class, the teacher helps students test the joints and revise parts that do not fit.
+For code, tests and review serve that role. A polished part still needs to work with the rest.
 
-I initially considered calling these *dark repositories*, but the preservation community already uses *dark archive* for restricted-access storage, as Portico illustrates.[8]
-That is the opposite of the public readability intended here. *Public preservation repository* is a clearer description for a completed analysis.
-Contribution policy remains a separate choice: a team can close external contributions while continuing internal work, or preserve a snapshot while accepting corrections elsewhere.
+**4. Compare with known answers.**
+Choose a few values whose expected results you can work out separately.
+Compare the code results with those answers.
+For decimal calculations, state how much difference you will allow and why.
+An AI tool can help write tests, but tests can repeat the same mistake as the code.
+Do not treat the output of the code itself as the expected answer.
 
-GitHub's [February 2026 announcement](https://github.blog/changelog/2026-02-13-new-repository-settings-for-configuring-pull-request-access) introduced settings to disable pull requests or restrict their creation to collaborators.
-The [documentation](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/disabling-pull-requests) describes these controls.
-Disabling pull requests also hides existing ones, so preserve any review discussion needed to understand the published analysis before doing that.
+**5. Try difficult inputs.**
+Try a plate with no control wells, a column of identical values, or missing measurements.
+Decide whether each case needs an error, a warning, or a defined result.
+Also test rules that must always hold.
+For example, a different row order must not change the result for a cell.
+Each measurement must stay linked to the correct cell label.
 
-A README should state what the repository supports, whether dependencies will receive updates, and how to report an error affecting the science.
-Include a license and instructions for the preserved analysis.
-The 2026 *CODE beyond FAIR* roadmap explicitly recommends stating whether contributions are accepted and describing maintenance and support limits.[9]
-It also distinguishes a development platform from a dedicated archive. Keeping a repository public is useful, but is not by itself a long-term preservation commitment.[9]
-Closing contributions cannot establish reproducibility, and it should not remove the path for correcting a published result.
-For a community library, accepting and reviewing contributions may remain essential to its purpose.
+**6. Read the code against the plan.**
+Make sure that the code uses only the intended control wells as its reference.
+Look at how it separates plates and whether it removes or changes any values.
+Remove extra steps that make the method hard to follow.
+Another reviewer can help, but agreement alone is not proof.
+Several reviewers can share the same wrong assumption.
 
-## Decide What to Maintain, Preserve, or Remove
+**7. Run a small trial with real data.**
+Choose a small set that includes the differences and problems you expect in practice.
+If you have a trusted method, compare the results with it.
+Explain any differences.
+Make sure that the code fits your time and memory limits.
+Save what you tested, what counted as success, and which cases you did not cover.
+
+**A successful trial supports the cases you tested, not every future use.**
+If the results reveal a problem, change the code or the plan and test again.
+
+## Gold: Make It Ready to Use
 
 ```mermaid!
 flowchart TB
-    item["Assess each project artifact"] --> users{"Needed for ongoing use?"}
-    users -- "Yes" --> maintain["Maintain and test it"]
-    users -- "No" --> evidence{"Needed to explain or reproduce a result?"}
-    evidence -- "Yes" --> preserve["Preserve a citable snapshot"]
-    evidence -- "No" --> remove["Consider removal after checking obligations"]
+    rerun["8. Save enough to run it again"] --> explain["9. Write a guide for the next person"]
+    explain --> release["10. Name and save the tested version"]
+    release --> status["Gold: ready for a clear task,<br/>with instructions and known limits"]
 ```
 
-_Apply this decision to individual artifacts. A project can need both maintained software and preserved snapshots._
+_Gold means ready for a clear use. It does not mean perfect._
 
-Start with a concrete sentence: "The contribution of this project is ..."
-If the answer is a library, plan for tests, releases, documentation, and maintenance.
-If it is a dataset, give the dataset its own release identity and preserve the code and evidence associated with that release.
-A completed experiment needs its execution record and interpretation, even if nobody intends to run it again.
+In medallion architecture, gold holds data prepared for a particular use.
+For our code, this level helps the next person use the tested version responsibly.
+A notebook for one study needs less support than a tool that many teams share.
+Both need clear instructions and limits.
+In our class, this means preparing the shared piece for its intended use and explaining how to care for it.
+For software, that means another person can find the right version, follow the method, and understand its limits.
 
-Decide artifact by artifact: maintain a shared normalization library while preserving the exact version used for a publication.
+**8. Save enough to run it again.**
+Record the code version, other software it needs, input data, and values that control the run.
+Save the test results.
+If the method uses randomness, record its starting value, often called a random seed.
+Follow the instructions on a fresh setup to make sure that they work.
+State any machine or calculation differences that can change the results.
 
-AI-generated code deserves the same assessment as handwritten code.
-Temporary exploration can be discarded only after checking whether it explains a reported finding, an important exclusion, or a choice of method.
-Institutional retention rules and agreements may impose additional requirements.
-Do not assume a future model can regenerate the implementation that produced today's result.
+**9. Write a guide for the next person.**
+Explain the method, the required control wells, and the data the code expects.
+Describe warnings and known problems.
+Name the person or team responsible for the software.
+Provide a way to report errors.
+State whether anyone will update the code or whether it stays as a record of a finished analysis.
 
-## Knowledge Stewardship in Practice
+**10. Name and save the tested version.**
+Give the code a version name, such as a release number.
+Include a license that states how others can use it.
+Keep its test results with that version.
+Make sure that the version you share is the one you tested.
+For published data, record which code version produced it.
 
-```mermaid!
-flowchart LR
-    question["Future researcher asks:<br/>Why should I trust this result?"] --> record["Inspect preserved artifacts<br/>and decision records"]
-    record --> assess["Assess the method,<br/>evidence, and limitations"]
-```
+If the method, required software, or intended data changes, return to the relevant tests.
+**A new version does not inherit trust from its name.**
+Not every idea needs to reach gold, but research conclusions need more support than an untested first attempt.
+For work where errors can cause serious harm, this guide is only a starting point.
 
-_The preservation test is whether a future researcher can assess the result, not simply download its code._
+## Guide the Work from Bronze to Gold
 
-Research decision engineering asks us to direct our attention toward consequential choices.
-Knowledge stewardship carries those choices forward: which implementation we selected, what evidence justified it, and where its limits lie.
+The medallion levels help us decide what the shared work needs next.
+In our ceramics class, the teacher moves between workbenches, looks at each contribution, and helps the students bring the pieces together.
+The aim is a sound shared creation, not a medal for every student.
 
-For the microscopy dataset, preserve enough to trace a measurement to its inputs and method, inspect quality control, and understand normalization decisions.
-That requires care about what gets lost, not turning every script into a maintained package.
+A chat interface can support a similar rhythm.
+Spend a little time on each part of the code before you bring the parts together.
+Ask what changed, look at the result, and give one clear next step.
+An AI tool's explanation gives you something to investigate, not proof that its code works.
+The tests and the shared result still need your attention.
 
-My suggested starting point is modest: identify the contribution, publish a release manifest, and write down the maintenance boundary.
-Use existing provenance tools where they fit.
-The goal is a collection of artifacts that lets another researcher understand and evaluate the science, with code preserved in the role it actually plays.
+Problems give these conversations direction.
+A failed test can reveal a missing rule or a mistake that several contributors share.
+Treat that discovery as progress toward a better result, rather than pressure to hide the problem.
+Accept that mistakes happen, then use the evidence to guide the next revision.
+This is part of [research decision engineering](https://bssw.io/items/research-decision-engineering-managing-cognitive-load-in-the-generative-era): deciding where to direct effort and how to judge the result.
 
-## Sources
+As the work improves, the next useful change can be a removal.
+An unused feature or a repeated step can make the code harder to understand without helping the task.
+Remove that extra weight, but keep the tests, safety measures, and evidence that support trust.
+A shorter program is not better if it loses something the work needs.
 
-[1] [Sandve et al. (2013). Ten Simple Rules for Reproducible Computational Research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285)
-
-[2] [Peng et al. (2023). The Impact of AI on Developer Productivity: Evidence from GitHub Copilot](https://arxiv.org/abs/2302.06590)
-
-[3] [Becker et al. (2025). Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://arxiv.org/abs/2507.09089)
-
-[4] [METR (2026). We are Changing our Developer Productivity Experiment Design](https://metr.org/blog/2026-02-24-uplift-update)
-
-[5] [Barker et al. (2022). Introducing the FAIR Principles for research software](https://www.nature.com/articles/s41597-022-01710-x)
-
-[6] [W3C (2013). PROV Model Primer](https://www.w3.org/TR/prov-primer)
-
-[7] [Wilkinson et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618)
-
-[8] [Portico. For participants: access to a dark preservation archive](https://www.portico.org/for-participants)
-
-[9] [Di Cosmo et al. (2026). CODE beyond FAIR: a roadmap for reusable research software](https://www.nature.com/articles/s41597-026-06705-6)
-
-[10] [Leo et al. (2024). Recording provenance of workflow runs with RO-Crate](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0309210)
-
-[11] [Databricks. What is the medallion lakehouse architecture?](https://docs.databricks.com/gcp/en/lakehouse/medallion)
-
-[12] [Sharvit (2022). Separate data schema from data representation](https://blog.klipse.tech/databook/2022/06/22/data-validation.html)
-
-[13] [Fabian. Data-Oriented Design: data, transformations, and hardware](https://www.dataorienteddesign.com/dodbook/node2.html)
+So when do we know we are finished, for now?
+When the shared result does the agreed job, the tests support it, and someone else can use it within its stated limits.
+**We know the work is done when nothing is left to remove without losing something the task needs.**
+That assumes the work passes its checks and has no known problem that defeats its purpose.
+New evidence or a changed task can bring us back to the workbench.
+Until then, we can save the tested version and let it do its job.
