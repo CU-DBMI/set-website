@@ -1,0 +1,14 @@
+@startuml
+skinparam nodesep 10
+hide circle
+hide empty members
+class "CafeQueue" [[{None}]] {
+    {field} queue_id : string  
+}
+class "Order" [[{None}]] {
+    {field} order_id : string  
+    {field} drink : string  
+    {field} status : OrderStatusEnum  
+}
+"CafeQueue" *--> "0..*" "Order" : "orders"
+@enduml
