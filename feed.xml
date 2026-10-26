@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2026-05-08T16:58:26+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">LinkML for Scientific Software: Schema Workflows with Real Leverage</title><link href="https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows.html" rel="alternate" type="text/html" title="LinkML for Scientific Software: Schema Workflows with Real Leverage" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows.html"><![CDATA[<h1 id="linkml-for-scientific-software-schema-workflows-with-real-leverage">LinkML for Scientific Software: Schema Workflows with Real Leverage</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://cu-dbmi.github.io/set-website/feed.xml" rel="self" type="application/atom+xml" /><link href="https://cu-dbmi.github.io/set-website/" rel="alternate" type="text/html" /><updated>2026-10-26T17:19:41+00:00</updated><id>https://cu-dbmi.github.io/set-website/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">LinkML for Scientific Software: Schema Workflows with Real Leverage</title><link href="https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows.html" rel="alternate" type="text/html" title="LinkML for Scientific Software: Schema Workflows with Real Leverage" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2026/05/06/linkml-for-scientific-software-schema-workflows.html"><![CDATA[<h1 id="linkml-for-scientific-software-schema-workflows-with-real-leverage">LinkML for Scientific Software: Schema Workflows with Real Leverage</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -7,7 +7,7 @@
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -35,9 +35,9 @@ It also gives you a solid mental model to communicate and understand scientific 
 <p>Without a schema, pipelines often rely on implied conventions:</p>
 
 <ul>
-  <li>IDs are &#8220;supposed&#8221; to follow some pattern.</li>
-  <li><code class="language-plaintext highlighter-rouge">status</code> (as an example of a field) is &#8220;supposed&#8221; to be one of a few values.</li>
-  <li>Numeric fields are &#8220;should&#8221; to have sensible bounds.</li>
+  <li>IDs are “supposed” to follow some pattern.</li>
+  <li><code class="language-plaintext highlighter-rouge">status</code> (as an example of a field) is “supposed” to be one of a few values.</li>
+  <li>Numeric fields are “should” to have sensible bounds.</li>
 </ul>
 
 <p>Those assumptions are typically encoded in multiple places and diverge over time.
@@ -318,7 +318,7 @@ uv run <span class="nt">--with</span> linkml linkml generate plantuml <span clas
 <p>The runnable companion demo for this post is in <a href="https://github.com/CU-DBMI/set-website/blob/main/examples/linkml/linkml_quickstart_demo.py">examples/linkml/linkml_quickstart_demo.py</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run examples/linkml/linkml_quickstart_demo.py
-</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="data-models" /><category term="data-validation" /><category term="scientific-software" /><category term="reproducibility" /><category term="schema-design" /><summary type="html"><![CDATA[LinkML for Scientific Software: Schema Workflows with Real Leverage]]></summary></entry><entry><title type="html">Typed LLM Outputs with Instructor</title><link href="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html" rel="alternate" type="text/html" title="Typed LLM Outputs with Instructor" /><published>2026-03-31T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html"><![CDATA[<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
+</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="data-models" /><category term="data-validation" /><category term="scientific-software" /><category term="reproducibility" /><category term="schema-design" /><summary type="html"><![CDATA[LinkML for Scientific Software: Schema Workflows with Real Leverage]]></summary></entry><entry><title type="html">Typed LLM Outputs with Instructor</title><link href="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html" rel="alternate" type="text/html" title="Typed LLM Outputs with Instructor" /><published>2026-03-31T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2026/03/31/typed-llm-outputs-with-instructor.html"><![CDATA[<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -327,7 +327,7 @@ uv run <span class="nt">--with</span> linkml linkml generate plantuml <span clas
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -476,7 +476,7 @@ If not, <code class="language-plaintext highlighter-rouge">instructor</code> can
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> instructor <span class="nt">--with</span> llama-cpp-python <span class="nt">--with</span> pydantic <span class="se">\</span>
   https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/llm/instructor_demo.py
-</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="llm" /><category term="data-validation" /><category term="data-models" /><category term="software-education" /><category term="machine-learning" /><category term="software-design" /><category term="scientific-software" /><category term="reproducibility" /><summary type="html"><![CDATA[Typed LLM Outputs with Instructor]]></summary></entry><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
+</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="llm" /><category term="data-validation" /><category term="data-models" /><category term="software-education" /><category term="machine-learning" /><category term="software-design" /><category term="scientific-software" /><category term="reproducibility" /><summary type="html"><![CDATA[Typed LLM Outputs with Instructor]]></summary></entry><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -485,7 +485,7 @@ If not, <code class="language-plaintext highlighter-rouge">instructor</code> can
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -495,7 +495,7 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 <!-- excerpt start -->
 <p><strong>Managing Python environments has evolved rapidly over the last decade, but complexity and portability remain challenges.</strong><br />
 <strong><code class="language-plaintext highlighter-rouge">uv</code> from Astral aims to simplify environment management with exceptional speed, cross-platform portability, and complete feature parity with existing tools.</strong><br />
-In this article, we&#8217;ll explore the history of Python environment management, consider conda in context with Python ecosystems, and provide an overview of using <code class="language-plaintext highlighter-rouge">uv</code>.
+In this article, we’ll explore the history of Python environment management, consider conda in context with Python ecosystems, and provide an overview of using <code class="language-plaintext highlighter-rouge">uv</code>.
 <!-- excerpt end --></p>
 
 <h2 id="what-is-uv-and-why-does-it-matter">What is <code class="language-plaintext highlighter-rouge">uv</code> and why does it matter?</h2>
@@ -513,7 +513,7 @@ In this article, we&#8217;ll explore the history of Python environment managemen
 <p><a href="https://github.com/astral-sh/uv"><code class="language-plaintext highlighter-rouge">uv</code></a> is a Python environment management and packaging tool which helps you write and maintain Python software.
 In context with other similar tools <code class="language-plaintext highlighter-rouge">uv</code> is magnitudes faster at completing the same work.
 This is due largely to <a href="https://en.wikipedia.org/wiki/Rust_(programming_language)">Rust</a> bindings which help the Python-focused procedures complete more quickly and a custom dependency resolver (which often consumes large amounts of time).
-In the following paragraphs we&#8217;ll cover some background on this area to help provide context about <code class="language-plaintext highlighter-rouge">uv</code> and the domain it assists with.</p>
+In the following paragraphs we’ll cover some background on this area to help provide context about <code class="language-plaintext highlighter-rouge">uv</code> and the domain it assists with.</p>
 
 <h2 id="what-are-python-packages-and-environment-management">What are Python packages and environment management?</h2>
 
@@ -728,7 +728,7 @@ While PyPI and pip dominate general-purpose Python packaging, the Conda ecosyste
   
 </figure>
 
-<p>Below we&#8217;ll provide a quick overview of using <code class="language-plaintext highlighter-rouge">uv</code> to accomplish various environment management and packaging tasks.</p>
+<p>Below we’ll provide a quick overview of using <code class="language-plaintext highlighter-rouge">uv</code> to accomplish various environment management and packaging tasks.</p>
 
 <h3 id="installing">Installing</h3>
 
@@ -763,14 +763,14 @@ Afterwards, the structure will look like the following:</p>
 3 directories, 3 files
 </code></pre></div></div>
 
-<p>Let&#8217;s break down this file structure so we know what we&#8217;re working with:</p>
+<p>Let’s break down this file structure so we know what we’re working with:</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">pyproject.toml</code>: This file includes project metadata, configuration data, and (eventually) package dependency specifications.</li>
-  <li><code class="language-plaintext highlighter-rouge">README.md</code>: This file is often used to help introduce projects and talk about the &#8220;what&#8221;, &#8220;why&#8221;, and &#8220;how&#8221; at a high level. It helps users get acquainted with what the project focuses on.</li>
-  <li><code class="language-plaintext highlighter-rouge">src</code>: This directory is becoming standard practice for all source code within Python projects. It helps distinguish from documentation and &#8220;non-production&#8221; code.</li>
-  <li><code class="language-plaintext highlighter-rouge">src/project_name</code>: This directory is typically used to house a Python &#8220;package&#8221; (or a collection of Python modules, a.k.a <code class="language-plaintext highlighter-rouge">.py</code> files).</li>
-  <li><code class="language-plaintext highlighter-rouge">src/project_name/__init__.py</code>: This optional file is used to help initialize a Python project when it&#8217;s imported. It typically will include imports to specific public-facing Python objects you wish to share through the work. It also may configure the project.</li>
+  <li><code class="language-plaintext highlighter-rouge">README.md</code>: This file is often used to help introduce projects and talk about the “what”, “why”, and “how” at a high level. It helps users get acquainted with what the project focuses on.</li>
+  <li><code class="language-plaintext highlighter-rouge">src</code>: This directory is becoming standard practice for all source code within Python projects. It helps distinguish from documentation and “non-production” code.</li>
+  <li><code class="language-plaintext highlighter-rouge">src/project_name</code>: This directory is typically used to house a Python “package” (or a collection of Python modules, a.k.a <code class="language-plaintext highlighter-rouge">.py</code> files).</li>
+  <li><code class="language-plaintext highlighter-rouge">src/project_name/__init__.py</code>: This optional file is used to help initialize a Python project when it’s imported. It typically will include imports to specific public-facing Python objects you wish to share through the work. It also may configure the project.</li>
 </ul>
 
 <h3 id="adding-dependencies-with-uv">Adding dependencies with <code class="language-plaintext highlighter-rouge">uv</code></h3>
@@ -783,8 +783,8 @@ uv add pytest <span class="nt">--group</span> dev
 </code></pre></div></div>
 
 <p>We can add external dependencies to the project using the <code class="language-plaintext highlighter-rouge">uv add</code> command.
-<code class="language-plaintext highlighter-rouge">uv</code> enables you to leverage dependency groups which are a way to distinguish between &#8220;production&#8221; dependencies and &#8220;development&#8221; dependencies.
-For example, we might want to include <code class="language-plaintext highlighter-rouge">pytest</code> for software testing during development of the project so we could add it to the <code class="language-plaintext highlighter-rouge">dev</code> group (we likely won&#8217;t need <code class="language-plaintext highlighter-rouge">pytest</code> for the production code).
+<code class="language-plaintext highlighter-rouge">uv</code> enables you to leverage dependency groups which are a way to distinguish between “production” dependencies and “development” dependencies.
+For example, we might want to include <code class="language-plaintext highlighter-rouge">pytest</code> for software testing during development of the project so we could add it to the <code class="language-plaintext highlighter-rouge">dev</code> group (we likely won’t need <code class="language-plaintext highlighter-rouge">pytest</code> for the production code).
 This helps keep the production dependencies light by only including the necessary packages if someone uses non-development work from the project.
 Using <code class="language-plaintext highlighter-rouge">uv add</code> (or similarly, <code class="language-plaintext highlighter-rouge">uv sync</code>, which updates the environment) also automatically creates a <code class="language-plaintext highlighter-rouge">uv.lock</code> lockfile, which is important for consistent environment mangement.</p>
 
@@ -812,8 +812,8 @@ Be sure to check out our <a href="https://cu-dbmi.github.io/set-website/2024/02/
 </ul>
 
 <p><a href="https://peps.python.org/pep-0751/">PEP 751</a> introduces some standardization for Python lockfiles (<code class="language-plaintext highlighter-rouge">pylock.toml</code>) but many tools have not yet adopted this standard.
-<code class="language-plaintext highlighter-rouge">uv</code>&#8217;s lockfile data cannot yet be fully expressed in <code class="language-plaintext highlighter-rouge">pylock.toml</code> files and as a result it still depends on <code class="language-plaintext highlighter-rouge">uv.lock</code> files.
-It&#8217;s like that the Python standard for lockfiles will evolve over time and could eventually converge (meaning you&#8217;d be able to use multiple tools with the same lockfile).</p>
+<code class="language-plaintext highlighter-rouge">uv</code>’s lockfile data cannot yet be fully expressed in <code class="language-plaintext highlighter-rouge">pylock.toml</code> files and as a result it still depends on <code class="language-plaintext highlighter-rouge">uv.lock</code> files.
+It’s like that the Python standard for lockfiles will evolve over time and could eventually converge (meaning you’d be able to use multiple tools with the same lockfile).</p>
 
 <h3 id="processing-code-through-uv-environments">Processing code through <code class="language-plaintext highlighter-rouge">uv</code> environments</h3>
 
@@ -826,8 +826,8 @@ uv run pytest
 </code></pre></div></div>
 
 <p>When we want to process code through the <code class="language-plaintext highlighter-rouge">uv</code> environment we can use the <code class="language-plaintext highlighter-rouge">uv run</code> command.
-If you&#8217;re used to using <code class="language-plaintext highlighter-rouge">conda</code> environments this is akin to <code class="language-plaintext highlighter-rouge">conda run -n env_name python</code>.
-Note: <code class="language-plaintext highlighter-rouge">uv</code> does not enable you to activate or &#8220;enter into&#8221; an implicit shell for the environement like <code class="language-plaintext highlighter-rouge">conda activate</code>.
+If you’re used to using <code class="language-plaintext highlighter-rouge">conda</code> environments this is akin to <code class="language-plaintext highlighter-rouge">conda run -n env_name python</code>.
+Note: <code class="language-plaintext highlighter-rouge">uv</code> does not enable you to activate or “enter into” an implicit shell for the environement like <code class="language-plaintext highlighter-rouge">conda activate</code>.
 Instead, <code class="language-plaintext highlighter-rouge">uv</code> uses declarative syntax to ensure the command-line interface (CLI) to the environment is explicit.</p>
 
 <p>When working with other projects you might also need to run an <code class="language-plaintext highlighter-rouge">install</code> command in order to have access to the environment.
@@ -878,9 +878,9 @@ This can provide a streamlined and low-cost way to transition projects over to <
 
 <h2 id="a-uv-template-for-new-projects">A <code class="language-plaintext highlighter-rouge">uv</code> template for new projects</h2>
 
-<p>If you&#8217;re interested to use <code class="language-plaintext highlighter-rouge">uv</code> and would like to start through a template consider using <a href="https://github.com/CU-DBMI/template-uv-python-research-software"><code class="language-plaintext highlighter-rouge">template-uv-python-research-software</code></a>.
+<p>If you’re interested to use <code class="language-plaintext highlighter-rouge">uv</code> and would like to start through a template consider using <a href="https://github.com/CU-DBMI/template-uv-python-research-software"><code class="language-plaintext highlighter-rouge">template-uv-python-research-software</code></a>.
 This project is a <code class="language-plaintext highlighter-rouge">copier</code> template that lets you quickly get started with <code class="language-plaintext highlighter-rouge">uv</code> and other boilerplate files for a Python research software project (including Jupyter notebook support).
-Please see the documentation of the project for more information on what&#8217;s included in the template.</p>
+Please see the documentation of the project for more information on what’s included in the template.</p>
 
 <p>For example, you can use the following commands to use this template:</p>
 
@@ -900,7 +900,7 @@ copier copy https://github.com/CU-DBMI/template-uv-python-research-software new_
 </blockquote>
 
 <p><code class="language-plaintext highlighter-rouge">uv</code> from Astral offers research software engineers a fast, portable, and standards‑compliant environment manager that meets or exceeds the capabilities of existing tools.
-By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
+By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -909,7 +909,7 @@ By leveraging native Python packaging, robust lockfiles, and seamless Jupyter su
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -938,7 +938,7 @@ With datasets regularly exceeding gigabytes—or even terabytes—in size, resea
 <p><strong>Object storage offers a flexible alternative to traditional filesystems.</strong>
 It supports high-throughput access, structured metadata, and distributed scaling, making it a foundational tool in research computing, reproducible science, and FAIR data practices.</p>
 
-<p>In this article, we’ll trace the evolution of object storage (also sometimes referred to as &#8220;S3&#8221;, &#8220;storage buckets&#8221;, or &#8220;object stores&#8221;), explain its design principles, survey current platforms, and walk through a hands-on example using the open-source <a href="https://min.io/">MinIO</a> tool.
+<p>In this article, we’ll trace the evolution of object storage (also sometimes referred to as “S3”, “storage buckets”, or “object stores”), explain its design principles, survey current platforms, and walk through a hands-on example using the open-source <a href="https://min.io/">MinIO</a> tool.
 <!-- excerpt end --></p>
 
 <h2 id="a-brief-history-of-object-storage">A brief history of object storage</h2>
@@ -1006,7 +1006,7 @@ It enables capabilities increasingly vital to modern research:</p>
   <li><strong>HTTP-accessible</strong>: Allows sharing, versioning, and integration with APIs and remote workflows.</li>
 </ul>
 
-<p>Traditionally seen as a passive place to &#8220;put files,&#8221; object storage is often now being used as a primary data substrate—functioning more like a database than just a dumping ground.
+<p>Traditionally seen as a passive place to “put files,” object storage is often now being used as a primary data substrate—functioning more like a database than just a dumping ground.
 This shift aligns closely with principles from the Composable Data Management System Manifesto (<a href="https://dl.acm.org/doi/10.14778/3603581.3603604">Pedreira et. al, 2023</a>), which advocates for modular, interoperable, and storage-agnostic data infrastructure.</p>
 
 <p>Generally, consider use cases like:</p>
@@ -1092,7 +1092,7 @@ This shift aligns closely with principles from the Composable Data Management Sy
 <p>Here are the core principles of object storage to help conceptualize common terms and how it works.</p>
 
 <ul>
-  <li><strong>Flat Namespace</strong>: No folder hierarchies; everything is accessed via a unique object key (similar to a URL path). Folders are typically simulated with &#8220;/&#8221; slashes to help unify how one may reference objects in correspondence with a filesystem.</li>
+  <li><strong>Flat Namespace</strong>: No folder hierarchies; everything is accessed via a unique object key (similar to a URL path). Folders are typically simulated with “/” slashes to help unify how one may reference objects in correspondence with a filesystem.</li>
   <li><strong>Objects</strong>: Each unit of data includes the content, metadata, and a unique identifier (key).</li>
   <li><strong>Buckets</strong>: Logical containers for grouping objects (like folders, but flat). Generally a bucket is associated with one project.</li>
   <li><strong>APIs</strong>: Most object stores use HTTP REST APIs, often based on the <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">Amazon S3 API</a>.</li>
@@ -1278,13 +1278,13 @@ This adds some convenience due to its ability to serve both traditional file-bas
 <p>Cloud object storage platforms like <strong>AWS S3</strong> and <strong>Google Cloud Storage (GCS)</strong> offer great scalability, but they often come with <strong>ongoing costs that grow with usage</strong>, especially due to <strong>egress fees</strong> (i.e., data leaving the cloud) or <strong>operation</strong> charges (when you make changes to objects).</p>
 
 <p>In contrast, <strong>on-premises object storage systems</strong>—like <strong>Dell Isilon</strong>—can provide substantial long-term savings for research institutions that already maintain storage infrastructure.
-Similar to cloud-provider object storage systems, you can still use S3-like API&#8217;s through tools like MinIO with Isilon.</p>
+Similar to cloud-provider object storage systems, you can still use S3-like API’s through tools like MinIO with Isilon.</p>
 
 <h3 id="-storage-cost-comparison-approximate-per-gb-per-month">💾 Storage cost comparison (approximate, per GB per month)</h3>
 
 <p>Object storage providers generally charge a flat fee for the amount of data stored within their platform by month.
-Cloud providers typically charge varying rates by &#8220;storage class&#8221; which stipulate how frequently you will access the data (lower cost storage classes often have higher egress or outgoing tranfer costs).
-For the sake of an example below we use &#8220;standard&#8221; or default storage classes below.
+Cloud providers typically charge varying rates by “storage class” which stipulate how frequently you will access the data (lower cost storage classes often have higher egress or outgoing tranfer costs).
+For the sake of an example below we use “standard” or default storage classes below.
 See below for some examples.</p>
 
 <table>
@@ -1316,9 +1316,9 @@ See below for some examples.</p>
 
 <h3 id="-data-transfer-cost-egress">📤 Data transfer cost (Egress)</h3>
 
-<p>Object storage providers often charge for &#8220;egress&#8221;, or data transfers to a location outside their platforms.
+<p>Object storage providers often charge for “egress”, or data transfers to a location outside their platforms.
 These charges may seem small at first but can add up over time.
-It&#8217;s also important to note &#8220;ingress&#8221;, or data transferred into an object storage provider&#8217;s bucket, may also have distinct cost implications (these are often less than egress).
+It’s also important to note “ingress”, or data transferred into an object storage provider’s bucket, may also have distinct cost implications (these are often less than egress).
 Note: Isilon at CU Anschutz is currently limited to virtual private network (VPN) or campus-based networks for egress and ingress.</p>
 
 <table>
@@ -1352,7 +1352,7 @@ Note: Isilon at CU Anschutz is currently limited to virtual private network (VPN
 
 <p>Some of the above numbers are difficult to contextualize without an example scenario.
 Consider an example scenario where we have 500 GB stored for 6 months and where we download that 500 GB once per month.
-Keep in mind these are estimations and don&#8217;t include additional other charges from cloud providers, tax, and other considerations.</p>
+Keep in mind these are estimations and don’t include additional other charges from cloud providers, tax, and other considerations.</p>
 
 <table>
   <thead>
@@ -1398,7 +1398,7 @@ Keep in mind these are estimations and don&#8217;t include additional other char
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a></li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a></li>
   <li>GO FAIR Initiative: <a href="https://www.go-fair.org/">https://www.go-fair.org/</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1407,7 +1407,7 @@ Keep in mind these are estimations and don&#8217;t include additional other char
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -1442,16 +1442,16 @@ Fortunately, software testing can help minimize such risks, giving you more conf
 
 <p>Imagine you’ve written a simulation that generates data based on a complex scientific model.
 It works well under some conditions, but during peer review, a colleague finds a subtle bug.
-This bug doesn&#8217;t affect small data sets but produces significant errors on larger simulations.
+This bug doesn’t affect small data sets but produces significant errors on larger simulations.
 The consequences?
 You have to revise your paper, and time is lost fixing code.
-There&#8217;s also the possibility of bugs taking a long time to find (if ever) potentially leading to erroneous research.</p>
+There’s also the possibility of bugs taking a long time to find (if ever) potentially leading to erroneous research.</p>
 
 <p><strong>Consider: how can an audience know a software creates a reproducible outcome without  tests they can run and verify themselves?</strong>
 Testing your software upfront ensures that potential errors are caught early and your scientific conclusions remain valid and robust.
 This article covers how to write code which automates the process of testing your software.</p>
 
-<p>You may already have tests in place which haven&#8217;t yet been automated.
+<p>You may already have tests in place which haven’t yet been automated.
 If this is the case, consider integrating these with automated tools like those mentioned below to help create reproducible research software!</p>
 
 <h2 id="production-code-vs-test-code">Production code vs test code</h2>
@@ -1471,7 +1471,7 @@ If this is the case, consider integrating these with automated tools like those 
   
 </figure>
 
-<p>When working with software testing principles it can be helpful to distinguish <strong>&#8220;production&#8221; or &#8220;application&#8221; code</strong> (code which provides some utility besides testing itself) from <strong>&#8220;test&#8221; code</strong> (code which will be used to test the production or application code).
+<p>When working with software testing principles it can be helpful to distinguish <strong>“production” or “application” code</strong> (code which provides some utility besides testing itself) from <strong>“test” code</strong> (code which will be used to test the production or application code).
 These are often (but not always) stored in separate directories or components within the project.</p>
 
 <h2 id="types-of-tests-for-scientific-software">Types of tests for scientific software</h2>
@@ -1589,7 +1589,7 @@ Note the <code class="language-plaintext highlighter-rouge">tests</code> directo
     └── test_package_module.py
 </code></pre></div></div>
 
-<p>Just in case, make sure you install <code class="language-plaintext highlighter-rouge">pytest</code> into the project&#8217;s environment management:</p>
+<p>Just in case, make sure you install <code class="language-plaintext highlighter-rouge">pytest</code> into the project’s environment management:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># use pip to install pytest into an existing environment</span>
 pip <span class="nb">install </span>pytest
@@ -1713,7 +1713,7 @@ The general pattern follows Python interactive terminal input (denoted by <code 
 </code></pre></div></div>
 
 <p>You also can run doctests through <code class="language-plaintext highlighter-rouge">pytest</code> by using the <code class="language-plaintext highlighter-rouge">--doctest-modules</code> command flag.
-This can be helpful for areas where we don&#8217;t want to use the <a href="https://docs.python.org/3/library/__main__.html"><code class="language-plaintext highlighter-rouge">if __name__ == "__main__":</code> pattern</a>.</p>
+This can be helpful for areas where we don’t want to use the <a href="https://docs.python.org/3/library/__main__.html"><code class="language-plaintext highlighter-rouge">if __name__ == "__main__":</code> pattern</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># run the `pytest` command through your terminal</span>
 pytest <span class="nt">--doctest-modules</span>
@@ -1787,7 +1787,7 @@ With Hypothesis, you can write a test that asserts properties about even numbers
 
 <h3 id="using-the-hypothesis-ghostwriter">Using the Hypothesis ghostwriter</h3>
 
-<p>Hypothesis also includes <a href="https://hypothesis.readthedocs.io/en/latest/ghostwriter.html">a &#8220;ghostwriter&#8221; CLI</a> which can infer how to write Hypothesis tests given an object from Python code.
+<p>Hypothesis also includes <a href="https://hypothesis.readthedocs.io/en/latest/ghostwriter.html">a “ghostwriter” CLI</a> which can infer how to write Hypothesis tests given an object from Python code.
 This can help automate the process of writing your test code or provide inspiration for how to construct your Hypothesis tests.
 <em>Caveat emptor</em>: please be sure to review any code generated by the Hypothesis ghostwriter (it may not capture useful tests or edge cases).</p>
 
@@ -1817,7 +1817,7 @@ Note that the test name implies and itself employs a technique called <a href="h
 
 <h2 id="benefits-of-using-hypothesis">Benefits of using Hypothesis</h2>
 
-<p>Below are just a few of the benefits you&#8217;ll find with using Hypothesis:</p>
+<p>Below are just a few of the benefits you’ll find with using Hypothesis:</p>
 
 <ul>
   <li><strong><em>Discovering Edge Cases</em></strong>: Hypothesis automatically generates diverse input scenarios, including edge cases that might be overlooked in example-based tests.</li>
@@ -1839,7 +1839,7 @@ This is crucial, especially when your software are prone to evolving.</p>
 Catching small errors early prevents larger problems down the line.</p>
   </li>
   <li>
-    <p><strong>Use realistic test data</strong>: When testing your functions, prioritize test data that reflects the real-world conditions where your software will be applied. Secondarily, use &#8220;mock&#8221; or synthetically created data when the real data are too large or complex to test quickly. For more on this topic, see <a href="https://abseil.io/resources/swe-book/html/ch13.html#prefer_realism_over_isolation">&#8220;Prefer Realism Over Isolation&#8221; from the Test Doubles chapter in the book Software Engineering at Google</a>.</p>
+    <p><strong>Use realistic test data</strong>: When testing your functions, prioritize test data that reflects the real-world conditions where your software will be applied. Secondarily, use “mock” or synthetically created data when the real data are too large or complex to test quickly. For more on this topic, see <a href="https://abseil.io/resources/swe-book/html/ch13.html#prefer_realism_over_isolation">“Prefer Realism Over Isolation” from the Test Doubles chapter in the book Software Engineering at Google</a>.</p>
   </li>
   <li>
     <p><strong>Automate your tests</strong>: Use tools like <code class="language-plaintext highlighter-rouge">pytest</code> and Continuous Integration (CI) services (e.g., GitHub Actions, GitLab CI) to run your tests automatically on every commit.
@@ -1857,7 +1857,7 @@ While unit tests help you pinpoint specific issues, integration tests validate t
 Investing time in writing good tests upfront will save you countless hours in debugging and re-running experiments.</p>
 
 <p>Remember, the correctness of your code is directly tied to the validity of your scientific results.
-By adopting a solid testing strategy, you&#8217;re taking a significant step toward ensuring reproducible, reliable, and impactful scientific research.</p>
+By adopting a solid testing strategy, you’re taking a significant step toward ensuring reproducible, reliable, and impactful scientific research.</p>
 
 <p>Now, you’re ready to ensure your scientific code is as solid as your research!</p>
 
@@ -1870,7 +1870,7 @@ By adopting a solid testing strategy, you&#8217;re taking a significant step tow
   <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
   <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
   <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1879,7 +1879,7 @@ By adopting a solid testing strategy, you&#8217;re taking a significant step tow
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -1905,8 +1905,8 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <p>Test coverage is a crucial aspect of software development that helps ensure your code is reliable and bug-free.
 By measuring how much of your code is covered by tests, you can identify untested areas and improve overall quality.
-In this post, we&#8217;ll dive into what test coverage is, why it matters, and explore some tools for measuring it.
-Let&#8217;s get started!</p>
+In this post, we’ll dive into what test coverage is, why it matters, and explore some tools for measuring it.
+Let’s get started!</p>
 
 <!-- excerpt end -->
 
@@ -1921,19 +1921,19 @@ Let&#8217;s get started!</p>
   </a>
   
     <figcaption class="figure-caption">
-      Code which is tested is considered &#8216;covered&#8217;.
+      Code which is tested is considered ‘covered’.
 
     </figcaption>
   
 </figure>
 
 <blockquote>
-  <p>&#8220;With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don&#8217;t know if our code is getting better or worse.&#8221; (<a href="https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how">Michael Feathers, Working Effectively with Legacy Code</a>)</p>
+  <p>“With tests, we can change the behavior of our code quickly and verifiably. Without them, we really don’t know if our code is getting better or worse.” (<a href="https://www.goodreads.com/quotes/718460-code-without-tests-is-bad-code-it-doesn-t-matter-how">Michael Feathers, Working Effectively with Legacy Code</a>)</p>
 </blockquote>
 
 <p>Code coverage, also known as test coverage, refers to the percentage of your code that is executed when your tests run (<a href="https://en.wikipedia.org/wiki/Code_coverage">Wikipedia: Code coverage</a>).
 Software developers use code coverage as a way to understand areas which may need tests.
-By understanding these metrics, you can get a clearer picture of your code&#8217;s reliability.</p>
+By understanding these metrics, you can get a clearer picture of your code’s reliability.</p>
 
 <h2 id="types-of-coverage">Types of Coverage</h2>
 
@@ -1963,22 +1963,22 @@ By understanding these metrics, you can get a clearer picture of your code&#8217
 <ul>
   <li><strong>Line coverage</strong> tracks the execution of individual lines of code, indicating whether each line has been run during testing.</li>
   <li><strong>Statement coverage</strong> is similar but considers whether each statement (a single unit of execution) within the code has been executed, regardless of the number of lines.</li>
-  <li><strong>Function coverage</strong> checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code&#8217;s interface are exercised.</li>
+  <li><strong>Function coverage</strong> checks whether each function or method in the code has been called during the tests, ensuring that all parts of the code’s interface are exercised.</li>
   <li><strong>Branch coverage</strong>, helps verify whether every possible path through control structures (like if-else blocks, which are often treated as a single compound statement) has been followed, ensuring that all potential outcomes and decision points are tested.</li>
 </ul>
 
 <h2 id="benefits-of-test-coverage">Benefits of Test Coverage</h2>
 
 <blockquote>
-  <p>&#8220;If you are testing thoughtfully and well, I would expect a coverage percentage in the upper 80s or 90s. I would be suspicious of anything like 100% - it would smell of someone writing tests to make the coverage numbers happy, but not thinking about what they are doing.&#8221; (<a href="https://martinfowler.com/bliki/TestCoverage.html">Martin Fowler, Test Coverage</a>)</p>
+  <p>“If you are testing thoughtfully and well, I would expect a coverage percentage in the upper 80s or 90s. I would be suspicious of anything like 100% - it would smell of someone writing tests to make the coverage numbers happy, but not thinking about what they are doing.” (<a href="https://martinfowler.com/bliki/TestCoverage.html">Martin Fowler, Test Coverage</a>)</p>
 </blockquote>
 
 <p>High test coverage ensures your code is reliable and less prone to bugs. 
 It helps you identify untested parts of your codebase, facilitating better maintenance and encouraging a culture of quality.
-However, it&#8217;s important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
-Such anti-patterns include writing superficial tests that don&#8217;t effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.</p>
+However, it’s important to balance this with the understanding that striving for 100% coverage can sometimes lead to anti-patterns.
+Such anti-patterns include writing superficial tests that don’t effectively validate functionality, or spending excessive time on achieving full coverage at the expense of more critical development tasks.</p>
 
-<p>There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there&#8217;s coupling to other functionality).
+<p>There are often times where you need to make changes to your code which can cause unforeseen issues to arise (for example, when there’s coupling to other functionality).
 With good test coverage, you can more confidently refactor code during these occasions, knowing that any issues will be quickly caught by your tests.
 Because of this, implementing code coverage at the beginning of the development process promotes writing cleaner and more reliable code over time.
 If you’re working with code that currently has no coverage, there’s no time like the present to start!</p>
@@ -2004,7 +2004,7 @@ Below are just a few languages and common test coverage tools you can use with t
 
 <p>In addition to the tools mentioned above there are also various test or code coverage platforms (often <a href="https://en.wikipedia.org/wiki/Software_as_a_service">software as a service (SaaS)</a> companies).
 These platforms allow you to integrate the data with your GitHub workflows and often include additional insights like historical data tracking, etc.
-Platforms may be an option to consider when thinking about scale and the type of information you&#8217;re interested in viewing.
+Platforms may be an option to consider when thinking about scale and the type of information you’re interested in viewing.
 See below for some examples of these:</p>
 
 <ul>
@@ -2031,7 +2031,7 @@ See below for some examples of these:</p>
 </figure>
 
 <p><code class="language-plaintext highlighter-rouge">coverage.py</code> is a powerful tool for measuring code coverage in Python. 
-It&#8217;s easy to set up: just install it via <a href="https://pip.pypa.io/en/stable/">pip</a> (or your development environment), run your tests with coverage, and generate reports in various formats.
+It’s easy to set up: just install it via <a href="https://pip.pypa.io/en/stable/">pip</a> (or your development environment), run your tests with coverage, and generate reports in various formats.
 By default, <code class="language-plaintext highlighter-rouge">coverage.py</code> measures <strong>statement coverage</strong> but it can be configured to measure others (<a href="https://coverage.readthedocs.io/en/7.6.0/index.html#capabilities">see here for more</a>).
 Interpreting these reports helps you understand which parts of your code need more testing love.</p>
 
@@ -2060,7 +2060,7 @@ This example assumes one has installed both <code class="language-plaintext high
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">test_module.py</code> has one test for <code class="language-plaintext highlighter-rouge">module.covered_test</code>.
-<code class="language-plaintext highlighter-rouge">module.uncovered_test</code> remains without a test and won&#8217;t be considered as covered by <code class="language-plaintext highlighter-rouge">coverage.py</code>.</p>
+<code class="language-plaintext highlighter-rouge">module.uncovered_test</code> remains without a test and won’t be considered as covered by <code class="language-plaintext highlighter-rouge">coverage.py</code>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># first we process test coverage</span>
 <span class="nv">$ </span>coverage run <span class="nt">-m</span> pytest
@@ -2085,7 +2085,7 @@ By integrating code coverage tools with CI/CD pipelines, you can automate the pr
 Setting up <code class="language-plaintext highlighter-rouge">coverage.py</code> with GitHub Actions workflows, for example, maintains high standards and can catch issues early.
 Strategies like setting coverage thresholds and failing builds on coverage drops help maintain high standards.
 Comparing current coverage with previous coverage can be done using techniques like hash checks for binary files or storing and comparing coverage reports.
-This ensures you know exactly what&#8217;s changed and can act accordingly.</p>
+This ensures you know exactly what’s changed and can act accordingly.</p>
 
 <h3 id="pre-commit-hooks-to-generate-coveragepy-reports">Pre-commit Hooks to Generate <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
 
@@ -2129,7 +2129,7 @@ This ensures consistency by comparing reports before and after changes.</p>
       <span class="pi">-</span> <span class="na">id</span><span class="pi">:</span> <span class="s">coverage-badge</span>
 </code></pre></div></div>
 
-<p>If there&#8217;s a significant drop in coverage, the changes are immediately visible, potentially before the commit even happens.
+<p>If there’s a significant drop in coverage, the changes are immediately visible, potentially before the commit even happens.
 This workflow can also help generate metadata for association with a repository, for example, through <a href="https://github.com/dbrgn/coverage-badge">coverage-badge</a> or <a href="https://github.com/smarie/python-genbadge">genbage</a>.</p>
 
 <h3 id="pull-request-comment-with-coveragepy-reports">Pull Request Comment with <code class="language-plaintext highlighter-rouge">coverage.py</code> Reports</h3>
@@ -2183,7 +2183,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2192,7 +2192,7 @@ This transparency helps maintain high code quality, ensures that new changes are
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -2217,9 +2217,9 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 <!-- excerpt start -->
 
 <p>Graph databases can offer a more natural and intuitive way to model and explore relationships within data.
-In this post, we&#8217;ll dive into the world of graph databases, focusing on Kùzu, an embedded graph database and query engine for a number of languages, and Cypher, a powerful query language designed for graph data.
-We&#8217;ll explore how these tools can transform your data management and analysis workflows, provide insights into their capabilities, and discuss when it might be more appropriate to use server-based solutions.
-Whether you&#8217;re a research software developer looking to integrate advanced graph processing into your applications or simply curious about the benefits of graph databases, this guide will equip you with the knowledge to harness the full potential of graph data.</p>
+In this post, we’ll dive into the world of graph databases, focusing on Kùzu, an embedded graph database and query engine for a number of languages, and Cypher, a powerful query language designed for graph data.
+We’ll explore how these tools can transform your data management and analysis workflows, provide insights into their capabilities, and discuss when it might be more appropriate to use server-based solutions.
+Whether you’re a research software developer looking to integrate advanced graph processing into your applications or simply curious about the benefits of graph databases, this guide will equip you with the knowledge to harness the full potential of graph data.</p>
 
 <!-- excerpt end -->
 
@@ -2264,7 +2264,7 @@ Despite its versatility, tabular data can become cumbersome when dealing with co
 
 <p><a href="https://en.wikipedia.org/wiki/Graph_(abstract_data_type)">Graph data</a> represents information in the form of nodes (also called vertices) and edges (connections between nodes).
 This structure is useful for modeling complex relationships and interconnected data, such as social networks, biological networks, and transportation systems.
-Unlike tabular data, which is often &#8220;flattened&#8221; (treating multidimensional data as singular columns) and often rigid (requiring all new data to conform to a specific schema), graph data allows for more flexible and dynamic representations.</p>
+Unlike tabular data, which is often “flattened” (treating multidimensional data as singular columns) and often rigid (requiring all new data to conform to a specific schema), graph data allows for more flexible and dynamic representations.</p>
 
 <figure class="figure">
   <a class="figure-image" aria-label="Nodes and edges may have properties in a graph.">
@@ -2337,13 +2337,13 @@ Querying in graph databases can be highly efficient due to their ability to leve
 <span class="k">RETURN</span> <span class="n">friend.name</span><span class="ss">,</span> <span class="n">friend.age</span>
 </code></pre></div></div>
 
-<p class="center"><em>This query finds nodes labeled &#8220;Person&#8221; with the name &#8220;Alice&#8221; and returns the names and ages of nodes connected to Alice by a &#8220;FRIEND&#8221; relationship.</em></p>
+<p class="center"><em>This query finds nodes labeled “Person” with the name “Alice” and returns the names and ages of nodes connected to Alice by a “FRIEND” relationship.</em></p>
 
 <p>Cypher is a powerful, declarative graph query language designed specifically for querying and updating graph databases.
 Originally developed for <a href="https://en.wikipedia.org/wiki/Neo4j">Neo4j</a> (one of the most popular graph databases), it is known for its expressive and intuitive syntax that makes it easy to work with graph data.
 Cypher allows users to perform complex queries using simple and readable patterns that resemble ASCII art, making it accessible to both developers and data scientists.
 It supports a wide range of operations, including pattern matching, filtering, aggregation, and graph traversal, enabling efficient exploration and manipulation of graph structures.
-For example, a basic Cypher query to find all nodes connected by a &#8220;FRIEND&#8221; relationship might look like this: <code class="language-plaintext highlighter-rouge">MATCH (a)-[:FRIEND]-&gt;(b) RETURN a, b</code>, which finds and returns pairs of nodes a and b where a is connected to b by a &#8220;FRIEND&#8221; relationship.</p>
+For example, a basic Cypher query to find all nodes connected by a “FRIEND” relationship might look like this: <code class="language-plaintext highlighter-rouge">MATCH (a)-[:FRIEND]-&gt;(b) RETURN a, b</code>, which finds and returns pairs of nodes a and b where a is connected to b by a “FRIEND” relationship.</p>
 
 <h2 id="kùzu">Kùzu</h2>
 
@@ -2385,9 +2385,9 @@ Kùzu is particularly suitable for software developers who need to integrate gra
   
 </figure>
 
-<p>Tabular data and graph data can sometimes be used in tandem in order to achieve software goals (one isn&#8217;t necessaryily better than the other or supposed to be used in isolation).
+<p>Tabular data and graph data can sometimes be used in tandem in order to achieve software goals (one isn’t necessaryily better than the other or supposed to be used in isolation).
 For example, Kùzu offers both data import and export to tabular formats to help with conversion and storage outside of a graph database.
-This is especially helpful when working with tabular data as an input, when trying to iterate over large datasets in smaller chunks, or building integration paths to other pieces of software which aren&#8217;t Kùzu or graph data compatible.</p>
+This is especially helpful when working with tabular data as an input, when trying to iterate over large datasets in smaller chunks, or building integration paths to other pieces of software which aren’t Kùzu or graph data compatible.</p>
 
 <h2 id="kùzu-tabular-data-imports">Kùzu Tabular Data Imports</h2>
 
@@ -2467,8 +2467,8 @@ There are also options to export data directly to CSV or Parquet files for times
 
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
-However, it&#8217;s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+However, it’s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
+By leveraging the right tool for the right job, whether it’s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2477,7 +2477,7 @@ By leveraging the right tool for the right job, whether it&#8217;s Kùzu for lig
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -2518,13 +2518,13 @@ This article will introduce the Parquet format from a research data engineering 
 <p class="center"><em>(Image: <a href="https://commons.wikimedia.org/wiki/File:Fischgr%C3%A4t_route_4_fischbacher_living.jpg">Robert Fischbacher163, Wikimedia Commons</a>)</em></p>
 
 <p>Parquet began around 2013 as work by Twitter and Cloudera collaborators to help solve large data challenges (for example, in <a href="https://en.wikipedia.org/wiki/Apache_Hadoop">Apache Hadoop</a> systems).
-It was partially inspired by a Google Research publication: <a href="https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/"><em>&#8220;Dremel: Interactive Analysis of Web-Scale Datasets&#8221;</em></a>.
+It was partially inspired by a Google Research publication: <a href="https://research.google/pubs/dremel-interactive-analysis-of-web-scale-datasets-2/"><em>“Dremel: Interactive Analysis of Web-Scale Datasets”</em></a>.
 Parquet joined the <a href="https://en.wikipedia.org/wiki/The_Apache_Software_Foundation">Apache Software Foundation</a> in 2015 as a Top-Level Project (TLP) (<a href="https://news.apache.org/foundation/entry/the_apache_software_foundation_announces75">link</a>)
 The format is similar and has related goals to that of the <a href="https://en.wikipedia.org/wiki/Apache_ORC">ORC</a>, <a href="https://en.wikipedia.org/wiki/Apache_Avro">Avro</a>, and <a href="https://arrow.apache.org/docs/python/feather.html">Feather</a> file formats.</p>
 
-<p>One definition for the word &#8220;parquet&#8221; is: <em>&#8220;A wooden floor made of parquetry.&#8221;</em> (<a href="https://en.wiktionary.org/wiki/parquet">Wiktionary: Parquet</a>).
+<p>One definition for the word “parquet” is: <em>“A wooden floor made of parquetry.”</em> (<a href="https://en.wiktionary.org/wiki/parquet">Wiktionary: Parquet</a>).
 Parquetry are often used to form decorative geometric patterns in flooring.
-It seems fitting to name the format this way due to how columns and values are structured (see more below), akin to constructing a beautiful &#8216;floor&#8217; for your data efforts.</p>
+It seems fitting to name the format this way due to how columns and values are structured (see more below), akin to constructing a beautiful ‘floor’ for your data efforts.</p>
 
 <p>We cover a few pragmatic aspects of the Parquet file format below.</p>
 
@@ -2601,7 +2601,7 @@ It seems fitting to name the format this way due to how columns and values are s
   
 </figure>
 
-<p>Parquet files store data in a <strong>&#8220;columnar&#8221;</strong> way which is distinct from other formats.
+<p>Parquet files store data in a <strong>“columnar”</strong> way which is distinct from other formats.
 We can understand this columnar format by using <a href="https://en.wikipedia.org/wiki/Plaintext">plaintext</a> <a href="https://en.wikipedia.org/wiki/Comma-separated_values">comma-separated value (CSV)</a> format as a reference point.
 CSV files store data in a row-orientated way by using new lines to represent rows of values.
 Reading all values of a single column in CSV often involves seeking through multiple other portions of the data by default.</p>
@@ -2629,7 +2629,7 @@ For example, Parquet files allow you to query individual columns without needing
 <p>Parquet files organize column data inside of <strong>row groups</strong>.
 Each row group includes chunks of columns in the form of <strong>pages</strong>.
 Row groups and column pages are configurable and may change depending on the configuration of your Parquet client.
-<strong>Note:</strong> you don&#8217;t need to be an expert on these details to leverage and benefit from Parquet as these are often configured for default general purposes.</p>
+<strong>Note:</strong> you don’t need to be an expert on these details to leverage and benefit from Parquet as these are often configured for default general purposes.</p>
 
 <h4 id="page-encodings">Page encodings</h4>
 
@@ -2661,16 +2661,16 @@ Column encodings are sometimes set for each individual column, usually in an aut
 </span><span class="n">parquet</span><span class="p">.</span><span class="n">write_table</span><span class="p">(</span><span class="n">table</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s">"example.zstd.parquet"</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s">"ZSTD"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p class="center"><em>Parquet files can be compressed as they&#8217;re written using parameters.</em></p>
+<p class="center"><em>Parquet files can be compressed as they’re written using parameters.</em></p>
 
 <p>Parquet files may leverage compression to help reduce file size and increase data read performance.
 Compression is applied at the page level, combining benefits from various encodings.
 Data stored through Parquet is usually compressed when it is written, denoting the compression type through the filename (for example: <code class="language-plaintext highlighter-rouge">filename.snappy.parquet</code>).
 <a href="https://en.wikipedia.org/wiki/Snappy_(compression)">Snappy</a> is often used as a common compression algorithm for Parquet data.
 <a href="https://en.wikipedia.org/wiki/Brotli">Brotli</a>, <a href="https://en.wikipedia.org/wiki/Gzip">Gzip</a>, <a href="https://en.wikipedia.org/wiki/Zstd">ZSTD</a>, <a href="https://en.wikipedia.org/wiki/LZ4_(compression_algorithm)">LZ4</a> are also sometimes used.
-It&#8217;s worth exploring what compression works best for the data and systems you use (for example, <a href="https://www.uber.com/blog/cost-efficiency-big-data">ZSTD compression may hold benefits</a>).</p>
+It’s worth exploring what compression works best for the data and systems you use (for example, <a href="https://www.uber.com/blog/cost-efficiency-big-data">ZSTD compression may hold benefits</a>).</p>
 
-<h3 id="-strongly-typed-data"><i class="fas fa-icons"></i> &#8220;Strongly-typed&#8221; data</h3>
+<h3 id="-strongly-typed-data"><i class="fas fa-icons"></i> “Strongly-typed” data</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
 <span class="kn">from</span> <span class="nn">pyarrow</span> <span class="kn">import</span> <span class="n">parquet</span>
@@ -2696,11 +2696,11 @@ It&#8217;s worth exploring what compression works best for the data and systems 
 
 <p class="center"><em>Data value must be all of the same type within a Parquet column.</em></p>
 
-<p>Data within Parquet is <a href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">&#8220;strongly-typed&#8221;</a>; specific data types (such as integer, string, etc.) are associated with each column, and thus value.
+<p>Data within Parquet is <a href="https://en.wikipedia.org/wiki/Strong_and_weak_typing">“strongly-typed”</a>; specific data types (such as integer, string, etc.) are associated with each column, and thus value.
 Attempting to store a data value type which does not match the column data type will usually result in an error.
 This can lead to performance and compression benefits due to how quickly Parquet readers can determine the data type.
-Strongly-typed data also embeds a kind of validation directly inside your work (data errors <a href="https://en.wikipedia.org/wiki/Shift-left_testing">&#8220;shift left&#8221;</a> and are often discovered earlier).
-<a href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html">See here</a> for more on data quality validation topics we&#8217;ve written about.</p>
+Strongly-typed data also embeds a kind of validation directly inside your work (data errors <a href="https://en.wikipedia.org/wiki/Shift-left_testing">“shift left”</a> and are often discovered earlier).
+<a href="https://cu-dbmi.github.io/set-website/2023/10/04/Data-Quality-Validation.html">See here</a> for more on data quality validation topics we’ve written about.</p>
 
 <h3 id="-complex-data-handling"><i class="fas fa-diagram-successor"></i> Complex data handling</h3>
 
@@ -2779,7 +2779,7 @@ Oftentimes, complex data conversion within Parquet files is already implemented 
 <a href="https://parquet.apache.org/docs/file-format/metadata/">Parquet metadata</a> includes column names, data types, compression, various statistics about the file, and custom fields (in key-value form).
 This metadata may be read without reading column value data which can assist with data exploration tasks (especially if the data are large).</p>
 
-<h3 id="-multi-file-datasets"><i class="fas fa-folder-tree"></i> Multi-file &#8220;datasets&#8221;</h3>
+<h3 id="-multi-file-datasets"><i class="fas fa-folder-tree"></i> Multi-file “datasets”</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="n">pa</span>
@@ -2807,8 +2807,8 @@ This metadata may be read without reading column value data which can assist wit
 
 <p class="center"><em>Parquet datasets may be composed of one or many individual Parquet files.</em></p>
 
-<p>Parquet files may be used individually or treated as a &#8220;dataset&#8221; through file groups which include the same schema (column names and types).
-This means you can store &#8220;chunks&#8221; of Parquet-based data in one or many files and provides opportunities for intermixing or extending data.
+<p>Parquet files may be used individually or treated as a “dataset” through file groups which include the same schema (column names and types).
+This means you can store “chunks” of Parquet-based data in one or many files and provides opportunities for intermixing or extending data.
 When reading Parquet data this way libraries usually use the directory as a way to parse all files as a single dataset.
 Multi-file datasets mean you gain the ability to store arbitrarily large amounts of data by sidestepping, for example, <a href="https://en.wikipedia.org/wiki/Inode">inode</a> limitations.</p>
 
@@ -2885,7 +2885,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2894,7 +2894,7 @@ We appreciate your support, hope the content here helps with your data decisions
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -2903,10 +2903,10 @@ have any questions or suggestions for blog posts, please don&#8217;t hesitate to
 
 <!-- excerpt start -->
 <p>Writing software often entails using code from other people to solve common challenges and take advantage of existing work.
-External software used by a specific project can be called a &#8220;dependency&#8221; (the software &#8220;depends&#8221; on that external work to accomplish tasks).
-Collections of software are oftentimes made available as &#8220;packages&#8221; through various platforms.
+External software used by a specific project can be called a “dependency” (the software “depends” on that external work to accomplish tasks).
+Collections of software are oftentimes made available as “packages” through various platforms.
 <a href="https://en.wikipedia.org/wiki/Package_manager">Package management</a> for dependencies, the task of managing collections of dependencies for a specific project, is a specialized area of software development that can involve the use of unique tools and files.
-This article will cover package dependency management through special files generally referred to as &#8220;lockfiles&#8221;.
+This article will cover package dependency management through special files generally referred to as “lockfiles”.
 <!-- excerpt end --></p>
 
 <h2 id="why-use-dependencies">Why use dependencies?</h2>
@@ -2920,22 +2920,22 @@ This article will cover package dependency management through special files gene
   </a>
   
     <figcaption class="figure-caption">
-      &#8216;Reinvent the Wheel&#8217; comic by Randall Munroe, XKCD.
+      ‘Reinvent the Wheel’ comic by Randall Munroe, XKCD.
 
     </figcaption>
   
 </figure>
 
 <p>There are various advantages to using packaged dependencies in your projects.
-Using existing work this way practices a collective <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">&#8220;don&#8217;t repeat yourself [or ourselves]&#8221; (DRY)</a> among the global community of software developers to avoid <a href="https://en.wikipedia.org/wiki/Reinventing_the_wheel">reinventing the wheel</a>.
+Using existing work this way practices a collective <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">“don’t repeat yourself [or ourselves]” (DRY)</a> among the global community of software developers to avoid <a href="https://en.wikipedia.org/wiki/Reinventing_the_wheel">reinventing the wheel</a>.
 Using dependencies allows us to make explicit decisions about the specific focus, or context, which the project will prioritize.
-While it&#8217;s oftentimes easy to include and use dependencies in a project they come with risks that are important to consider.</p>
+While it’s oftentimes easy to include and use dependencies in a project they come with risks that are important to consider.</p>
 
 <p>See below for a rough list of reasons why one might opt to use specific dependencies in a project:</p>
 
 <ol>
   <li>Solutions which entail a lot of <a href="https://en.wikipedia.org/wiki/Edge_case">edge cases</a> (particularly error prone).</li>
-  <li>Solutions which need constant maintenance, i.e. a &#8220;frequently moving targets&#8221;.</li>
+  <li>Solutions which need constant maintenance, i.e. a “frequently moving targets”.</li>
   <li>Solutions which require special domain knowledge or training to correctly implement.</li>
 </ol>
 
@@ -2954,10 +2954,10 @@ While it&#8217;s oftentimes easy to include and use dependencies in a project th
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ2FudHRcbnlvdXIgcHJvamVjdCA6YSwgMjAyNC0wNy0wMSwgM3dcbnBhbmRhcyA6YWN0aXZlICxiLCAyMDI0LTA3LTA3LCAxd1xubnVtcHkgOmFjdGl2ZSwgYywgMjAyNC0wNy0wOSwgMTBkXG5zY2lweSA6YWN0aXZlLCBkLCAyMDI0LTA3LTA0LCA2ZCIsIm1lcm1haWQiOm51bGx9" /></p>
 
-<p class="center"><em>Dependencies are often on their own unpredictable schedule outside of your project&#8217;s control.</em></p>
+<p class="center"><em>Dependencies are often on their own unpredictable schedule outside of your project’s control.</em></p>
 
 <p>Using existing software package dependencies helps conserve resources but comes with unique challenges related to unpredictability (such as when those dependencies are updated).
-This unpredictability can sometimes result in what&#8217;s colloquially called <a href="https://en.wikipedia.org/wiki/Dependency_hell">&#8220;dependency hell&#8221; or &#8220;dependency chaos&#8221;</a>, where for example multiple external dependencies conflict with one another and are unable to be automatically resolved (among other issues).
+This unpredictability can sometimes result in what’s colloquially called <a href="https://en.wikipedia.org/wiki/Dependency_hell">“dependency hell” or “dependency chaos”</a>, where for example multiple external dependencies conflict with one another and are unable to be automatically resolved (among other issues).
 These challenges can be especially frustrating due to when they occur (often outside of our personal schedule awareness) and how long they can take to debug (finding fixes sometimes entails costly <a href="https://en.wikipedia.org/wiki/Trial_and_error">trial-and-error</a>).
 It can feel like walking through a forest at night without a flashlight, constantly tripping over roots or running into stumps and branches!</p>
 
@@ -2967,7 +2967,7 @@ It can feel like walking through a forest at night without a flashlight, constan
 
 <p class="center"><em>Software dependency choices may be understood through careful consideration between the cost of internal overwhelming invention vs external dependency chaos.</em></p>
 
-<p>Dependency chaos can sometimes lead to <a href="https://en.wikipedia.org/wiki/Not_invented_here">&#8220;not invented here syndrome&#8221;</a> where there&#8217;s less trust in external-facing work outside of an individual or group of people.
+<p>Dependency chaos can sometimes lead to <a href="https://en.wikipedia.org/wiki/Not_invented_here">“not invented here syndrome”</a> where there’s less trust in external-facing work outside of an individual or group of people.
 When or if this happens it can be important to understand dependencies as a <strong>scale of choices between overwhelming invention and infinite dependency chaos</strong>.
 For example, to accomplish a small project it may not be wise to create a brand new programming language (towards the extreme of overwhelming invention).
 On the other hand, if we depended upon all existing work within a certain context the solution may not be specialized, efficient, or resourceful enough to meet the goals within a reasonable amount of time.</p>
@@ -3005,7 +3005,7 @@ Include dependencies within your project which will helpfully limit the code pro
 <p>The concept of <a href="https://martinfowler.com/bliki/BoundedContext.html">bounded context</a> from <a href="https://en.wikipedia.org/wiki/Domain-driven_design">domain-driven design</a> can sometimes be used to help distinguish what is in or out of scope for a particular project as a way of reducing complexity.
 Bounded context can be used as a way to draw abstract lines around a certain <a href="https://en.wikipedia.org/wiki/Span_of_control">span of control</a> in order to align available resources (like time and people) with the focus of the project.
 It also can help promote <a href="https://en.wikipedia.org/wiki/Loose_coupling">loose coupling</a> of software components in order to enable flexible design over time.
-Without these considerations and the use of dependencies we might face &#8220;endless&#8221; software <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> by continually adding new bounded contexts that are outside of our span of control (or resources).</p>
+Without these considerations and the use of dependencies we might face “endless” software <a href="https://en.wikipedia.org/wiki/Feature_creep">feature creep</a> by continually adding new bounded contexts that are outside of our span of control (or resources).</p>
 
 <h2 id="version-constraints-as-dependency-specification-control">Version constraints as dependency specification control</h2>
 
@@ -3052,10 +3052,10 @@ Without these considerations and the use of dependencies we might face &#8220;en
 
 <p>Many aspects of dependency chaos arise from the fact that dependencies are updated at various times.
 We often want to make certain we use the most up-to-date version of a dependency because those updates may come with performance, corrective, security, or other benefits.
-To accomplish this we can use what are sometimes called dependency &#8220;version range constraints&#8221; or &#8220;compliant version specifications&#8221; to provide some flexibility in how packages are installed for our projects.
+To accomplish this we can use what are sometimes called dependency “version range constraints” or “compliant version specifications” to provide some flexibility in how packages are installed for our projects.
 Version ranges are usually preferred to help keep software projects updated and also allow for flexible dependency resolutions (for example, when a single dependency is required by multiple other dependencies).
 These are often specific to the package management system and programming language being used.
-See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority&#8217;s Version Specifiers section</a> for an example of how these version constraints work.</p>
+See the <a href="https://packaging.python.org/en/latest/specifications/version-specifiers/#id5">Python Packaging Authority’s Version Specifiers section</a> for an example of how these version constraints work.</p>
 
 <p>Many version specification constraints build upon ideas from <a href="https://en.wikipedia.org/wiki/Software_versioning#Semantic_versioning">semantic versioning (SemVer)</a>.
 Generally, SemVer uses a dotted three number syntax which includes a major, minor, and patch version separated by periods.
@@ -3071,7 +3071,7 @@ See the <a href="https://semver.org/">Semantic Versioning specification at https
 
 <p>We sometimes require repeatable behavior to be productive with a project in addition to the flexibility of version range specifications.
 For example, we may want for each developer and continuous integration step to have reproducible environments even if a dependency gets updated while internal development takes place.
-Dependency version constraints oftentimes aren&#8217;t enough on their own to prevent reproducibility issues from occurring.
+Dependency version constraints oftentimes aren’t enough on their own to prevent reproducibility issues from occurring.
 See the above diagram for a timeline depicting how <code class="language-plaintext highlighter-rouge">Developer B</code> and <code class="language-plaintext highlighter-rouge">Developer D</code> may have different experiences despite best efforts with version constraints (<code class="language-plaintext highlighter-rouge">Dependency A</code> may make a release that fits the version constraint but breaks <code class="language-plaintext highlighter-rouge">Project C</code> when <code class="language-plaintext highlighter-rouge">Developer D</code> tries to modify unrelated code).</p>
 
 <h2 id="lockfiles-for-reproducible-version-constraint-behavior">Lockfiles for reproducible version constraint behavior</h2>
@@ -3079,7 +3079,7 @@ See the above diagram for a timeline depicting how <code class="language-plainte
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoic2VxdWVuY2VEaWFncmFtXG5hdXRvbnVtYmVyXG5EZXBlbmRlbmN5IEEgKERlcEEpIC0-PlJlbGVhc2UgUGxhdGZvcm06IHYxLjAuMCBSZWxlYXNlZCFcblJlbGVhc2UgUGxhdGZvcm0tPj5EZXZlbG9wZXIgQjogSW5zdGFsbCBEZXBBID49IDEuMC4wXG5EZXZlbG9wZXIgQi0-PlByb2plY3QgQzogQWRkIGNvbnN0cmFpbnQgRGVwQSA-PSAxLjAuMCAod2l0aCBsb2NrZmlsZSlcbkRlcGVuZGVuY3kgQSAoRGVwQSkgLT4-UmVsZWFzZSBQbGF0Zm9ybTogdjEuMS4wIFJlbGVhc2VkIVxuUHJvamVjdCBDIC0-PiBEZXZlbG9wZXIgRDogSW5zdGFsbCBmcm9tIHByb2plY3RcbkRldmVsb3BlciBEIC0tPj4gUmVsZWFzZSBQbGF0Zm9ybTogTG9vayBmb3IgdmVyc2lvbiB3aGljaCBtYXRjaGVzIGNvbnN0cmFpbnQgKD49IDEuMC4wKSBhbmQgbG9ja2ZpbGUgZGF0YSBhYm91dCB2ZXJzaW9uc1xuUmVsZWFzZSBQbGF0Zm9ybSAtPj4gRGV2ZWxvcGVyIEQ6IEluc3RhbGwgRGVwQSB2MS4wLjAgKG1hdGNoaW5nID49IDEuMC4wIGFuZCBsb2NrZmlsZSByZWZlcmVuY2UgdG8gdmVyc2lvbnMgYXZhaWxhYmxlIHRvIHByZXZpb3VzIGNoYW5nZXMpXG5EZXZlbG9wZXIgRC0-PiBQcm9qZWN0IEM6IEFkZCBuZXcgZmVhdHVyZVxucmVjdCByZ2IoMjA5LCAyNTAsIDIyOSlcblByb2plY3QgQy0-PiBEZXZlbG9wZXIgRDogQXV0b21hdGVkIHRlc3RzIGlzb2xhdGUgb2JzZXJ2YXRpb25zIHRvIG5ldyBmZWF0dXJlXG5lbmQiLCJtZXJtYWlkIjpudWxsfQ" /></p>
 
 <p>Version constraint lockfiles provide one way to ensure reproducible behaviors within your projects.
-Lockfiles are usually recommended to be included in source control, so one always has a complete snapshot (short of the literal full source code of the dependencies) of the project&#8217;s last known working configuration.</p>
+Lockfiles are usually recommended to be included in source control, so one always has a complete snapshot (short of the literal full source code of the dependencies) of the project’s last known working configuration.</p>
 
 <p>Lockfiles usually have the following characteristics (this varies by programming language and dependency type):</p>
 
@@ -3087,7 +3087,7 @@ Lockfiles are usually recommended to be included in source control, so one alway
   <li>Lockfiles capture data about existing available and installable dependencies which match a provided version constraint specification as a single file which can be added to source control.</li>
   <li>Lockfiles are referenced when available to help create reproducible installations of dependencies.</li>
   <li>Lockfiles are often automatically created or changed by a package or environment management tool of some kind.</li>
-  <li>Lockfiles focus on reproducibility of dependency installations and don&#8217;t enable dependency resolution on their own (this is instead a part of version range specification and package management tools).</li>
+  <li>Lockfiles focus on reproducibility of dependency installations and don’t enable dependency resolution on their own (this is instead a part of version range specification and package management tools).</li>
   <li>Lockfiles are used by developers, automated procedures (as with <a href="https://en.wikipedia.org/wiki/CI/CD">CI/CD</a> procedures), <a href="https://en.wikipedia.org/wiki/Deployment_environment#Production">production deployment environments</a>, and elsewhere to help ensure reproducibility.</li>
 </ul>
 
@@ -3175,14 +3175,14 @@ Two important over-constraint considerations are:</p>
   <li><strong>Security fixes:</strong> we may unknowingly create security risks for others through the inclusion of known <a href="https://en.wikipedia.org/wiki/Vulnerability_(computing)">security vulnerable</a> dependency versions.</li>
 </ul>
 
-<p>Make sure to address these risks by routinely considering whether your dependencies need to be updated (manually) or through the use of automated tools like <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">GitHub&#8217;s Dependabot</a> or <a href="https://github.com/renovatebot/renovate">Mend Renovate</a>.
+<p>Make sure to address these risks by routinely considering whether your dependencies need to be updated (manually) or through the use of automated tools like <a href="https://github.blog/2020-06-01-keep-all-your-packages-up-to-date-with-dependabot/">GitHub’s Dependabot</a> or <a href="https://github.com/renovatebot/renovate">Mend Renovate</a>.
 Tools like Dependabot or Renovate enable scheduled checks and updates to be applied to your project which can lead to a balanced way of ensuring risk reduction and productive future-focused development.</p>
 
 <h2 id="concluding-thoughts">Concluding Thoughts</h2>
 
 <p>This article covered why dependencies are used, what complications they come with, and some tools to use addressing those challenges.
 Every project can vary quite a bit when it comes to dependency management decision making and maintenance.
-We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2026-05-08T16:57:21+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
+We hope you find success with dependency management through these and look forward to providing more information on this topic in the future.</p>]]></content><author><name>dave-bunten</name></author><category term="software-education" /><category term="python" /><category term="lockfiles" /><category term="dependency-management" /><category term="environment-management" /><category term="software-ecosystems" /><category term="dependency-chaos" /><summary type="html"><![CDATA[Navigating Dependency Chaos with Lockfiles]]></summary></entry><entry><title type="html">Python Memory Management and Troubleshooting</title><link href="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html" rel="alternate" type="text/html" title="Python Memory Management and Troubleshooting" /><published>2024-01-22T00:00:00+00:00</published><updated>2026-10-26T17:17:33+00:00</updated><id>https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting</id><content type="html" xml:base="https://cu-dbmi.github.io/set-website/2024/01/22/Python-Memory-Management-and-Troubleshooting.html"><![CDATA[<h1 id="python-memory-management-and-troubleshooting">Python Memory Management and Troubleshooting</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3191,7 +3191,7 @@ We hope you find success with dependency management through these and look forwa
     
 <p>These blog posts are intended to provide software tips, concepts, and tools geared towards helping you achieve your goals. Views
 expressed in the content belong to the content creators and not the organization, its affiliates, or employees. If you
-have any questions or suggestions for blog posts, please don&#8217;t hesitate to reach out!</p>
+have any questions or suggestions for blog posts, please don’t hesitate to reach out!</p>
 
   </div>
 </div>
@@ -3220,7 +3220,7 @@ This post will cover some computer memory definitions, how Python makes use of c
 <p class="center"><em>Computer software includes programs, documentation, and other data maintained on computer data storage.</em></p>
 
 <p>Computer software is the collection of programs and data which are used to accomplish a specific tasks on a computer.
-&#8220;A <strong>computer program</strong> is a sequence or set of instructions in a programming language for a computer to execute. It is one component of software, which also includes documentation and other intangible components.&#8221; (<a href="https://en.wikipedia.org/wiki/Computer_program">Wikipedia: Computer program</a>).
+“A <strong>computer program</strong> is a sequence or set of instructions in a programming language for a computer to execute. It is one component of software, which also includes documentation and other intangible components.” (<a href="https://en.wikipedia.org/wiki/Computer_program">Wikipedia: Computer program</a>).
 Computer programs in their human-readable form are stored as <strong>source code</strong>.
 Source code is often maintained on <a href="https://en.wikipedia.org/wiki/Computer_data_storage">computer data storage</a>.</p>
 
@@ -3232,8 +3232,8 @@ Source code is often maintained on <a href="https://en.wikipedia.org/wiki/Comput
 
 <p class="center"><em>Computer memory is a type of computer resource available for use by processes on a computer.</em></p>
 
-<p>Computer memory, also sometimes known as &#8220;RAM&#8221; or &#8220;random-access memory&#8221;, or &#8220;dynamic memory&#8221; is a type of resource used by computer software on a computer.
-<em>&#8220;Computer memory stores information, such as data and programs for immediate use in the computer. &#8230; Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. &#8220; (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em>
+<p>Computer memory, also sometimes known as “RAM” or “random-access memory”, or “dynamic memory” is a type of resource used by computer software on a computer.
+<em>“Computer memory stores information, such as data and programs for immediate use in the computer. … Main memory operates at a high speed compared to non-memory storage which is slower but less expensive and oftentimes higher in capacity. “ (<a href="https://en.wikipedia.org/wiki/Computer_memory">Wikipedia: Computer memory</a>).</em>
 When we execute a computer program it becomes a <a href="https://en.wikipedia.org/wiki/Process_(computing)">process</a> (or sometimes many processes).
 Processes are loaded into computer memory to follow the instructions and other data provided from their related computer programs.</p>
 
@@ -3242,7 +3242,7 @@ Processes are loaded into computer memory to follow the instructions and other d
   <i class="icon fa-solid fa-circle-info"></i>
   <div class="alert-content">
     
-<p>The word &#8220;speed&#8221; in the above context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
+<p>The word “speed” in the above context is sometimes used to describe  the delay before an operation on a computer completes (also known as <em>latency</em>).
 See the following on [Computer] <a href="https://www.softwareyoga.com/latency-numbers-everyone-should-know/">Latency Numbers Everyone Should Know</a> to better understand relative computer operation speeds.</p>
 
 
@@ -3280,12 +3280,12 @@ See the following on [Computer] <a href="https://www.softwareyoga.com/latency-nu
 
 <p>Memory for a process is further divided into parts which are typically called <em>segments</em>.
 Each process memory segment has a specific purpose and way of organizing things.
-For the purposes of this content we&#8217;ll focus on two of these segments: the stack and the heap.
-The <a href="https://en.wikipedia.org/wiki/Call_stack"><strong><em>stack</em></strong> (sometimes also known as the &#8220;call stack&#8221;)</a> includes information about sequences of program instructions packaged as units called <a href="https://en.wikipedia.org/wiki/Function_(computer_programming)">&#8220;functions&#8221; or &#8220;subroutines&#8221;</a>.
+For the purposes of this content we’ll focus on two of these segments: the stack and the heap.
+The <a href="https://en.wikipedia.org/wiki/Call_stack"><strong><em>stack</em></strong> (sometimes also known as the “call stack”)</a> includes information about sequences of program instructions packaged as units called <a href="https://en.wikipedia.org/wiki/Function_(computer_programming)">“functions” or “subroutines”</a>.
 The stack also typically stores function local variables, arguments, and return value.
 The <a href="https://en.wikipedia.org/wiki/Memory_management#HEAP"><strong><em>heap</em></strong></a> is an area where variables for a program may be dynamically stored.
-The stack can be thought of as a <i class="icon fa-solid fa-map"></i> &#8220;roadmap&#8221; for what program will accomplish (including the location of things it will need to do that work).
-The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221; store (or remove) things used as part of the stack &#8220;roadmap&#8221;.
+The stack can be thought of as a <i class="icon fa-solid fa-map"></i> “roadmap” for what program will accomplish (including the location of things it will need to do that work).
+The heap can be imagined of as a <i class="icon fa-solid fa-warehouse"></i> “warehouse” store (or remove) things used as part of the stack “roadmap”.
 Please see <a href="https://learning.oreilly.com/library/view/the-linux-programming/9781593272203/xhtml/ch06.xhtml#ch06lev1sec03">The Linux Programming Interface by Michael Kerrisk, Chapter 6.3: Memory Layout of a Process</a> for more information about processes.</p>
 
 <table>
@@ -3346,10 +3346,10 @@ Please see <a href="https://learning.oreilly.com/library/view/the-linux-programm
 
 <p class="center"><em>Memory blocks may be free or used at various times. They can be thought of like reusable buckets to hold things.</em></p>
 
-<p>The heap is often further organized through the use of <strong><em>&#8220;blocks&#8221;</em></strong>.
+<p>The heap is often further organized through the use of <strong><em>“blocks”</em></strong>.
 Memory blocks are chunks of memory of a certain <a href="https://en.wikipedia.org/wiki/Byte">byte</a> or <a href="https://en.wikipedia.org/wiki/Bit">bit</a> size (usually all the same size) (<a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Wikipedia: Block (data storage)</a>).
 Memory blocks may be in use or free at different times.
-If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221; then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> &#8220;boxes&#8221; inside the warehouse.</p>
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> “warehouse” then blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> “boxes” inside the warehouse.</p>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG5zdWJncmFwaCBtZW1vcnlbXCJNZW1vcnlcIl1cbnN1YmdyYXBoIHByb2Nlc3MgW1wiUHJvY2Vzc1wiXVxuc3ViZ3JhcGggaGVhcCBbXCJoZWFwXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIHBvb2wgW1wicG9vbChzKVwiXVxuYmxvY2tzMVtcImJsb2NrKHMpXCJdXG5lbmRcbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIHBvb2wgZmlsbDojQkZEQkZFLHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9" /></p>
 
@@ -3359,7 +3359,7 @@ If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> &#822
 Blocks may sometimes be organized into <a href="https://en.wikipedia.org/wiki/Memory_pool"><strong><em>pools</em></strong></a> within the process memory heap segment.
 Pools are areas of the heap used to efficiently manage blocks together in specific ways.
 Each heap may have one or many pools (each with sets of blocks).
-If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> &#8220;warehouse&#8221;, and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> &#8220;boxes&#8221; inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> &#8220;shelves&#8221; for organizing and moving those boxes within the warehouse.</p>
+If the heap is a process memory <i class="icon fa-solid fa-warehouse"></i> “warehouse”, and blocks are like <i class="icon fa-solid fa-boxes-stacked"></i> “boxes” inside the warehouse, pools are like <i class="icon fa-solid fa-boxes-packing"></i> “shelves” for organizing and moving those boxes within the warehouse.</p>
 
 <h3 id="memory-allocator">Memory Allocator</h3>
 
@@ -3374,8 +3374,8 @@ Memory allocators may be used manually (with specific directions provided on whe
 The memory allocator usually performs the following actions with memory (in addition to others):</p>
 
 <ul>
-  <li><strong>&#8220;Allocation&#8221;</strong>: computer memory resource reservation (taking memory). This is sometimes also known as &#8220;<code class="language-plaintext highlighter-rouge">alloc</code>&#8221;, or &#8220;allocate memory&#8221;.</li>
-  <li><strong>&#8220;Deallocation&#8221;</strong>: computer memory resource freeing (giving back memory for other uses). This is sometimes also known as &#8220;<code class="language-plaintext highlighter-rouge">free</code>&#8221;, or &#8220;freeing memory from allocation&#8221;.</li>
+  <li><strong>“Allocation”</strong>: computer memory resource reservation (taking memory). This is sometimes also known as “<code class="language-plaintext highlighter-rouge">alloc</code>”, or “allocate memory”.</li>
+  <li><strong>“Deallocation”</strong>: computer memory resource freeing (giving back memory for other uses). This is sometimes also known as “<code class="language-plaintext highlighter-rouge">free</code>”, or “freeing memory from allocation”.</li>
 </ul>
 
 <h3 id="garbage-collection">Garbage Collection</h3>
@@ -3384,9 +3384,9 @@ The memory allocator usually performs the following actions with memory (in addi
 
 <p class="center"><em>Garbage collectors help free computer memory which is no longer referenced by software.</em></p>
 
-<p>&#8220;Garbage collection (GC)&#8221; is used to describe a type of automated memory management.
+<p>“Garbage collection (GC)” is used to describe a type of automated memory management.
 GC is typically used to help reduce human error, avoid unintentional system failures, and decrease development time (through less memory-specific code).
-&#8220;The <em>garbage collector</em> attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called <em>garbage</em>.&#8221; (<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">Wikipedia: Garbage collection (computer science)</a>).
+“The <em>garbage collector</em> attempts to reclaim memory which was allocated by the program, but is no longer referenced; such memory is called <em>garbage</em>.” (<a href="https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">Wikipedia: Garbage collection (computer science)</a>).
 A garbage collector often works in tandem with a memory allocator to help control computer memory resource usage in software development.</p>
 
 <h2 id="how-does-python-interact-with-computer-memory">How Does Python Interact with Computer Memory?</h2>
@@ -3397,16 +3397,16 @@ A garbage collector often works in tandem with a memory allocator to help contro
 
 <p class="center"><em>A Python interpreter executes Python code and manages memory for Python procedures.</em></p>
 
-<p>Python is an interpreted &#8220;high-level&#8221; programming language (<a href="https://www.python.org/doc/essays/blurb/">Python: What is Python?</a>).
-Interpreted languages are those which include an &#8220;interpreter&#8221; which helps execute code written in a particular way (<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">Wikipedia: Interpreter (computing)</a>).
+<p>Python is an interpreted “high-level” programming language (<a href="https://www.python.org/doc/essays/blurb/">Python: What is Python?</a>).
+Interpreted languages are those which include an “interpreter” which helps execute code written in a particular way (<a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">Wikipedia: Interpreter (computing)</a>).
 High-level languages such as Python often remove the requirement for software developers to manually perform memory management (<a href="https://en.wikipedia.org/wiki/High-level_programming_language">Wikipedia: High-level programming language</a>).</p>
 
 <p>Python code is executed by a commonly pre-packaged and downloaded binary call the Python <a href="https://en.wikipedia.org/wiki/Interpreter_(computing)">interpreter</a>.
 The Python interpreter reads Python code and performs memory management as the code is executed.
-The <a href="https://github.com/python/cpython">CPython Python interpreter</a> is the most commonly used interpreter for Python, and what&#8217;s use as a reference for other content here.
+The <a href="https://github.com/python/cpython">CPython Python interpreter</a> is the most commonly used interpreter for Python, and what’s use as a reference for other content here.
 There are also other interpreters such as <a href="https://www.pypy.org/features.html">PyPy</a>, <a href="https://github.com/jython/jython">Jython</a>, and <a href="https://ironpython.net/">IronPython</a> which all handle memory differently than the CPython interpreter.</p>
 
-<h3 id="pythons-memory-manager">Python&#8217;s Memory Manager</h3>
+<h3 id="pythons-memory-manager">Python’s Memory Manager</h3>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5zdWJncmFwaCBpbnRlcnByZXRlcltcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxubWFuYWdlcltcIlB5dGhvbiBtZW1vcnkgbWFuYWdlclwiXVxuZW5kXG5lbmRcbiUlLVxuY29kZSAtLT4gfGludGVycHJldGVkIGFuZFxcbmV4ZWN1dGVkIGJ5fCBpbnRlcnByZXRlclxubWFuYWdlciAtLT4gfGV4ZWN1dGVzIGFuZCBtYW5hZ2VzXFxuIHByb2Nlc3MgbWVtb3J5fCBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1hbmFnZXIgZmlsbDojRkRCQTc0LHN0cm9rZTojMzMzOyIsIm1lcm1haWQiOm51bGx9" /></p>
 
@@ -3415,9 +3415,9 @@ There are also other interpreters such as <a href="https://www.pypy.org/features
 <p>Memory is managed for Python software processes automatically (when unspecified) or manually (when specified) through the Python interpreter.
 The <strong><em>Python memory manager</em></strong> is an abstraction which manages memory for Python software processes through the Python interpreter (<a href="https://docs.python.org/3/c-api/memory.html">Python: Memory Management</a>).
 From a high-level perspective, we assume variables and other operations written in Python will automatically allocate and deallocate memory through the Python interpreter when executed.
-Python&#8217;s memory manager performs work through various <strong>memory allocators</strong> and a <strong>garbage collector</strong> (or as configured with customizations) within a <strong>private Python memory heap</strong>.</p>
+Python’s memory manager performs work through various <strong>memory allocators</strong> and a <strong>garbage collector</strong> (or as configured with customizations) within a <strong>private Python memory heap</strong>.</p>
 
-<h3 id="pythons-memory-allocators">Python&#8217;s Memory Allocators</h3>
+<h3 id="pythons-memory-allocators">Python’s Memory Allocators</h3>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5lbmRcbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5weW1hbGxvYyAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5zbWFsbCBhbmQgdGVtcG9yYXJ5IG5lZWRzXCJ8IG1hbGxvY1xubWdyIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbmxhcmdlciBvciBsb25nLWxpdmVkIG5lZWRzXCJ8IG1hbGxvY1xubWFsbG9jIC0tPiBweWhlYXBcbiUlLVxuc3R5bGUgY29tcHV0ZXIgZmlsbDojZmZmLHN0cm9rZTojMzMzXG5zdHlsZSBtZW1vcnkgZmlsbDojODZFRkFDLHN0cm9rZTojMzMzXG5zdHlsZSBjb2RlIGZpbGw6IzY3RThGOSxzdHJva2U6IzMzMztcbnN0eWxlIG1nciBmaWxsOiNGREJBNzQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBweW1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBtYWxsb2MgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgc3BhY2VyIHN0cm9rZTpub25lOyIsIm1lcm1haWQiOm51bGx9" /></p>
 
@@ -3428,20 +3428,20 @@ Python may use one or many memory allocators depending on specifications in Pyth
 One way to understand Python memory allocators is through the following distinctions.</p>
 
 <ul>
-  <li><strong>&#8220;Python Memory Allocator&#8221; (<code class="language-plaintext highlighter-rouge">pymalloc</code>)</strong>
+  <li><strong>“Python Memory Allocator” (<code class="language-plaintext highlighter-rouge">pymalloc</code>)</strong>
 The Python interpreter is packaged with a specialized memory allocator called <code class="language-plaintext highlighter-rouge">pymalloc</code>.
-&#8220;Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime.&#8221; (<a href="https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator">Python: Memory Management - The pymalloc allocator</a>).
+“Python has a pymalloc allocator optimized for small objects (smaller or equal to 512 bytes) with a short lifetime.” (<a href="https://docs.python.org/3/c-api/memory.html#the-pymalloc-allocator">Python: Memory Management - The pymalloc allocator</a>).
 Ultimately, <code class="language-plaintext highlighter-rouge">pymalloc</code> uses C standard library dynamic memory allocation functions to implement memory work.</li>
   <li><strong>C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">realloc</code>, etc.)</strong>
-When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>&#8217;s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a>.
-When C standard library dynamic memory allocation functions are used by the Python interpreter, it uses the system&#8217;s existing implementation of the C standard library.</li>
+When <code class="language-plaintext highlighter-rouge">pymalloc</code> is disabled or a memory requirements exceed <code class="language-plaintext highlighter-rouge">pymalloc</code>’s constraints, the Python interpreter will directly use a function from the <a href="https://en.wikipedia.org/wiki/C_standard_library">C standard library</a> called <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a>.
+When C standard library dynamic memory allocation functions are used by the Python interpreter, it uses the system’s existing implementation of the C standard library.</li>
 </ul>
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyIChyZXNvdXJjZXMpXCJdXG4lJS1cbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2VzcyBbXCJQcm9jZXNzXCJdXG5zdWJncmFwaCBoZWFwMSBbXCJoZWFwXCJdXG5kaXJlY3Rpb24gVEJcbnN1YmdyYXBoIGFyZW5hIFtcInB5bWFsbG9jXFxuYXJlbmEocylcIl1cbnN1YmdyYXBoIHNwYWNlciBbXCIgXCJdXG5zdWJncmFwaCBwb29sc1tcInBvb2wocylcIl1cbmJsb2Nrc1tcImJsb2NrKHMpXCJdXG5lbmRcbmVuZFxuZW5kXG5lbmRcbmVuZFxuZW5kXG4lJS1cbmVuZFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIGFyZW5hIGZpbGw6I0Q4QjRGRSxzdHJva2U6IzMzM1xuc3R5bGUgcG9vbHMgZmlsbDojQzdEMkZFLHN0cm9rZTojMzMzXG5zdHlsZSBzcGFjZXIgZmlsbDp0cmFuc3BhcmVudCxzdHJva2U6dHJhbnNwYXJlbnQ7IiwibWVybWFpZCI6bnVsbH0" /></p>
 
 <p class="center"><em><code class="language-plaintext highlighter-rouge">pymalloc</code> makes use of arenas to further organize pools within a Python process memory heap.</em></p>
 
-<p>It&#8217;s important to note that <code class="language-plaintext highlighter-rouge">pymalloc</code> adds additional abstractions to how memory is organized through the use of &#8220;arenas&#8221;.
+<p>It’s important to note that <code class="language-plaintext highlighter-rouge">pymalloc</code> adds additional abstractions to how memory is organized through the use of “arenas”.
 These arenas are specific to <code class="language-plaintext highlighter-rouge">pymalloc</code> purposes.
 <code class="language-plaintext highlighter-rouge">pymalloc</code> may be disabled through the use of a special environment variable called <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONMALLOC"><code class="language-plaintext highlighter-rouge">PYTHONMALLOC</code></a> (for example, to use only <a href="https://en.wikipedia.org/wiki/C_dynamic_memory_allocation">C standard library dynamic memory allocation functions</a> as seen below).
 This same environment variable may be used with <code class="language-plaintext highlighter-rouge">debug</code> settings in order to help troubleshoot in-depth questions.</p>
@@ -3450,14 +3450,14 @@ This same environment variable may be used with <code class="language-plaintext 
 
 <p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZmxvd2NoYXJ0IExSXG4lJS1cbnN1YmdyYXBoIGNvbXB1dGVyIFtcIkNvbXB1dGVyXCJdXG5kaXJlY3Rpb24gTFJcbnN1YmdyYXBoIG1lbW9yeVtcIk1lbW9yeVwiXVxuc3ViZ3JhcGggcHJvY2Vzc1tcIlB5dGhvbiBwcm9jZXNzXCJdXG5weWhlYXBbXCJoZWFwXCJdXG5lbmRcbmVuZFxuY29kZVtcIlB5dGhvbiBjb2RlXCJdXG5tYWxsb2NbXCJDIG1lbW9yeSBmdW5jdGlvbnNcIl1cbnN1YmdyYXBoIGludGVycHJldGVyIFtcIlB5dGhvbiBpbnRlcnByZXRlclwiXVxuc3ViZ3JhcGggc3BhY2VyIFtcIiBcIl1cbnN1YmdyYXBoIG1nciBbXCJQeXRob24gbWVtb3J5IG1hbmFnZXJcIl1cbnB5bWFsbG9jW1wicHltYWxsb2NcIl1cbmVuZFxuZW5kXG5wYWNrYWdlX21hbmFnZWRbXCJOb24tZGVmYXVsdFxcbm1lbW9yeSBhbGxvY2F0b3JzXFxuKGV4LiBOdW1QeSwgUHlBcnJvdywgZXRjLilcIl1cbmVuZFxubWltYWxsb2NbXCJtaW1hbGxvYyBtZW1vcnkgZnVuY3Rpb25zXCJdXG5qZW1hbGxvY1tcImplbWFsbG9jIG1lbW9yeSBmdW5jdGlvbnNcIl1cbmVuZFxuJSUtXG5jb2RlIC0tPiB8aW50ZXJwcmV0ZWQgYW5kXFxuZXhlY3V0ZWQgYnl8IGludGVycHJldGVyXG5weW1hbGxvYyAtLT4gfFwiYWxsb2NhdGVzIG1lbW9yeSBmb3JcXG5zbWFsbCBhbmQgdGVtcG9yYXJ5IG5lZWRzXCJ8IG1hbGxvY1xubWdyIC0tPiB8XCJhbGxvY2F0ZXMgbWVtb3J5IGZvclxcbmxhcmdlciBvciBsb25nLWxpdmVkIG5lZWRzXCJ8IG1hbGxvY1xubWFsbG9jIC0tPiBweWhlYXBcbmNvZGUgLS4tPiB8bWF5IHN0aXB1bGF0ZVxcbnRoZSB1c2Ugb2Z8IHBhY2thZ2VfbWFuYWdlZFxucGFja2FnZV9tYW5hZ2VkIC0uLT4gbWFsbG9jXG5wYWNrYWdlX21hbmFnZWQgLS4tPiBtaW1hbGxvY1xucGFja2FnZV9tYW5hZ2VkIC0uLT4gamVtYWxsb2Ncbm1pbWFsbG9jIC0uLT4gcHloZWFwXG5qZW1hbGxvYyAtLi0-IHB5aGVhcFxuJSUtXG5zdHlsZSBjb21wdXRlciBmaWxsOiNmZmYsc3Ryb2tlOiMzMzNcbnN0eWxlIG1lbW9yeSBmaWxsOiM4NkVGQUMsc3Ryb2tlOiMzMzNcbnN0eWxlIGNvZGUgZmlsbDojNjdFOEY5LHN0cm9rZTojMzMzO1xuc3R5bGUgbWdyIGZpbGw6I0ZEQkE3NCxzdHJva2U6IzMzMztcbnN0eWxlIHB5bWFsbG9jIGZpbGw6I0ZCQkYyNCxzdHJva2U6IzMzMztcbnN0eWxlIG1hbGxvYyBmaWxsOiNGQkJGMjQsc3Ryb2tlOiMzMzM7XG5zdHlsZSBwYWNrYWdlX21hbmFnZWQgZmlsbDojRkJCRjI0LHN0cm9rZTojMzMzO1xuc3R5bGUgbWltYWxsb2MgZmlsbDojRkVGMDhBLHN0cm9rZTojMzMzO1xuc3R5bGUgamVtYWxsb2MgZmlsbDojRkVGMDhBLHN0cm9rZTojMzMzO1xuc3R5bGUgc3BhY2VyIHN0cm9rZTpub25lOyIsIm1lcm1haWQiOm51bGx9" /></p>
 
-<p class="center"><em>Python code may stipulate the use of additional memory allocators, such as <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code> outside of the default Python memory manager&#8217;s operation.</em></p>
+<p class="center"><em>Python code may stipulate the use of additional memory allocators, such as <code class="language-plaintext highlighter-rouge">mimalloc</code> and <code class="language-plaintext highlighter-rouge">jemalloc</code> outside of the default Python memory manager’s operation.</em></p>
 
 <p>Python provides the capability of customizing memory allocation through the use of custom code or non-default packages.
 See below for some notable examples of additional memory allocation possibilities.</p>
 
 <ul>
   <li><strong>NumPy Memory Allocation</strong>
-<a href="https://numpy.org/">NumPy</a> <a href="https://numpy.org/doc/stable/reference/c-api/data_memory.html">uses custom C-API&#8217;s</a> which are backed by C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">alloc</code>, <code class="language-plaintext highlighter-rouge">free</code>, <code class="language-plaintext highlighter-rouge">realloc</code>) to help address memory management.
+<a href="https://numpy.org/">NumPy</a> <a href="https://numpy.org/doc/stable/reference/c-api/data_memory.html">uses custom C-API’s</a> which are backed by C dynamic memory allocation functions (<code class="language-plaintext highlighter-rouge">alloc</code>, <code class="language-plaintext highlighter-rouge">free</code>, <code class="language-plaintext highlighter-rouge">realloc</code>) to help address memory management.
 These interfaces can be controlled directly through NumPy to help manage memory effectively when using the package.</li>
   <li><strong>PyArrow Memory Allocators</strong>
 <a href="https://arrow.apache.org/">PyArrow</a> provides the capability to use C standard library dynamic memory allocation functions, <a href="https://github.com/jemalloc/jemalloc"><code class="language-plaintext highlighter-rouge">jemalloc</code></a>, or <a href="https://github.com/microsoft/mimalloc"><code class="language-plaintext highlighter-rouge">mimalloc</code></a> through the <a href="https://arrow.apache.org/docs/python/api/memory.html#memory-pools">PyArrow Memory Pools group of functions</a>.
