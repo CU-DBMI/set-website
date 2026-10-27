@@ -1,0 +1,6 @@
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false}, "fontFamily": "Arial, sans-serif"}}%%
+flowchart TB
+    bronze["Bronze: try an idea"] --> silver["Silver: test the results"]
+    silver --> gold["Gold: make it ready to use"]
+    silver -- "A test finds a problem" --> bronze
+    gold -- "The task changes" --> silver
