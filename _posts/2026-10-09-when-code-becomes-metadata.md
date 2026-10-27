@@ -74,7 +74,16 @@ Here is the guide at a glance:
 
 Wooden is our label for work before the ten questions: a sketch to discuss, not a result to trust.
 It is an addition to this guide, not a layer in medallion architecture.
-The levels mark progress on the shared piece, not a competition between contributors.
+
+**Judge the shared work, not each individual's output.**
+[DORA's team guidance](https://dora.dev/guides/how-to-empower-software-delivery-teams/) states: "Software delivery performance is not an individual measure".
+It gives a useful example: slow code reviews can hold back someone's commits, regardless of that person's skill.
+DORA recommends looking at the team's working process and tracking the same application over time, rather than ranking people by activity.
+The [SPACE framework](https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/) also warns against reducing productivity to one measure of activity.
+
+For our levels, ask whether the team can trust the result, change it safely, and help someone else use it.
+Commit counts and lines of code cannot answer those questions alone.
+If you work solo, consider those who will use or maintain the code after you.
 These are not scores to average. Success in one area does not cancel a failure in another.
 
 ## Babel: More Code Does Not Mean Better Answers
