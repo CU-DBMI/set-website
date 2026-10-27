@@ -14,15 +14,19 @@ tags:
 
 {% include blog-post-intro.html %}
 
+<style>
+img.mermaid {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 1.5rem auto;
+}
+</style>
+
 ## Introduction
 
-```mermaid!
-flowchart TB
-    bronze["Bronze: try an idea"] --> silver["Silver: test the results"]
-    silver --> gold["Gold: make it ready to use"]
-    silver -- "A test finds a problem" --> bronze
-    gold -- "The task changes" --> silver
-```
+<img class="mermaid" src="{{ '/images/medallion-guide/overview.svg' | relative_url }}" alt="Overview of bronze, silver, and gold quality levels.">
 
 _Code moves forward as we find evidence that it works for the task. A problem can send us back._
 
@@ -88,13 +92,7 @@ These are not scores to average. Success in one area does not cancel a failure i
 
 ## Babel: More Code Does Not Mean Better Answers
 
-```mermaid!
-flowchart TB
-    candidates["Many possible versions"] --> purpose{"Does this version fit the task?"}
-    purpose -- "No" --> reject["Set it aside or change it"]
-    purpose -- "Possibly" --> evaluate["Compare its results with known answers"]
-    evaluate --> revise["Keep, change, or reject it"]
-```
+<img class="mermaid" src="{{ '/images/medallion-guide/babel.svg' | relative_url }}" alt="Choosing and testing a possible version.">
 
 _A clear task helps us choose what to test. Known answers help us judge the result._
 
@@ -117,12 +115,7 @@ Each contribution needs to serve the shared goal. The medallion levels help us d
 
 ## Bronze: Try an Idea
 
-```mermaid!
-flowchart TB
-    intent["1. Describe the job"] --> contract["2. Describe what goes in and comes out"]
-    contract --> candidate["3. Try a small example safely"]
-    candidate --> status["Bronze: ready for tests,<br/>not for research conclusions"]
-```
+<img class="mermaid" src="{{ '/images/medallion-guide/bronze.svg' | relative_url }}" alt="Bronze steps for a safe first attempt.">
 
 _Bronze gives us a first attempt and a clear reason to test it._
 
@@ -155,13 +148,7 @@ Bronze needs a useful first attempt, not a finished product.
 
 ## Silver: Test the Results
 
-```mermaid!
-flowchart TB
-    expected["4. Compare with known answers"] --> edges["5. Try difficult inputs"]
-    edges --> inspect["6. Read the code against the plan"]
-    inspect --> representative["7. Run a small trial with real data"]
-    representative --> status["Silver: evidence that it works<br/>for the cases you tested"]
-```
+<img class="mermaid" src="{{ '/images/medallion-guide/silver.svg' | relative_url }}" alt="Silver steps for checking the results.">
 
 _Silver tests whether the code does the right job, not merely whether it runs._
 
@@ -204,12 +191,7 @@ If the results reveal a problem, change the code or the plan and test again.
 
 ## Gold: Make It Ready to Use
 
-```mermaid!
-flowchart TB
-    rerun["8. Save enough to run it again"] --> explain["9. Write a guide for the next person"]
-    explain --> release["10. Name and save the tested version"]
-    release --> status["Gold: ready for a clear task,<br/>with instructions and known limits"]
-```
+<img class="mermaid" src="{{ '/images/medallion-guide/gold.svg' | relative_url }}" alt="Gold steps for preparing a tested version for use.">
 
 _Gold means ready for a clear use. It does not mean perfect._
 
