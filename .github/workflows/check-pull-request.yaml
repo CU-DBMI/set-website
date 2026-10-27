@@ -1,0 +1,37 @@
+name: check-pull-request
+run-name: check pull request build
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # Same-repository PRs retain citation updates and published previews.
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Install Ruby packages
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Build site without publishing
+        env:
+          JEKYLL_ENV: production
+          PR_NUMBER: ${{ github.event.number }}
+        run: bundle exec jekyll build --baseurl "/preview/pr-${PR_NUMBER}"

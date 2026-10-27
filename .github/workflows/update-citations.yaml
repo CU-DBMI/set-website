@@ -29,6 +29,7 @@ jobs:
 
     steps:
       - name: Checkout main branch contents
+        id: checkout
         uses: actions/checkout@v7
         with:
           repository: ${{ github.repository }}
@@ -60,7 +61,7 @@ jobs:
         timeout-minutes: 15
 
       - name: Commit cache
-        if: failure()
+        if: failure() && steps.checkout.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           file_pattern: "**/.cache/**"

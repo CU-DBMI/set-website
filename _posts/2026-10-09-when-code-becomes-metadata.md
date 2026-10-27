@@ -33,8 +33,16 @@ I borrow them from [medallion architecture](https://dataengineering.wiki/Concept
 Here, ten questions help us apply the same idea to software.
 <!-- excerpt end -->
 
+The move from small data to big data offers a useful parallel.
+A table you can inspect row by row calls for different checks than a collection too large to review by hand.
+We can think of AI-assisted work as a move from small code to big code.
+We may have more code and more possible versions than we can inspect at once.
+That makes selection, testing, and removal part of the task, not work to leave until later.
+More code is not the goal. A result we can trust is.
+
 In data work, the medallion architecture helps us move from raw records to tested data and then to data prepared for use.
-This architecture can be used with software too: try an idea, test its results, and prepare it for others.
+Here, I adapt that pattern to software: try an idea, test its results, and prepare it for others.
+These ten questions are my proposed guide, not a validated standard for software quality.
 The medals describe the evolution of the code as it is clarified to realized value.
 
 Imagine a ceramics class that makes one sculpture together.
@@ -66,7 +74,6 @@ Here is the guide at a glance:
 
 Wooden is our label for work before the ten questions: a sketch to discuss, not a result to trust.
 It is an addition to this guide, not a layer in medallion architecture.
-Bronze, silver, and gold describe progress toward a tested result that others can use.
 The levels mark progress on the shared piece, not a competition between contributors.
 These are not scores to average. Success in one area does not cancel a failure in another.
 
@@ -86,10 +93,9 @@ Jorge Luis Borges imagines an unusual library in [The Library of Babel](https://
 It contains every possible book within a fixed set of rules.
 Most books contain gibberish.
 Meaningful books sit among countless false or slightly wrong versions.
-The library contains answers, but its readers still need a way to recognize the right ones.
+Its readers still need a way to recognize the right answers.
 
-This story gives us a useful warning about large amounts of output.
-It does not describe how AI works. AI tools do not write by choosing every letter at random.
+This is an analogy, not a description of how AI works. AI tools do not write by choosing every letter at random.
 **A believable answer is not always a correct answer.**
 
 Our cell-measurement code can fail in that way.
@@ -115,7 +121,7 @@ In medallion architecture, bronze holds raw data before later work improves it.
 For our code, bronze means a first attempt whose quality we do not yet know.
 A person can write it, an AI tool can draft it, or we can adapt existing code.
 **We judge the code by what it does, not where it came from.**
-In our class, bronze is the rough shared form. The teacher gives enough direction for the group to try the idea safely.
+In our class, the teacher guides the first shared attempt.
 
 **1. Describe the job.**
 Write down the task before you ask for code.
@@ -136,8 +142,7 @@ Keep the original data untouched.
 Do not give unreviewed code access to passwords or private data.
 A successful run means you have something to test. It does not mean the method is correct.
 
-Bronze leaves room to change direction without much wasted work.
-You need a useful first attempt, not a finished product.
+Bronze needs a useful first attempt, not a finished product.
 
 ## Silver: Test the Results
 
@@ -153,9 +158,9 @@ _Silver tests whether the code does the right job, not merely whether it runs._
 
 In medallion architecture, silver holds data after cleaning and testing.
 For our code, this level asks whether the results match the method we intended.
+Wilson and colleagues' [Best Practices for Scientific Computing](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745) recommends automated tests and code review for scientific software.
 All four questions matter.
-In our class, the teacher helps students test the joints and revise parts that do not fit.
-For code, tests and review serve that role. A polished part still needs to work with the rest.
+In our class, the teacher helps students test whether the pieces fit. For code, tests and review serve that role.
 
 **4. Compare with known answers.**
 Choose a few values whose expected results you can work out separately.
@@ -203,8 +208,7 @@ In medallion architecture, gold holds data prepared for a particular use.
 For our code, this level helps the next person use the tested version responsibly.
 A notebook for one study needs less support than a tool that many teams share.
 Both need clear instructions and limits.
-In our class, this means preparing the shared piece for its intended use and explaining how to care for it.
-For software, that means another person can find the right version, follow the method, and understand its limits.
+In our class, this means preparing the shared piece for use and explaining how to care for it.
 
 **8. Save enough to run it again.**
 Record the code version, other software it needs, input data, and values that control the run.
@@ -212,6 +216,8 @@ Save the test results.
 If the method uses randomness, record its starting value, often called a random seed.
 Follow the instructions on a fresh setup to make sure that they work.
 State any machine or calculation differences that can change the results.
+This follows Sandve and colleagues' [Ten Simple Rules for Reproducible Computational Research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285).
+Their guidance includes recording how each result was produced, exact software versions, and random seeds.
 
 **9. Write a guide for the next person.**
 Explain the method, the required control wells, and the data the code expects.
@@ -226,6 +232,8 @@ Include a license that states how others can use it.
 Keep its test results with that version.
 Make sure that the version you share is the one you tested.
 For published data, record which code version produced it.
+Used this way, code almost acts as metadata: information about the data.
+Alongside the saved settings, it describes how the inputs became the outputs.
 
 If the method, required software, or intended data changes, return to the relevant tests.
 **A new version does not inherit trust from its name.**
@@ -236,7 +244,6 @@ For work where errors can cause serious harm, this guide is only a starting poin
 
 The medallion levels help us decide what the shared work needs next.
 In our ceramics class, the teacher moves between workbenches, looks at each contribution, and helps the students bring the pieces together.
-The aim is a sound shared creation, not a medal for every student.
 
 A chat interface can support a similar rhythm.
 Spend a little time on each part of the code before you bring the parts together.
@@ -254,6 +261,7 @@ As the work improves, the next useful change can be a removal.
 An unused feature or a repeated step can make the code harder to understand without helping the task.
 Remove that extra weight, but keep the tests, safety measures, and evidence that support trust.
 A shorter program is not better if it loses something the work needs.
+The focus on removal echoes Saint-Exupéry's [discussion of design in *Terre des hommes*](https://www.lelivrescolaire.fr/page/7089680).
 
 So when do we know we are finished, for now?
 When the shared result does the agreed job, the tests support it, and someone else can use it within its stated limits.
