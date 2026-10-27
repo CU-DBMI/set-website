@@ -33,7 +33,7 @@ _Code moves forward as we find evidence that it works for the task. A problem ca
 <!-- excerpt start -->
 **Bronze is a first attempt. Silver has evidence behind it. Gold is ready for a clear use.**
 These levels give us a way to discuss research software without treating every piece of code as finished work.
-I borrow them from [medallion architecture](https://dataengineering.wiki/Concepts/Medallion+Architecture), which organizes data through stages of refinement.
+We borrow them from [medallion architecture](https://dataengineering.wiki/Concepts/Medallion+Architecture), which organizes data through stages of refinement.
 Here, ten questions help us apply the same idea to software.
 <!-- excerpt end -->
 
@@ -45,8 +45,8 @@ That makes selection, testing, and removal part of the task, not work to leave u
 More code is not the goal. A result we can trust is.
 
 In data work, the medallion architecture helps us move from raw records to tested data and then to data prepared for use.
-Here, I adapt that pattern to software: try an idea, test its results, and prepare it for others.
-These ten questions are my proposed guide, not a validated standard for software quality.
+Here, we adapt that pattern to software: try an idea, test its results, and prepare it for others.
+These ten questions are our proposed guide, not a validated standard for software quality.
 The medals describe the evolution of the code as it is clarified to realized value.
 
 Imagine a ceramics class that makes one sculpture together.
