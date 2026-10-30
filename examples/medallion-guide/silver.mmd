@@ -1,0 +1,6 @@
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false}, "fontFamily": "Arial, sans-serif"}}%%
+flowchart TB
+    expected["4. Compare with known answers"] --> edges["5. Try difficult inputs"]
+    edges --> inspect["6. Read the code against the plan"]
+    inspect --> representative["7. Run a small trial with real data"]
+    representative --> status["Silver: evidence that it works<br/>for the cases you tested"]

@@ -1,0 +1,6 @@
+%%{init: {"htmlLabels": false, "flowchart": {"htmlLabels": false}, "fontFamily": "Arial, sans-serif"}}%%
+flowchart TB
+    candidates["Many possible versions"] --> purpose{"Does this version fit the task?"}
+    purpose -- "No" --> reject["Set it aside or change it"]
+    purpose -- "Possibly" --> evaluate["Compare its results with known answers"]
+    evaluate --> revise["Keep, change, or reject it"]
