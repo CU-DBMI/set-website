@@ -1,7 +1,7 @@
 # Medallion guide diagrams
 
 The `.mmd` files are the editable Mermaid sources for the diagrams in
-`_posts/2026-10-09-when-code-becomes-metadata.md`.
+`_posts/2026-10-09-medallion-software-guide.md`.
 The matching SVG files are stored in `images/medallion-guide/`.
 
 The article uses the saved SVGs rather than live mermaid.ink URLs. Readers
