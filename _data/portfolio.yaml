@@ -17,7 +17,10 @@
   tags: software, guidance, handbook, research software
 
 - title: RSE Community of Practice
+  image: https://raw.githubusercontent.com/CU-DBMI/rse-cop/main/media/rse-cop-logo.png
   link: https://github.com/CU-DBMI/rse-cop
+  description: An open research software engineering community hosted by the Department of Biomedical Informatics at CU Anschutz, welcoming participants from across the local area for lightning talks, discussions, and collaborative sessions on scientific software, data workflows, and research computing.
+  tags: community, research software, research computing
 
 - title: ECCO
   image: images/ecco.png
@@ -63,7 +66,7 @@
 
 - title: coSMicQC
   image: https://raw.githubusercontent.com/cytomining/coSMicQC/refs/heads/main/media/logo/just-icon.png
-  description: A Python package to evaluate converted single-cell morphology outputs from CytoTable.
+  description: A Python package for identifying and labeling or removing poorly segmented cells using morphology measurements, improving data quality before downstream analysis.
   tags: Way Lab, python, data analysis, single-cell
 
 - title: Simplex
@@ -169,13 +172,16 @@
   link: http://github.com/CU-DBMI/openalex-pub-metrics
 
 - title: OME Arrow
+  image: https://raw.githubusercontent.com/WayScience/ome-arrow/main/docs/src/_static/ome-arrow-logo.png
   link: https://github.com/WayScience/ome-arrow
+  description: A Python package for storing microscopy images alongside metadata and measurements in Apache Arrow tables, making them accessible through tools such as Parquet and DuckDB.
+  tags: Way Lab, python, microscopy, arrow, data engineering
 
 - title: Iceberg BioImage
+  image: https://raw.githubusercontent.com/WayScience/iceberg-bioimage/main/docs/src/_static/iceberg-bioimage-logo.png
   link: https://github.com/WayScience/iceberg-bioimage
-
-- title: MeerQat
-  link: https://github.com/WayScience/meerqat
+  description: A Python package for cataloging microscopy image metadata with Apache Iceberg and joining it to single-cell profiles, without loading the image pixels.
+  tags: Way Lab, python, microscopy, iceberg, data engineering
 
 - title: ReviewR
   image: images/reviewr.png
