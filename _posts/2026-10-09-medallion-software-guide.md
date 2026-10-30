@@ -34,7 +34,7 @@ _Code moves forward as we find evidence that it works for the task. A problem ca
 **Bronze is a first attempt. Silver has evidence behind it. Gold is ready for a clear use.**
 These levels give us a way to discuss research software without treating every piece of code as finished work.
 We borrow them from [medallion architecture](https://www.databricks.com/blog/what-is-medallion-architecture), which organizes data through stages of refinement.
-Here, ten questions help us apply the same idea to software.
+Here, step zero plus ten questions help us apply the same idea to software.
 <!-- excerpt end -->
 
 The move from small data to big data offers a useful parallel.
@@ -46,7 +46,7 @@ More code is not the goal. A result we can trust is.
 
 In data work, the medallion architecture helps us move from raw records to tested data and then to data prepared for use.
 Here, we adapt that pattern to software: try an idea, test its results, and prepare it for others.
-These ten questions are our proposed guide, not a validated standard for software quality.
+Step zero and these ten questions are our proposed guide, not a validated standard for software quality.
 The medals describe the evolution of the code as it is clarified to realized value.
 
 ## Babel: More Code Does Not Mean Better Answers
@@ -74,7 +74,7 @@ The medallion levels below turn that need into questions we can ask as the work 
 
 | Level | Question | What you need |
 |---|---|---|
-| 🪵 Wooden | Is there an idea worth a first try? | A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results. |
+| 🪵 Wooden | 0. Is there an idea worth a first try? | A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results. |
 | 🥉 Bronze | 1. What is the job? | A clear task and its limits. |
 | 🥉 Bronze | 2. What goes in and comes out? | A description of the data the code takes and returns. |
 | 🥉 Bronze | 3. Can a small example run safely? | A first attempt that leaves the original data untouched. |
@@ -90,7 +90,7 @@ The medallion levels below turn that need into questions we can ask as the work 
 
 _Wooden is a sketch to discuss, not a result to trust._
 
-Wooden sits before the ten questions begin.
+Wooden is step zero: it comes before the ten questions begin.
 It is an addition to this guide, not a layer in the original medallion architecture.
 It might be a rough idea, a few lines of code, or a fragment an AI tool drafted.
 The point of wooden is to give the team something to talk about.
