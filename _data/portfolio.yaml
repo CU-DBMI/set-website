@@ -1,79 +1,195 @@
-- title: MolEvolvR
-  subtitle: for JRaviLab
-  image: images/molevolvr.png
-  link: https://github.com/JRaviLab/molevolvr_app
-  description: |
-    A web app that enables researchers to run a general-purpose computational workflow for
-    characterizing the molecular evolution and phylogeny of their proteins of interest.
-  tags: server
+- title: Wall of Software
+  image: images/wall-of-software.png
+  link: https://cu-dbmi.github.io/wall-of-software/
+  description: An (incomplete) showcase of software tools developed in the department (largely by us).
+  tags: software, tools
+
+- title: Software Gardening
+  image: https://raw.githubusercontent.com/software-gardening/brand/main/logo/logo-text.png?raw=true
+  link: https://github.com/software-gardening
+  description: An ecosystem of applied guidance and tools for sustainable software development and maintenance.
+  tags: software, tools
+
+- title: RSE Community of Practice
+  link: https://github.com/CU-DBMI/rse-cop
+
+- title: ECCO
+  image: images/ecco.png
+  link: https://coe-ecco.org/
+  description: A webapp in collaboration with cancer center to explore cancer data in Colorado.
+  tags: webapp, frontend, backend, data-visualization
+
+- title: Human Microbiome Compendium
+  image: https://microbiomap.org/share.png
+  link: https://microbiomap.org/
+  description: A webapp for exploring an unprecedented dataset of the human microbiome.
+  tags: webapp, frontend, data-visualization
+
+- title: Meta2Onto
+  image: https://meta2onto.org/share.png
+  link: https://meta2onto.org/
+  description: A webapp for discovering and sharing disease and tissue annotations for hundreds of thousands of GEO studies.
+  tags: webapp, frontend, backend, data-visualization
+
+- title: STRchive
+  image: https://strchive.org/share.jpg
+  link: https://strchive.org/
+  description: A webapp for exploring an archive of STRs associated with human diseases
+  tags: webapp, frontend, data-visualization
 
 - title: Pycytominer
-  subtitle: for the Way Lab
   image: https://raw.githubusercontent.com/WayScience/pycytominer/master/logo/just-icon.png?raw=true
   link: https://github.com/WayScience/pycytominer
   description: A suite of common functions used to process high dimensional readouts from high-throughput cell experiments.
-  tags: python, pandas, data pipeline
+  tags: Way Lab, python, pandas, data pipeline
 
 - title: CytoTable
-  subtitle: for the Way Lab
-  image: https://raw.githubusercontent.com/cytomining/CytoTable/main/docs/source/_static/dataflow.svg?raw=true
-  link: https://github.com/WayScience/CytoTable
+  image: https://raw.githubusercontent.com/cytomining/CytoTable/refs/heads/main/logo/just-icon.png
+  link: https://github.com/cytomining/CytoTable
   description: A Python package which enables large data processing to enhance single-cell morphology data analysis.
-  tags: python, arrow, duckdb, data engineering
+  tags: Way Lab, python, arrow, duckdb, data engineering
+
+- title: CytoDataFrame
+  image: https://raw.githubusercontent.com/cytomining/CytoDataFrame/refs/heads/main/logo/just-icon.png
+  description: An advanced in-memory data analysis format designed for single-cell profiling.
+  tags: Way Lab, python, data analysis, single-cell
+
+- title: coSMicQC
+  image: https://raw.githubusercontent.com/cytomining/coSMicQC/refs/heads/main/media/logo/just-icon.png
+  description: A Python package to evaluate converted single-cell morphology outputs from CytoTable.
+  tags: Way Lab, python, data analysis, single-cell
 
 - title: Simplex
-  subtitle: for the Krishnan Lab
   image: https://raw.githubusercontent.com/krishnanlab/simplex/main/app/public/share.jpg?raw=true
   link: https://github.com/krishnanlab/simplex
-  description: A web app and supporting backend for simplifying scientific and medical writing.
-  tags: web app, frontend, backend, react
+  description: A webapp and supporting backend for simplifying scientific and medical writing.
+  tags: Krishnan Lab, webapp, frontend, backend
 
-- title: MyGeneset.info
-  subtitle: for BioThings.io
-  image: https://mygeneset.info/share-thumbnail.jpg
-  link: https://github.com/biothings/mygeneset.info-website
-  description: A web app built from scratch to allow users to collect, save, and share sets of genes. A geneSET companion to MyGene.info.
-  tags: web app, frontend, vue
+- title: Word Spot
+  image: https://word-spot.netlify.app/share.png
+  link: https://word-spot.netlify.app/
+  description: A webapp for detecting word usage patterns.
+  tags: webapp, frontend
+
+- title: GenePlexus
+  image: https://geneplexus.net/share.jpg
+  link: https://geneplexus.net/
+  description: A webapp for predicting similar genes across species based on patterns of connectivity in genome-scale molecular interaction networks.
+  tags: webapp, frontend, backend, data-visualization
 
 - title: Word Lapse
-  subtitle: for the Greene Lab
   image: https://raw.githubusercontent.com/greenelab/word-lapse/main/app/public/share-thumbnail.jpg
   link: https://github.com/greenelab/word-lapse
-  description: A frontend web app and supporting backend server that allows users to explore how a word changes in meaning over time based on natural language processing machine learning.
-  tags: web app, frontend, backend, react, data visualization, natural language processing, machine learning
+  description: A frontend webapp and supporting backend server that allows users to explore how a word changes in meaning over time based on natural language processing machine learning.
+  tags: Greene Lab, webapp, frontend, backend, data-visualization
+
+- title: Preprint Similarity Search
+  image: https://greenelab.github.io/preprint-similarity-search/icons/share-thumbnail.png
+  link: https://greenelab.github.io/preprint-similarity-search/
+  description: A webapp for finding similar papers and journals based on the textual content of your bioRxiv or medRxiv preprint.
+  tags: Greene Lab, webapp, frontend, backend, data-visualization
+
+- title: Zed Profiler
+  image: https://raw.githubusercontent.com/WayScience/ZedProfiler/main/logo/with-text-for-light-bg.png
+  link: https://github.com/WayScience/ZedProfiler
+  description: A CPU-first 3D image feature extraction toolkit for high-content and high-throughput image-based profiling.
+  tags: Way Lab, tool, image-processing
+
+- title: Connectivity Search
+  image: https://het.io/share-thumbnail.png
+  link: https://het.io/search/
+  description: A webapp for exploring paths between different nodes in "hetionet", a massive network of biomedical knowledge.
+  tags: webapp, frontend, backend, data-visualization
+
+- title: het.io
+  image: https://het.io/share-thumbnail.png
+  link: https://het.io/
+  description: A website to explore "hetionet" -- a massive network of biomedical knowledge -- with rich contents and embeded interactive apps.
+  tags: website, webapp
+
+- title: MyGeneset.info
+  image: https://mygeneset.info/share-thumbnail.jpg
+  link: https://github.com/biothings/mygeneset.info-website
+  description: A webapp built from scratch to allow users to collect, save, and share sets of genes. A geneSET companion to MyGene.info.
+  tags: BioThings.io, webapp, frontend
+
+- title: MolEvolvR
+  image: images/molevolvr.png
+  link: https://github.com/JRaviLab/molevolvr_app
+  description: A webapp that enables researchers to run a general-purpose computational workflow for characterizing the molecular evolution and phylogeny of their proteins of interest.
+  tags: JRaviLab, server, r, shiny
+
+- title: Adage
+  image: https://adage.greenelab.com/share-thumbnail.png
+  link: https://adage.greenelab.com/
+  description: A webapp for exploring gene expression data and discovering new insights from machine learning models.
+  tags: Greene Lab, webapp, frontend, backend, data-visualization
+
+- title: Manubot AI Editor
+  image: https://manubot.org/share-thumbnail.png
+  link: https://github.com/manubot/manubot-ai-editor
+  description: A tool for performing automatic, AI-assisted revisions of Manubot manuscripts.
+  tags: Manubot, AI, manuscript, tool
+
+- title: Manufold
+  image: https://raw.githubusercontent.com/pivlab/manufold/refs/heads/main/frontend/public/share.png
+  link: https://github.com/pivlab/manufold
+  description: An AI-assisted manuscript writing tool, developed as part of the [Google  hackathon](https://googlecloudmultiagents.devpost.com/).
+  tags: Piv Lab, webapp, frontend, backend
+
+- title: Lab Website Template
+  image: https://raw.githubusercontent.com/greenelab/lab-website-template/main/images/share.jpg?raw=true
+  link: https://github.com/greenelab/lab-website-template
+  description: An easy-to-use, flexible website template for labs. What this very site is built on!
+  tags: Greene Lab, website, frontend, jekyll, blog
+
+- title: CFDE Metrics
+  image: https://metrics.cfdeconnect.org/icon.png
+  link: https://metrics.cfdeconnect.org/
+  description: An long-running collaboration with the NIH to collect and report on various grant funded metrics.
+  tags: data, pipeline
+
+- title: ClarifAI
+  link: https://github.com/CU-DBMI/clarifai
+
+- title: PMC Crawler
+  link: https://github.com/CU-DBMI/pmc-crawler
+
+- title: Resourcium
+  link: https://github.com/CU-DBMI/resourcium
+
+- title: OpenAlex Pub Metrics
+  link: http://github.com/CU-DBMI/openalex-pub-metrics
+
+- title: OME Arrow
+  link: https://github.com/WayScience/ome-arrow
+
+- title: Iceberg BioImage
+  link: https://github.com/WayScience/iceberg-bioimage
+
+- title: MeerQat
+  link: https://github.com/WayScience/meerqat
+
+- title: ReviewR
+  image: images/reviewr.png
+  link: https://reviewr.thewileylab.org/
+  description: ReviewR is a portable Shiny tool designed for exploring patient-level electronic health records and performing a chart review in a single interface. It is distributed as an R package using the [golem](https://thinkr-open.github.io/golem/) framework.
+  tags: Wiley Lab, r, package, shiny
 
 - title: Monarch Initiative UI
-  subtitle: for TISLab
   image: images/monarch-ui.jpg
   link: https://github.com/monarch-initiative/monarch-ui-new
   description: A redesign and rewrite of the [Monarch Initiative](https://monarchinitiative.org/) application from the ground up, designed to be more modern, maintainable, robust, and accessible.
-  tags: web app, frontend, vue, UI
+  tags: TISLab, webapp, frontend, UI
 
 - title: Monarch Initiative Cloud Migration
-  subtitle: for TISLab
   image: images/monarch-cluster.jpg
   link: https://github.com/monarchinitiative/monarch-stack
   description: A migration of the all Monarch Initiative backend and associated services from physical hardware to Google Cloud, including automated provisioning and deployment via Terraform, Ansible, and Docker Swarm.
-  tags: devops, api, iac, terraform, ansible, docker swarm
+  tags: TISLab, devops, api, iac, terraform, ansible, docker swarm
 
 - title: GraphDB Deployer
   image: images/graphdb-deployer.jpg
   link: https://github.com/monarch-initiative/graphdb-deployer
   description: Automates the parsing and transformation of a KGX archive into graphdb-ready formats. After the archive is converted, automates provisioning and deployment of Neo4j and Blazegraph instances from a KGX archive.
-  tags: devops, iac, graph databases, neo4j, blazegraph, terraform, ansible
-
-- title: ReviewR
-  subtitle: for The Wiley Lab
-  image: images/reviewr.png
-  link: https://reviewr.thewileylab.org/
-  description: |
-    ReviewR is a portable Shiny tool designed for exploring patient-level electronic health records and performing a chart review in a single interface. It is 
-    distributed as an R package using the [golem](https://thinkr-open.github.io/golem/) framework.
-  tags: r package, shiny 
-
-- title: Lab Website Template
-  subtitle: for the Greene Lab
-  image: https://raw.githubusercontent.com/greenelab/lab-website-template/main/images/share.jpg?raw=true
-  link: https://github.com/greenelab/lab-website-template
-  description: An easy-to-use, flexible website template for labs. What this very site is built on!
-  tags: website, frontend, jekyll, blog
+  tags: TISLab, devops, iac, graph databases, neo4j, blazegraph, terraform, ansible
