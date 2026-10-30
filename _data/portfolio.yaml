@@ -10,6 +10,12 @@
   description: An ecosystem of applied guidance and tools for sustainable software development and maintenance.
   tags: software, tools
 
+- title: Software Gardening Almanack
+  image: https://raw.githubusercontent.com/software-gardening/almanack/main/src/book/assets/software-gardening-almanack-logo.png
+  link: https://software-gardening.github.io/almanack/
+  description: An open-source handbook of applied guidance and tooling for sustainable software development and maintenance, written as a community garden for research software.
+  tags: software, guidance, handbook, research software
+
 - title: RSE Community of Practice
   link: https://github.com/CU-DBMI/rse-cop
 
@@ -51,7 +57,8 @@
 
 - title: CytoDataFrame
   image: https://raw.githubusercontent.com/cytomining/CytoDataFrame/refs/heads/main/logo/just-icon.png
-  description: An advanced in-memory data analysis format designed for single-cell profiling.
+  link: https://cytomining.github.io/CytoDataFrame/
+  description: A Python package which shows single-cell profiles alongside their source images and segmentation masks, so visual checks happen within the same dataframe used for analysis.
   tags: Way Lab, python, data analysis, single-cell
 
 - title: coSMicQC
