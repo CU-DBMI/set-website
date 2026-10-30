@@ -33,7 +33,7 @@ _Code moves forward as we find evidence that it works for the task. A problem ca
 <!-- excerpt start -->
 **Bronze is a first attempt. Silver has evidence behind it. Gold is ready for a clear use.**
 These levels give us a way to discuss research software without treating every piece of code as finished work.
-We borrow them from [medallion architecture](https://dataengineering.wiki/Concepts/Medallion+Architecture), which organizes data through stages of refinement.
+We borrow them from [medallion architecture](https://www.databricks.com/blog/what-is-medallion-architecture), which organizes data through stages of refinement.
 Here, ten questions help us apply the same idea to software.
 <!-- excerpt end -->
 
@@ -49,16 +49,26 @@ Here, we adapt that pattern to software: try an idea, test its results, and prep
 These ten questions are our proposed guide, not a validated standard for software quality.
 The medals describe the evolution of the code as it is clarified to realized value.
 
-Imagine a ceramics class that makes one sculpture together.
-The teacher explains the goal, and the students shape different parts.
-The teacher helps them judge whether those parts fit and guides the next round of changes.
-A smooth surface cannot hide a weak joint. The shared piece needs attention as a whole.
+## Babel: More Code Does Not Mean Better Answers
 
-Alberto Denia's [Code is clay now](https://www.albertodenia.com/writing/code-is-clay-now) offers a related image for code that AI tools help us reshape.
-The class extends that image to shared work.
-A research team guides the task, while people and AI tools contribute parts of the code.
-The teaching role gives us a useful question: what guidance does the next revision need?
-The team remains responsible for the scientific choices and the evidence behind them.
+<img class="mermaid" src="{{ '/images/medallion-guide/babel.svg' | relative_url }}" alt="Choosing and testing a possible version.">
+
+_A clear task helps us choose what to test. Known answers help us judge the result._
+
+Jorge Luis Borges imagines an unusual library in [The Library of Babel](https://en.wikipedia.org/wiki/The_Library_of_Babel).
+It contains every possible book within a fixed set of rules.
+Most books contain gibberish.
+Meaningful books sit among countless false or slightly wrong versions.
+Its readers still need a way to recognize the right answers.
+
+Generative tools give code work a similar shape.
+A team can hold many versions of the same solution at once.
+Most of them will be wrong in ways that are not obvious at a glance.
+
+**A believable answer is not always a correct answer.**
+
+A clear task and tests with known answers help us tell the two apart.
+The medallion levels below turn that need into questions we can ask as the work moves forward.
 
 Here is the guide at a glance:
 
@@ -76,42 +86,16 @@ Here is the guide at a glance:
 | 🥇 Gold | 9. Can someone understand and use it? | A guide that explains the method, its limits, and who to contact. |
 | 🥇 Gold | 10. Do we know which version to use? | A named version tied to its test results. |
 
-Wooden is our label for work before the ten questions: a sketch to discuss, not a result to trust.
+## Wooden: Sketch an Idea
+
+_Wooden is a sketch to discuss, not a result to trust._
+
+Wooden sits before the ten questions begin.
 It is an addition to this guide, not a layer in the original medallion architecture.
-
-**Judge the shared work, not each individual's output.**
-[DORA's team guidance](https://dora.dev/guides/how-to-empower-software-delivery-teams/) states: "Software delivery performance is not an individual measure".
-It gives a useful example: slow code reviews can hold back someone's commits, regardless of that person's skill.
-DORA recommends looking at the team's working process and tracking the same application over time, rather than ranking people by activity.
-The [SPACE framework](https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/) also warns against reducing productivity to one measure of activity.
-
-For our levels, ask whether the team can trust the result, change it safely, and help someone else use it.
-Commit counts and lines of code cannot answer those questions alone.
-If you work solo, consider those who will use or maintain the code after you.
-These are not scores to average. Success in one area does not cancel a failure in another.
-
-## Babel: More Code Does Not Mean Better Answers
-
-<img class="mermaid" src="{{ '/images/medallion-guide/babel.svg' | relative_url }}" alt="Choosing and testing a possible version.">
-
-_A clear task helps us choose what to test. Known answers help us judge the result._
-
-Jorge Luis Borges imagines an unusual library in [The Library of Babel](https://en.wikipedia.org/wiki/The_Library_of_Babel).
-It contains every possible book within a fixed set of rules.
-Most books contain gibberish.
-Meaningful books sit among countless false or slightly wrong versions.
-Its readers still need a way to recognize the right answers.
-
-This is an analogy, not a description of how AI works. AI tools do not write by choosing every letter at random.
-**A believable answer is not always a correct answer.**
-
-Our cell-measurement code can fail in that way.
-It can run without errors and produce a tidy table, but use treated cells as their own reference.
-The result looks useful while it answers the wrong question.
-
-A clear task and tests with known answers help us find that mistake.
-The teacher in our class faces a similar problem: more pieces do not guarantee a better sculpture.
-Each contribution needs to serve the shared goal. The medallion levels help us decide what evidence it needs next.
+It might be a rough idea, a few lines of code, or a fragment an AI tool drafted.
+The point of wooden is to give the team something to talk about.
+We do not rely on its results, and we do not share it as a tool.
+A wooden sketch becomes bronze when the team agrees the idea is worth a first real try.
 
 ## Bronze: Try an Idea
 
@@ -243,12 +227,6 @@ For work where errors can cause serious harm, this guide is only a starting poin
 The medallion levels help us decide what the shared work needs next.
 In our ceramics class, the teacher moves between workbenches, looks at each contribution, and helps the students bring the pieces together.
 
-A chat interface can support a similar rhythm.
-Spend a little time on each part of the code before you bring the parts together.
-Ask what changed, look at the result, and give one clear next step.
-An AI tool's explanation gives you something to investigate, not proof that its code works.
-The tests and the shared result still need your attention.
-
 Problems give these conversations direction.
 A failed test can reveal a missing rule or a mistake that several contributors share.
 Treat that discovery as progress toward a better result, rather than pressure to hide the problem.
@@ -259,7 +237,7 @@ As the work improves, the next useful change can be a removal.
 An unused feature or a repeated step can make the code harder to understand without helping the task.
 Remove that extra weight, but keep the tests, safety measures, and evidence that support trust.
 A shorter program is not better if it loses something the work needs.
-The focus on removal echoes Saint-Exupéry's [discussion of design in *Terre des hommes*](https://www.lelivrescolaire.fr/page/7089680).
+The focus on removal echoes Saint-Exupéry's [discussion of design in *Wind, Sand and Stars*](https://en.wikipedia.org/wiki/Wind,_Sand_and_Stars).
 
 So when do we know we are finished, for now?
 When the shared result does the agreed job, the tests support it, and someone else can use it within its stated limits.
