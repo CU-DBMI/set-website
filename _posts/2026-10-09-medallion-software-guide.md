@@ -70,7 +70,7 @@ Most of them will be wrong in ways that are not obvious at a glance.
 A clear task and tests with known answers help us tell the two apart.
 The medallion levels below turn that need into questions we can ask as the work moves forward.
 
-Here is the guide at a glance:
+## Medallion Guide to Software at a Glance
 
 | Level | Question | What you need |
 |---|---|---|
