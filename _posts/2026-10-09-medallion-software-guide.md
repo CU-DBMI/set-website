@@ -81,17 +81,17 @@ The medallion levels below turn that need into questions we can ask as the work 
 
 | Level | Question | What you need |
 |---|---|---|
-| 🪵 Wooden | 0\. Is there an idea worth a first try? | A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results. |
-| 🥉 Bronze | 1\. What is the job? | A clear task and its limits. |
-| 🥉 Bronze | 2\. What goes in and comes out? | A description of the data the code takes and returns. |
-| 🥉 Bronze | 3\. Can a small example run safely? | A first attempt that leaves the original data untouched. |
-| 🥈 Silver | 4\. Does it give a known answer? | An expected result worked out separately from the code. |
-| 🥈 Silver | 5\. What happens with difficult data? | Tests for missing values, unusual inputs, and rules that must hold. |
-| 🥈 Silver | 6\. Does the code follow the plan? | A review of the code against the intended method. |
-| 🥈 Silver | 7\. Does it work on real examples? | A small trial with realistic data and clear limits. |
-| 🥇 Gold | 8\. Can someone run it again? | Saved data references, software versions, and instructions. |
-| 🥇 Gold | 9\. Can someone understand and use it? | A guide that explains the method, its limits, and who to contact. |
-| 🥇 Gold | 10\. Do we know which version to use? | A named version tied to its test results. |
+| 🪵 Wooden | **0.** Is there an idea worth a first try? | A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results. |
+| 🥉 Bronze | **1.** What is the job? | A clear task and its limits. |
+| 🥉 Bronze | **2.** What goes in and comes out? | A description of the data the code takes and returns. |
+| 🥉 Bronze | **3.** Can a small example run safely? | A first attempt that leaves the original data untouched. |
+| 🥈 Silver | **4.** Does it give a known answer? | An expected result worked out separately from the code. |
+| 🥈 Silver | **5.** What happens with difficult data? | Tests for missing values, unusual inputs, and rules that must hold. |
+| 🥈 Silver | **6.** Does the code follow the plan? | A review of the code against the intended method. |
+| 🥈 Silver | **7.** Does it work on real examples? | A small trial with realistic data and clear limits. |
+| 🥇 Gold | **8.** Can someone run it again? | Saved data references, software versions, and instructions. |
+| 🥇 Gold | **9.** Can someone understand and use it? | A guide that explains the method, its limits, and who to contact. |
+| 🥇 Gold | **10.** Do we know which version to use? | A named version tied to its test results. |
 
 ## Wooden: Sketch an Idea
 
