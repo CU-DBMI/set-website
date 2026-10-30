@@ -57,7 +57,7 @@ A smooth surface cannot hide a weak joint. The shared piece needs attention as a
 Alberto Denia's [Code is clay now](https://www.albertodenia.com/writing/code-is-clay-now) offers a related image for code that AI tools help us reshape.
 The class extends that image to shared work.
 A research team guides the task, while people and AI tools contribute parts of the code.
-AI tools are not students, but the teaching role gives us a useful question: what guidance does the next revision need?
+The teaching role gives us a useful question: what guidance does the next revision need?
 The team remains responsible for the scientific choices and the evidence behind them.
 
 Here is the guide at a glance:
@@ -77,7 +77,7 @@ Here is the guide at a glance:
 | 🥇 Gold | 10. Do we know which version to use? | A named version tied to its test results. |
 
 Wooden is our label for work before the ten questions: a sketch to discuss, not a result to trust.
-It is an addition to this guide, not a layer in medallion architecture.
+It is an addition to this guide, not a layer in the original medallion architecture.
 
 **Judge the shared work, not each individual's output.**
 [DORA's team guidance](https://dora.dev/guides/how-to-empower-software-delivery-teams/) states: "Software delivery performance is not an individual measure".
@@ -228,6 +228,10 @@ Alongside the saved settings, it describes how the inputs became the outputs.
 Peter Naur's essay [Programming as Theory Building](https://doi.org/10.1016/0165-6074%2885%2990032-8) argues that a program is a theory held by the people who build it, and the code text records only part of that theory.
 When those builders leave, the text remains, and the theory can fade with them.
 The saved plan, tests, and guides cannot hold the whole theory, but they give the next person evidence to rebuild it from.
+Naur treats the theory as something a team builds and holds together, not a private idea in one head.
+A program stays alive while the people holding its theory remain in charge of its changes.
+Within a living team the theory is uneven, and each departure takes part of it.
+The bundle cannot hold the whole theory, but it keeps the team's shared awareness of it from shrinking to a single head.
 
 If the method, required software, or intended data changes, return to the relevant tests.
 **A new version does not inherit trust from its name.**
