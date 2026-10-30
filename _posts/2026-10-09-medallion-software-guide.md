@@ -22,6 +22,11 @@ img.mermaid {
   height: auto;
   margin: 1.5rem auto;
 }
+table th,
+table td {
+  text-align: left;
+  vertical-align: top;
+}
 </style>
 
 ## Introduction
