@@ -1,5 +1,5 @@
 ---
-title: "From Bronze to Gold: A Medallion Guide to Software in the Generative Era"
+title: "From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code"
 author: dave-bunten
 tags:
   - scientific-software
@@ -10,7 +10,7 @@ tags:
   - software-design
 ---
 
-# From Bronze to Gold: A Medallion Guide to Software in the Generative Era
+# From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code
 
 {% include blog-post-intro.html %}
 
