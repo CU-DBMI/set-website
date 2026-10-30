@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-51/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-51/" rel="alternate" type="text/html" /><updated>2026-10-30T22:17:49+00:00</updated><id>/set-website/preview/pr-51/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code</title><link href="/set-website/preview/pr-51/2026/10/09/medallion-software-guide.html" rel="alternate" type="text/html" title="From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code" /><published>2026-10-09T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2026/10/09/medallion-software-guide</id><content type="html" xml:base="/set-website/preview/pr-51/2026/10/09/medallion-software-guide.html"><![CDATA[<h1 id="from-bronze-to-gold-a-medallion-guide-to-software-in-the-age-of-infinite-code">From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/set-website/preview/pr-51/feed.xml" rel="self" type="application/atom+xml" /><link href="/set-website/preview/pr-51/" rel="alternate" type="text/html" /><updated>2026-10-30T22:25:47+00:00</updated><id>/set-website/preview/pr-51/feed.xml</id><title type="html">Software Engineering Team</title><subtitle>The software engineering team of the Department of Biomedical Informatics at the University of Colorado Anschutz</subtitle><entry><title type="html">From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code</title><link href="/set-website/preview/pr-51/2026/10/09/medallion-software-guide.html" rel="alternate" type="text/html" title="From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code" /><published>2026-10-09T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2026/10/09/medallion-software-guide</id><content type="html" xml:base="/set-website/preview/pr-51/2026/10/09/medallion-software-guide.html"><![CDATA[<h1 id="from-bronze-to-gold-a-medallion-guide-to-software-in-the-age-of-infinite-code">From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -88,57 +88,57 @@ The medallion levels below turn that need into questions we can ask as the work 
   <tbody>
     <tr>
       <td>🪵 Wooden</td>
-      <td>0. Is there an idea worth a first try?</td>
+      <td>**0.** Is there an idea worth a first try?</td>
       <td>A rough sketch or code fragment. Expect gaps and errors. Do not rely on its results.</td>
     </tr>
     <tr>
       <td>🥉 Bronze</td>
-      <td>1. What is the job?</td>
+      <td>**1.** What is the job?</td>
       <td>A clear task and its limits.</td>
     </tr>
     <tr>
       <td>🥉 Bronze</td>
-      <td>2. What goes in and comes out?</td>
+      <td>**2.** What goes in and comes out?</td>
       <td>A description of the data the code takes and returns.</td>
     </tr>
     <tr>
       <td>🥉 Bronze</td>
-      <td>3. Can a small example run safely?</td>
+      <td>**3.** Can a small example run safely?</td>
       <td>A first attempt that leaves the original data untouched.</td>
     </tr>
     <tr>
       <td>🥈 Silver</td>
-      <td>4. Does it give a known answer?</td>
+      <td>**4.** Does it give a known answer?</td>
       <td>An expected result worked out separately from the code.</td>
     </tr>
     <tr>
       <td>🥈 Silver</td>
-      <td>5. What happens with difficult data?</td>
+      <td>**5.** What happens with difficult data?</td>
       <td>Tests for missing values, unusual inputs, and rules that must hold.</td>
     </tr>
     <tr>
       <td>🥈 Silver</td>
-      <td>6. Does the code follow the plan?</td>
+      <td>**6.** Does the code follow the plan?</td>
       <td>A review of the code against the intended method.</td>
     </tr>
     <tr>
       <td>🥈 Silver</td>
-      <td>7. Does it work on real examples?</td>
+      <td>**7.** Does it work on real examples?</td>
       <td>A small trial with realistic data and clear limits.</td>
     </tr>
     <tr>
       <td>🥇 Gold</td>
-      <td>8. Can someone run it again?</td>
+      <td>**8.** Can someone run it again?</td>
       <td>Saved data references, software versions, and instructions.</td>
     </tr>
     <tr>
       <td>🥇 Gold</td>
-      <td>9. Can someone understand and use it?</td>
+      <td>**9.** Can someone understand and use it?</td>
       <td>A guide that explains the method, its limits, and who to contact.</td>
     </tr>
     <tr>
       <td>🥇 Gold</td>
-      <td>10. Do we know which version to use?</td>
+      <td>**10.** Do we know which version to use?</td>
       <td>A named version tied to its test results.</td>
     </tr>
   </tbody>
@@ -302,7 +302,7 @@ When the shared result does the agreed job, the tests support it, and someone el
 <strong>We know the work is done when nothing is left to remove without losing something the task needs.</strong>
 That assumes the work passes its checks and has no known problem that defeats its purpose.
 New evidence or a changed task can bring us back to the workbench.
-Until then, we can save the tested version and let it do its job.</p>]]></content><author><name>dave-bunten</name></author><category term="scientific-software" /><category term="software-quality" /><category term="testing" /><category term="data-engineering" /><category term="ai" /><category term="software-design" /><summary type="html"><![CDATA[From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code]]></summary></entry><entry><title type="html">LinkML for Scientific Software: Schema Workflows with Real Leverage</title><link href="/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows.html" rel="alternate" type="text/html" title="LinkML for Scientific Software: Schema Workflows with Real Leverage" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows</id><content type="html" xml:base="/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows.html"><![CDATA[<h1 id="linkml-for-scientific-software-schema-workflows-with-real-leverage">LinkML for Scientific Software: Schema Workflows with Real Leverage</h1>
+Until then, we can save the tested version and let it do its job.</p>]]></content><author><name>dave-bunten</name></author><category term="scientific-software" /><category term="software-quality" /><category term="testing" /><category term="data-engineering" /><category term="ai" /><category term="software-design" /><summary type="html"><![CDATA[From Bronze to Gold: A Medallion Guide to Software in the Age of Infinite Code]]></summary></entry><entry><title type="html">LinkML for Scientific Software: Schema Workflows with Real Leverage</title><link href="/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows.html" rel="alternate" type="text/html" title="LinkML for Scientific Software: Schema Workflows with Real Leverage" /><published>2026-05-06T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows</id><content type="html" xml:base="/set-website/preview/pr-51/2026/05/06/linkml-for-scientific-software-schema-workflows.html"><![CDATA[<h1 id="linkml-for-scientific-software-schema-workflows-with-real-leverage">LinkML for Scientific Software: Schema Workflows with Real Leverage</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -622,7 +622,7 @@ uv run <span class="nt">--with</span> linkml linkml generate plantuml <span clas
 <p>The runnable companion demo for this post is in <a href="https://github.com/CU-DBMI/set-website/blob/main/examples/linkml/linkml_quickstart_demo.py">examples/linkml/linkml_quickstart_demo.py</a>.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run examples/linkml/linkml_quickstart_demo.py
-</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="data-models" /><category term="data-validation" /><category term="scientific-software" /><category term="reproducibility" /><category term="schema-design" /><summary type="html"><![CDATA[LinkML for Scientific Software: Schema Workflows with Real Leverage]]></summary></entry><entry><title type="html">Typed LLM Outputs with Instructor</title><link href="/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor.html" rel="alternate" type="text/html" title="Typed LLM Outputs with Instructor" /><published>2026-03-31T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor</id><content type="html" xml:base="/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor.html"><![CDATA[<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
+</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="data-models" /><category term="data-validation" /><category term="scientific-software" /><category term="reproducibility" /><category term="schema-design" /><summary type="html"><![CDATA[LinkML for Scientific Software: Schema Workflows with Real Leverage]]></summary></entry><entry><title type="html">Typed LLM Outputs with Instructor</title><link href="/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor.html" rel="alternate" type="text/html" title="Typed LLM Outputs with Instructor" /><published>2026-03-31T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor</id><content type="html" xml:base="/set-website/preview/pr-51/2026/03/31/typed-llm-outputs-with-instructor.html"><![CDATA[<h1 id="typed-llm-outputs-with-instructor">Typed LLM Outputs with Instructor</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -780,7 +780,7 @@ If not, <code class="language-plaintext highlighter-rouge">instructor</code> can
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--with</span> instructor <span class="nt">--with</span> llama-cpp-python <span class="nt">--with</span> pydantic <span class="se">\</span>
   https://raw.githubusercontent.com/CU-DBMI/set-website/main/examples/llm/instructor_demo.py
-</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="llm" /><category term="data-validation" /><category term="data-models" /><category term="software-education" /><category term="machine-learning" /><category term="software-design" /><category term="scientific-software" /><category term="reproducibility" /><summary type="html"><![CDATA[Typed LLM Outputs with Instructor]]></summary></entry><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="/set-website/preview/pr-51/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2025/06/12/introducing-uv</id><content type="html" xml:base="/set-website/preview/pr-51/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
+</code></pre></div></div>]]></content><author><name>dave-bunten</name></author><category term="python" /><category term="llm" /><category term="data-validation" /><category term="data-models" /><category term="software-education" /><category term="machine-learning" /><category term="software-design" /><category term="scientific-software" /><category term="reproducibility" /><summary type="html"><![CDATA[Typed LLM Outputs with Instructor]]></summary></entry><entry><title type="html">Introducing uv: A Fast, Portable Python Environment Manager</title><link href="/set-website/preview/pr-51/2025/06/12/introducing-uv.html" rel="alternate" type="text/html" title="Introducing uv: A Fast, Portable Python Environment Manager" /><published>2025-06-12T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2025/06/12/introducing-uv</id><content type="html" xml:base="/set-website/preview/pr-51/2025/06/12/introducing-uv.html"><![CDATA[<h1 id="introducing-uv-a-fast-portable-python-environment-manager">Introducing uv: A Fast, Portable Python Environment Manager</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1204,7 +1204,7 @@ copier copy https://github.com/CU-DBMI/template-uv-python-research-software new_
 </blockquote>
 
 <p><code class="language-plaintext highlighter-rouge">uv</code> from Astral offers research software engineers a fast, portable, and standards‑compliant environment manager that meets or exceeds the capabilities of existing tools.
-By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
+By leveraging native Python packaging, robust lockfiles, and seamless Jupyter support, uv simplifies reproducible workflows and accelerates development.</p>]]></content><author><name>dave-bunten</name></author><category term="environment-management" /><category term="uv" /><category term="python" /><category term="reproducibility" /><category term="packaging" /><summary type="html"><![CDATA[Introducing uv: A Fast, Portable Python Environment Manager]]></summary></entry><entry><title type="html">Understanding Object Storage: A Guide for Research Software Development</title><link href="/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage.html" rel="alternate" type="text/html" title="Understanding Object Storage: A Guide for Research Software Development" /><published>2025-05-13T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage</id><content type="html" xml:base="/set-website/preview/pr-51/2025/05/13/Understanding-Object-Storage.html"><![CDATA[<h1 id="understanding-object-storage-a-guide-for-research-software-development">Understanding Object Storage: A Guide for Research Software Development</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -1702,7 +1702,7 @@ Keep in mind these are estimations and don’t include additional other charges 
   <li>MinIO Documentation: <a href="https://min.io/docs">https://min.io/docs</a></li>
   <li>AWS S3 API Reference: <a href="https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html">https://docs.aws.amazon.com/AmazonS3/latest/API/Welcome.html</a></li>
   <li>GO FAIR Initiative: <a href="https://www.go-fair.org/">https://www.go-fair.org/</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="data-management" /><category term="object-storage" /><category term="reproducibility" /><category term="scientific-software" /><category term="s3" /><category term="data-streaming" /><summary type="html"><![CDATA[Understanding Object Storage: A Guide for Research Software Development]]></summary></entry><entry><title type="html">Testing Scientific Software: A Practical Guide for Developers</title><link href="/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software.html" rel="alternate" type="text/html" title="Testing Scientific Software: A Practical Guide for Developers" /><published>2024-09-25T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software</id><content type="html" xml:base="/set-website/preview/pr-51/2024/09/25/Testing-Scientific-Software.html"><![CDATA[<h1 id="testing-scientific-software-a-practical-guide-for-developers">Testing Scientific Software: A Practical Guide for Developers</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2174,7 +2174,7 @@ By adopting a solid testing strategy, you’re taking a significant step toward 
   <li>Kanewala, U., &amp; Bieman, J. M. (2018). Testing Scientific Software: A Systematic Literature Review (arXiv:1804.01954). arXiv. <a href="http://arxiv.org/abs/1804.01954">http://arxiv.org/abs/1804.01954</a></li>
   <li>Bender, A. (2020) Testing Overview. Winters, T., Manshreck, T., &amp; Wright, H. Software engineering at Google: Lessons learned from programming over time. <a href="https://abseil.io/resources/swe-book/html/ch11.html">https://abseil.io/resources/swe-book/html/ch11.html</a></li>
   <li><a href="https://cu-dbmi.github.io/set-website/2024/07/28/Uncovering-Code-Coverage.html">CU-DBMI SET Blog Post: Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="software-testing" /><category term="scientific-software" /><category term="python" /><category term="reproducibility" /><summary type="html"><![CDATA[Testing Scientific Software: A Practical Guide for Developers]]></summary></entry><entry><title type="html">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</title><link href="/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage.html" rel="alternate" type="text/html" title="Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing" /><published>2024-07-28T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage</id><content type="html" xml:base="/set-website/preview/pr-51/2024/07/28/Uncovering-Code-Coverage.html"><![CDATA[<h1 id="uncovering-code-coverage-ensuring-software-reliability-with-comprehensive-testing">Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2487,7 +2487,7 @@ This transparency helps maintain high code quality, ensures that new changes are
   <li><a href="https://learn.scientific-python.org/development/guides/coverage">Scientific Python Development Guide: Code Coverage</a></li>
   <li><a href="https://research.google/pubs/code-coverage-at-google">Google Research: Code coverage at Google</a></li>
   <li><a href="https://ieeexplore.ieee.org/abstract/document/7272926">IEEE: How Effective Are Code Coverage Criteria?</a></li>
-</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
+</ul>]]></content><author><name>dave-bunten</name></author><category term="code-coverage" /><category term="test-coverage" /><category term="software-quality" /><category term="testing" /><category term="software-sustainability" /><summary type="html"><![CDATA[Uncovering Code Coverage: Ensuring Software Reliability with Comprehensive Testing]]></summary></entry><entry><title type="html">Leveraging Kùzu and Cypher for Advanced Data Analysis</title><link href="/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html" rel="alternate" type="text/html" title="Leveraging Kùzu and Cypher for Advanced Data Analysis" /><published>2024-05-24T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis</id><content type="html" xml:base="/set-website/preview/pr-51/2024/05/24/Leveraging-K%C3%B9zu-and-Cypher-for-Advanced-Data-Analysis.html"><![CDATA[<h1 id="leveraging-kùzu-and-cypher-for-advanced-data-analysis">Leveraging Kùzu and Cypher for Advanced Data Analysis</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -2772,7 +2772,7 @@ There are also options to export data directly to CSV or Parquet files for times
 <p>Kùzu, with its seamless integration into Python environments and efficient handling of graph data, presents a compelling solution for developers seeking embedded graph database capabilities.
 Its ability to transform and query tabular data into rich graph structures opens up new possibilities for data analysis and application development.
 However, it’s important to consider the scale and specific needs of your project when choosing between Kùzu and more robust server-based solutions like Neo4j.
-By leveraging the right tool for the right job, whether it’s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
+By leveraging the right tool for the right job, whether it’s Kùzu for lightweight embedded applications or a server-based database for enterprise-scale operations, developers can unlock the full potential of graph data. Embracing these technologies allows for deeper insights, more complex data relationships, and ultimately, more powerful and efficient applications.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="graph-data" /><category term="databases" /><category term="cypher" /><category term="data-interoperability" /><summary type="html"><![CDATA[Leveraging Kùzu and Cypher for Advanced Data Analysis]]></summary></entry><entry><title type="html">Parquet: Crafting Data Bridges for Efficient Computation</title><link href="/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html" rel="alternate" type="text/html" title="Parquet: Crafting Data Bridges for Efficient Computation" /><published>2024-03-25T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation</id><content type="html" xml:base="/set-website/preview/pr-51/2024/03/25/Parquet-Crafting-Data-Bridges-for-Efficient-Computation.html"><![CDATA[<h1 id="parquet-crafting-data-bridges-for-efficient-computation">Parquet: Crafting Data Bridges for Efficient Computation</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
@@ -3189,7 +3189,7 @@ Below are a list of just a few popular places where you can use Parquet.</p>
 
 <p>This article covered the Parquet file format including notable features and usage.
 Thank you for joining us on this exploration of Parquet.
-We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-10-30T22:17:01+00:00</updated><id>/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
+We appreciate your support, hope the content here helps with your data decisions, and look forward to continuing the exploration of data formats in future posts.</p>]]></content><author><name>dave-bunten</name></author><category term="research-data-engineering" /><category term="file-formats" /><category term="large-data" /><category term="data-performance" /><category term="parquet" /><summary type="html"><![CDATA[Parquet: Crafting Data Bridges for Efficient Computation]]></summary></entry><entry><title type="html">Navigating Dependency Chaos with Lockfiles</title><link href="/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html" rel="alternate" type="text/html" title="Navigating Dependency Chaos with Lockfiles" /><published>2024-02-20T00:00:00+00:00</published><updated>2026-10-30T22:25:02+00:00</updated><id>/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles</id><content type="html" xml:base="/set-website/preview/pr-51/2024/02/20/Navigating-Dependency-Chaos-with-Lockfiles.html"><![CDATA[<h1 id="navigating-dependency-chaos-with-lockfiles">Navigating Dependency Chaos with Lockfiles</h1>
 
 <div class="alert" style="--color: #0ea5e9">
   
