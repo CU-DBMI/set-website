@@ -225,6 +225,9 @@ Make sure that the version you share is the one you tested.
 For published data, record which code version produced it.
 Used this way, code almost acts as metadata: information about the data.
 Alongside the saved settings, it describes how the inputs became the outputs.
+Peter Naur's essay [Programming as Theory Building](https://doi.org/10.1016/0165-6074%2885%2990032-8) argues that a program is a theory held by the people who build it, and the code text records only part of that theory.
+When those builders leave, the text remains, and the theory can fade with them.
+The saved plan, tests, and guides cannot hold the whole theory, but they give the next person evidence to rebuild it from.
 
 If the method, required software, or intended data changes, return to the relevant tests.
 **A new version does not inherit trust from its name.**
