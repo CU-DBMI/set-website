@@ -64,6 +64,13 @@ Its readers still need a way to recognize the right answers.
 Generative tools give code work a similar shape.
 A team can hold many versions of the same solution at once.
 Most of them will be wrong in ways that are not obvious at a glance.
+We might call this moment the age of infinite code: the shelves are full, but the right answer does not stand out on its own.
+
+Before an answer can mislead us, we have to find it at all.
+The gibberish buries it, and every hour of sifting is an hour not spent checking.
+One check asks whether the code does what we planned.
+Another asks whether the plan answers the right question.
+The search rewards patience, but only the checks reward trust.
 
 **A believable answer is not always a correct answer.**
 
