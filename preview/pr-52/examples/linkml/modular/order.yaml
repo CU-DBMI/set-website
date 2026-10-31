@@ -1,0 +1,15 @@
+id: https://example.org/coffee-order
+name: coffee_order
+imports:
+  - common
+
+classes:
+  Order:
+    attributes:
+      order_id:
+        identifier: true
+      drink:
+        required: true
+      status:
+        range: OrderStatusEnum
+        required: true

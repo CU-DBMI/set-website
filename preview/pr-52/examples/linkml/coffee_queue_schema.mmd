@@ -1,0 +1,14 @@
+```mermaid
+erDiagram
+CafeQueue {
+    string queue_id  
+}
+Order {
+    string drink  
+    string order_id  
+    OrderStatusEnum status  
+}
+
+CafeQueue ||--}o Order : "orders"
+
+```
