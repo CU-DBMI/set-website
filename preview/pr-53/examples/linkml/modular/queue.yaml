@@ -1,0 +1,15 @@
+id: https://example.org/coffee-queue-module
+name: coffee_queue_module
+imports:
+  - common
+  - order
+
+classes:
+  CafeQueue:
+    attributes:
+      queue_id:
+        identifier: true
+      orders:
+        range: Order
+        multivalued: true
+        inlined_as_list: true
