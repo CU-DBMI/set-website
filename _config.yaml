@@ -70,6 +70,10 @@ exclude:
 
 # configure jekyll spaceship
 jekyll-spaceship:
+  mermaid-processor:
+    # render diagrams into the page at build time instead of linking
+    # readers to mermaid.ink, which rate-limits and returns 503s
+    mode: pre-fetch
   mathjax-processor:
     src:
       - https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js
